@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Battery/Battery/schema.json",
+    "$schemaVersion": "0.0.2",
+    "title": "Smart Data Models - Battery",
+    "description": "Represent a physical battery with its hardware specifications",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "Battery"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be Battery"
+                },
+                "refDevice": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. Model:'http://schema.org/URL'. Device providing the measured data about the battery"
+                },
+                "status": {
+                    "type": "array",
+                    "description": "Property. Model:'http://schema.org/Text'. Current operational status of the item",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "outOfService",
+                            "withIncidence",
+                            "working"
+                        ]
+                    }
+                },
+                "cycleLife": {
+                    "type": "integer",
+                    "description": "Property. Model:'http://schema.org/Number'. Numeric value of the load/unload operation cycles for the item'"
+                },
+                "autonomyTime": {
+                    "type": "string",
+                    "description": "Property. Model:'http://schema.org/Number'. Autonomy of operations of the item without further charge.",
+                    "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$"
+                },
+                "rechargeTime": {
+                    "type": "string",
+                    "description": "Property. Model:'http://schema.org/Number'. Time for the full charge of the battery.",
+                    "pattern": "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$"
+                },
+                "acPowerInput": {
+                    "type": "number",
+                    "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate current charge. Units:'volts'"
+                },
+                "acPowerOutput": {
+                    "type": "number",
+                    "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate output. Units:'volts'"
+                },
+                "dcPowerInput": {
+                    "type": "number",
+                    "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'"
+                },
+                "dcPowerOutput": {
+                    "type": "number",
+                    "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ]
+}

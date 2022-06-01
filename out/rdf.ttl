@@ -1,0 +1,41 @@
+@prefix schema: <http://schema.org/#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix gbfs: <http://example.org/gbfs#>.
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+@prefix airs: <https://raw.githubusercontent.com/airs-linked-data/lov/latest/src/airs_vocabulary.ttl#>.
+@prefix vso: <http://purl.org/vso/ns#>.
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/>.
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#>.
+
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> rdf:type jsonsc:DataSchema;
+    dcterms:description "Describes the vehicles that are available for rent (as of v2.1-RC2).".
+gbfs:last_updated rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<last_updated> dcterms:description "Last time the data in the feed was updated in POSIX time.".
+gbfs:ttl rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<ttl> dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).".
+gbfs:bike_id rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<bike_id> dcterms:description "Rotating (as of v2.0) identifier of a vehicle.".
+gbfs:lat rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<lat> dcterms:description "The latitude of the vehicle.".
+gbfs:lon rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<lon> dcterms:description "The longitude of the vehicle.".
+gbfs:is_reserved rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<is_reserved> dcterms:description "Is the vehicle currently reserved?".
+gbfs:is_disabled rdf:type owl:ObjectProperty;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
+<is_disabled> dcterms:description "Is the vehicle currently disabled (broken)?".
