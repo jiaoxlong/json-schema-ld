@@ -1,0 +1,15 @@
+{
+  "ld.id": "rdf:type",
+  "ld.base": "api:base",
+  "ld.title": "dcterms:title",
+  "ld.description": "dcterms:description",
+  "ld.existing": "ld:existing",
+  "ld.schema": "jsonsc:DataSchema",
+  "ld.datatype": "rdfs:datatype",
+  "ld.domain": "rdfs:domain",
+  "ld.range": "rdfs:range",
+  "ld.ignore": "ld:ignore",
+  "ld.included": "ld:included",
+  "ld.enum": "ld:enum",
+  "ld.geoJsonFeature": "geo:Geometry"
+}
