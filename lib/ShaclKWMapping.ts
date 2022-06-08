@@ -1,3 +1,26 @@
+import {SCHEMA_STRING_FORMATS} from "./schemaKWs";
+
+export const SHACL_STRING_MAP = {
+    "minLength":"sh:minLength",
+    "maxLength":"sh:maxLength",
+    "pattern":"sh:pattern",
+    //"format": -> not relevant for Shacl but rdf
+    //"enum":"sh:in", -> complex structure
+    "default":"sh:defaultValue",
+    "const":"sh:hasValue" //otherwise sh:in ()
+}
+
+export const SHACL_NUM_MAP = {
+    //"multipleOf":"" -> no expression for this in Shacl
+/*    "minimum":""
+    exclusiveMinimum
+    maximum
+    exclusiveMaximum*/
+    //enum
+    "default":"sh:defaultValue",
+    "const":"sh:hasValue" //otherwise sh:in ()
+}
+
 const schacl_kw_mapping = {
     "required": "jsonsc:required",
     "propertyName": "jsonsc:propertyName", //-> {"pattern":"^[A-Za-z_][A-Za-z0-9_]*$"}

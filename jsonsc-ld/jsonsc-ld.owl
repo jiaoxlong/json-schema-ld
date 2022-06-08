@@ -1,0 +1,123 @@
+@prefix : <http://w3id.org/jsonsc-ld/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/> .
+@base <http://w3id.org/jsonsc-ld/> .
+
+<http://w3id.org/jsonsc-ld/> rdf:type owl:Ontology ;
+                              owl:versionIRI <http://w3id.org/jsonsc-ld/1.0> ;
+                              owl:imports dcterms: ,
+                                          rdfs: ,
+                                          <http://www.w3.org/2004/02/skos/core> ;
+                              dcterms:creator <https://data.knows.idlab.ugent.be/person/jilong/#me> ;
+                              rdfs:comment "JSON schema LD is a metadata schema vocabulary empowers JSON schema with semantics. It is needed in supporting the conversion of a JSON schema to a RDF schema (RDFS) and Shacl shapes."@en ;
+                              rdfs:label "JSON schema LD"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://w3id.org/jsonsc-ld/datatype
+jsonsc-ld:datatype rdf:type owl:ObjectProperty ;
+                   rdfs:domain jsonsc-ld:Property ;
+                   rdfs:range rdfs:Datatype ;
+                   owl:propertyDisjointWith jsonsc-ld:range ;
+                   rdfs:comment "jsonsc-ld:datatype connects a property in a JSON schema to rdfs:DataType."@en ;
+                   rdfs:label "data type"@en .
+
+
+###  http://w3id.org/jsonsc-ld/enrich
+jsonsc-ld:enrich rdf:type owl:ObjectProperty ;
+                 rdfs:domain jsonsc-ld:Schema ;
+                 rdfs:range <https://www.w3.org/2019/wot/json-schema#DataSchema> ;
+                 rdfs:comment "jsonsc-ld:enriches connects a jsonsc-ld:Schema to a jsonsc:DataSchema."@en ;
+                 rdfs:label "enriches"@en .
+
+
+###  http://w3id.org/jsonsc-ld/enum
+jsonsc-ld:enum rdf:type owl:ObjectProperty ;
+               rdfs:domain jsonsc-ld:Property ;
+               rdfs:range <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+               rdfs:comment "jsonsc-ld:enum declares a JSON schema property, containing an array/list of enumerated items, is represented as a skos:ConceptSchema (a situational knowledge). Each enumerated item is a concept in the context of this property."@en ;
+               rdfs:label "enum"@en .
+
+
+###  http://w3id.org/jsonsc-ld/ignore
+jsonsc-ld:ignore rdf:type owl:ObjectProperty ;
+                 rdfs:domain jsonsc-ld:Schema ;
+                 rdfs:range jsonsc-ld:Property ;
+                 rdfs:comment "jsonsc-ld:ignore neglects a property defined in a JSON schema in the context of RDFS and Shacl conversion."@en ;
+                 rdfs:label "ignore"@en .
+
+
+###  http://w3id.org/jsonsc-ld/included
+jsonsc-ld:included rdf:type owl:ObjectProperty ;
+                   rdfs:domain jsonsc-ld:Schema ;
+                   rdfs:range rdf:Property ;
+                   rdfs:comment "jsonsc-ld:included is an analogous to @included in JSON-LD. It is specifically applied to handle the object of array of objects structure in the JSON schema."@en ;
+                   rdfs:label "included"@en .
+
+
+###  http://w3id.org/jsonsc-ld/range
+jsonsc-ld:range rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rdfs:range ;
+                rdfs:domain rdf:Property ;
+                rdfs:comment "jsonsc-ld:range is a SubClass of rdfs:range. It points a jsonsc-ld:Property to an object which is not a data type."@en ;
+                rdfs:label "range"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://w3id.org/jsonsc-ld/existing
+jsonsc-ld:existing rdf:type owl:DatatypeProperty ;
+                   rdfs:domain jsonsc-ld:Property ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:comment """jsonsc-ld:existing indicates whether or not a property in a JSON (sub) schema
+can be represented by a term in an existing vocabulary.  It has a range of xsd:boolean data type. The default value of jsonsc-ld:existing is false, when it is not declared. If the value is set to true, the property will be enriched with the value of jsonsc-ld:id via rdfs:seeAlso."""@en ;
+                   rdfs:label "existing"@en .
+
+
+###  http://w3id.org/jsonsc-ld/geoJsonFeature
+jsonsc-ld:geoJsonFeature rdf:type owl:DatatypeProperty ;
+                         rdfs:domain jsonsc-ld:Property ;
+                         rdfs:range xsd:boolean ;
+                         rdfs:comment "jsonsc-ld:geoJSONFeature indicates a property in a JSON schema is a geo:Gemetry object when it is set to true."@en ;
+                         rdfs:label "geoJsonFeature"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://w3id.org/jsonsc-ld/Property
+jsonsc-ld:Property rdf:type owl:Class ;
+                   rdfs:subClassOf rdf:Property ;
+                   rdfs:comment "jsonsc-ld:Property is the class of JSON schema LD properties, which are analogous to JSON schema properties."@en ;
+                   rdfs:seeAlso "Property"@en .
+
+
+###  http://w3id.org/jsonsc-ld/Schema
+jsonsc-ld:Schema rdf:type owl:Class ;
+                 rdfs:comment "jsonsc-ld:schema defines the  RDF terms to introduce semantics to JSON schema, and hence to convert JSON schema to RDF schema constrained by SHACL shapes orignated from JSON schema."@en ;
+                 rdfs:label "Schema"@en .
+
+
+###  https://www.w3.org/2019/wot/json-schema#DataSchema
+<https://www.w3.org/2019/wot/json-schema#DataSchema> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

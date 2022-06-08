@@ -3,13 +3,13 @@
   "ld.base": "api:base",
   "ld.title": "dcterms:title",
   "ld.description": "dcterms:description",
-  "ld.existing": "ld:existing",
+  "ld.existing": "jsonsc-ld:existing",
   "ld.schema": "jsonsc:DataSchema",
   "ld.datatype": "rdfs:datatype",
   "ld.domain": "rdfs:domain",
   "ld.range": "rdfs:range",
-  "ld.ignore": "ld:ignore",
-  "ld.included": "ld:included",
-  "ld.enum": "ld:enum",
+  "ld.ignore": "jsonsc-ld:ignore",
+  "ld.included": "jsonsc-ld:included",
+  "ld.enum": "jsonsc-ld:enum",
   "ld.geoJsonFeature": "geo:Geometry"
 }

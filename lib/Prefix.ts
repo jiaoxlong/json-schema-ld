@@ -11,13 +11,13 @@ export const RDFS_PREFIX =  {
         "jsonsc": "https://www.w3.org/2019/wot/json-schema#",
         "gbfs": "http://example.org/gbfs/",
 
-        "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
+/*        "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
         "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
         "vann": "http://purl.org/vocab/vann/",
         "airs": "https://raw.githubusercontent.com/airs-linked-data/lov/latest/src/airs_vocabulary.ttl#",
         "vso": "http://purl.org/vso/ns#",
         "dbpedia-owl": "http://dbpedia.org/ontology/",
-        "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"
+        "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"*/
 
     }
 }
@@ -34,4 +34,17 @@ export const SHACL_PREFIX = {
     }
 
 
+}
+
+export const JSONSC_LD_PREFIX = {
+    prefixes:{
+        "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
+        "api":"http://purl.org/linked-data/api/vocab",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "jsonsc": "https://www.w3.org/2019/wot/json-schema#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    }
 }

@@ -17,6 +17,9 @@ export const SCHEMA_ANNOTATIONS = {
     //'default':'jsonsc:default', -> need to be attached to a property
 }
 
+export const SCHEMA_STRING_MAP = {
+    'format':'jsonsc:format',
+}
 export const SCHEMA_COMPOSITIONS = ['allOf', 'anyOf', 'oneOf', 'not']
 export const SCHEMA_LOGICS = ['if', 'then', 'else'];
 
