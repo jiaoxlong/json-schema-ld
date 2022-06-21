@@ -10,17 +10,21 @@ import {fetchJSON} from '../utils/fetch';
 import {match} from '../utils/match';
 import {traverse} from "../utils/traverse";
 import {Describer} from "../utils/Describer";
+import {isValidHttpUrl} from "../utils/ConfigParser"
 
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
+import {ConfigParser} from "../utils/ConfigParser";
 
-class Schema {
+
+export class Schema {
     annotation?:Map<string, string>;
-    constructor(data: {[key:string]: any}) {
+    constructor(data: object) {
         this.annotation = match(SCHEMA_ANNOTATIONS,data);
     }
+
 }
 
 export class StringSchema extends Schema{
@@ -158,11 +162,11 @@ export class ObjectSchema extends Schema{
 
 export class BaseSchema extends Schema{
     private schema_type:string='base';
-    id?:string;
+    id:string;
     schema?:string;
-    compositeOpt?:string[]
+    compositeOpt?:string[];
 
-    constructor(data: {[key:string]: any}){
+    constructor(data: object){
         super(data);
         if (data['id']) this.id = data['id'];
         if (data['$id']) this.id = data['$id'];
@@ -233,7 +237,7 @@ export class Property{
     }
     property_name(){
         return this._property_name;
-    }
+    }e
 
     /**
      *  1. how to tackle when there is a nested composition schema?
@@ -262,8 +266,14 @@ export class Property{
 
 }
 
-/**
- * describes properties of an object in a string Array
- * https://stackoverflow.com/questions/40636292/get-properties-of-a-class
- */
 
+
+function jscLD(config:ConfigParser){
+    return function (constructor: Function){
+        if ('ld.id' in config) {
+            //ld.existing is true.
+             constructor.prototype._property_name = config['base_prefix']+':'+ config['ld.id']
+
+        }
+    }
+}

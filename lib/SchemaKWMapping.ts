@@ -3,7 +3,7 @@ export const SCHEMA_ANNOTATIONS = {
     "description": "dcterms:description",
     "comment": "rdfs:comment",
     "example": "skos:example",
-    "deprecated": "http://www.w3.org/2002/07/owl#",
+    "deprecated": "owl:deprecated",
     "readonly": "jsonsc:readOnly",
     "writeonly": "jsonsc:writeOnly",
 }

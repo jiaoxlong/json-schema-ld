@@ -10,8 +10,7 @@
 
 <http://w3id.org/jsonsc-ld/> rdf:type owl:Ontology ;
                               owl:versionIRI <http://w3id.org/jsonsc-ld/1.0> ;
-                              owl:imports dcterms: ,
-                                          rdfs: ,
+                              owl:imports rdfs: ,
                                           <http://www.w3.org/2004/02/skos/core> ;
                               dcterms:creator <https://data.knows.idlab.ugent.be/person/jilong/#me> ;
                               rdfs:comment "JSON schema LD is a metadata schema vocabulary empowers JSON schema with semantics. It is needed in supporting the conversion of a JSON schema to a RDF schema (RDFS) and Shacl shapes."@en ;
@@ -38,11 +37,11 @@ jsonsc-ld:datatype rdf:type owl:ObjectProperty ;
                    rdfs:label "data type"@en .
 
 
-###  http://w3id.org/jsonsc-ld/enrich
-jsonsc-ld:enrich rdf:type owl:ObjectProperty ;
+###  http://w3id.org/jsonsc-ld/enriches
+jsonsc-ld:enriches rdf:type owl:ObjectProperty ;
                  rdfs:domain jsonsc-ld:Schema ;
                  rdfs:range <https://www.w3.org/2019/wot/json-schema#DataSchema> ;
-                 rdfs:comment "jsonsc-ld:enriches connects a jsonsc-ld:Schema to a jsonsc:DataSchema."@en ;
+                 rdfs:comment "jsonsc-ld:enriches relates a jsonsc-ld:Schema to a jsonsc:DataSchema."@en ;
                  rdfs:label "enriches"@en .
 
 
@@ -73,7 +72,7 @@ jsonsc-ld:included rdf:type owl:ObjectProperty ;
 ###  http://w3id.org/jsonsc-ld/range
 jsonsc-ld:range rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf rdfs:range ;
-                rdfs:domain rdf:Property ;
+                rdfs:domain jsonsc-ld:Property ;
                 rdfs:comment "jsonsc-ld:range is a SubClass of rdfs:range. It points a jsonsc-ld:Property to an object which is not a data type."@en ;
                 rdfs:label "range"@en .
 

@@ -3,12 +3,11 @@ import {
     CompositionSchema,
     IntegerSchema,
     NullSchema,
-    NumberSchema,
+    NumberSchema, ObjectSchema,
     Property,
     StringSchema
 } from "../lib/JSONSchema";
 import {SCHEMA_COMPOSITIONS} from "../lib/schemaKWs";
-import {match} from "./match";
 
 export let properties:Property[] = []
 export function traverse(data){
@@ -42,6 +41,8 @@ export function traverse(data){
             properties.push(p_ins);
         }
         if(data.properties[property].type === 'object'){
+            let obj_schema = new ObjectSchema(data.properties[property]);
+            let p_ins = new Property(property, obj_schema,isRequired);
             traverse(data.properties[property]);
         }
 

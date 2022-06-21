@@ -1,0 +1,19 @@
+{
+  "$id": "https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld",
+  "source": "GBFS-LD",
+  "out_dir": "out",
+  "base_prefix": "gbfs",
+  "base_url": "https://w3id.org/gbfs#",
+  "title": "The GBFS LD configuration",
+  "description": "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary",
+  "creators": [
+    "https://pietercolpaert.be/#me",
+    "https://w3id.org/people/brechtvdv/#me",
+    "https://data.knows.idlab.ugent.be/person/andreipopescu/#me",
+    "https://data.knows.idlab.ugent.be/person/jilong/#me"
+  ],
+  "license": "MIT",
+  "rights": "Copyright statement",
+  "modified": "2022-06-02T11:32:52.12679"
+}
+

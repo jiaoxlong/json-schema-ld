@@ -1,24 +1,33 @@
-
 {
-  "$id" : "https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json",
+  "$id": "https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json",
+  "$ref": "https://github.com/MobilityData/gbfs-json-schema/blob/master/v2.3/gbfs.json",
+  "sources": [
+    "./GBFS-LD/free_bike_status.json",
+    "./GBFS-LD/gbfs.json",
+    "./GBFS-LD/gbfs_versions.json",
+    "./GBFS-LD/geofencing_zones.json",
+    "./GBFS-LD/station_information.json",
+    "./GBFS-LD/station_status.json",
+    "./GBFS-LD/system_alerts.json",
+    "./GBFS-LD/system_calendar.json",
+    "./GBFS-LD/system_hours.json",
+    "./GBFS-LD/system_information.json",
+    "./GBFS-LD/system_pricing_plan.json",
+    "./GBFS-LD/system_regions.json",
+    "./GBFS-LD/vehicle_types.json"
+  ],
+  "base_prefix": "gbfs",
+  "base_url": "https://w3id.org/gbfs#",
   "title": "The GBFS LD configuration",
   "description": "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary",
   "creators": [
     "https://pietercolpaert.be/#me",
-    "https://data.knows.idlab.ugent.be/person/jilong/#me",
+    "https://w3id.org/people/brechtvdv/#me",
     "https://data.knows.idlab.ugent.be/person/andreipopescu/#me",
-    "https://data.knows.idlab.ugent.be/person/jilong/#me"],
+    "https://data.knows.idlab.ugent.be/person/jilong/#me"
+  ],
   "license": "MIT",
-  "rights": "...",
-  "modified": "...",
-  "generated": {
-    "ld.id": "https://w3id.org/gbfs/terms#Vocabulary",
-    "ld.base": "https://w3id.org/gbfs/terms#",
-    "title": "The GBFS vocabulary",
-    "description": "The Linked Data version of the GBFS vocabulary",
-    "schemas": [
-      {"$ref": "station_information.json"}
-    ]
-  }
+  "rights": "Copyright statement",
+  "modified": "2022-06-02T11:32:52.12679"
 }
 

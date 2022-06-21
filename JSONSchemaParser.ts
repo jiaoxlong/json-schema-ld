@@ -59,7 +59,7 @@ for (let p of properties){
     )
     for (let prop_annot of p._property_schema.annotation.keys()){
         rdf_writer.addQuad(
-            namedNode(p._property_name),
+            namedNode('gbfs:'+ p._property_name),
             namedNode(prop_annot),
             literal(p._property_schema.annotation.get(prop_annot))
         );

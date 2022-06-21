@@ -36,7 +36,7 @@ export const SHACL_PREFIX = {
 
 }
 
-export const JSONSC_LD_PREFIX = {
+export const JSC_LD_PREFIX = {
     prefixes:{
         "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
         "api":"http://purl.org/linked-data/api/vocab",
