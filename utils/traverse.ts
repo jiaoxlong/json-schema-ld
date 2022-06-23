@@ -26,52 +26,50 @@ export class Traverse{
     traverse(data){
         for (let property in data['properties']) {
             let isRequired = data.required?.includes(property) ? true : false;
-            if('ld.ignored' in data['properties']) continue
-            else {
-                if (data.properties[property].type === 'string') {
-                    let string_schema = new StringSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, string_schema, isRequired);
-                    this._properties.push(p_ins);
-                }
-                if (data.properties[property].type === 'integer') {
-                    let int_schema = new IntegerSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, int_schema, isRequired);
-                    this._properties.push(p_ins);
-                }
-                if (data.properties[property].type === 'number') {
-                    let number_schema = new NumberSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, number_schema, isRequired);
-                    this._properties.push(p_ins);
-
-                }
-                if (data.properties[property].type === 'boolean') {
-                    let boolean_schema = new BooleanSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, boolean_schema, isRequired);
-                    this._properties.push(p_ins);
-                }
-                if (data.properties[property].type === 'null') {
-                    let null_schema = new NullSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, null_schema, isRequired);
-                    this._properties.push(p_ins);
-                }
-                if (data.properties[property].type === 'object') {
-                    let obj_schema = new ObjectSchema(data.properties[property], this.config);
-                    let p_ins = new Property(this.id, property, obj_schema, isRequired);
-                    this.traverse(data.properties[property]);
-                }
-
-                if (data.properties[property].type === 'array') {
-                    this.traverse(data.properties[property].items)
-                }
-
-                /*for (let composition of SCHEMA_COMPOSITIONS) {
-                    if (composition in data.properties[property]) {
-                        let com_schema = new CompositionSchema(data.properties[property], this.config, composition);
-                        let p_ins = new Property(this.id, property, com_schema, isRequired);
-                        this._properties.push(p_ins)
-                    }
-                }*/
+            if (data.properties[property].type === 'string') {
+                let string_schema = new StringSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config, this.id, property, string_schema, isRequired);
+                this._properties.push(p_ins);
             }
+            if (data.properties[property].type === 'integer') {
+                let int_schema = new IntegerSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config,this.id, property, int_schema, isRequired);
+                this._properties.push(p_ins);
+            }
+            if (data.properties[property].type === 'number') {
+                let number_schema = new NumberSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config,this.id, property, number_schema, isRequired);
+                this._properties.push(p_ins);
+
+            }
+            if (data.properties[property].type === 'boolean') {
+                let boolean_schema = new BooleanSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config,this.id, property, boolean_schema, isRequired);
+                this._properties.push(p_ins);
+            }
+            if (data.properties[property].type === 'null') {
+                let null_schema = new NullSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config,this.id, property, null_schema, isRequired);
+                this._properties.push(p_ins);
+            }
+            if (data.properties[property].type === 'object') {
+                let obj_schema = new ObjectSchema(data.properties[property], this.config, property);
+                let p_ins = new Property(this.config,this.id, property, obj_schema, isRequired);
+                this.traverse(data.properties[property]);
+            }
+
+            if (data.properties[property].type === 'array') {
+                this.traverse(data.properties[property].items)
+            }
+
+            /*for (let composition of SCHEMA_COMPOSITIONS) {
+                if (composition in data.properties[property]) {
+                    let com_schema = new CompositionSchema(data.properties[property], this.config, composition);
+                    let p_ins = new Property(this.id, property, com_schema, isRequired);
+                    this._properties.push(p_ins)
+                }
+            }*/
+
         }
     }
 

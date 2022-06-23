@@ -23,7 +23,7 @@ export class JSCLDSchema{
         this.config = config;
         this.data = require(jsc);
         //Base Schema
-        this.base_schema = new Schema(this.data, this.config)
+        this.base_schema = new Schema(this.data, this.config,this.data['$id'])
         this.rdf_writer = new N3.Writer(RDFS_PREFIX);
         this.shacl_writer = new N3.Writer(SHACL_PREFIX);
         this.shacl_shape = this.config.base_prefix+':'+capitalize(this.config.base_prefix)+'Shape';
@@ -66,15 +66,21 @@ export class JSCLDSchema{
             node_node_node(this.shacl_shape,'rdf:type', 'sh:NodeShape')
         )
         for (let p of this.properties){
-            this.rdf_writer.addQuad(quad(namedNode(p.property_subject),
-                namedNode(p.property_schema.id),
-                p.property_schema.rdfs));
-            this.shacl_writer.addQuad(quad(
-                namedNode(this.shacl_shape),
-                namedNode('sh:property'),
-                this.shacl_writer.blank(p.property_schema.shacl)
+            if (p.property_schema.isIgnored){
+                continue;
+            }
+            else {
+                this.rdf_writer.addQuad(quad(namedNode(p.property_subject),
+                    namedNode(p.property_schema.id),
+                    p.property_schema.rdfs));
+
+                this.shacl_writer.addQuad(quad(
+                        namedNode(this.shacl_shape),
+                        namedNode('sh:property'),
+                        this.shacl_writer.blank(p.shacl)
+                    )
                 )
-            )
+            }
         }
     }
 
@@ -89,8 +95,6 @@ export class JSCLDSchema{
             }));
     }
 }
-
-
 
 
 let config = new ConfigParser('../configs/config.json');
