@@ -1,5 +1,5 @@
 /**
- * matches elements of an array or keys of an object against keys of a target objects.
+ * matches elements of an array or keys of an object against keys of a target object.
  * returns a map object contains only properties with matched keys if matching source is an array,
  * or a map object contains source.value - target.value pairs of matched properties if matching source is an object.
  * @return match_map
@@ -26,6 +26,27 @@ export function match(source:any,target: {[key:string]:any}){
     }
     return match_map;
 }
+
+/**
+ * merges two Map objects into one and removes.
+ * When there are keys present in both maps, it only keeps the ones from map1
+ * @return merge_map
+ */
+export function merge(map1:Map<string, any>, map2:Map<string,any>){
+    let merge_map = new Map<string, any>();
+    //overwrite
+    map2.forEach(function (value, key){
+        if (map1.has(key)) merge_map.set(key, map1.get(key));
+        else merge_map.set(key, value);
+    });
+    //new
+    map1.forEach(function (value, key){
+        if (! merge_map.has(key)) merge_map.set(key, map1.get(key));
+    });
+    return merge_map;
+}
+
+
 
 
 let a ={

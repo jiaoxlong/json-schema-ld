@@ -3,6 +3,7 @@ import {ConfigMapping} from "../lib/ConfigMapping";
 import {match} from './match';
 import {JSC_LD_PREFIX} from "../lib/Prefix";
 import * as fs from "fs";
+import * as path from "path";
 
 export class ConfigParser{
     id:string;
@@ -27,7 +28,7 @@ export class ConfigParser{
                 let source = [];
                 if (fs.statSync(this.data['source']).isDirectory()){
                     fs.readdirSync(this.data['source']).forEach(file => {
-                        source.push(file);
+                        source.push(path.join(this.data['source'], file));
                     });
 
                 }
@@ -38,8 +39,8 @@ export class ConfigParser{
                         "nor to a file");
                 this.source = source;
             }
-            else throw Error('Unknown JSON Schema extension format. A "ref" attribute is expected!');
-            if ('base_prefix' in this.data) this.base_url = this.data['base_prefix'];
+            else throw Error('Unknown JSON Schema extension format. A "source" attribute is expected!');
+            if ('base_prefix' in this.data) this.base_prefix = this.data['base_prefix'];
             else throw Error('Unknown JSON Schema extension format. A "base_prefix" attribute is expected!');
             if ('base_url' in this.data) this.base_url = this.data['base_url'];
             else throw Error('Unknown JSON Schema extension format. A "base_url" attribute is expected!');
@@ -59,6 +60,4 @@ export function isValidHttpUrl(string) {
     return (string.startsWith('http') || string.startsWith('https'));
 }
 
-let config  = new ConfigParser('../configs/config.json');
-//console.log(config.annot);
 

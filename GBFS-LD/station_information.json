@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id":"https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson",
   "ld.id": "StationInformation",
+  "ld.title": "Station Information",
   "description":
   "Details including system operator, system location, year implemented, URL, contact info, time zone.",
   "type": "object",

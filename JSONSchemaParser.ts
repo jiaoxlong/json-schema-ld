@@ -1,13 +1,11 @@
 import {BaseSchema, StringSchema} from './lib/JSONSchema'
-import {properties, traverse} from './utils/traverse';
+import {Traverse} from './utils/traverse';
 import {Describer} from './utils/Describer';
 import * as fs from "fs";
 import {RDFS_PREFIX,SHACL_PREFIX} from "./lib/Prefix";
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
-
-
 
 /**
  * 1. Load JSON Schema
@@ -25,11 +23,12 @@ let shacl_writer = new N3.Writer(shacl_prefix);
  * 2. Initialize an Object Schema
  */
 
-
+/*
 let s = new BaseSchema(schema);
 
 
-traverse(schema);
+let t = new Traverse(schema);
+let properties = t.properties;
 
 rdf_writer.addQuad(
     namedNode(s.id),
@@ -68,7 +67,7 @@ for (let p of properties){
 
 rdf_writer.end((error:any, result:any) => fs.writeFile(rdf_file_path, result, (err:any) => {
     if (err) throw err;
-}));
+}));*/
 
 
 /*

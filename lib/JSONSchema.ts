@@ -6,9 +6,12 @@ import {
     SCHEMA_COMPOSITIONS,
     SCHEMA_LOGICS
 } from './schemaKWs';
+import{
+    SCHEMA_STRING_BUILDIN
+} from './SchemaKWMapping'
 import {fetchJSON} from '../utils/fetch';
-import {match} from '../utils/match';
-import {traverse} from "../utils/traverse";
+import {match,merge} from '../utils/match';
+import {Traverse} from "../utils/traverse";
 import {Describer} from "../utils/Describer";
 import {isValidHttpUrl} from "../utils/ConfigParser"
 
@@ -17,114 +20,213 @@ const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
 import {ConfigParser} from "../utils/ConfigParser";
+import {LD_BUILD_IN_ANNOTATION} from "./LDBuildin";
+import {Quad} from "n3";
+import {blank_node_list, blank_node_literal, blank_node_namedNode, blank_node_node} from "../utils/n3_utils";
 
 
 export class Schema {
+    id?:string;
+    config:ConfigParser;
+    data:object;
+    schema?:string;
     annotation?:Map<string, string>;
-    constructor(data: object) {
-        this.annotation = match(SCHEMA_ANNOTATIONS,data);
+    isClass:boolean;
+    isExisting:boolean;
+    isIgnored:boolean;
+    rdfs?:NamedNode;
+    shacl?:any[];
+    constructor(data: {[key:string]: any}, config) {
+        this.config = config;
+        this.isClass = false;
+        this.isExisting = false;
+        this.isIgnored = false;
+        if(data['ld.ignore']===true) this.isIgnored = true;
+        if (data['id']) this.id = data['id'];
+        if (data['$id']) this.id = data['$id'];
+        if (data['ld.id']){
+            if (data['ld.class']===true){
+                this.isClass = true;
+                this.id = data['ld.id']
+            }
+            else{
+                if (data['ld.existing']){
+                    this.isExisting = true;
+                    this.id = data['ld.id'];
+                }
+                else{
+                    this.id = this.config?.base_prefix + ':' + data['ld.id']
+                }
+            }
+        }
+        if (data['$schema']) this.schema = data['$schema']
+        let ld_annotation = match(LD_BUILD_IN_ANNOTATION, data)
+        let annotation = match(SCHEMA_ANNOTATIONS,data);
+        this.annotation = merge(ld_annotation, annotation);
+        /**
+         * default, const, enum may appear in any valued JSON schema except for Null, Array and Object Schema.
+         */
+        let blank_list = []
+        if (data['default']) blank_list.push(blank_node_literal('sh:defaultValue', data.default));
+        if (data['const']) blank_list.push(blank_node_literal('sh:hasValue', data.const));
+        if (data['enum']) {
+            let enum_list = []
+            for (let ele in data['enum']){
+                enum_list.push(literal(ele));
+            }
+            // can this be implemented by .map?
+            blank_list.push(blank_node_list('sh:in',enum_list ))
+        }
+        this.shacl = blank_list;
     }
 
 }
 
 export class StringSchema extends Schema{
     private schema_type:string='string';
-    minLength?:number;
-    maxLength?:number;
-    pattern?:string;
-    format?:typeof SCHEMA_STRING_FORMATS[number];
-    enum?:[];
-    default?:any;
-    const?:string;
-    rdf_serialized_terms?:any[]=[];
-    shacl_serializzed_terms?:any[]=[];
-    constructor(data: {[key:string]: any}) {
-        super(data);
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data,config);
         this.schema_type = 'string';
-        if (! (data.minLength))this.minLength = data.minLength;
-        if (! (data.maxLength))this.maxLength = data.maxLength;
-        if (! (data.pattern))this.pattern = data.pattern;
-        if (! (data.format))this.format = data.format;
-        if (! (data.enum))this.enum = data.enum;
-        if (! (data.const))this.const = data.const;
-        if (! (data.default))this.default = data.default;
-
+        /* RDFS */
+        if (data['format'] && (data['format'] in SCHEMA_STRING_FORMATS)){
+            this.rdfs = namedNode(SCHEMA_STRING_BUILDIN[data.format]);
+        }
+        else this.rdfs = namedNode('xsd:string');
+        /** SHACL */
+        /* SHACL minLength */
+        if (data['minLength'])
+            this.shacl.push(blank_node_literal('sh:minLength', data.minLength));
+        /* SHACL maxLength */
+        if (data['maxLength'])
+            this.shacl.push(blank_node_literal('sh:maxLength',data.maxLength));
+        /* SHACL pattern */
+        if (data['pattern'])
+            this.shacl.push(blank_node_literal('sh:pattern', data.pattern));
+        /* SHACL datatype */
+        if (data['format'])
+            this.shacl.push(blank_node_literal('sh:datatype', SCHEMA_STRING_BUILDIN[data.format]));
+        else
+            this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
     }
+
 }
 
 export class NumericSchema extends Schema{
-    multipleOf?:number;
-    minimum?:number;
-    exclusiveMinimum?:number;
-    maximum?:number;
-    exclusiveMaximum?:number;
-    enum?:[];
-    default?:any;
-    const?:number;
-    constructor(data: {[key:string]: any}) {
-        super(data);
-        if (!(data.multipleOf === undefined)) this.multipleOf = data.multipleOf;
-        if (!(data.minimum === undefined)) this.minimum = data.minimum;
-        if (!(data.exclusiveMinimum === undefined))this.exclusiveMinimum = data.exclusiveMinimum;
-        if (!(data.maximum === undefined))this.maximum = data.maximum;
-        if (!(data.exclusiveMaximum === undefined)) this.exclusiveMaximum = data.exclusiveMaximum;
-        if (!(data.enum === undefined)) this.enum = data.enum;
-        if (! (data.const === undefined))this.const= data.const;
-        if (! (data.default))this.default = data.default;
+
+
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data, config);
+        /** SHACL */
+        /* SHACL minInclusive */
+        if (data['minimum']) this.shacl.push(blank_node_literal('sh:minInclusive', data.minimum));
+        /* SHACL exclusiveMinimum */
+        if (data['exclusiveMinimum']) this.shacl.push(blank_node_literal('sh:minExclusive', data.exclusiveMinimum));
+        /* SHACL maximum */
+        if (data['maximum']) this.shacl.push(blank_node_literal('sh:maxInclusive', data.maximum));
+        /* SHACL exclusiveMaximum */
+        if (data['exclusiveMaximum']) this.shacl.push(blank_node_literal('sh:maxExclusive', data.exclusiveMaximum));
+
     }
 
 }
 
 export class IntegerSchema extends NumericSchema {
     private schema_type:string='integer';
-    constructor(data: {[key:string]: any}) {
-        super(data);
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data, config);
+        this.rdfs = namedNode('xsd:integer');
+        this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
     }
 }
 
 export class NumberSchema extends NumericSchema {
     private schema_type:string='number';
-    constructor(data: {[key:string]: any}) {
-        super(data);
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data, config);
+        this.rdfs = namedNode('xsd:decimal');
+        this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
     }
 }
 
 export class BooleanSchema extends Schema {
     private schema_type:string='boolean';
-    const?:boolean;
-    default?:any;
-    constructor(data: {[key:string]: any}) {
-        super(data);
-        if (! (data.const === undefined))this.const = data.const;
-        if (! (data.default))this.default = data.default;
-
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data,config);
+        this.rdfs = namedNode('xsd:boolean');
+        this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
     }
 }
-
+// Use case?
 export class NullSchema extends Schema {
     private schema_type:string='null';
-    const?:null;
-    constructor(data: {[key:string]: any}) {
-        super(data);
-        if (! (data.const === undefined))this.const = data.const;
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data,config);
     }
 }
-
 
 export class ArraySchema extends Schema {
     private schema_type:string='array';
-    items?:object|boolean;
-    prefixItems?:Schema[];
-    contains?:Schema;
-    minContains?: number;
-    maxContains?:number;
+    /**
+     * In general, keywords defined in an Array schema do not hold any information except for the one tagged with ld.id.
+     * When an array schema tagged with ld.id, it is interpreted as a RDFs class.
+     *     items?:object|boolean;
+     *     prefixItems?:Schema[];
+     *     contains?:Schema;
+     *     minContains?: number;
+     *     maxContains?:number;
+     */
 
-    constructor(data: {[key:string]: any}) {
-        super(data);
-        this.items = data.items;
-        if (!(data.contains === undefined)) this.contains = data.contains;
-        if (!(data.minContains === undefined)) this.minContains = data. minContains;
-        if (!(data.maxContains === undefined)) this.maxContains = data.maxContains;
+    constructor(data: {[key:string]: any}, config:ConfigParser) {
+        super(data,config);
+    }
+}
+
+export class ObjectSchema extends Schema{
+    /**
+     * similarly as Array schema, an object schema will be considered as a predicate except for the base one.
+     *     minProperties?:number;
+     *     maxProperties?:number;
+     */
+
+    constructor(data: {[key:string]: any}, config:ConfigParser){
+        super(data,config);
+    }
+}
+
+export class BaseSchema extends Schema{
+    private schema_type:string='base';
+    compositeOpt?:string[];
+    constructor(data: {[key:string]: any}, config:ConfigParser){
+        super(data,config);
+        }
+}
+
+/**
+ *  1. how to tackle when there is a nested composition schema?
+ * Example: {"allOf":[{"anyOf":[...]},{"oneOf":[]...}, {"not":{...}}}
+ */
+export class CompositionSchema {
+    id:string;
+    schemas:Schema[]=[];
+    schema_type:string;
+    constructor(data: {[key:string]: any}, config:ConfigParser, composition:string) {
+        for (let s of data[composition]) {
+            let schema;
+            if (s.type === 'string')  schema = new StringSchema(s, config);
+            if (s.type === 'integer') schema = new IntegerSchema(s, config);
+            if (s.type === 'number')  schema = new NumberSchema(s, config);
+            if (s.type === 'boolean') schema = new BooleanSchema(s, config);
+            if (s.type === 'null') schema = new NullSchema(s, config);
+            this.schemas.push(schema);
+        }
+        this.schema_type = composition;
+    }
+}
+
+export class AnyOfSchema extends CompositionSchema{
+    schema_type:string = 'AnyOf';
+    constructor(data: {[key:string]: any}, config:ConfigParser, composition:string='oneOf') {
+        super(data,config, composition);
     }
 }
 
@@ -149,121 +251,43 @@ export class ArraySchema extends Schema {
  *
  * - The sub-object type schemas server as associated blank nodes.
  * Except for their annotation e.g. description, they do not hold any useful information.
+ *
+ * Before 2019-09 draft dependentRequired and dependentSchemas were one keyword called dependencies.
+ * To resolve the complexity among dependentRequired, dependentSchemas and dependencies, we translate the later
+ * two to dependentRequired properties here.
  */
-export class ObjectSchema extends Schema{
-    minProperties?:number;
-    maxProperties?:number;
-    constructor(data: {[key:string]: any}){
-        super(data);
-        if (!(data.minProperties === undefined))this.minProperties = data['minProperties'];
-        if (!(data.maxProperties === undefined)) this.maxProperties = data['maxProperties'];
-    }
-}
-
-export class BaseSchema extends Schema{
-    private schema_type:string='base';
-    id:string;
-    schema?:string;
-    compositeOpt?:string[];
-
-    constructor(data: object){
-        super(data);
-        if (data['id']) this.id = data['id'];
-        if (data['$id']) this.id = data['$id'];
-        if (data['$schema']) this.schema = data['$schema']
-        }
-}
-export class CompositionSchema extends Schema{
-    schemas:Schema[]=[];
-    schema_type:string;
-    constructor(data: {[key:string]: any}, composition:string) {
-        super(data);
-        let s_list = []
-        for (let s of data[composition]) {
-            if (s.type === 'string') {
-                let schema = new StringSchema(s)
-                // @ts-ignore
-                s_list.push(schema);
-            }
-            if (s.type === 'integer') {
-                let schema = new IntegerSchema(s)
-                // @ts-ignore
-                s_list.push(schema);
-            }
-            if (s.type === 'number') {
-                let schema = new NumberSchema(s)
-                // @ts-ignore
-                s_list.push(schema);
-            }
-            if (s.type === 'boolean') {
-                let schema = new BooleanSchema(s)
-                // @ts-ignore
-                s_list.push(schema);
-            }
-            if (s.type === 'null') {
-                let schema = new NullSchema(s)
-                // @ts-ignore
-                s_list.push(schema);
-            }
-        }
-        this.schemas = s_list;
-        this.schema_type = composition;
-    }
-}
-
-export class AnyOfSchema extends CompositionSchema{
-    schema_type:string = 'AnyOf';
-    constructor(data: {[key:string]: any}, composition:string='oneOf') {
-        super(data,composition);
-    }
-}
-
 export class Property{
+    _property_subject:string;
     _property_name:string;
-    _property_schema:Schema;
+    //_property_schema:Schema|CompositionSchema;
+    _property_schema:Schema
     _isRequired?:boolean;
     constructor(
-    property_name:string,
-    property_schema:Schema,
-    isRequired?:boolean,
-    //fragment:string,
-    //dependent?:Property[],
-    //dependsOn?:Property[]
-
-    ){
+        subject:string,
+        property_name:string,
+        //property_schema:Schema|CompositionSchema,
+        property_schema:Schema,
+        isRequired?:boolean,
+        //fragment:string,
+        //dependent?:Property[],
+        //dependsOn?:Property[]
+    )
+    {
+        this._property_subject = subject;
         this._property_name = property_name;
         this._property_schema = property_schema;
         this._isRequired = isRequired;
     }
-    property_name(){
+    get property_subject(){
+        return this._property_subject;
+}
+
+    get property_name(){
         return this._property_name;
-    }e
-
-    /**
-     *  1. how to tackle when there is a nested composition schema?
-     * Example: {"allOf":[{"anyOf":[...]},{"oneOf":[]...}, {"not":{...}}}
-     *
-     * 2. Before 2019-09 draft dependentRequired and dependentSchemas were one keyword called dependencies.
-     * To resolve the complexity among dependentRequired, dependentSchemas and dependencies, we translate the later
-     * two to dependentRequired properties here.
-     *
-     * 3. Inconsistency before conversion and after!
-     *  https://example.com/schemas/address#/properties/street_address identifies
-     *  {
-     *   "$id": "https://example.com/schemas/address",
-     *
-     *   "type": "object",
-     *   "properties": {
-     *     "street_address":
-     *       { "type": "string" },
-     *     "city": { "type": "string" },
-     *     "state": { "type": "string" }
-     *   },
-     *  }
-     *  When we introduce e.g. ex:street_address in the RDF schema,
-     *  the initial URI determined in the JSON schema will be gone.
-     */
-
+    }
+    get property_schema(){
+        return this._property_schema;
+    }
 }
 
 
@@ -277,3 +301,4 @@ function jscLD(config:ConfigParser){
         }
     }
 }
+

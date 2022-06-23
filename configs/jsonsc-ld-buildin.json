@@ -1,8 +1,8 @@
 {
   "ld.id": "rdf:type",
-  "ld.base": "api:base",
   "ld.title": "dcterms:title",
   "ld.description": "dcterms:description",
+  "ld.comment": "rdfs:comment",
   "ld.existing": "jsonsc-ld:existing",
   "ld.schema": "jsonsc:DataSchema",
   "ld.datatype": "rdfs:datatype",

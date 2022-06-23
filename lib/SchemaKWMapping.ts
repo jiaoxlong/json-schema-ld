@@ -63,7 +63,7 @@ const SCHEMA_DATATYPE_PROPS_NOT_IN = {
     //"dependentSchemas": "jsonsc:DataSchema"
 }
 
-const SCHEMA_STRING_BUILDIN ={
+export const SCHEMA_STRING_BUILDIN ={
     "date-time": "xsd:dateTime",
     "time": "xsd:time",
     "date": "xsd:date",
