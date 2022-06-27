@@ -97,7 +97,6 @@ export class StringSchema extends Schema{
         }
         else this.rdfs = namedNode('xsd:string');
         /** SHACL */
-        this.shacl.push(blank_node_node('sh:path', this.id))
         /* SHACL minLength */
         if (data['minLength'])
             this.shacl.push(blank_node_literal('sh:minLength', data.minLength));
@@ -291,7 +290,9 @@ export class Property{
             this._property_name = config.base_prefix+':'+property_name;
 
         let shacl_path_node = blank_node_node('sh:path', this._property_name);
+
         this.shacl = [shacl_path_node].concat(this._property_schema.shacl);
+        console.log(this.shacl)
         this._isRequired = isRequired;
     }
     get property_subject(){

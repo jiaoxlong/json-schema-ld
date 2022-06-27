@@ -75,7 +75,8 @@ export class JSCLDSchema{
                     p.property_schema.rdfs));
                 this.rdf_writer.addQuad(
                     node_node_node(p.property_schema.id, 'rdf:type','owl:DatatypeProperty'))
-
+                //console.log(p.shacl);
+                //console.log(p.property_schema.shacl)
                 this.shacl_writer.addQuad(quad(
                         namedNode(this.shacl_shape),
                         namedNode('sh:property'),
