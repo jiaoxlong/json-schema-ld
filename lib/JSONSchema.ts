@@ -43,15 +43,15 @@ export class Schema {
         this.isExisting = false;
         this.isIgnored = false;
         if(data['ld.ignore']===true) this.isIgnored = true;
-        if (data['id']) this.id = data['id'];
-        if (data['$id']) this.id = data['$id'];
-        if (data['ld.id']){
+        if ('id' in data) this.id = data['id'];
+        if ('$id' in data) this.id = data['$id'];
+        if ('ld.id' in data){
             if (data['ld.class']===true){
                 this.isClass = true;
                 this.id = data['ld.id']
             }
             else{
-                if (data['ld.existing']){
+                if ('ld.existing' in data){
                     this.isExisting = true;
                     this.id = data['ld.id'];
                 }
@@ -63,7 +63,7 @@ export class Schema {
         if(this.id === undefined){
             this.id = config.base_prefix + ':' + property_name;
         }
-        if (data['$schema']) this.schema = data['$schema']
+        if ('$schema' in data) this.schema = data['$schema']
         let ld_annotation = match(LD_BUILD_IN_ANNOTATION, data)
         let annotation = match(SCHEMA_ANNOTATIONS,data);
         this.annotation = merge(ld_annotation, annotation);
@@ -71,9 +71,9 @@ export class Schema {
          * default, const, enum may appear in any valued JSON schema except for Null, Array and Object Schema.
          */
         let blank_list = []
-        if (data['default']) blank_list.push(blank_node_literal('sh:defaultValue', data.default));
-        if (data['const']) blank_list.push(blank_node_literal('sh:hasValue', data.const));
-        if (data['enum']) {
+        if ('default' in data) blank_list.push(blank_node_literal('sh:defaultValue', data.default));
+        if ('const' in data) blank_list.push(blank_node_literal('sh:hasValue', data.const));
+        if ('enum' in data) {
             let enum_list = []
             for (let ele in data['enum']){
                 enum_list.push(literal(ele));
@@ -92,22 +92,22 @@ export class StringSchema extends Schema{
         super(data,config, property_name);
         this.schema_type = 'string';
         /* RDFS */
-        if (data['format'] && (data['format'] in SCHEMA_STRING_FORMATS)){
+        if (('format' in data) && (data['format'] in SCHEMA_STRING_FORMATS)){
             this.rdfs = namedNode(SCHEMA_STRING_BUILDIN[data.format]);
         }
         else this.rdfs = namedNode('xsd:string');
         /** SHACL */
         /* SHACL minLength */
-        if (data['minLength'])
+        if ('minLength' in data)
             this.shacl.push(blank_node_literal('sh:minLength', data.minLength));
         /* SHACL maxLength */
-        if (data['maxLength'])
+        if ('maxLength' in data)
             this.shacl.push(blank_node_literal('sh:maxLength',data.maxLength));
         /* SHACL pattern */
-        if (data['pattern'])
+        if ('pattern' in data)
             this.shacl.push(blank_node_literal('sh:pattern', data.pattern));
         /* SHACL datatype */
-        if (data['format'])
+        if ('format' in data)
             this.shacl.push(blank_node_literal('sh:datatype', SCHEMA_STRING_BUILDIN[data.format]));
         else
             this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
@@ -122,13 +122,13 @@ export class NumericSchema extends Schema{
         super(data, config, property_name);
         /** SHACL */
         /* SHACL minInclusive */
-        if (data['minimum']) this.shacl.push(blank_node_literal('sh:minInclusive', data.minimum));
+        if ('minimum' in data) this.shacl.push(blank_node_literal('sh:minInclusive', data.minimum));
         /* SHACL exclusiveMinimum */
-        if (data['exclusiveMinimum']) this.shacl.push(blank_node_literal('sh:minExclusive', data.exclusiveMinimum));
+        if ('exclusiveMinimum' in data) this.shacl.push(blank_node_literal('sh:minExclusive', data.exclusiveMinimum));
         /* SHACL maximum */
-        if (data['maximum']) this.shacl.push(blank_node_literal('sh:maxInclusive', data.maximum));
+        if ('maximum' in data) this.shacl.push(blank_node_literal('sh:maxInclusive', data.maximum));
         /* SHACL exclusiveMaximum */
-        if (data['exclusiveMaximum']) this.shacl.push(blank_node_literal('sh:maxExclusive', data.exclusiveMaximum));
+        if ('exclusiveMaximum' in data) this.shacl.push(blank_node_literal('sh:maxExclusive', data.exclusiveMaximum));
 
     }
 
@@ -292,7 +292,7 @@ export class Property{
         let shacl_path_node = blank_node_node('sh:path', this._property_name);
 
         this.shacl = [shacl_path_node].concat(this._property_schema.shacl);
-        console.log(this.shacl)
+
         this._isRequired = isRequired;
     }
     get property_subject(){
