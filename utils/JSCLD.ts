@@ -1,12 +1,12 @@
-import {Property, Schema} from "./JSONSchema";
-import {Traverse} from "../utils/traverse";
-import {ConfigParser} from "../utils/ConfigParser";
-import {RDFS_PREFIX, SHACL_PREFIX} from "./Prefix";
+import {Property, Schema} from "../lib/JSONSchema";
+import {Traverse} from "./traverse";
+import {ConfigParser} from "./ConfigParser";
+import {RDFS_PREFIX, SHACL_PREFIX} from "../lib/Prefix";
 import * as fs from 'fs';
 import * as path from "path";
 import {writer} from "repl";
 import {NamedNode} from "n3";
-import {node_node_list, node_node_literal, node_node_node} from "../utils/n3_utils";
+import {node_node_list, node_node_literal, node_node_node} from "./n3_utils";
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
@@ -54,9 +54,8 @@ export class JSCLDSchema{
             if (Array.isArray(value)){
                 let namedNodeList:any[] = [];
                 for (let t of value){
-                    namedNodeList.push(namedNode(t));
+                    this.rdf_writer.addQuad(node_node_node(this.config.id, key, t));
                 }
-                this.rdf_writer.addQuad(node_node_list(this.rdf_writer,this.config.id, key, namedNodeList));
             }
         });
         for (let [key, value] of this.base_schema.annotation) {

@@ -15,7 +15,7 @@
     jsonsc-ld:enriches gbfs:StationInformation;
     dcterms:title "The GBFS LD configuration";
     dcterms:description "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary";
-    dcterms:creator (<https://pietercolpaert.be/#me> <https://w3id.org/people/brechtvdv/#me> <https://data.knows.idlab.ugent.be/person/andreipopescu/#me> <https://data.knows.idlab.ugent.be/person/jilong/#me>);
+    dcterms:creator <https://pietercolpaert.be/#me>, <https://w3id.org/people/brechtvdv/#me>, <https://data.knows.idlab.ugent.be/person/andreipopescu/#me>, <https://data.knows.idlab.ugent.be/person/jilong/#me>;
     dcterms:license "MIT";
     dcterms:rights "Copyright statement";
     dcterms:modified "2022-06-02T11:32:52.12679".
