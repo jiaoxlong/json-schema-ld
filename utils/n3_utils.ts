@@ -42,3 +42,5 @@ export function blank_node_namedNode(p:string,o:NamedNode){
     blank_node['object'] = o;
     return blank_node;
 }
+
+

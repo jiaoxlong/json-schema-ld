@@ -1,4 +1,4 @@
-import {Property, Schema} from "../lib/JSONSchema";
+import {CompositionSchema, Property, Schema} from "../lib/JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../lib/Prefix";
@@ -6,7 +6,7 @@ import * as fs from 'fs';
 import * as path from "path";
 import {writer} from "repl";
 import {NamedNode} from "n3";
-import {node_node_list, node_node_literal, node_node_node} from "./n3_utils";
+import {blank_node_node, node_node_list, node_node_literal, node_node_node} from "./n3_utils";
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
@@ -69,20 +69,47 @@ export class JSCLDSchema{
                 continue;
             }
             else {
-                this.rdf_writer.addQuad(quad(namedNode(p.property_subject),
-                    namedNode(p.property_schema.id),
-                    p.property_schema.rdfs));
                 this.rdf_writer.addQuad(
-                    node_node_node(p.property_schema.id, 'rdf:type','owl:DatatypeProperty'));
+                    node_node_node(p.property_schema.id, 'rdf:type','rdf:Property'));
                 for (let [k, v] of p.property_schema.annotation){
                     this.rdf_writer.addQuad(node_node_literal(p.property_schema.id, k, v));
                 }
-                this.shacl_writer.addQuad(quad(
-                        namedNode(this.shacl_shape),
-                        namedNode('sh:property'),
-                        this.shacl_writer.blank(p.shacl)
+
+                let shacl_path_node = blank_node_node('sh:path', p.property_name);
+
+                //composition schema
+
+                if (p.property_schema instanceof CompositionSchema) {
+                    let shacl_com_blank_nodes = []
+                    for (let schema of p.property_schema.schemas){
+                        shacl_com_blank_nodes.push(this.shacl_writer.blank(schema.shacl))
+                    }
+                    let shacl_com_node = {
+                        'predicate':namedNode('sh:or'),
+                        'object':this.shacl_writer.list(shacl_com_blank_nodes)
+                    }
+                    this.shacl_writer.addQuad(quad(
+                            namedNode(this.shacl_shape),
+                            namedNode('sh:property'),
+                            this.shacl_writer.blank([shacl_path_node,shacl_com_node])
+                        )
                     )
-                )
+                }
+                // single schema
+                else {
+
+                    this.rdf_writer.addQuad(quad(namedNode(p.property_subject),
+                        namedNode(p.property_schema.id),
+                        p.property_schema.rdfs));
+                    let shacl_blank_nodes = [shacl_path_node].concat(p.property_schema.shacl);
+                    this.shacl_writer.addQuad(quad(
+                            namedNode(this.shacl_shape),
+                            namedNode('sh:property'),
+                            this.shacl_writer.blank(shacl_blank_nodes)
+                        )
+                    )
+
+                }
             }
         }
     }
@@ -101,7 +128,8 @@ export class JSCLDSchema{
 
 
 let config = new ConfigParser('../configs/config.json');
-let ld = new JSCLDSchema('../GBFS-LD/station_information.json', config);
+//let ld = new JSCLDSchema('../GBFS-LD/station_information.json', config);
+let ld = new JSCLDSchema('../GBFS-LD/free_bike_status.json', config);
 ld.serialize();
 ld.materialize();
 

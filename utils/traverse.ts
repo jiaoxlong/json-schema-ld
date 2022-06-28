@@ -1,4 +1,5 @@
 import {
+    AnyOfSchema,
     BooleanSchema,
     CompositionSchema,
     IntegerSchema,
@@ -62,13 +63,42 @@ export class Traverse{
                 this.traverse(data.properties[property].items)
             }
 
-            /*for (let composition of SCHEMA_COMPOSITIONS) {
-                if (composition in data.properties[property]) {
-                    let com_schema = new CompositionSchema(data.properties[property], this.config, composition);
-                    let p_ins = new Property(this.id, property, com_schema, isRequired);
-                    this._properties.push(p_ins)
-                }
-            }*/
+            if ('anyOf' in data.properties[property]) {
+                let p_ins = new Property(
+                    this.config,
+                    this.id,
+                    property,
+                    new AnyOfSchema(data.properties[property], this.config, property, 'anyOf'),
+                    isRequired);
+                this._properties.push(p_ins)
+            }
+            if ('allOf' in data.properties[property]) {
+                let p_ins = new Property(
+                    this.config,
+                    this.id,
+                    property,
+                    new AnyOfSchema(data.properties[property], this.config, property, 'allOf'),
+                    isRequired);
+                this._properties.push(p_ins)
+            }
+            if ('oneOf' in data.properties[property]) {
+                let p_ins = new Property(
+                    this.config,
+                    this.id,
+                    property,
+                    new AnyOfSchema(data.properties[property], this.config, property, 'oneOf'),
+                    isRequired);
+                this._properties.push(p_ins)
+            }
+            if ('not' in data.properties[property]) {
+                let p_ins = new Property(
+                    this.config,
+                    this.id,
+                    property,
+                    new AnyOfSchema(data.properties[property], this.config, property, 'not'),
+                    isRequired);
+                this._properties.push(p_ins)
+            }
 
         }
     }

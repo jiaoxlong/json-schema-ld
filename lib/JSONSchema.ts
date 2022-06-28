@@ -22,7 +22,12 @@ import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
 import {ConfigParser} from "../utils/ConfigParser";
 import {LD_BUILD_IN_ANNOTATION} from "./LDBuildin";
 import {Quad} from "n3";
-import {blank_node_list, blank_node_literal, blank_node_namedNode, blank_node_node} from "../utils/n3_utils";
+import {
+    blank_node_list,
+    blank_node_literal,
+    blank_node_namedNode,
+    blank_node_node,
+} from "../utils/n3_utils";
 
 
 export class Schema {
@@ -30,11 +35,12 @@ export class Schema {
     config:ConfigParser;
     data:object;
     schema?:string;
+    schema_type:string;
     property:string;
     annotation?:Map<string, string>;
-    isClass:boolean;
-    isExisting:boolean;
-    isIgnored:boolean;
+    isClass?:boolean;
+    isExisting?:boolean;
+    isIgnored?:boolean;
     rdfs?:NamedNode;
     shacl?:any[];
     constructor(data: {[key:string]: any}, config, property_name:string) {
@@ -87,7 +93,6 @@ export class Schema {
 }
 
 export class StringSchema extends Schema{
-    private schema_type:string='string';
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data,config, property_name);
         this.schema_type = 'string';
@@ -111,6 +116,7 @@ export class StringSchema extends Schema{
             this.shacl.push(blank_node_literal('sh:datatype', SCHEMA_STRING_BUILDIN[data.format]));
         else
             this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+        this.schema_type = 'string'
     }
 
 }
@@ -135,41 +141,41 @@ export class NumericSchema extends Schema{
 }
 
 export class IntegerSchema extends NumericSchema {
-    private schema_type:string='integer';
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data, config, property_name);
         this.rdfs = namedNode('xsd:integer');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+        this.schema_type = 'integer';
     }
 }
 
 export class NumberSchema extends NumericSchema {
-    private schema_type:string='number';
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data, config, property_name);
         this.rdfs = namedNode('xsd:decimal');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+        this.schema_type = 'decimal'
     }
 }
 
 export class BooleanSchema extends Schema {
-    private schema_type:string='boolean';
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data,config, property_name);
+        this.schema_type = 'boolean';
         this.rdfs = namedNode('xsd:boolean');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+
     }
 }
 // Use case?
 export class NullSchema extends Schema {
-    private schema_type:string='null';
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data,config, property_name);
+        this.schema_type = 'null';
     }
 }
 
 export class ArraySchema extends Schema {
-    private schema_type:string='array';
     /**
      * In general, keywords defined in an Array schema do not hold any information except for the one tagged with ld.id.
      * When an array schema tagged with ld.id, it is interpreted as a RDFs class.
@@ -182,6 +188,7 @@ export class ArraySchema extends Schema {
 
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
         super(data,config, property_name);
+        this.schema_type = 'array'
     }
 }
 
@@ -198,10 +205,10 @@ export class ObjectSchema extends Schema{
 }
 
 export class BaseSchema extends Schema{
-    private schema_type:string='base';
     compositeOpt?:string[];
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string){
         super(data,config, property_name);
+        this.schema_type = 'base'
         }
 }
 
@@ -209,11 +216,12 @@ export class BaseSchema extends Schema{
  *  1. how to tackle when there is a nested composition schema?
  * Example: {"allOf":[{"anyOf":[...]},{"oneOf":[]...}, {"not":{...}}}
  */
-export class CompositionSchema {
-    id:string;
+export class CompositionSchema extends Schema{
     schemas:Schema[]=[];
     schema_type:string;
-    constructor(data: {[key:string]: any}, config:ConfigParser, composition:string, property_name:string) {
+    logical_opt:string;
+    constructor(data: {[key:string]: any}, config, property_name:string, composition:string) {
+        super(data,config, property_name);
         for (let s of data[composition]) {
             let schema;
             if (s.type === 'string')  schema = new StringSchema(s, config, property_name);
@@ -224,15 +232,73 @@ export class CompositionSchema {
             this.schemas.push(schema);
         }
         this.schema_type = composition;
+        /**
+         * Composition schema shacl: a list of blank nodes
+         * ex:Shape sh:property [sh:path ex:prop; sh:and ([sh:datatype xsd:xxx; sh:xxx xxx ], [])) .
+         */
+        let shacl_com_list = []
+        /*for (let schema of this.schemas){
+            let shacl_data_list = []
+            shacl_data_list.push(blank_node_namedNode('sh:datatype', schema.rdfs));
+            console.log('schema.shacl:', schema.shacl)
+            shacl_data_list = schema.shacl.concat(shacl_data_list);
+            console.log('shacl_data_list:', shacl_data_list)
+            shacl_com_list.push(shacl_data_list);
+        }*/
+        this.shacl = shacl_com_list
     }
 }
 
 export class AnyOfSchema extends CompositionSchema{
-    schema_type:string = 'AnyOf';
-    constructor(data: {[key:string]: any}, config:ConfigParser, composition:string='AnyOf', property_name:string) {
+    logical_opt:string;
+    constructor(data: {[key:string]: any},
+                config:ConfigParser,
+                composition:string='anyOf',
+                property_name:string,
+                ) {
         super(data,config, composition,property_name);
+        this.logical_opt = 'sh:or'
     }
 }
+export class OneOfSchema extends CompositionSchema{
+    logical_opt:string;
+    constructor(data: {[key:string]: any},
+                config:ConfigParser,
+                composition:string='oneOf',
+                property_name:string,
+    ) {
+        super(data,config, composition,property_name);
+        this.logical_opt = 'sh:xone';
+    }
+}
+
+export class AllOfSchema extends CompositionSchema{
+    logical_opt:string;
+    constructor(data: {[key:string]: any},
+                config:ConfigParser,
+                composition:string='allOf',
+                property_name:string,
+    ) {
+        super(data,config, composition,property_name);
+        this.logical_opt = 'sh:and';
+    }
+}
+
+export class NotSchema extends CompositionSchema{
+    logical_opt:string;
+    constructor(data: {[key:string]: any},
+                config:ConfigParser,
+                composition:string='not',
+                property_name:string,
+    ) {
+        super(data,config, composition,property_name);
+        this.logical_opt = 'sh:not';
+    }
+}
+
+
+
+
 
 /**
  * 1. patternProperties*, -> Property?
@@ -262,19 +328,18 @@ export class AnyOfSchema extends CompositionSchema{
  */
 export class Property{
     config:ConfigParser;
-    shacl: any[];
     _property_subject:string;
     _property_name:string;
-    //_property_schema:Schema|CompositionSchema;
-    _property_schema:Schema
+    _property_schema:Schema|CompositionSchema;
+    //_property_schema:Schema
     _isRequired?:boolean;
 
     constructor(
         config:ConfigParser,
         subject:string,
         property_name:string,
-        //property_schema:Schema|CompositionSchema,
-        property_schema:Schema,
+        //property_schema:Schema,
+        property_schema:Schema|CompositionSchema,
         isRequired?:boolean,
         //fragment:string,
         //dependent?:Property[],
@@ -289,9 +354,6 @@ export class Property{
         else
             this._property_name = config.base_prefix+':'+property_name;
 
-        let shacl_path_node = blank_node_node('sh:path', this._property_name);
-
-        this.shacl = [shacl_path_node].concat(this._property_schema.shacl);
 
         this._isRequired = isRequired;
     }
@@ -304,18 +366,6 @@ export class Property{
     }
     get property_schema(){
         return this._property_schema;
-    }
-}
-
-
-
-function jscLD(config:ConfigParser){
-    return function (constructor: Function){
-        if ('ld.id' in config) {
-            //ld.existing is true.
-             constructor.prototype._property_name = config['base_prefix']+':'+ config['ld.id']
-
-        }
     }
 }
 

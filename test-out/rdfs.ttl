@@ -12,77 +12,30 @@
 @prefix api: <http://purl.org/linked-data/api/vocab>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
-    jsonsc-ld:enriches gbfs:StationInformation;
+    jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
     dcterms:title "The GBFS LD configuration";
     dcterms:description "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary";
     dcterms:creator <https://pietercolpaert.be/#me>, <https://w3id.org/people/brechtvdv/#me>, <https://data.knows.idlab.ugent.be/person/andreipopescu/#me>, <https://data.knows.idlab.ugent.be/person/jilong/#me>;
     dcterms:license "MIT";
     dcterms:rights "Copyright statement";
     dcterms:modified "2022-06-02T11:32:52.12679".
-gbfs:StationInformation dcterms:description "Details including system operator, system location, year implemented, URL, contact info, time zone.";
-    dcterms:title "Station Information";
-    dcterms:modified xsd:integer.
-dcterms:modified rdf:type owl:DatatypeProperty;
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> dcterms:description "Describes the vehicles that are available for rent (as of v2.1-RC2).".
+gbfs:last_updated rdf:type rdf:Property;
     dcterms:description "Last time the data in the feed was updated in POSIX time.".
-gbfs:StationInformation gbfs:ttl xsd:integer.
-gbfs:ttl rdf:type owl:DatatypeProperty;
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> gbfs:last_updated xsd:integer.
+gbfs:ttl rdf:type rdf:Property;
     dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).".
-gbfs:StationInformation dcterms:identifier xsd:string.
-dcterms:identifier rdf:type owl:DatatypeProperty;
-    dcterms:description "Identifier of a station.".
-gbfs:StationInformation dcterms:title xsd:string.
-dcterms:title rdf:type owl:DatatypeProperty;
-    dcterms:description "Public name of the station.".
-gbfs:StationInformation gbfs:shortName xsd:string.
-gbfs:shortName rdf:type owl:DatatypeProperty;
-    dcterms:description "Short name or other type of identifier.".
-gbfs:StationInformation gbfs:lat xsd:decimal.
-gbfs:lat rdf:type owl:DatatypeProperty;
-    dcterms:description "The latitude of the station.".
-gbfs:StationInformation gbfs:lon xsd:decimal.
-gbfs:lon rdf:type owl:DatatypeProperty;
-    dcterms:description "The longitude fo the station.".
-gbfs:StationInformation gbfs:address xsd:string.
-gbfs:address rdf:type owl:DatatypeProperty;
-    dcterms:description "Address where station is located.".
-gbfs:StationInformation gbfs:cross_street xsd:string.
-gbfs:cross_street rdf:type owl:DatatypeProperty;
-    dcterms:description "Cross street or landmark where the station is located.".
-gbfs:StationInformation gbfs:region_id xsd:string.
-gbfs:region_id rdf:type owl:DatatypeProperty;
-    dcterms:description "Identifier of the region where the station is located.".
-gbfs:StationInformation gbfs:post_code xsd:string.
-gbfs:post_code rdf:type owl:DatatypeProperty;
-    dcterms:description "Postal code where station is located.".
-gbfs:StationInformation gbfs:is_virtual_station xsd:boolean.
-gbfs:is_virtual_station rdf:type owl:DatatypeProperty;
-    dcterms:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)".
-gbfs:StationInformation gbfs:type xsd:string.
-gbfs:type rdf:type owl:DatatypeProperty.
-gbfs:StationInformation gbfs:parking_type xsd:string.
-gbfs:parking_type rdf:type owl:DatatypeProperty;
-    dcterms:description "Type of parking station. Added in v2.3".
-gbfs:StationInformation gbfs:parking_hoop xsd:boolean.
-gbfs:parking_hoop rdf:type owl:DatatypeProperty;
-    dcterms:description "Are parking hoops present at this station? Added in v2.3".
-gbfs:StationInformation gbfs:contact_phone xsd:string.
-gbfs:contact_phone rdf:type owl:DatatypeProperty;
-    dcterms:description "Contact phone of the station. Added in v2.3".
-gbfs:StationInformation gbfs:capacity xsd:integer.
-gbfs:capacity rdf:type owl:DatatypeProperty;
-    dcterms:description "Number of total docking points installed at this station, both available and unavailable.".
-gbfs:StationInformation gbfs:is_valet_station xsd:boolean.
-gbfs:is_valet_station rdf:type owl:DatatypeProperty;
-    dcterms:description "Are valet services provided at this station? (added in v2.1-RC)".
-gbfs:StationInformation gbfs:is_charging_station xsd:boolean.
-gbfs:is_charging_station rdf:type owl:DatatypeProperty;
-    dcterms:description "Does the station support charging of electric vehicles? (added in v2.3-RC)".
-gbfs:StationInformation gbfs:android xsd:string.
-gbfs:android rdf:type owl:DatatypeProperty;
-    dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).".
-gbfs:StationInformation gbfs:ios xsd:string.
-gbfs:ios rdf:type owl:DatatypeProperty;
-    dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).".
-gbfs:StationInformation gbfs:web xsd:string.
-gbfs:web rdf:type owl:DatatypeProperty;
-    dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).".
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> gbfs:ttl xsd:integer.
+gbfs:bike_id rdf:type rdf:Property;
+    dcterms:description "Rotating (as of v2.0) identifier of a vehicle.".
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> gbfs:bike_id xsd:string.
+gbfs:lat rdf:type rdf:Property;
+    dcterms:description "The latitude of the vehicle.".
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> gbfs:lat xsd:decimal.
+gbfs:lon rdf:type rdf:Property;
+    dcterms:description "The longitude of the vehicle.".
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> gbfs:lon xsd:decimal.
+gbfs:is_reserved rdf:type rdf:Property;
+    dcterms:description "Is the vehicle currently reserved?".
+gbfs:is_disabled rdf:type rdf:Property;
+    dcterms:description "Is the vehicle currently disabled (broken)?".
