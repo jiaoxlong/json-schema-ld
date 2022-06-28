@@ -34,7 +34,7 @@ export class JSCLDSchema{
 
     serialize(){
 
-         /** JSON LD
+         /** JSON LD Base
          A-LD rdf:type jsonsc-ld:Schema;
          jsonsc-ld:enriches jsonsc:DataSchema;
          dcterms:title A.title;
@@ -47,6 +47,7 @@ export class JSCLDSchema{
          */
         this.rdf_writer.addQuad(node_node_node(this.config.id, 'rdf:type', 'jsonsc-ld:Schema'));
         this.rdf_writer.addQuad(node_node_node(this.config.id,'jsonsc-ld:enriches', this.base_schema.id ));
+        this.rdf_writer.addQuad(node_node_node(this.base_schema.id, 'rdf:type', 'owl:Class'));
         this.config.annot.forEach((value:any, key:string) => {
             if (typeof (value)== 'string'){
                 this.rdf_writer.addQuad(node_node_literal(this.config.id, key, value));
@@ -64,6 +65,11 @@ export class JSCLDSchema{
         this.shacl_writer.addQuad(
             node_node_node(this.shacl_shape,'rdf:type', 'sh:NodeShape')
         )
+
+        /**
+         * iteration over properties
+         */
+
         for (let p of this.properties){
             if (p.property_schema.isIgnored){
                 continue;
@@ -74,7 +80,10 @@ export class JSCLDSchema{
                 for (let [k, v] of p.property_schema.annotation){
                     this.rdf_writer.addQuad(node_node_literal(p.property_schema.id, k, v));
                 }
-
+                this.rdf_writer.addQuad(node_node_node(
+                    p.property_schema.id,
+                    'rdfs:domain',
+                    p.property_subject));
                 let shacl_path_node = blank_node_node('sh:path', p.property_name);
 
                 //composition schema
@@ -97,9 +106,10 @@ export class JSCLDSchema{
                 }
                 // single schema
                 else {
-
-                    this.rdf_writer.addQuad(quad(namedNode(p.property_subject),
+                    // rdfs:range
+                    this.rdf_writer.addQuad(quad(
                         namedNode(p.property_schema.id),
+                        namedNode('rdfs:range'),
                         p.property_schema.rdfs));
                     let shacl_blank_nodes = [shacl_path_node].concat(p.property_schema.shacl);
                     this.shacl_writer.addQuad(quad(
@@ -128,8 +138,8 @@ export class JSCLDSchema{
 
 
 let config = new ConfigParser('../configs/config.json');
-//let ld = new JSCLDSchema('../GBFS-LD/station_information.json', config);
-let ld = new JSCLDSchema('../GBFS-LD/free_bike_status.json', config);
+let ld = new JSCLDSchema('../GBFS-LD/station_information.json', config);
+//let ld = new JSCLDSchema('../GBFS-LD/free_bike_status.json', config);
 ld.serialize();
 ld.materialize();
 

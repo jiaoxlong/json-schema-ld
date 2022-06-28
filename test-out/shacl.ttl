@@ -8,16 +8,21 @@
 
 gbfs:GBFSShape rdf:type sh:NodeShape;
     sh:property [
-  sh:path gbfs:last_updated;
-  sh:minInclusive 0;
-  sh:maxInclusive 1924988399;
+  sh:path <http://purl.org/dc/terms/modified>;
+  sh:minInclusive 1450155600;
   sh:datatype xsd:integer
 ], [
   sh:path gbfs:ttl;
   sh:minInclusive 0;
   sh:datatype xsd:integer
 ], [
-  sh:path gbfs:bike_id;
+  sh:path <http://purl.org/dc/terms/identifier>;
+  sh:datatype xsd:string
+], [
+  sh:path <http://purl.org/dc/terms/title>;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:shortName;
   sh:datatype xsd:string
 ], [
   sh:path gbfs:lat;
@@ -30,9 +35,51 @@ gbfs:GBFSShape rdf:type sh:NodeShape;
   sh:maxInclusive 180;
   sh:datatype xsd:decimal
 ], [
-  sh:path gbfs:is_reserved;
-  sh:or ([ sh:datatype xsd:boolean ] [ sh:datatype xsd:decimal ])
+  sh:path gbfs:address;
+  sh:datatype xsd:string
 ], [
-  sh:path gbfs:is_disabled;
-  sh:or ([ sh:datatype xsd:boolean ] [ sh:datatype xsd:decimal ])
+  sh:path gbfs:cross_street;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:region_id;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:post_code;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:is_virtual_station;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:type;
+  sh:in _:undefined;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:parking_type;
+  sh:in _:undefined;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:parking_hoop;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:contact_phone;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:capacity;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:is_valet_station;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:is_charging_station;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:android;
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:ios;
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:web;
+  sh:datatype "xsd:string"
 ].
