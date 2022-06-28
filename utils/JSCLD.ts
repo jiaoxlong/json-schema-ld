@@ -15,6 +15,7 @@ export class JSCLDSchema{
     config:ConfigParser;
     data:object;
     base_schema: Schema;
+    subject:string;
     properties:Property[];
     rdf_writer:any;
     shacl_writer:any;
@@ -24,6 +25,7 @@ export class JSCLDSchema{
         this.data = require(jsc);
         //Base Schema
         this.base_schema = new Schema(this.data, this.config,this.data['$id'])
+        this.subject = this.base_schema.id
         this.rdf_writer = new N3.Writer(RDFS_PREFIX);
         this.shacl_writer = new N3.Writer(SHACL_PREFIX);
         this.shacl_shape = this.config.base_prefix+':'+capitalize(this.config.base_prefix)+'Shape';
@@ -65,6 +67,8 @@ export class JSCLDSchema{
         this.shacl_writer.addQuad(
             node_node_node(this.shacl_shape,'rdf:type', 'sh:NodeShape')
         )
+        this.shacl_writer.addQuad(
+            node_node_node(this.shacl_shape, 'sh:targetClass', this.subject ) )
 
         /**
          * iteration over properties
