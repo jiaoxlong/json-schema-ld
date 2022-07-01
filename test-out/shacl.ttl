@@ -4,7 +4,7 @@
 @prefix schema: <http://schema.org/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
-@prefix gbfs: <http://example.org/gbfs#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
 
 gbfs:GBFSShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:StationInformation;
@@ -48,15 +48,20 @@ gbfs:GBFSShape rdf:type sh:NodeShape;
   sh:path gbfs:post_code;
   sh:datatype xsd:string
 ], [
+  sh:path gbfs:Rental_methods;
+  sh:in (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone);
+  sh:minItems 1;
+  sh:datatype xsd:string
+], [
   sh:path gbfs:is_virtual_station;
   sh:datatype xsd:boolean
 ], [
   sh:path gbfs:type;
-  sh:in _:undefined;
+  sh:in (gbfs:MultiPolygon);
   sh:datatype xsd:string
 ], [
   sh:path gbfs:parking_type;
-  sh:in _:undefined;
+  sh:in (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other);
   sh:datatype xsd:string
 ], [
   sh:path gbfs:parking_hoop;

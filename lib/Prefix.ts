@@ -9,7 +9,7 @@ export const RDFS_PREFIX =  {
         "dcterms": "http://purl.org/dc/terms/",
         "owl": "http://www.w3.org/2002/07/owl#",
         "jsonsc": "https://www.w3.org/2019/wot/json-schema#",
-        "gbfs": "http://example.org/gbfs/",
+        "gbfs": "https://w3id.org/gbfs#",
         "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
         "api":"http://purl.org/linked-data/api/vocab",
 
@@ -33,7 +33,7 @@ export const SHACL_PREFIX = {
         "schema": "http://schema.org/",
         "sh": "http://www.w3.org/ns/shacl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "gbfs": "http://example.org/gbfs#"
+        "gbfs": "https://w3id.org/gbfs#",
     }
 
 

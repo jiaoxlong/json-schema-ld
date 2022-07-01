@@ -7,13 +7,13 @@
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
 @prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
-@prefix gbfs: <http://example.org/gbfs/>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches gbfs:StationInformation.
-gbfs:StationInformation rdf:type owl:Class.
+gbfs:StationInformation rdf:type rdfs:Class.
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> dcterms:title "The GBFS LD configuration";
     dcterms:description "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary";
     dcterms:creator <https://pietercolpaert.be/#me>, <https://w3id.org/people/brechtvdv/#me>, <https://data.knows.idlab.ugent.be/person/andreipopescu/#me>, <https://data.knows.idlab.ugent.be/person/jilong/#me>;
@@ -32,80 +32,89 @@ gbfs:ttl rdf:type rdf:Property;
     rdfs:range xsd:integer.
 dcterms:identifier rdf:type rdf:Property;
     dcterms:description "Identifier of a station.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 dcterms:title rdf:type rdf:Property;
     dcterms:description "Public name of the station.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:shortName rdf:type rdf:Property;
     dcterms:description "Short name or other type of identifier.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:lat rdf:type rdf:Property;
     dcterms:description "The latitude of the station.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:decimal.
 gbfs:lon rdf:type rdf:Property;
     dcterms:description "The longitude fo the station.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:decimal.
 gbfs:address rdf:type rdf:Property;
     dcterms:description "Address where station is located.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:cross_street rdf:type rdf:Property;
     dcterms:description "Cross street or landmark where the station is located.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:region_id rdf:type rdf:Property;
     dcterms:description "Identifier of the region where the station is located.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:post_code rdf:type rdf:Property;
     dcterms:description "Postal code where station is located.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
+gbfs:Rental_methods rdf:type rdf:Property;
+    rdfs:domain gbfs:Station.
+gbfs:Station gbfs:Rental_methods gbfs:conceptscheme.
+gbfs:conceptscheme skos:hasTopConcept (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone).
+gbfs:Rental_methods rdfs:range xsd:string.
 gbfs:is_virtual_station rdf:type rdf:Property;
     dcterms:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:type rdf:type rdf:Property;
-    rdfs:domain gbfs:StationInformation;
-    rdfs:range xsd:string.
+    rdfs:domain gbfs:Station.
+gbfs:Station gbfs:type gbfs:conceptscheme.
+gbfs:conceptscheme skos:hasTopConcept (gbfs:MultiPolygon).
+gbfs:type rdfs:range xsd:string.
 gbfs:parking_type rdf:type rdf:Property;
     dcterms:description "Type of parking station. Added in v2.3";
-    rdfs:domain gbfs:StationInformation;
-    rdfs:range xsd:string.
+    rdfs:domain gbfs:Station.
+gbfs:Station gbfs:parking_type gbfs:conceptscheme.
+gbfs:conceptscheme skos:hasTopConcept (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other).
+gbfs:parking_type rdfs:range xsd:string.
 gbfs:parking_hoop rdf:type rdf:Property;
     dcterms:description "Are parking hoops present at this station? Added in v2.3";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:contact_phone rdf:type rdf:Property;
     dcterms:description "Contact phone of the station. Added in v2.3";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:capacity rdf:type rdf:Property;
     dcterms:description "Number of total docking points installed at this station, both available and unavailable.";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:is_valet_station rdf:type rdf:Property;
     dcterms:description "Are valet services provided at this station? (added in v2.1-RC)";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:is_charging_station rdf:type rdf:Property;
     dcterms:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:android rdf:type rdf:Property;
     dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:ios rdf:type rdf:Property;
     dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:web rdf:type rdf:Property;
     dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
-    rdfs:domain gbfs:StationInformation;
+    rdfs:domain gbfs:Station;
     rdfs:range xsd:string.

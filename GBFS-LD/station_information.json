@@ -41,6 +41,7 @@
           "type": "array",
           "items": {
             "ld.id": "https://w3id.org/gbfs#Station",
+            "ld.class": true,
             "type": "object",
             "properties": {
               "station_id": {
@@ -92,10 +93,11 @@
                 "type": "string"
               },
               "rental_methods": {
-                "ld.id": "",
                 "description": "Payment methods accepted at this station.",
                 "type": "array",
                 "items": {
+                  "ld.id": "https://w3id.org/gbfs#Rental_methods",
+                  "ld.class": true,
                   "type": "string",
                   "enum": [
                     "key",
