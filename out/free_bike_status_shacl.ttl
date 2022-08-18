@@ -1,0 +1,56 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
+    sh:property [
+  sh:path gbfs:last_updated;
+  sh:description "Last time the data in the feed was updated in POSIX time.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:maxInclusive 1924988399;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+].
+gbfs:BikeShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Bike;
+    sh:property [
+  sh:path <http://purl.org/dc/terms/identifier>;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:lat;
+  sh:description "The latitude of the vehicle.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -90;
+  sh:maxInclusive 90;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:lon;
+  sh:description "The longitude of the vehicle.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -180;
+  sh:maxInclusive 180;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:is_reserved;
+  sh:or ([ sh:datatype xsd:boolean ] [ sh:datatype xsd:decimal ])
+], [
+  sh:path gbfs:is_disabled;
+  sh:or ([ sh:datatype xsd:boolean ] [ sh:datatype xsd:decimal ])
+].

@@ -1,0 +1,127 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+gbfs:StationInformationShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:StationInformation;
+    sh:property [
+  sh:path <http://purl.org/dc/terms/modified>;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+].
+gbfs:StationShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Station;
+    sh:property [
+  sh:path <http://purl.org/dc/terms/identifier>;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path <http://purl.org/dc/terms/title>;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:shortName;
+  sh:description "Short name or other type of identifier.";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:lat;
+  sh:description "The latitude of the station.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -90;
+  sh:maxInclusive 90;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:lon;
+  sh:description "The longitude fo the station.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -180;
+  sh:maxInclusive 180;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:address;
+  sh:description "Address where station is located.";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:cross_street;
+  sh:description "Cross street or landmark where the station is located.";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:region_id;
+  sh:description "Identifier of the region where the station is located.";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:post_code;
+  sh:description "Postal code where station is located.";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:rental_methods;
+  sh:in (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone);
+  sh:minCount 1
+], [
+  sh:path gbfs:is_virtual_station;
+  sh:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:stationArea;
+  sh:description "A multipolygon that describes the area of a virtual station (added in v2.1-RC)."
+], [
+  sh:path gbfs:parking_type;
+  sh:description "Type of parking station. Added in v2.3";
+  sh:in (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other)
+], [
+  sh:path gbfs:parking_hoop;
+  sh:description "Are parking hoops present at this station? Added in v2.3";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:contact_phone;
+  sh:description "Contact phone of the station. Added in v2.3";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:capacity;
+  sh:description "Number of total docking points installed at this station, both available and unavailable.";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:vehicle_capacity;
+  sh:description "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC)."
+], [
+  sh:path gbfs:is_valet_station;
+  sh:description "Are valet services provided at this station? (added in v2.1-RC)";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:is_charging_station;
+  sh:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:android;
+  sh:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:ios;
+  sh:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:web;
+  sh:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:vehicle_type_capacity;
+  sh:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC)."
+].

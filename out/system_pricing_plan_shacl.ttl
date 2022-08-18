@@ -1,0 +1,129 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <http://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+<https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_pricing_plansjsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_pricing_plansjson>;
+    sh:property [
+  sh:path <http://purl.org/dc/terms/modified>;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+].
+gbfs:PricePlanShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:PricePlan;
+    sh:property [
+  sh:path gbfs:plan_id;
+  sh:description "Identifier of a pricing plan in the system.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:url;
+  sh:description "URL where the customer can learn more about this pricing plan.";
+  sh:datatype "xsd:string"
+], [
+  sh:path gbfs:name;
+  sh:description "Name of this pricing plan.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:currency;
+  sh:description "Currency used to pay the fare in ISO 4217 code.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^\\w{3}$";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:price;
+  sh:description "Fare price.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:is_taxable;
+  sh:description "Will additional tax be added to the base price?";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:description;
+  sh:description "Customer-readable description of the pricing plan.";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+].
+gbfs:PerKmPriceShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:PerKmPrice;
+    sh:property [
+  sh:path gbfs:start;
+  sh:description "Number of kilometers that have to elapse before this segment starts applying (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rate;
+  sh:description "Rate that is charged for each kilometer interval after the start (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:interval;
+  sh:description "Interval in kilometers at which the rate of this segment is either reapplied indefinitely, or if defined, up until (but not including) end kilometer (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:end;
+  sh:description "The kilometer at which the rate will no longer apply (added in v2.1-RC2).";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+].
+gbfs:PerMinPriceShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:PerMinPrice;
+    sh:property [
+  sh:path gbfs:start;
+  sh:description "Number of minutes that have to elapse before this segment starts applying (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rate;
+  sh:description "Rate that is charged for each minute interval after the start (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:interval;
+  sh:description "Interval in minutes at which the rate of this segment is either reapplied (added in v2.1-RC2).";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:end;
+  sh:description "The minute at which the rate will no longer apply (added in v2.1-RC2).";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:surge_pricing;
+  sh:description "Is there currently an increase in price in response to increased demand in this pricing plan? (added in v2.1-RC2)";
+  sh:datatype xsd:boolean
+].
