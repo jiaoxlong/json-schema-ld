@@ -6,6 +6,8 @@
   "type": "object",
   "properties": {
     "last_updated": {
+      "ld.id": "http://purl.org/dc/terms/modified",
+      "ld.existing": true,
       "description":
       "Last time the data in the feed was updated in POSIX time.",
       "type": "integer",
@@ -18,22 +20,28 @@
       "minimum": 0
     },
     "version": {
+      "ld.ignore": true,
       "description":
       "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
       "const": "2.3"
     },
     "data": {
+      "ld.included": true,
       "description":
       "Array that contains one object per station as defined below.",
       "type": "object",
       "properties": {
         "stations": {
+          "ld.id": "https://w3id.org/gbfs#Station",
+          "ld.class": true,
           "type": "array",
           "items": {
             "type": "object",
             "properties": {
               "station_id": {
+                "ld.id": "http://purl.org/dc/terms/identifier",
+                "ld.existing": true,
                 "description": "Identifier of a station.",
                 "type": "string"
               },
@@ -44,6 +52,8 @@
                 "minimum": 0
               },
               "vehicle_types_available": {
+                "ld.id": "https://w3id.org/gbfs#VehicleTypeAvailable",
+                "ld.class": true,
                 "description":
                 "Array of objects displaying the total number of each vehicle type at the station (added in v2.1-RC).",
                 "type": "array",
@@ -103,6 +113,8 @@
                 "minimum": 1450155600
               },
               "vehicle_docks_available": {
+                "ld.id": "https://w3id.org/gbfs#VehicleDocksAvailable",
+                "ld.class": true,
                 "description":
                 "Object displaying available docks by vehicle type (added in v2.1-RC).",
                 "type": "array",

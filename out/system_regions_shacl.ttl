@@ -5,6 +5,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjsonShape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>;
@@ -17,6 +18,7 @@
 ], [
   sh:path gbfs:ttl;
   sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -27,12 +29,14 @@ gbfs:RegionShape rdf:type sh:NodeShape;
     sh:property [
   sh:path gbfs:region_id;
   sh:description "identifier of the region.";
+  sh:name "region_id";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
   sh:path gbfs:name;
   sh:description "Public name for this region.";
+  sh:name "name";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string

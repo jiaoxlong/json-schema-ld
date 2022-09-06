@@ -8,6 +8,16 @@ export const SCHEMA_ANNOTATIONS = {
     "writeonly": "jsonsc:writeOnly",
 }
 
+export const SCHEMA_SHACL_ANNOTATION ={
+    "dcterms:title":"sh:name",
+    "dcterms:description":"sh:description",
+    "rdfs:comment":"rdfs:comment",
+    "skos:example":"skos:example",
+    "owl:deprecated":"owl:deprecated",
+    "jsonsc:readOnly":"jsonsc:readOnly",
+    "jsonsc:writeOnly":"jsonsc:writeOnly"
+}
+
 
 export const SCHEMA_LITERALS = {
     "array": "jsonsc:ArraySchema",

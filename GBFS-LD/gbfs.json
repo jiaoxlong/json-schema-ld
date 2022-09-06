@@ -6,6 +6,8 @@
   "type": "object",
   "properties": {
     "last_updated": {
+      "ld.id": "http://purl.org/dc/terms/modified",
+      "ld.existing": true,
       "description":
       "Last time the data in the feed was updated in POSIX time.",
       "type": "integer",
@@ -18,12 +20,14 @@
       "minimum": 0
     },
     "version": {
+      "ld.ignore": true,
       "description":
       "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
       "const": "2.3"
     },
     "data": {
+      "ld.included": true,
       "description": "Response data in the form of name:value pairs.",
       "type": "object",
       "patternProperties": {
@@ -31,6 +35,8 @@
           "type": "object",
           "properties": {
             "feeds": {
+              "ld.id": "https://w3id.org/gbfs#Feedd",
+              "ld.class": true,
               "description":
               "An array of all of the feeds that are published by the auto-discovery file. Each element in the array is an object with the keys below.",
               "type": "array",
@@ -38,6 +44,7 @@
                 "type": "object",
                 "properties": {
                   "name": {
+                    "ld.id": "https://w3id.org/gbfs#feedType",
                     "description":
                     "Key identifying the type of feed this is. The key must be the base file name defined in the spec for the corresponding feed type.",
                     "type": "string",

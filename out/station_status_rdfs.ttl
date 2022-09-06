@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson>.
@@ -25,59 +26,75 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#st
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson>;
     rdfs:range xsd:integer.
-gbfs:Station rdf:type rdfs:Class.
+gbfs:Station rdf:type rdfs:Class;
+    rdfs:label "Station".
 dcterms:identifier rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
 gbfs:num_bikes_available dcterms:description "Number of vehicles of any type physically available for rental at the station.";
     rdf:type rdf:Property;
+    rdfs:label "num_bikes_available";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:VehicleTypeAvailable dcterms:description "Array of objects displaying the total number of each vehicle type at the station (added in v2.1-RC).";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "VehicleTypeAvailable".
 gbfs:vehicle_type_id dcterms:description "The vehicle_type_id of vehicle at the station (added in v2.1-RC).";
     rdf:type rdf:Property;
+    rdfs:label "vehicle_type_id";
     rdfs:domain gbfs:VehicleTypeAvailable;
     rdfs:range xsd:string.
 gbfs:count dcterms:description "A number representing the total amount of this vehicle type at the station (added in v2.1-RC).";
     rdf:type rdf:Property;
+    rdfs:label "count";
     rdfs:domain gbfs:VehicleTypeAvailable;
     rdfs:range xsd:integer.
 gbfs:num_bikes_disabled dcterms:description "Number of disabled vehicles of any type at the station.";
     rdf:type rdf:Property;
+    rdfs:label "num_bikes_disabled";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:num_docks_available dcterms:description "Number of functional docks physically at the station.";
     rdf:type rdf:Property;
+    rdfs:label "num_docks_available";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:num_docks_disabled dcterms:description "Number of empty but disabled docks at the station.";
     rdf:type rdf:Property;
+    rdfs:label "num_docks_disabled";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:is_installed dcterms:description "Is the station currently on the street?";
     rdf:type rdf:Property;
+    rdfs:label "is_installed";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:is_renting dcterms:description "Is the station currently renting vehicles?";
     rdf:type rdf:Property;
+    rdfs:label "is_renting";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:is_returning dcterms:description "Is the station accepting vehicle returns?";
     rdf:type rdf:Property;
+    rdfs:label "is_returning";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
 gbfs:last_reported dcterms:description "The last time this station reported its status to the operator's backend in POSIX time.";
     rdf:type rdf:Property;
+    rdfs:label "last_reported";
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
 gbfs:VehicleDocksAvailable dcterms:description "Object displaying available docks by vehicle type (added in v2.1-RC).";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "VehicleDocksAvailable".
 gbfs:vehicle_type_ids rdf:type rdf:Property;
+    rdfs:label "vehicle_type_ids";
     rdfs:domain gbfs:VehicleDocksAvailable;
     rdfs:range xsd:string.
 gbfs:count dcterms:description "A number representing the total number of available docks for the defined vehicle type (added in v2.1-RC).";
     rdf:type rdf:Property;
+    rdfs:label "count";
     rdfs:domain gbfs:VehicleDocksAvailable;
     rdfs:range xsd:integer.

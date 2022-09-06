@@ -5,6 +5,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjsonShape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson>;
@@ -17,6 +18,7 @@
 ], [
   sh:path gbfs:ttl;
   sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -32,6 +34,7 @@ gbfs:StationShape rdf:type sh:NodeShape;
 ], [
   sh:path gbfs:num_bikes_available;
   sh:description "Number of vehicles of any type physically available for rental at the station.";
+  sh:name "num_bikes_available";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -42,12 +45,14 @@ gbfs:VehicleTypeAvailableShape rdf:type sh:NodeShape;
     sh:property [
   sh:path gbfs:vehicle_type_id;
   sh:description "The vehicle_type_id of vehicle at the station (added in v2.1-RC).";
+  sh:name "vehicle_type_id";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
   sh:path gbfs:count;
   sh:description "A number representing the total amount of this vehicle type at the station (added in v2.1-RC).";
+  sh:name "count";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -55,39 +60,46 @@ gbfs:VehicleTypeAvailableShape rdf:type sh:NodeShape;
 ], [
   sh:path gbfs:num_bikes_disabled;
   sh:description "Number of disabled vehicles of any type at the station.";
+  sh:name "num_bikes_disabled";
   sh:minInclusive 0;
   sh:datatype xsd:integer
 ], [
   sh:path gbfs:num_docks_available;
   sh:description "Number of functional docks physically at the station.";
+  sh:name "num_docks_available";
   sh:minInclusive 0;
   sh:datatype xsd:integer
 ], [
   sh:path gbfs:num_docks_disabled;
   sh:description "Number of empty but disabled docks at the station.";
+  sh:name "num_docks_disabled";
   sh:minInclusive 0;
   sh:datatype xsd:integer
 ], [
   sh:path gbfs:is_installed;
   sh:description "Is the station currently on the street?";
+  sh:name "is_installed";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:boolean
 ], [
   sh:path gbfs:is_renting;
   sh:description "Is the station currently renting vehicles?";
+  sh:name "is_renting";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:boolean
 ], [
   sh:path gbfs:is_returning;
   sh:description "Is the station accepting vehicle returns?";
+  sh:name "is_returning";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:boolean
 ], [
   sh:path gbfs:last_reported;
   sh:description "The last time this station reported its status to the operator's backend in POSIX time.";
+  sh:name "last_reported";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 1450155600;
@@ -97,10 +109,12 @@ gbfs:VehicleDocksAvailableShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:VehicleDocksAvailable;
     sh:property [
   sh:path gbfs:vehicle_type_ids;
+  sh:name "vehicle_type_ids";
   sh:datatype xsd:string
 ], [
   sh:path gbfs:count;
   sh:description "A number representing the total number of available docks for the defined vehicle type (added in v2.1-RC).";
+  sh:name "count";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;

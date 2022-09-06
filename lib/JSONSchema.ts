@@ -26,8 +26,9 @@ import {
     blank_node_list,
     blank_node_literal,
     blank_node_namedNode,
-    blank_node_node,
+    blank_node_node, node_node_node,
 } from "../utils/n3_utils";
+import {SchemaOptArgs} from "../utils/types";
 
 
 export class Schema {
@@ -36,30 +37,42 @@ export class Schema {
     data:object;
     schema?:string;
     schema_type:string;
-    property:string;
+    property_name:string;
+    label:string;
     annotation?:Map<string, string>;
     isClass?:boolean;
     isExisting?:boolean;
     isIgnored?:boolean;
-    rdfs?:NamedNode;
+    isRequired?:boolean;
+    rdfs?:NamedNode|any;
     shacl?:any[];
     minItems?:number;
     maxItems?:number;
-    enum?:any[];
-    constructor(data: {[key:string]: any}, config, property_name:string, minItems:number=0, maxItems:number=0) {
+    enum?:any;
+    domain?:string;
+    range?:string;
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                minItems=0, maxItems=0}:SchemaOptArgs={}) {
         this.config = config;
-        this.isClass = false;
-        this.isExisting = false;
-        this.isIgnored = false;
+        this.property_name = property_name;
+        this.isClass = isClass;
+        this.isExisting = isExisting;
+        this.isIgnored = isIgnored;
+        this.isRequired = isRequired;
         this.minItems = minItems;
         this.maxItems = maxItems;
+
+
         if(data['ld.ignore']===true) this.isIgnored = true;
         if ('id' in data) this.id = data['id'];
         if ('$id' in data) this.id = data['$id'];
+
         if ('ld.id' in data){
             if (data['ld.class']===true){
                 this.isClass = true;
                 this.id = data['ld.id']
+
             }
             else{
                 if ('ld.existing' in data){
@@ -74,10 +87,20 @@ export class Schema {
         if(this.id === undefined){
             this.id = config.base_prefix + ':' + property_name;
         }
+        if ('ld.domain' in data){
+            this.domain = data['ld.domain']
+        }
+        if ('ld.range' in data){
+            this.range = data['ld.range']
+        }
         if ('$schema' in data) this.schema = data['$schema']
+        if (('ld.geoJsonFeature' in data) && (data['ld.geoJsonFeature'] === true)) {
+            if (! this.range) this.range = 'http://www.opengis.net/ont/geosparql#Geometry';
+        }
         let ld_annotation = match(LD_BUILD_IN_ANNOTATION, data)
         let annotation = match(SCHEMA_ANNOTATIONS,data);
         this.annotation = merge(ld_annotation, annotation);
+
         /**
          * default, const, enum may appear in any valued JSON schema except for Null, Array and Object Schema.
          */
@@ -95,23 +118,40 @@ export class Schema {
             // can this be implemented by .map?
             blank_list.push(blank_node_list('sh:in',enum_list ))
             this.enum = enum_list
+        }
+        if (this.minItems > 0 )
+            blank_list.push(blank_node_literal('sh:minCount', this.minItems))
+
+        if (this.maxItems > 0 )
+            blank_list.push(blank_node_literal('sh:maxCount', this.maxItems))
+
+        if (this.isRequired) {
+
+            blank_list.push(blank_node_literal('sh:minCount', 1))
+            blank_list.push(blank_node_literal('sh:maxCount', 1))
 
         }
-        if (this.minItems !== 0 || this.minItems > 0 )
-            blank_list.push(blank_node_literal('sh:minItems', this.minItems))
+        else{
+            // When a property schema is not required and one or both of 'minItems' or 'maxItems' attributes of it are
+            // defined, we have to handle it differently.
+            // For example, the 'gbfs:rental_methods' is not required but its 'minItems' attribute is set to 1.
+            // sh:or ([sh:path gbfs:rental_methods; sh:maxCount 0 ;] [sh:path gbfs:rental_methods; sh:minCount 1;])
 
-        if (this.maxItems !== 0 || this.maxItems > 0 )
-            blank_list.push(blank_node_literal('sh:minItems', this.maxItems))
+            // Both blank and list functions in N3 requires to use an instance of N3.Writer as a parameter. We have to
+            // leave the implementation during serialization.
 
+        }
         this.shacl = blank_list;
     }
 
 }
 
 export class StringSchema extends Schema{
-    constructor(data: {[key:string]: any}, config:ConfigParser,
-                property_name:string, minItems:number=0, maxItems:number=0) {
-        super(data,config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.schema_type = 'string';
         /* RDFS */
         if (('format' in data) && (data['format'] in SCHEMA_STRING_FORMATS)){
@@ -132,18 +172,19 @@ export class StringSchema extends Schema{
         if ('format' in data)
             this.shacl.push(blank_node_literal('sh:datatype', SCHEMA_STRING_BUILDIN[data.format]));
         else
-            this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+            if (!this.enum)
+                this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
         this.schema_type = 'string'
     }
 
 }
 
 export class NumericSchema extends Schema{
-
-
-    constructor(data: {[key:string]: any}, config:ConfigParser,
-                property_name:string, minItems:number=0, maxItems:number=0) {
-        super(data, config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         /** SHACL */
         /* SHACL minInclusive */
         if ('minimum' in data) this.shacl.push(blank_node_literal('sh:minInclusive', data.minimum));
@@ -159,9 +200,11 @@ export class NumericSchema extends Schema{
 }
 
 export class IntegerSchema extends NumericSchema {
-    constructor(data: {[key:string]: any}, config:ConfigParser,
-                property_name:string, minItems:number=0, maxItems:number=0) {
-        super(data, config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.rdfs = namedNode('xsd:integer');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
         this.schema_type = 'integer';
@@ -169,9 +212,11 @@ export class IntegerSchema extends NumericSchema {
 }
 
 export class NumberSchema extends NumericSchema {
-    constructor(data: {[key:string]: any}, config:ConfigParser,
-                property_name:string, minItems:number=0, maxItems:number=0) {
-        super(data, config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.rdfs = namedNode('xsd:decimal');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
         this.schema_type = 'decimal'
@@ -179,9 +224,11 @@ export class NumberSchema extends NumericSchema {
 }
 
 export class BooleanSchema extends Schema {
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string,
-                minItems:number=0, maxItems:number=0) {
-        super(data,config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.schema_type = 'boolean';
         this.rdfs = namedNode('xsd:boolean');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
@@ -190,9 +237,11 @@ export class BooleanSchema extends Schema {
 }
 // Use case?
 export class NullSchema extends Schema {
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string,
-                minItems:number=0, maxItems:number=0) {
-        super(data,config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.schema_type = 'null';
     }
 }
@@ -208,9 +257,14 @@ export class ArraySchema extends Schema {
      *     maxContains?:number;
      */
 
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string) {
-        super(data,config, property_name);
-        this.schema_type = 'array'
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
+        this.schema_type = 'array';
+        if(this.isClass===true)
+            this.rdfs = node_node_node(this.id, 'rdf:type', 'rdfs:Class')
     }
 }
 
@@ -220,16 +274,31 @@ export class ObjectSchema extends Schema{
      *     minProperties?:number;
      *     maxProperties?:number;
      */
+    additionalRequired?:boolean|object;
+    isEnum?:boolean;
+    ld_enum?:{};
+    constructor(data: {[key:string]: any}, config, property_name:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0, isEnum=false, ld_enum={}}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
+        this.schema_type = 'object';
+        if (isEnum){
+            let enum_tmp= {};
 
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string){
-        super(data,config, property_name);
+            for (const k in ld_enum){
+                enum_tmp[this.config.base_prefix+':'+ k] = ld_enum[k];
+            }
+            this.enum = enum_tmp;
+            this.shacl.push(blank_node_list('sh:in', Object.keys(this.enum).map(x => namedNode(x))));
+        }
     }
 }
 
 export class BaseSchema extends Schema{
     compositeOpt?:string[];
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string){
-        super(data,config, property_name);
+        super(data,config, property_name, {});
         this.schema_type = 'base'
         }
 }
@@ -242,9 +311,11 @@ export class CompositionSchema extends Schema{
     schemas:Schema[]=[];
     schema_type:string;
     logical_opt:string;
-    constructor(data: {[key:string]: any}, config, property_name:string,
-                composition:string, minItems:number=0, maxItems:number=0) {
-        super(data,config, property_name, minItems, maxItems);
+    constructor(data: {[key:string]: any}, config, property_name:string, composition:string,
+                {isClass=false, isExisting=false, isIgnored=false, isRequired=false,
+                    minItems=0, maxItems=0}:SchemaOptArgs={}) {
+        super(data,config, property_name,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         for (let s of data[composition]) {
             let schema;
             if (s.type === 'string')  schema = new StringSchema(s, config, property_name);
@@ -268,12 +339,19 @@ export class AnyOfSchema extends CompositionSchema{
     logical_opt:string;
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
-                composition:string='anyOf',
                 property_name:string,
-                minItems:number=0,
-                maxItems:number=0
+                composition:string='anyOf',
+                {
+                    isClass=false,
+                    isExisting=false,
+                    isIgnored=false,
+                    isRequired=false,
+                    minItems=0,
+                    maxItems=0
+                }:SchemaOptArgs={}
                 ) {
-        super(data,config, composition,property_name, minItems, maxItems);
+        super(data,config, property_name,composition,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.logical_opt = 'sh:or'
     }
 }
@@ -281,12 +359,19 @@ export class OneOfSchema extends CompositionSchema{
     logical_opt:string;
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
-                composition:string='oneOf',
                 property_name:string,
-                minItems:number=0,
-                maxItems:number=0
+                composition:string='oneOf',
+                {
+                    isClass=false,
+                    isExisting=false,
+                    isIgnored=false,
+                    isRequired=false,
+                    minItems=0,
+                    maxItems=0
+                }:SchemaOptArgs={}
     ) {
-        super(data,config, composition,property_name, minItems, maxItems);
+        super(data,config, property_name,composition,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.logical_opt = 'sh:xone';
     }
 }
@@ -295,12 +380,19 @@ export class AllOfSchema extends CompositionSchema{
     logical_opt:string;
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
-                composition:string='allOf',
                 property_name:string,
-                minItems:number=0,
-                maxItems:number=0
+                composition:string='allOf',
+                {
+                    isClass=false,
+                    isExisting=false,
+                    isIgnored=false,
+                    isRequired=false,
+                    minItems=0,
+                    maxItems=0
+                }:SchemaOptArgs={}
     ) {
-        super(data,config, composition,property_name, minItems, maxItems);
+        super(data,config, property_name,composition,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.logical_opt = 'sh:and';
     }
 }
@@ -309,34 +401,34 @@ export class NotSchema extends CompositionSchema{
     logical_opt:string;
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
-                composition:string='not',
                 property_name:string,
-                minItems:number=0,
-                maxItems:number=0
+                composition:string='notOf',
+                {
+                    isClass=false,
+                    isExisting=false,
+                    isIgnored=false,
+                    isRequired=false,
+                    minItems=0,
+                    maxItems=0
+                }:SchemaOptArgs={}
     ) {
-        super(data,config, composition,property_name, minItems, maxItems);
+        super(data,config, property_name,composition,
+            {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.logical_opt = 'sh:not';
     }
 }
-
-
-
-
-
 
 export class Property{
     config:ConfigParser;
     _property_subject:string;
     _property_name:string;
     _property_schema:Schema|CompositionSchema;
-    isSKOS:boolean
 
     constructor(
         config:ConfigParser,
         subject:string,
         property_name:string,
         property_schema:Schema|CompositionSchema,
-        isSKOS:boolean=false
         //fragment:string,
         //dependent?:Property[],
         //dependsOn?:Property[]
@@ -364,6 +456,23 @@ export class Property{
         return this._property_schema;
     }
 }
+
+function schema_label(s:string){
+
+    return isValidURL(s) ? '' : s;
+}
+
+function isValidURL(s:string) {
+    //https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
+    let urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+        '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+    return !!urlPattern.test(s)
+}
+
 
 
 /**

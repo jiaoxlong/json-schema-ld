@@ -5,12 +5,12 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjsonShape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
     sh:property [
-  sh:path gbfs:last_updated;
-  sh:description "Last time the data in the feed was updated in POSIX time.";
+  sh:path <http://purl.org/dc/terms/modified>;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -19,6 +19,7 @@
 ], [
   sh:path gbfs:ttl;
   sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -32,16 +33,14 @@ gbfs:BikeShape rdf:type sh:NodeShape;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
-  sh:path gbfs:lat;
-  sh:description "The latitude of the vehicle.";
+  sh:path geo:lat;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive -90;
   sh:maxInclusive 90;
   sh:datatype xsd:decimal
 ], [
-  sh:path gbfs:lon;
-  sh:description "The longitude of the vehicle.";
+  sh:path geo:long;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive -180;

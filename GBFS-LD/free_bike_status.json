@@ -5,6 +5,8 @@
     "type": "object",
     "properties": {
       "last_updated": {
+        "ld.id": "http://purl.org/dc/terms/modified",
+        "ld.existing": true,
         "description": "Last time the data in the feed was updated in POSIX time.",
         "type": "integer",
         "minimum": 0,
@@ -16,25 +18,35 @@
         "minimum": 0
       },
       "data": {
+        "ld.included": true,
         "description": "Array that contains one object per bike as defined below.",
         "type": "object",
         "properties": {
           "bikes": {
+            "ld.id": "https://w3id.org/gbfs#Bike",
+            "ld.class": true,
+            "ld.description": "bikes that are available for rent",
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
                 "bike_id": {
+                  "ld.id": "http://purl.org/dc/terms/identifier",
+                  "ld.existing": true,
                   "description": "Rotating (as of v2.0) identifier of a vehicle.",
                   "type": "string"
                 },
                 "lat": {
+                  "ld.id": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+                  "ld.existing": true,
                   "description": "The latitude of the vehicle.",
                   "type": "number",
                   "minimum": -90,
                   "maximum": 90
                 },
                 "lon": {
+                  "ld.id": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+                  "ld.existing": true,
                   "description": 	"The longitude of the vehicle.",
                   "type": "number",
                   "minimum": -180,

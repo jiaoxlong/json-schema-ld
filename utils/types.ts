@@ -45,6 +45,17 @@ export interface ISerializer {
     materialize():void,
 }
 
+export interface SchemaOptArgs{
+    isClass?:boolean,
+    isExisting?:boolean,
+    isIgnored?:boolean,
+    isRequired?:boolean,
+    minItems?:number,
+    maxItems?:number,
+    isEnum?:boolean,
+    ld_enum?:{}
+}
+
 export type format = typeof formats[number];
 export type rdfFormatType = typeof rdfFormatTypes[number];
 export type jsonFormatType = typeof jsonFormatTypes[number];

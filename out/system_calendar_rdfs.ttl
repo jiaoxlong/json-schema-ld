@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_calendarjson>.
@@ -25,30 +26,38 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_calendarjson>;
     rdfs:range xsd:integer.
-gbfs:Calendar rdf:type rdfs:Class.
+gbfs:Calendar rdf:type rdfs:Class;
+    rdfs:label "Calendar".
 gbfs:start_month dcterms:description "Starting month for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "start_month";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.
 gbfs:start_day dcterms:description "Starting day for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "start_day";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.
 gbfs:start_year dcterms:description "Starting year for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "start_year";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.
 gbfs:end_month dcterms:description "End month for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "end_month";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.
 gbfs:end_day dcterms:description "End day for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "end_day";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.
 gbfs:end_year dcterms:description "End year for the system operations.";
     rdf:type rdf:Property;
+    rdfs:label "end_year";
     rdfs:domain gbfs:Calendar;
     rdfs:range xsd:integer.

@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>.
@@ -25,44 +26,59 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
     rdfs:range xsd:integer.
-gbfs:RentalHour rdf:type rdfs:Class.
+gbfs:RentalHour rdf:type rdfs:Class;
+    rdfs:label "RentalHour".
 gbfs:user_types rdf:type rdf:Property;
-    rdfs:domain gbfs:RentalHour;
-    rdf:type skos:ConceptSchema;
-    rdfs:range [
+    rdfs:label "user_types";
+    rdfs:domain gbfs:RentalHour.
+gbfs:User_types rdf:type skos:ConceptSchema.
+gbfs:user_types rdfs:range [
   owl:oneOf (gbfs:member gbfs:nonmember)
 ].
 gbfs:member rdf:type skos:Concept;
-    skos:inSchema gbfs:user_types.
+    skos:inSchema gbfs:User_types;
+    rdfs:label "member".
 gbfs:nonmember rdf:type skos:Concept;
-    skos:inSchema gbfs:user_types.
+    skos:inSchema gbfs:User_types;
+    rdfs:label "nonmember".
 gbfs:days rdf:type rdf:Property;
-    rdfs:domain gbfs:RentalHour;
-    rdf:type skos:ConceptSchema;
-    rdfs:range [
+    rdfs:label "days";
+    rdfs:domain gbfs:RentalHour.
+gbfs:Days rdf:type skos:ConceptSchema.
+gbfs:days rdfs:range [
   owl:oneOf (gbfs:sun gbfs:mon gbfs:tue gbfs:wed gbfs:thu gbfs:fri gbfs:sat)
 ].
 gbfs:sun rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "sun".
 gbfs:mon rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "mon".
 gbfs:tue rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "tue".
 gbfs:wed rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "wed".
 gbfs:thu rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "thu".
 gbfs:fri rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "fri".
 gbfs:sat rdf:type skos:Concept;
-    skos:inSchema gbfs:days.
+    skos:inSchema gbfs:Days;
+    rdfs:label "sat".
 gbfs:start_time dcterms:description "Start time for the hours of operation of the system.";
     rdf:type rdf:Property;
+    rdfs:label "start_time";
     rdfs:domain gbfs:RentalHour;
     rdfs:range xsd:string.
 gbfs:end_time dcterms:description "End time for the hours of operation of the system.";
     rdf:type rdf:Property;
+    rdfs:label "end_time";
     rdfs:domain gbfs:RentalHour;
     rdfs:range xsd:string.

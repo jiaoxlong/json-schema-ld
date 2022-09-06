@@ -12,10 +12,11 @@ export const RDFS_PREFIX =  {
         "gbfs": "https://w3id.org/gbfs#",
         "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
         "api":"http://purl.org/linked-data/api/vocab",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
 
 
 /*        "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
-        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+        ,
         "vann": "http://purl.org/vocab/vann/"
         "airs": "https://raw.githubusercontent.com/airs-linked-data/lov/latest/src/airs_vocabulary.ttl#",
         "vso": "http://purl.org/vso/ns#",
@@ -34,6 +35,7 @@ export const SHACL_PREFIX = {
         "sh": "http://www.w3.org/ns/shacl#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "gbfs": "https://w3id.org/gbfs#",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
     }
 
 

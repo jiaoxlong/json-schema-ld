@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>.
@@ -25,5 +26,6 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gb
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
     rdfs:range xsd:integer.

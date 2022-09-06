@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>.
@@ -25,28 +26,37 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
     rdfs:range xsd:integer.
 gbfs:Version dcterms:description "Contains one object, as defined below, for each of the available versions of a feed. The array must be sorted by increasing MAJOR and MINOR version number.";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "Version".
 gbfs:version dcterms:description "The semantic version of the feed in the form X.Y";
     rdf:type rdf:Property;
-    rdfs:domain gbfs:Version;
-    rdf:type skos:ConceptSchema;
-    rdfs:range [
+    rdfs:label "version";
+    rdfs:domain gbfs:Version.
+gbfs:Version rdf:type skos:ConceptSchema.
+gbfs:version rdfs:range [
   owl:oneOf (gbfs:1.1 gbfs:2.0 gbfs:2.1 gbfs:2.2 gbfs:2.3-RC)
 ].
 gbfs:1.1 rdf:type skos:Concept;
-    skos:inSchema gbfs:version.
+    skos:inSchema gbfs:Version;
+    rdfs:label "1.1".
 gbfs:2.0 rdf:type skos:Concept;
-    skos:inSchema gbfs:version.
+    skos:inSchema gbfs:Version;
+    rdfs:label "2.0".
 gbfs:2.1 rdf:type skos:Concept;
-    skos:inSchema gbfs:version.
+    skos:inSchema gbfs:Version;
+    rdfs:label "2.1".
 gbfs:2.2 rdf:type skos:Concept;
-    skos:inSchema gbfs:version.
+    skos:inSchema gbfs:Version;
+    rdfs:label "2.2".
 gbfs:2.3-RC rdf:type skos:Concept;
-    skos:inSchema gbfs:version.
+    skos:inSchema gbfs:Version;
+    rdfs:label "2.3-RC".
 gbfs:url dcterms:description "URL of the corresponding gbfs.json endpoint";
     rdf:type rdf:Property;
+    rdfs:label "url";
     rdfs:domain gbfs:Version;
     rdfs:range xsd:string.

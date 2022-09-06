@@ -1,7 +1,7 @@
 import {ISerializer, format, rdfFormatType, shapeFormatType, jsonFormatType} from './types'
 import {IncomingMessage} from "http";
 
-
+// not in use yet
 
 abstract class Serializer implements ISerializer {
     /**

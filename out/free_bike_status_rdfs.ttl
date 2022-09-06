@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
@@ -21,28 +22,27 @@
     dcterms:rights "Copyright statement";
     dcterms:modified "2022-06-02T11:32:52.12679".
 <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> dcterms:description "Describes the vehicles that are available for rent (as of v2.1-RC2).".
-gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
-    rdf:type rdf:Property;
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
+dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
     rdfs:range xsd:integer.
-gbfs:Bike rdf:type rdfs:Class.
+gbfs:Bike dcterms:description "bikes that are available for rent";
+    rdf:type rdfs:Class;
+    rdfs:label "Bike".
 dcterms:identifier rdfs:domain gbfs:Bike;
     rdfs:range xsd:string.
-gbfs:lat dcterms:description "The latitude of the vehicle.";
-    rdf:type rdf:Property;
-    rdfs:domain gbfs:Bike;
+geo:lat rdfs:domain gbfs:Bike;
     rdfs:range xsd:decimal.
-gbfs:lon dcterms:description "The longitude of the vehicle.";
-    rdf:type rdf:Property;
-    rdfs:domain gbfs:Bike;
+geo:long rdfs:domain gbfs:Bike;
     rdfs:range xsd:decimal.
 gbfs:is_reserved dcterms:description "Is the vehicle currently reserved?";
     rdf:type rdf:Property;
+    rdfs:label "is_reserved";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.
 gbfs:is_disabled dcterms:description "Is the vehicle currently disabled (broken)?";
     rdf:type rdf:Property;
+    rdfs:label "is_disabled";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>.

@@ -5,6 +5,8 @@
     "type": "object",
     "properties": {
       "last_updated": {
+        "ld.id": "http://purl.org/dc/terms/modified",
+        "ld.existing": true,
         "description": 	"Last time the data in the feed was updated in POSIX time.",
         "type": "integer",
         "minimum": 0,
@@ -16,10 +18,13 @@
         "minimum": 0
       },
       "data": {
+        "ld.included": true,
         "description": "Array that contains ad-hoc alerts for the system.",
         "type": "object",
         "properties": {
           "alerts": {
+            "ld.id": "https://w3id.org/gbfs#Alert",
+            "ld.class": true,
             "type": "array",
             "items": {
               "type": "object",
@@ -29,6 +34,7 @@
                   "type": "string"
                 },
                 "type": {
+                  "ld.id": "https://w3id.org/gbfs#alert_type",
                   "description": 	"Type of alert.",
                   "type": "string",
                   "enum": [
@@ -39,16 +45,20 @@
                   ]
                 },
                 "times": {
+                  "ld.id": "https://w3id.org/gbfs#AlertTime",
+                  "ld.class": true,
                   "description": "Array of objects indicating when the alert is in effect.",
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "start": {
+                        "ld.id": "https://w3id.org/gbfs#alert_start",
                         "type": "number",
                         "minimum": 0
                       },
                       "end": {
+                        "ld.id": "https://w3id.org/gbfs#alert_end",
                         "type": "number",
                         "minimum": 0
                       }
@@ -84,6 +94,8 @@
                   "type": "string"
                 },
                 "last_updated": {
+                  "ld.id": "http://purl.org/dc/terms/modified",
+                  "ld.existing": true,
                   "description": "Indicates the last time the info for the alert was updated.",
                   "type": "integer",
                   "minimum": 0,

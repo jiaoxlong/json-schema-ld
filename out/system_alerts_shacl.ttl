@@ -5,6 +5,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjsonShape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
@@ -18,6 +19,7 @@
 ], [
   sh:path gbfs:ttl;
   sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -28,12 +30,14 @@ gbfs:AlertShape rdf:type sh:NodeShape;
     sh:property [
   sh:path gbfs:alert_id;
   sh:description "Identifier for this alert.";
+  sh:name "alert_id";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
   sh:path <gbfs:https://w3id.org/gbfs#alert_type>;
   sh:description "Type of alert.";
+  sh:name "https://w3id.org/gbfs#alert_type";
   sh:in (gbfs:SYSTEM_CLOSURE gbfs:STATION_CLOSURE gbfs:STATION_MOVE gbfs:OTHER);
   sh:minCount 1;
   sh:maxCount 1
@@ -42,31 +46,38 @@ gbfs:AlertTimeShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:AlertTime;
     sh:property [
   sh:path <gbfs:https://w3id.org/gbfs#alert_start>;
+  sh:name "https://w3id.org/gbfs#alert_start";
   sh:minInclusive 0;
   sh:datatype xsd:decimal
 ], [
   sh:path <gbfs:https://w3id.org/gbfs#alert_end>;
+  sh:name "https://w3id.org/gbfs#alert_end";
   sh:minInclusive 0;
   sh:datatype xsd:decimal
 ], [
   sh:path gbfs:station_ids;
+  sh:name "station_ids";
   sh:datatype xsd:string
 ], [
   sh:path gbfs:region_ids;
+  sh:name "region_ids";
   sh:datatype xsd:string
 ], [
   sh:path gbfs:url;
   sh:description "URL where the customer can learn more information about this alert.";
+  sh:name "url";
   sh:datatype xsd:string
 ], [
   sh:path gbfs:summary;
   sh:description "A short summary of this …played to the customer.";
+  sh:name "summary";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
   sh:path gbfs:description;
   sh:description "Detailed description of the alert.";
+  sh:name "description";
   sh:datatype xsd:string
 ], [
   sh:path <http://purl.org/dc/terms/modified>;

@@ -5,6 +5,8 @@
     "type": "object",
     "properties": {
       "last_updated": {
+        "ld.id": "http://purl.org/dc/terms/modified",
+        "ld.existing": true,
         "description":
           "Last time the data in the feed was updated in POSIX time.",
         "type": "integer",
@@ -17,16 +19,20 @@
         "minimum": 0
       },
       "version": {
+        "ld.ignore": true,
         "description":
           "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
         "type": "string",
         "const": "2.3-RC"
       },
       "data": {
+        "ld.included": true,
         "description": "Array that contains system hours of operations.",
         "type": "object",
         "properties": {
           "rental_hours": {
+            "ld.id": "https://w3id.org/gbfs#RentalHour",
+            "ld.class": true,
             "type": "array",
             "items": {
               "type": "object",

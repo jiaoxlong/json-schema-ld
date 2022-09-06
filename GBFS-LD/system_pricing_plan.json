@@ -6,6 +6,8 @@
     "type": "object",
     "properties": {
       "last_updated": {
+        "ld.id": "http://purl.org/dc/terms/modified",
+        "ld.existing": true,
         "description":
           "Last time the data in the feed was updated in POSIX time.",
         "type": "integer",
@@ -18,17 +20,21 @@
         "minimum": 0
       },
       "version": {
+        "ld.ignore": true,
         "description":
           "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
         "type": "string",
         "const": "2.3-RC"
       },
       "data": {
+        "ld.included": true,
         "description":
           "Array that contains one object per plan as defined below.",
         "type": "object",
         "properties": {
           "plans": {
+            "ld.id": "https://w3id.org/gbfs#PricePlan",
+            "ld.class": true,
             "type": "array",
             "items": {
               "type": "object",
@@ -69,6 +75,8 @@
                   "type": "string"
                 },
                 "per_km_pricing": {
+                  "ld.id": "https://w3id.org/gbfs#PerKmPrice",
+                  "ld.class": true,
                   "description":
                     "Array of segments when the price is a function of distance travelled, displayed in kilometers (added in v2.1-RC2).",
                   "type": "array",
@@ -103,6 +111,8 @@
                   }
                 },
                 "per_min_pricing": {
+                  "ld.id": "https://w3id.org/gbfs#PerMinPrice",
+                  "ld.class": true,
                   "description":
                     "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).",
                   "type": "array",

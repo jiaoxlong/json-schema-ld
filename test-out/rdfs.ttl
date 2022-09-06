@@ -22,99 +22,127 @@ gbfs:StationInformation rdf:type rdfs:Class.
     dcterms:modified "2022-06-02T11:32:52.12679".
 gbfs:StationInformation dcterms:description "Details including system operator, system location, year implemented, URL, contact info, time zone.";
     dcterms:title "Station Information".
-dcterms:modified rdf:type rdf:Property;
-    dcterms:description "Last time the data in the feed was updated in POSIX time.";
+dcterms:modified rdfs:domain gbfs:StationInformation;
+    rdfs:range xsd:integer.
+gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:StationInformation;
     rdfs:range xsd:integer.
-gbfs:ttl rdf:type rdf:Property;
-    dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
-    rdfs:domain gbfs:StationInformation;
-    rdfs:range xsd:integer.
-dcterms:identifier rdf:type rdf:Property;
-    dcterms:description "Identifier of a station.";
+gbfs:Station rdf:type rdfs:Class.
+dcterms:identifier rdfs:domain gbfs:Station;
+    rdfs:range xsd:string.
+dcterms:title rdfs:domain gbfs:Station;
+    rdfs:range xsd:string.
+gbfs:shortName dcterms:description "Short name or other type of identifier.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-dcterms:title rdf:type rdf:Property;
-    dcterms:description "Public name of the station.";
-    rdfs:domain gbfs:Station;
-    rdfs:range xsd:string.
-gbfs:shortName rdf:type rdf:Property;
-    dcterms:description "Short name or other type of identifier.";
-    rdfs:domain gbfs:Station;
-    rdfs:range xsd:string.
-gbfs:lat rdf:type rdf:Property;
-    dcterms:description "The latitude of the station.";
+gbfs:lat dcterms:description "The latitude of the station.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:decimal.
-gbfs:lon rdf:type rdf:Property;
-    dcterms:description "The longitude fo the station.";
+gbfs:lon dcterms:description "The longitude fo the station.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:decimal.
-gbfs:address rdf:type rdf:Property;
-    dcterms:description "Address where station is located.";
+gbfs:address dcterms:description "Address where station is located.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:cross_street rdf:type rdf:Property;
-    dcterms:description "Cross street or landmark where the station is located.";
+gbfs:cross_street dcterms:description "Cross street or landmark where the station is located.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:region_id rdf:type rdf:Property;
-    dcterms:description "Identifier of the region where the station is located.";
+gbfs:region_id dcterms:description "Identifier of the region where the station is located.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:post_code rdf:type rdf:Property;
-    dcterms:description "Postal code where station is located.";
+gbfs:post_code dcterms:description "Postal code where station is located.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:Rental_methods rdf:type rdf:Property;
-    rdfs:domain gbfs:Station.
-gbfs:Station gbfs:Rental_methods gbfs:conceptscheme.
-gbfs:conceptscheme skos:hasTopConcept (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone).
-gbfs:Rental_methods rdfs:range xsd:string.
-gbfs:is_virtual_station rdf:type rdf:Property;
-    dcterms:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
+gbfs:rental_methods rdf:type rdf:Property;
+    rdfs:domain gbfs:Station;
+    rdf:type skos:ConceptSchema;
+    rdfs:range [
+  owl:oneOf (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone)
+].
+gbfs:key rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:creditcard rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:paypass rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:applepay rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:androidpay rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:transitcard rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:accountnumber rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:phone rdf:type skos:Concept;
+    skos:inSchema gbfs:rental_methods.
+gbfs:is_virtual_station dcterms:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
-gbfs:type rdf:type rdf:Property;
-    rdfs:domain gbfs:Station.
-gbfs:Station gbfs:type gbfs:conceptscheme.
-gbfs:conceptscheme skos:hasTopConcept (gbfs:MultiPolygon).
-gbfs:type rdfs:range xsd:string.
-gbfs:parking_type rdf:type rdf:Property;
-    dcterms:description "Type of parking station. Added in v2.3";
-    rdfs:domain gbfs:Station.
-gbfs:Station gbfs:parking_type gbfs:conceptscheme.
-gbfs:conceptscheme skos:hasTopConcept (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other).
-gbfs:parking_type rdfs:range xsd:string.
-gbfs:parking_hoop rdf:type rdf:Property;
-    dcterms:description "Are parking hoops present at this station? Added in v2.3";
+gbfs:stationArea dcterms:description "A multipolygon that describes the area of a virtual station (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:domain gbfs:Station;
+    rdfs:range <http://www.opengis.net/ont/geosparql#Geometry>.
+gbfs:parking_type dcterms:description "Type of parking station. Added in v2.3";
+    rdf:type rdf:Property;
+    rdfs:domain gbfs:Station;
+    rdf:type skos:ConceptSchema;
+    rdfs:range [
+  owl:oneOf (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other)
+].
+gbfs:parking_lot rdf:type skos:Concept;
+    skos:inSchema gbfs:parking_type.
+gbfs:street_parking rdf:type skos:Concept;
+    skos:inSchema gbfs:parking_type.
+gbfs:underground_parking rdf:type skos:Concept;
+    skos:inSchema gbfs:parking_type.
+gbfs:sidewalk_parking rdf:type skos:Concept;
+    skos:inSchema gbfs:parking_type.
+gbfs:other rdf:type skos:Concept;
+    skos:inSchema gbfs:parking_type.
+gbfs:parking_hoop dcterms:description "Are parking hoops present at this station? Added in v2.3";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
-gbfs:contact_phone rdf:type rdf:Property;
-    dcterms:description "Contact phone of the station. Added in v2.3";
+gbfs:contact_phone dcterms:description "Contact phone of the station. Added in v2.3";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:capacity rdf:type rdf:Property;
-    dcterms:description "Number of total docking points installed at this station, both available and unavailable.";
+gbfs:capacity dcterms:description "Number of total docking points installed at this station, both available and unavailable.";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:integer.
-gbfs:is_valet_station rdf:type rdf:Property;
-    dcterms:description "Are valet services provided at this station? (added in v2.1-RC)";
+gbfs:vehicle_capacity dcterms:description "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:domain gbfs:Station.
+gbfs:is_valet_station dcterms:description "Are valet services provided at this station? (added in v2.1-RC)";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
-gbfs:is_charging_station rdf:type rdf:Property;
-    dcterms:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
+gbfs:is_charging_station dcterms:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:boolean.
-gbfs:android rdf:type rdf:Property;
-    dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+gbfs:android dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:ios rdf:type rdf:Property;
-    dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+gbfs:ios dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
-gbfs:web rdf:type rdf:Property;
-    dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+gbfs:web dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:domain gbfs:Station;
     rdfs:range xsd:string.
+gbfs:vehicle_type_capacity dcterms:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:domain gbfs:Station.

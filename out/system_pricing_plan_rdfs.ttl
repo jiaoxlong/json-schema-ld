@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_pricing_plansjson>.
@@ -25,74 +26,94 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_pricing_plansjson>;
     rdfs:range xsd:integer.
-gbfs:PricePlan rdf:type rdfs:Class.
+gbfs:PricePlan rdf:type rdfs:Class;
+    rdfs:label "PricePlan".
 gbfs:plan_id dcterms:description "Identifier of a pricing plan in the system.";
     rdf:type rdf:Property;
+    rdfs:label "plan_id";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:string.
 gbfs:url dcterms:description "URL where the customer can learn more about this pricing plan.";
     rdf:type rdf:Property;
+    rdfs:label "url";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:string.
 gbfs:name dcterms:description "Name of this pricing plan.";
     rdf:type rdf:Property;
+    rdfs:label "name";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:string.
 gbfs:currency dcterms:description "Currency used to pay the fare in ISO 4217 code.";
     rdf:type rdf:Property;
+    rdfs:label "currency";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:string.
 gbfs:price dcterms:description "Fare price.";
     rdf:type rdf:Property;
+    rdfs:label "price";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:decimal.
 gbfs:is_taxable dcterms:description "Will additional tax be added to the base price?";
     rdf:type rdf:Property;
+    rdfs:label "is_taxable";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:boolean.
 gbfs:description dcterms:description "Customer-readable description of the pricing plan.";
     rdf:type rdf:Property;
+    rdfs:label "description";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:string.
 gbfs:PerKmPrice dcterms:description "Array of segments when the price is a function of distance travelled, displayed in kilometers (added in v2.1-RC2).";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "PerKmPrice".
 gbfs:start dcterms:description "Number of kilometers that have to elapse before this segment starts applying (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "start";
     rdfs:domain gbfs:PerKmPrice;
     rdfs:range xsd:integer.
 gbfs:rate dcterms:description "Rate that is charged for each kilometer interval after the start (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "rate";
     rdfs:domain gbfs:PerKmPrice;
     rdfs:range xsd:decimal.
 gbfs:interval dcterms:description "Interval in kilometers at which the rate of this segment is either reapplied indefinitely, or if defined, up until (but not including) end kilometer (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "interval";
     rdfs:domain gbfs:PerKmPrice;
     rdfs:range xsd:integer.
 gbfs:end dcterms:description "The kilometer at which the rate will no longer apply (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "end";
     rdfs:domain gbfs:PerKmPrice;
     rdfs:range xsd:integer.
 gbfs:PerMinPrice dcterms:description "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "PerMinPrice".
 gbfs:start dcterms:description "Number of minutes that have to elapse before this segment starts applying (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "start";
     rdfs:domain gbfs:PerMinPrice;
     rdfs:range xsd:integer.
 gbfs:rate dcterms:description "Rate that is charged for each minute interval after the start (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "rate";
     rdfs:domain gbfs:PerMinPrice;
     rdfs:range xsd:decimal.
 gbfs:interval dcterms:description "Interval in minutes at which the rate of this segment is either reapplied (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "interval";
     rdfs:domain gbfs:PerMinPrice;
     rdfs:range xsd:integer.
 gbfs:end dcterms:description "The minute at which the rate will no longer apply (added in v2.1-RC2).";
     rdf:type rdf:Property;
+    rdfs:label "end";
     rdfs:domain gbfs:PerMinPrice;
     rdfs:range xsd:integer.
 gbfs:surge_pricing dcterms:description "Is there currently an increase in price in response to increased demand in this pricing plan? (added in v2.1-RC2)";
     rdf:type rdf:Property;
+    rdfs:label "surge_pricing";
     rdfs:domain gbfs:PricePlan;
     rdfs:range xsd:boolean.

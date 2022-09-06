@@ -10,6 +10,7 @@
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>.
@@ -25,15 +26,19 @@ dcterms:modified rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
+    rdfs:label "ttl";
     rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>;
     rdfs:range xsd:integer.
 gbfs:Region dcterms:description "Array of regions.";
-    rdf:type rdfs:Class.
+    rdf:type rdfs:Class;
+    rdfs:label "Region".
 gbfs:region_id dcterms:description "identifier of the region.";
     rdf:type rdf:Property;
+    rdfs:label "region_id";
     rdfs:domain gbfs:Region;
     rdfs:range xsd:string.
 gbfs:name dcterms:description "Public name for this region.";
     rdf:type rdf:Property;
+    rdfs:label "name";
     rdfs:domain gbfs:Region;
     rdfs:range xsd:string.

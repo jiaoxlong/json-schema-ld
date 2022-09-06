@@ -38,10 +38,12 @@
       "type": "object",
       "properties": {
         "stations": {
+          "ld.id": "https://w3id.org/gbfs#Station",
+          "ld.title": "Station",
+          "ld.class": true,
+          "ld.description": "Public transport station (eg. railway station, metro station, bus station)",
           "type": "array",
           "items": {
-            "ld.id": "https://w3id.org/gbfs#Station",
-            "ld.class": true,
             "type": "object",
             "properties": {
               "station_id": {
@@ -50,8 +52,7 @@
                 "description": "Identifier of a station.",
                 "type": "string"               },
               "name": {
-                "ld.id": "http://purl.org/dc/terms/title",
-                "ld.existing": true,
+                "ld.id": "https://w3id.org/gbfs#station_name",
                 "description": "Public name of the station.",
                 "type": "string"
 
@@ -63,18 +64,24 @@
 
               },
               "lat": {
+                "ld.id": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
+                "ld.existing": true,
                 "description": "The latitude of the station.",
                 "type": "number",
                 "minimum": -90,
                 "maximum": 90
               },
               "lon": {
+                "ld.id": "http://www.w3.org/2003/01/geo/wgs84_pos#long",
+                "ld.existing": true,
                 "description": "The longitude fo the station.",
                 "type": "number",
                 "minimum": -180,
                 "maximum": 180
               },
               "address": {
+                "ld.id": "http://schema.org/address",
+                "ld.existing": true,
                 "description": "Address where station is located.",
                 "type": "string"
               },
@@ -89,6 +96,8 @@
                 "type": "string"
               },
               "post_code": {
+                "ld.id": "http://schema.org/postalCode",
+                "ld.existing": true,
                 "description": "Postal code where station is located.",
                 "type": "string"
               },
@@ -96,8 +105,6 @@
                 "description": "Payment methods accepted at this station.",
                 "type": "array",
                 "items": {
-                  "ld.id": "https://w3id.org/gbfs#Rental_methods",
-                  "ld.class": true,
                   "type": "string",
                   "enum": [
                     "key",
@@ -108,16 +115,6 @@
                     "transitcard",
                     "accountnumber",
                     "phone"
-                  ],
-                  "ld.enum": [
-                    "paymentmethod/key",
-                    "paymentmethod/creditcard",
-                    "paymentmethod/paypass",
-                    "paymentmethod/applepay",
-                    "paymentmethod/androidpay",
-                    "paymentmethod/transitcard",
-                    "paymentmethod/accountnumber",
-                    "paymentmethod/phone"
                   ]
                 },
                 "minItems": 1
@@ -168,9 +165,6 @@
                   "underground_parking",
                   "sidewalk_parking",
                   "other"
-                ],
-                "ld:enum": [
-                  "..."
                 ]
               },
               "parking_hoop": {
@@ -206,6 +200,7 @@
                 "type": "boolean"
               },
               "rental_uris": {
+                "ld.enum": true,
                 "description":
                 "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).",
                 "type": "object",
