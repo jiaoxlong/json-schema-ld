@@ -64,7 +64,9 @@ export class Schema {
         this.maxItems = maxItems;
 
 
-        if(data['ld.ignore']===true) this.isIgnored = true;
+        if('ld.ignore' in data)
+            if (data['ld.ignore']===true)
+                this.isIgnored = true;
         if ('id' in data) this.id = data['id'];
         if ('$id' in data) this.id = data['$id'];
 
@@ -80,13 +82,38 @@ export class Schema {
                     this.id = data['ld.id'];
                 }
                 else{
-                    this.id = this.config?.base_prefix + ':' + data['ld.id']
+                    if (data['ld.id'].includes('http')){
+                        this.id = data['ld.id'];
+                    }
+                    else
+                        this.id = this.config?.base_prefix + ':' + data['ld.id'];
                 }
             }
         }
         if(this.id === undefined){
-            this.id = config.base_prefix + ':' + property_name;
+            if (property_name.includes('http'))
+                this.id = property_name;
+            else
+                this.id = config.base_prefix + ':' + property_name;
         }
+        // rdfs:label
+        // 1. when ld.id is defined as an URIr
+        if(this.id.includes('http'))
+        {
+            if (this.id.includes('#'))
+                this.label = this.id.substring(this.id.lastIndexOf('#') + 1)
+            else
+                this.label = this.id.substring(this.id.lastIndexOf('/')+1)
+        }
+        // 2. when ld.id is introduced with based_prefix
+        else if (this.id.includes(':'))
+            this.label = this.id.substring(this.id.lastIndexOf(':')+1)
+
+        // 3. when schema id is just property_name
+        else
+            this.label = this.id
+
+
         if ('ld.domain' in data){
             this.domain = data['ld.domain']
         }
@@ -154,7 +181,7 @@ export class StringSchema extends Schema{
             {isClass, isExisting,isIgnored, isRequired, minItems, maxItems});
         this.schema_type = 'string';
         /* RDFS */
-        if (('format' in data) && (data['format'] in SCHEMA_STRING_FORMATS)){
+        if (('format' in data) && (SCHEMA_STRING_FORMATS.includes(data['format']))){
             this.rdfs = namedNode(SCHEMA_STRING_BUILDIN[data.format]);
         }
         else this.rdfs = namedNode('xsd:string');
@@ -301,6 +328,17 @@ export class BaseSchema extends Schema{
         super(data,config, property_name, {});
         this.schema_type = 'base'
         }
+}
+
+export class ClassSchema extends Schema{
+    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string, {isClass=true, isExisting=false,
+        isIgnored=false, isRequired=false,
+        minItems=0, maxItems=0, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
+        super(data,config, property_name, {isClass, isExisting,isIgnored,
+            isRequired, minItems, maxItems} );
+        this.schema_type = 'class';
+        this.rdfs = node_node_node(this.id, 'rdf:type', 'rdfs:Class');
+    }
 }
 
 /**

@@ -1,16 +1,18 @@
 @prefix dash: <http://datashapes.org/dash#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
 
 gbfs:StationInformationShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:StationInformation;
     sh:property [
-  sh:path <http://purl.org/dc/terms/modified>;
+  sh:path dcterms:modified;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 1450155600;
@@ -24,15 +26,15 @@ gbfs:StationInformationShape rdf:type sh:NodeShape;
   sh:minInclusive 0;
   sh:datatype xsd:integer
 ].
-gbfs:StationShape rdf:type sh:NodeShape;
-    sh:targetClass gbfs:Station;
+mobivoc:BicycleParkingStationShape rdf:type sh:NodeShape;
+    sh:targetClass mobivoc:BicycleParkingStation;
     sh:property [
-  sh:path <http://purl.org/dc/terms/identifier>;
+  sh:path dcterms:identifier;
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
-  sh:path <gbfs:https://w3id.org/gbfs#station_name>;
+  sh:path gbfs:station_name;
   sh:description "Public name of the station.";
   sh:name "https://w3id.org/gbfs#station_name";
   sh:minCount 1;
@@ -125,8 +127,25 @@ gbfs:StationShape rdf:type sh:NodeShape;
 ], [
   sh:path gbfs:rental_uris;
   sh:description "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).";
-  sh:name "rental_uris";
-  sh:in (gbfs:android gbfs:ios gbfs:web)
+  sh:name "rental_uris"
+].
+gbfs:Rental_urisShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Rental_uris;
+    sh:property [
+  sh:path gbfs:android;
+  sh:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+  sh:name "android";
+  sh:datatype "xsd:anyURI"
+], [
+  sh:path gbfs:ios;
+  sh:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+  sh:name "ios";
+  sh:datatype "xsd:anyURI"
+], [
+  sh:path gbfs:web;
+  sh:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+  sh:name "web";
+  sh:datatype "xsd:anyURI"
 ], [
   sh:path gbfs:vehicle_type_capacity;
   sh:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).";

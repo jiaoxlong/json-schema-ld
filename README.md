@@ -2,12 +2,15 @@
 
 # Introduction
 
-[JSON Schema](https://json-schema.org/) is a declarative vocabulary for validating JSON format documents. It allows us 
-to specify the number of special primitives in a schema or multiple schemas against what valid JSON objects should look 
-like. In contrast to JSON-LD, JSON Schema is not designed for linked data. The annotations and structure
-described in a JSON Schema are good for an overall API description and for data publishing but unsuitable for data 
-share and integration on the web. Thus, we implement this tool [json-to-rdf-shacl] to transform JSON Schema into 
-[RDF Schema](https://www.w3.org/2019/wot/json-schema) and data shapes in SHACL.
+JSON Schema LD is a syntactic sugar for [JSON Schema](https://json-schema.org/) to enable generative interoperability
+by means of representing JSON schema in RDF vocabularies ([RDF Scheme](https://www.w3.org/TR/rdf-schema/)) and RDF
+shapes in [SHACL](https://www.w3.org/TR/shacl/).
+
+A JSON Schema is a declarative vocabulary specifies a number of rules to describe what objects serialized in JSON based
+format should look like. With JSON Schema LD, domain models and application profiles are extracted from existing
+implementation model in JSON Schema and represented in [RDF Schema](https://www.w3.org/TR/rdf-schema/) and [Shacl shapes](https://www.w3.org/TR/shacl/).
+
+
 
 # GBFS use case
 

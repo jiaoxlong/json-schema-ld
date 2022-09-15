@@ -1,16 +1,18 @@
 @prefix dash: <http://datashapes.org/dash#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11Shape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
     sh:property [
-  sh:path <http://purl.org/dc/terms/modified>;
+  sh:path dcterms:modified;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 1450155600;
@@ -39,5 +41,5 @@ gbfs:VersionShape rdf:type sh:NodeShape;
   sh:name "url";
   sh:minCount 1;
   sh:maxCount 1;
-  sh:datatype "xsd:string"
+  sh:datatype "xsd:anyURI"
 ].

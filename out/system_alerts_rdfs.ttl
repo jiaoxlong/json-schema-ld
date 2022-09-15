@@ -1,4 +1,4 @@
-@prefix schema: <http://schema.org/#>.
+@prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
@@ -11,6 +11,8 @@
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>.
@@ -36,35 +38,35 @@ gbfs:alert_id dcterms:description "Identifier for this alert.";
     rdfs:label "alert_id";
     rdfs:domain gbfs:Alert;
     rdfs:range xsd:string.
-<gbfs:https://w3id.org/gbfs#alert_type> dcterms:description "Type of alert.";
+gbfs:alert_type dcterms:description "Type of alert.";
     rdf:type rdf:Property;
-    rdfs:label "https://w3id.org/gbfs#alert_type";
-    rdfs:domain gbfs:Alert.
-<gbfs:Https://w3id.org/gbfs#alert_type> rdf:type skos:ConceptSchema.
-<gbfs:https://w3id.org/gbfs#alert_type> rdfs:range [
+    rdfs:label "alert_type";
+    rdfs:domain gbfs:Alert;
+    rdf:type skos:ConceptSchema;
+    rdfs:range [
   owl:oneOf (gbfs:SYSTEM_CLOSURE gbfs:STATION_CLOSURE gbfs:STATION_MOVE gbfs:OTHER)
 ].
 gbfs:SYSTEM_CLOSURE rdf:type skos:Concept;
-    skos:inSchema <gbfs:Https://w3id.org/gbfs#alert_type>;
+    skos:inSchema gbfs:alert_type;
     rdfs:label "SYSTEM_CLOSURE".
 gbfs:STATION_CLOSURE rdf:type skos:Concept;
-    skos:inSchema <gbfs:Https://w3id.org/gbfs#alert_type>;
+    skos:inSchema gbfs:alert_type;
     rdfs:label "STATION_CLOSURE".
 gbfs:STATION_MOVE rdf:type skos:Concept;
-    skos:inSchema <gbfs:Https://w3id.org/gbfs#alert_type>;
+    skos:inSchema gbfs:alert_type;
     rdfs:label "STATION_MOVE".
 gbfs:OTHER rdf:type skos:Concept;
-    skos:inSchema <gbfs:Https://w3id.org/gbfs#alert_type>;
+    skos:inSchema gbfs:alert_type;
     rdfs:label "OTHER".
 gbfs:AlertTime dcterms:description "Array of objects indicating when the alert is in effect.";
     rdf:type rdfs:Class;
     rdfs:label "AlertTime".
-<gbfs:https://w3id.org/gbfs#alert_start> rdf:type rdf:Property;
-    rdfs:label "https://w3id.org/gbfs#alert_start";
+gbfs:alert_start rdf:type rdf:Property;
+    rdfs:label "alert_start";
     rdfs:domain gbfs:AlertTime;
     rdfs:range xsd:decimal.
-<gbfs:https://w3id.org/gbfs#alert_end> rdf:type rdf:Property;
-    rdfs:label "https://w3id.org/gbfs#alert_end";
+gbfs:alert_end rdf:type rdf:Property;
+    rdfs:label "alert_end";
     rdfs:domain gbfs:AlertTime;
     rdfs:range xsd:decimal.
 gbfs:station_ids rdf:type rdf:Property;

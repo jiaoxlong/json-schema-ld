@@ -108,11 +108,13 @@ export class JSCLDSchema{
                     // Class Shacl targetClass
                     this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', p.property_subject));
                     this.rdf_writer.addQuad(p.property_schema.rdfs)
-                    this.rdf_writer.addQuad(node_node_literal(
-                        p.property_schema.id,
-                        'rdfs:label',
-                        p.property_name.replace(this.config.base_url, '')));
-                    shacl_annot_node.push(blank_node_literal('sh:name', p.property_name.replace(this.config.base_url, '')))
+                    if (! p.property_schema.isExisting) {
+                        this.rdf_writer.addQuad(node_node_literal(
+                            p.property_schema.id,
+                            'rdfs:label',
+                            p.property_schema.label));
+                        shacl_annot_node.push(blank_node_literal('sh:name', p.property_name.replace(this.config.base_url, '')))
+                    }
                 }
                 /**
                  * Properties
@@ -132,7 +134,7 @@ export class JSCLDSchema{
                         this.rdf_writer.addQuad(node_node_literal(
                             p.property_schema.id,
                             'rdfs:label',
-                            p.property_name.replace(this.config.base_prefix + ':', '')));
+                            p.property_schema.label));
 
                         shacl_annot_node.push(blank_node_literal('sh:name',
                             p.property_name.replace(this.config.base_prefix + ':', '')));

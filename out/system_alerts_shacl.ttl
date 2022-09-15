@@ -1,16 +1,18 @@
 @prefix dash: <http://datashapes.org/dash#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix schema: <http://schema.org/>.
+@prefix schema: <https://schema.org/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
 
 <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjsonShape> rdf:type sh:NodeShape;
     sh:targetClass <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
     sh:property [
-  sh:path <http://purl.org/dc/terms/modified>;
+  sh:path dcterms:modified;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;
@@ -35,7 +37,7 @@ gbfs:AlertShape rdf:type sh:NodeShape;
   sh:maxCount 1;
   sh:datatype xsd:string
 ], [
-  sh:path <gbfs:https://w3id.org/gbfs#alert_type>;
+  sh:path gbfs:alert_type;
   sh:description "Type of alert.";
   sh:name "https://w3id.org/gbfs#alert_type";
   sh:in (gbfs:SYSTEM_CLOSURE gbfs:STATION_CLOSURE gbfs:STATION_MOVE gbfs:OTHER);
@@ -45,12 +47,12 @@ gbfs:AlertShape rdf:type sh:NodeShape;
 gbfs:AlertTimeShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:AlertTime;
     sh:property [
-  sh:path <gbfs:https://w3id.org/gbfs#alert_start>;
+  sh:path gbfs:alert_start;
   sh:name "https://w3id.org/gbfs#alert_start";
   sh:minInclusive 0;
   sh:datatype xsd:decimal
 ], [
-  sh:path <gbfs:https://w3id.org/gbfs#alert_end>;
+  sh:path gbfs:alert_end;
   sh:name "https://w3id.org/gbfs#alert_end";
   sh:minInclusive 0;
   sh:datatype xsd:decimal
@@ -80,7 +82,7 @@ gbfs:AlertTimeShape rdf:type sh:NodeShape;
   sh:name "description";
   sh:datatype xsd:string
 ], [
-  sh:path <http://purl.org/dc/terms/modified>;
+  sh:path dcterms:modified;
   sh:minCount 1;
   sh:maxCount 1;
   sh:minInclusive 0;

@@ -6,7 +6,7 @@ import {
     NullSchema,
     NumberSchema, ObjectSchema,
     Property,
-    StringSchema, ArraySchema
+    StringSchema, ArraySchema, ClassSchema
 } from "../lib/JSONSchema";
 import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../lib/schemaKWs";
 import {ConfigParser} from "./ConfigParser";
@@ -39,39 +39,45 @@ export class Traverse{
         if ('maxItems' in data) maxItems = data.maxItems;
         if ('properties' in data){
             // 'required' keyword appear priors to the required properties in a JSON schema.
+
             for (const property in data['properties']) {
+
                 let isRequired:boolean = false;
+                let isExisting:boolean = false;
                 if (this.required.indexOf(property) > -1) {
                     isRequired = true;
                 }
+                if('ld.existing' in data.properties[property]){
+                    isExisting = true;
+                }
                 if (data.properties[property].type === 'string') {
                     let string_schema = new StringSchema(data.properties[property], this.config, property,
-                        {isRequired:isRequired});
+                        {isRequired:isRequired, isExisting:isExisting});
                     let p_ins = new Property(this.config, this.current, property, string_schema);
                     this.properties.push(p_ins);
                 }
                 if (data.properties[property].type === 'integer') {
                     let int_schema = new IntegerSchema(data.properties[property], this.config, property,
-                        {isRequired:isRequired});
+                        {isRequired:isRequired, isExisting:isExisting});
                     let p_ins = new Property(this.config, this.current, property, int_schema);
                     this.properties.push(p_ins);
                 }
                 if (data.properties[property].type === 'number') {
                     let number_schema = new NumberSchema(data.properties[property], this.config, property,
-                        {isRequired:isRequired});
+                        {isRequired:isRequired, isExisting:isExisting});
                     let p_ins = new Property(this.config, this.current, property, number_schema);
                     this.properties.push(p_ins);
 
                 }
                 if (data.properties[property].type === 'boolean') {
                     let boolean_schema = new BooleanSchema(data.properties[property], this.config, property,
-                        {isRequired:isRequired});
+                        {isRequired:isRequired, isExisting:isExisting});
                     let p_ins = new Property(this.config, this.current, property, boolean_schema);
                     this.properties.push(p_ins);
                 }
                 if (data.properties[property].type === 'null') {
                     let null_schema = new NullSchema(data.properties[property], this.config, property,
-                        {isRequired:isRequired});
+                        {isRequired:isRequired, isExisting:isExisting});
                     let p_ins = new Property(this.config, this.current, property, null_schema);
                     this.properties.push(p_ins);
                 }
@@ -81,8 +87,42 @@ export class Traverse{
                     }
                     else{
 
+                        if('ld.blank' in data.properties[property]){
+                            if (data.properties[property]['ld.range']===undefined)
+                                throw new Error('Except "ld.blank" attribute when using "ld.blank"');
+                            const ld_blank_class = data.properties[property]['ld.range']
+                            if (data.properties[property]['ld.blank'] == true){
+                                let obj_schema = new ObjectSchema(data.properties[property], this.config, property,
+                                    {
+                                        isRequired: isRequired,
+                                        isExisting: isExisting,
+                                    });
+                                let p_ins = new Property(this.config, this.current, property, obj_schema);
+                                this.properties.push(p_ins)
+                                let class_schema = new ClassSchema({}, this.config, ld_blank_class,
+                                    {isClass:true});
+                                let p_class_ins = new Property(this.config, ld_blank_class,ld_blank_class, class_schema);
+                                this.properties.push(p_class_ins);
+                                this.previous = this.current;
+                                this.current = ld_blank_class;
+                                this.traverse(data.properties[property]);
+                                this.current = this.previous;
+                                /**
+                                for (const sub_property in data.properties[property].properties){
+                                    let sub_obj_schema = new ObjectSchema(data.properties[property].properties[sub_property],
+                                        this.config, sub_property, {
+                                        isRequired: isRequired,
+                                        isExisting: isExisting,
+                                    })
+                                    let sub_p_ins = new Property(this.config, data.properties[property]['ld.range'], sub_property, sub_obj_schema);
+                                    this.properties.push(sub_p_ins)
+                                }
+                                 */
+                            }
+                        }
+
                         // ld.enum Object schema only
-                        if ('ld.enum' in data.properties[property]){
+                        else if ('ld.enum' in data.properties[property]){
                             if (data.properties[property]['ld.enum'] == true){
                                 let enum_tmp = {};
                                 for (const p in data.properties[property].properties){
@@ -92,6 +132,7 @@ export class Traverse{
                                 let obj_schema = new ObjectSchema(data.properties[property], this.config, property,
                                     {
                                         isRequired: isRequired,
+                                        isExisting:isExisting,
                                         isEnum:true,
                                         ld_enum:enum_tmp});
                                 let p_ins = new Property(this.config, this.current, property, obj_schema);
@@ -101,7 +142,7 @@ export class Traverse{
                         }
                         else {
                             let obj_schema = new ObjectSchema(data.properties[property], this.config, property,
-                                {isRequired: isRequired});
+                                {isRequired: isRequired, isExisting:isExisting});
                             let p_ins = new Property(this.config, this.current, property, obj_schema);
                             this.properties.push(p_ins);
                             if ((data.properties[property]['ld.geoJsonFeature'] === true) ||
@@ -121,7 +162,9 @@ export class Traverse{
                             this.current = data.properties[property]['ld.id'];
                             let array_schema = new ArraySchema(data.properties[property], this.config, property,
                                 {isClass:true, isRequired:isRequired,
-                                    minItems:minItems, maxItems:maxItems});
+                                    isExisting:isExisting,
+                                    minItems:minItems,
+                                    maxItems:maxItems});
                             let p_ins = new Property(this.config,this.current, property, array_schema);
                             this.properties.push(p_ins)
                             this.traverse(data.properties[property].items);
@@ -141,7 +184,8 @@ export class Traverse{
                         this.config,
                         this.id,
                         property,
-                        new AnyOfSchema(data.properties[property], this.config, property, 'anyOf'));
+                        new AnyOfSchema(data.properties[property], this.config, property, 'anyOf',
+                            {isRequired:isRequired, isExisting:isExisting}));
                     this.properties.push(p_ins)
                 }
                 if ('allOf' in data.properties[property]) {
@@ -149,7 +193,8 @@ export class Traverse{
                         this.config,
                         this.id,
                         property,
-                        new AnyOfSchema(data.properties[property], this.config, property, 'allOf'));
+                        new AnyOfSchema(data.properties[property], this.config, property, 'allOf',
+                            {isRequired:isRequired, isExisting:isExisting}));
                     this.properties.push(p_ins)
                 }
                 if ('oneOf' in data.properties[property]) {
@@ -157,7 +202,8 @@ export class Traverse{
                         this.config,
                         this.id,
                         property,
-                        new AnyOfSchema(data.properties[property], this.config, property, 'oneOf'));
+                        new AnyOfSchema(data.properties[property], this.config, property, 'oneOf',
+                            {isRequired:isRequired, isExisting:isExisting}));
                     this.properties.push(p_ins)
                 }
                 if ('not' in data.properties[property]) {
@@ -165,7 +211,8 @@ export class Traverse{
                         this.config,
                         this.id,
                         property,
-                        new AnyOfSchema(data.properties[property], this.config, property, 'not'));
+                        new AnyOfSchema(data.properties[property], this.config, property, 'not',
+                            {isRequired:isRequired, isExisting:isExisting}));
                     this.properties.push(p_ins)
                 }
 
@@ -173,6 +220,7 @@ export class Traverse{
         }
         else{
             //When an array schema contains non-object schema
+            // isRequired and isExisting are not considered here.
             if ('items' in data) {
                 if (data.items.type === 'string') {
                     let string_schema = new StringSchema(data.items, this.config, this.current,

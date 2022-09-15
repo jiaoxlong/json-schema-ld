@@ -1,4 +1,4 @@
-@prefix schema: <http://schema.org/#>.
+@prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
@@ -11,6 +11,8 @@
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches gbfs:StationInformation.
@@ -31,43 +33,40 @@ gbfs:ttl dcterms:description "Number of seconds before the data in the feed will
     rdfs:label "ttl";
     rdfs:domain gbfs:StationInformation;
     rdfs:range xsd:integer.
-gbfs:Station dcterms:title "Station";
-    dcterms:description "Public transport station (eg. railway station, metro station, bus station)";
-    rdf:type rdfs:Class;
-    rdfs:label "Station".
-dcterms:identifier rdfs:domain gbfs:Station;
+mobivoc:BicycleParkingStation rdf:type rdfs:Class.
+dcterms:identifier rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
-<gbfs:https://w3id.org/gbfs#station_name> dcterms:description "Public name of the station.";
+gbfs:station_name dcterms:description "Public name of the station.";
     rdf:type rdf:Property;
-    rdfs:label "https://w3id.org/gbfs#station_name";
-    rdfs:domain gbfs:Station;
+    rdfs:label "station_name";
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
 gbfs:shortName dcterms:description "Short name or other type of identifier.";
     rdf:type rdf:Property;
     rdfs:label "shortName";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
-geo:lat rdfs:domain gbfs:Station;
+geo:lat rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:decimal.
-geo:long rdfs:domain gbfs:Station;
+geo:long rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:decimal.
-<http://schema.org/address> rdfs:domain gbfs:Station;
+schema:address rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
 gbfs:cross_street dcterms:description "Cross street or landmark where the station is located.";
     rdf:type rdf:Property;
     rdfs:label "cross_street";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
 gbfs:region_id dcterms:description "Identifier of the region where the station is located.";
     rdf:type rdf:Property;
     rdfs:label "region_id";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
-<http://schema.org/postalCode> rdfs:domain gbfs:Station;
+schema:postalCode rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
 gbfs:rental_methods rdf:type rdf:Property;
     rdfs:label "rental_methods";
-    rdfs:domain gbfs:Station.
+    rdfs:domain mobivoc:BicycleParkingStation.
 gbfs:Rental_methods rdf:type skos:ConceptSchema.
 gbfs:rental_methods rdfs:range [
   owl:oneOf (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone)
@@ -99,17 +98,17 @@ gbfs:phone rdf:type skos:Concept;
 gbfs:is_virtual_station dcterms:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
     rdf:type rdf:Property;
     rdfs:label "is_virtual_station";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:boolean.
 gbfs:stationArea dcterms:description "A multipolygon that describes the area of a virtual station (added in v2.1-RC).";
     rdf:type rdf:Property;
     rdfs:label "stationArea";
-    rdfs:domain gbfs:Station;
-    rdfs:range <http://www.opengis.net/ont/geosparql#Geometry>.
+    rdfs:domain mobivoc:BicycleParkingStation;
+    rdfs:range geosparql:Geometry.
 gbfs:parking_type dcterms:description "Type of parking station. Added in v2.3";
     rdf:type rdf:Property;
     rdfs:label "parking_type";
-    rdfs:domain gbfs:Station.
+    rdfs:domain mobivoc:BicycleParkingStation.
 gbfs:Parking_type rdf:type skos:ConceptSchema.
 gbfs:parking_type rdfs:range [
   owl:oneOf (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other)
@@ -132,53 +131,55 @@ gbfs:other rdf:type skos:Concept;
 gbfs:parking_hoop dcterms:description "Are parking hoops present at this station? Added in v2.3";
     rdf:type rdf:Property;
     rdfs:label "parking_hoop";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:boolean.
 gbfs:contact_phone dcterms:description "Contact phone of the station. Added in v2.3";
     rdf:type rdf:Property;
     rdfs:label "contact_phone";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:string.
 gbfs:capacity dcterms:description "Number of total docking points installed at this station, both available and unavailable.";
     rdf:type rdf:Property;
     rdfs:label "capacity";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:integer.
 gbfs:vehicle_capacity dcterms:description "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC).";
     rdf:type rdf:Property;
     rdfs:label "vehicle_capacity";
-    rdfs:domain gbfs:Station.
+    rdfs:domain mobivoc:BicycleParkingStation.
 gbfs:is_valet_station dcterms:description "Are valet services provided at this station? (added in v2.1-RC)";
     rdf:type rdf:Property;
     rdfs:label "is_valet_station";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:boolean.
 gbfs:is_charging_station dcterms:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
     rdf:type rdf:Property;
     rdfs:label "is_charging_station";
-    rdfs:domain gbfs:Station;
+    rdfs:domain mobivoc:BicycleParkingStation;
     rdfs:range xsd:boolean.
 gbfs:rental_uris dcterms:description "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).";
     rdf:type rdf:Property;
     rdfs:label "rental_uris";
-    rdfs:domain gbfs:Station.
-gbfs:Rental_uris rdf:type skos:ConceptSchema.
-gbfs:rental_uris rdfs:range [
-  owl:oneOf (gbfs:android gbfs:ios gbfs:web)
-].
-gbfs:android rdf:type skos:Concept;
-    skos:inSchema gbfs:Rental_uris;
+    rdfs:domain mobivoc:BicycleParkingStation;
+    rdfs:range gbfs:Rental_uris.
+gbfs:Rental_uris rdf:type rdfs:Class;
+    rdfs:label "Rental_uris".
+gbfs:android dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:label "android";
-    dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).".
-gbfs:ios rdf:type skos:Concept;
-    skos:inSchema gbfs:Rental_uris;
+    rdfs:domain gbfs:Rental_uris;
+    rdfs:range xsd:anyURI.
+gbfs:ios dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:label "ios";
-    dcterms:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).".
-gbfs:web rdf:type skos:Concept;
-    skos:inSchema gbfs:Rental_uris;
+    rdfs:domain gbfs:Rental_uris;
+    rdfs:range xsd:anyURI.
+gbfs:web dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+    rdf:type rdf:Property;
     rdfs:label "web";
-    dcterms:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).".
+    rdfs:domain gbfs:Rental_uris;
+    rdfs:range xsd:anyURI.
 gbfs:vehicle_type_capacity dcterms:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).";
     rdf:type rdf:Property;
     rdfs:label "vehicle_type_capacity";
-    rdfs:domain gbfs:Station.
+    rdfs:domain mobivoc:BicycleParkingStation.

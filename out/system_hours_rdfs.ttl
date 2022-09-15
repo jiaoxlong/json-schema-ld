@@ -1,4 +1,4 @@
-@prefix schema: <http://schema.org/#>.
+@prefix schema: <https://schema.org/>.
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
@@ -11,6 +11,8 @@
 @prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
 @prefix api: <http://purl.org/linked-data/api/vocab>.
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 
 <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson-ld> rdf:type jsonsc-ld:Schema;
     jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>.

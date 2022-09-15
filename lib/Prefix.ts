@@ -1,6 +1,6 @@
 export const RDFS_PREFIX =  {
     prefixes: {
-        "schema": "http://schema.org/#",
+        "schema": "https://schema.org/",
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
@@ -12,7 +12,9 @@ export const RDFS_PREFIX =  {
         "gbfs": "https://w3id.org/gbfs#",
         "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
         "api":"http://purl.org/linked-data/api/vocab",
-        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+        "mobivoc":"http://schema.mobivoc.org/#",
+        "geosparql":"http://www.opengis.net/ont/geosparql#"
 
 
 /*        "vs": "http://www.w3.org/2003/06/sw-vocab-status/ns#",
@@ -31,11 +33,13 @@ export const SHACL_PREFIX = {
         "dash": "http://datashapes.org/dash#",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-        "schema": "http://schema.org/",
+        "schema": "https://schema.org/",
         "sh": "http://www.w3.org/ns/shacl#",
+        "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "gbfs": "https://w3id.org/gbfs#",
-        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+        "mobivoc":"http://schema.mobivoc.org/#"
     }
 
 
