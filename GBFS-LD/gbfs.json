@@ -20,7 +20,6 @@
       "minimum": 0
     },
     "version": {
-      "ld.ignore": true,
       "description":
       "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
@@ -35,7 +34,7 @@
           "type": "object",
           "properties": {
             "feeds": {
-              "ld.id": "https://w3id.org/gbfs#Feedd",
+              "ld.id": "https://w3id.org/gbfs#Feed",
               "ld.class": true,
               "description":
               "An array of all of the feeds that are published by the auto-discovery file. Each element in the array is an object with the keys below.",
@@ -44,7 +43,7 @@
                 "type": "object",
                 "properties": {
                   "name": {
-                    "ld.id": "https://w3id.org/gbfs#feedType",
+                    "ld.id": "feedType",
                     "description":
                     "Key identifying the type of feed this is. The key must be the base file name defined in the spec for the corresponding feed type.",
                     "type": "string",
@@ -72,11 +71,9 @@
                 },
                 "required": ["name", "url"]
               }
-            },
-            "required": true
+            }
           }
-        },
-        "required": true
+        }
       },
       "additionalProperties": false
     }

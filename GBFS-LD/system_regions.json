@@ -32,8 +32,8 @@
         "type": "object",
         "properties": {
           "regions": {
-            "ld.id": "https://w3id.org/gbfs#Region",
-            "ld.class": true,
+            "ld.blank": true,
+            "ld.range": "https://w3id.org/gbfs#Region",
             "description": "Array of regions.",
             "type": "array",
             "items": {

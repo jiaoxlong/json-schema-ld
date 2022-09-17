@@ -74,15 +74,15 @@ export class JSCLDSchema{
             this.rdf_writer.addQuad(node_node_literal(this.base_schema.id, key, value));
         }
 
+        // Shacl Shape
+        let shacl_shape = this.subject+'Shape';
+        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
+        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', this.subject));
+
         /**
          * iteration over properties
          */
 
-        // Shacl Shape
-        let shacl_shape:string;
-        shacl_shape = this.subject+'Shape';
-        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
-        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', this.subject));
         for (let p of this.properties){
 
             if (p.property_schema.isIgnored){
@@ -102,7 +102,15 @@ export class JSCLDSchema{
                  * Classes
                  */
                 if (p.property_schema.isClass){
-                    shacl_shape = p.property_subject+'Shape';
+
+                    if (p.property_subject.includes('#'))
+                        shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('#')+1)+'Shape';
+                    else if (p.property_subject.includes('/')) {
+                        shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('/') + 1) + 'Shape';
+                        console.log(shacl_shape)
+                    }
+                    else
+                        shacl_shape = this.config.base_prefix + ':'+p.property_subject+'Shape'
                     // Class SHACL NodeShape
                     this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
                     // Class Shacl targetClass
@@ -149,8 +157,11 @@ export class JSCLDSchema{
                     //skos enum
                     if (p.property_schema.enum) {
                         // rdfs
+                        /**
+                         * When ld.id is set with full URI, captitalizeFirstLetterAfterPrefix will not work!
+                         */
                         this.rdf_writer.addQuad(node_node_node(
-                            capitalizeFirstLetterAfterPrefix(p.property_schema.id),
+                            capitalizeLastFragment(p.property_schema.id),
                             'rdf:type',
                             'skos:ConceptSchema'));
 
@@ -161,11 +172,9 @@ export class JSCLDSchema{
                                 this.rdf_writer.blank(
                                     [blank_node_list('owl:oneOf', this.rdf_writer.list(p.property_schema.enum))]));
                             for (const e of p.property_schema.enum) {
-                                this.rdf_writer.addQuad(e, namedNode('rdf:type'), namedNode('skos:Concept'));
-                                this.rdf_writer.addQuad(e, namedNode('skos:inSchema'),
-                                    namedNode(capitalizeFirstLetterAfterPrefix(p.property_schema.id)));
-                                this.rdf_writer.addQuad(e, namedNode('rdfs:label'),
-                                    literal(e.id.replace(this.config.base_prefix + ':', '')));
+                                this.rdf_writer.addQuad(e,namedNode('rdf:type'), namedNode('skos:Concept'));
+                                this.rdf_writer.addQuad(e,namedNode('skos:inSchema'),namedNode(capitalizeLastFragment(p.property_schema.id)));
+                                this.rdf_writer.addQuad(e, namedNode('rdfs:label'),literal(e.id.replace(this.config.base_prefix + ':', '')));
                             }
                         }
 
@@ -179,7 +188,7 @@ export class JSCLDSchema{
                             for (const e in p.property_schema.enum) {
                                 this.rdf_writer.addQuad(node_node_node(e, 'rdf:type', 'skos:Concept'));
                                 this.rdf_writer.addQuad(node_node_node(e,'skos:inSchema',
-                                    capitalizeFirstLetterAfterPrefix(p.property_schema.id)));
+                                    capitalizeLastFragment(p.property_schema.id)));
                                 this.rdf_writer.addQuad(node_node_literal(e, 'rdfs:label',
                                     e.replace(this.config.base_prefix + ':', '')))
                                 for (let [k, v] of p.property_schema.enum[e])
@@ -277,4 +286,20 @@ function capitalize(s){
 function capitalizeFirstLetterAfterPrefix(s:string){
     let ind = s.indexOf(':')
     return s.slice(0, ind+1)+s[ind+1].toUpperCase()+s.slice(ind+2)
+}
+
+function capitalizeLastFragment(s:string){
+    if (s.includes('http')){
+        let s_index:number;
+        if(s.includes('#'))
+            s_index = s.lastIndexOf('#');
+        else
+            s_index = s.lastIndexOf('/');
+        return s.substring(0,s_index+1) + (s.charAt(s_index+1).toUpperCase()) + s.substring(s_index+2, s.length)
+    }
+    else if (s.includes(':')){
+        return capitalizeFirstLetterAfterPrefix(s)
+    }
+    else
+        return capitalizeFirstLetter(s)
 }

@@ -45,8 +45,9 @@
                   ]
                 },
                 "times": {
-                  "ld.id": "https://w3id.org/gbfs#AlertTime",
-                  "ld.class": true,
+                  "ld.id": "https://w3id.org/gbfs#alertTime",
+                  "ld.blank": true,
+                  "ld.range": "https://w3id.org/gbfs#AlertTime",
                   "description": "Array of objects indicating when the alert is in effect.",
                   "type": "array",
                   "items": {
@@ -94,8 +95,6 @@
                   "type": "string"
                 },
                 "last_updated": {
-                  "ld.id": "http://purl.org/dc/terms/modified",
-                  "ld.existing": true,
                   "description": "Indicates the last time the info for the alert was updated.",
                   "type": "integer",
                   "minimum": 0,

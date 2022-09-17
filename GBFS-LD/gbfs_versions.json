@@ -21,7 +21,6 @@
         "minimum": 0
       },
       "version": {
-        "ld.ignore": true,
         "description":
           "GBFS version number to which the feed conforms, according to the versioning framework.",
         "type": "string",

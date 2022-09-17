@@ -11,5 +11,6 @@
   "ld.ignore": "jsonsc-ld:ignore",
   "ld.included": "jsonsc-ld:included",
   "ld.enum": "jsonsc-ld:enum",
-  "ld.geoJsonFeature": "geo:Geometry"
+  "ld.geoJsonFeature": "geo:Geometry",
+  "ld.blank": "rr:BlankNode"
 }
