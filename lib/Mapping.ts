@@ -1,4 +1,4 @@
-/**
+/**Obsolete
  * JSON schema draft identifiers and common names
  * Specification:
  *   - https://json-schema.org/specification-links.html

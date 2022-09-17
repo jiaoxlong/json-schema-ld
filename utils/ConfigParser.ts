@@ -1,4 +1,4 @@
-import {Schema} from '../lib/JSONSchema';
+import {Schema} from './JSONSchema';
 import {ConfigMapping} from "../lib/ConfigMapping";
 import {match} from './match';
 import {JSC_LD_PREFIX} from "../lib/Prefix";

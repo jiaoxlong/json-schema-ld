@@ -7,8 +7,7 @@
   "type": "object",
   "properties": {
     "last_updated": {
-      "ld.id": "http://purl.org/dc/terms/modified",
-      "ld.existing": true,
+      "ld.ignore": true,
       "description":
       "Last time the data in the feed was updated in POSIX time.",
       "type": "integer",
@@ -31,8 +30,8 @@
       "type": "object",
       "properties": {
         "geofencing_zones": {
-          "ld.id": "https://w3id.org/gbfs#Geofencing_zones",
-          "ld.class": true,
+          "ld.blank": true,
+          "ld.range": "https://w3id.org/gbfs#Geofencing_zones",
           "type": "object",
           "description": "Each geofenced zone and its associated rules and attributes is described as an object within the array of features.",
           "properties": {
@@ -42,10 +41,13 @@
               "enum": ["FeatureCollection"]
             },
             "features": {
-              "ld.included": true,
+              "ld.range": "https://w3id.org/gbfs#Feature",
+              "ld.blank": true,
               "description": "Array of objects.",
               "type": "array",
               "items": {
+                "ld.blank": true,
+                "ld.range": "https://w3id.org/gbfs#Item",
                 "title": "GeoJSON Feature",
                 "type": "object",
                 "properties": {
@@ -54,7 +56,8 @@
                     "enum": ["Feature"]
                   },
                   "properties": {
-                    "ld.included": true,
+                    "ld.blank": true,
+                    "ld.range": "https://w3id.org/gbfs#Property",
                     "description":
                     "Describing travel allowances and limitations.",
                     "type": "object",
@@ -76,8 +79,8 @@
                         "minimum": 1450155600
                       },
                       "rules": {
-                        "ld.id": "https://w3id.org/gbfs#Rule",
-                        "ld.class": true,
+                        "ld.range": "https://w3id.org/gbfs#Rule",
+                        "ld.blank": true,
                         "description": "Array that contains one object per rule.",
                         "type": "array",
                         "items": {

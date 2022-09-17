@@ -5,30 +5,29 @@ import {
     SCHEMA_STRING_FORMATS,
     SCHEMA_COMPOSITIONS,
     SCHEMA_LOGICS
-} from './schemaKWs';
+} from '../lib/schemaKWs';
 import{
     SCHEMA_STRING_BUILDIN
-} from './SchemaKWMapping'
-import {fetchJSON} from '../utils/fetch';
-import {match,merge} from '../utils/match';
-import {Traverse} from "../utils/traverse";
-import {Describer} from "../utils/Describer";
-import {isValidHttpUrl} from "../utils/ConfigParser"
+} from '../lib/SchemaKWMapping'
+import {fetchJSON} from './fetch';
+import {match,merge} from './match';
+import {Traverse} from "./traverse";
+import {isValidHttpUrl} from "./ConfigParser"
 
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
-import {ConfigParser} from "../utils/ConfigParser";
-import {LD_BUILD_IN_ANNOTATION} from "./LDBuildin";
+import {ConfigParser} from "./ConfigParser";
+import {LD_BUILD_IN_ANNOTATION} from "../lib/LDBuildin";
 import {Quad} from "n3";
 import {
     blank_node_list,
     blank_node_literal,
     blank_node_namedNode,
     blank_node_node, node_node_node,
-} from "../utils/n3_utils";
-import {SchemaOptArgs} from "../utils/types";
+} from "./n3_utils";
+import {SchemaOptArgs} from "./types";
 
 
 export class Schema {

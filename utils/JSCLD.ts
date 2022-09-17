@@ -1,4 +1,4 @@
-import {CompositionSchema, ObjectSchema, Property, Schema} from "../lib/JSONSchema";
+import {CompositionSchema, ObjectSchema, Property, Schema} from "./JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../lib/Prefix";
@@ -107,7 +107,6 @@ export class JSCLDSchema{
                         shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('#')+1)+'Shape';
                     else if (p.property_subject.includes('/')) {
                         shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('/') + 1) + 'Shape';
-                        console.log(shacl_shape)
                     }
                     else
                         shacl_shape = this.config.base_prefix + ':'+p.property_subject+'Shape'

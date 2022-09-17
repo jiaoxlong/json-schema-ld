@@ -7,7 +7,7 @@ import {
     NumberSchema, ObjectSchema,
     Property,
     StringSchema, ArraySchema, ClassSchema
-} from "../lib/JSONSchema";
+} from "./JSONSchema";
 import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../lib/schemaKWs";
 import {ConfigParser} from "./ConfigParser";
 import {match} from "./match";
@@ -94,7 +94,7 @@ export class Traverse{
 
                         if ('ld.blank' in data.properties[property]) {
                             if (data.properties[property]['ld.range'] === undefined)
-                                throw new Error('Except "ld.blank" attribute when using "ld.blank"');
+                                throw new Error('Expect "ld.range" attribute when using "ld.blank"');
                             const ld_blank_class = data.properties[property]['ld.range']
                             if (data.properties[property]['ld.blank'] == true) {
                                 this.createObjectProperty(data.properties[property], this.config,this.current,property,
@@ -156,7 +156,7 @@ export class Traverse{
                         }
                         else if (data.properties[property]['ld.blank'] === true) {
                             if (data.properties[property]['ld.range'] === undefined)
-                                throw new Error('Except "ld.blank" attribute when using "ld.blank"');
+                                throw new Error('Expect "ld.range" attribute when using "ld.blank"');
                             const ld_array_blank_class = data.properties[property]['ld.range']
                             this.createArrayProperty(data.properties[property], this.config, this.current,property,
                                 {

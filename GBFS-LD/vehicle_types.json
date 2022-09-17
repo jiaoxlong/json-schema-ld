@@ -7,6 +7,7 @@
     "type": "object",
     "properties": {
       "last_updated": {
+        "ld.ignore": true,
         "description":
           "Last time the data in the feed was updated in POSIX time.",
         "type": "integer",
@@ -25,10 +26,13 @@
         "const": "2.3-RC"
       },
       "data": {
+        "ld.included": true,
         "description": "Response data in the form of name:value pairs.",
         "type": "object",
         "properties": {
           "vehicle_types": {
+            "ld.id": "https://w3id.org/gbfs#Vehicle_type",
+            "ld.class": true,
             "description":
               "Array that contains one object per vehicle type in the system as defined below.",
             "type": "array",
@@ -77,6 +81,8 @@
                   }
                 },
                 "vehicle_assets": {
+                  "ld.blank": true,
+                  "ld.range": "https://w3id.org/gbfs#Vehicle_assets",
                   "description": "An object where each key defines one of the items listed below added in v2.3-RC.",
                   "type": "object",
                   "properties": {
