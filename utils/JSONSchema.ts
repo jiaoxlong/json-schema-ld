@@ -84,10 +84,15 @@ export class Schema {
             }
         }
         if(this.id === undefined){
-            if (property_name.includes('http'))
-                this.id = property_name;
+            // when id or $id is not defined in the base schema
+            if  (property_name === undefined)
+                this.id = config.base_prefix+ ':json';
             else
-                this.id = config.base_prefix + ':' + property_name;
+                if (property_name.includes('http'))
+                    this.id = property_name;
+                else
+                    this.id = config.base_prefix + ':' + property_name;
+
         }
         // rdfs:label
         // 1. when ld.id is defined as an URIr

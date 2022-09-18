@@ -4,6 +4,7 @@ import {match} from './match';
 import {JSC_LD_PREFIX} from "../lib/Prefix";
 import * as fs from "fs";
 import * as path from "path";
+import {N3FormatTypes} from "./types";
 
 export class ConfigParser{
     id:string;
@@ -11,6 +12,7 @@ export class ConfigParser{
     out_dir:string;
     base_prefix:string;
     base_url:string;
+    format:string;
     annot:Map<string,any>;
     data:object;
     constructor(config_path:string, prefix:object=JSC_LD_PREFIX) {
@@ -39,7 +41,17 @@ export class ConfigParser{
                         "nor to a file");
                 this.source = source;
             }
+
             else throw Error('Unknown JSON Schema extension format. A "source" attribute is expected!');
+            if('format' in this.data){
+                if (N3FormatTypes.includes(this.data['format'])){
+                    this.format = this.data['format']
+                }
+                else
+                    throw new Error (`Unknown "${this.data['format']}" format defined in the config file.`)
+            }
+            else
+                this.format = "Turtle";
             if ('base_prefix' in this.data) this.base_prefix = this.data['base_prefix'];
             else throw Error('Unknown JSON Schema extension format. A "base_prefix" attribute is expected!');
             if ('base_url' in this.data) this.base_url = this.data['base_url'];

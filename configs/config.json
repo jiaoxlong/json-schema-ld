@@ -5,6 +5,7 @@
   "base_prefix": "gbfs",
   "base_url": "https://w3id.org/gbfs#",
   "title": "The GBFS LD configuration",
+  "format": "Turtle",
   "description": "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary",
   "creators": [
     "https://pietercolpaert.be/#me",
