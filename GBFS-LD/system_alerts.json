@@ -46,7 +46,7 @@
                 },
                 "times": {
                   "ld.id": "https://w3id.org/gbfs#alertTime",
-                  "ld.blank": true,
+                  "ld.association": true,
                   "ld.range": "https://w3id.org/gbfs#AlertTime",
                   "description": "Array of objects indicating when the alert is in effect.",
                   "type": "array",

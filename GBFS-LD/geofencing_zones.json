@@ -30,7 +30,7 @@
       "type": "object",
       "properties": {
         "geofencing_zones": {
-          "ld.blank": true,
+          "ld.association": true,
           "ld.range": "https://w3id.org/gbfs#Geofencing_zones",
           "type": "object",
           "description": "Each geofenced zone and its associated rules and attributes is described as an object within the array of features.",
@@ -42,11 +42,11 @@
             },
             "features": {
               "ld.range": "https://w3id.org/gbfs#Feature",
-              "ld.blank": true,
+              "ld.association": true,
               "description": "Array of objects.",
               "type": "array",
               "items": {
-                "ld.blank": true,
+                "ld.association": true,
                 "ld.range": "https://w3id.org/gbfs#Item",
                 "title": "GeoJSON Feature",
                 "type": "object",
@@ -56,7 +56,7 @@
                     "enum": ["Feature"]
                   },
                   "properties": {
-                    "ld.blank": true,
+                    "ld.association": true,
                     "ld.range": "https://w3id.org/gbfs#Property",
                     "description":
                     "Describing travel allowances and limitations.",
@@ -80,7 +80,7 @@
                       },
                       "rules": {
                         "ld.range": "https://w3id.org/gbfs#Rule",
-                        "ld.blank": true,
+                        "ld.association": true,
                         "description": "Array that contains one object per rule.",
                         "type": "array",
                         "items": {

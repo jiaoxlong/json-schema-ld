@@ -39,7 +39,7 @@
         "stations": {
           "ld.range": "http://schema.mobivoc.org/#BicycleParkingStation",
           "ld.existing":true,
-          "ld.blank": true,
+          "ld.association": true,
           "type": "array",
           "items": {
             "type": "object",

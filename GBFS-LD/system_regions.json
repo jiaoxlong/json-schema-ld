@@ -32,7 +32,7 @@
         "type": "object",
         "properties": {
           "regions": {
-            "ld.blank": true,
+            "ld.association": true,
             "ld.range": "https://w3id.org/gbfs#Region",
             "description": "Array of regions.",
             "type": "array",

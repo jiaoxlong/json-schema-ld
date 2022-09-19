@@ -24,7 +24,7 @@
         "properties": {
           "bikes": {
             "ld.range": "https://w3id.org/gbfs#Bike",
-            "ld.blank": true,
+            "ld.association": true,
             "ld.description": "bikes that are available for rent",
             "type": "array",
             "items": {

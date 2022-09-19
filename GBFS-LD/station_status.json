@@ -53,7 +53,7 @@
                 "minimum": 0
               },
               "vehicle_types_available": {
-                "ld.blank": true,
+                "ld.association": true,
                 "ld.range": "https://w3id.org/gbfs#Vehicle_types_available",
                 "description":
                 "Array of objects displaying the total number of each vehicle type at the station (added in v2.1-RC).",
@@ -114,7 +114,7 @@
                 "minimum": 1450155600
               },
               "vehicle_docks_available": {
-                "ld.blank": true,
+                "ld.association": true,
                 "ld.range": "https://w3id.org/gbfs#Vehicle_docks_available",
                 "description":
                 "Object displaying available docks by vehicle type (added in v2.1-RC).",

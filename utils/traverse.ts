@@ -92,11 +92,11 @@ export class Traverse{
                             this.traverse(data.properties[property]);
                     } else {
 
-                        if ('ld.blank' in data.properties[property]) {
+                        if ('ld.association' in data.properties[property]) {
                             if (data.properties[property]['ld.range'] === undefined)
-                                throw new Error('Expect "ld.range" attribute when using "ld.blank"');
+                                throw new Error('Expect "ld.range" attribute when using "ld.association"');
                             const ld_blank_class = data.properties[property]['ld.range']
-                            if (data.properties[property]['ld.blank'] == true) {
+                            if (data.properties[property]['ld.association'] == true) {
                                 this.createObjectProperty(data.properties[property], this.config,this.current,property,
                                     {
                                         isRequired: isRequired,
@@ -166,9 +166,9 @@ export class Traverse{
                                 });
                             this.traverse(data.properties[property].items);
                         }
-                        else if (data.properties[property]['ld.blank'] === true) {
+                        else if (data.properties[property]['ld.association'] === true) {
                             if (data.properties[property]['ld.range'] === undefined)
-                                throw new Error('Expect "ld.range" attribute when using "ld.blank"');
+                                throw new Error('Expect "ld.range" attribute when using "ld.association"');
                             const ld_array_blank_class = data.properties[property]['ld.range']
                             this.createArrayProperty(data.properties[property], this.config, this.current,property,
                                 {

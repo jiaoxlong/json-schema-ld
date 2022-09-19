@@ -75,7 +75,7 @@
                   "type": "string"
                 },
                 "per_km_pricing": {
-                  "ld.blank": true,
+                  "ld.association": true,
                   "ld.range": "https://w3id.org/gbfs#Per_km_pricing",
                   "description":
                     "Array of segments when the price is a function of distance travelled, displayed in kilometers (added in v2.1-RC2).",
@@ -111,7 +111,7 @@
                   }
                 },
                 "per_min_pricing": {
-                  "ld.blank": true,
+                  "ld.association": true,
                   "ld.range": "https://w3id.org/gbfs#Per_min_pricing",
                   "description":
                     "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).",

@@ -81,7 +81,7 @@
                   }
                 },
                 "vehicle_assets": {
-                  "ld.blank": true,
+                  "ld.association": true,
                   "ld.range": "https://w3id.org/gbfs#Vehicle_assets",
                   "description": "An object where each key defines one of the items listed below added in v2.3-RC.",
                   "type": "object",
