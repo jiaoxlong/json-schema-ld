@@ -162,7 +162,7 @@ export class JSCLDSchema{
                         this.rdf_writer.addQuad(node_node_node(
                             capitalizeLastFragment(p.property_schema.id),
                             'rdf:type',
-                            'skos:ConceptSchema'));
+                            'skos:ConceptScheme'));
 
                         if (p.property_schema.enum instanceof Array<any>) {
                             this.rdf_writer.addQuad(
@@ -172,7 +172,7 @@ export class JSCLDSchema{
                                     [blank_node_list('owl:oneOf', this.rdf_writer.list(p.property_schema.enum))]));
                             for (const e of p.property_schema.enum) {
                                 this.rdf_writer.addQuad(e,namedNode('rdf:type'), namedNode('skos:Concept'));
-                                this.rdf_writer.addQuad(e,namedNode('skos:inSchema'),namedNode(capitalizeLastFragment(p.property_schema.id)));
+                                this.rdf_writer.addQuad(e,namedNode('skos:inScheme'),namedNode(capitalizeLastFragment(p.property_schema.id)));
                                 this.rdf_writer.addQuad(e, namedNode('rdfs:label'),literal(e.id.replace(this.config.base_prefix + ':', '')));
                             }
                         }
@@ -186,7 +186,7 @@ export class JSCLDSchema{
                                         this.rdf_writer.list(Object.keys(p.property_schema.enum).map(x => namedNode(x))))]));
                             for (const e in p.property_schema.enum) {
                                 this.rdf_writer.addQuad(node_node_node(e, 'rdf:type', 'skos:Concept'));
-                                this.rdf_writer.addQuad(node_node_node(e,'skos:inSchema',
+                                this.rdf_writer.addQuad(node_node_node(e,'skos:inScheme',
                                     capitalizeLastFragment(p.property_schema.id)));
                                 this.rdf_writer.addQuad(node_node_literal(e, 'rdfs:label',
                                     e.replace(this.config.base_prefix + ':', '')))

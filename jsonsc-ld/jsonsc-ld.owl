@@ -49,7 +49,7 @@ jsonsc-ld:enriches rdf:type owl:ObjectProperty ;
 jsonsc-ld:enum rdf:type owl:ObjectProperty ;
                rdfs:domain jsonsc-ld:Property ;
                rdfs:range <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-               rdfs:comment "jsonsc-ld:enum declares a JSON schema property, containing an array/list of enumerated items, is represented as a skos:ConceptSchema (a situational knowledge). Each enumerated item is a concept in the context of this property."@en ;
+               rdfs:comment "jsonsc-ld:enum declares a JSON schema property, containing an array/list of enumerated items, is represented as a skos:ConceptScheme (a situational knowledge). Each enumerated item is a concept in the context of this property."@en ;
                rdfs:label "enum"@en .
 
 
