@@ -187,11 +187,14 @@ export class StringSchema extends Schema{
         if ('pattern' in data)
             this.shacl.push(blank_node_literal('sh:pattern', data.pattern));
         /* SHACL datatype */
-        if ('format' in data)
-            this.shacl.push(blank_node_literal('sh:datatype', SCHEMA_STRING_BUILDIN[data.format]));
-        else
+        if ('format' in data) {
+            this.shacl.push(blank_node_namedNode('sh:datatype', namedNode(SCHEMA_STRING_BUILDIN[data.format])));
+
+        }
+        else {
             if (!this.enum)
                 this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
+        }
         this.schema_type = 'string'
     }
 
