@@ -23,7 +23,8 @@ export const RDFS_PREFIX =  {
         "airs": "https://raw.githubusercontent.com/airs-linked-data/lov/latest/src/airs_vocabulary.ttl#",
         "vso": "http://purl.org/vso/ns#",
         "dbpedia-owl": "http://dbpedia.org/ontology/",
-        "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"*/
+        "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#"
+        */
 
     }
 }

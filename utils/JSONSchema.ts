@@ -485,7 +485,7 @@ function schema_label(s:string){
     return isValidURL(s) ? '' : s;
 }
 
-function isValidURL(s:string) {
+export function isValidURL(s:string) {
     //https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
     let urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name

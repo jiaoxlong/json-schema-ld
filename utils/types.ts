@@ -36,10 +36,8 @@ const rdfFormatTypes =  <const>[
 
 export const N3FormatTypes = <const>[
     "Turtle",
-    "trig",
     "application/trig",
-    "n-quads",
-    "N-Triples ",
+    "N-Triples",
     "N-Quads",
 ]
 

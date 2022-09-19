@@ -126,7 +126,19 @@ export class Traverse{
                                     });
                                 continue
                             }
-                        } else {
+                        }
+                        else if ('ld.class' in data.properties[property]) {
+                            if (data.properties[property]['ld.id']===undefined)
+                                throw new Error('"ld.class" is defined, but "ld.id" does not present. ')
+                            let ld_class = data.properties[property]['ld.id']
+                            this.createClassProperty({}, this.config, ld_class, ld_class, {isClass: true})
+                            this.previous = this.current;
+                            this.current = ld_class;
+                            this.traverse(data.properties[property]);
+                            this.current = this.previous;
+                        }
+
+                        else {
                             this.createObjectProperty(data.properties[property], this.config, this.current,property,
                                 {isRequired: isRequired, isExisting: isExisting});
                             if ((data.properties[property]['ld.geoJsonFeature'] === true) ||

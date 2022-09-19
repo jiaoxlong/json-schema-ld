@@ -23,8 +23,8 @@
         "type": "object",
         "properties": {
           "bikes": {
-            "ld.id": "https://w3id.org/gbfs#Bike",
-            "ld.class": true,
+            "ld.range": "https://w3id.org/gbfs#Bike",
+            "ld.blank": true,
             "ld.description": "bikes that are available for rent",
             "type": "array",
             "items": {

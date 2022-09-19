@@ -34,9 +34,9 @@ export class JSCLDSchema{
         this.data = require(jsc);
         //Base Schema
         this.base_schema = new Schema(this.data, this.config,this.data['$id'],{})
-        this.subject = this.base_schema.id
-        this.rdf_writer = new N3.Writer(RDFS_PREFIX);
-        this.shacl_writer = new N3.Writer(SHACL_PREFIX);
+        this.subject = this.base_schema.id;
+        this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
+        this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});
         let t = new Traverse(this.base_schema.id,this.data, this.config);
         this.properties = t.properties;
     }

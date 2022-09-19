@@ -37,9 +37,9 @@
       "type": "object",
       "properties": {
         "stations": {
-          "ld.id": "http://schema.mobivoc.org/#BicycleParkingStation",
+          "ld.range": "http://schema.mobivoc.org/#BicycleParkingStation",
           "ld.existing":true,
-          "ld.class": true,
+          "ld.blank": true,
           "type": "array",
           "items": {
             "type": "object",
@@ -198,8 +198,8 @@
                 "type": "boolean"
               },
               "rental_uris": {
-                "ld.blank": true,
-                "ld.range": "https://w3id.org/gbfs#Rental_uris",
+                "ld.class": true,
+                "ld.id": "https://w3id.org/gbfs#Rental_uris",
                 "description":
                 "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).",
                 "type": "object",
