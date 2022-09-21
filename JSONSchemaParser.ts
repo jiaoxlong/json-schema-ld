@@ -1,5 +1,5 @@
-import {ConfigParser} from "./utils/ConfigParser";
-import {JSCLDSchema} from "./utils/JSCLD";
+import {ConfigParser} from "./lib/ConfigParser";
+import {JSCLDSchema} from "./lib/JSCLD";
 const fs = require('fs');
 import * as path from "path";
 

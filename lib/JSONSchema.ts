@@ -5,10 +5,10 @@ import {
     SCHEMA_STRING_FORMATS,
     SCHEMA_COMPOSITIONS,
     SCHEMA_LOGICS
-} from '../lib/schemaKWs';
+} from '../utils/schemaKWs';
 import{
     SCHEMA_STRING_BUILDIN
-} from '../lib/SchemaKWMapping'
+} from '../utils/SchemaKWMapping'
 import {fetchJSON} from './fetch';
 import {match,merge} from './match';
 import {Traverse} from "./traverse";
@@ -19,7 +19,7 @@ const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
 import {ConfigParser} from "./ConfigParser";
-import {LD_BUILD_IN_ANNOTATION} from "../lib/LDBuildin";
+import {LD_BUILD_IN_ANNOTATION} from "./LDBuildin";
 import {Quad} from "n3";
 import {
     blank_node_list,

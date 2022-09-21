@@ -8,7 +8,7 @@ import {
     Property,
     StringSchema, ArraySchema, ClassSchema
 } from "./JSONSchema";
-import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../lib/schemaKWs";
+import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../utils/schemaKWs";
 import {ConfigParser} from "./ConfigParser";
 import {match} from "./match";
 import {SchemaOptArgs} from "./types";

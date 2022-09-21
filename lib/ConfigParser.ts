@@ -1,7 +1,7 @@
 import {Schema} from './JSONSchema';
-import {ConfigMapping} from "../lib/ConfigMapping";
+import {ConfigMapping} from "./ConfigMapping";
 import {match} from './match';
-import {JSC_LD_PREFIX} from "../lib/Prefix";
+import {JSC_LD_PREFIX} from "../utils/Prefix";
 import * as fs from "fs";
 import * as path from "path";
 import {N3FormatTypes} from "./types";

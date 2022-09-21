@@ -1,7 +1,7 @@
 import {CompositionSchema, ObjectSchema, Property, Schema} from "./JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
-import {RDFS_PREFIX, SHACL_PREFIX} from "../lib/Prefix";
+import {RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
 import * as fs from 'fs';
 import * as path from "path";
 import {writer} from "repl";
@@ -14,7 +14,7 @@ import {
     node_node_literal,
     node_node_node
 } from "./n3_utils";
-import {SCHEMA_SHACL_ANNOTATION} from "../lib/SchemaKWMapping";
+import {SCHEMA_SHACL_ANNOTATION} from "../utils/SchemaKWMapping";
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
