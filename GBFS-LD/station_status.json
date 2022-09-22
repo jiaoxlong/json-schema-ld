@@ -33,9 +33,10 @@
       "type": "object",
       "properties": {
         "stations": {
-          "ld.id": "http://schema.mobivoc.org/#BicycleParkingStation",
           "ld.existing":true,
-          "ld.class": true,
+          "ld.class": {
+            "ld.id": "http://schema.mobivoc.org/#BicycleParkingStation"
+          },
           "type": "array",
           "items": {
             "type": "object",
@@ -53,8 +54,10 @@
                 "minimum": 0
               },
               "vehicle_types_available": {
-                "ld.association": true,
-                "ld.range": "https://w3id.org/gbfs#Vehicle_types_available",
+                "ld.association": {
+                  "ld.id": "https://w3id.org/gbfs#Vehicle_types_available",
+                  "ld.description": "Vehicle type instance that is available for renting."
+                },
                 "description":
                 "Array of objects displaying the total number of each vehicle type at the station (added in v2.1-RC).",
                 "type": "array",
@@ -114,8 +117,10 @@
                 "minimum": 1450155600
               },
               "vehicle_docks_available": {
-                "ld.association": true,
-                "ld.range": "https://w3id.org/gbfs#Vehicle_docks_available",
+                "ld.association": {
+                  "ld.id": "https://w3id.org/gbfs#Vehicle_docks_available",
+                  "ld.description": "Vehicle docks available"
+                },
                 "description":
                 "Object displaying available docks by vehicle type (added in v2.1-RC).",
                 "type": "array",

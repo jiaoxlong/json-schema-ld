@@ -32,8 +32,10 @@
         "type": "object",
         "properties": {
           "calendars": {
-            "ld.id": "https://w3id.org/gbfs#Calendar",
-            "ld.class": true,
+            "ld.class": {
+              "ld.id": "https://w3id.org/gbfs#Calendar",
+              "ld.description": "Operation calendar for the system."
+            },
             "type": "array",
             "items": {
               "type": "object",

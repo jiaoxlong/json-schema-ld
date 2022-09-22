@@ -34,8 +34,11 @@
           "type": "object",
           "properties": {
             "feeds": {
-              "ld.id": "https://w3id.org/gbfs#Feed",
-              "ld.class": true,
+              "ld.class": {
+                "ld.id": "https://w3id.org/gbfs#Feed",
+                "ld.title": "title",
+                "ld.description": "An auto-discovery file instance that links to all of the other files published by the system"
+              },
               "description":
               "An array of all of the feeds that are published by the auto-discovery file. Each element in the array is an object with the keys below.",
               "type": "array",

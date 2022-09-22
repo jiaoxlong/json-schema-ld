@@ -31,8 +31,10 @@
         "type": "object",
         "properties": {
           "vehicle_types": {
-            "ld.id": "https://w3id.org/gbfs#Vehicle_type",
-            "ld.class": true,
+            "ld.class": {
+              "ld.id": "https://w3id.org/gbfs#Vehicle_type",
+              "ld.description": "Vehicle type in the system."
+            },
             "description":
               "Array that contains one object per vehicle type in the system as defined below.",
             "type": "array",
@@ -81,8 +83,10 @@
                   }
                 },
                 "vehicle_assets": {
-                  "ld.association": true,
-                  "ld.range": "https://w3id.org/gbfs#Vehicle_assets",
+                  "ld.association": {
+                    "ld.id": "https://w3id.org/gbfs#Vehicle_assets",
+                    "ld.description": "Vehicle assets"
+                  },
                   "description": "An object where each key defines one of the items listed below added in v2.3-RC.",
                   "type": "object",
                   "properties": {

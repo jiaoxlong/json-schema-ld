@@ -31,8 +31,10 @@
         "type": "object",
         "properties": {
           "rental_hours": {
-            "ld.id": "https://w3id.org/gbfs#RentalHour",
-            "ld.class": true,
+            "ld.class": {
+              "ld.id": "https://w3id.org/gbfs#RentalHour",
+              "ld.description": "Rental hour in the system."
+            },
             "type": "array",
             "items": {
               "type": "object",

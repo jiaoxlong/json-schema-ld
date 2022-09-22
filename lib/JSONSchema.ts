@@ -65,26 +65,12 @@ export class Schema {
         if ('id' in data) this.id = data['id'];
         if ('$id' in data) this.id = data['$id'];
 
-        if ('ld.id' in data){
-            if (data['ld.class']===true){
-                this.isClass = true;
-                this.id = data['ld.id']
-
-            }
-            else{
-                if ('ld.existing' in data){
-                    this.isExisting = true;
-                    this.id = data['ld.id'];
-                }
-                else{
-                    if (data['ld.id'].includes('http')){
-                        this.id = data['ld.id'];
-                    }
-                    else
-                        this.id = this.config?.base_prefix + ':' + data['ld.id'];
-                }
-            }
-        }
+        if ('ld.id' in data)
+            this.id = uri(this.config.base_prefix, data['ld.id'])
+        if ('ld.existing' in data)
+            this.isExisting = true;
+        if ('ld.class' in data)
+            this.id = data['ld.class']['ld.id']
         if(this.id === undefined){
             // when id or $id is not defined in the base schema or a schema is of type class.
             if  (property_name === undefined)
@@ -96,7 +82,6 @@ export class Schema {
                     this.id = property_name
                 else
                     this.id = config.base_prefix + ':' + property_name;
-
         }
 
         // rdfs:label
@@ -339,6 +324,8 @@ export class ClassSchema extends Schema{
             isRequired} );
         this.schema_type = 'class';
         this.rdfs = node_node_node(this.id, 'rdf:type', 'rdfs:Class');
+
+        this.annotation = match(LD_BUILD_IN_ANNOTATION, data)
     }
 }
 
@@ -461,48 +448,6 @@ export class NotSchema extends CompositionSchema{
     }
 }
 
-/**
-export class Property{
-    config:ConfigParser;
-    _property_subject:string;
-    _property_name:string;
-    _property_schema:Schema|CompositionSchema;
-
-    constructor(
-        config:ConfigParser,
-        subject:string,
-        property_name:string,
-        property_schema:Schema|CompositionSchema,
-        //fragment:string,
-        //dependent?:Property[],
-        //dependsOn?:Property[]
-    )
-    {
-        this.config = config;
-        this._property_subject = subject;
-        this._property_schema = property_schema;
-        if (this._property_schema.id){
-            this._property_name = this._property_schema.id;
-        }
-        else
-            this._property_name = config.base_prefix+':'+property_name; <-- double check!!!
-
-
-    }
-    get property_subject(){
-        return this._property_subject;
-}
-
-    get property_name(){
-        return this._property_name;
-    }
-    get property_schema(){
-        return this._property_schema;
-    }
-}
-
-*/
-
 function schema_label(s:string){
 
     return isValidURL(s) ? '' : s;
@@ -519,7 +464,14 @@ export function isValidURL(s:string) {
     return !!urlPattern.test(s)
 }
 
-
+export function uri(prefix:string, subject:any){
+    // given as a URI
+    if ((subject.includes('http')) || (subject.includes(':')))
+        return subject;
+    // given as a string type value
+    else
+        return prefix + ':' + subject;
+}
 
 /**
  * 1. patternProperties*, -> Property?

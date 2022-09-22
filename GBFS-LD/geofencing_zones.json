@@ -30,8 +30,10 @@
       "type": "object",
       "properties": {
         "geofencing_zones": {
-          "ld.association": true,
-          "ld.range": "https://w3id.org/gbfs#Geofencing_zones",
+          "ld.association": {
+            "ld.id": "https://w3id.org/gbfs#Geofencing_zones",
+            "ld.description": "Geofencing zone instance "
+          },
           "type": "object",
           "description": "Each geofenced zone and its associated rules and attributes is described as an object within the array of features.",
           "properties": {
@@ -41,13 +43,13 @@
               "enum": ["FeatureCollection"]
             },
             "features": {
-              "ld.range": "https://w3id.org/gbfs#Feature",
-              "ld.association": true,
+              "ld.association": {
+                "ld.id": "https://w3id.org/gbfs#Feature",
+                "ld.description": "Feature of geofenced zone."
+              },
               "description": "Array of objects.",
               "type": "array",
               "items": {
-                "ld.association": true,
-                "ld.range": "https://w3id.org/gbfs#Item",
                 "title": "GeoJSON Feature",
                 "type": "object",
                 "properties": {
@@ -56,8 +58,10 @@
                     "enum": ["Feature"]
                   },
                   "properties": {
-                    "ld.association": true,
-                    "ld.range": "https://w3id.org/gbfs#Property",
+                    "ld.association": {
+                      "ld.id": "https://w3id.org/gbfs#Property",
+                      "ld.description": "Property that describe travel allowances and limitations."
+                    },
                     "description":
                     "Describing travel allowances and limitations.",
                     "type": "object",
@@ -79,8 +83,10 @@
                         "minimum": 1450155600
                       },
                       "rules": {
-                        "ld.range": "https://w3id.org/gbfs#Rule",
-                        "ld.association": true,
+                        "ld.association": {
+                          "ld.id": "https://w3id.org/gbfs#Rule",
+                          "ld.description": "Rule"
+                        },
                         "description": "Array that contains one object per rule.",
                         "type": "array",
                         "items": {

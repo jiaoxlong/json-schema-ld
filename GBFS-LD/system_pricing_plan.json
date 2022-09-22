@@ -33,8 +33,10 @@
         "type": "object",
         "properties": {
           "plans": {
-            "ld.id": "https://w3id.org/gbfs#PricePlan",
-            "ld.class": true,
+            "ld.class": {
+              "ld.id": "https://w3id.org/gbfs#PricePlan",
+              "ld.description": "Price plan"
+            },
             "type": "array",
             "items": {
               "type": "object",
@@ -75,8 +77,10 @@
                   "type": "string"
                 },
                 "per_km_pricing": {
-                  "ld.association": true,
-                  "ld.range": "https://w3id.org/gbfs#Per_km_pricing",
+                  "ld.association": {
+                    "ld.id": "https://w3id.org/gbfs#Per_km_pricing",
+                    "ld.description": "Per km pricing"
+                  },
                   "description":
                     "Array of segments when the price is a function of distance travelled, displayed in kilometers (added in v2.1-RC2).",
                   "type": "array",
@@ -111,8 +115,10 @@
                   }
                 },
                 "per_min_pricing": {
-                  "ld.association": true,
-                  "ld.range": "https://w3id.org/gbfs#Per_min_pricing",
+                  "ld.association": {
+                    "ld.id": "https://w3id.org/gbfs#Per_min_pricing",
+                    "ld.description": "Per min pricing"
+                  },
                   "description":
                     "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).",
                   "type": "array",

@@ -32,8 +32,10 @@
         "type": "object",
         "properties": {
           "versions": {
-            "ld.id": "https://w3id.org/gbfs#Version",
-            "ld.class": true,
+            "ld.class": {
+              "ld.id": "https://w3id.org/gbfs#Version",
+              "ld.description": "Response data in the form of name:value pairs."
+            },
             "description":
               "Contains one object, as defined below, for each of the available versions of a feed. The array must be sorted by increasing MAJOR and MINOR version number.",
             "type": "array",

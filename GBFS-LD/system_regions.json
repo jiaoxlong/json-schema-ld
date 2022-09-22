@@ -32,8 +32,10 @@
         "type": "object",
         "properties": {
           "regions": {
-            "ld.association": true,
-            "ld.range": "https://w3id.org/gbfs#Region",
+            "ld.association": {
+              "ld.id": "https://w3id.org/gbfs#Region",
+              "ld.description": "Geographic region"
+            },
             "description": "Array of regions.",
             "type": "array",
             "items": {
