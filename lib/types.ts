@@ -1,4 +1,4 @@
-
+import {ClassSchema, Schema} from "./JSONSchema";
 
 
 const objectTypes = <const>[
@@ -53,6 +53,7 @@ export interface ISerializer {
 }
 
 export interface SchemaOptArgs{
+    subject?:undefined|string,
     isClass?:boolean,
     isExisting?:boolean,
     isIgnored?:boolean,

@@ -1,4 +1,4 @@
-import {CompositionSchema, ObjectSchema, Property, Schema} from "./JSONSchema";
+import {CompositionSchema, Schema} from "./JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
@@ -25,7 +25,7 @@ export class JSCLDSchema{
     data:object;
     base_schema: Schema;
     subject:string;
-    properties:Property[];
+    schemas:Schema[];
     rdf_writer:any;
     shacl_writer:any;
     constructor(jsc:string, config:ConfigParser ){
@@ -38,7 +38,7 @@ export class JSCLDSchema{
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
         this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});
         let t = new Traverse(this.base_schema.id,this.data, this.config);
-        this.properties = t.properties;
+        this.schemas = t.schemas;
     }
 
     serialize(){
@@ -83,17 +83,17 @@ export class JSCLDSchema{
          * iteration over properties
          */
 
-        for (let p of this.properties){
+        for (let s of this.schemas){
 
-            if (p.property_schema.isIgnored){
+            if (s.isIgnored){
                 continue;
             }
             else {
                 // property/class annotations
                 let shacl_annot_node=[];
-                if (!p.property_schema.isExisting) {
-                    for (let [k, v] of p.property_schema.annotation) {
-                        this.rdf_writer.addQuad(node_node_literal(p.property_schema.id, k, v));
+                if (!s.isExisting) {
+                    for (let [k, v] of s.annotation) {
+                        this.rdf_writer.addQuad(node_node_literal(s.id, k, v));
                         shacl_annot_node.push(blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v))
 
                     }
@@ -101,26 +101,25 @@ export class JSCLDSchema{
                 /**
                  * Classes
                  */
-                if (p.property_schema.isClass){
-
-                    if (p.property_subject.includes('#'))
-                        shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('#')+1)+'Shape';
-                    else if (p.property_subject.includes('/')) {
-                        shacl_shape = this.config.base_prefix + ':' + p.property_subject.substring(p.property_subject.lastIndexOf('/') + 1) + 'Shape';
+                if (s.isClass){
+                    if (s.id.includes('#'))
+                        shacl_shape = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
+                    else if (s.id.includes('/')) {
+                        shacl_shape = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
                     }
                     else
-                        shacl_shape = this.config.base_prefix + ':'+p.property_subject+'Shape'
+                        shacl_shape = this.config.base_prefix + ':'+s.id+'Shape'
                     // Class SHACL NodeShape
                     this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
                     // Class Shacl targetClass
-                    this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', p.property_subject));
-                    this.rdf_writer.addQuad(p.property_schema.rdfs)
-                    if (! p.property_schema.isExisting) {
+                    this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', s.id));
+                    this.rdf_writer.addQuad(s.rdfs)
+                    if (! s.isExisting) {
                         this.rdf_writer.addQuad(node_node_literal(
-                            p.property_schema.id,
+                            s.id,
                             'rdfs:label',
-                            p.property_schema.label));
-                        shacl_annot_node.push(blank_node_literal('sh:name', p.property_name.replace(this.config.base_url, '')))
+                            s.label));
+                        shacl_annot_node.push(blank_node_literal('sh:name', s.label))
                     }
                 }
                 /**
@@ -128,80 +127,80 @@ export class JSCLDSchema{
                  */
                 else {
                     // property type
-                    let shacl_path_node = blank_node_node('sh:path', p.property_name);
+                    let shacl_path_node = blank_node_node('sh:path', s.id);
 
                     // To do: handle non-required property which has 'minItems' or 'maxItems' attribute.
 
-                    if (!p.property_schema.isExisting) {
+                    if (!s.isExisting) {
                         this.rdf_writer.addQuad(
-                            node_node_node(p.property_schema.id, 'rdf:type', 'rdf:Property'));
+                            node_node_node(s.id, 'rdf:type', 'rdf:Property'));
                     }
                     //property label
-                    if (!p.property_schema.isExisting) {
+                    if (!s.isExisting) {
                         this.rdf_writer.addQuad(node_node_literal(
-                            p.property_schema.id,
+                            s.id,
                             'rdfs:label',
-                            p.property_schema.label));
+                            s.label));
 
                         shacl_annot_node.push(blank_node_literal('sh:name',
-                            p.property_name.replace(this.config.base_prefix + ':', '')));
+                            s.label));
                     }
                     // property domain
 
                     this.rdf_writer.addQuad(node_node_node(
-                        p.property_schema.id,
+                        s.id,
                         'rdfs:domain',
-                        p.property_subject));
+                        s.subject));
 
                     //skos enum
-                    if (p.property_schema.enum) {
+                    if (s.enum) {
                         // rdfs
                         /**
                          * When ld.id is set with full URI, captitalizeFirstLetterAfterPrefix will not work!
                          */
                         this.rdf_writer.addQuad(node_node_node(
-                            capitalizeLastFragment(p.property_schema.id),
+                            capitalizeLastFragment(s.id),
                             'rdf:type',
                             'skos:ConceptScheme'));
 
-                        if (p.property_schema.enum instanceof Array<any>) {
+                        if (s.enum instanceof Array<any>) {
                             this.rdf_writer.addQuad(
-                                namedNode(p.property_schema.id),
+                                namedNode(s.id),
                                 namedNode('rdfs:range'),
                                 this.rdf_writer.blank(
-                                    [blank_node_list('owl:oneOf', this.rdf_writer.list(p.property_schema.enum))]));
-                            for (const e of p.property_schema.enum) {
+                                    [blank_node_list('owl:oneOf', this.rdf_writer.list(s.enum))]));
+                            for (const e of s.enum) {
                                 this.rdf_writer.addQuad(e,namedNode('rdf:type'), namedNode('skos:Concept'));
-                                this.rdf_writer.addQuad(e,namedNode('skos:inScheme'),namedNode(capitalizeLastFragment(p.property_schema.id)));
+                                this.rdf_writer.addQuad(e,namedNode('skos:inScheme'),namedNode(capitalizeLastFragment(s.id)));
                                 this.rdf_writer.addQuad(e, namedNode('rdfs:label'),literal(e.id.replace(this.config.base_prefix + ':', '')));
                             }
                         }
 
-                        if (p.property_schema.enum.constructor == Object){
+                        if (s.enum.constructor == Object){
                             this.rdf_writer.addQuad(
-                                namedNode(p.property_schema.id),
+                                namedNode(s.id),
                                 namedNode('rdfs:range'),
                                 this.rdf_writer.blank(
                                     [blank_node_list('owl:oneOf',
-                                        this.rdf_writer.list(Object.keys(p.property_schema.enum).map(x => namedNode(x))))]));
-                            for (const e in p.property_schema.enum) {
+                                        this.rdf_writer.list(Object.keys(s.enum).map(x => namedNode(x))))]));
+                            for (const e in s.enum) {
                                 this.rdf_writer.addQuad(node_node_node(e, 'rdf:type', 'skos:Concept'));
                                 this.rdf_writer.addQuad(node_node_node(e,'skos:inScheme',
-                                    capitalizeLastFragment(p.property_schema.id)));
+                                    capitalizeLastFragment(s.id)));
                                 this.rdf_writer.addQuad(node_node_literal(e, 'rdfs:label',
                                     e.replace(this.config.base_prefix + ':', '')))
-                                for (let [k, v] of p.property_schema.enum[e])
+                                for (let [k, v] of s.enum[e])
                                     this.rdf_writer.addQuad(node_node_literal(e, k, v));
                             }
                         }
                     }
 
                     //composition schema
-                    if (p.property_schema instanceof CompositionSchema) {
+                    if (s instanceof CompositionSchema) {
 
                         let shacl_com_blank_nodes = []
 
-                        for (let schema of p.property_schema.schemas){
+                        for (let schema of s.schemas){
                             let shacl_temp = schema.shacl;
                             shacl_com_blank_nodes.push(
                                 this.shacl_writer.blank(add_writer_list(schema.shacl, this.shacl_writer)))
@@ -219,22 +218,22 @@ export class JSCLDSchema{
                     }
                     // single schema
                     else {
-                        if (p.property_schema.range){
+                        if (s.range){
                             this.rdf_writer.addQuad(quad(
-                                namedNode(p.property_schema.id),
+                                namedNode(s.id),
                                 namedNode('rdfs:range'),
-                                namedNode(p.property_schema.range)));
+                                namedNode(s.range)));
                         }
                         else{
-                            if (!p.property_schema.enum) {
+                            if (!s.enum) {
                                 this.rdf_writer.addQuad(quad(
-                                    namedNode(p.property_schema.id),
+                                    namedNode(s.id),
                                     namedNode('rdfs:range'),
-                                    p.property_schema.rdfs));
+                                    s.rdfs));
                             }
                         }
                         let shacl_blank_nodes = [shacl_path_node].concat(shacl_annot_node).concat(
-                            add_writer_list(p.property_schema.shacl, this.shacl_writer));
+                            add_writer_list(s.shacl, this.shacl_writer));
 
                         this.shacl_writer.addQuad(quad(
                                 namedNode(shacl_shape),
