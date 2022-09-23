@@ -31,7 +31,8 @@ import {SchemaOptArgs} from "./types";
 
 /**
  * An abstract base class for all JSON schemas extend.
-
+ *
+ * @category Model
  */
 export abstract class Schema {
     /**
@@ -71,16 +72,48 @@ export abstract class Schema {
      */
     annotation?:Map<string, string>;
     /**
-     *
+     * true when a property is annotated with 'ld.existing' indicates it already exists in a vocabulary.
      */
     isExisting?:boolean;
+    /**
+     * true when a property is not considered to be added in RDF (both rdfs and shacl).
+     */
     isIgnored?:boolean;
+    /**
+     * true when a property is annotated as required in the original JSON schema.
+     */
     isRequired?:boolean;
+    /**
+     * contains predicate and object blank nodes of this Property for RDF vocabulary
+     */
     rdfs?:NamedNode|any;
+    /**
+     * contains predicate and object blank nodes of this Property for RDF shapes
+     */
     shacl?:any[];
+    /**
+     * The enum property is of type string array. Each string value will be converted to skos:Concept.
+     */
     enum?:any;
+    /**
+     * An instance of a Class has this property.
+     */
     domain?:string;
+    /**
+     * An instance of a Class is a value of this property.
+     */
     range?:string;
+
+    /**
+     * The constructor of the Schema class
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         this.config = config;
@@ -190,7 +223,22 @@ export abstract class Schema {
 
 }
 
+/**
+ * StringSchema that extends {@link Schema | `Schema`}.
+ *
+ * Note that sh:pattern can be only applied to string datatype property in Shacl.
+ */
 export class StringSchema extends Schema{
+    /**
+     * The constructor of StringSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config,  property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -225,7 +273,20 @@ export class StringSchema extends Schema{
 
 }
 
+/**
+ * NumericSchema that extends {@link Schema | `Schema`}.
+ */
 export class NumericSchema extends Schema{
+    /**
+     * The constructor of NumericSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -244,7 +305,20 @@ export class NumericSchema extends Schema{
 
 }
 
+/**
+ * IntegerSchema that extends {@link NumericSchema | `NumericSchema`}.
+ */
 export class IntegerSchema extends NumericSchema {
+    /**
+     * The constructor of IntegerSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -255,7 +329,20 @@ export class IntegerSchema extends NumericSchema {
     }
 }
 
+/**
+ * NumberSchem that extends {@link NumericSchema | `NumericSchema`}.
+ */
 export class NumberSchema extends NumericSchema {
+    /**
+     * The constructor of NumberSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -266,7 +353,20 @@ export class NumberSchema extends NumericSchema {
     }
 }
 
+/**
+ * BooleanSchema that extends {@link Schema | `Schema`}.
+ */
 export class BooleanSchema extends Schema {
+    /**
+     * The constructor of BooleanSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -277,8 +377,21 @@ export class BooleanSchema extends Schema {
 
     }
 }
-// Use case?
+
+/**
+ * NullSchema that extends {@link Schema | `Schema`}.
+ */
 export class NullSchema extends Schema {
+    /**
+     * The constructor of NullSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -287,19 +400,30 @@ export class NullSchema extends Schema {
     }
 }
 
+/**
+ * ArraySchema that extends {@link Schema | `Schema`}.
+ */
 export class ArraySchema extends Schema {
     /**
-     * In general, keywords defined in an Array schema do not hold any information except for the one tagged with ld.id.
-     * When an array schema tagged with ld.id, it is interpreted as a RDFs class.
-     *     items?:object|boolean;
-     *     prefixItems?:Schema[];
-     *     contains?:Schema;
-     *     minContains?: number;
-     *     maxContains?:number;
+     * minItems of an array schema
      */
     minItems?:number;
+    /**
+     * maxItems of an array schema
+     */
     maxItems?:number;
-
+    /**
+     * The constructor of ArraySchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     * @param minItems the minimal number of elements that are allowed
+     * @param maxItems the maximal number of element that are allow
+     */
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false,
                     minItems=0, maxItems=0}:SchemaOptArgs={}) {
@@ -316,23 +440,38 @@ export class ArraySchema extends Schema {
     }
 }
 
+/**
+ * ObjectSchema that extends {@link Schema | `Schema`}.
+ *
+ * Note that
+ *
+ * 1. additionalRequired?:boolean|object, minProperties?:number and maxProperties?:number are not (necessary to be) implemented.
+ *
+ * 2. when isEnum is set to true, all the sub **Object** type properties will be considered as skos:Concept in a skos:ConceptSchema that is a value of this property.
+ */
 export class ObjectSchema extends Schema{
+    isEnum:boolean;
+
     /**
-     * similarly as Array schema, an object schema will be considered as a predicate except for the base one.
-     *     minProperties?:number;
-     *     maxProperties?:number;
+     * The constructor of ObjectSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     * @param isEnum true when 'ld.enum' is annotated on a property
+     * @param ld_enum a list of sub **Object** type properties considered as skos:Concept in a skos:ConceptSchema that is a value of this property in RDF vocabulary and shapes
      */
-    additionalRequired?:boolean|object;
-    isEnum?:boolean;
-    ld_enum?:{};
     constructor(data: {[key:string]: any}, config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}) {
         super(data,config, property_name,
             {subject, isExisting,isIgnored, isRequired});
+        this.isEnum = isEnum;
         this.schema_type = 'object';
-        if (isEnum){
+        if (this.isEnum){
             let enum_tmp= {};
-
             for (const k in ld_enum){
                 enum_tmp[this.config.base_prefix+':'+ k] = ld_enum[k];
             }
@@ -342,22 +481,47 @@ export class ObjectSchema extends Schema{
     }
 }
 
+/**
+ * BaseSchema {@link Schema | `Schema`}.
+ *
+ */
 export class BaseSchema extends Schema{
-    compositeOpt?:string[];
+    /**
+     * The constructor of BaseSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string){
         super(data,config, property_name, {});
         this.schema_type = 'base'
         }
 }
 
+/**
+ * ClassSchema {@link Schema | `Schema`}.
+ *
+ */
 export class ClassSchema extends Schema{
-    isClass:boolean;
+    /**
+     * The constructor of ClassSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string, { isExisting=false,
         isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         super(data,config, property_name, {isExisting,isIgnored,
             isRequired} );
         this.schema_type = 'class';
-        this.isClass = true;
         this.rdfs = node_node_node(this.id, 'rdf:type', 'rdfs:Class');
         this.annotation = match(LD_BUILD_IN_ANNOTATION, data)
     }
@@ -367,11 +531,35 @@ export class ClassSchema extends Schema{
  *  1. how to tackle when there is a nested composition schema?
  * Example: {"allOf":[{"anyOf":[...]},{"oneOf":[]...}, {"not":{...}}}
  */
-export class CompositionSchema extends Schema{
+
+/**
+ * CompositionSchema that extends {@link Schema | `Schema`}.
+ */
+export abstract class CompositionSchema extends Schema{
+    /**
+     * a list of Schema instances
+     */
     schemas:Schema[]=[];
-    schema_type:string;
+    /**
+     * Logical Constraint Components aka. sh:or, sh:not, sh:xone and sh:and in Shacl
+     */
     logical_opt:string;
-    shacl:any[];
+    /**
+     * One of composition schema types: oneOf, anyOf, AllOf, not.
+     */
+    composition:string;
+
+    /**
+     * The constructor of CompositionSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param composition composition type: not, allof, oneof, noneof.
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any}, config, property_name:string, composition:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
@@ -395,9 +583,22 @@ export class CompositionSchema extends Schema{
     }
 }
 
+/**
+ * AnyOfSchema that extends {@link CompositionSchema | `CompositionSchema`}.
+ */
 export class AnyOfSchema extends CompositionSchema{
-    composition:string;
-    logical_opt:string;
+
+    /**
+     * The constructor of AnyOfSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param composition composition type: anyOf
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
@@ -415,9 +616,23 @@ export class AnyOfSchema extends CompositionSchema{
         this.composition = composition;
     }
 }
+
+/**
+ * OneOfSchema that extends {@link CompositionSchema | `CompositionSchema`}.
+ */
 export class OneOfSchema extends CompositionSchema{
-    composition:string;
-    logical_opt:string;
+
+    /**
+     * The constructor of OneOfSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param composition composition type: oneOf
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
@@ -436,9 +651,22 @@ export class OneOfSchema extends CompositionSchema{
     }
 }
 
+/**
+ * AllOfSchema that extends {@link CompositionSchema | `CompositionSchema`}.
+ */
 export class AllOfSchema extends CompositionSchema{
-    composition:string;
-    logical_opt:string;
+
+    /**
+     * The constructor of AllOfSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param composition composition type: allOf
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
@@ -457,9 +685,22 @@ export class AllOfSchema extends CompositionSchema{
     }
 }
 
+/**
+* NotSchema that extends {@link CompositionSchema | `CompositionSchema`}.
+*/
 export class NotSchema extends CompositionSchema{
-    composition:string;
-    logical_opt:string;
+
+    /**
+     * The constructor of NotSchema
+     * @param data  json object
+     * @param config configuration
+     * @param property_name property name in the original JSON Schema
+     * @param composition composition type: not
+     * @param subject rdfs:domain
+     * @param isExisting true when the property exists in another vocabulary
+     * @param isIgnored true when the property is considered not to be added in RDF vocabulary
+     * @param isRequired true when the property is annotated as required in the original JSON schema
+     */
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
@@ -478,11 +719,11 @@ export class NotSchema extends CompositionSchema{
     }
 }
 
-function schema_label(s:string){
-
-    return isValidURL(s) ? '' : s;
-}
-
+/**
+ * evaluates whether a given string is a valid URI
+ * @param a string object
+ * @returns boolean
+ */
 export function isValidURL(s:string) {
     //https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
     let urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
@@ -494,13 +735,18 @@ export function isValidURL(s:string) {
     return !!urlPattern.test(s)
 }
 
-export function uri(prefix:string, subject:any){
+/**
+ * converts the value of 'ld.id' to uri when it is given as a name.
+ * @param prefix base prefix defined in the configuration
+ * @param subject property name
+ */
+export function uri(prefix:string, s:any){
     // given as a URI
-    if ((subject.includes('http')) || (subject.includes(':')))
-        return subject;
+    if ((s.includes('http')) || (s.includes(':')))
+        return s;
     // given as a string type value
     else
-        return prefix + ':' + subject;
+        return prefix + ':' + s;
 }
 
 /**
