@@ -26,7 +26,7 @@ import {
     blank_node_literal,
     blank_node_namedNode,
     blank_node_node, node_node_node,
-} from "./n3_utils";
+} from "../utils/n3_utils";
 import {SchemaOptArgs} from "./types";
 
 

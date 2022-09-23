@@ -1,4 +1,3 @@
-// Create quads of different shape
 import {DataFactory} from "n3";
 import quad = DataFactory.quad;
 import namedNode = DataFactory.namedNode;

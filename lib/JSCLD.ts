@@ -1,4 +1,4 @@
-import {CompositionSchema, Schema} from "./JSONSchema";
+import {CompositionSchema, BaseSchema, Schema} from "./JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
@@ -13,7 +13,7 @@ import {
     node_node_list,
     node_node_literal,
     node_node_node
-} from "./n3_utils";
+} from "../utils/n3_utils";
 import {SCHEMA_SHACL_ANNOTATION} from "../utils/SchemaKWMapping";
 const N3 = require('n3');
 const { DataFactory } = N3;
@@ -23,7 +23,7 @@ export class JSCLDSchema{
     config:ConfigParser;
     jsc:string;
     data:object;
-    base_schema: Schema;
+    base_schema: BaseSchema;
     subject:string;
     schemas:Schema[];
     rdf_writer:any;
@@ -33,7 +33,7 @@ export class JSCLDSchema{
         this.jsc = jsc;
         this.data = require(jsc);
         //Base Schema
-        this.base_schema = new Schema(this.data, this.config,this.data['$id'],{})
+        this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
         this.subject = this.base_schema.id;
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
         this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});
