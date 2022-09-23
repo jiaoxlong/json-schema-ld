@@ -1,4 +1,4 @@
-import {CompositionSchema, BaseSchema, Schema} from "./JSONSchema";
+import {CompositionSchema, BaseSchema, Schema, ClassSchema} from "./JSONSchema";
 import {Traverse} from "./traverse";
 import {ConfigParser} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
@@ -101,7 +101,7 @@ export class JSCLDSchema{
                 /**
                  * Classes
                  */
-                if (s.isClass){
+                if (s instanceof ClassSchema){
                     if (s.id.includes('#'))
                         shacl_shape = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
                     else if (s.id.includes('/')) {

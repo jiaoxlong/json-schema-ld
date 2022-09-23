@@ -102,10 +102,10 @@ export class Traverse{
                                 })
                             if(data.properties[property]['ld.association']['ld.existing'] === true)
                                 this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
-                                {subject:ld_blank_class, isClass: true, isExisting:true});
+                                {subject:ld_blank_class, isExisting:true});
                             else
                                 this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
-                                {subject:ld_blank_class, isClass: true});
+                                {subject:ld_blank_class});
                             this.previous = uri(this.config.base_prefix, this.current);
                             this.current = ld_blank_class;
                             this.traverse(data.properties[property]);
@@ -135,9 +135,9 @@ export class Traverse{
                             let ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
                             if (data.properties[property]['ld.class']['ld.existing']===true)
                                 this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class,
-                                    {subject: ld_class, isClass: true, isExisting:true});
+                                    {subject: ld_class, isExisting:true});
                             else
-                                this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class, {subject: ld_class, isClass: true})
+                                this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class, {subject: ld_class})
                             this.previous = uri(this.config.base_prefix, this.current);
                             this.current = ld_class;
                             this.traverse(data.properties[property]);
@@ -166,14 +166,12 @@ export class Traverse{
                                 this.createClassProperty(data.properties[property], this.config, property,
                                     {
                                         subject: this.current,
-                                        isClass: true,
                                         isExisting: true,
                                     });
                             else
                                 this.createClassProperty(data.properties[property], this.config, property,
                                     {
                                         subject: this.current,
-                                        isClass: true,
                                         isExisting: false,
                                     });
                             this.traverse(data.properties[property].items);
@@ -190,10 +188,10 @@ export class Traverse{
                                 });
                             if(data.properties[property]['ld.association']['ld.existing']===true)
                                 this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
-                                {subject: ld_array_blank_class, isClass: true, isExisting:true})
+                                {subject: ld_array_blank_class, isExisting:true})
                             else
                                 this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
-                                {subject: ld_array_blank_class, isClass: true});
+                                {subject: ld_array_blank_class});
 
                             this.previous = uri(this.config.base_prefix, this.current);
                             this.current = ld_array_blank_class;
@@ -260,55 +258,55 @@ export class Traverse{
         }
     }
     createStringProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                         {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let string_schema = new StringSchema(data, config, property,
-            {subject:subject,isClass:isClass, isExisting:isExisting,
+            {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
 
         this.schemas.push(string_schema);
     }
 
     createIntegerProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                          {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let int_schema = new IntegerSchema(data, config, property,
-            {subject:subject, isClass:isClass, isExisting:isExisting,
+            {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(int_schema);
     }
 
     createNumberProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                         {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let num_schema = new NumberSchema(data, config, property,
-            {subject:subject, isClass:isClass, isExisting:isExisting,
+            {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(num_schema);
     }
 
     createBooleanProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                          {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let boolean_schema = new BooleanSchema(data, config, property,
-            {subject, isClass:isClass, isExisting:isExisting,
+            {subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(boolean_schema);
     }
 
     createObjectProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                         {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
+                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
         if (isEnum == false && Object.keys(ld_enum).length!=0)
             throw new Error('When "isEnum" is set to false, "ld_enum" must be an empty object.')
         if (isEnum == true && Object.keys(ld_enum).length==0)
             throw new Error('When "isEnum" is set to true, "ld_enum" must not be an empty object.')
         let obj_schema = new ObjectSchema(data, this.config, property,
-            {subject:subject, isClass:isClass, isExisting:isExisting, isIgnored:isIgnored, isRequired: isRequired, isEnum:isEnum, ld_enum:ld_enum});
+            {subject:subject, isExisting:isExisting, isIgnored:isIgnored, isRequired: isRequired, isEnum:isEnum, ld_enum:ld_enum});
         this.schemas.push(obj_schema);
     }
 
     createArrayProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                        {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
+                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
         let array_schema = new ArraySchema(data, config, property,
             {
                 subject:subject,
-                isClass: isClass, isRequired: isRequired,
+                isRequired: isRequired,
                 isExisting: isExisting, isIgnored:isIgnored,
                 minItems: minItems, maxItems: maxItems
             });
@@ -316,60 +314,61 @@ export class Traverse{
     }
 
     createClassProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                        {isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                        {isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         let class_schema = new ClassSchema(data, config, property,
             {
-                isClass: isClass, isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isExisting: isExisting,
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(class_schema)
     }
     createNullProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                       {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                       {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         let null_schema = new NullSchema(data, config, property,
             {
                 subject:subject,
-                isClass: isClass, isExisting: isExisting,
+                isExisting: isExisting,
                 isIgnored: isIgnored, isRequired: isRequired
             });
         this.schemas.push(null_schema)
     }
     createNotProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                      {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                      {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let not_schema = new NotSchema(data, config, property, 'not',
             {
                 subject:subject,
-                isClass: isClass, isExisting: isExisting,
+                isExisting: isExisting,
                 isIgnored: isIgnored, isRequired: isRequired
             });
         this.schemas.push(not_schema);
     }
     createAnyOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                        {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
             {
                 subject:subject,
-                isClass: isClass, isExisting: isExisting,
+                isExisting: isExisting,
                 isIgnored: isIgnored, isRequired: isRequired
             });
         this.schemas.push(anyof_schema);
     }
     createOneOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                        {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
             {
                 subject:subject,
-                isClass: isClass, isExisting: isExisting,
+                isExisting: isExisting,
                 isIgnored: isIgnored, isRequired: isRequired
             });
         this.schemas.push(oneof_schema);
     }
     createAllOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
-                        {subject=undefined, isClass=false, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let allof_schema = new AllOfSchema(data, config, property, 'allOf',
             {
                 subject:subject,
-                isClass: isClass, isExisting: isExisting,
+                isExisting: isExisting,
                 isIgnored: isIgnored, isRequired: isRequired
             });
         this.schemas.push(allof_schema);
