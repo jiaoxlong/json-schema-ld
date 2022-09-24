@@ -1,4 +1,4 @@
-import {ClassSchema, Schema} from "./JSONSchema";
+import {ClassSchema, Schema} from "../lib/JSONSchema";
 
 
 const objectTypes = <const>[

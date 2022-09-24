@@ -9,8 +9,8 @@ import {
 } from "./JSONSchema";
 import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../utils/schemaKWs";
 import {ConfigParser} from "./ConfigParser";
-import {match} from "./match";
-import {SchemaOptArgs} from "./types";
+import {match} from "../utils/match";
+import {SchemaOptArgs} from "../utils/types";
 
 export class Traverse{
     id:string;

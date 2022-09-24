@@ -1,4 +1,4 @@
-import {ISerializer, format, rdfFormatType, shapeFormatType, jsonFormatType} from './types'
+import {ISerializer, format, rdfFormatType, shapeFormatType, jsonFormatType} from '../utils/types'
 import {IncomingMessage} from "http";
 
 // not in use yet

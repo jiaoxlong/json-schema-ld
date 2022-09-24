@@ -9,8 +9,8 @@ import {
 import{
     SCHEMA_STRING_BUILDIN
 } from '../utils/SchemaKWMapping'
-import {fetchJSON} from './fetch';
-import {match,merge} from './match';
+import {fetchJSON} from '../obsolete/fetch';
+import {match,merge} from '../utils/match';
 import {Traverse} from "./traverse";
 import {isValidHttpUrl} from "./ConfigParser"
 
@@ -19,7 +19,7 @@ const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
 import {ConfigParser} from "./ConfigParser";
-import {LD_BUILD_IN_ANNOTATION} from "./LDBuildin";
+import {LD_BUILD_IN_ANNOTATION} from "../utils/LDBuildin";
 import {Quad} from "n3";
 import {
     blank_node_list,
@@ -27,7 +27,7 @@ import {
     blank_node_namedNode,
     blank_node_node, node_node_node,
 } from "../utils/n3_utils";
-import {SchemaOptArgs} from "./types";
+import {SchemaOptArgs} from "../utils/types";
 
 /**
  * An abstract base class for all JSON schemas extend.
