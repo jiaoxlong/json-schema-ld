@@ -12,21 +12,50 @@ import {ConfigParser} from "./ConfigParser";
 import {match} from "../utils/match";
 import {SchemaOptArgs} from "../utils/types";
 
+// @ts-ignore
+/**
+ * The Traverse class traverses all properties in a JSON schema document using preorder traversal and creates schema instances for the latter RDF serialization.
+ */
 export class Traverse{
-    id:string;
-    schemas:Schema[] = [];
-    config:ConfigParser;
+    /**
+     * property node under visiting
+     */
     current:string;
+    /**
+     * previous node recorded in order to return the pointer of next node to its previous node.
+     */
     previous:string;
+    /**
+     * Schema instances populated for RDF serialization
+     */
+    schemas:Schema[] = [];
+    /**
+     * A JSC-LD configuration instance
+     */
+    config:ConfigParser;
+    /**
+     * A list of required properties
+     */
     required:String[] = [];
+
+    /**
+     * The Traverse class constructor
+     */
     constructor(id:string, data:object, config:ConfigParser){
-        this.id = id;
-        this.current = this.id;
-        this.previous = this.id;
+        this.current = id;
+        this.previous = id;
         this.config = config;
         this.traverse(data)
 
     }
+
+    /**
+     * core method of preorder traversal
+     *
+     * As the 'required' keyword appears prior to the restricted property, traversal always starts with data a level lower.
+     *
+     * @param data json object what may be changed over time during traversal.
+     */
 
     traverse(data) {
         if ('required' in data) {
@@ -257,6 +286,17 @@ export class Traverse{
             }
         }
     }
+
+    /**
+     * creates an instance of StringSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createStringProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let string_schema = new StringSchema(data, config, property,
@@ -266,6 +306,16 @@ export class Traverse{
         this.schemas.push(string_schema);
     }
 
+    /**
+     * creates an instance of IntegerSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createIntegerProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let int_schema = new IntegerSchema(data, config, property,
@@ -274,6 +324,16 @@ export class Traverse{
         this.schemas.push(int_schema);
     }
 
+    /**
+     * creates an instance of NumberSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createNumberProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         let num_schema = new NumberSchema(data, config, property,
@@ -282,6 +342,16 @@ export class Traverse{
         this.schemas.push(num_schema);
     }
 
+    /**
+     * creates an instance of BooleanSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createBooleanProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let boolean_schema = new BooleanSchema(data, config, property,
@@ -290,6 +360,16 @@ export class Traverse{
         this.schemas.push(boolean_schema);
     }
 
+    /**
+     * creates an instance of ObjectSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createObjectProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
         if (isEnum == false && Object.keys(ld_enum).length!=0)
@@ -301,6 +381,16 @@ export class Traverse{
         this.schemas.push(obj_schema);
     }
 
+    /**
+     * creates an instance of ArraySchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createArrayProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
         let array_schema = new ArraySchema(data, config, property,
@@ -313,6 +403,16 @@ export class Traverse{
         this.schemas.push(array_schema);
     }
 
+    /**
+     * creates an instance of ClassSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createClassProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         let class_schema = new ClassSchema(data, config, property,
@@ -323,53 +423,112 @@ export class Traverse{
             });
         this.schemas.push(class_schema)
     }
+
+    /**
+     * creates an instance of NullSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is tagged to this property
+     * @param isIgnored  when ld.ignored is tagged to this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createNullProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         let null_schema = new NullSchema(data, config, property,
             {
                 subject:subject,
                 isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(null_schema)
     }
+
+    /**
+     * creates an instance of NotSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createNotProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                       {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let not_schema = new NotSchema(data, config, property, 'not',
             {
                 subject:subject,
                 isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(not_schema);
     }
+
+    /**
+     * creates an instance of AnySchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createAnyOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
             {
                 subject:subject,
                 isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(anyof_schema);
     }
+    /**
+     * creates an instance of OneOfSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createOneOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
             {
                 subject:subject,
                 isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(oneof_schema);
     }
+
+    /**
+     * creates an instance of AllOfSchema
+     * @param data json object
+     * @param config a JSC-LD configuration instance
+     * @param property property name under visiting
+     * @param subject resource instance which has the property.
+     * @param isExisting when ld.existing is set to true for this property
+     * @param isIgnored  when ld.ignored is set to true for this property
+     * @param isRequired when a property is defined as required in the JSON schema
+     */
     createAllOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         let allof_schema = new AllOfSchema(data, config, property, 'allOf',
             {
                 subject:subject,
                 isExisting: isExisting,
-                isIgnored: isIgnored, isRequired: isRequired
+                isIgnored: isIgnored,
+                isRequired: isRequired
             });
         this.schemas.push(allof_schema);
     }
