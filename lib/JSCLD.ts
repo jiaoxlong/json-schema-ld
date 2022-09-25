@@ -19,33 +19,65 @@ const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
+/**
+ * The JSCLDSchema processes schema instances parsed from JSON schema, serialize and export them to RDF.
+ */
 export class JSCLDSchema{
+    /**
+     * A ConfigParser object contains all necessary configuration for parsing JSON schema.
+     */
     config:ConfigParser;
+    /**
+     * Path to the JSON schema document
+     */
     jsc:string;
+    /**
+     * A JSON object parsed from the JSON schema document
+     */
     data:object;
+    /**
+     * The base JSC-LD schema generated from JSC-LD configuration
+     */
     base_schema: BaseSchema;
-    subject:string;
+    /**
+     * Schema instances parsed from JSON schema
+     */
     schemas:Schema[];
+    /**
+     * The N3Writer instance writes RDF vocabulary
+     */
     rdf_writer:any;
+    /**
+     * The N3Writer instance writes RDF shapes
+     */
     shacl_writer:any;
+
+    /**
+     * The constructor of JSCLDSchema
+     * @param jsc Path to the JSON schema document
+     * @param config A ConfigParser object contains all necessary configuration for parsing JSON schema.
+     * @param data A JSON object parsed from the JSON schema document
+     * @param base_schema The base JSC-LD schema generated from JSC-LD configuration
+     * @param rdf_writer The N3Writer instance writes RDF vocabulary
+     * @param shacl_writer The N3Writer instance writes RDF shapes
+     * @param schemas Schema instances parsed from JSON schema
+     */
     constructor(jsc:string, config:ConfigParser ){
         this.config = config;
         this.jsc = jsc;
         this.data = require(jsc);
-        //Base Schema
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
-        this.subject = this.base_schema.id;
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
         this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});
-        let t = new Traverse(this.base_schema.id,this.data, this.config);
-        this.schemas = t.schemas;
+        this.schemas = new Traverse(this.base_schema.id,this.data, this.config).schemas;
     }
 
+    /**
+     * serialize JSC-LD (Base) schema and schema instances parsed from JSON Schema document to RDF
+     */
     serialize(){
 
-        /**
-         *  Base
-         */
+        /** Base schema */
 
         this.rdf_writer.addQuad(node_node_node(this.config.id, 'rdf:type', 'jsonsc-ld:Schema'));
         this.rdf_writer.addQuad(node_node_node(this.config.id,'jsonsc-ld:enriches', this.base_schema.id ));
@@ -75,16 +107,15 @@ export class JSCLDSchema{
         }
 
         // Shacl Shape
-        let shacl_shape = this.subject+'Shape';
+        let shacl_shape =  this.base_schema.id+'Shape';
         this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
-        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', this.subject));
+        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass',  this.base_schema.id));
 
         /**
          * iteration over properties
          */
 
         for (let s of this.schemas){
-
             if (s.isIgnored){
                 continue;
             }
@@ -95,7 +126,6 @@ export class JSCLDSchema{
                     for (let [k, v] of s.annotation) {
                         this.rdf_writer.addQuad(node_node_literal(s.id, k, v));
                         shacl_annot_node.push(blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v))
-
                     }
                 }
                 /**
@@ -242,12 +272,14 @@ export class JSCLDSchema{
                             )
                         )
                     }
-
                 }
             }
         }
     }
 
+    /**
+     * exports RDF vocabulary and shapes
+     */
     materialize(){
         const path = require('path');
         this.rdf_writer.end((error:any, result:any) =>
@@ -263,29 +295,27 @@ export class JSCLDSchema{
 }
 
 /**
- * Test case
+ * Capitalize the first letter of a string
+ * @param s string
  */
-
-// let config = new ConfigParser('../configs/config.json');
-// let ld = new JSCLDSchema('../GBFS-LD/station_information.json', config);
-// //let ld = new JSCLDSchema('../GBFS-LD/free_bike_status.json', config);
-//
-// ld.serialize();
-// ld.materialize();
-
 function capitalizeFirstLetter(s)
 {
     return s[0].toUpperCase() + s.slice(1);
 }
-function capitalize(s){
-    return s.toUpperCase();
-}
 
+/**
+ * Capitalize the first letter of a resource string in an URI with namespace prefix.
+ * @param s string
+ */
 function capitalizeFirstLetterAfterPrefix(s:string){
     let ind = s.indexOf(':')
     return s.slice(0, ind+1)+s[ind+1].toUpperCase()+s.slice(ind+2)
 }
 
+/**
+ * Capitalize the first letter of a resource string in a hash URI or a slash URI
+ * @param s string
+ */
 function capitalizeLastFragment(s:string){
     if (s.includes('http')){
         let s_index:number;

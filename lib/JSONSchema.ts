@@ -44,7 +44,7 @@ export abstract class Schema {
      * */
     config:ConfigParser;
     /**
-     * A JSON object where contains data for parsing.
+     * A JSON object contains data for parsing.
      */
     data:object;
     /**
