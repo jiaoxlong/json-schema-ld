@@ -46,8 +46,6 @@ export class ConfigParser{
             // utils/fetch.ts
         }
         else{
-            // local config
-            //import * as data from "config_path"
             this.data = require(config_path);
             this.annot = match(ConfigMapping,this.data);
             if ('$id' in this.data) this.id = this.data['$id'];

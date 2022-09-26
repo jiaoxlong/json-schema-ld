@@ -161,11 +161,9 @@ export class JSCLDSchema{
 
                     // To do: handle non-required property which has 'minItems' or 'maxItems' attribute.
 
-                    if (!s.isExisting) {
-                        this.rdf_writer.addQuad(
-                            node_node_node(s.id, 'rdf:type', 'rdf:Property'));
-                    }
-                    //property label
+                    this.rdf_writer.addQuad(node_node_node(s.id, 'rdf:type', 'rdf:Property'));
+
+                    //property label and property domain
                     if (!s.isExisting) {
                         this.rdf_writer.addQuad(node_node_literal(
                             s.id,
@@ -174,14 +172,11 @@ export class JSCLDSchema{
 
                         shacl_annot_node.push(blank_node_literal('sh:name',
                             s.label));
+                        this.rdf_writer.addQuad(node_node_node(
+                            s.id,
+                            'rdfs:domain',
+                            s.subject));
                     }
-                    // property domain
-
-                    this.rdf_writer.addQuad(node_node_node(
-                        s.id,
-                        'rdfs:domain',
-                        s.subject));
-
                     //skos enum
                     if (s.enum) {
                         // rdfs
@@ -255,7 +250,7 @@ export class JSCLDSchema{
                                 namedNode(s.range)));
                         }
                         else{
-                            if (!s.enum) {
+                            if ((!s.enum) && (!s.isExisting)) {
                                 this.rdf_writer.addQuad(quad(
                                     namedNode(s.id),
                                     namedNode('rdfs:range'),
