@@ -64,8 +64,8 @@ export class JSCLDSchema{
      */
     constructor(jsc:string, config:ConfigParser ){
         this.config = config;
-        this.jsc = jsc;
-        this.data = require(jsc);
+        this.jsc = path.resolve(jsc);
+        this.data = require(this.jsc);
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
         this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});

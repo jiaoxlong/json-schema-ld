@@ -1,5 +1,9 @@
-import {ClassSchema, Schema} from "../lib/JSONSchema";
 
+export const cli_args = [
+    { name: 'source', alias: 's', type: String},
+    { name: 'out', alias: 'o', type:String},
+    { name: 'config', alias: 'c', type:String}
+]
 
 const objectTypes = <const>[
     "identifier",
@@ -24,7 +28,6 @@ const jsonFormatTypes = <const>[
     "json-schema",
     //"json-ld", #currently this is not in the scope.
 ]
-
 const rdfFormatTypes =  <const>[
     "turtle",
     "trig",

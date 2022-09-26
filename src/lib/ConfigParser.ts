@@ -2,8 +2,6 @@ import {Schema} from './JSONSchema';
 import {ConfigMapping} from "../utils/ConfigMapping";
 import {match} from '../utils/match';
 import {JSC_LD_PREFIX} from "../utils/Prefix";
-import * as fs from "fs";
-import * as path from "path";
 import {N3FormatTypes} from "../utils/types";
 
 /**
@@ -42,34 +40,19 @@ export class ConfigParser{
      * JSC-LD configuration JSON data
      */
     data:object;
-    constructor(config_path:string, prefix:object=JSC_LD_PREFIX) {
+    constructor(config_path:string, source:any[], out:string, prefix:object=JSC_LD_PREFIX) {
         if (isValidHttpUrl(config_path)){
             // Todo: fetch a json config from web
             // utils/fetch.ts
         }
         else{
             // local config
+            //import * as data from "config_path"
             this.data = require(config_path);
             this.annot = match(ConfigMapping,this.data);
             if ('$id' in this.data) this.id = this.data['$id'];
             else throw Error('Unknown JSON Schema extension format. An "$id" attribute is expected!');
-            if ('source' in this.data) {
-                let source = [];
-                if (fs.statSync(this.data['source']).isDirectory()){
-                    fs.readdirSync(this.data['source']).forEach(file => {
-                        source.push(path.join(this.data['source'], file));
-                    });
-
-                }
-                else if (fs.statSync(this.data['source']).isFile()) {
-                    source.push(this.data['source']);
-                }
-                else throw Error("The 'source' given in the JSON Schema extension file neither points to a directory " +
-                        "nor to a file");
-                this.source = source;
-            }
-
-            else throw Error('Unknown JSON Schema extension format. A "source" attribute is expected!');
+            this.source = source;
             if('format' in this.data){
                 if (N3FormatTypes.includes(this.data['format'])){
                     this.format = this.data['format']
@@ -83,8 +66,7 @@ export class ConfigParser{
             else throw Error('Unknown JSON Schema extension format. A "base_prefix" attribute is expected!');
             if ('base_url' in this.data) this.base_uri = this.data['base_url'];
             else throw Error('Unknown JSON Schema extension format. A "base_url" attribute is expected!');
-            if ('out_dir' in this.data) this.out_dir = this.data['out_dir'];
-            else this.out_dir = 'out';
+            this.out_dir = out;
         }
     }
 }

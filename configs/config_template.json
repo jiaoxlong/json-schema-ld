@@ -1,0 +1,18 @@
+{
+  "$id": "https://www.example.com/example-ld.json",
+  "base_prefix": "example",
+  "base_url": "https://w3id.org/example#",
+  "title": "The example LD configuration",
+  "format": "Turtle",
+  "description": "JSC-LD configuration to map example json schema to RDF vocabulary and shapes",
+  "creators": [
+    "https://pietercolpaert.be/#me"
+    "https://w3id.org/people/brechtvdv/#me",
+    "https://data.knows.idlab.ugent.be/person/andreipopescu/#me",
+    "https://data.knows.idlab.ugent.be/person/jilong/#me"
+  ],
+  "license": "MIT",
+  "rights": "Copyright statement",
+  "modified": "2022-06-02T11:32:52.12679"
+}
+
