@@ -53,6 +53,15 @@ export class JSCLDSchema{
     shacl_writer:any;
 
     /**
+     * Shacl prefix URI for named shapes
+     */
+    shacl_shape_uri:string;
+
+    /**
+     * Base resource name
+     */
+    base_resource_name:string;
+    /**
      * The constructor of JSCLDSchema
      * @param jsc Path to the JSON schema document
      * @param config A ConfigParser object contains all necessary configuration for parsing JSON schema.
@@ -68,7 +77,16 @@ export class JSCLDSchema{
         this.data = require(this.jsc);
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
-        this.shacl_writer = new N3.Writer({...SHACL_PREFIX,...{'format':this.config.format}});
+
+        // shacl_base_uri
+        //https://w3id.org/gbfs/shapes/stationinfo#{shapename}
+        this.base_resource_name = extract_resource_from_uri(this.base_schema.id)
+        //when base_url is ended with either '#' or '/'
+        const base_shacl_shape_uri = this.config.base_uri.slice(0,-1)+'/shapes/'+ this.base_resource_name + '#';
+        this.shacl_shape_uri = base_shacl_shape_uri;
+        const shacl_prefix = SHACL_PREFIX
+        shacl_prefix.prefixes[this.config.base_prefix+'shape']= base_shacl_shape_uri
+        this.shacl_writer = new N3.Writer({...shacl_prefix,...{'format':this.config.format}});
         this.schemas = new Traverse(this.base_schema.id,this.data, this.config).schemas;
     }
 
@@ -107,9 +125,10 @@ export class JSCLDSchema{
         }
 
         // Shacl Shape
-        let shacl_shape =  this.base_schema.id+'Shape';
-        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
-        this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass',  this.base_schema.id));
+
+        let shacl_shape_uri:string = this.shacl_shape_uri+ this.base_resource_name+'Shape';
+        this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'rdf:type', 'sh:NodeShape'));
+        this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'sh:targetClass',  this.base_schema.id));
 
         /**
          * iteration over properties
@@ -133,16 +152,16 @@ export class JSCLDSchema{
                  */
                 if (s instanceof ClassSchema){
                     if (s.id.includes('#'))
-                        shacl_shape = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
+                        shacl_shape_uri = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
                     else if (s.id.includes('/')) {
-                        shacl_shape = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
+                        shacl_shape_uri = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
                     }
                     else
-                        shacl_shape = this.config.base_prefix + ':'+s.id+'Shape'
+                        shacl_shape_uri = this.config.base_prefix + ':'+s.id+'Shape'
                     // Class SHACL NodeShape
-                    this.shacl_writer.addQuad(node_node_node(shacl_shape, 'rdf:type', 'sh:NodeShape'));
+                    this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'rdf:type', 'sh:NodeShape'));
                     // Class Shacl targetClass
-                    this.shacl_writer.addQuad(node_node_node(shacl_shape, 'sh:targetClass', s.id));
+                    this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'sh:targetClass', s.id));
                     this.rdf_writer.addQuad(s.rdfs)
                     if (! s.isExisting) {
                         this.rdf_writer.addQuad(node_node_literal(
@@ -235,7 +254,7 @@ export class JSCLDSchema{
                             'object':this.shacl_writer.list(shacl_com_blank_nodes)
                         }
                         this.shacl_writer.addQuad(quad(
-                                namedNode(shacl_shape),
+                                namedNode(shacl_shape_uri),
                                 namedNode('sh:property'),
                                 this.shacl_writer.blank([shacl_path_node,shacl_com_node])
                             )
@@ -261,7 +280,7 @@ export class JSCLDSchema{
                             add_writer_list(s.shacl, this.shacl_writer));
 
                         this.shacl_writer.addQuad(quad(
-                                namedNode(shacl_shape),
+                                namedNode(shacl_shape_uri),
                                 namedNode('sh:property'),
                                 this.shacl_writer.blank(shacl_blank_nodes)
                             )
@@ -306,6 +325,44 @@ function capitalizeFirstLetterAfterPrefix(s:string){
     let ind = s.indexOf(':')
     return s.slice(0, ind+1)+s[ind+1].toUpperCase()+s.slice(ind+2)
 }
+
+/**
+ * get first char index of a resource in a URI
+ */
+function get_resource_index(s:string){
+    let s_index:number;
+    if (s.includes('http')) {
+        let s_index: number;
+        if (s.includes('#'))
+            s_index = s.lastIndexOf('#');
+        else
+            s_index = s.lastIndexOf('/');
+        return s_index+1;
+    }
+    else if (s.includes(':')) {
+        s_index = s.indexOf(':');
+        return s_index+1;
+    }
+    else
+        return 0;
+}
+
+/**
+ * extract resource name from a URI
+ * @param s string
+ */
+function extract_resource_from_uri(s:string){
+    const s_index = get_resource_index(s)
+    if (s.includes('http'))
+        return s.substring(s_index, s.length)
+    else if (s.includes(':')){
+        return s.substring(s_index, s.length)
+    }
+    else
+        return s
+}
+
+
 
 /**
  * Capitalize the first letter of a resource string in a hash URI or a slash URI
