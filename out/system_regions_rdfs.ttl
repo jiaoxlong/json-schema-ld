@@ -1,0 +1,50 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json> rdf:type jsonsc-ld:Schema;
+    jsonsc-ld:enriches <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>.
+<https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson> rdf:type rdfs:Class.
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json> dcterms:title "The GBFS LD configuration";
+    dcterms:description "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary";
+    dcterms:creator <https://pietercolpaert.be/#me>, <https://w3id.org/people/brechtvdv/#me>, <https://data.knows.idlab.ugent.be/person/andreipopescu/#me>, <https://data.knows.idlab.ugent.be/person/jilong/#me>;
+    dcterms:license "MIT";
+    dcterms:rights "Copyright statement";
+    dcterms:modified "2022-06-02T11:32:52.12679".
+<https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson> dcterms:description "Describes regions for a system that is broken up by geographic or political region.".
+dcterms:modified rdf:type rdf:Property.
+gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+    rdf:type rdf:Property;
+    rdfs:label "ttl";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>;
+    rdfs:range xsd:integer.
+gbfs:regions dcterms:description "Array of regions.";
+    rdf:type rdf:Property;
+    rdfs:label "regions";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_regionsjson>;
+    rdfs:range gbfs:Region.
+gbfs:Region dcterms:description "Geographic region";
+    rdf:type rdfs:Class;
+    rdfs:label "Region".
+gbfs:region_id dcterms:description "identifier of the region.";
+    rdf:type rdf:Property;
+    rdfs:label "region_id";
+    rdfs:domain gbfs:Region;
+    rdfs:range xsd:string.
+gbfs:name dcterms:description "Public name for this region.";
+    rdf:type rdf:Property;
+    rdfs:label "name";
+    rdfs:domain gbfs:Region;
+    rdfs:range xsd:string.

@@ -1,0 +1,118 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/geofencing_zonesjson#>.
+
+gbfsshape:geofencing_zonesjsonShape rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    sh:property [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:geofencing_zones;
+  sh:description "Each geofenced zone and its associated rules and attributes is described as an object within the array of features.";
+  sh:name "geofencing_zones"
+].
+gbfs:Geofencing_zonesShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Geofencing_zones;
+    sh:property [
+  sh:path gbfs:type;
+  sh:description "FeatureCollection as per IETF RFC 7946.";
+  sh:name "type";
+  sh:in (gbfs:FeatureCollection);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path gbfs:features;
+  sh:description "Array of objects.";
+  sh:name "features";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:FeatureShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Feature;
+    sh:property [
+  sh:path gbfs:type;
+  sh:name "type";
+  sh:in (gbfs:Feature);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path gbfs:properties;
+  sh:description "Describing travel allowances and limitations.";
+  sh:name "properties";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:PropertyShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Property;
+    sh:property [
+  sh:path dcterms:title;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:start;
+  sh:description "Start time of the geofencing zone in POSIX time.";
+  sh:name "start";
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:end;
+  sh:description "End time of the geofencing zone in POSIX time.";
+  sh:name "end";
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rules;
+  sh:description "Array that contains one object per rule.";
+  sh:name "rules"
+].
+gbfs:RuleShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Rule;
+    sh:property [
+  sh:path gbfs:vehicle_type_id;
+  sh:name "vehicle_type_id";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:ride_allowed;
+  sh:description "Is the undocked ride allowed to stat and end in this zone?";
+  sh:name "ride_allowed";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:ride_through_allowed;
+  sh:description "Is the ride allowed to travel through this zone?";
+  sh:name "ride_through_allowed";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:maximum_speed_kph;
+  sh:description "What is the maximum speed allowed, in kilometers per hour?";
+  sh:name "maximum_speed_kph";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:station_parking;
+  sh:description "Vehicle MUST be parked at stations defined in station_information.json within this geofence zone";
+  sh:name "station_parking";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:geometry;
+  sh:description "A polygon that describes where rides might not be able to start, end, go through, or have other limitations. Must follow the right-hand rule.";
+  sh:name "GeoJSON MultiPolygon", "geometry";
+  sh:minCount 1;
+  sh:maxCount 1
+].

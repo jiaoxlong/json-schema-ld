@@ -1,0 +1,56 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_hoursjson#>.
+
+gbfsshape:system_hoursjsonShape rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
+    sh:property [
+  sh:path dcterms:modified;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+].
+gbfs:gbfs:rental_hoursShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:rental_hours;
+    sh:property [
+  sh:path gbfs:user_types;
+  sh:name "user_types";
+  sh:in (gbfs:member gbfs:nonmember)
+], [
+  sh:path gbfs:days;
+  sh:name "days";
+  sh:in (gbfs:sun gbfs:mon gbfs:tue gbfs:wed gbfs:thu gbfs:fri gbfs:sat)
+], [
+  sh:path gbfs:start_time;
+  sh:description "Start time for the hours of operation of the system.";
+  sh:name "start_time";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:end_time;
+  sh:description "End time for the hours of operation of the system.";
+  sh:name "end_time";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$";
+  sh:datatype xsd:string
+].

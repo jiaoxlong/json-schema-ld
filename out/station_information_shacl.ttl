@@ -1,0 +1,166 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/StationInformation#>.
+
+gbfsshape:StationInformationShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:StationInformation;
+    sh:property [
+  sh:path dcterms:modified;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:version;
+  sh:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+  sh:name "version";
+  sh:hasValue "2.3";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:stations;
+  sh:name "stations";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:BicycleParkingStationShape rdf:type sh:NodeShape;
+    sh:targetClass mobivoc:BicycleParkingStation;
+    sh:property [
+  sh:path dcterms:identifier;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:station_name;
+  sh:description "Public name of the station.";
+  sh:name "station_name";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:shortName;
+  sh:description "Short name or other type of identifier.";
+  sh:name "shortName";
+  sh:datatype xsd:string
+], [
+  sh:path geo:lat;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -90;
+  sh:maxInclusive 90;
+  sh:datatype xsd:decimal
+], [
+  sh:path geo:long;
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive -180;
+  sh:maxInclusive 180;
+  sh:datatype xsd:decimal
+], [
+  sh:path schema:address;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:cross_street;
+  sh:description "Cross street or landmark where the station is located.";
+  sh:name "cross_street";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:region_id;
+  sh:description "Identifier of the region where the station is located.";
+  sh:name "region_id";
+  sh:datatype xsd:string
+], [
+  sh:path schema:postalCode;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:rental_methods;
+  sh:name "rental_methods";
+  sh:in (gbfs:key gbfs:creditcard gbfs:paypass gbfs:applepay gbfs:androidpay gbfs:transitcard gbfs:accountnumber gbfs:phone)
+], [
+  sh:path gbfs:is_virtual_station;
+  sh:description "Is this station a location with or without physical infrastructure? (added in v2.1-RC)";
+  sh:name "is_virtual_station";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:stationArea;
+  sh:description "A multipolygon that describes the area of a virtual station (added in v2.1-RC).";
+  sh:name "stationArea"
+], [
+  sh:path gbfs:parking_type;
+  sh:description "Type of parking station. Added in v2.3";
+  sh:name "parking_type";
+  sh:in (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other)
+], [
+  sh:path gbfs:parking_hoop;
+  sh:description "Are parking hoops present at this station? Added in v2.3";
+  sh:name "parking_hoop";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:contact_phone;
+  sh:description "Contact phone of the station. Added in v2.3";
+  sh:name "contact_phone";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:capacity;
+  sh:description "Number of total docking points installed at this station, both available and unavailable.";
+  sh:name "capacity";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:vehicle_capacity;
+  sh:description "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC).";
+  sh:name "vehicle_capacity"
+], [
+  sh:path gbfs:is_valet_station;
+  sh:description "Are valet services provided at this station? (added in v2.1-RC)";
+  sh:name "is_valet_station";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:is_charging_station;
+  sh:description "Does the station support charging of electric vehicles? (added in v2.3-RC)";
+  sh:name "is_charging_station";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:rental_uris;
+  sh:description "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).";
+  sh:name "rental_uris"
+].
+gbfs:Rental_urisShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Rental_uris;
+    sh:property [
+  sh:path gbfs:android;
+  sh:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+  sh:name "android";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:ios;
+  sh:description "URI that can be used on iOS to launch the rental app for this station (added in v1.1).";
+  sh:name "ios";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:web;
+  sh:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
+  sh:name "web";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:vehicle_type_capacity;
+  sh:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).";
+  sh:name "vehicle_type_capacity"
+].
