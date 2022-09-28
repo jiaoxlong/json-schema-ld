@@ -12,7 +12,12 @@
   },
   "jest": {
     "transform": {
-      "transform_regex": ["ts-jest", { "tsconfig": "./tsconfig.json" }],
+      "transform_regex": [
+        "ts-jest",
+        {
+          "tsconfig": "./tsconfig.json"
+        }
+      ],
       "^.+\\.ts$": "<rootDir>/node_modules/ts-jest"
     },
     "testRegex": "(/tests/.*|(\\\\.|/)(test|spec))-test.ts$",
@@ -60,6 +65,7 @@
     "eslint": "^8.24.0",
     "jest": "^29.1.0",
     "jest-rdf": "^1.7.0",
-    "ts-jest": "^29.0.2"
+    "ts-jest": "^29.0.2",
+    "typedoc": "^0.23.15"
   }
 }

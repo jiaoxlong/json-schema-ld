@@ -2,7 +2,12 @@ import fs from "fs";
 import path from "path";
 
 export function validate_path(path_to_file:string){
-    return fs.statSync(path_to_file).isDirectory() || fs.statSync(path_to_file).isFile();
+    try {
+        return fs.statSync(path_to_file).isDirectory() || fs.statSync(path_to_file).isFile();
+    }
+    catch(err) {
+        throw new Error(path_to_file + ' does not exist in the system');
+    }
 }
 
 export function jsc_source_files(args:any){
