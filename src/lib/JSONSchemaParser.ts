@@ -1,3 +1,5 @@
+import {hasKeys, jsc_source_files} from "../utils/validation";
+
 const fs = require('fs');
 import path from "path";
 const commandLineArgs = require('command-line-args')
@@ -79,7 +81,7 @@ else {
 
            cp = new ConfigParser(path.resolve(options['config']), source, out);
            for (const jsc of cp.source){
-               let ld = new JSCLDSchema(jsc, cp);
+               const ld = new JSCLDSchema(jsc, cp);
                ld.serialize();
                ld.materialize();
            }
@@ -92,24 +94,4 @@ else {
     }
 }
 
-function jsc_source_files(argvs:{}){
-    let source_list = [];
-    if (fs.statSync(argvs['source']).isDirectory()){
-        fs.readdirSync(argvs['source']).forEach(file => {
-            source_list.push(path.join(argvs['source'], file));
-        });
-    }
-    else if (fs.statSync(argvs['source']).isFile()) {
-        source_list.push(argvs['source']);
-    }
-    else throw Error("The 'source' given in the JSON Schema extension file neither points to a directory " +
-            "nor to a file");
-    return source_list;
 
-}
-
-function hasKeys(object, keys){
-    return keys.every(function (key) {
-        return object.hasOwnProperty(key);
-    });
-}

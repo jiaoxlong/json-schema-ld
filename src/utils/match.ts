@@ -6,16 +6,16 @@
  */
 
 export function match(source:any,target: {[key:string]:any}){
-    let match_map = new Map<string, any>();
+    const match_map = new Map<string, any>();
     if (Array.isArray(source)){
-        for (let s of source) {
+        for (const s of source) {
             if (s in Object.keys(target)) {
                 match_map.set(s, target.s);
             }
         }
     }
     else if (typeof source === 'object'){
-        for (let t of Object.keys(target)) {
+        for (const t of Object.keys(target)) {
             if (t in source) {
                 match_map.set(source[t],target[t]);
             }
@@ -33,7 +33,7 @@ export function match(source:any,target: {[key:string]:any}){
  * @return merge_map
  */
 export function merge(map1:Map<string, any>, map2:Map<string,any>){
-    let merge_map = new Map<string, any>();
+    const merge_map = new Map<string, any>();
     //overwrite
     map2.forEach(function (value, key){
         if (map1.has(key)) merge_map.set(key, map1.get(key));
@@ -49,7 +49,7 @@ export function merge(map1:Map<string, any>, map2:Map<string,any>){
 
 
 
-let a ={
+const a ={
     title: 'dcterms:title',
     description: 'dcterms:description',
     examples: 'skos:example',
@@ -59,7 +59,7 @@ let a ={
     comment: 'rdfs:comment'
 }
 
-let b ={
+const b ={
     description: 'Last time the data in the feed was updated in POSIX time.',
     type: 'integer',
     minimum: 0,

@@ -15,29 +15,29 @@ export function node_node_list (writer:any, subj: string, pred:string, writerLis
 }
 
 export function blank_node_node(p:string,o:string){
-    let blank_node = {}
+    const blank_node = {}
     blank_node['predicate'] = namedNode(p);
     blank_node['object'] = namedNode(o);
     return blank_node;
 }
 
 export function blank_node_literal(p:string,o:string|number){
-    let blank_node = {}
+    const blank_node = {}
     blank_node['predicate'] = namedNode(p);
     blank_node['object'] = literal(o);
     return blank_node;
 }
 
 export function blank_node_list( p:string,o:any[]){
-    let blank_node = {}
+    const blank_node = {}
     blank_node['predicate'] = namedNode(p);
     blank_node['object'] = o;
     return blank_node;
 }
 
 export function add_writer_list(li:any[], writer:any){
-    let li_tmp = li;
-    for (let i in li_tmp){
+    const li_tmp = li;
+    for (const i in li_tmp){
         if (li_tmp[i]['object'] instanceof Array){
             li_tmp[i]['object'] = writer.list(li_tmp[i]['object']);
         }
@@ -46,7 +46,7 @@ export function add_writer_list(li:any[], writer:any){
 }
 
 export function blank_node_namedNode(p:string,o:NamedNode){
-    let blank_node = {}
+    const blank_node = {}
     blank_node['predicate'] = namedNode(p);
     blank_node['object'] = o;
     return blank_node;

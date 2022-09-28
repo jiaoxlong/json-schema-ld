@@ -180,19 +180,19 @@ export abstract class Schema {
         if (('ld.geoJsonFeature' in data) && (data['ld.geoJsonFeature'] === true)) {
             if (! this.range) this.range = 'http://www.opengis.net/ont/geosparql#Geometry';
         }
-        let ld_annotation = match(LD_BUILD_IN_ANNOTATION, data)
-        let annotation = match(SCHEMA_ANNOTATIONS,data);
+        const ld_annotation = match(LD_BUILD_IN_ANNOTATION, data)
+        const annotation = match(SCHEMA_ANNOTATIONS,data);
         this.annotation = merge(ld_annotation, annotation);
 
         /**
          * default, const, enum may appear in any valued JSON schema except for Null, Array and Object Schema.
          */
-        let blank_list = []
+        const blank_list = []
         if ('default' in data) blank_list.push(blank_node_literal('sh:defaultValue', data.default));
         if ('const' in data) blank_list.push(blank_node_literal('sh:hasValue', data.const));
         if ('enum' in data) {
-            let enum_list = []
-            for (let ele of data['enum']){
+            const enum_list = []
+            for (const ele of data['enum']){
                 if (data['enum'] instanceof Array<string>)
                     enum_list.push(namedNode(this.config.base_prefix+':'+ ele));
                 else
@@ -471,7 +471,7 @@ export class ObjectSchema extends Schema{
         this.isEnum = isEnum;
         this.schema_type = 'object';
         if (this.isEnum){
-            let enum_tmp= {};
+            const enum_tmp= {};
             for (const k in ld_enum){
                 enum_tmp[this.config.base_prefix+':'+ k] = ld_enum[k];
             }
@@ -578,7 +578,7 @@ export abstract class CompositionSchema extends Schema{
          * Composition schema shacl: a list of blank nodes
          * ex:Shape sh:property [sh:path ex:prop; sh:and ([sh:datatype xsd:xxx; sh:xxx xxx ], [])) .
          */
-        let shacl_com_list = []
+        const shacl_com_list = []
         this.shacl = shacl_com_list
     }
 }
@@ -602,7 +602,7 @@ export class AnyOfSchema extends CompositionSchema{
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
-                composition:string='anyOf',
+                composition='anyOf',
                 {
                     subject=undefined,
                     isExisting=false,
@@ -636,7 +636,7 @@ export class OneOfSchema extends CompositionSchema{
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
-                composition:string='oneOf',
+                composition='oneOf',
                 {
                     subject=undefined,
                     isExisting=false,
@@ -670,7 +670,7 @@ export class AllOfSchema extends CompositionSchema{
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
-                composition:string='allOf',
+                composition='allOf',
                 {
                     subject=undefined,
                     isExisting=false,
@@ -704,7 +704,7 @@ export class NotSchema extends CompositionSchema{
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
-                composition:string='notOf',
+                composition='notOf',
                 {
                     subject=undefined,
                     isExisting=false,
@@ -726,7 +726,7 @@ export class NotSchema extends CompositionSchema{
  */
 export function isValidURL(s:string) {
     //https://www.freecodecamp.org/news/check-if-a-javascript-string-is-a-url/
-    let urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+    const urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
         '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
         '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path

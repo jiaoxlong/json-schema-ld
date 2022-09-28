@@ -20,7 +20,7 @@ export abstract class RDFSerializer extends Serializer {
 
     private serialFormat: rdfFormatType = "turtle";
     private shapeFormat: shapeFormatType = 'turtle';
-    private toMaterialize: boolean = true;
+    private toMaterialize = true;
     private outFolder?: string = __dirname;
 
     constructor(data: object,
@@ -55,7 +55,7 @@ export abstract class RDFSerializer extends Serializer {
 export abstract class JSONSchemaSerializer extends Serializer {
 
     private serialFormat: jsonFormatType = "json-schema";
-    private toMaterialize: boolean = true;
+    private toMaterialize = true;
     private outFolder?: string = __dirname;
 
     constructor(data: object,

@@ -6,7 +6,7 @@
   "format": "Turtle",
   "description": "JSC-LD configuration to map example json schema to RDF vocabulary and shapes",
   "creators": [
-    "https://pietercolpaert.be/#me"
+    "https://pietercolpaert.be/#me",
     "https://w3id.org/people/brechtvdv/#me",
     "https://data.knows.idlab.ugent.be/person/andreipopescu/#me",
     "https://data.knows.idlab.ugent.be/person/jilong/#me"

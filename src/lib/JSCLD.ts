@@ -15,6 +15,7 @@ import {
     node_node_node
 } from "../utils/n3_utils";
 import {SCHEMA_SHACL_ANNOTATION} from "../utils/SchemaKWMapping";
+import {I_JSONLD_CONFIG} from "../utils/types";
 const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
@@ -34,7 +35,7 @@ export class JSCLDSchema{
     /**
      * A JSON object parsed from the JSON schema document
      */
-    data:object;
+    data:I_JSONLD_CONFIG;
     /**
      * The base JSC-LD schema generated from JSC-LD configuration
      */
@@ -112,15 +113,15 @@ export class JSCLDSchema{
                 this.rdf_writer.addQuad(node_node_literal(this.config.id, key, value));
             }
             if (Array.isArray(value)){
-                let namedNodeList:any[] = [];
-                for (let t of value){
+                const namedNodeList:any[] = [];
+                for (const t of value){
                     this.rdf_writer.addQuad(node_node_node(this.config.id, key, t));
                 }
             }
         });
 
         //Schema annotation
-        for (let [key, value] of this.base_schema.annotation) {
+        for (const [key, value] of this.base_schema.annotation) {
             this.rdf_writer.addQuad(node_node_literal(this.base_schema.id, key, value));
         }
 
@@ -134,15 +135,15 @@ export class JSCLDSchema{
          * iteration over properties
          */
 
-        for (let s of this.schemas){
+        for (const s of this.schemas){
             if (s.isIgnored){
                 continue;
             }
             else {
                 // property/class annotations
-                let shacl_annot_node=[];
+                const shacl_annot_node=[];
                 if (!s.isExisting) {
-                    for (let [k, v] of s.annotation) {
+                    for (const [k, v] of s.annotation) {
                         this.rdf_writer.addQuad(node_node_literal(s.id, k, v));
                         shacl_annot_node.push(blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v))
                     }
@@ -176,7 +177,7 @@ export class JSCLDSchema{
                  */
                 else {
                     // property type
-                    let shacl_path_node = blank_node_node('sh:path', s.id);
+                    const shacl_path_node = blank_node_node('sh:path', s.id);
 
                     // To do: handle non-required property which has 'minItems' or 'maxItems' attribute.
 
@@ -233,7 +234,7 @@ export class JSCLDSchema{
                                     capitalizeLastFragment(s.id)));
                                 this.rdf_writer.addQuad(node_node_literal(e, 'rdfs:label',
                                     e.replace(this.config.base_prefix + ':', '')))
-                                for (let [k, v] of s.enum[e])
+                                for (const [k, v] of s.enum[e])
                                     this.rdf_writer.addQuad(node_node_literal(e, k, v));
                             }
                         }
@@ -242,14 +243,14 @@ export class JSCLDSchema{
                     //composition schema
                     if (s instanceof CompositionSchema) {
 
-                        let shacl_com_blank_nodes = []
+                        const shacl_com_blank_nodes = []
 
-                        for (let schema of s.schemas){
-                            let shacl_temp = schema.shacl;
+                        for (const schema of s.schemas){
+                            const shacl_temp = schema.shacl;
                             shacl_com_blank_nodes.push(
                                 this.shacl_writer.blank(add_writer_list(schema.shacl, this.shacl_writer)))
                         }
-                        let shacl_com_node = {
+                        const shacl_com_node = {
                             'predicate':namedNode('sh:or'),
                             'object':this.shacl_writer.list(shacl_com_blank_nodes)
                         }
@@ -276,7 +277,7 @@ export class JSCLDSchema{
                                     s.rdfs));
                             }
                         }
-                        let shacl_blank_nodes = [shacl_path_node].concat(shacl_annot_node).concat(
+                        const shacl_blank_nodes = [shacl_path_node].concat(shacl_annot_node).concat(
                             add_writer_list(s.shacl, this.shacl_writer));
 
                         this.shacl_writer.addQuad(quad(
@@ -322,7 +323,7 @@ function capitalizeFirstLetter(s)
  * @param s string
  */
 function capitalizeFirstLetterAfterPrefix(s:string){
-    let ind = s.indexOf(':')
+    const ind = s.indexOf(':')
     return s.slice(0, ind+1)+s[ind+1].toUpperCase()+s.slice(ind+2)
 }
 

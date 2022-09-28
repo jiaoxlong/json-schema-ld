@@ -80,6 +80,19 @@ export interface I_SCHEMA_GENERIC_KWS {
     const?: string | number | boolean | null
 }
 
+export interface I_JSONLD_CONFIG {
+    $id:string,
+    base_prefix:string,
+    base_url:string,
+    title:string
+    format?:string,
+    description?:string,
+    creators:string[],
+    license?:string,
+    rights?:string,
+    modified?:string
+
+}
 
 export type format = typeof formats[number];
 export type rdfFormatType = typeof rdfFormatTypes[number];

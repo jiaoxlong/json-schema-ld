@@ -1,8 +1,8 @@
-import {Schema} from './JSONSchema';
 import {ConfigMapping} from "../utils/ConfigMapping";
 import {match} from '../utils/match';
 import {JSC_LD_PREFIX} from "../utils/Prefix";
 import {N3FormatTypes} from "../utils/types";
+import {validate_path} from "../utils/validation";
 
 /**
  * The ConfigParser class parses a JSC LD configuration document
@@ -46,6 +46,8 @@ export class ConfigParser{
             // utils/fetch.ts
         }
         else{
+            if (!validate_path(config_path))
+                throw new Error('JSON-LD configuration at "'+config_path+'" can not be found in the system.')
             this.data = require(config_path);
             this.annot = match(ConfigMapping,this.data);
             if ('$id' in this.data) this.id = this.data['$id'];
@@ -68,6 +70,7 @@ export class ConfigParser{
         }
     }
 }
+
 
 
 /**

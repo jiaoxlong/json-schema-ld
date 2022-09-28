@@ -12,7 +12,6 @@ import {ConfigParser} from "./ConfigParser";
 import {match} from "../utils/match";
 import {SchemaOptArgs} from "../utils/types";
 
-// @ts-ignore
 /**
  * The Traverse class traverses all properties in a JSON schema document using preorder traversal and creates schema instances for the latter RDF serialization.
  */
@@ -36,7 +35,7 @@ export class Traverse{
     /**
      * A list of required properties
      */
-    required:String[] = [];
+    required:string[] = [];
 
     /**
      * The Traverse class constructor
@@ -62,16 +61,16 @@ export class Traverse{
             if (data['required'] instanceof Array)
                 this.required = [...this.required, ...data['required']]
         }
-        let minItems: number = 0;
-        let maxItems: number = 0;
+        let minItems = 0;
+        let maxItems = 0;
         if ('minItems' in data) minItems = data.minItems;
         if ('maxItems' in data) maxItems = data.maxItems;
         if ('properties' in data) {
             // 'required' keyword appear prior to the required properties in a JSON schema.
 
             for (const property in data['properties']) {
-                let isRequired: boolean = false;
-                let isExisting: boolean = false;
+                let isRequired = false;
+                let isExisting = false;
                 if (this.required.indexOf(property) > -1) {
                     isRequired = true;
                 }
@@ -143,7 +142,7 @@ export class Traverse{
                         // ld.enum Object schema only
                         else if ('ld.enum' in data.properties[property]) {
                             if (data.properties[property]['ld.enum'] == true) {
-                                let enum_tmp = {};
+                                const enum_tmp = {};
                                 for (const p in data.properties[property].properties) {
                                     enum_tmp[p]  = match(SCHEMA_ANNOTATIONS, data.properties[property].properties[p]);
                                 }
@@ -161,7 +160,7 @@ export class Traverse{
                         else if ('ld.class' in data.properties[property]) {
                             if (data.properties[property]['ld.class']['ld.id']===undefined)
                                 throw new Error('"ld.class" is defined, but "ld.id" does not present. ')
-                            let ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
+                            const ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
                             if (data.properties[property]['ld.class']['ld.existing']===true)
                                 this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class,
                                     {subject: ld_class, isExisting:true});
@@ -299,7 +298,7 @@ export class Traverse{
      */
     createStringProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
-        let string_schema = new StringSchema(data, config, property,
+        const string_schema = new StringSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
 
@@ -318,7 +317,7 @@ export class Traverse{
      */
     createIntegerProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
-        let int_schema = new IntegerSchema(data, config, property,
+        const int_schema = new IntegerSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(int_schema);
@@ -336,7 +335,7 @@ export class Traverse{
      */
     createNumberProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
-        let num_schema = new NumberSchema(data, config, property,
+        const num_schema = new NumberSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(num_schema);
@@ -354,7 +353,7 @@ export class Traverse{
      */
     createBooleanProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
-        let boolean_schema = new BooleanSchema(data, config, property,
+        const boolean_schema = new BooleanSchema(data, config, property,
             {subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(boolean_schema);
@@ -376,7 +375,7 @@ export class Traverse{
             throw new Error('When "isEnum" is set to false, "ld_enum" must be an empty object.')
         if (isEnum == true && Object.keys(ld_enum).length==0)
             throw new Error('When "isEnum" is set to true, "ld_enum" must not be an empty object.')
-        let obj_schema = new ObjectSchema(data, this.config, property,
+        const obj_schema = new ObjectSchema(data, this.config, property,
             {subject:subject, isExisting:isExisting, isIgnored:isIgnored, isRequired: isRequired, isEnum:isEnum, ld_enum:ld_enum});
         this.schemas.push(obj_schema);
     }
@@ -393,7 +392,7 @@ export class Traverse{
      */
     createArrayProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
-        let array_schema = new ArraySchema(data, config, property,
+        const array_schema = new ArraySchema(data, config, property,
             {
                 subject:subject,
                 isRequired: isRequired,
@@ -415,7 +414,7 @@ export class Traverse{
      */
     createClassProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
-        let class_schema = new ClassSchema(data, config, property,
+        const class_schema = new ClassSchema(data, config, property,
             {
                 isExisting: isExisting,
                 isIgnored: isIgnored,
@@ -436,7 +435,7 @@ export class Traverse{
      */
     createNullProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
-        let null_schema = new NullSchema(data, config, property,
+        const null_schema = new NullSchema(data, config, property,
             {
                 subject:subject,
                 isExisting: isExisting,
@@ -458,7 +457,7 @@ export class Traverse{
      */
     createNotProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                       {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
-        let not_schema = new NotSchema(data, config, property, 'not',
+        const not_schema = new NotSchema(data, config, property, 'not',
             {
                 subject:subject,
                 isExisting: isExisting,
@@ -480,7 +479,7 @@ export class Traverse{
      */
     createAnyOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
-        let anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
+        const anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
             {
                 subject:subject,
                 isExisting: isExisting,
@@ -501,7 +500,7 @@ export class Traverse{
      */
     createOneOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
-        let oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
+        const oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
             {
                 subject:subject,
                 isExisting: isExisting,
@@ -523,7 +522,7 @@ export class Traverse{
      */
     createAllOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
-        let allof_schema = new AllOfSchema(data, config, property, 'allOf',
+        const allof_schema = new AllOfSchema(data, config, property, 'allOf',
             {
                 subject:subject,
                 isExisting: isExisting,
