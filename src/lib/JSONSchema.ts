@@ -578,8 +578,7 @@ export abstract class CompositionSchema extends Schema{
          * Composition schema shacl: a list of blank nodes
          * ex:Shape sh:property [sh:path ex:prop; sh:and ([sh:datatype xsd:xxx; sh:xxx xxx ], [])) .
          */
-        const shacl_com_list = []
-        this.shacl = shacl_com_list
+        this.shacl = []
     }
 }
 
@@ -704,7 +703,7 @@ export class NotSchema extends CompositionSchema{
     constructor(data: {[key:string]: any},
                 config:ConfigParser,
                 property_name:string,
-                composition='notOf',
+                composition='not',
                 {
                     subject=undefined,
                     isExisting=false,

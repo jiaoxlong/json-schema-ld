@@ -1,4 +1,4 @@
-import {Schema} from "../src/lib/JSONSchema";
+import {AllOfSchema, AnyOfSchema, NotSchema, OneOfSchema, Schema} from "../src/lib/JSONSchema";
 import {StringSchema, ArraySchema, NullSchema, ObjectSchema, BaseSchema, ClassSchema } from "../src/lib/JSONSchema";
 import {NumberSchema, IntegerSchema, NumericSchema } from "../src/lib/JSONSchema";
 import {ConfigParser} from "../src/lib/ConfigParser";
@@ -140,6 +140,36 @@ describe("JSON Schema", ()=> {
         const class_schema = new ClassSchema(mock_class_data, config_ins, 'class_name', {});
         expect(class_schema).toBeInstanceOf(ClassSchema);
     });
+
+    test('check if the oneOf_schema is of an instance of OneOfSchema and created expected properties', () => {
+        const mock_oneOf_data = {"oneOf": [{ "type": "boolean" }, { "type": "number" }]};
+        const oneOf_schema = new OneOfSchema(mock_oneOf_data, config_ins, 'oneOf_property', );
+        expect(oneOf_schema).toBeInstanceOf(OneOfSchema);
+        expect(oneOf_schema.composition).toEqual('oneOf')
+        expect(oneOf_schema.logical_opt).toEqual('sh:xone')
+    });
+    test('check if the allOf_schema is of an instance of AllOfSchema and created expected properties', () => {
+        const mock_allOf_data = {"allOf": [{ "type": "boolean" }, { "type": "number" }]};
+        const allOf_schema = new AllOfSchema(mock_allOf_data, config_ins, 'allOf_property', );
+        expect(allOf_schema).toBeInstanceOf(AllOfSchema);
+        expect(allOf_schema.composition).toEqual('allOf')
+        expect(allOf_schema.logical_opt).toEqual('sh:and')
+    });
+    test('check if the anyOf_schema is of an instance of AnyOfSchema and created expected properties', () => {
+        const mock_anyOf_data = {"anyOf": [{ "type": "boolean" }, { "type": "number" }]};
+        const anyOf_schema = new AnyOfSchema(mock_anyOf_data, config_ins, 'anyOf_property', );
+        expect(anyOf_schema).toBeInstanceOf(AnyOfSchema);
+        expect(anyOf_schema.composition).toEqual('anyOf')
+        expect(anyOf_schema.logical_opt).toEqual('sh:or')
+    });
+    test('check if the not_schema is of an instance of NotSchema and created expected properties', () => {
+        const mock_not_data = {"not": [{ "type": "boolean" }, { "type": "number" }]};
+        const not_schema = new NotSchema(mock_not_data, config_ins, 'not_property', );
+        expect(not_schema).toBeInstanceOf(NotSchema);
+        expect(not_schema.composition).toEqual('not')
+        expect(not_schema.logical_opt).toEqual('sh:not')
+    });
+
 
 });
 

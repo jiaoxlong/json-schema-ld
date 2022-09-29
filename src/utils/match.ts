@@ -4,46 +4,45 @@
  * or a map object contains source.value - target.value pairs of matched properties if matching source is an object.
  * @return match_map
  */
-
 export function match(source:any,target: {[key:string]:any}){
     const match_map = new Map<string, any>();
     if (Array.isArray(source)){
         for (const s of source) {
-            if (s in Object.keys(target)) {
-                match_map.set(s, target.s);
+            if (s in target) {
+                match_map.set(s, target[s]);
             }
         }
     }
-    else if (typeof source === 'object'){
+    if (typeof source === 'object'){
         for (const t of Object.keys(target)) {
             if (t in source) {
                 match_map.set(source[t],target[t]);
             }
         }
     }
-    else{
-        throw Error('Unknown source datatype!')
-    }
     return match_map;
 }
 
 /**
- * merges two Map objects into one and removes.
- * When there are keys present in both maps, it only keeps the ones from map1
+ * merges two Map objects into one Map object
  * @return merge_map
  */
 export function merge(map1:Map<string, any>, map2:Map<string,any>){
+    return new Map([...map1.entries(), ...map2.entries()]);
+    /**
     const merge_map = new Map<string, any>();
-    //overwrite
+    //first add key-value pairs from map2 when they also exist in map1
     map2.forEach(function (value, key){
         if (map1.has(key)) merge_map.set(key, map1.get(key));
         else merge_map.set(key, value);
     });
-    //new
+    //then add the reminder key-value pairs from map1
     map1.forEach(function (value, key){
         if (! merge_map.has(key)) merge_map.set(key, map1.get(key));
     });
+
     return merge_map;
+    */
 }
 
 

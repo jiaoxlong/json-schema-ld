@@ -242,7 +242,6 @@ export class JSCLDSchema{
 
                     //composition schema
                     if (s instanceof CompositionSchema) {
-
                         const shacl_com_blank_nodes = []
 
                         for (const schema of s.schemas){
@@ -251,7 +250,7 @@ export class JSCLDSchema{
                                 this.shacl_writer.blank(add_writer_list(schema.shacl, this.shacl_writer)))
                         }
                         const shacl_com_node = {
-                            'predicate':namedNode('sh:or'),
+                            'predicate':namedNode(s.logical_opt),
                             'object':this.shacl_writer.list(shacl_com_blank_nodes)
                         }
                         this.shacl_writer.addQuad(quad(
