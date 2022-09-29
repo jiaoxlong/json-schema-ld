@@ -42,7 +42,12 @@
     "RDFS",
     "Shacl"
   ],
-  "author": "Jiao Long",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiaoxlong/jsc-ld.git"
+  },
+  "homepage": "https://github.com/jiaoxlong/jsc-ld#readme",
+  "author": "Jiao Long <jiao.long@ugent.be>",
   "license": "ISC",
   "dependencies": {
     "@hyperjump/json-schema-core": "^0.23.7",
