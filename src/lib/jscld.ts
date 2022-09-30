@@ -24,9 +24,9 @@ const usage = commandLineUsage([
     {
         header:"Synopsis",
         content: [
-            '$ node jscld.js --source json_schema.js --out out --config config.js',
-            '$ node jscld.js --source json_schema.js --config config.js',
-            'node jscld.js -s json_schema.js -c config.js'
+            '$ jsc-ld --source json_schema.js --out out --config config.js',
+            '$ jsc-ld --source json_schema.js --config config.js',
+            '$ jsc-ld -s json_schema.js -c config.js'
         ]
     },
     {
