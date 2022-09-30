@@ -199,7 +199,7 @@
               },
               "rental_uris": {
                 "ld.association": {
-                  "ld.id": "https://w3id.org/gbfs#Rental_uris",
+                  "ld.id": "https://w3id.org/gbfs#Rental_uri",
                   "ld.description": "Rental uris for Android, iOS, and web."
                 },
                 "description":

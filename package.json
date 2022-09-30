@@ -1,6 +1,6 @@
 {
   "name": "jsc-ld",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "JSON Schema LD is a syntactic sugar for JSON Schema to enable generative interoperability by means of representing JSON schema in RDF vocabularies (RDF Scheme) and RDF shapes in SHACL.",
   "main": "./dist/src/lib/jscld.js",
   "bin": "./dist/src/lib/jscld.js",
@@ -51,8 +51,7 @@
   "homepage": "https://github.com/jiaoxlong/jsc-ld#readme",
   "author": "Jiao Long <jiao.long@ugent.be>",
   "license": "ISC",
-  "dependencies": {
-    "@hyperjump/json-schema-core": "^0.23.7",
+  "dependencies":{
     "@types/node": "^17.0.31",
     "command-line-args": "^5.2.1",
     "command-line-usage": "^6.1.3",
