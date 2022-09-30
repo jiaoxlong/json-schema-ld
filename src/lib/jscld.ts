@@ -1,10 +1,10 @@
+#!/usr/bin/env node
 import {hasKeys, jsc_source_files} from "../utils/validation";
-
 const fs = require('fs');
 import path from "path";
-const commandLineArgs = require('command-line-args')
+import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
-import {JSCLDSchema} from "./JSCLD";
+import {JSCLDSchema} from "./JSCLDParser";
 import {ConfigParser} from "./ConfigParser";
 
 
@@ -24,9 +24,9 @@ const usage = commandLineUsage([
     {
         header:"Synopsis",
         content: [
-            '$ node JSONSchemaParser.js --source json_schema.js --out out --config config.js',
-            '$ node JSONSchemaParser.js --source json_schema.js --config config.js',
-            'node JSONSchemaParser.js -s json_schema.js -c config.js'
+            '$ node jscld.js --source json_schema.js --out out --config config.js',
+            '$ node jscld.js --source json_schema.js --config config.js',
+            'node jscld.js -s json_schema.js -c config.js'
         ]
     },
     {
