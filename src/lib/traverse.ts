@@ -57,231 +57,268 @@ export class Traverse{
      */
 
     traverse(data) {
-        if ('required' in data) {
-            if (data['required'] instanceof Array)
-                this.required = [...this.required, ...data['required']]
-        }
-        let minItems = 0;
-        let maxItems = 0;
-        if ('minItems' in data) minItems = data.minItems;
-        if ('maxItems' in data) maxItems = data.maxItems;
-        if ('properties' in data) {
-            // 'required' keyword appear prior to the required properties in a JSON schema.
+        if ((typeof data === 'object') && (data !== null)) {
+            if ('required' in data) {
+                if (data['required'] instanceof Array)
+                    this.required = [...this.required, ...data['required']]
+            }
+            let minItems = 0;
+            let maxItems = 0;
+            if ('minItems' in data) minItems = data.minItems;
+            if ('maxItems' in data) maxItems = data.maxItems;
+            if ('properties' in data) {
+                // 'required' keyword appear prior to the required properties in a JSON schema.
 
-            for (const property in data['properties']) {
-                let isRequired = false;
-                let isExisting = false;
-                if (this.required.indexOf(property) > -1) {
-                    isRequired = true;
-                }
-                if ('ld.existing' in data.properties[property]) {
-                    isExisting = true;
-                }
-                if (data.properties[property].type === 'string')
-                    this.createStringProperty(data.properties[property], this.config, property,
-                        {subject:uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                for (const property in data['properties']) {
+                    let isRequired = false;
+                    let isExisting = false;
+                    if (this.required.indexOf(property) > -1) {
+                        isRequired = true;
+                    }
+                    if (typeof data.properties[property] === 'boolean')
+                        continue
+                    if ('ld.existing' in data.properties[property]) {
+                        isExisting = true;
+                    }
+                    if (data.properties[property].type === 'string')
+                        this.createStringProperty(data.properties[property], this.config, property,
+                            {
+                                subject: uri(this.config.base_prefix, this.current),
+                                isRequired: isRequired,
+                                isExisting: isExisting
+                            });
 
-                if (data.properties[property].type === 'integer')
-                    this.createIntegerProperty(data.properties[property], this.config,  property,
-                        {subject:uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if (data.properties[property].type === 'integer')
+                        this.createIntegerProperty(data.properties[property], this.config, property,
+                            {
+                                subject: uri(this.config.base_prefix, this.current),
+                                isRequired: isRequired,
+                                isExisting: isExisting
+                            });
 
-                if (data.properties[property].type === 'number')
-                    this.createNumberProperty(data.properties[property], this.config, property,
-                        {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if (data.properties[property].type === 'number')
+                        this.createNumberProperty(data.properties[property], this.config, property,
+                            {
+                                subject: uri(this.config.base_prefix, this.current),
+                                isRequired: isRequired,
+                                isExisting: isExisting
+                            });
 
-                if (data.properties[property].type === 'boolean')
-                    this.createBooleanProperty(data.properties[property], this.config, property,
-                        {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if (data.properties[property].type === 'boolean')
+                        this.createBooleanProperty(data.properties[property], this.config, property,
+                            {
+                                subject: uri(this.config.base_prefix, this.current),
+                                isRequired: isRequired,
+                                isExisting: isExisting
+                            });
 
-                if (data.properties[property].type === 'null')
-                    this.createNullProperty(data.properties[property], this.config, property,
-                        {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
-                if ('anyOf' in  data.properties[property])
-                    this.createAnyOfProperty(data.properties[property], this.config, property, {subject:uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if (data.properties[property].type === 'null')
+                        this.createNullProperty(data.properties[property], this.config, property,
+                            {
+                                subject: uri(this.config.base_prefix, this.current),
+                                isRequired: isRequired,
+                                isExisting: isExisting
+                            });
+                    if ('anyOf' in data.properties[property])
+                        this.createAnyOfProperty(data.properties[property], this.config, property, {
+                            subject: uri(this.config.base_prefix, this.current),
+                            isRequired: isRequired,
+                            isExisting: isExisting
+                        });
 
-                if ('allOf' in  data.properties[property])
-                    this.createAllOfProperty(data.properties[property], this.config, property, {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if ('allOf' in data.properties[property])
+                        this.createAllOfProperty(data.properties[property], this.config, property, {
+                            subject: uri(this.config.base_prefix, this.current),
+                            isRequired: isRequired,
+                            isExisting: isExisting
+                        });
 
-                if ('oneOf' in  data.properties[property])
-                    this.createOneOfProperty(data.properties[property], this.config, property, {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if ('oneOf' in data.properties[property])
+                        this.createOneOfProperty(data.properties[property], this.config, property, {
+                            subject: uri(this.config.base_prefix, this.current),
+                            isRequired: isRequired,
+                            isExisting: isExisting
+                        });
 
-                if ('not' in  data.properties[property])
-                    this.createNotProperty(data.properties[property], this.config, property, {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
+                    if ('not' in data.properties[property])
+                        this.createNotProperty(data.properties[property], this.config, property, {
+                            subject: uri(this.config.base_prefix, this.current),
+                            isRequired: isRequired,
+                            isExisting: isExisting
+                        });
 
-                if (data.properties[property].type === 'object') {
-                    if (data.properties[property]['ld.included'] === true) {
-                        // handling patterProperties inside an object schema
-                        if ('patternProperties' in data.properties[property]) {
-                            for (const pp in data.properties[property].patternProperties) {
-                                this.traverse(data.properties[property].patternProperties[pp])
-                            }
-                        } else
-                            this.traverse(data.properties[property]);
-                    } else {
-                        if ('ld.association' in data.properties[property]) {
-                            if (data.properties[property]['ld.association']['ld.id'] === undefined)
-                                throw new Error('Expect "ld.id" attribute when using "ld.association"');
-                            const ld_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
-                            this.createObjectProperty(data.properties[property], this.config, property,
-                                {
-                                    subject:uri(this.config.base_prefix, this.current),
-                                    isRequired: isRequired,
-                                    isExisting: isExisting,
-                                })
-                            if(data.properties[property]['ld.association']['ld.existing'] === true)
-                                this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
-                                {subject:ld_blank_class, isExisting:true});
-                            else
-                                this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
-                                {subject:ld_blank_class});
-                            this.previous = uri(this.config.base_prefix, this.current);
-                            this.current = ld_blank_class;
-                            this.traverse(data.properties[property]);
-                            this.current = this.previous;
-                        }
-                        // ld.enum Object schema only
-                        else if ('ld.enum' in data.properties[property]) {
-                            if (data.properties[property]['ld.enum'] == true) {
-                                const enum_tmp = {};
-                                for (const p in data.properties[property].properties) {
-                                    enum_tmp[p]  = match(SCHEMA_ANNOTATIONS, data.properties[property].properties[p]);
+                    if (data.properties[property].type === 'object') {
+                        if (data.properties[property]['ld.included'] === true) {
+                            // handling patterProperties inside an object schema
+                            if ('patternProperties' in data.properties[property]) {
+                                for (const pp in data.properties[property].patternProperties) {
+                                    this.traverse(data.properties[property].patternProperties[pp])
                                 }
+                            } else
+                                this.traverse(data.properties[property]);
+                        } else {
+                            if ('ld.association' in data.properties[property]) {
+                                if (data.properties[property]['ld.association']['ld.id'] === undefined)
+                                    throw new Error('Expect "ld.id" attribute when using "ld.association"');
+                                const ld_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
                                 this.createObjectProperty(data.properties[property], this.config, property,
                                     {
                                         subject: uri(this.config.base_prefix, this.current),
                                         isRequired: isRequired,
                                         isExisting: isExisting,
-                                        isEnum: true,
-                                        ld_enum: enum_tmp
+                                    })
+                                if (data.properties[property]['ld.association']['ld.existing'] === true)
+                                    this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
+                                        {subject: ld_blank_class, isExisting: true});
+                                else
+                                    this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
+                                        {subject: ld_blank_class});
+                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.current = ld_blank_class;
+                                this.traverse(data.properties[property]);
+                                this.current = this.previous;
+                            }
+                            // ld.enum Object schema only
+                            else if ('ld.enum' in data.properties[property]) {
+                                if (data.properties[property]['ld.enum'] == true) {
+                                    const enum_tmp = {};
+                                    for (const p in data.properties[property].properties) {
+                                        enum_tmp[p] = match(SCHEMA_ANNOTATIONS, data.properties[property].properties[p]);
+                                    }
+                                    this.createObjectProperty(data.properties[property], this.config, property,
+                                        {
+                                            subject: uri(this.config.base_prefix, this.current),
+                                            isRequired: isRequired,
+                                            isExisting: isExisting,
+                                            isEnum: true,
+                                            ld_enum: enum_tmp
+                                        });
+                                    continue
+                                }
+                            } else if ('ld.class' in data.properties[property]) {
+                                if (data.properties[property]['ld.class']['ld.id'] === undefined)
+                                    throw new Error('"ld.class" is defined, but "ld.id" does not present. ')
+                                const ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
+                                if (data.properties[property]['ld.class']['ld.existing'] === true)
+                                    this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class,
+                                        {subject: ld_class, isExisting: true});
+                                else
+                                    this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class, {subject: ld_class})
+                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.current = ld_class;
+                                this.traverse(data.properties[property]);
+                                this.current = this.previous;
+                            } else {
+                                this.createObjectProperty(data.properties[property], this.config, property,
+                                    {
+                                        subject: uri(this.config.base_prefix, this.current),
+                                        isRequired: isRequired,
+                                        isExisting: isExisting
                                     });
-                                continue
+                                if ((data.properties[property]['ld.geoJsonFeature'] === true) ||
+                                    (data.properties[property]['ld.enum'] === true)) {
+                                    continue
+                                } else
+                                    this.traverse(data.properties[property]);
                             }
                         }
-                        else if ('ld.class' in data.properties[property]) {
-                            if (data.properties[property]['ld.class']['ld.id']===undefined)
-                                throw new Error('"ld.class" is defined, but "ld.id" does not present. ')
-                            const ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
-                            if (data.properties[property]['ld.class']['ld.existing']===true)
-                                this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class,
-                                    {subject: ld_class, isExisting:true});
-                            else
-                                this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class, {subject: ld_class})
-                            this.previous = uri(this.config.base_prefix, this.current);
-                            this.current = ld_class;
-                            this.traverse(data.properties[property]);
-                            this.current = this.previous;
-                        }
+                    }
 
-                        else {
-                            this.createObjectProperty(data.properties[property], this.config,property,
-                                {subject: uri(this.config.base_prefix, this.current), isRequired: isRequired, isExisting: isExisting});
-                            if ((data.properties[property]['ld.geoJsonFeature'] === true) ||
-                                (data.properties[property]['ld.enum'] === true)) {
-                                continue
-                            } else
+                    if (data.properties[property].type === 'array') {
+                        this.previous = uri(this.config.base_prefix, this.current);
+                        // object-type schema inside an array schema
+                        if ('properties' in data.properties[property].items) {
+                            if ('ld.class' in data.properties[property]) {
+                                this.current = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
+                                if (data.properties[property]['ld.class']['ld.isExisting'] === true)
+                                    this.createClassProperty(data.properties[property], this.config, this.current,
+                                        {
+                                            isExisting: true,
+                                        });
+                                else
+                                    this.createClassProperty(data.properties[property], this.config, this.current,
+                                        {
+                                            isExisting: false,
+                                        });
+                                this.traverse(data.properties[property].items);
+                            } else if ('ld.association' in data.properties[property]) {
+                                if (data.properties[property]['ld.association']['ld.id'] === undefined)
+                                    throw new Error('Expect "ld.id" attribute when using "ld.association"');
+                                const ld_array_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
+                                this.createArrayProperty(data.properties[property], this.config, property,
+                                    {
+                                        subject: uri(this.config.base_prefix, this.current),
+                                        isRequired: isRequired,
+                                        isExisting: isExisting,
+                                    });
+                                if (data.properties[property]['ld.association']['ld.existing'] === true)
+                                    this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
+                                        {subject: ld_array_blank_class, isExisting: true})
+                                else
+                                    this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
+                                        {subject: ld_array_blank_class});
+
+                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.current = ld_array_blank_class;
+                                this.traverse(data.properties[property].items);
+                                this.current = this.previous;
+                            }
+                            // non-object-type schema inside an array schema
+                            else {
+                                this.current = property
                                 this.traverse(data.properties[property]);
-                        }
-                    }
-                }
 
-                if (data.properties[property].type === 'array') {
-                    this.previous = uri(this.config.base_prefix, this.current);
-                    // object-type schema inside an array schema
-                    if ('properties' in data.properties[property].items) {
-                        if ('ld.class' in data.properties[property]) {
-                            this.current = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
-                            if(data.properties[property]['ld.class']['ld.isExisting']===true)
-                                this.createClassProperty(data.properties[property], this.config, property,
-                                    {
-                                        subject: this.current,
-                                        isExisting: true,
-                                    });
-                            else
-                                this.createClassProperty(data.properties[property], this.config, property,
-                                    {
-                                        subject: this.current,
-                                        isExisting: false,
-                                    });
-                            this.traverse(data.properties[property].items);
-                        }
-                        else if ('ld.association' in data.properties[property]) {
-                            if (data.properties[property]['ld.association']['ld.id'] === undefined)
-                                throw new Error('Expect "ld.id" attribute when using "ld.association"');
-                            const ld_array_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
-                            this.createArrayProperty(data.properties[property], this.config, property,
-                                {
-                                    subject: uri(this.config.base_prefix, this.current),
-                                    isRequired: isRequired,
-                                    isExisting: isExisting,
-                                });
-                            if(data.properties[property]['ld.association']['ld.existing']===true)
-                                this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
-                                {subject: ld_array_blank_class, isExisting:true})
-                            else
-                                this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
-                                {subject: ld_array_blank_class});
-
-                            this.previous = uri(this.config.base_prefix, this.current);
-                            this.current = ld_array_blank_class;
-                            this.traverse(data.properties[property].items);
+                            }
                             this.current = this.previous;
                         }
-                        // non-object-type schema inside an array schema
+                        // when an array schema does not have "properties"
                         else {
-                            this.current = property
+
+                            this.current = property;
                             this.traverse(data.properties[property]);
+                            this.current = this.previous;
+
 
                         }
-                        this.current = this.previous;
-                    }
-                    // when an array schema does not have "properties"
-                    else{
-
-                        this.current = property;
-                        this.traverse(data.properties[property]);
-                        this.current = this.previous;
-
-
                     }
                 }
-            }
-        }
-        else {
-            //When an array schema contains non-object schema
-            // isRequired and isExisting are not considered here.
-            if ('items' in data) {
-                if (data.items.type === 'string')
-                    this.createStringProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                        {subject: uri(this.config.base_prefix, this.previous)});
+            } else {
+                //When an array schema contains non-object schema
+                // isRequired and isExisting are not considered here.
+                if ('items' in data) {
+                    if (data.items.type === 'string')
+                        this.createStringProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
+                            {subject: uri(this.config.base_prefix, this.previous)});
 
-                if (data.items.type === 'integer')
-                    this.createIntegerProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                        {subject: uri(this.config.base_prefix, this.previous)});
+                    if (data.items.type === 'integer')
+                        this.createIntegerProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
+                            {subject: uri(this.config.base_prefix, this.previous)});
 
-                if (data.items.type === 'number')
-                    this.createNumberProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                        {subject: uri(this.config.base_prefix, this.previous)});
+                    if (data.items.type === 'number')
+                        this.createNumberProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
+                            {subject: uri(this.config.base_prefix, this.previous)});
 
-                if (data.items.type === 'boolean')
-                    this.createBooleanProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                        {subject: uri(this.config.base_prefix, this.previous)});
+                    if (data.items.type === 'boolean')
+                        this.createBooleanProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
+                            {subject: uri(this.config.base_prefix, this.previous)});
 
-                if (data.items.type=== 'null')
-                    this.createNullProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                        {subject: uri(this.config.base_prefix, this.previous)});
+                    if (data.items.type === 'null')
+                        this.createNullProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
+                            {subject: uri(this.config.base_prefix, this.previous)});
 
-                if ('anyOf' in  data.items)
-                    this.createAnyOfProperty({}, this.config, uri(this.config.base_prefix, this.current),{subject: uri(this.config.base_prefix, this.previous)});
+                    if ('anyOf' in data.items)
+                        this.createAnyOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
 
-                if ('allOf' in  data.items)
-                    this.createAllOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                    if ('allOf' in data.items)
+                        this.createAllOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
 
-                if ('oneOf' in  data.items)
-                    this.createOneOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                    if ('oneOf' in data.items)
+                        this.createOneOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
 
-                if ('not' in  data.items)
-                    this.createNotProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                    if ('not' in data.items)
+                        this.createNotProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
 
+                }
             }
         }
     }
