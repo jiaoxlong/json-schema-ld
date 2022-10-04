@@ -69,6 +69,7 @@ const usage = commandLineUsage([
 
 const opts = ['source', 'config']
 
+
 let cp: ConfigParser;
 let out: string;
 if (Object.keys(options).length===0)
@@ -78,7 +79,6 @@ else {
        const source = jsc_source_files(options);
        out = 'out' in options ? options['out'] : 'out'
        if (fs.existsSync(options['config'])){
-
            cp = new ConfigParser(path.resolve(options['config']), source, out);
            for (const jsc of cp.source){
                const ld = new JSCLDSchema(jsc, cp);
