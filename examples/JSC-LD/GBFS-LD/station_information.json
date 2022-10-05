@@ -1,42 +1,39 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id":"https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson",
-  "ld.id": "StationInformation",
-  "ld.title": "Station Information",
+  "$id":
+    "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson",
   "description":
-  "Details including system operator, system location, year implemented, URL, contact info, time zone.",
+    "Details including system operator, system location, year implemented, URL, contact info, time zone.",
   "type": "object",
   "properties": {
     "last_updated": {
       "ld.id": "http://purl.org/dc/terms/modified",
       "ld.existing": true,
-      "ld.datatype": "http://www.w3.org/2001/XMLSchema#integer",
       "description":
-      "Last time the data in the feed was updated in POSIX time.",
+        "Last time the data in the feed was updated in POSIX time.",
       "type": "integer",
       "minimum": 1450155600
     },
     "ttl": {
       "description":
-      "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).",
-      "ld.range":"http://www.w3.org/2001/XMLSchema#integer",
+        "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).",
       "type": "integer",
       "minimum": 0
     },
     "version": {
       "description":
-      "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
+        "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).",
       "type": "string",
       "const": "2.3"
     },
     "data": {
       "ld.included": true,
       "description":
-      "Array that contains one object per station as defined below.",
+        "Array that contains one object per station as defined below.",
       "type": "object",
       "properties": {
         "stations": {
-          "ld.association": {
+          "ld.class": {
             "ld.id": "http://schema.mobivoc.org/#BicycleParkingStation",
             "ld.existing":true
           },
@@ -45,21 +42,16 @@
             "type": "object",
             "properties": {
               "station_id": {
-                "ld.id": "http://purl.org/dc/terms/identifier",
-                "ld.existing": true,
                 "description": "Identifier of a station.",
-                "type": "string"               },
+                "type": "string"
+              },
               "name": {
-                "ld.id": "https://w3id.org/gbfs#station_name",
                 "description": "Public name of the station.",
                 "type": "string"
-
               },
               "short_name": {
-                "ld.id": "shortName",
                 "description": "Short name or other type of identifier.",
                 "type": "string"
-
               },
               "lat": {
                 "ld.id": "http://www.w3.org/2003/01/geo/wgs84_pos#lat",
@@ -85,12 +77,12 @@
               },
               "cross_street": {
                 "description":
-                "Cross street or landmark where the station is located.",
+                  "Cross street or landmark where the station is located.",
                 "type": "string"
               },
               "region_id": {
                 "description":
-                "Identifier of the region where the station is located.",
+                  "Identifier of the region where the station is located.",
                 "type": "string"
               },
               "post_code": {
@@ -119,15 +111,13 @@
               },
               "is_virtual_station": {
                 "description":
-                "Is this station a location with or without physical infrastructure? (added in v2.1-RC)",
+                  "Is this station a location with or without physical infrastructure? (added in v2.1-RC)",
                 "type": "boolean"
               },
               "station_area": {
-                "ld.id":"stationArea",
                 "ld.geoJsonFeature": true,
-                "ld.range" : "http://www.opengis.net/ont/geosparql#Geometry",
                 "description":
-                "A multipolygon that describes the area of a virtual station (added in v2.1-RC).",
+                  "A multipolygon that describes the area of a virtual station (added in v2.1-RC).",
                 "type": "object",
                 "required": ["type", "coordinates"],
                 "properties": {
@@ -156,15 +146,15 @@
               },
               "parking_type": {
                 "description": "Type of parking station. Added in v2.3",
-                "type": "string",
-                "enum": [
-                  "parking_lot",
-                  "street_parking",
-                  "underground_parking",
-                  "sidewalk_parking",
-                  "other"
-                ]
-              },
+                  "type": "string",
+                  "enum": [
+                    "parking_lot",
+                    "street_parking",
+                    "underground_parking",
+                    "sidewalk_parking",
+                    "other"
+                  ]
+                },
               "parking_hoop": {
                 "description": "Are parking hoops present at this station? Added in v2.3",
                 "type": "boolean"
@@ -175,13 +165,13 @@
               },
               "capacity": {
                 "description":
-                "Number of total docking points installed at this station, both available and unavailable.",
+                  "Number of total docking points installed at this station, both available and unavailable.",
                 "type": "integer",
                 "minimum": 0
               },
               "vehicle_capacity": {
                 "description":
-                "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC).",
+                  "An object where each key is a vehicle_type_id and the value is a number presenting the total number of vehicles of this type that can park within the station_area (added in v2.1-RC).",
                 "type": "object",
                 "additionalProperties": {
                   "type": "number"
@@ -189,7 +179,7 @@
               },
               "is_valet_station": {
                 "description":
-                "Are valet services provided at this station? (added in v2.1-RC)",
+                  "Are valet services provided at this station? (added in v2.1-RC)",
                 "type": "boolean"
               },
               "is_charging_station": {
@@ -199,28 +189,28 @@
               },
               "rental_uris": {
                 "ld.association": {
-                  "ld.id": "https://w3id.org/gbfs#Rental_uri",
+                  "ld.id": "https://w3id.org/gbfs#Rental_uris",
                   "ld.description": "Rental uris for Android, iOS, and web."
                 },
                 "description":
-                "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).",
+                  "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).",
                 "type": "object",
                 "properties": {
                   "android": {
                     "description":
-                    "URI that can be passed to an Android app with an intent (added in v1.1).",
+                      "URI that can be passed to an Android app with an intent (added in v1.1).",
                     "type": "string",
                     "format": "uri"
                   },
                   "ios": {
                     "description":
-                    "URI that can be used on iOS to launch the rental app for this station (added in v1.1).",
+                      "URI that can be used on iOS to launch the rental app for this station (added in v1.1).",
                     "type": "string",
                     "format": "uri"
                   },
                   "web": {
                     "description":
-                    "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).",
+                      "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).",
                     "type": "string",
                     "format": "uri"
                   }
@@ -228,7 +218,7 @@
               },
               "vehicle_type_capacity": {
                 "description":
-                "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).",
+                  "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).",
                 "type": "object",
                 "additionalProperties": {
                   "type": "number"

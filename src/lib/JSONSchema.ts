@@ -9,10 +9,9 @@ import {
 import{
     SCHEMA_STRING_BUILDIN
 } from '../utils/SchemaKWMapping'
-import {fetchJSON} from '../obsolete/fetch';
+
 import {match,merge} from '../utils/match';
-import {Traverse} from "./traverse";
-import {isValidHttpUrl} from "./ConfigParser"
+
 
 const N3 = require('n3');
 const { DataFactory } = N3;

@@ -142,12 +142,12 @@ export class JSCLDSchema{
             else {
                 // property/class annotations
                 const shacl_annot_node=[];
-                if (!s.isExisting) {
-                    for (const [k, v] of s.annotation) {
+                for (const [k, v] of s.annotation) {
+                    shacl_annot_node.push(blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v));
+                    if (!s.isExisting)
                         this.rdf_writer.addQuad(node_node_literal(s.id, k, v));
-                        shacl_annot_node.push(blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v))
-                    }
                 }
+
                 /**
                  * Classes
                  */
