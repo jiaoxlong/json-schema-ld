@@ -1,6 +1,6 @@
 {
   "name": "jsc-ld",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "JSON Schema LD is a syntactic sugar for JSON Schema to enable generative interoperability by means of representing JSON schema in RDF vocabularies (RDF Scheme) and RDF shapes in SHACL.",
   "main": "./dist/src/lib/jscld.js",
   "bin": "./dist/src/lib/jscld.js",
