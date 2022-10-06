@@ -13,11 +13,11 @@ without associations. In order to solve the complexity, we introduce JSON Schema
 
 ```json
   {
-        "id": {
-            "ld.id": "https://example.com/identifier",
-            "type": "string"
-        }
+  "id": {
+    "ld.id": "https://example.com/identifier",
+    "type": "string"
   }
+}
 
 ```
 
@@ -65,14 +65,14 @@ with `ld.class` when a property needs to be casted into a Class in RDF, or with 
 
 ```json
     {
-        "id": {
-            "type": "string",
-            "description":"bike id",
-            "ld.title": "bike_id",
-            "ld.description": "A unique identifier representing a bike stored, managed and accessed in the database.",
-            "ld.comment": "The id must be unique among all identifiers used in the system."
-        }
-    }
+  "id": {
+    "type": "string",
+    "description":"bike id",
+    "ld.title": "bike_id",
+    "ld.description": "A unique identifier representing a bike stored, managed and accessed in the database.",
+    "ld.comment": "The id must be unique among all identifiers used in the system."
+  }
+}
 ```
 
 RDF vocabulary
@@ -120,13 +120,13 @@ exampleshape:ExampleShape rdf:type sh:NodeShape;
 
 ```json
     {
-        "id": {
-            "ld.id": "http://purl.org/dc/terms/identifier",
-            "ld.existing": "true",
-            "type": "string",
-            "description": "A unique identifier representing a bike stored, managed and accessed in the database."
-        }
-    }
+  "id": {
+    "ld.id": "http://purl.org/dc/terms/identifier",
+    "ld.existing": "true",
+    "type": "string",
+    "description": "A unique identifier representing a bike stored, managed and accessed in the database."
+  }
+}
 ```
 
 RDF vocabulary
@@ -170,21 +170,21 @@ exampleshape:ExampleShape rdf:type sh:NodeShape;
 
 ```json
     {
-        "bikes": {
-            "type": "object",
-            "properties": {
-                "bike_id": {
-                    "type": "number"
-                },
-                "bike_location":{
-                    "type": "string",
-                    "description": "The geo location of the bike.",
-                    "ld.domain": "https://example.com/Bike",
-                    "ld.range": "https://example.com/Location"
-                }
-            }
-        }
+  "bikes": {
+    "type": "object",
+    "properties": {
+      "bike_id": {
+        "type": "number"
+      },
+      "bike_location":{
+        "type": "string",
+        "description": "The geo location of the bike.",
+        "ld.domain": "https://example.com/Bike",
+        "ld.range": "https://example.com/Location"
+      }
     }
+  }
+}
 ```
 
 RDF vocabulary
@@ -251,12 +251,12 @@ Introducing classes can be better handled by using the combination of `ld.associ
 
 ```json
     {
-        "id": {
-            "ld.ignore": "true",
-            "type": "string",
-            "description": "A unique identifier representing a bike stored, managed and accessed in the database."
-        }
-    }
+  "id": {
+    "ld.ignore": "true",
+    "type": "string",
+    "description": "A unique identifier representing a bike stored, managed and accessed in the database."
+  }
+}
 ```
 
 ## ld.included
@@ -265,21 +265,21 @@ Introducing classes can be better handled by using the combination of `ld.associ
 
 ```json
     {
-        "bikes": {
-            "ld.included": "true",
-            "type": "object",
-            "properties": {
-                "bike_id": {
-                    "type": "number",
-                    "description": "an unique identifier of the bike."
-                },
-                "bike_location":{
-                    "type": "string",
-                    "description": "The geo location of the bike."
-                }
-            }
-        }
+  "bikes": {
+    "ld.included": "true",
+    "type": "object",
+    "properties": {
+      "bike_id": {
+        "type": "number",
+        "description": "an unique identifier of the bike."
+      },
+      "bike_location":{
+        "type": "string",
+        "description": "The geo location of the bike."
+      }
     }
+  }
+}
 
 ```
 
@@ -343,22 +343,22 @@ exampleshape:ExampleShape rdf:type sh:NodeShape;
 
 ```json
     {
-        "bikes": {
-            "ld.association": {
-                "ld.id": "https://www.example.com/Bike",
-                "ld.description": "A bike instance"
-            },
-            "type": "object",
-            "properties": {
-                "bike_id": {
-                    "type": "number"
-                },
-                "bike_location":{
-                    "type": "string"
-                }
-            }
-        }
+  "bikes": {
+    "ld.association": {
+      "ld.id": "https://www.example.com/Bike",
+      "ld.description": "A bike instance"
+    },
+    "type": "object",
+    "properties": {
+      "bike_id": {
+        "type": "number"
+      },
+      "bike_location":{
+        "type": "string"
+      }
     }
+  }
+}
 ```
 
 RDF vocabulary
@@ -426,22 +426,22 @@ exampleshape:BikeShape rdf:type sh:NodeShape;
 
 ```json
     {
-        "bikes": {
-            "ld.class": {
-                "ld.id": "https://www.example.com/Bike",
-                "ld.description": "A bike instance"
-            },
-            "type": "object",
-            "properties": {
-                "bike_id": {
-                    "type": "number"
-                },
-                "bike_location":{
-                    "type": "string"
-                }
-            }
-        }
+  "bikes": {
+    "ld.class": {
+      "ld.id": "https://www.example.com/Bike",
+      "ld.description": "A bike instance"
+    },
+    "type": "object",
+    "properties": {
+      "bike_id": {
+        "type": "number"
+      },
+      "bike_location":{
+        "type": "string"
+      }
     }
+  }
+}
 
 ```
 
@@ -500,37 +500,37 @@ exampleshape:BikeShape rdf:type sh:NodeShape;
 
 ```json
     {
-        "station_area": {
-            "ld.geoJsonFeature": true,
-            "ld.range" : "http://www.opengis.net/ont/geosparql#Geometry",
-            "description": "A multipolygon that describes the area of a virtual station.",
-            "type": "object",
-            "required": ["type", "coordinates"],
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "enum": ["MultiPolygon"]
-                },
-                "coordinates": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "type": "array",
-                            "minItems": 4,
-                            "items": {
-                                "type": "array",
-                                "minItems": 2,
-                                "items": {
-                                    "type": "number"
-                                }
-                            }
-                        }
-                    }
-                }
+  "station_area": {
+    "ld.geoJsonFeature": true,
+    "ld.range" : "http://www.opengis.net/ont/geosparql#Geometry",
+    "description": "A multipolygon that describes the area of a virtual station.",
+    "type": "object",
+    "required": ["type", "coordinates"],
+    "properties": {
+      "type": {
+        "type": "string",
+        "enum": ["MultiPolygon"]
+      },
+      "coordinates": {
+        "type": "array",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "items": {
+                "type": "number"
+              }
             }
+          }
         }
+      }
     }
+  }
+}
 ```
 
 RDF vocabulary
