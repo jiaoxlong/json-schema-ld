@@ -1,5 +1,5 @@
 {
-  "$id": "https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json",
+  "$id": "https://github.com/MobilityData/gbfs/gbfs-ld.json",
   "base_prefix": "gbfs",
   "base_url": "https://w3id.org/gbfs#",
   "title": "The GBFS LD configuration",
@@ -12,7 +12,7 @@
     "https://data.knows.idlab.ugent.be/person/jilong/#me"
   ],
   "license": "MIT",
-  "rights": "Copyright statement",
+  "rights": "Copyright statement"
   "modified": "2022-06-02T11:32:52.12679"
 }
 
