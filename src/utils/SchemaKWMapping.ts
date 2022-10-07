@@ -38,26 +38,23 @@ const SCHEMA_OBJECT_PROPS = {
 }
 
 const SCHEMA_DATATYPE_PROPS = {
-    "const": "jsonsc:const",
-    "contentEncoding": "jsonsc:contentEncoding",
-    "contentMediaType": "jsonsc:contentMediaType",
-    "default": "jsonsc:default",
-    "enum": "jsonsc:enum",
-    "exclusiveMaximum": "jsonsc:Maximum",
-    "exclusiveMinimum": "jsonsc:Minimum",
-    "format": "jsonsc:format",
-    "maxItems": "jsonsc:maxItems",
-    "maxLength": "jsonsc:maxLength",
-    "maximum": "jsonsc:multipleOf",
-    "minItems": "jsonsc:minItems",
-    "minLength": "jsonsc:minLength",
-    "mininum": "jsonsc:multipleOf",
-    "multipleOf": "jsonsc:multipleOf",
-    "pattern": "jsonsc:pattern",
-    "propertyName": "jsonsc:propertyName", //-> {"pattern":"^[A-Za-z_][A-Za-z0-9_]*$"}
-    "readonly": "jsonsc:readOnly",
-    "required": "jsonsc:required",
-    "writeonly": "jsonsc:writeOnly",
+    "const": "sh:hasValue",
+    "default": "sh:defaultValue",
+    "enum": "sh:in",
+    "exclusiveMaximum": "sh:maxExclusive",
+    "exclusiveMinimum": "sh:minExclusive",
+    "mininum": "sh:minInclusive",
+    "maximum": "sh:maxInclusive",
+    "maxItems": "sh:maxCount",
+    "minItems": "sh:minCoun",
+    "maxLength": "sh:maxLength",
+    "minLength": "sh:minLength",
+    "pattern": "sh:pattern", // can be only applied to a string type schema
+    //"format": "jsonsc:format",
+    //"multipleOf": "jsonsc:multipleOf",
+    //"propertyName": "jsonsc:propertyName", //-> {"pattern":"^[A-Za-z_][A-Za-z0-9_]*$"}
+    //"readonly": "jsonsc:readOnly",
+    //"writeonly": "jsonsc:writeOnly",
 }
 
 const SCHEMA_DATATYPE_PROPS_NOT_IN = {

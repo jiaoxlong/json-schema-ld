@@ -64,9 +64,9 @@ export interface SchemaOptArgs{
     minItems?:number,
     maxItems?:number,
     isEnum?:boolean,
-    ld_enum?:{}
+    ld_enum?:Record<string, unknown>
 }
-
+``
 export interface I_SCHEMA_GENERIC_KWS {
     title?: string,
     description?: string,

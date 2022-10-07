@@ -1,4 +1,4 @@
-import {SCHEMA_STRING_FORMATS} from "./schemaKWs";
+
 
 export const SHACL_STRING_MAP = {
     "minLength":"sh:minLength",
