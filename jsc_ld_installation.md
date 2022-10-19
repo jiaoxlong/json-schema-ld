@@ -17,9 +17,9 @@ interoperability by means of representing JSON schema in RDF vocabularies
 (RDF Scheme) and RDF shapes in SHACL.
 
 Synopsis
-  $ jsc-ld --source json_schema.js --out out --config config.json
-  $ jsc-ld --source json_schema.js --config config.json
-  $ jsc-ld -s json_schema.js -c config.js
+  $ jsc-ld --source json_schema.json --out out --config config.json
+  $ jsc-ld --source json_schema.json --config config.json
+  $ jsc-ld -s json_schema.json -c config.json
 
 Options
 
