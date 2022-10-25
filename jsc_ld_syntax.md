@@ -162,7 +162,7 @@ exampleshape:ExampleShape rdf:type sh:NodeShape;
 
 **NOTE**: When a property tagged with `ld.existing` in a JSON Schema, all the annotations associated with the property in the JSON Schema will not be present in RDF to avoid modification on existing vocabularies.
 
-## id.domain id.range
+## ld.domain ld.range
 
 > JSC-LD parses a JSON Schema along its hierarchical structure.
 > It is possible to annotate a property with `ld.domain` and/or `ld.range` to state any resource that has this property
