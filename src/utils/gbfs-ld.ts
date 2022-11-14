@@ -2,7 +2,7 @@ export const config =
 {
     "$id" : "https://github.com/NABSA/gbfs/blob/v2.3/gbfs-ld.json", //dcterms:identifier
     "$ref": "config.json",
-    "base_prefix": "gbfs",
+    "prefix": "gbfs",
     "base_url": "https://w3id.org/gbfs#",
     "title": "The GBFS LD configuration",//dcterms:title
     "description": "A file containing extra configuration to map the GBFS json schemas to an RDFS vocabulary",

@@ -1,18 +1,25 @@
 import {AllOfSchema, AnyOfSchema, NotSchema, OneOfSchema, Schema} from "../src/lib/JSONSchema";
 import {StringSchema, ArraySchema, NullSchema, ObjectSchema, BaseSchema, ClassSchema } from "../src/lib/JSONSchema";
 import {NumberSchema, IntegerSchema, NumericSchema } from "../src/lib/JSONSchema";
-import {ConfigParser} from "../src/lib/ConfigParser";
+import {Config} from "../src/lib/ConfigParser";
 import {JSC_LD_PREFIX} from "../src/utils/Prefix";
 import path from "path";
 import {blank_node_literal, blank_node_node} from "../src/utils/n3_utils";
 import {DataFactory, NamedNode} from "n3";
 import namedNode = DataFactory.namedNode;
+import {CLIArguments} from "../src/utils/types";
 
 
 describe("JSON Schema", ()=> {
 
-
-    const config_ins = new ConfigParser(path.resolve('./configs/config.json'), ['./GBFS-LD/station_information.json'], 'test_out', JSC_LD_PREFIX)
+    const cli_args:CLIArguments = {
+        "source": path.resolve('examples\\JSC-LD\\GBFS-LD\\gbfs.json'),
+        "prefix": "example",
+        "uri": "http://example.com",
+        "out": "out_dir",
+        "format": "Turtle"
+    };
+    const config_ins = new Config(cli_args);
 
     test('check if the Integer_schema is of an instance of IntergerSchema and created properties as expected', () => {
         const mock_int_data = {

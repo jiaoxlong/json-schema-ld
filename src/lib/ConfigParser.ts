@@ -1,85 +1,136 @@
-import {ConfigMapping} from "../utils/ConfigMapping";
-import {match} from '../utils/match';
 import {JSC_LD_PREFIX} from "../utils/Prefix";
 import {N3FormatTypes} from "../utils/types";
-import {validate_path} from "../utils/validation";
+import type {Logger} from '@treecg/types';
+import {getLogger}from '@treecg/types';
+import type {CLIArguments} from "../utils/types";
+import fs from "fs";
+import path from "path";
 
 /**
  * The ConfigParser class parses a JSC LD configuration document
  */
-export class ConfigParser{
+export class Config{
     /**
-     * JSON Schema id/$id
+     * CLIArguments
      */
-    id:string;
+    private readonly cliArgs:CLIArguments;
     /**
      * path to a source JSC file or a folder in the system contains source JSC files
      */
-    source:any[];
+    private readonly _source:any[];
     /**
      * output directory
      */
-    out_dir:string;
+    public out:string;
     /**
      * a namespace prefix for the project
      */
-    base_prefix:string;
+    private readonly _prefix:string;
     /**
      * The name prefix binding to an uri
      */
-    base_uri:string;
+    private readonly _uri:string;
     /**
      * Serialization format. Formats to ttl.
      */
-    format:string;
+    public format:typeof N3FormatTypes[number];
     /**
-     * Annotation in JSON schema draft 2020-12
+     * jsc-ld logger
      */
-    annot:Map<string,any>;
+    public logger:Logger
+
+    constructor(cliArgs:CLIArguments, prefix:object=JSC_LD_PREFIX) {
+        this.logger = getLogger('jsc-ld');
+        this.cliArgs = cliArgs;
+        this.format = cliArgs.format === undefined ? "Turtle" : cliArgs.format;
+        if (isValidPrefix(cliArgs.prefix))
+            this._prefix = cliArgs.prefix;
+        else
+            throw new Error(`Invalid namespace prefix ${cliArgs.prefix}`)
+        if (isValidHttpURI(cliArgs.uri))
+            this._uri = cliArgs.uri
+        else
+            throw new Error(`Invalid namespace URI ${cliArgs.uri}`)
+        this.out = 'out' in cliArgs ? cliArgs.out : 'out'
+        this._source = this.jsc_source_files(cliArgs.source)
+
+    }
+    public get source(){
+        return this._source;
+    }
+    public get prefix(){
+        return this._prefix;
+    }
+    public get uri(){
+        return this._uri;
+    }
     /**
-     * JSC-LD configuration JSON data
+     * collects JSC-LD file path or paths to multiple JSC-LD files from a given source directory defined by command line argument --source/-s
+     *
+     * @param args command line arguments
      */
-    data:object;
-    constructor(config_path:string, source:any[], out:string, prefix:object=JSC_LD_PREFIX) {
-        if (isValidHttpUrl(config_path)){
-            // Todo: fetch a json config from web
-            // utils/fetch.ts
-        }
-        else{
-            if (!validate_path(config_path))
-                throw new Error('JSON-LD configuration at "'+config_path+'" can not be found in the system.')
-            this.data = require(config_path);
-            this.annot = match(ConfigMapping,this.data);
-            if ('$id' in this.data) this.id = this.data['$id'];
-            else throw Error('Unknown JSON Schema extension format. An "$id" attribute is expected!');
-            this.source = source;
-            if('format' in this.data){
-                if (N3FormatTypes.includes(this.data['format'])){
-                    this.format = this.data['format']
-                }
-                else
-                    throw new Error (`Unknown "${this.data['format']}" format defined in the config file.`)
+    jsc_source_files(source:string){
+        const source_list:string[] = [];
+        const source_res = path.resolve(source)
+        try {
+            if (fs.statSync(source_res).isDirectory()) {
+                fs.readdirSync(source_res).forEach(file => {
+                    if (fs.statSync(path.join(source_res, file)).isDirectory())
+                        this.logger.info('When path of a directory is passed as --source/-s argument, only .json files in the directory are expected.')
+                    else if (fs.statSync(path.join(source_res, file)).isFile()){
+                        if (file.endsWith('.json')) {
+                            if (!file.endsWith('config.json')) {
+                                source_list.push(path.join(source_res, file));
+                            }
+                        }
+                        else
+                            this.logger.info(`${fs.statSync(path.join(source_res, file))}+ is not of type json file.`);
+                    }
+                });
+            }
+            if (fs.statSync(source_res).isFile()) {
+                source_list.push(source_res);
+            }
+            if (source_list.length === 0) {
+                throw new Error('No JSON Schema files can be found!');
             }
             else
-                this.format = "Turtle";
-            if ('base_prefix' in this.data) this.base_prefix = this.data['base_prefix'];
-            else throw Error('Unknown JSON Schema extension format. A "base_prefix" attribute is expected!');
-            if ('base_url' in this.data) this.base_uri = this.data['base_url'];
-            else throw Error('Unknown JSON Schema extension format. A "base_url" attribute is expected!');
-            this.out_dir = out;
+                return source_list;
+        }
+        catch (err:any) {
+            this.logger.error("The given 'source' property neither points to a directory " +
+                "nor to a file")
+            this.logger.info(err)
         }
     }
 }
 
+/**
+ * isValidPrefix() validates a namespace prefix
+ * @param prefix
+ */
+
+export function isValidPrefix(prefix:string){
+    const regex = /^\w+$/;
+    return !!regex.test(prefix);
+}
 
 
 /**
- * isValidHttpUrl() use a simple way to valid if a given string is a URL.
+ * isValidHttpUri() use a simple way to valid if a given string is a URL.
  *
- * @param string
+ * @param uri namespace uri
  */
-export function isValidHttpUrl(string) {
-    return (string.startsWith('http') || string.startsWith('https'));
+export function isValidHttpURI(uri:string) {
+    return (uri.startsWith('http') || uri.startsWith('https'));
 }
 
+export function validate_path(path_to_file:string){
+    try {
+        return fs.statSync(path_to_file).isDirectory() || fs.statSync(path_to_file).isFile();
+    }
+    catch(err) {
+        throw new Error(path_to_file + ' does not exist in the system');
+    }
+}
 

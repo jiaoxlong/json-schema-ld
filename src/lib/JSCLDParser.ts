@@ -1,16 +1,13 @@
 import {CompositionSchema, BaseSchema, Schema, ClassSchema} from "./JSONSchema";
 import {Traverse} from "./traverse";
-import {ConfigParser} from "./ConfigParser";
+import {Config} from "./ConfigParser";
 import {RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
 import * as fs from 'fs';
 import * as path from "path";
-import {writer} from "repl";
-import {NamedNode, Quad} from "n3";
 import {
     add_writer_list, blank_node_list,
     blank_node_literal,
     blank_node_node,
-    node_node_list,
     node_node_literal,
     node_node_node
 } from "../utils/n3_utils";
@@ -18,7 +15,7 @@ import {SCHEMA_SHACL_ANNOTATION} from "../utils/SchemaKWMapping";
 import {I_JSONLD_CONFIG} from "../utils/types";
 const N3 = require('n3');
 const { DataFactory } = N3;
-const { namedNode, literal, defaultGraph, quad } = DataFactory;
+const { namedNode, literal, quad } = DataFactory;
 
 /**
  * The JSCLDSchema processes schema instances parsed from JSON schema, serialize and export them to RDF.
@@ -27,7 +24,7 @@ export class JSCLDSchema{
     /**
      * A ConfigParser object contains all necessary configuration for parsing JSON schema.
      */
-    config:ConfigParser;
+    config:Config;
     /**
      * Path to the JSON schema document
      */
@@ -35,7 +32,7 @@ export class JSCLDSchema{
     /**
      * A JSON object parsed from the JSON schema document
      */
-    data:I_JSONLD_CONFIG;
+    data:object;
     /**
      * The base JSC-LD schema generated from JSC-LD configuration
      */
@@ -62,32 +59,32 @@ export class JSCLDSchema{
      * Base resource name
      */
     base_resource_name:string;
+
     /**
      * The constructor of JSCLDSchema
      * @param jsc Path to the JSON schema document
      * @param config A ConfigParser object contains all necessary configuration for parsing JSON schema.
-     * @param data A JSON object parsed from the JSON schema document
-     * @param base_schema The base JSC-LD schema generated from JSC-LD configuration
-     * @param rdf_writer The N3Writer instance writes RDF vocabulary
-     * @param shacl_writer The N3Writer instance writes RDF shapes
-     * @param schemas Schema instances parsed from JSON schema
      */
-    constructor(jsc:string, config:ConfigParser ){
+    constructor(jsc:string, config:Config ){
         this.config = config;
         this.jsc = path.resolve(jsc);
+        /** data A JSON object parsed from the JSON schema document */
         this.data = require(this.jsc);
+        /** The base JSC-LD schema */
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
+        /** The N3Writer instance that writes RDF vocab */
         this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
-
         // shacl_base_uri
         //https://w3id.org/gbfs/shapes/stationinfo#{shapename}
         this.base_resource_name = extract_resource_from_uri(this.base_schema.id)
         //when base_url is ended with either '#' or '/'
-        const base_shacl_shape_uri = this.config.base_uri.slice(0,-1)+'/shapes/'+ this.base_resource_name + '#';
+        const base_shacl_shape_uri = this.config.uri.slice(0,-1)+'/shapes/'+ this.base_resource_name + '#';
         this.shacl_shape_uri = base_shacl_shape_uri;
         const shacl_prefix = SHACL_PREFIX
-        shacl_prefix.prefixes[this.config.base_prefix+'shape']= base_shacl_shape_uri
+        shacl_prefix.prefixes[this.config.prefix+'shape']= base_shacl_shape_uri
+        /** The N3Writer instance writes RDF shapes */
         this.shacl_writer = new N3.Writer({...shacl_prefix,...{'format':this.config.format}});
+        /** Schema instances parsed from JSON schema */
         this.schemas = new Traverse(this.base_schema.id,this.data, this.config).schemas;
     }
 
@@ -96,7 +93,7 @@ export class JSCLDSchema{
      */
     serialize(){
 
-        /** Base schema */
+        /** meta schema obsolete
 
         this.rdf_writer.addQuad(node_node_node(this.config.id, 'rdf:type', 'jsonsc-ld:Schema'));
         this.rdf_writer.addQuad(node_node_node(this.config.id,'jsonsc-ld:enriches', this.base_schema.id ));
@@ -119,6 +116,9 @@ export class JSCLDSchema{
                 }
             }
         });
+         */
+
+        /** Base schema */
 
         //Schema annotation
         for (const [key, value] of this.base_schema.annotation) {
@@ -153,12 +153,12 @@ export class JSCLDSchema{
                  */
                 if (s instanceof ClassSchema){
                     if (s.id.includes('#'))
-                        shacl_shape_uri = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
+                        shacl_shape_uri = this.config.prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
                     else if (s.id.includes('/')) {
-                        shacl_shape_uri = this.config.base_prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
+                        shacl_shape_uri = this.config.prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
                     }
                     else
-                        shacl_shape_uri = this.config.base_prefix + ':'+s.id+'Shape'
+                        shacl_shape_uri = this.config.prefix + ':'+s.id+'Shape'
                     // Class SHACL NodeShape
                     this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'rdf:type', 'sh:NodeShape'));
                     // Class Shacl targetClass
@@ -217,7 +217,7 @@ export class JSCLDSchema{
                             for (const e of s.enum) {
                                 this.rdf_writer.addQuad(e,namedNode('rdf:type'), namedNode('skos:Concept'));
                                 this.rdf_writer.addQuad(e,namedNode('skos:inScheme'),namedNode(capitalizeLastFragment(s.id)));
-                                this.rdf_writer.addQuad(e, namedNode('rdfs:label'),literal(e.id.replace(this.config.base_prefix + ':', '')));
+                                this.rdf_writer.addQuad(e, namedNode('rdfs:label'),literal(e.id.replace(this.config.prefix + ':', '')));
                             }
                         }
 
@@ -233,7 +233,7 @@ export class JSCLDSchema{
                                 this.rdf_writer.addQuad(node_node_node(e,'skos:inScheme',
                                     capitalizeLastFragment(s.id)));
                                 this.rdf_writer.addQuad(node_node_literal(e, 'rdfs:label',
-                                    e.replace(this.config.base_prefix + ':', '')))
+                                    e.replace(this.config.prefix + ':', '')))
                                 for (const [k, v] of s.enum[e])
                                     this.rdf_writer.addQuad(node_node_literal(e, k, v));
                             }
@@ -297,11 +297,11 @@ export class JSCLDSchema{
     materialize(){
         const path = require('path');
         this.rdf_writer.end((error:any, result:any) =>
-            fs.writeFile(path.join(this.config.out_dir, path.parse(this.jsc).name+'_rdfs.ttl'), result, (err:any) => {
+            fs.writeFile(path.join(this.config.out, path.parse(this.jsc).name+'_rdfs.ttl'), result, (err:any) => {
                 if (err) throw err;
             }));
         this.shacl_writer.end((error:any, result:any) =>
-            fs.writeFile(path.join(this.config.out_dir, path.parse(this.jsc).name+'_shacl.ttl'), result, (err:any) => {
+            fs.writeFile(path.join(this.config.out, path.parse(this.jsc).name+'_shacl.ttl'), result, (err:any) => {
                 if (err) throw err;
             }));
     }

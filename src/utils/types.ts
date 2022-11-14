@@ -82,7 +82,7 @@ export interface I_SCHEMA_GENERIC_KWS {
 
 export interface I_JSONLD_CONFIG {
     $id:string,
-    base_prefix:string,
+    prefix:string,
     base_url:string,
     title:string
     format?:string,
@@ -93,6 +93,19 @@ export interface I_JSONLD_CONFIG {
     modified?:string
 
 }
+
+export type CLIArguments = {
+    /** path to JSON Schema documents or folder */
+    source: string,
+    /** namespace URI */
+    uri: string,
+    /** namespace prefix */
+    prefix: string,
+    /** serialization format */
+    format?: typeof N3FormatTypes[number]
+    /** output path */
+    out?: string
+};
 
 export type format = typeof formats[number];
 export type rdfFormatType = typeof rdfFormatTypes[number];

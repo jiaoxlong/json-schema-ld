@@ -67,7 +67,7 @@
               },
               "is_disabled": {
                 "description": "Is the vehicle currently disabled (broken)?",
-                "type": "boolean"
+                "oneOf": [{ "type": "boolean" }, { "type": "number" }]
               },
               "rental_uris": {
                 "ld.association": {

@@ -1,42 +1,9 @@
-import {hasKeys, jsc_source_files, validate_path} from "../src/utils/validation";
+import {hasKeys} from "../src/utils/validation";
 import path from "path";
 import {match,merge} from "../src/utils/match";
 
 
 describe('JSON-LD misc functions', ()=>{
-
-    test('Validate a given path exists in the system', () => {
-        expect(validate_path(path.resolve('./configs/config.json'))).toBeTruthy();
-        try{
-            validate_path('config.json')
-        }
-        catch (err) {
-            expect(err).toBeInstanceOf(Error);
-            expect(err).toHaveProperty('message', 'config.json does not exist in the system')
-        }
-    });
-
-    test('test jsc_source_files()', () => {
-        const mock_data_dir = {
-            "source": './examples/JSC-LD/GBFS-LD/'
-        }
-        const mock_data_file = {
-            "source": './examples/JSC-LD/GBFS-LD/station_information.json'
-        }
-        const mock_data_err = {
-            "source": './file/not/exist/'
-        }
-        /** windows */
-        expect(jsc_source_files(mock_data_dir)).toContainEqual("examples\\JSC-LD\\GBFS-LD\\gbfs.json");
-        expect(jsc_source_files(mock_data_file)).toEqual(["./examples/JSC-LD/GBFS-LD/station_information.json"]);
-        try{
-            jsc_source_files(mock_data_err);
-        }
-        catch (err)
-        {
-            expect(err).toBeInstanceOf(Error);
-        }
-    });
 
     test ('tests an object has certain properties with hasKeys()', ()=>{
         const opts = ['source', 'config']

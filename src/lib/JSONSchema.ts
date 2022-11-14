@@ -17,16 +17,15 @@ const N3 = require('n3');
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 import { NamedNode,Literal, Term } from "n3/lib/N3DataFactory";
-import {ConfigParser} from "./ConfigParser";
+import {Config} from "./ConfigParser";
 import {LD_BUILD_IN_ANNOTATION} from "../utils/LDBuildin";
-import {Quad} from "n3";
 import {
     blank_node_list,
     blank_node_literal,
     blank_node_namedNode,
     blank_node_node, node_node_node,
 } from "../utils/n3_utils";
-import {SchemaOptArgs} from "../utils/types";
+import {CLIArguments, SchemaOptArgs} from "../utils/types";
 
 /**
  * An abstract base class for all JSON schemas extend.
@@ -39,9 +38,9 @@ export abstract class Schema {
      */
     id?:string;
     /**
-     * A ConfigParser object contains all necessary configuration for parsing JSON schema.
+     * A Config object contains all necessary configuration for parsing JSON schema.
      * */
-    config:ConfigParser;
+    config:Config;
     /**
      * A JSON object contains data for parsing.
      */
@@ -113,7 +112,7 @@ export abstract class Schema {
      * @param isIgnored true when the property is considered not to be added in RDF vocabulary
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
-    constructor(data: {[key:string]: any}, config, property_name:string,
+    constructor(data: {[key:string]: any}, config:Config, property_name:string,
                 {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         this.config = config;
         this.subject = subject;
@@ -129,15 +128,15 @@ export abstract class Schema {
         if ('$id' in data) this.id = data['$id'];
 
         if ('ld.id' in data)
-            this.id = uri(this.config.base_prefix, data['ld.id'])
+            this.id = uri(this.config.prefix, data['ld.id'])
         if ('ld.existing' in data)
             this.isExisting = true;
         if(this.id === undefined){
             // when id or $id is not defined in the base schema or a schema is of type class.
             if  (property_name === undefined)
-                this.id = config.base_prefix+ ':json';
+                this.id = config.prefix+ ':json';
             else
-                this.id = uri(this.config.base_prefix,property_name)
+                this.id = uri(this.config.prefix,property_name)
         }
 
         // rdfs:label
@@ -168,12 +167,12 @@ export abstract class Schema {
             if(this.range!==undefined)
                 throw new Error('The range of Property is already assigned with "ld.range".')
             else
-                this.range = uri(this.config.base_prefix, data['ld.association']['ld.id'])
+                this.range = uri(this.config.prefix, data['ld.association']['ld.id'])
         if ('ld.class' in data)
             if(this.range!==undefined)
                 throw new Error('The range of Property is already assigned with "ld.range".')
             else
-                this.range = uri(this.config.base_prefix,data['ld.class']['ld.id'])
+                this.range = uri(this.config.prefix,data['ld.class']['ld.id'])
 
         if ('$schema' in data) this.schema = data['$schema']
         if (('ld.geoJsonFeature' in data) && (data['ld.geoJsonFeature'] === true)) {
@@ -193,7 +192,7 @@ export abstract class Schema {
             const enum_list = []
             for (const ele of data['enum']){
                 if (data['enum'] instanceof Array<string>)
-                    enum_list.push(namedNode(this.config.base_prefix+':'+ ele));
+                    enum_list.push(namedNode(this.config.prefix+':'+ ele));
                 else
                     enum_list.push(literal(ele));
             }
@@ -472,7 +471,7 @@ export class ObjectSchema extends Schema{
         if (this.isEnum){
             const enum_tmp= {};
             for (const k in ld_enum){
-                enum_tmp[this.config.base_prefix+':'+ k] = ld_enum[k];
+                enum_tmp[this.config.prefix+':'+ k] = ld_enum[k];
             }
             this.enum = enum_tmp;
             this.shacl.push(blank_node_list('sh:in', Object.keys(this.enum).map(x => namedNode(x))));
@@ -495,7 +494,7 @@ export class BaseSchema extends Schema{
      * @param isIgnored true when the property is considered not to be added in RDF vocabulary
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string){
+    constructor(data: {[key:string]: any}, config:Config, property_name:string){
         super(data,config, property_name, {});
         this.schema_type = 'base'
         }
@@ -516,7 +515,7 @@ export class ClassSchema extends Schema{
      * @param isIgnored true when the property is considered not to be added in RDF vocabulary
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
-    constructor(data: {[key:string]: any}, config:ConfigParser, property_name:string, { isExisting=false,
+    constructor(data: {[key:string]: any}, config:Config, property_name:string, { isExisting=false,
         isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         super(data,config, property_name, {isExisting,isIgnored,
             isRequired} );
@@ -598,7 +597,7 @@ export class AnyOfSchema extends CompositionSchema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any},
-                config:ConfigParser,
+                config:Config,
                 property_name:string,
                 composition='anyOf',
                 {
@@ -632,7 +631,7 @@ export class OneOfSchema extends CompositionSchema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any},
-                config:ConfigParser,
+                config:Config,
                 property_name:string,
                 composition='oneOf',
                 {
@@ -666,7 +665,7 @@ export class AllOfSchema extends CompositionSchema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any},
-                config:ConfigParser,
+                config:Config,
                 property_name:string,
                 composition='allOf',
                 {
@@ -700,7 +699,7 @@ export class NotSchema extends CompositionSchema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any},
-                config:ConfigParser,
+                config:Config,
                 property_name:string,
                 composition='not',
                 {

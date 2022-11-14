@@ -1,5 +1,3 @@
-import {validate_path} from "../src/utils/validation";
-import path from "path";
 import {
     add_writer_list,
     blank_node_list,

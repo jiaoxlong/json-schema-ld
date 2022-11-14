@@ -1,20 +1,20 @@
 #!/usr/bin/env node
-import {hasKeys, jsc_source_files} from "../utils/validation";
+import {CLIArguments} from "../utils/types";
+
 const fs = require('fs');
-import path from "path";
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
 import {JSCLDSchema} from "./JSCLDParser";
-import {ConfigParser} from "./ConfigParser";
+import {Config} from "./ConfigParser";
 
-
-const cli_args = [
+const args = [
     { name: 'source', alias: 's', type: String},
     { name: 'out', alias: 'o', type:String},
-    { name: 'config', alias: 'c', type:String},
+    { name: 'prefix', alias: 'p', type:String},
+    { name: 'uri', alias: 'u', type:String},
 ]
 
-const options = commandLineArgs(cli_args)
+const cli_args = commandLineArgs(args)
 
 const usage = commandLineUsage([
     {
@@ -24,26 +24,40 @@ const usage = commandLineUsage([
     {
         header:"Synopsis",
         content: [
-            '$ jsc-ld --source json_schema.js --out out --config config.json',
-            '$ jsc-ld --source json_schema.js --config config.json',
-            '$ jsc-ld -s json_schema.js -c config.js'
+            '$ jsc-ld --source json_schema.js --out out --prefix example --url "http://example.com/"',
+            '$ jsc-ld --source json_schema.js -p example -u "http://example.com"',
+            '$ jsc-ld -s json_schema.js'
         ]
     },
     {
         header: 'Options',
         optionList: [
             {
-                name: 'config',
-                alias: 'c',
-                typeLabel: '{underline config_file}',
-                description: 'JSC-LD configuration file',
-                type: String
-            },
-            {
                 name: 'source',
                 alias: 's',
                 typeLabel: '{underline path/to/source/file|directory}',
                 description: 'Path to a JSON schema file or a directory contains JSON schema files',
+                type: String
+            },
+            {
+                name: 'prefix',
+                alias: 'p',
+                typeLabel: '{underline prefix}',
+                description: 'JSC-LD predefined namespace prefix',
+                type: String
+            },
+            {
+                name: 'format',
+                alias: 'f',
+                typeLabel: '{underline format}',
+                description: 'RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads.',
+                type: String
+            },
+            {
+                name: 'uri',
+                alias: 'u',
+                typeLabel: '{underline uri}',
+                description: 'JSC-LD predefined namespace URI',
                 type: String
             },
             {
@@ -67,31 +81,25 @@ const usage = commandLineUsage([
     }
 ]);
 
-const opts = ['source', 'config']
+let cp:Config;
 
-
-let cp: ConfigParser;
-let out: string;
-if (Object.keys(options).length===0)
-    console.log(usage);
-else {
-    if (hasKeys(options, opts)){
-       const source = jsc_source_files(options);
-       out = 'out' in options ? options['out'] : 'out'
-       if (fs.existsSync(options['config'])){
-           cp = new ConfigParser(path.resolve(options['config']), source, out);
-           for (const jsc of cp.source){
-               const ld = new JSCLDSchema(jsc, cp);
-               ld.serialize();
-               ld.materialize();
-           }
-       }
-       else
-           throw new Error('Can not locate JSC-LD at '+options['config']+'.');
-    }
-    else{
-        console.log(usage)
-    }
+try {
+    cp = new Config(cli_args);
 }
+catch(e) {
+    console.log(e)
+    console.log(usage)
+    process.exit(1)
+}
+
+for (const jsc of cp.source){
+    const ld = new JSCLDSchema(jsc, cp);
+    ld.serialize();
+    ld.materialize();
+}
+
+
+
+
 
 

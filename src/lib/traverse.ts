@@ -7,8 +7,8 @@ import {
     NumberSchema, ObjectSchema,
     StringSchema, ArraySchema, ClassSchema, Schema, uri
 } from "./JSONSchema";
+import {Config} from './ConfigParser'
 import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../utils/schemaKWs";
-import {ConfigParser} from "./ConfigParser";
 import {match} from "../utils/match";
 import {SchemaOptArgs} from "../utils/types";
 
@@ -31,7 +31,7 @@ export class Traverse{
     /**
      * A JSC-LD configuration instance
      */
-    config:ConfigParser;
+    config:Config;
     /**
      * A list of required properties
      */
@@ -40,7 +40,7 @@ export class Traverse{
     /**
      * The Traverse class constructor
      */
-    constructor(id:string, data:object, config:ConfigParser){
+    constructor(id:string, data:object, config:Config){
         this.current = id;
         this.previous = id;
         this.config = config;
@@ -83,7 +83,7 @@ export class Traverse{
                     if (data.properties[property].type === 'string')
                         this.createStringProperty(data.properties[property], this.config, property,
                             {
-                                subject: uri(this.config.base_prefix, this.current),
+                                subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
@@ -91,7 +91,7 @@ export class Traverse{
                     if (data.properties[property].type === 'integer')
                         this.createIntegerProperty(data.properties[property], this.config, property,
                             {
-                                subject: uri(this.config.base_prefix, this.current),
+                                subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
@@ -99,7 +99,7 @@ export class Traverse{
                     if (data.properties[property].type === 'number')
                         this.createNumberProperty(data.properties[property], this.config, property,
                             {
-                                subject: uri(this.config.base_prefix, this.current),
+                                subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
@@ -107,7 +107,7 @@ export class Traverse{
                     if (data.properties[property].type === 'boolean')
                         this.createBooleanProperty(data.properties[property], this.config, property,
                             {
-                                subject: uri(this.config.base_prefix, this.current),
+                                subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
@@ -115,34 +115,34 @@ export class Traverse{
                     if (data.properties[property].type === 'null')
                         this.createNullProperty(data.properties[property], this.config, property,
                             {
-                                subject: uri(this.config.base_prefix, this.current),
+                                subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
                     if ('anyOf' in data.properties[property])
                         this.createAnyOfProperty(data.properties[property], this.config, property, {
-                            subject: uri(this.config.base_prefix, this.current),
+                            subject: uri(this.config.prefix, this.current),
                             isRequired: isRequired,
                             isExisting: isExisting
                         });
 
                     if ('allOf' in data.properties[property])
                         this.createAllOfProperty(data.properties[property], this.config, property, {
-                            subject: uri(this.config.base_prefix, this.current),
+                            subject: uri(this.config.prefix, this.current),
                             isRequired: isRequired,
                             isExisting: isExisting
                         });
 
                     if ('oneOf' in data.properties[property])
                         this.createOneOfProperty(data.properties[property], this.config, property, {
-                            subject: uri(this.config.base_prefix, this.current),
+                            subject: uri(this.config.prefix, this.current),
                             isRequired: isRequired,
                             isExisting: isExisting
                         });
 
                     if ('not' in data.properties[property])
                         this.createNotProperty(data.properties[property], this.config, property, {
-                            subject: uri(this.config.base_prefix, this.current),
+                            subject: uri(this.config.prefix, this.current),
                             isRequired: isRequired,
                             isExisting: isExisting
                         });
@@ -160,10 +160,10 @@ export class Traverse{
                             if ('ld.association' in data.properties[property]) {
                                 if (data.properties[property]['ld.association']['ld.id'] === undefined)
                                     throw new Error('Expect "ld.id" attribute when using "ld.association"');
-                                const ld_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
+                                const ld_blank_class = uri(this.config.prefix, data.properties[property]['ld.association']['ld.id']);
                                 this.createObjectProperty(data.properties[property], this.config, property,
                                     {
-                                        subject: uri(this.config.base_prefix, this.current),
+                                        subject: uri(this.config.prefix, this.current),
                                         isRequired: isRequired,
                                         isExisting: isExisting,
                                     })
@@ -173,7 +173,7 @@ export class Traverse{
                                 else
                                     this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_blank_class,
                                         {subject: ld_blank_class});
-                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_blank_class;
                                 this.traverse(data.properties[property]);
                                 this.current = this.previous;
@@ -187,7 +187,7 @@ export class Traverse{
                                     }
                                     this.createObjectProperty(data.properties[property], this.config, property,
                                         {
-                                            subject: uri(this.config.base_prefix, this.current),
+                                            subject: uri(this.config.prefix, this.current),
                                             isRequired: isRequired,
                                             isExisting: isExisting,
                                             isEnum: true,
@@ -198,20 +198,20 @@ export class Traverse{
                             } else if ('ld.class' in data.properties[property]) {
                                 if (data.properties[property]['ld.class']['ld.id'] === undefined)
                                     throw new Error('"ld.class" is defined, but "ld.id" does not present. ')
-                                const ld_class = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
+                                const ld_class = uri(this.config.prefix, data.properties[property]['ld.class']['ld.id']);
                                 if (data.properties[property]['ld.class']['ld.existing'] === true)
                                     this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class,
                                         {subject: ld_class, isExisting: true});
                                 else
                                     this.createClassProperty(data.properties[property]['ld.class'], this.config, ld_class, {subject: ld_class})
-                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_class;
                                 this.traverse(data.properties[property]);
                                 this.current = this.previous;
                             } else {
                                 this.createObjectProperty(data.properties[property], this.config, property,
                                     {
-                                        subject: uri(this.config.base_prefix, this.current),
+                                        subject: uri(this.config.prefix, this.current),
                                         isRequired: isRequired,
                                         isExisting: isExisting
                                     });
@@ -225,11 +225,11 @@ export class Traverse{
                     }
 
                     if (data.properties[property].type === 'array') {
-                        this.previous = uri(this.config.base_prefix, this.current);
+                        this.previous = uri(this.config.prefix, this.current);
                         // object-type schema inside an array schema
                         if ('properties' in data.properties[property].items) {
                             if ('ld.class' in data.properties[property]) {
-                                this.current = uri(this.config.base_prefix, data.properties[property]['ld.class']['ld.id']);
+                                this.current = uri(this.config.prefix, data.properties[property]['ld.class']['ld.id']);
                                 if (data.properties[property]['ld.class']['ld.isExisting'] === true)
                                     this.createClassProperty(data.properties[property], this.config, this.current,
                                         {
@@ -244,10 +244,10 @@ export class Traverse{
                             } else if ('ld.association' in data.properties[property]) {
                                 if (data.properties[property]['ld.association']['ld.id'] === undefined)
                                     throw new Error('Expect "ld.id" attribute when using "ld.association"');
-                                const ld_array_blank_class = uri(this.config.base_prefix, data.properties[property]['ld.association']['ld.id']);
+                                const ld_array_blank_class = uri(this.config.prefix, data.properties[property]['ld.association']['ld.id']);
                                 this.createArrayProperty(data.properties[property], this.config, property,
                                     {
-                                        subject: uri(this.config.base_prefix, this.current),
+                                        subject: uri(this.config.prefix, this.current),
                                         isRequired: isRequired,
                                         isExisting: isExisting,
                                     });
@@ -258,7 +258,7 @@ export class Traverse{
                                     this.createClassProperty(data.properties[property]['ld.association'], this.config, ld_array_blank_class,
                                         {subject: ld_array_blank_class});
 
-                                this.previous = uri(this.config.base_prefix, this.current);
+                                this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_array_blank_class;
                                 this.traverse(data.properties[property].items);
                                 this.current = this.previous;
@@ -287,36 +287,36 @@ export class Traverse{
                 // isRequired and isExisting are not considered here.
                 if ('items' in data) {
                     if (data.items.type === 'string')
-                        this.createStringProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                            {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createStringProperty(data.items, this.config, uri(this.config.prefix, this.current),
+                            {subject: uri(this.config.prefix, this.previous)});
 
                     if (data.items.type === 'integer')
-                        this.createIntegerProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                            {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createIntegerProperty(data.items, this.config, uri(this.config.prefix, this.current),
+                            {subject: uri(this.config.prefix, this.previous)});
 
                     if (data.items.type === 'number')
-                        this.createNumberProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                            {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createNumberProperty(data.items, this.config, uri(this.config.prefix, this.current),
+                            {subject: uri(this.config.prefix, this.previous)});
 
                     if (data.items.type === 'boolean')
-                        this.createBooleanProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                            {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createBooleanProperty(data.items, this.config, uri(this.config.prefix, this.current),
+                            {subject: uri(this.config.prefix, this.previous)});
 
                     if (data.items.type === 'null')
-                        this.createNullProperty(data.items, this.config, uri(this.config.base_prefix, this.current),
-                            {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createNullProperty(data.items, this.config, uri(this.config.prefix, this.current),
+                            {subject: uri(this.config.prefix, this.previous)});
 
                     if ('anyOf' in data.items)
-                        this.createAnyOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createAnyOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('allOf' in data.items)
-                        this.createAllOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createAllOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('oneOf' in data.items)
-                        this.createOneOfProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createOneOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('not' in data.items)
-                        this.createNotProperty({}, this.config, uri(this.config.base_prefix, this.current), {subject: uri(this.config.base_prefix, this.previous)});
+                        this.createNotProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                 }
             }
@@ -333,7 +333,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createStringProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createStringProperty(data: {[key:string]: any}, config:Config, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const string_schema = new StringSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
@@ -352,7 +352,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createIntegerProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createIntegerProperty(data: {[key:string]: any}, config:Config, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const int_schema = new IntegerSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
@@ -370,7 +370,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createNumberProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createNumberProperty(data: {[key:string]: any}, config:Config, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const num_schema = new NumberSchema(data, config, property,
             {subject:subject, isExisting:isExisting,
@@ -388,7 +388,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createBooleanProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createBooleanProperty(data: {[key:string]: any}, config:Config, property:string,
                           {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const boolean_schema = new BooleanSchema(data, config, property,
             {subject, isExisting:isExisting,
@@ -406,7 +406,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createObjectProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createObjectProperty(data: {[key:string]: any}, config:Config, property:string,
                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
         if (isEnum == false && Object.keys(ld_enum).length!=0)
             throw new Error('When "isEnum" is set to false, "ld_enum" must be an empty object.')
@@ -427,7 +427,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createArrayProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createArrayProperty(data: {[key:string]: any}, config:Config, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
         const array_schema = new ArraySchema(data, config, property,
             {
@@ -449,7 +449,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createClassProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createClassProperty(data: {[key:string]: any}, config:Config, property:string,
                         {isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         const class_schema = new ClassSchema(data, config, property,
             {
@@ -470,7 +470,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is tagged to this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createNullProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createNullProperty(data: {[key:string]: any}, config:Config, property:string,
                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         const null_schema = new NullSchema(data, config, property,
             {
@@ -492,7 +492,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createNotProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createNotProperty(data: {[key:string]: any}, config:Config, property:string,
                       {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const not_schema = new NotSchema(data, config, property, 'not',
             {
@@ -514,7 +514,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createAnyOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createAnyOfProperty(data: {[key:string]: any}, config:Config, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
             {
@@ -535,7 +535,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createOneOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createOneOfProperty(data: {[key:string]: any}, config:Config, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
             {
@@ -557,7 +557,7 @@ export class Traverse{
      * @param isIgnored  when ld.ignored is set to true for this property
      * @param isRequired when a property is defined as required in the JSON schema
      */
-    createAllOfProperty(data: {[key:string]: any}, config:ConfigParser, property:string,
+    createAllOfProperty(data: {[key:string]: any}, config:Config, property:string,
                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const allof_schema = new AllOfSchema(data, config, property, 'allOf',
             {

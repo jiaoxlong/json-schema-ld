@@ -46,7 +46,7 @@
                 },
                 "is_disabled": {
                   "description": "Is the vehicle currently disabled (broken)?",
-                  "oneOf": [{ "type": "boolean" }, { "type": "number" }]
+                  "type": "boolean"
                 }
               },
               "required": ["bike_id", "lat", "lon", "is_reserved", "is_disabled"]
