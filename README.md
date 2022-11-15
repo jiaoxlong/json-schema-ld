@@ -24,7 +24,7 @@ implementation model in JSON Schema and represented in [RDF Schema](https://www.
 Synopsis
 
   $ jsc-ld --source json_schema.js --out out --prefix example --url "http://example.com/"
-  $ jsc-ld -s PATH/TO/FOLDER/ -p example -u "http://example.com" -a
+  $ jsc-ld -s PATH/TO/FOLDER/ -p example -u "http://example.com" 
 
 Options
 
@@ -33,7 +33,6 @@ Options
   -f, --format format                          RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads. It
                                                defaults to Turtle.
   -u, --uri uri                                JSC-LD predefined namespace URI
-  -a, --auto auto                              automatically resolve missing associated classes. The default is false.
   -o, --out path/to/directory                  Path to output directory defaults to "out"
   -h, --help                              
 ```
