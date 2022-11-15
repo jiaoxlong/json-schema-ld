@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-import {CLIArguments} from "../utils/types";
 
-const fs = require('fs');
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
 import {JSCLDSchema} from "./JSCLDParser";
@@ -12,6 +10,7 @@ const args = [
     { name: 'out', alias: 'o', type:String},
     { name: 'prefix', alias: 'p', type:String},
     { name: 'uri', alias: 'u', type:String},
+    { name: 'help', alias: 'h', type:Boolean},
 ]
 
 const cli_args = commandLineArgs(args)
@@ -26,7 +25,6 @@ const usage = commandLineUsage([
         content: [
             '$ jsc-ld --source json_schema.js --out out --prefix example --url "http://example.com/"',
             '$ jsc-ld --source json_schema.js -p example -u "http://example.com"',
-            '$ jsc-ld -s json_schema.js'
         ]
     },
     {
@@ -50,7 +48,7 @@ const usage = commandLineUsage([
                 name: 'format',
                 alias: 'f',
                 typeLabel: '{underline format}',
-                description: 'RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads.',
+                description: 'RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads. It defaults to Turtle.',
                 type: String
             },
             {

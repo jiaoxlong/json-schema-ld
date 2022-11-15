@@ -1,6 +1,6 @@
 import {hasKeys} from "../src/utils/validation";
-import path from "path";
-import {match,merge} from "../src/utils/match";
+import {find, match, merge} from "../src/utils/match";
+import { inflect} from "../src/utils/misc";
 
 
 describe('JSON-LD misc functions', ()=>{
@@ -59,5 +59,46 @@ describe('JSON-LD misc functions', ()=>{
             ["x_prop", "x_value"],
         ]);
         expect(merge(map_1, map_2)).toEqual(merged_map)
+    });
+    test ('test find()', ()=>{
+        const mock_array = ["allOf", "not", "oneOf", "anyOf"]
+        const obj1 = {
+            "allOf": [
+                {"$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"},
+                {
+                    "properties":{}
+                }
+            ]
+        }
+        const obj2 = {
+            "allOf": [
+                {"$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"},
+                {
+                    "properties":{}
+                }
+            ],
+            "not": [
+                {"$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"},
+                {
+                    "properties":{}
+                }
+            ]
+        }
+        try{
+            const matched = find(mock_array, obj2);
+        }
+        catch (err) {
+            expect(err).toBeInstanceOf(Error);
+        }
+    });
+    test ('test inflect()', ()=>{
+        const str1 = 'bikes'
+        const str2 = 'properties'
+        const str3 = 'some_type'
+        const str4 = "refDevice"
+        expect(inflect(str1)).toBe('Bike');
+        expect(inflect(str2)).toBe('Property');
+        expect(inflect(str3)).toBe('SomeType');
+        expect(inflect(str4)).toBe('RefDevice');
     });
 });

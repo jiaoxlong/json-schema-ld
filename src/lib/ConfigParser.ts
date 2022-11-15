@@ -31,6 +31,10 @@ export class Config{
      */
     private readonly _uri:string;
     /**
+     * automatically resolve associated class between properties if it is set to true
+     */
+    public auto:boolean;
+    /**
      * Serialization format. Formats to ttl.
      */
     public format:typeof N3FormatTypes[number];
@@ -53,6 +57,8 @@ export class Config{
             throw new Error(`Invalid namespace URI ${cliArgs.uri}`)
         this.out = 'out' in cliArgs ? cliArgs.out : 'out'
         this._source = this.jsc_source_files(cliArgs.source)
+        /** for the time being, we set this.auto to true */
+        this.auto = true
 
     }
     public get source(){

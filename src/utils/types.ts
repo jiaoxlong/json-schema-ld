@@ -57,6 +57,7 @@ export interface ISerializer {
 
 export interface SchemaOptArgs{
     subject?:undefined|string,
+    range?:undefined|string,
     isClass?:boolean,
     isExisting?:boolean,
     isIgnored?:boolean,
@@ -102,10 +103,21 @@ export type CLIArguments = {
     /** namespace prefix */
     prefix: string,
     /** serialization format */
-    format?: typeof N3FormatTypes[number]
+    format?: typeof N3FormatTypes[number],
     /** output path */
-    out?: string
+    out?: string,
+    /** help */
+    help?: boolean,
 };
+
+export const CompositionSchema = <const>[
+    "allOf",
+    "not",
+    "oneOf",
+    "anyOf"
+]
+
+export const CompositionSchemaOpts = ["allOf", "not", "oneOf", "anyOf"]
 
 export type format = typeof formats[number];
 export type rdfFormatType = typeof rdfFormatTypes[number];

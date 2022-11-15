@@ -17,30 +17,25 @@ implementation model in JSON Schema and represented in [RDF Schema](https://www.
 
 * [How to install JSC-LD](jsc_ld_installation.md#jsc-ld-installation)
 
-
-* [JSC-LD configuration](jsc_ld_configuration.md#jsc-ld-configuration)
-
-
 * [JSC-LD Annotation Syntax](jsc_ld_syntax.md#jsc-ld-syntax)
 
 ### Usage
-
+```
 Synopsis
 
-$ jsc-ld --source json_schema.js --out out --prefix example --url
-"http://example.com/"
-$ jsc-ld --source json_schema.js -p example -u "http://example.com"
-$ jsc-ld -s json_schema.js
+  $ jsc-ld --source json_schema.js --out out --prefix example --url "http://example.com/"
+  $ jsc-ld -s PATH/TO/FOLDER/ -p example -u "http://example.com" -a
 
 Options
 
--s, --source path/to/source/file|directory   Path to a JSON schema file or a directory contains JSON schema files
--p, --prefix prefix                          JSC-LD predefined namespace prefix
--f, --format format                          RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads.
--u, --uri uri                                JSC-LD predefined namespace URI
--o, --out path/to/directory                  Path to output directory defaults to "out"
--h, --help                                   Display this usage guide
-                        Display this usage guide
+  -s, --source path/to/source/file|directory   Path to a JSON schema file or a directory contains JSON schema files
+  -p, --prefix prefix                          JSC-LD predefined namespace prefix
+  -f, --format format                          RDF serialization format: Turtle, application/trig, N-Triples, or N-Quads. It
+                                               defaults to Turtle.
+  -u, --uri uri                                JSC-LD predefined namespace URI
+  -a, --auto auto                              automatically resolve missing associated classes. The default is false.
+  -o, --out path/to/directory                  Path to output directory defaults to "out"
+  -h, --help                              
 ```
 
 ### Limitations

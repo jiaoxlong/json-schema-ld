@@ -9,8 +9,9 @@ import {
 } from "./JSONSchema";
 import {Config} from './ConfigParser'
 import {SCHEMA_ANNOTATIONS, SCHEMA_COMPOSITIONS} from "../utils/schemaKWs";
-import {match} from "../utils/match";
-import {SchemaOptArgs} from "../utils/types";
+import {find, match} from "../utils/match";
+import {CompositionSchemaOpts, SchemaOptArgs} from "../utils/types";
+import {inflect} from "../utils/misc";
 
 /**
  * The Traverse class traverses all properties in a JSON schema document using preorder traversal and creates schema instances for the latter RDF serialization.
@@ -208,7 +209,25 @@ export class Traverse{
                                 this.current = ld_class;
                                 this.traverse(data.properties[property]);
                                 this.current = this.previous;
-                            } else {
+                            }
+                            else if (this.config.auto === true){
+                                const ld_blank_class = uri(this.config.prefix, inflect(property));
+                                this.createObjectProperty(data.properties[property], this.config, property,
+                                    {
+                                        subject: uri(this.config.prefix, this.current),
+                                        range:ld_blank_class,
+                                        isRequired: isRequired,
+                                        isExisting: isExisting,
+                                    })
+                                this.createClassProperty({}, this.config, ld_blank_class,
+                                    {subject: ld_blank_class});
+                                this.previous = uri(this.config.prefix, this.current);
+                                this.current = ld_blank_class;
+                                this.traverse(data.properties[property]);
+                                this.current = this.previous;
+                            }
+
+                            else {
                                 this.createObjectProperty(data.properties[property], this.config, property,
                                     {
                                         subject: uri(this.config.prefix, this.current),
@@ -218,8 +237,10 @@ export class Traverse{
                                 if ((data.properties[property]['ld.geoJsonFeature'] === true) ||
                                     (data.properties[property]['ld.enum'] === true)) {
                                     continue
-                                } else
+                                } else{
                                     this.traverse(data.properties[property]);
+                                }
+
                             }
                         }
                     }
@@ -263,22 +284,30 @@ export class Traverse{
                                 this.traverse(data.properties[property].items);
                                 this.current = this.previous;
                             }
-                            // non-object-type schema inside an array schema
+                            /** when neither ld.association nor ld.class is given */
                             else {
-                                this.current = property
-                                this.traverse(data.properties[property]);
-
+                                const ld_array_blank_class = uri(this.config.prefix, inflect(property));
+                                this.createArrayProperty(data.properties[property], this.config, property,
+                                    {
+                                        subject: uri(this.config.prefix, this.current),
+                                        range:ld_array_blank_class,
+                                        isRequired: isRequired,
+                                        isExisting: isExisting,
+                                    });
+                                this.createClassProperty({}, this.config, ld_array_blank_class,
+                                    {subject: ld_array_blank_class});
+                                this.previous = uri(this.config.prefix, this.current);
+                                this.current = ld_array_blank_class;
+                                this.traverse(data.properties[property].items);
+                                this.current = this.previous;
                             }
                             this.current = this.previous;
                         }
                         // when an array schema does not have "properties"
                         else {
-
                             this.current = property;
                             this.traverse(data.properties[property]);
                             this.current = this.previous;
-
-
                         }
                     }
                 }
@@ -319,6 +348,16 @@ export class Traverse{
                         this.createNotProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                 }
+                else {
+                    /**
+                     * ad-hoc implementation
+                     * Composition schemas may appear just after base schema to combine other schemas in condition.
+                     */
+                    const matched = find(CompositionSchemaOpts, data)
+                    if (matched.length === 1) {
+                        this.traverse(data[matched[0]]);
+                    }
+                }
             }
         }
     }
@@ -334,9 +373,9 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createStringProperty(data: {[key:string]: any}, config:Config, property:string,
-                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                         {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const string_schema = new StringSchema(data, config, property,
-            {subject:subject, isExisting:isExisting,
+            {subject:subject, range:range, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
 
         this.schemas.push(string_schema);
@@ -353,9 +392,9 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createIntegerProperty(data: {[key:string]: any}, config:Config, property:string,
-                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                          {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const int_schema = new IntegerSchema(data, config, property,
-            {subject:subject, isExisting:isExisting,
+            {subject:subject, range:range, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(int_schema);
     }
@@ -371,9 +410,9 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createNumberProperty(data: {[key:string]: any}, config:Config, property:string,
-                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
+                         {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={} ){
         const num_schema = new NumberSchema(data, config, property,
-            {subject:subject, isExisting:isExisting,
+            {subject:subject, range:range, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
         this.schemas.push(num_schema);
     }
@@ -389,7 +428,7 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createBooleanProperty(data: {[key:string]: any}, config:Config, property:string,
-                          {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                          {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const boolean_schema = new BooleanSchema(data, config, property,
             {subject, isExisting:isExisting,
                 isIgnored:isIgnored, isRequired:isRequired});
@@ -407,13 +446,13 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createObjectProperty(data: {[key:string]: any}, config:Config, property:string,
-                         {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
+                         {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}){
         if (isEnum == false && Object.keys(ld_enum).length!=0)
             throw new Error('When "isEnum" is set to false, "ld_enum" must be an empty object.')
         if (isEnum == true && Object.keys(ld_enum).length==0)
             throw new Error('When "isEnum" is set to true, "ld_enum" must not be an empty object.')
         const obj_schema = new ObjectSchema(data, this.config, property,
-            {subject:subject, isExisting:isExisting, isIgnored:isIgnored, isRequired: isRequired, isEnum:isEnum, ld_enum:ld_enum});
+            {subject:subject, range:range, isExisting:isExisting, isIgnored:isIgnored, isRequired: isRequired, isEnum:isEnum, ld_enum:ld_enum});
         this.schemas.push(obj_schema);
     }
 
@@ -428,10 +467,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createArrayProperty(data: {[key:string]: any}, config:Config, property:string,
-                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
+                        {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false, minItems=0, maxItems=0}:SchemaOptArgs={}){
         const array_schema = new ArraySchema(data, config, property,
             {
-                subject:subject,
+                subject:subject, range:range,
                 isRequired: isRequired,
                 isExisting: isExisting, isIgnored:isIgnored,
                 minItems: minItems, maxItems: maxItems
@@ -471,10 +510,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createNullProperty(data: {[key:string]: any}, config:Config, property:string,
-                       {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                       {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         const null_schema = new NullSchema(data, config, property,
             {
-                subject:subject,
+                subject:subject, range:range,
                 isExisting: isExisting,
                 isIgnored: isIgnored,
                 isRequired: isRequired
@@ -493,10 +532,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createNotProperty(data: {[key:string]: any}, config:Config, property:string,
-                      {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                      {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const not_schema = new NotSchema(data, config, property, 'not',
             {
-                subject:subject,
+                subject:subject, range:range,
                 isExisting: isExisting,
                 isIgnored: isIgnored,
                 isRequired: isRequired
@@ -515,10 +554,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createAnyOfProperty(data: {[key:string]: any}, config:Config, property:string,
-                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const anyof_schema = new AnyOfSchema(data, config, property, 'anyOf',
             {
-                subject:subject,
+                subject:subject, range:range,
                 isExisting: isExisting,
                 isIgnored: isIgnored,
                 isRequired: isRequired
@@ -536,10 +575,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createOneOfProperty(data: {[key:string]: any}, config:Config, property:string,
-                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const oneof_schema = new OneOfSchema(data, config, property, 'oneOf',
             {
-                subject:subject,
+                subject:subject, range:range,
                 isExisting: isExisting,
                 isIgnored: isIgnored,
                 isRequired: isRequired
@@ -558,10 +597,10 @@ export class Traverse{
      * @param isRequired when a property is defined as required in the JSON schema
      */
     createAllOfProperty(data: {[key:string]: any}, config:Config, property:string,
-                        {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
+                        {subject=undefined, range=undefined,isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}){
         const allof_schema = new AllOfSchema(data, config, property, 'allOf',
             {
-                subject:subject,
+                subject:subject, range:range,
                 isExisting: isExisting,
                 isIgnored: isIgnored,
                 isRequired: isRequired

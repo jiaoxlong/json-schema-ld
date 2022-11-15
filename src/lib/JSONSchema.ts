@@ -113,9 +113,10 @@ export abstract class Schema {
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config:Config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         this.config = config;
         this.subject = subject;
+        this.range = range;
         this.property_name = property_name;
         this.isExisting = isExisting;
         this.isIgnored = isIgnored;
@@ -164,16 +165,9 @@ export abstract class Schema {
             this.range = data['ld.range']
         }
         if('ld.association' in data)
-            if(this.range!==undefined)
-                throw new Error('The range of Property is already assigned with "ld.range".')
-            else
-                this.range = uri(this.config.prefix, data['ld.association']['ld.id'])
+            this.range = uri(this.config.prefix, data['ld.association']['ld.id'])
         if ('ld.class' in data)
-            if(this.range!==undefined)
-                throw new Error('The range of Property is already assigned with "ld.range".')
-            else
-                this.range = uri(this.config.prefix,data['ld.class']['ld.id'])
-
+            this.range = uri(this.config.prefix,data['ld.class']['ld.id'])
         if ('$schema' in data) this.schema = data['$schema']
         if (('ld.geoJsonFeature' in data) && (data['ld.geoJsonFeature'] === true)) {
             if (! this.range) this.range = 'http://www.opengis.net/ont/geosparql#Geometry';
@@ -238,9 +232,9 @@ export class StringSchema extends Schema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config,  property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.schema_type = 'string';
         /* RDFS */
         if (('format' in data) && (SCHEMA_STRING_FORMATS.includes(data['format']))){
@@ -286,9 +280,9 @@ export class NumericSchema extends Schema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         /** SHACL */
         /* SHACL minInclusive */
         if ('minimum' in data) this.shacl.push(blank_node_literal('sh:minInclusive', data.minimum));
@@ -318,9 +312,9 @@ export class IntegerSchema extends NumericSchema {
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.rdfs = namedNode('xsd:integer');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
         this.schema_type = 'integer';
@@ -342,9 +336,9 @@ export class NumberSchema extends NumericSchema {
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.rdfs = namedNode('xsd:decimal');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
         this.schema_type = 'decimal'
@@ -366,9 +360,9 @@ export class BooleanSchema extends Schema {
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.schema_type = 'boolean';
         this.rdfs = namedNode('xsd:boolean');
         this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
@@ -391,9 +385,9 @@ export class NullSchema extends Schema {
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.schema_type = 'null';
     }
 }
@@ -423,10 +417,10 @@ export class ArraySchema extends Schema {
      * @param maxItems the maximal number of element that are allow
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false,
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false,
                     minItems=0, maxItems=0}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.schema_type = 'array';
         this.minItems = minItems;
         this.maxItems = maxItems;
@@ -463,9 +457,9 @@ export class ObjectSchema extends Schema{
      * @param ld_enum a list of sub **Object** type properties considered as skos:Concept in a skos:ConceptSchema that is a value of this property in RDF vocabulary and shapes
      */
     constructor(data: {[key:string]: any}, config, property_name:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false, isEnum=false, ld_enum={}}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.isEnum = isEnum;
         this.schema_type = 'object';
         if (this.isEnum){
@@ -559,9 +553,9 @@ export abstract class CompositionSchema extends Schema{
      * @param isRequired true when the property is annotated as required in the original JSON schema
      */
     constructor(data: {[key:string]: any}, config, property_name:string, composition:string,
-                {subject=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
+                {subject=undefined, range=undefined, isExisting=false, isIgnored=false, isRequired=false}:SchemaOptArgs={}) {
         super(data,config, property_name,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         for (const s of data[composition]) {
             let schema;
             if (s.type === 'string')  schema = new StringSchema(s, config, property_name);
@@ -602,13 +596,14 @@ export class AnyOfSchema extends CompositionSchema{
                 composition='anyOf',
                 {
                     subject=undefined,
+                    range=undefined,
                     isExisting=false,
                     isIgnored=false,
                     isRequired=false,
                 }:SchemaOptArgs={}
                 ) {
         super(data,config, property_name,composition,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.logical_opt = 'sh:or';
         this.composition = composition;
     }
@@ -636,13 +631,14 @@ export class OneOfSchema extends CompositionSchema{
                 composition='oneOf',
                 {
                     subject=undefined,
+                    range=undefined,
                     isExisting=false,
                     isIgnored=false,
                     isRequired=false,
                 }:SchemaOptArgs={}
     ) {
         super(data,config, property_name,composition,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.logical_opt = 'sh:xone';
         this.composition = composition;
     }
@@ -670,13 +666,14 @@ export class AllOfSchema extends CompositionSchema{
                 composition='allOf',
                 {
                     subject=undefined,
+                    range=undefined,
                     isExisting=false,
                     isIgnored=false,
                     isRequired=false,
                 }:SchemaOptArgs={}
     ) {
         super(data,config, property_name,composition,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.logical_opt = 'sh:and';
         this.composition = composition;
     }
@@ -704,13 +701,14 @@ export class NotSchema extends CompositionSchema{
                 composition='not',
                 {
                     subject=undefined,
+                    range=undefined,
                     isExisting=false,
                     isIgnored=false,
                     isRequired=false,
                 }:SchemaOptArgs={}
     ) {
         super(data,config, property_name,composition,
-            {subject, isExisting,isIgnored, isRequired});
+            {subject, range, isExisting,isIgnored, isRequired});
         this.logical_opt = 'sh:not';
         this.composition = composition;
     }

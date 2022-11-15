@@ -29,41 +29,18 @@ export function match(source:any,target: {[key:string]:any}){
  */
 export function merge(map1:Map<string, any>, map2:Map<string,any>){
     return new Map([...map1.entries(), ...map2.entries()]);
-    /**
-    const merge_map = new Map<string, any>();
-    //first add key-value pairs from map2 when they also exist in map1
-    map2.forEach(function (value, key){
-        if (map1.has(key)) merge_map.set(key, map1.get(key));
-        else merge_map.set(key, value);
+}
+
+/**
+ * searches element in an array against a key set of a dictionary
+ * @return matched
+ */
+
+export function find(arr:string[], obj:Record<string, unknown>){
+    const matched:string[]=[];
+    arr.forEach((ele) =>{
+        if (ele in obj)
+            matched.push(ele)
     });
-    //then add the reminder key-value pairs from map1
-    map1.forEach(function (value, key){
-        if (! merge_map.has(key)) merge_map.set(key, map1.get(key));
-    });
-
-    return merge_map;
-    */
+    return matched
 }
-
-
-
-
-const a ={
-    title: 'dcterms:title',
-    description: 'dcterms:description',
-    examples: 'skos:example',
-    deprecated: 'owl:deprecated',
-    readonly: 'jsonsc:readOnly',
-    writeonly: 'jsonsc:writeOnly',
-    comment: 'rdfs:comment'
-}
-
-const b ={
-    description: 'Last time the data in the feed was updated in POSIX time.',
-    type: 'integer',
-    minimum: 0,
-    maximum: 1924988399
-
-}
-
-//console.log(match(a,b));
