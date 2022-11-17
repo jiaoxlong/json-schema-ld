@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json> dcterms:title " Smart Data Models - Quality61850";
+    dcterms:description "Adapted from CIM data models. Quality flags in this class are as defined in IEC 61850, except for estimatorReplaced, which has been included in this class for convenience.".
+sdm:type dcterms:description "Property. NGSI type. It has to be Quality61850";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Quality61850)
+].
+sdm:Quality61850 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Quality61850".
+sdm:badReference dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value may be incorrect due to a reference being out of calibration. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "badReference";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:estimatorReplaced dcterms:description "Property. Model:'https://schema.org/Number'. Value has been replaced by State Estimator. estimatorReplaced is not an IEC61850 quality bit but has been put in this class for convenience. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "estimatorReplaced";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:failure dcterms:description "Property. Model:'https://schema.org/Number'. This identifier indicates that a supervision function has detected an internal or external failure, e.g. communication failure. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "failure";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:oldData dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value is old and possibly invalid, as it has not been successfully updated during a specified time interval. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "oldData";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:operatorBlocked dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value is blocked and hence unavailable for transmission. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "operatorBlocked";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:oscillatory dcterms:description "Property. Model:'https://schema.org/Number'. To prevent some overload of the communication it is sensible to detect and suppress oscillating (fast changing) binary inputs. If a signal changes in a defined time (tosc) twice in the same direction (from 0 to 1 or from 1 to 0) then oscillation is detected and the detail quality identifier `oscillatory` is set. If it is detected a configured numbers of transient changes could be passed by. In this time the validity status `questionable` is set. If after this defined numbers of changes the signal is still in the oscillating state the value shall be set either to the opposite state of the previous stable value or to a defined default value. In this case the validity status `questionable` is reset and `invalid` is set as long as the signal is oscillating. If it is configured such that no transient changes should be passed by then the validity status `invalid` is set immediately in addition to the detail quality identifier `oscillatory` (used for status information only). Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "oscillatory";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:outOfRange dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value is beyond a predefined range of value. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "outOfRange";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:overFlow dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value is beyond the capability of being  represented properly. For example, a counter value overflows from maximum count back to a value of zero. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "overFlow";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:source dcterms:description "Property. Model:'https://schema.org/Number'. Source gives information related to the origin of a value. The value may be acquired from the process, defaulted or substituted. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "source";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:suspect dcterms:description "Property. Model:'https://schema.org/Number'. A correlation function has detected that the value is not consitent with other values. Typically set by a network State Estimator. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "suspect";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:test dcterms:description "Property. Model:'https://schema.org/Number'. Measurement value is transmitted for test purposes. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "test";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:validity dcterms:description "Property. Model:'https://schema.org/Number'. Validity of the measurement value. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "validity";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Quality61850/schema.json>;
+    rdfs:range xsd:decimal.

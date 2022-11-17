@@ -1,0 +1,291 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Streetlight";
+  sh:name "type";
+  sh:in (sdm:Streetlight);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:circuit;
+  sh:description "Property. The circuit to which this streetlight connects to and gets power from. Typically it will contain an identifier that will allow to obtain more information about such circuit.";
+  sh:name "circuit";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refStreetlightModel;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refStreetlightControlCabinet;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:status;
+  sh:description "Property. The overall status of this street light. Enum:'brokenLantern, columnIssue, defectiveLamp, ok'";
+  sh:name "status";
+  sh:in (sdm:brokenLantern sdm:columnIssue sdm:defectiveLamp sdm:ok);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:powerState;
+  sh:description "Property. Model:'https://schema.org/Text'. Streetlight's power state. Enum:'bootingUp, low, off, on'";
+  sh:name "powerState";
+  sh:in (sdm:bootingUp sdm:low sdm:off sdm:on)
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refStreetlightGroup;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateLastLampChange;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last change of lamp made";
+  sh:name "dateLastLampChange";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateLastSwitchingOn;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last switching on";
+  sh:name "dateLastSwitchingOn";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateLastSwitchingOff;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last switching off";
+  sh:name "dateLastSwitchingOff";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:controllingMethod;
+  sh:description "Property. The method used to control this streetlight. Enum:'group, individual'. ";
+  sh:name "controllingMethod";
+  sh:in (sdm:group sdm:individual)
+], [
+  sh:path sdm:dateServiceStarted;
+  sh:description "Property. Model:'https://schema.org/Date'. Date at which the streetlight started giving service";
+  sh:name "dateServiceStarted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:image;
+  sh:description "Relationship. Model:'https://schema.org/image'. A URL containing a photo of the streetlight";
+  sh:name "image";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:locationCategory;
+  sh:description "Property. Category of the location where the streetlight is placed. Enum:'bridge, centralIsland, facade, garden, park, parking, pedestrianPath, playground, road, sidewalk, tunnel'";
+  sh:name "locationCategory";
+  sh:in (sdm:bridge sdm:centralIsland sdm:facade sdm:garden sdm:park sdm:parking sdm:pedestrianPath sdm:playground sdm:road sdm:sidewalk sdm:tunnel)
+], [
+  sh:path sdm:lanternHeight;
+  sh:description "Property. Lantern's height. In columns with many arms this can vary between streetlights. Another variation source of this property are wall-mounted streetlights.";
+  sh:name "lanternHeight";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:illuminanceLevel;
+  sh:description "Property. Relative illuminance level setting. A number between 0 and 1.";
+  sh:name "illuminanceLevel";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerConsumption;
+  sh:description "Property. Model:'https://schema.org/Number'. Power consumed by the LED or the streetlight bulb corresponding to this observation.";
+  sh:name "powerConsumption";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:current;
+  sh:description "Property. Model:'https://schema.org/Number'. Current value of the streetlight corresponding to this observation.";
+  sh:name "current";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerRating;
+  sh:description "Property. Model:'https://schema.org/Number'. Power rating of the LED or the streetlight bulb corresponding to this observation.";
+  sh:name "powerRating";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactor;
+  sh:description "Property. Model:'https://schema.org/Number'. Power factor or the ratio of working power of the streetlight corresponding to this observation.";
+  sh:name "powerFactor";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltage;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage value of the streetlight corresponding to this observation.";
+  sh:name "voltage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:feederPillarNum;
+  sh:description "Property. Model:'https://schema.org/Text'. Streetlight feeder pillar information associated with the streetlight corresponding to this observation.";
+  sh:name "feederPillarNum";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:streetPoleNum;
+  sh:description "Property. Model:'https://schema.org/Text'. Street pole information associated with the streetlight corresponding to this observation.";
+  sh:name "streetPoleNum";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:observationDateTime;
+  sh:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+  sh:name "observationDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:feederID;
+  sh:or ([
+  sh:datatype xsd:string;
+  sh:description "Property. "
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Model:'https://schema.org/Text"
+])
+], [
+  sh:path sdm:municipalityInfo;
+  sh:description "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.";
+  sh:name "municipalityInfo"
+].
+sdm:MunicipalityInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:MunicipalityInfo;
+    sh:property [
+  sh:path sdm:district;
+  sh:description "Property. Model:'https://schema.org/Text'. District name corresponding to this observation.";
+  sh:name "district";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ulbName;
+  sh:description "Property. Model:'https://schema.org/Text'.Name of the Urban Local Body corresponding to this observation.";
+  sh:name "ulbName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityId;
+  sh:description "Property. Model:'https://schema.org/Text'. City ID corresponding to this observation";
+  sh:name "cityId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:stateName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation.";
+  sh:name "stateName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityName;
+  sh:description "Property. Model:'https://schema.org/Text'. City name corresponding to this observation";
+  sh:name "cityName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:zoneId;
+  sh:description "Property. Model:'https://schema.org/Text'. Zone ID corresponding to this observation.";
+  sh:name "zoneId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardNum;
+  sh:description "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation.";
+  sh:name "wardNum";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:deviceInfo;
+  sh:description "Property. Model:'https://schema.org/Text. Information about the device associated with the observations.";
+  sh:name "deviceInfo"
+].
+sdm:DeviceInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DeviceInfo;
+    sh:property [
+  sh:path sdm:RFId;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the ID of the RFID reader.";
+  sh:name "RFId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceBatteryStatus;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the Battery charging status of the reporting device(Connected, Disconnected).";
+  sh:name "deviceBatteryStatus";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceName;
+  sh:description "Property. Model:'https://schema.org/Text'. Device Name or Station name of the sensor device/station corresponding to this observation.";
+  sh:name "deviceName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceId;
+  sh:description "Property. Model:'https://schema.org/Text'. Device ID of the physical sensor/ measurement station corresponding to this observation.";
+  sh:name "deviceId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:measurand;
+  sh:description "Property. Model:'https://schema.org/Text'. Property/properties sensed/observed/measured by the device.";
+  sh:name "measurand";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceSimNumber;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the sim number of the device in the waste management vehicle.";
+  sh:name "deviceSimNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceModel;
+  sh:description "Property. Model:'https://schema.org/Text'. Describes the information of the device, sensor or system in consideration.";
+  sh:name "deviceModel"
+].
+sdm:DeviceModelShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DeviceModel;
+    sh:property [
+  sh:path sdm:brandName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the brand associated with an entity, e.g., sensor, device etc.";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the manufacturer associated with an entity, e.g., sensor, device etc.";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of a specific model associated with an entity, e.g., sensor, device etc.";
+  sh:name "modelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelURL;
+  sh:description "Property. Model:'https://schema.org/Text'. URL providing further information of a specific model associated with an entity, e.g., sensor, device etc.";
+  sh:name "modelURL";
+  sh:datatype xsd:string
+].

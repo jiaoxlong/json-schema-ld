@@ -1,0 +1,64 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json> dcterms:title " Smart Data Models - WindContCurrLimIEC";
+    dcterms:description "Adapted from CIM data models. Current limitation model.  The current limitation model combines the physical limits.  Reference: IEC Standard 61400-27-1 Section 6.6.5.7.".
+sdm:type dcterms:description "Property. NGSI type. It has to be WindContCurrLimIEC";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WindContCurrLimIEC)
+].
+sdm:WindContCurrLimIEC rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WindContCurrLimIEC".
+sdm:WindDynamicsLookupTable dcterms:description "Property. Model:'https://schema.org/Number'. The current control limitation model with which this wind dynamics lookup table is associated. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "WindDynamicsLookupTable";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindTurbineType3or4IEC dcterms:description "Property. Model:'https://schema.org/Number'. Wind turbine type 3 or 4 model with which this wind control current limitation model is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindTurbineType3or4IEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:imax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum continuous current at the wind turbine terminals (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "imax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:imaxdip dcterms:description "Property. Model:'https://schema.org/Number'. Maximum current during voltage dip at the wind turbine terminals (). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "imaxdip";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mdfslim dcterms:description "Property. Model:'https://schema.org/Number'. Limitation of type 3 stator current  ():  - false=0: total current limitation,  - true=1: stator current limitation).  It is type dependent parameter. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "mdfslim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mqpri dcterms:description "Property. Model:'https://schema.org/Number'. Prioritisation of q control during LVRT (): - true = 1: reactive power priority, - false = 0: active power priority.  It is project dependent parameter. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "mqpri";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tufilt dcterms:description "Property. Model:'https://schema.org/Number'. Voltage measurement filter time constant (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tufilt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContCurrLimIEC/schema.json>;
+    rdfs:range xsd:decimal.

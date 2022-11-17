@@ -1,0 +1,130 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Parking/ParkingGroup/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be ParkingGroup";
+  sh:name "type";
+  sh:in (sdm:ParkingGroup);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:category;
+  sh:name "category";
+  sh:in (sdm:adjacentSpaces sdm:blueZone sdm:completeFloor sdm:free sdm:feeCharged sdm:greenZone sdm:loadUnloadZone sdm:nonAdjacentSpaces sdm:offStreet sdm:onlyDisabled sdm:onlyElectricalCharging sdm:onlyResidents sdm:onlyWithPermit sdm:onStreet sdm:particularConditionsSpaces sdm:shortTermMediumTermLongTerm sdm:statisticsOnly sdm:vehicleTypeSpaces)
+], [
+  sh:path sdm:refParkingSite;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:allowedVehicleType;
+  sh:description "Property. Vehicle type allowed (a parking group only allows one vehicle type). Model:'http://schema.org/Text'. Enum:'bicycle, bus, car, caravan, motorcycle, motorscooter, truck' ";
+  sh:name "allowedVehicleType";
+  sh:in (sdm:bicycle sdm:bus sdm:car sdm:caravan sdm:motorcycle sdm:motorscooter sdm:truck)
+], [
+  sh:path sdm:maximumParkingDuration;
+  sh:description "Property. Maximum allowed stay encoded as a ISO8601 duration. When non present or equals to the empty string it means indefinite. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined.";
+  sh:name "maximumParkingDuration";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:chargeType;
+  sh:name "chargeType";
+  sh:in (sdm:additionalIntervalPrice sdm:annualPayment sdm:firstIntervalPrice sdm:flat sdm:free sdm:minimum sdm:maximum sdm:monthlyPayment sdm:seasonTicket sdm:temporaryFee sdm:temporaryPrice sdm:unknown sdm:other)
+], [
+  sh:path sdm:requiredPermit;
+  sh:name "requiredPermit";
+  sh:in (sdm:employeePermit sdm:studentPermit sdm:fairPermit sdm:governmentPermit sdm:residentPermit sdm:specificIdentifiedVehiclePermit sdm:disabledPermit sdm:visitorPermit sdm:blueZonePermit sdm:careTakingPermit sdm:carpoolingPermit sdm:carSharingPermit sdm:emergencyVehiclePermit sdm:maintenanceVehiclePermit sdm:roadWorksPermit sdm:taxiPermit sdm:transportationPermit sdm:noPermitNeeded)
+], [
+  sh:path sdm:permitActiveHours;
+  sh:description "Property. This attribute allows to capture situations when a permit is only needed at specific hours or days of week. It is an structured value which must contain a subproperty per each required permit, indicating when the permit is active. If nothing specified for a permit it will mean that a permit is always required. Empty object means always active. The syntax must be conformant with schema.org [opening hours specification](https://schema.org/openingHours). For instance, a blue zone which is only active on dayweeks will be encoded as 'blueZonePermit': 'Mo,Tu,We,Th,Fr,Sa 09:00-20:00'. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Model:'https://schema.org/openingHours'";
+  sh:name "permitActiveHours"
+].
+sdm:PermitActiveHourShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PermitActiveHour;
+    sh:property [
+  sh:path sdm:reservationType;
+  sh:description "Property. Conditions for reservation. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Enum:'mandatory, notAvailable, optional, partly'.";
+  sh:name "reservationType";
+  sh:in (sdm:mandatory sdm:notAvailable sdm:optional sdm:partly)
+], [
+  sh:path sdm:areBordersMarked;
+  sh:description "Property. Denotes whether parking spots are delimited (with blank lines or similar) or not. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Model:'https://schema.org/Boolean'";
+  sh:name "areBordersMarked";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:totalSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. The total number of spots pertaining to this group. Allowed values: Any positive integer number or 0. Normative references: DATEX 2 version 2.3 attribute _parkingNumberOfSpaces_ of the _ParkingRecord_ class.";
+  sh:name "totalSpotNumber";
+  sh:minInclusive 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:availableSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. The number of spots available in this group. It must lower or equal than `totalSpotNumber`.";
+  sh:name "availableSpotNumber";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:occupancyDetectionType;
+  sh:name "occupancyDetectionType";
+  sh:in (sdm:balancing sdm:manual sdm:modelBased sdm:none sdm:singleSpaceDetection)
+], [
+  sh:path sdm:parkingMode;
+  sh:name "parkingMode";
+  sh:in (sdm:echelonParking sdm:parallelParking sdm:perpendicularParking)
+], [
+  sh:path sdm:averageSpotWidth;
+  sh:description "Property. Model:'http://schema.org/width'. Units:'meters'. The average width of parking spots. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined.";
+  sh:name "averageSpotWidth";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageSpotLength;
+  sh:description "Property. Model:'http://schema.org/length'. Units:'meters'. The average length of parking spots. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined.";
+  sh:name "averageSpotLength";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumAllowedHeight;
+  sh:description "Property. Model:'http://schema.org/heigth'. Units:'meters'. Maximum allowed height for vehicles.  Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined.";
+  sh:name "maximumAllowedHeight";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumAllowedWidth;
+  sh:description "Property. Model:'http://schema.org/width'. Units:'Meters'. Maximum allowed width for vehicles. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined.";
+  sh:name "maximumAllowedWidth";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:refParkingSpot;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+].

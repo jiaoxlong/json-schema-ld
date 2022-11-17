@@ -1,0 +1,119 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json> dcterms:title "Smart Data models - Unmanned Aerial Vehicle schema";
+    dcterms:description "This entity contains a harmonised description of a specific Unmanned Aerial Vehicle (UAV). This entity is primarily associated with UAV command and control and related UAV transport applications.".
+sdm:type dcterms:description "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicle";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:UnmannedAerialVehicle)
+].
+sdm:UnmannedAerialVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "UnmannedAerialVehicle".
+sdm:UnmannedAerialVehicleModel dcterms:description "Relationship. Reference to the UAV Model definition which describes the UAV in more detail.";
+    rdf:type rdf:Property;
+    rdfs:label "UnmannedAerialVehicleModel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:operator rdf:type rdf:Property;
+    rdfs:label "operator";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:operationMode dcterms:description "Property. Text describing the choice from these values. Enum:'vlos, evlos, bvlos, automated'. Note: descriptions align with UTM Flight message.";
+    rdf:type rdf:Property;
+    rdfs:label "operationMode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:OperationMode rdf:type skos:ConceptScheme.
+sdm:operationMode rdfs:range [
+  owl:oneOf (sdm:vlos sdm:evlos sdm:bvlos sdm:automated)
+].
+sdm:vlos rdf:type skos:Concept;
+    skos:inScheme sdm:OperationMode;
+    rdfs:label "vlos".
+sdm:evlos rdf:type skos:Concept;
+    skos:inScheme sdm:OperationMode;
+    rdfs:label "evlos".
+sdm:bvlos rdf:type skos:Concept;
+    skos:inScheme sdm:OperationMode;
+    rdfs:label "bvlos".
+sdm:automated rdf:type skos:Concept;
+    skos:inScheme sdm:OperationMode;
+    rdfs:label "automated".
+sdm:elevation dcterms:description "Property. The elevation of the UAV (relative to ground level at the specified location). Specify value and units of measure.";
+    rdf:type rdf:Property;
+    rdfs:label "elevation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:flightStatus dcterms:description "Property. The flight status of the UAV, including these. Enum:'stop, takeoff, flight, hover, land'";
+    rdf:type rdf:Property;
+    rdfs:label "flightStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:FlightStatus rdf:type skos:ConceptScheme.
+sdm:flightStatus rdfs:range [
+  owl:oneOf (sdm:flight sdm:hover sdm:land sdm:stop sdm:takeoff)
+].
+sdm:flight rdf:type skos:Concept;
+    skos:inScheme sdm:FlightStatus;
+    rdfs:label "flight".
+sdm:hover rdf:type skos:Concept;
+    skos:inScheme sdm:FlightStatus;
+    rdfs:label "hover".
+sdm:land rdf:type skos:Concept;
+    skos:inScheme sdm:FlightStatus;
+    rdfs:label "land".
+sdm:stop rdf:type skos:Concept;
+    skos:inScheme sdm:FlightStatus;
+    rdfs:label "stop".
+sdm:takeoff rdf:type skos:Concept;
+    skos:inScheme sdm:FlightStatus;
+    rdfs:label "takeoff".
+sdm:workStatus dcterms:description "Property. The work status of the UAV, including these. Enum:'stop, prepare, work, finish'";
+    rdf:type rdf:Property;
+    rdfs:label "workStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>.
+sdm:WorkStatus rdf:type skos:ConceptScheme.
+sdm:workStatus rdfs:range [
+  owl:oneOf (sdm:finish sdm:prepare sdm:stop sdm:work)
+].
+sdm:finish rdf:type skos:Concept;
+    skos:inScheme sdm:WorkStatus;
+    rdfs:label "finish".
+sdm:prepare rdf:type skos:Concept;
+    skos:inScheme sdm:WorkStatus;
+    rdfs:label "prepare".
+sdm:stop rdf:type skos:Concept;
+    skos:inScheme sdm:WorkStatus;
+    rdfs:label "stop".
+sdm:work rdf:type skos:Concept;
+    skos:inScheme sdm:WorkStatus;
+    rdfs:label "work".
+sdm:groundSpeed dcterms:description "Property. The latest reported ground speed of the UAV. Specify value and units of measure";
+    rdf:type rdf:Property;
+    rdfs:label "groundSpeed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:fuel dcterms:description "Property. Current fuel load of the UAV. Specify value and units of measure";
+    rdf:type rdf:Property;
+    rdfs:label "fuel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:observedAt dcterms:description "Property. Indicates the date/time of the latest monitoring report or update.";
+    rdf:type rdf:Property;
+    rdfs:label "observedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json>;
+    rdfs:range xsd:dateTime.

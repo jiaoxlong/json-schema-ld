@@ -1,0 +1,247 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Aeronautics/Flight/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Flight";
+  sh:name "type";
+  sh:in (sdm:Flight);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:flightNumber;
+  sh:description "Property. Model:'http://schema.org/Text'. Flight identifier without information of airline";
+  sh:name "flightNumber";
+  sh:pattern "^[A-Z0-9]{1,}$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:flightNumberIATA;
+  sh:description "Property. Model:'http://schema.org/Text'. IATA flight identifier";
+  sh:name "flightNumberIATA";
+  sh:pattern "^[A-Z0-9]{3,}$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:flightNumberICAO;
+  sh:description "Property. Model:'http://schema.org/Text'. ICAO flight identifier";
+  sh:name "flightNumberICAO";
+  sh:pattern "^[A-Z]{3}[A-Z0-9]{1,}$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:flightType;
+  sh:description "Property. Model:'http://schema.org/Text'. Flight type described as ICAO doc 4444 Appendix 2. Enum:'S, N, G, M, X'";
+  sh:name "flightType";
+  sh:in (sdm:S sdm:N sdm:G sdm:M sdm:X)
+], [
+  sh:path sdm:state;
+  sh:description "Property. Model:'http://schema.org/Text'. Current state of the flight. Enum:'scheduled, active, unknown, redirected, landed, diverted, cancelled'";
+  sh:name "state";
+  sh:in (sdm:scheduled sdm:active sdm:unknown sdm:redirected sdm:landed sdm:diverted sdm:cancelled)
+], [
+  sh:path sdm:passengerCount;
+  sh:description "Property. Model:'http://schema.org/Integer'. Number of flight passengers";
+  sh:name "passengerCount";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:dateDeparture;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Departure date of the flight";
+  sh:name "dateDeparture";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateArrival;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Arrival date of the flight";
+  sh:name "dateArrival";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateSOBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Scheduled Off-Block Time";
+  sh:name "dateSOBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateEOBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Off-Block Time";
+  sh:name "dateEOBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateTOBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Target Off-Block Time";
+  sh:name "dateTOBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateTSAT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Target Start Up Approval Time";
+  sh:name "dateTSAT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateCOBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Calculated Off-Block Time";
+  sh:name "dateCOBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateAOBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Off-Block Time";
+  sh:name "dateAOBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateEXOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Taxi-Out Time";
+  sh:name "dateEXOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateAXOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Taxi-Out Time";
+  sh:name "dateAXOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateSTOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Scheduled Take-Off Time";
+  sh:name "dateSTOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateETOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Take-Off Time";
+  sh:name "dateETOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateTTOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Target Take-Off Time";
+  sh:name "dateTTOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateCTOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Calculated Take-Off Time";
+  sh:name "dateCTOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateATOT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Take-Off Time";
+  sh:name "dateATOT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateETO;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Time Over";
+  sh:name "dateETO";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateCTO;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Calculated Time Over";
+  sh:name "dateCTO";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateATO;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Time Over";
+  sh:name "dateATO";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateSLDT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Scheduled Landing Time";
+  sh:name "dateSLDT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateELDT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Landing Time";
+  sh:name "dateELDT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateTLDT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Target Landing Time";
+  sh:name "dateTLDT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateCLDT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Calculated Landing Time";
+  sh:name "dateCLDT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateALDT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Landing Time";
+  sh:name "dateALDT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateEXIT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated Taxi-In Time";
+  sh:name "dateEXIT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateAXIT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual Taxi-In Time";
+  sh:name "dateAXIT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateSIBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Scheduled In-Block Time";
+  sh:name "dateSIBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateEIBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Estimated In-Block Time";
+  sh:name "dateEIBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateTIBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Target In-Block Time";
+  sh:name "dateTIBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateCIBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Calculated In-Block Time";
+  sh:name "dateCIBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateAIBT;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Actual In-Block Time";
+  sh:name "dateAIBT";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:hasAircraft;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:hasAircraftModel;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:departsFromAirport;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:arrivesToAirport;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:belongsToAirline;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+].

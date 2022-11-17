@@ -1,0 +1,44 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.UrbanMobility/ArrivalEstimation/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type: It has to be ArrivalEstimation. Enum:'ArrivalEstimation'";
+  sh:name "type";
+  sh:in (sdm:ArrivalEstimation);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:remainingTime;
+  sh:description "Property. It shall contain the remaining time of arrival for the trip heading to the concerned stop. Remaining time shall be encoded as a ISO8601 duration. Ex. `PT8M5S`.";
+  sh:name "remainingTime";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^P(?=\\w*\\d)(?:\\d+Y|Y)?(?:\\d+M|M)?(?:\\d+W|W)?(?:\\d+D|D)?(?:T(?:\\d+H|H)?(?:\\d+M|M)?(?:\\d+(?:\\?.\\d{1,2})?S|S)?)?$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:remainingDistance;
+  sh:description "Property. It shall contain the remaining distance (in meters) of arrival for the trip heading to the concerned stop. Model:'https://schema.org/Number'. Units:'Meters'";
+  sh:name "remainingDistance";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:headSign;
+  sh:description "Property. It shall contain the text that appears on a sign that identifies the trip's destination to passengers. Model:'https://schema.org/Text'.";
+  sh:name "headSign";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+].

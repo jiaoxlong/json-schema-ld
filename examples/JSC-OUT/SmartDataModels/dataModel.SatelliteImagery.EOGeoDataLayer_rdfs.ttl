@@ -1,0 +1,77 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json> dcterms:title "Satellite Imagery - EOGeoDataLayer";
+    dcterms:description "This entity contains a harmonised description of a generic EOGeoDataLayer made for the Satellite Imagerry domain. This entity is primarily associated with the output data layers related to Earth Observation Analysis applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to EOGeoDataLayer.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:EOGeoDataLayer)
+].
+sdm:EOGeoDataLayer rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "EOGeoDataLayer".
+sdm:localServerPath dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the path that the output data layer is saved on the server";
+    rdf:type rdf:Property;
+    rdfs:label "localServerPath";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json>;
+    rdfs:range xsd:string.
+sdm:storageFormat dcterms:description "Property. Entity's satorage format.";
+    rdf:type rdf:Property;
+    rdfs:label "storageFormat";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json>;
+    rdfs:range xsd:string.
+sdm:geoMetadata dcterms:description "Property. Model:'https://schema.org/Text'. A text string used to declare the metadata file if available";
+    rdf:type rdf:Property;
+    rdfs:label "geoMetadata";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json>;
+    rdfs:range xsd:string.
+sdm:contentInformation dcterms:description "Property. An array that describes for each layer (e.g. band1) or entity name, the type of information (e.g. categorical, numerical) and an array with the explanation of the depicted values (e.g. [1:oil, 0:no oil])";
+    rdf:type rdf:Property;
+    rdfs:label "contentInformation";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json>;
+    rdfs:range sdm:ContentInformation.
+sdm:ContentInformation rdf:type rdfs:Class;
+    rdfs:label "ContentInformation".
+sdm:layer_name rdf:type rdf:Property;
+    rdfs:label "layer_name";
+    rdfs:domain sdm:ContentInformation;
+    rdfs:range xsd:string.
+sdm:layer_categorization rdf:type rdf:Property;
+    rdfs:label "layer_categorization";
+    rdfs:domain sdm:ContentInformation.
+sdm:Layer_categorization rdf:type skos:ConceptScheme.
+sdm:layer_categorization rdfs:range [
+  owl:oneOf (sdm:categorical sdm:numerical)
+].
+sdm:categorical rdf:type skos:Concept;
+    skos:inScheme sdm:Layer_categorization;
+    rdfs:label "categorical".
+sdm:numerical rdf:type skos:Concept;
+    skos:inScheme sdm:Layer_categorization;
+    rdfs:label "numerical".
+sdm:values_explanation rdf:type rdf:Property;
+    rdfs:label "values_explanation";
+    rdfs:domain sdm:ContentInformation;
+    rdfs:range xsd:string.
+sdm:isOutputOf dcterms:description "Relationship. The ID of the analysis that was performed to extract this data layer";
+    rdf:type rdf:Property;
+    rdfs:label "isOutputOf";
+    rdfs:domain sdm:ContentInformation;
+    rdfs:range xsd:anyURI.

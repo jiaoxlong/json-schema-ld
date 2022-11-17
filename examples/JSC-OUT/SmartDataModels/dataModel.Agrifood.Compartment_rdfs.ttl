@@ -1,0 +1,145 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json> dcterms:title " Smart Data models - Compartment schema";
+    dcterms:description "Artificial area in a building or department that is measured by certain sensors. A compartment is not necessarily a physical separator. It can be a department or a grouping of several pens within a department that are being measured by the same sensor.".
+sdm:type dcterms:description "Property. NGSI Entity type. it has to be Compartment";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Compartment)
+].
+sdm:Compartment rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Compartment".
+sdm:additionalInfo dcterms:description "Property. list of all the raw values sent by the sensor/platform with all the possible extra properties that are not included in the main structure. It is a JSON structure similar to this: { 'temperature': '32', 'humidity':'42'}";
+    rdf:type rdf:Property;
+    rdfs:label "additionalInfo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range sdm:AdditionalInfo.
+sdm:AdditionalInfo rdf:type rdfs:Class;
+    rdfs:label "AdditionalInfo".
+sdm:parameter rdf:type rdf:Property;
+    rdfs:label "parameter";
+    rdfs:domain sdm:AdditionalInfo;
+    rdfs:range xsd:string.
+sdm:value rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain sdm:AdditionalInfo;
+    rdfs:range xsd:string.
+sdm:arrivalTimestamp dcterms:description "Property. Model:'https://schema.org/Datetime'. Date and Time at which the animal were inserted in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "arrivalTimestamp";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:avgGrowth dcterms:description "Property. The average growth in weight of the animals in this compartment. Model:'https://schema.org/Number'.";
+    rdf:type rdf:Property;
+    rdfs:label "avgGrowth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:avgWeight dcterms:description "Property. The average weight of the pigs in this compartment. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "avgWeight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:buildingId dcterms:description "Relationship. Unique identifier of a building the compartment is located in";
+    rdf:type rdf:Property;
+    rdfs:label "buildingId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:co2 dcterms:description "Property. The CO2 concentration in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "co2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:companyId dcterms:description "Relationship. Unique identifier of a company";
+    rdf:type rdf:Property;
+    rdfs:label "companyId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:empty dcterms:description "Property. True/False value if the compartment is empty";
+    rdf:type rdf:Property;
+    rdfs:label "empty";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:farmId dcterms:description "Relationship. Unique identifier of a farm where the compartment is located in";
+    rdf:type rdf:Property;
+    rdfs:label "farmId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:feedConsumption dcterms:description "Property. The total amount of food that has been eaten from the feeding station(s) in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "feedConsumption";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:humidity dcterms:description "Property. Quantity representing the amount of water vapour in the atmosphere in the compartment. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "humidity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lastUpdate dcterms:description "Property. Date and time at which the measurements in the compartment were taken. Unix timestamp";
+    rdf:type rdf:Property;
+    rdfs:label "lastUpdate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:luminosity dcterms:description "Property. The brightness of a light source of a certain wavelength at the compartment. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "luminosity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:numAnimals dcterms:description "Property. Number of animals in the compartment. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "numAnimals";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:parentCompartmentId dcterms:description "Relationship. Unique identifier of the  compartment where this compartment is a part of. It is used only when a compartment contains other compartments";
+    rdf:type rdf:Property;
+    rdfs:label "parentCompartmentId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:sex dcterms:description "Property. The sex of the animals contained in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "sex";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>.
+sdm:Sex rdf:type skos:ConceptScheme.
+sdm:sex rdfs:range [
+  owl:oneOf (sdm:M sdm:F sdm:unknown sdm:)
+].
+sdm:M rdf:type skos:Concept;
+    skos:inScheme sdm:Sex;
+    rdfs:label "M".
+sdm:F rdf:type skos:Concept;
+    skos:inScheme sdm:Sex;
+    rdfs:label "F".
+sdm:unknown rdf:type skos:Concept;
+    skos:inScheme sdm:Sex;
+    rdfs:label "unknown".
+sdm: rdf:type skos:Concept;
+    skos:inScheme sdm:Sex;
+    rdfs:label "".
+sdm:temperature dcterms:description "Property. Temperature of the compartment.";
+    rdf:type rdf:Property;
+    rdfs:label "temperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:waterConsumption dcterms:description "Property. The total amount of water that came out from the tap or taps in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "waterConsumption";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:weightStDev dcterms:description "Property. The standard deviation associated to the average weight of the pigs/piglets contained in the compartment";
+    rdf:type rdf:Property;
+    rdfs:label "weightStDev";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/Compartment/schema.json>;
+    rdfs:range xsd:decimal.

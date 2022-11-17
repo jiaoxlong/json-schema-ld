@@ -1,0 +1,86 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json> dcterms:title "Smart Data Models - Digital Innovation Hub";
+    dcterms:description "Digital Innovation Hubs are one-stop-shops that help companies to become more competitive with regard to their business/production processes.".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be DigitalInnovationHub";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DigitalInnovationHub)
+].
+sdm:DigitalInnovationHub rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DigitalInnovationHub".
+sdm:website dcterms:description "Property. Model:'https://schema.org/URL'. Website of the Digital Innovation Hub.";
+    rdf:type rdf:Property;
+    rdfs:label "website";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range xsd:string.
+sdm:logo dcterms:description "Property. Model:'https://schema.org/URL'. URL of the logo of the Digital Innovation Hub.";
+    rdf:type rdf:Property;
+    rdfs:label "logo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range xsd:string.
+sdm:location dcterms:description "GeoProperty. Model:'https://geojson.org/schema/Point.json'. GeoJSON Point reference to the location of the Digital Innovation Hub.";
+    rdf:type rdf:Property;
+    rdfs:label "location";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range sdm:Location.
+sdm:Location rdf:type rdfs:Class;
+    rdfs:label "Location".
+sdm:address dcterms:description "Property. Model:'https://schema.org/PostalAddress'. PostalAddress of the Digital Innovation Hub.";
+    rdf:type rdf:Property;
+    rdfs:label "address";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range sdm:Address.
+sdm:Address rdf:type rdfs:Class;
+    rdfs:label "Address".
+sdm:socialAccounts dcterms:description "Property. Model:'https://schema.org/StructuredValue'. SocialAccounts of the Digital Innovation Hub.";
+    rdf:type rdf:Property;
+    rdfs:label "socialAccounts";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range sdm:SocialAccount.
+sdm:SocialAccount rdf:type rdfs:Class;
+    rdfs:label "SocialAccount".
+sdm:linkedin rdf:type rdf:Property;
+    rdfs:label "linkedin";
+    rdfs:domain sdm:SocialAccount;
+    rdfs:range xsd:string.
+sdm:facebook rdf:type rdf:Property;
+    rdfs:label "facebook";
+    rdfs:domain sdm:SocialAccount;
+    rdfs:range xsd:string.
+sdm:twitter rdf:type rdf:Property;
+    rdfs:label "twitter";
+    rdfs:domain sdm:SocialAccount;
+    rdfs:range xsd:string.
+sdm:instagram rdf:type rdf:Property;
+    rdfs:label "instagram";
+    rdfs:domain sdm:SocialAccount;
+    rdfs:range xsd:string.
+sdm:dateSubmitted dcterms:description "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateSubmitted";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateUpdated dcterms:description "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateUpdated";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    rdfs:range xsd:dateTime.

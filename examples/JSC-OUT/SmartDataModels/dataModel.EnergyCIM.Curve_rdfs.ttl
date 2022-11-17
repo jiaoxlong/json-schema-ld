@@ -1,0 +1,54 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json> dcterms:title " Smart Data Models - Curve";
+    dcterms:description "Adapted from CIM data models. A multi-purpose curve or functional relationship between an independent variable (X-axis) and dependent (Y-axis) variables.".
+sdm:type dcterms:description "Property. NGSI type. It has to be Curve";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Curve)
+].
+sdm:Curve rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Curve".
+sdm:CurveDatas dcterms:description "Property. Model:'https://schema.org/Number'. The curve of  this curve data point. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "CurveDatas";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:curveStyle dcterms:description "Property. Model:'https://schema.org/Number'. The style or shape of the curve. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "curveStyle";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xUnit dcterms:description "Property. Model:'https://schema.org/Number'. The X-axis units of measure. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "xUnit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:y1Unit dcterms:description "Property. Model:'https://schema.org/Number'. The Y1-axis units of measure. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "y1Unit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:y2Unit dcterms:description "Property. Model:'https://schema.org/Number'. The Y2-axis units of measure. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "y2Unit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Curve/schema.json>;
+    rdfs:range xsd:decimal.

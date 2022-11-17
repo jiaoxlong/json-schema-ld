@@ -1,0 +1,79 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Environment/TrafficEnvironmentImpactForecast/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be TrafficEnvironmentImpactForecast";
+  sh:name "type";
+  sh:in (sdm:TrafficEnvironmentImpact);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:co2;
+  sh:description "Property. The expected C02 emission concentration. Units:'mg/L'";
+  sh:name "co2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:validFrom;
+  sh:description "Property. The start of the validity period for this forecast as a ISO8601 format";
+  sh:name "validFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:validTo;
+  sh:description "Property. The end of the validity period for this forecast as a ISO8601 format";
+  sh:name "validTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:validity;
+  sh:description "Property. Model:'https://schema.org/Text'. Includes the validity period for this forecast as a ISO8601 time interval.";
+  sh:name "validity";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dateIssued;
+  sh:description "Property. The date and time the forecast was issued by the service provider in ISO8601 UTC format.";
+  sh:name "dateIssued";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:traffic;
+  sh:description "Property. Array of objects containing the expected values for intensity, occupation an speed of the different vehicle types";
+  sh:name "traffic"
+].
+sdm:TrafficShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Traffic;
+    sh:property [
+  sh:path sdm:vehicleClass;
+  sh:description "Property. Enumeration of the vehicle classes";
+  sh:name "vehicleClass";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:intensityExpected;
+  sh:description "Property. Total number of vehicles expected during this forecast period. Model:'https://schema.org/Number'.";
+  sh:name "intensityExpected";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:occupancyExpected;
+  sh:description "Property. Fraction of the observation time where a vehicle has been occupying the observed lane. Model:'https://schema.org/Number'.";
+  sh:name "occupancyExpected";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageVehicleSpeedExpected;
+  sh:description "Property. Average speed expected of the vehicles transiting during the observation period. Model:'https://schema.org/Number'. Units:'Kilometer per hour (Km/h)'";
+  sh:name "averageVehicleSpeedExpected";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+].

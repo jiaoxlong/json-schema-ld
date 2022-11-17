@@ -1,0 +1,106 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamCC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovSteamCC";
+  sh:name "type";
+  sh:in (sdm:GovSteamCC)
+], [
+  sh:path sdm:dhp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP damping factor (Dhp).  Typical Value = 0. Default: 0.0";
+  sh:name "dhp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dlp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP damping factor (Dlp).  Typical Value = 0. Default: 0.0";
+  sh:name "dlp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:fhp;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of HP power ahead of reheater (Fhp).  Typical Value = 0.3. Default: 0.0";
+  sh:name "fhp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flp;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of LP power ahead of reheater (Flp).  Typical Value = 0.7. Default: 0.0";
+  sh:name "flp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (>0).  Unit = MW. Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmaxhp;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum HP value position (Pmaxhp).  Typical Value = 1. Default: 0.0";
+  sh:name "pmaxhp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmaxlp;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum LP value position (Pmaxlp).  Typical Value = 1. Default: 0.0";
+  sh:name "pmaxlp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rhp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP governor droop (Rhp).  Typical Value = 0.05. Default: 0.0";
+  sh:name "rhp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rlp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP governor droop (Rlp).  Typical Value = 0.05. Default: 0.0";
+  sh:name "rlp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1hp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP governor time constant (T1hp).  Typical Value = 0.1. Default: 0";
+  sh:name "t1hp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1lp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP governor time constant (T1lp).  Typical Value = 0.1. Default: 0";
+  sh:name "t1lp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3hp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP turbine time constant (T3hp).  Typical Value = 0.1. Default: 0";
+  sh:name "t3hp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3lp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP turbine time constant (T3lp).  Typical Value = 0.1. Default: 0";
+  sh:name "t3lp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t4hp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP turbine time constant (T4hp).  Typical Value = 0.1. Default: 0";
+  sh:name "t4hp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t4lp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP turbine time constant (T4lp).  Typical Value = 0.1. Default: 0";
+  sh:name "t4lp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t5hp;
+  sh:description "Property. Model:'https://schema.org/Number'. HP reheater time constant (T5hp).  Typical Value = 10. Default: 0";
+  sh:name "t5hp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t5lp;
+  sh:description "Property. Model:'https://schema.org/Number'. LP reheater time constant (T5lp).  Typical Value = 10. Default: 0";
+  sh:name "t5lp";
+  sh:datatype xsd:decimal
+].

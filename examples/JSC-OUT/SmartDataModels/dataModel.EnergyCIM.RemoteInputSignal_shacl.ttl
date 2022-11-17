@@ -1,0 +1,71 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RemoteInputSignal/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be RemoteInputSignal";
+  sh:name "type";
+  sh:in (sdm:RemoteInputSignal)
+], [
+  sh:path sdm:DiscontinuousExcitationControlDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Discontinuous excitation control model using this remote input signal. Default: None";
+  sh:name "DiscontinuousExcitationControlDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:PFVArControllerType1Dynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Power Factor or VAr controller Type I model using this remote input signal. Default: None";
+  sh:name "PFVArControllerType1Dynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:PowerSystemStabilizerDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Power system stabilizer model using this remote input signal. Default: None";
+  sh:name "PowerSystemStabilizerDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:Terminal;
+  sh:description "Property. Model:'https://schema.org/Number'. Remote terminal with which this input signal is associated. Default: None";
+  sh:name "Terminal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:UnderexcitationLimiterDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Underexcitation limiter model using this remote input signal. Default: None";
+  sh:name "UnderexcitationLimiterDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:VoltageCompensatorDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage compensator model using this remote input signal. Default: None";
+  sh:name "VoltageCompensatorDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindPlantDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. The remote signal with which this power plant is associated. Default: None";
+  sh:name "WindPlantDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindTurbineType1or2Dynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind generator Type 1 or Type 2 model using this remote input signal. Default: None";
+  sh:name "WindTurbineType1or2Dynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindTurbineType3or4Dynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Remote input signal used by these wind turbine Type 3 or 4 models. Default: None";
+  sh:name "WindTurbineType3or4Dynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:remoteSignalType;
+  sh:description "Property. Model:'https://schema.org/Number'. Type of input signal. Default: None";
+  sh:name "remoteSignalType";
+  sh:datatype xsd:decimal
+].

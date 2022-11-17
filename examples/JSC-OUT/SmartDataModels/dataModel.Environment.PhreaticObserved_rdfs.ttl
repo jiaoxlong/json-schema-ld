@@ -1,0 +1,98 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+sdm:json dcterms:title "PhreaticObserved schema";
+    dcterms:description "The Data Model is intended to measure, observe and control the level and quality of groundwater at a given time (T), by a fixed or mobile monitoring system. Depending on the device used, it is also possible to measure the quality of water such as its electrical conductivity, its salt content, its temperature, etc. In this case, the values measured are processed by the Data Model `WaterObserved` and `WaterQualityObserved`. Additional Information about Attributes: For attributes dedicated to water, a MetaData attribute can also be used. it contains the `TimeStamp` in seconds, the `qualification` and control `status` of the measurement.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be PhreaticObserved";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain sdm:json.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PhreaticObserved)
+].
+sdm:PhreaticObserved rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PhreaticObserved".
+sdm:dateObserved dcterms:description "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:dateTime.
+sdm:dateObservedFrom dcterms:description "Property. Observation period : Start date and time in an ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedFrom";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:dateTime.
+sdm:dateObservedTo dcterms:description "Property. Observation period : End date and time in an ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedTo";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:dateTime.
+sdm:isMobile dcterms:description "Property. The device used is Fixed (False) or Mobile (True). Model:'https://schema.org/Boolean'";
+    rdf:type rdf:Property;
+    rdfs:label "isMobile";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:boolean.
+sdm:measurementType rdf:type rdf:Property;
+    rdfs:label "measurementType";
+    rdfs:domain sdm:json.
+sdm:MeasurementType rdf:type skos:ConceptScheme.
+sdm:measurementType rdfs:range [
+  owl:oneOf (sdm:depth sdm:other sdm:quality sdm:volume)
+].
+sdm:depth rdf:type skos:Concept;
+    skos:inScheme sdm:MeasurementType;
+    rdfs:label "depth".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:MeasurementType;
+    rdfs:label "other".
+sdm:quality rdf:type skos:Concept;
+    skos:inScheme sdm:MeasurementType;
+    rdfs:label "quality".
+sdm:volume rdf:type skos:Concept;
+    skos:inScheme sdm:MeasurementType;
+    rdfs:label "volume".
+sdm:investigationDepth dcterms:description "Property. Maximum depth where the investigation was made. Model:'https://schema.org/DateTime'. The unit code (text) of measurement given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters). For instance, <code>MTR</code> represents Meter. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "investigationDepth";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.
+sdm:waterTable dcterms:description "Property. Level at which water was found during this investigation. Model:'https://schema.org/Number'. Units:'meter'. The unit code (text) of measurement given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters). For instance, <code>MTR</code> represents Meter.";
+    rdf:type rdf:Property;
+    rdfs:label "waterTable";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.
+sdm:pressure dcterms:description "Property. Water Pressure. Model:'https://schema.org/DateTime'. Units:'Bar'. The unit code (text) of measurement given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters). For instance, <code>BAR</code> represents Bar.";
+    rdf:type rdf:Property;
+    rdfs:label "pressure";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.
+sdm:depth dcterms:description "Property. Depth of drinking water, since its identification `waterTable`. Model:'https://schema.org/depth'. The unit code (text) of measurement given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters). For instance, <code> MTR </code> represents Meter.";
+    rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.
+sdm:pollutionRate dcterms:description "Property. Rate of pollution. Model:'https://schema.org/Number'. The unit code (text) of measurement given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) (max. 3 characters). For instance, P1 represents Percentage.";
+    rdf:type rdf:Property;
+    rdfs:label "pollutionRate";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.
+sdm:residueLevel dcterms:description "Property. Residue level found. Model:'https://schema.org/Number'.";
+    rdf:type rdf:Property;
+    rdfs:label "residueLevel";
+    rdfs:domain sdm:json;
+    rdfs:range xsd:decimal.

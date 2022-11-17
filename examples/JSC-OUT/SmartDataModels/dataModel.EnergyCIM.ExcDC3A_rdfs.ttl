@@ -1,0 +1,109 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json> dcterms:title " Smart Data Models - ExcDC3A";
+    dcterms:description "Adapted from CIM data models. This is modified IEEE DC3A direct current commutator exciters with speed input, and death band.  DC old type 4.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcDC3A";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcDC3A)
+].
+sdm:ExcDC3A rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcDC3A".
+sdm:edfmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage exciter output limiter (Efdmax).  Typical Value = 99. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "edfmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efd1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (Efd1).  Typical Value = 2.6. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efd1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efd2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (Efd2).  Typical Value = 3.45. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efd2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efdlim dcterms:description "Property. Model:'https://schema.org/Number'. (Efdlim). true = exciter output limiter is active false = exciter output limiter not active. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "efdlim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efdmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage exciter output limiter (Efdmin).  Typical Value = -99. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efdmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:exclim dcterms:description "Property. Model:'https://schema.org/Number'. (exclim).  IEEE standard is ambiguous about lower limit on exciter output. true = a lower limit of zero is applied to integrator output false = a lower limit of zero not applied to integrator output. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "exclim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (Ke).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kr dcterms:description "Property. Model:'https://schema.org/Number'. Death band (Kr).  If Kr is not zero, the voltage regulator input changes at a constant rate if Verr > Kr or Verr < -Kr as per the IEEE (1968) Type 4 model. If Kr is zero, the error signal drives the voltage regulator continuously as per the IEEE (1980) DC3 and IEEE (1992, 2005) DC3A models.  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ks dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient to allow different usage of the model-speed coefficient (Ks).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ks";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kv dcterms:description "Property. Model:'https://schema.org/Number'. Fast raise/lower contact setting (Kv).  Typical Value = 0.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kv";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seefd1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Efd1 (Se[Eefd1]).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seefd1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seefd2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Efd2 (Se[Efd2]).  Typical Value = 0.35. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seefd2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (Te).  Typical Value = 1.83. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:trh dcterms:description "Property. Model:'https://schema.org/Number'. Rheostat travel time (Trh).  Typical Value = 20. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "trh";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (Vrmax).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (Vrmin).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A/schema.json>;
+    rdfs:range xsd:decimal.

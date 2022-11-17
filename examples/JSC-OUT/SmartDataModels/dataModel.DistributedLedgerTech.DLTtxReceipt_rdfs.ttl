@@ -1,0 +1,191 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/datamodel.DistributedLedgerTech/DLTtxReceipt/schema.json> dcterms:title " Smart Data Models - Distributed Ledger Technology/ Blockchain Receipts";
+    dcterms:description "Description of a DLT receipt storing some of the attributes (keys) of a transaction.".
+sdm:type dcterms:description "Property. NSGI Entity Type. it has to be DLTtxReceipt";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.DistributedLedgerTech/DLTtxReceipt/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DLTtxReceipt)
+].
+sdm:DLTtxReceipt rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DLTtxReceipt".
+sdm:refEntity dcterms:description "Relationship. Model:'http://schema.org/URL'. Entity persisted in the DLT";
+    rdf:type rdf:Property;
+    rdfs:label "refEntity";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.DistributedLedgerTech/DLTtxReceipt/schema.json>.
+sdm:TxReceipts dcterms:description "Property. Transaction Receipt";
+    rdf:type rdf:Property;
+    rdfs:label "TxReceipts";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.DistributedLedgerTech/DLTtxReceipt/schema.json>;
+    rdfs:range sdm:TxReceipt.
+sdm:TxReceipt rdf:type rdfs:Class;
+    rdfs:label "TxReceipt".
+sdm:to dcterms:description "Property. Model:'https://schema.org/Text'. Account or Contract Address to transaction has been submitted";
+    rdf:type rdf:Property;
+    rdfs:label "to";
+    rdfs:domain sdm:TxReceipt;
+    rdfs:range xsd:string.
+sdm:from dcterms:description "Property. Model:'https://schema.org/Text'. Account Address of the user/service responsible to submit the transaction (address of the msg.sender)";
+    rdf:type rdf:Property;
+    rdfs:label "from";
+    rdfs:domain sdm:TxReceipt;
+    rdfs:range xsd:string.
+sdm:keys rdf:type rdf:Property;
+    rdfs:label "keys";
+    rdfs:domain sdm:TxReceipt;
+    rdfs:range xsd:string.
+sdm:logs dcterms:description "Property. A log record can be used to describe an event within a smart contract (Ethereum)";
+    rdf:type rdf:Property;
+    rdfs:label "logs";
+    rdfs:domain sdm:TxReceipt;
+    rdfs:range sdm:Log.
+sdm:Log rdf:type rdfs:Class;
+    rdfs:label "Log".
+sdm:id dcterms:description "Property. Model:'https://schema.org/Text'. Log id";
+    rdf:type rdf:Property;
+    rdfs:label "id";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:data dcterms:description "Property. Model:'https://schema.org/Text'. Contains one or more 32 Bytes non-indexed arguments of the log";
+    rdf:type rdf:Property;
+    rdfs:label "data";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:topics rdf:type rdf:Property;
+    rdfs:label "topics";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:logAddress dcterms:description "Property. Model:'https://schema.org/Text'. Address from which this log originated";
+    rdf:type rdf:Property;
+    rdfs:label "logAddress";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:removed dcterms:description "Property. Model:'https://schema.org/Boolean'. True when the log was removed, due to a chain reorganization. False if its a valid log";
+    rdf:type rdf:Property;
+    rdfs:label "removed";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:boolean.
+sdm:logIndex dcterms:description "Property. Model:'https://schema.org/Number'.  Integer of the log index position in the block. null when its pending log";
+    rdf:type rdf:Property;
+    rdfs:label "logIndex";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:blockHash dcterms:description "Property. Model:'https://schema.org/Text'. Hash of the block where this log was in";
+    rdf:type rdf:Property;
+    rdfs:label "blockHash";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:blockNumber dcterms:description "Property. Model:'https://schema.org/Number'. The block number where this log was in. null when its pending. null when its pending log";
+    rdf:type rdf:Property;
+    rdfs:label "blockNumber";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:transactionHash dcterms:description "Property. Model:'https://schema.org/Text'. Hash of the transactions this log was created from. null when its pending log";
+    rdf:type rdf:Property;
+    rdfs:label "transactionHash";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:transactionIndex dcterms:description "Property. Model:'https://schema.org/Number'.  Integer of the transactions index position log was created from. null when its pending log.";
+    rdf:type rdf:Property;
+    rdfs:label "transactionIndex";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:status dcterms:description "Property. Model:'https://schema.org/Boolean'. True or False — which informs us if the txn was reverted or not — in this case it was true (0x1)";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:boolean.
+sdm:dltType dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'eth, iota'. type of DLT used by the transaction";
+    rdf:type rdf:Property;
+    rdfs:label "dltType";
+    rdfs:domain sdm:Log.
+sdm:DltType rdf:type skos:ConceptScheme.
+sdm:dltType rdfs:range [
+  owl:oneOf (sdm:eth sdm:iota)
+].
+sdm:eth rdf:type skos:Concept;
+    skos:inScheme sdm:DltType;
+    rdfs:label "eth".
+sdm:iota rdf:type skos:Concept;
+    skos:inScheme sdm:DltType;
+    rdfs:label "iota".
+sdm:gasUsed dcterms:description "Property. Model:'https://schema.org/Number'. The amount of gas used by this specific transaction";
+    rdf:type rdf:Property;
+    rdfs:label "gasUsed";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:blockHash dcterms:description "Property. Model:'https://schema.org/Text'. Hash of the block of the transaction";
+    rdf:type rdf:Property;
+    rdfs:label "blockHash";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:logsBloom dcterms:description "Property. Model:'https://schema.org/Text'. 256 Bytes-bloom filter for light clients to quickly retrieve related logs";
+    rdf:type rdf:Property;
+    rdfs:label "logsBloom";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:objectType dcterms:description "Property. Model:'https://schema.org/Text'. Type of object has been persisted";
+    rdf:type rdf:Property;
+    rdfs:label "objectType";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:blockNumber dcterms:description "Property. Model:'https://schema.org/Number'. Block number of the transaction";
+    rdf:type rdf:Property;
+    rdfs:label "blockNumber";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:storageType dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'iota, ipfs, merkletree'. Type of storage used to persist payload";
+    rdf:type rdf:Property;
+    rdfs:label "storageType";
+    rdfs:domain sdm:Log.
+sdm:StorageType rdf:type skos:ConceptScheme.
+sdm:storageType rdfs:range [
+  owl:oneOf (sdm:iota sdm:ipfs sdm:merkletree)
+].
+sdm:iota rdf:type skos:Concept;
+    skos:inScheme sdm:StorageType;
+    rdfs:label "iota".
+sdm:ipfs rdf:type skos:Concept;
+    skos:inScheme sdm:StorageType;
+    rdfs:label "ipfs".
+sdm:merkletree rdf:type skos:Concept;
+    skos:inScheme sdm:StorageType;
+    rdfs:label "merkletree".
+sdm:transactionHash dcterms:description "Property. Model:'https://schema.org/Text'. Hash of the transaction";
+    rdf:type rdf:Property;
+    rdfs:label "transactionHash";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:contractAddress dcterms:description "Property. Model:'https://schema.org/Text'. Contract address created, if the transaction was a contract creation, otherwise null";
+    rdf:type rdf:Property;
+    rdfs:label "contractAddress";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:string.
+sdm:transactionIndex dcterms:description "Property. Model:'https://schema.org/Number'. Integer of the transactions index position in the block";
+    rdf:type rdf:Property;
+    rdfs:label "transactionIndex";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.
+sdm:cumulativeGasUsed dcterms:description "Property. Model:'https://schema.org/Number'. Total amount of gas used when this transaction was executed in the block";
+    rdf:type rdf:Property;
+    rdfs:label "cumulativeGasUsed";
+    rdfs:domain sdm:Log;
+    rdfs:range xsd:integer.

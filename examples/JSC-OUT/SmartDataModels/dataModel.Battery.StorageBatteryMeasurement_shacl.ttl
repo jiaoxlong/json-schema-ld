@@ -1,0 +1,136 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.Energy/StorageBatteryMeasurement/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be StorageBatteryMeasurement";
+  sh:name "type";
+  sh:in (sdm:StorageBatteryMeasurement);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refStorageBatteryDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateObservedFrom;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Observation period: Start date and time in an ISO8601 UTC format. The attribute can be used in addition to the 'dateObserved' attribute when it corresponds to a time interval to be highlighted.";
+  sh:name "dateObservedFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedTo;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Observation period: End date and time in an ISO8601 UTC format. The attribute can be used in addition to the 'dateObserved' attribute when it corresponds to a time interval to be highlighted.";
+  sh:name "dateObservedTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:batteryLevel;
+  sh:xone ([
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+] [
+  sh:in (sdm:-1);
+  sh:datatype xsd:decimal
+])
+], [
+  sh:path sdm:batteryStatus;
+  sh:description "Property. Status of the battery during the measurement( giving or not energy). Enum:'consumingEnergy, givingEnergy, standby'";
+  sh:name "batteryStatus";
+  sh:in (sdm:consumingEnergy sdm:givingEnergy sdm:standby)
+], [
+  sh:path sdm:batteryAssessmentMethods;
+  sh:description "Property. Assessment and calculation methods for measurements assessing the condition of the battery. Enum:'ampereHourMetry, dischargeTest, electrolyteDensity, highFrequencyImpedance, lowFrequencyImpedance, mathematicalModel, operatingVoltageWithClosedCircuit, quiescentVoltageWithOpenCircuit'";
+  sh:name "batteryAssessmentMethods";
+  sh:in (sdm:ampereHourMetry sdm:dischargeTest sdm:electrolyteDensity sdm:highFrequencyImpedance sdm:lowFrequencyImpedance sdm:mathematicalModel sdm:operatingVoltageWithClosedCircuit sdm:quiescentVoltageWithOpenCircuit)
+], [
+  sh:path sdm:dateEnergyMeteringStarted;
+  sh:description "Property. The starting date for metering energy in an ISO8601 UTC format. Model:'https://schema.org/DateTime'.";
+  sh:name "dateEnergyMeteringStarted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:temperature;
+  sh:description "Property. Main Temperature recorded at the time of Observation compared to the  nominal reference temperature of the device. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Model:'https://schema.org/Number'. Units:'celsius degrees '.";
+  sh:name "temperature";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:stateOfCharge;
+  sh:description "Property. The State of Charge (Code SoC) expressed in % is defined as the ratio between the remaining and the current capacities. The current capacity is the maximum capacity that can be withdrawn from the fully charged battery under specific discharge conditions. Rule [SOC] + [DOD] = 100 %. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'.";
+  sh:name "stateOfCharge";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:deepOfDischarge;
+  sh:description "Property. The Deep of Discharge (Code DoD) expressed in % is the ratio between the capacity already discharged and the nominal capacity of the accumulator. That is to say the energy consumed in the battery. Rule  [DOD] = 100 % - [SOC]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'.";
+  sh:name "deepOfDischarge";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:stateOfHealth;
+  sh:description "Property. The State of Health  (Code SoH) expressed in % is defined as the ratio between the maximum amount of charge that a fully charged battery can provide under its nominal discharge regime, and its nominal capacity. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'.";
+  sh:name "stateOfHealth";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePower;
+  sh:description "Property. Active Power, where 'phi' is the phase shift of the current compared to the voltage. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Model:'https://schema.org/Number'. Units:'Kilowatt'.";
+  sh:name "activePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePower;
+  sh:description "Property. Reactive Power used by circuits. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **K5** represents kilovolt-ampere-reactive. Model:'https://schema.org/Number'. Units:'kilovolt-ampere-reactive'.";
+  sh:name "reactivePower";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:current;
+  sh:description "Property. Current. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'. ";
+  sh:name "current";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:openCircuitVoltage;
+  sh:description "Property. The Open Circuit Voltage (Code OCV) expressed in Volt is the difference of electrical potential between two terminals of a device when disconnected from any circuit. There is no external load connected and No external electric current flows between the terminals. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'.";
+  sh:name "openCircuitVoltage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:inverterStatus;
+  sh:name "inverterStatus";
+  sh:in (sdm:00-OnSector <sdm:01-PowerFailure/OnBattery> sdm:02-LossCommunication sdm:03-BatteryFault sdm:04-SystemShutDown sdm:05-TensionDip sdm:06-OverVoltage sdm:07-VoltageDrop sdm:08-VoltageIncrease sdm:09-LineNoise sdm:10-FrequencyVariation sdm:11-TransientDistortion sdm:12-HarmonicDistortion)
+].

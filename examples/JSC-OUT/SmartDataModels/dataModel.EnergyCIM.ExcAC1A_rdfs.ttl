@@ -1,0 +1,139 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json> dcterms:title " Smart Data Models - ExcAC1A";
+    dcterms:description "Adapted from CIM data models. Modified IEEE AC1A alternator-supplied rectifier excitation system with different rate feedback source.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcAC1A";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcAC1A)
+].
+sdm:ExcAC1A rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcAC1A".
+sdm:hvlvgates dcterms:description "Property. Model:'https://schema.org/Number'. Indicates if both HV gate and LV gate are active (HVLVgates). true = gates are used false = gates are not used. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "hvlvgates";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (Ka).  Typical Value = 400. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kc dcterms:description "Property. Model:'https://schema.org/Number'. Rectifier loading factor proportional to commutating reactance (Kc). Typical Value = 0.2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kd dcterms:description "Property. Model:'https://schema.org/Number'. Demagnetizing factor, a function of exciter alternator reactances (Kd).  Typical Value = 0.38. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (Ke).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gains (Kf).  Typical Value = 0.03. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf1 dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient to allow different usage of the model (Kf1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf2 dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient to allow different usage of the model (Kf2).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ks dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient to allow different usage of the model-speed coefficient (Ks).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ks";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seve1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Ve1, back of commutating reactance (Se[Ve1]).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seve1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seve2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Ve2, back of commutating reactance (Se[Ve2]).  Typical Value = 0.03. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seve2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (Ta).  Typical Value = 0.02. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (Tb).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tc dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (Te).  Typical Value = 0.8. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (Tf).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 14.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -14.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ve1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (Ve1).  Typical Value = 4.18. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ve1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ve2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (Ve2).  Typical Value = 3.14. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ve2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator outputs (Vrmax).  Typical Value = 6.03. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator outputs (Rrmin).  Typical Value = -5.43. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAC1A/schema.json>;
+    rdfs:range xsd:decimal.

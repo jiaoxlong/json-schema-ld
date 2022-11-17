@@ -1,0 +1,327 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Environment/AirQualityMonitoring/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. it has to be AirQualityMonitoring";
+  sh:name "type";
+  sh:in (sdm:AirQualityMonitoring);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:deviceInfo;
+  sh:description "Property. Information about the device associated with the observations.";
+  sh:name "deviceInfo"
+].
+sdm:DeviceInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DeviceInfo;
+    sh:property [
+  sh:path sdm:deviceList;
+  sh:description "Property. Model:'https://schema.org/Text'. Information of device part number and sub devices corresponding to this observation.";
+  sh:name "deviceList";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceBatteryStatus;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the Battery charging status of the reporting device(Connected, Disconnected).";
+  sh:name "deviceBatteryStatus";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceName;
+  sh:description "Property. Model:'https://schema.org/Text'. Device Name or Station name of the sensor device/station corresponding to this observation.";
+  sh:name "deviceName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceID;
+  sh:description "Property. Model:'https://schema.org/Text'. Device ID of the physical sensor/ measurement station corresponding to this observation.";
+  sh:name "deviceID";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:RFID;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the ID of the RFID reader.";
+  sh:name "RFID";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:measurand;
+  sh:description "Property. Model:'https://schema.org/Text'. Property/properties sensed/observed/measured by the device.";
+  sh:name "measurand";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceSimNumber;
+  sh:description "Property. Model:'https://schema.org/Text'. Gives the sim number of the device in the waste management vehicle.";
+  sh:name "deviceSimNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:deviceModel;
+  sh:description "Property. Describes the information of the device, sensor or system in consideration.";
+  sh:name "deviceModel"
+].
+sdm:DeviceModelShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DeviceModel;
+    sh:property [
+  sh:path sdm:brandName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the brand associated with an entity, e.g., sensor, device etc.";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the manufacturer associated with an entity, e.g., sensor, device etc.";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of a specific model associated with an entity, e.g., sensor, device etc.";
+  sh:name "modelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelURL;
+  sh:description "Property. Model:'https://schema.org/Text'. URL providing further information of a specific model associated with an entity, e.g., sensor, device etc.";
+  sh:name "modelURL";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:areaServed;
+  sh:description "Property. Model:'https://schema.org/Text'. Area served by the entity or a service. ";
+  sh:name "areaServed";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:observationDateTime;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Last reported time of observation.";
+  sh:name "observationDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:deviceStatus;
+  sh:description "Property. Model:'https://schema.org/Text'. Indicates the status of physical device or devices.";
+  sh:name "deviceStatus";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:atmosphericPressure;
+  sh:description "Property. Model:'https://schema.org/Number'. Observed air (atmospheric or barometric) pressure.";
+  sh:name "atmosphericPressure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:airQualityIndex;
+  sh:description "Property. Model:'https://schema.org/Number'. Overall Air Quality Index (AQI) for the observed air quality.";
+  sh:name "airQualityIndex";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:airQualityLevel;
+  sh:description "Property. Model:'https://schema.org/Text'. Air Quality Category Indication. Qualitative level defined according to the local health agencies. For example, 'GOOD', 'MODERATE', 'POOR', 'UNHEALTHY', 'SEVERE', 'HAZARDOUS' etc.";
+  sh:name "airQualityLevel";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:aqiMajorPollutant;
+  sh:description "Property. Model:'https://schema.org/Text'. Major pollutant in the Air Quality Index (AQI). Enum:'arsenic, bap, benzene, co2, nh3, no, no2, o2, o3, so2, pb'";
+  sh:name "aqiMajorPollutant";
+  sh:in (sdm:arsenic sdm:bap sdm:benzene sdm:co2 sdm:nh3 sdm:no sdm:no2 sdm:o2 sdm:o3 sdm:so2 sdm:pb)
+], [
+  sh:path sdm:airTemperatureTSA;
+  sh:description "Property. Air temperature time series aggregation";
+  sh:name "airTemperatureTSA"
+].
+sdm:AirTemperatureTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:AirTemperatureTSA;
+    sh:property [
+  sh:path sdm:ambientNoiseTSA;
+  sh:description "Property. ambient Noise time series aggregation";
+  sh:name "ambientNoiseTSA"
+].
+sdm:AmbientNoiseTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:AmbientNoiseTSA;
+    sh:property [
+  sh:path sdm:arsenicTSA;
+  sh:description "Property. Arsenic time series aggregation";
+  sh:name "arsenicTSA"
+].
+sdm:ArsenicTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ArsenicTSA;
+    sh:property [
+  sh:path sdm:atmosphericPressureTSA;
+  sh:description "Property. Atmospheric pressure time series aggregation";
+  sh:name "atmosphericPressureTSA"
+].
+sdm:AtmosphericPressureTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:AtmosphericPressureTSA;
+    sh:property [
+  sh:path sdm:bapTSA;
+  sh:description "Property. Benzo(a)Pyrene time series aggregation";
+  sh:name "bapTSA"
+].
+sdm:BapTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:BapTSA;
+    sh:property [
+  sh:path sdm:benzeneTSA;
+  sh:description "Property. Benzene time series aggregation";
+  sh:name "benzeneTSA"
+].
+sdm:BenzeneTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:BenzeneTSA;
+    sh:property [
+  sh:path sdm:coTSA;
+  sh:description "Property. Carbon monoxide time series aggregation";
+  sh:name "coTSA"
+].
+sdm:CoTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:CoTSA;
+    sh:property [
+  sh:path sdm:co2TSA;
+  sh:description "Property. Carbon dioxide time series aggregation";
+  sh:name "co2TSA"
+].
+sdm:Co2TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Co2TSA;
+    sh:property [
+  sh:path sdm:nh3TSA;
+  sh:description "Property. Ammonia time series aggregation";
+  sh:name "nh3TSA"
+].
+sdm:Nh3TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Nh3TSA;
+    sh:property [
+  sh:path sdm:nickelTSA;
+  sh:description "Property. Nickel time series aggregation";
+  sh:name "nickelTSA"
+].
+sdm:NickelTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:NickelTSA;
+    sh:property [
+  sh:path sdm:noTSA;
+  sh:description "Property. Nitrogen monoxide time series aggregation";
+  sh:name "noTSA"
+].
+sdm:NoTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:NoTSA;
+    sh:property [
+  sh:path sdm:no2TSA;
+  sh:description "Property. Nitrogen dioxide time series aggregation";
+  sh:name "no2TSA"
+].
+sdm:No2TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:No2TSA;
+    sh:property [
+  sh:path sdm:o2TSA;
+  sh:description "Property. Oxygen time series aggregation";
+  sh:name "o2TSA"
+].
+sdm:O2TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:O2TSA;
+    sh:property [
+  sh:path sdm:o3TSA;
+  sh:description "Property. Ozone time series aggregation ";
+  sh:name "o3TSA"
+].
+sdm:O3TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:O3TSA;
+    sh:property [
+  sh:path sdm:pm10TSA;
+  sh:description "Property. Particulate matter in the air with a diameter of 10 micrometers or less time series aggregation";
+  sh:name "pm10TSA"
+].
+sdm:Pm10TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Pm10TSA;
+    sh:property [
+  sh:path sdm:pm25TSA;
+  sh:description "Property. Particulate matter in the air with a diameter of 25 micrometers or less time series aggregation";
+  sh:name "pm25TSA"
+].
+sdm:Pm25TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Pm25TSA;
+    sh:property [
+  sh:path sdm:relativeHumidityTSA;
+  sh:description "Property. Relative Humidity time series aggregation";
+  sh:name "relativeHumidityTSA"
+].
+sdm:RelativeHumidityTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:RelativeHumidityTSA;
+    sh:property [
+  sh:path sdm:so2TSA;
+  sh:description "Property. Sulfur dioxide time series aggregation";
+  sh:name "so2TSA"
+].
+sdm:So2TSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:So2TSA;
+    sh:property [
+  sh:path sdm:pbTSA;
+  sh:description "Property. Lead time series aggregation";
+  sh:name "pbTSA"
+].
+sdm:PbTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PbTSA;
+    sh:property [
+  sh:path sdm:uvTSA;
+  sh:description "Property. Ultra violet radiation time series aggregation";
+  sh:name "uvTSA"
+].
+sdm:UvTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:UvTSA;
+    sh:property [
+  sh:path sdm:illuminance;
+  sh:description "Property. Measured illuminance";
+  sh:name "illuminance";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:solarRadiation;
+  sh:description "Property. Model:'http://schema.org/Number'. Instantaneous solar radiation measured in kW/m2. Units:'kW/m2'";
+  sh:name "solarRadiation";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:precipitation;
+  sh:description "Property. Model:'https://schema.org/Number'. Observed precipitation/rainfall level over a given duration.";
+  sh:name "precipitation";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:versionInfo;
+  sh:description "Property. Version information corresponding to this observation.";
+  sh:name "versionInfo"
+].
+sdm:VersionInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:VersionInfo;
+    sh:property [
+  sh:path sdm:startDateTime;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Reported start time corresponding to this observation.";
+  sh:name "startDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:endDateTime;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Reported end time corresponding to this observation.";
+  sh:name "endDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:versionName;
+  sh:description "Property. Model:'https://schema.org/Text'. Version name corresponding to this observation";
+  sh:name "versionName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:comments;
+  sh:description "Property. Model:'https://schema.org/Text'. User comments corresponding to this observation.";
+  sh:name "comments";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:windType;
+  sh:description "Property. Wind type dominate during the last 24 hours.";
+  sh:name "windType";
+  sh:datatype xsd:string
+].

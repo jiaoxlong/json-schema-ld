@@ -1,0 +1,71 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json> dcterms:title "Smart Data Models - Parks and Gardens / Greenspace Record";
+    dcterms:description "This entity contains a harmonised description of the conditions recorded on a particular area or point inside a greenspace (flower bed, garden, etc.).".
+sdm:type dcterms:description "Property. NGSI Entity Type: It has to be GreenspaceRecord";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GreenspaceRecord)
+].
+sdm:GreenspaceRecord rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GreenspaceRecord".
+sdm:dateObserved dcterms:description "Property. The date and time of this observation in ISO8601 UTCformat. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:soilTemperature dcterms:description "Property. The observed soil temperature in Celsius degrees. Units:'degrees Celsius'. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "soilTemperature";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilMoistureVwc dcterms:description "Property. The observed soil moisture measured as Volumetric Water Content, VWC (percentage, expressed in parts per one). Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "soilMoistureVwc";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilMoistureEc dcterms:description "Property. The observed soild moisture measured as Electrical Conductivity, EC in units of Siemens per meter (S/m). Units:'Siemens per meter'. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "soilMoistureEc";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilMoisturePressure dcterms:description "Property. The observed soild moisture measured as Pressure, presure in units of kiloPascals (kPa). Units:'kPa'. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "soilMoisturePressure";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:refGreenspace dcterms:description "Relationship. The garden or flower bed to which this record refers to. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "refGreenspace";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>.
+sdm:refDevice dcterms:description "Relationship. The device or devices used to obtain the data expressed by this record. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>.
+sdm:refWeatherObserved dcterms:description "Relationship.  Weather observed associated to the measurements described by this entity. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "refWeatherObserved";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>.
+sdm:litterCoverage dcterms:description "Property. Model:'https://schema.org/Number'. Percentage of the surface covered with litter or other waste materials";
+    rdf:type rdf:Property;
+    rdfs:label "litterCoverage";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/ParksAndGardens/GreenspaceRecord/schema.json>;
+    rdfs:range xsd:decimal.

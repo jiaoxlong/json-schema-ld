@@ -1,0 +1,68 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.PointOfInteraction/SmartSpot/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be SmartSpot";
+  sh:name "type";
+  sh:in (sdm:SmartSpot);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:announcedUrl;
+  sh:description "Property. URL broadcasted by the device. Model:'https://schema.org/URL'";
+  sh:name "announcedUrl";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:signalStrength;
+  sh:description "Property. Signal strength to adjust the announcement range. Enum:'highest, lowest, medium'";
+  sh:name "signalStrength";
+  sh:in (sdm:highest sdm:lowest sdm:medium)
+], [
+  sh:path sdm:bluetoothChannel;
+  sh:description "Property. Bluetooth channels where to transmit the announcement.  Model:'https://schema.org/Text'";
+  sh:name "bluetoothChannel";
+  sh:in (sdm:37 sdm:38 sdm:39 sdm:37,38 sdm:38,39 sdm:37,39 sdm:37,38,39)
+], [
+  sh:path sdm:coverageRadius;
+  sh:description "Property. Radius of the spot coverage area in meters. Model:'https://schema.org/Number'";
+  sh:name "coverageRadius";
+  sh:minInclusive 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:announcementPeriod;
+  sh:description "Property. Period between announcements in milliseconds. Model:'https://schema.org/Number'";
+  sh:name "announcementPeriod";
+  sh:minInclusive 100;
+  sh:maxInclusive 4000;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:availability;
+  sh:description "Property. Specifies the time intervals in which this interactive service is available, but this is a general information while Smart Spots have their own real availability in order to allow advanced configurations. Model:'https://schema.org/openingHours'";
+  sh:name "availability";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refSmartPointOfInteraction;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+].

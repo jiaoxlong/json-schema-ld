@@ -1,0 +1,44 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://raw.githubusercontent.com/smart-data-models/dataModel.RiskAssessment/master/Measure/schema.json> dcterms:title "Smart Data Models - Risk Assessment - Measure Entity";
+    dcterms:description "Specific measure translated into actions to be performed into the different systems".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to Measure.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.RiskAssessment/master/Measure/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Measure)
+].
+sdm:Measure rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Measure".
+sdm:action dcterms:description "Property. Actions to be taken related to a risk";
+    rdf:type rdf:Property;
+    rdfs:label "action";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.RiskAssessment/master/Measure/schema.json>;
+    rdfs:range sdm:Action.
+sdm:Action rdf:type rdfs:Class;
+    rdfs:label "Action".
+sdm:id rdf:type rdf:Property;
+    rdfs:label "id";
+    rdfs:domain sdm:Action;
+    rdfs:range xsd:anyURI.
+sdm:value rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain sdm:Action;
+    rdfs:range xsd:string.

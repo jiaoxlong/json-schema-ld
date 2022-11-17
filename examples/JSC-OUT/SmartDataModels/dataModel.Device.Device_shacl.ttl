@@ -1,0 +1,167 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Device";
+  sh:name "type";
+  sh:in (sdm:Device);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:controlledAsset;
+  sh:xone ([ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:mnc;
+  sh:description "Property. Model:'https://schema.org/Text'. This property identifies the Mobile Network Code (MNC) of the network the device is attached to. The MNC is used in combination with a Mobile Country Code (MCC) (also known as a 'MCC / MNC tuple') to uniquely identify a mobile phone operator/carrier using the GSM, CDMA, iDEN, TETRA and 3G / 4G public land mobile networks and some satellite mobile networks.";
+  sh:name "mnc";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:mcc;
+  sh:description "Property. Model:'https://schema.org/Text'. This property identifies the Mobile Country Code";
+  sh:name "mcc";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ipAddress;
+  sh:name "ipAddress";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ipAddress;
+  sh:xone ()
+], [
+  sh:path sdm:configuration;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Device's technical configuration. This attribute is intended to be a array properties and their values which capture parameters which have to do with the configuration of a device (timeouts, reporting periods, etc.) and which are not currently covered by the standard attributes defined by this model.";
+  sh:name "configuration"
+].
+sdm:ConfigurationShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Configuration;
+    sh:property [
+  sh:path sdm:parameter;
+  sh:name "parameter";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:value;
+  sh:name "value";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dateInstalled;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was installed (if it requires installation).";
+  sh:name "dateInstalled";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateFirstUsed;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was first used.";
+  sh:name "dateFirstUsed";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateManufactured;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was manufactured.";
+  sh:name "dateManufactured";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:hardwareVersion;
+  sh:description "Property. Model:'https://schema.org/Text'. The hardware version of this device.";
+  sh:name "hardwareVersion";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:softwareVersion;
+  sh:description "Property. Model:'https://schema.org/Text'. The software version of this device.";
+  sh:name "softwareVersion";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:firmwareVersion;
+  sh:description "Property. Model:'https://schema.org/Text'. The firmware version of this device.";
+  sh:name "firmwareVersion";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:osVersion;
+  sh:description "Property. Model:'https://schema.org/Text'. The version of the host operating system device.";
+  sh:name "osVersion";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:distance;
+  sh:description "Property. Model:'https://schema.org/Distance'. Location of this device represented by a distance from a starting point. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code";
+  sh:name "distance";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dstAware;
+  sh:description "Property. Indicates a device which is Daylight Savings Time Aware (True). In case it is then the Timestamp is automatically adjusted by the device to reflect DST changes. If not (False) the time adjustments must be taken care of by the user.";
+  sh:name "dstAware";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:depth;
+  sh:description "Property. Model:'https://schema.org/depth'. Location of this device represented by a depth from a starting point. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code";
+  sh:name "depth";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:relativePosition;
+  sh:description "Property. Location of this device in a coordinate system according to its local emplacement.";
+  sh:name "relativePosition";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:direction;
+  sh:description "Property. Enum:'Inlet, Outlet, Entry, Exit'.  Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was installed (if it requires installation).";
+  sh:name "direction";
+  sh:in (sdm:Inlet sdm:Outlet sdm:Entry sdm:Exit)
+], [
+  sh:path sdm:dateLastCalibration;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the last calibration of the device happened.";
+  sh:name "dateLastCalibration";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:serialNumber;
+  sh:description "Property. Model:'https://schema.org/serialNumber'. The serial number assigned by the manufacturer.";
+  sh:name "serialNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:provider;
+  sh:description "Property. Model:'https://schema.org/provider'. The provider of the device.";
+  sh:name "provider";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refDeviceModel;
+  sh:xone ([ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:batteryLevel;
+  sh:xone ([
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+] [
+  sh:minInclusive -1;
+  sh:maxInclusive -1;
+  sh:datatype xsd:decimal
+])
+], [
+  sh:path sdm:rssi;
+  sh:description "Property. Model:'https://schema.org/Number'. Received signal strength indicator for a wireless enabled device. It must be expressed in dBm or mW, use unitcode to set it out. ";
+  sh:name "rssi";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:deviceState;
+  sh:description "Property. Model:'https://schema.org/Text'. State of this device from an operational point of view. Its value can be vendor dependent.";
+  sh:name "deviceState";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dateLastValueReported;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes the last time when the device successfully reported data to the cloud.";
+  sh:name "dateLastValueReported";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:value;
+  sh:description "Property. Model:'https://schema.org/QuantitativeValue'. A observed or reported value. For actuator devices, it is an attribute that allows a controlling application to change the actuation setting. For instance, a switch device which is currently _on_ can report a value 'on' of type 'Text'. Obviously, in order to toggle the referred switch, this attribute value will have to be changed to 'off'.";
+  sh:name "value";
+  sh:datatype xsd:string
+].

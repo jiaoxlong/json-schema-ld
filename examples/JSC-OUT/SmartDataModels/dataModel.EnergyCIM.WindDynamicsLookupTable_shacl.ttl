@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be WindDynamicsLookupTable";
+  sh:name "type";
+  sh:in (sdm:WindDynamicsLookupTable)
+], [
+  sh:path sdm:WindContCurrLimIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this current control limitation model. Default: None";
+  sh:name "WindContCurrLimIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindContPType3IEC;
+  sh:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this P control type 3 model. Default: None";
+  sh:name "WindContPType3IEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindContRotorRIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. The rotor resistance control model with which this wind dynamics lookup table is associated. Default: None";
+  sh:name "WindContRotorRIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindPlantFreqPcontrolIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this frequency and active power wind plant model. Default: None";
+  sh:name "WindPlantFreqPcontrolIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:input;
+  sh:description "Property. Model:'https://schema.org/Number'. Input value (x) for the lookup table function. Default: 0.0";
+  sh:name "input";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lookupTableFunctionType;
+  sh:description "Property. Model:'https://schema.org/Number'. Type of the lookup table function. Default: None";
+  sh:name "lookupTableFunctionType";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:output;
+  sh:description "Property. Model:'https://schema.org/Number'. Output value (y) for the lookup table function. Default: 0.0";
+  sh:name "output";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:sequence;
+  sh:description "Property. Model:'https://schema.org/Number'. Sequence numbers of the pairs of the input (x) and the output (y) of the lookup table function. Default: 0";
+  sh:name "sequence";
+  sh:datatype xsd:decimal
+].

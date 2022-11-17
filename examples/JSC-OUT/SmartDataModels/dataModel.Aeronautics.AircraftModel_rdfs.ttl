@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json> dcterms:title "Smart Data models - Aircraft schema";
+    dcterms:description "A description of a generic aircraft model".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be AircraftModel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AircraftModel)
+].
+sdm:AircraftModel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AircraftModel".
+sdm:codeIATA dcterms:description "Property. Model:'http://schema.org/Text'. IATA aircraft type";
+    rdf:type rdf:Property;
+    rdfs:label "codeIATA";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:codeICAO dcterms:description "Property. Model:'http://schema.org/Text'. ICAO aircraft type";
+    rdf:type rdf:Property;
+    rdfs:label "codeICAO";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:length dcterms:description "Property. Model:'http://schema.org/Number'. Aircraft model length in metres. Units:'metres'";
+    rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:wingSpan dcterms:description "Property. Model:'http://schema.org/Number'. Aircraft model wingspan in metres. Units:'metres'";
+    rdf:type rdf:Property;
+    rdfs:label "wingSpan";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:height dcterms:description "Property. Model:'http://schema.org/Number'. Aircraft model height in metres. Units:'metres'";
+    rdf:type rdf:Property;
+    rdfs:label "height";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mtow dcterms:description "Property. Model:'http://schema.org/Number'.  Aircraft maximum takeoff weight in kilograms. Units:'kilograms'";
+    rdf:type rdf:Property;
+    rdfs:label "mtow";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maximumAllowedSpeed dcterms:description "Property. Model:'http://schema.org/Number'.  Aircraft maximum speed in kilometers per hour. Units:'kilometers per hour'";
+    rdf:type rdf:Property;
+    rdfs:label "maximumAllowedSpeed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maximumAllowedFuel dcterms:description "Property. Model:'http://schema.org/Number'. Aircraft maximum fuel in kilograms. Units:'kilograms'";
+    rdf:type rdf:Property;
+    rdfs:label "maximumAllowedFuel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ceiling dcterms:description "Property. Model:'http://schema.org/Number'. Maximum altitude the aircraft model can reach in metres. Units:'metres'";
+    rdf:type rdf:Property;
+    rdfs:label "ceiling";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:numberOfEngines dcterms:description "Property. Model:'http://schema.org/Integer'. Number of engines";
+    rdf:type rdf:Property;
+    rdfs:label "numberOfEngines";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:integer.
+sdm:capacity dcterms:description "Property. Model:'http://schema.org/Integer'. Number of seatings";
+    rdf:type rdf:Property;
+    rdfs:label "capacity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Aeronautics/AircraftModel/schema.json>;
+    rdfs:range xsd:integer.

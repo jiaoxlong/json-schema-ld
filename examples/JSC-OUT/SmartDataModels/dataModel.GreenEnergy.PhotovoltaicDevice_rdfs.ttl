@@ -1,0 +1,485 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json> dcterms:title "PhotovoltaicDevice schema";
+    dcterms:description "The Data Model is intended to describe the mechanical, electrical and thermal characteristics of photo-voltaic panels according to *STC - Standard Test Condition* and *NOCT - Normal Operating Cell Temperature*. *Remark* : This Data Model can be used directly as a main entity to describe the `Photovoltaic Device`  or as a sub-entity of the Data Model  `DEVICE` using a reference by the `refDevice` attribute. The measures performed for STC and NOCT are `Pmax` (Maximum Nominal Power), `Umpp` (Optimal operating voltage), `Impp` (Optimal Operating Current), `Uoc` (Open Circuit Voltage), `Isc` (Short Circuit Current). *Additional Information about Data Model:* This Data Model can be used directly as a main entity to describe the device [PHOTOVOLTAIC] or as a sub-entity of the Data Model [DEVICE] using a reference by the `refDevice` attribute.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be PhotovoltaicDevice";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PhotovoltaicDevice)
+].
+sdm:PhotovoltaicDevice rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PhotovoltaicDevice".
+sdm:refDevice dcterms:description "Property. Reference to the Main Entity [Device](https://github.com/smart-data-models/dataModel.Device/blob/master/Device/doc/spec.md) if used as second link. Model:'https://schema.org/URL'";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:refPointOfInterest dcterms:description "Relationship. Model:'https://schema.org/URL'. Reference to a [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) linked with the Repository.";
+    rdf:type rdf:Property;
+    rdfs:label "refPointOfInterest";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:dateLastReported dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamps which denotes the last time when the device successfully reported data. Date and time in an ISO8601 UTCformat.";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastReported";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:brandName dcterms:description "Property. Brand Name of the item. Model:'https://schema.org/brand'";
+    rdf:type rdf:Property;
+    rdfs:label "brandName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:modelName dcterms:description "Property. Model Name of the item. Model:'https://schema.org/model'";
+    rdf:type rdf:Property;
+    rdfs:label "modelName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:manufacturerName dcterms:description "Property. Manufacturer Name of the item. Model:'https://schema.org/manufacturer'";
+    rdf:type rdf:Property;
+    rdfs:label "manufacturerName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:serialNumber rdf:type rdf:Property;
+    rdfs:label "serialNumber";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:application rdf:type rdf:Property;
+    rdfs:label "application";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:Application rdf:type skos:ConceptScheme.
+sdm:application rdfs:range [
+  owl:oneOf (sdm:electric sdm:thermal sdm:other)
+].
+sdm:electric rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "electric".
+sdm:thermal rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "thermal".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "other".
+sdm:cellType rdf:type rdf:Property;
+    rdfs:label "cellType";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:CellType rdf:type skos:ConceptScheme.
+sdm:cellType rdfs:range [
+  owl:oneOf (sdm:amorphousSilicon sdm:CfTe sdm:CIS sdm:monocrystalline sdm:polycrystalline sdm:other)
+].
+sdm:amorphousSilicon rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "amorphousSilicon".
+sdm:CfTe rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "CfTe".
+sdm:CIS rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "CIS".
+sdm:monocrystalline rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "monocrystalline".
+sdm:polycrystalline rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "polycrystalline".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:CellType;
+    rdfs:label "other".
+sdm:typeOfUse rdf:type rdf:Property;
+    rdfs:label "typeOfUse";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:TypeOfUse rdf:type skos:ConceptScheme.
+sdm:typeOfUse rdfs:range [
+  owl:oneOf (sdm:indoor sdm:outdoor sdm:mixed sdm:other)
+].
+sdm:indoor rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "indoor".
+sdm:outdoor rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "outdoor".
+sdm:mixed rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "mixed".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "other".
+sdm:installationMode rdf:type rdf:Property;
+    rdfs:label "installationMode";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:InstallationMode rdf:type skos:ConceptScheme.
+sdm:installationMode rdfs:range [
+  owl:oneOf (sdm:ground sdm:other sdm:pole sdm:roofing sdm:wall)
+].
+sdm:ground rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "ground".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "other".
+sdm:pole rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "pole".
+sdm:roofing rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "roofing".
+sdm:wall rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "wall".
+sdm:installationCondition rdf:type rdf:Property;
+    rdfs:label "installationCondition";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:InstallationCondition rdf:type skos:ConceptScheme.
+sdm:installationCondition rdfs:range [
+  owl:oneOf (sdm:desert sdm:dust sdm:extremeHeat sdm:extremeCold sdm:extremeClimate sdm:extremeHumidity sdm:marine sdm:none sdm:other sdm:saline sdm:sand sdm:seismic)
+].
+sdm:desert rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "desert".
+sdm:dust rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "dust".
+sdm:extremeHeat rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeHeat".
+sdm:extremeCold rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeCold".
+sdm:extremeClimate rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeClimate".
+sdm:extremeHumidity rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeHumidity".
+sdm:marine rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "marine".
+sdm:none rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "none".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "other".
+sdm:saline rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "saline".
+sdm:sand rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "sand".
+sdm:seismic rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "seismic".
+sdm:possibilityOfUse rdf:type rdf:Property;
+    rdfs:label "possibilityOfUse";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:PossibilityOfUse rdf:type skos:ConceptScheme.
+sdm:possibilityOfUse rdfs:range [
+  owl:oneOf (sdm:mixed sdm:mobile sdm:other sdm:stationary)
+].
+sdm:mixed rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "mixed".
+sdm:mobile rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "mobile".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "other".
+sdm:stationary rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "stationary".
+sdm:documentation dcterms:description "Property. Technical Documentation (Installation / maintenance / used). Model:'https://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "documentation";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:cellDimension dcterms:description "Property. External dimension of a cell. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter.";
+    rdf:type rdf:Property;
+    rdfs:label "cellDimension";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:CellDimension.
+sdm:CellDimension rdf:type rdfs:Class;
+    rdfs:label "CellDimension".
+sdm:length rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain sdm:CellDimension;
+    rdfs:range xsd:decimal.
+sdm:width rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain sdm:CellDimension;
+    rdfs:range xsd:decimal.
+sdm:thickness rdf:type rdf:Property;
+    rdfs:label "thickness";
+    rdfs:domain sdm:CellDimension;
+    rdfs:range xsd:decimal.
+sdm:moduleNbCells dcterms:description "Property. Number of 'cells' per 'module'. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "moduleNbCells";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:moduleDimension dcterms:description "Property.  External dimension of a module. A module can be an assembly of 1 to n cells. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter. Units:'Millimeters'";
+    rdf:type rdf:Property;
+    rdfs:label "moduleDimension";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:ModuleDimension.
+sdm:ModuleDimension rdf:type rdfs:Class;
+    rdfs:label "ModuleDimension".
+sdm:length rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain sdm:ModuleDimension;
+    rdfs:range xsd:decimal.
+sdm:width rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain sdm:ModuleDimension;
+    rdfs:range xsd:decimal.
+sdm:thickness rdf:type rdf:Property;
+    rdfs:label "thickness";
+    rdfs:domain sdm:ModuleDimension;
+    rdfs:range xsd:decimal.
+sdm:PanelNbModules dcterms:description "Property. Number of 'Modules' per 'Panel'. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "PanelNbModules";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:panelDimension dcterms:description "Property. External dimension of a Panel. A solar panel can be an assembly of 1 to n modules, which themselves are made of several cells which collect heat from the sun's rays. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter.";
+    rdf:type rdf:Property;
+    rdfs:label "panelDimension";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:PanelDimension.
+sdm:PanelDimension rdf:type rdfs:Class;
+    rdfs:label "PanelDimension".
+sdm:length rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain sdm:PanelDimension;
+    rdfs:range xsd:decimal.
+sdm:width rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain sdm:PanelDimension;
+    rdfs:range xsd:decimal.
+sdm:thickness rdf:type rdf:Property;
+    rdfs:label "thickness";
+    rdfs:domain sdm:PanelDimension;
+    rdfs:range xsd:decimal.
+sdm:panelWeight dcterms:description "Property. Weight of a panel (Sometime the reference used is Kg / m²). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KGM** represents Kilogram. Model:'https://schema.org/Number'. Units:'kilograms'";
+    rdf:type rdf:Property;
+    rdfs:label "panelWeight";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:areaWeight dcterms:description "Property. Area Weight measured in Kg/m². The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **28** represents Kilogram per square meter. Model:'https://schema.org/Number'. Units:'kilograms per square meter'";
+    rdf:type rdf:Property;
+    rdfs:label "areaWeight";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:MaxPressureLoad dcterms:description "Property. aximum mechanics Pressure (shear, elasticity, compression) load on a Panel. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **PAL** represents Pascal. Model:'https://schema.org/Number'. Units:'Pascal'";
+    rdf:type rdf:Property;
+    rdfs:label "MaxPressureLoad";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:MaxPressureLoad;
+    rdf:type rdfs:Class;
+    rdfs:label "MaxPressureLoad".
+sdm:hail rdf:type rdf:Property;
+    rdfs:label "hail";
+    rdfs:domain sdm:MaxPressureLoad;
+    rdfs:range xsd:decimal.
+sdm:snow rdf:type rdf:Property;
+    rdfs:label "snow";
+    rdfs:domain sdm:MaxPressureLoad;
+    rdfs:range xsd:decimal.
+sdm:wind rdf:type rdf:Property;
+    rdfs:label "wind";
+    rdfs:domain sdm:MaxPressureLoad;
+    rdfs:range xsd:decimal.
+sdm:NominalPower dcterms:description "Property. Nominal Power for the **panel**. This is the same value of items [Pmax] for [moduleSTC] attribute. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **WTT** represents Watt. Model:'https://schema.org/Number'. Units:'watts'";
+    rdf:type rdf:Property;
+    rdfs:label "NominalPower";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:MaximumSystemVoltage dcterms:description "Property. Maximum system voltage permitted for the **module**. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'";
+    rdf:type rdf:Property;
+    rdfs:label "MaximumSystemVoltage";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:applicationClass rdf:type rdf:Property;
+    rdfs:label "applicationClass";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:ApplicationClass rdf:type skos:ConceptScheme.
+sdm:applicationClass rdfs:range [
+  owl:oneOf (sdm:A sdm:B sdm:C)
+].
+sdm:A rdf:type skos:Concept;
+    skos:inScheme sdm:ApplicationClass;
+    rdfs:label "A".
+sdm:B rdf:type skos:Concept;
+    skos:inScheme sdm:ApplicationClass;
+    rdfs:label "B".
+sdm:C rdf:type skos:Concept;
+    skos:inScheme sdm:ApplicationClass;
+    rdfs:label "C".
+sdm:fireClass rdf:type rdf:Property;
+    rdfs:label "fireClass";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>.
+sdm:FireClass rdf:type skos:ConceptScheme.
+sdm:fireClass rdfs:range [
+  owl:oneOf (sdm:A sdm:B sdm:C)
+].
+sdm:A rdf:type skos:Concept;
+    skos:inScheme sdm:FireClass;
+    rdfs:label "A".
+sdm:B rdf:type skos:Concept;
+    skos:inScheme sdm:FireClass;
+    rdfs:label "B".
+sdm:C rdf:type skos:Concept;
+    skos:inScheme sdm:FireClass;
+    rdfs:label "C".
+sdm:protectionIP dcterms:description "Property. IP 'Ingress Protection' for the Junction Box. This is the level classifies and rates the degree of protection provided by mechanical casings and electrical enclosures against intrusion, dust, accidental contact, and water according to International Electrotechnical Commission standard (EN 60-529). First digit: Solid particle protection (Single numeral: 0–6 or 'X'). Second digit: Liquid ingress protection (Single numeral: 0–9 or 'X' ).Third digit: Personal Protection  against access to dangerous parts (optional additional letter). Fourth digit: Other protections (optional additional letter). Model:'https://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "protectionIP";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:pTCClass dcterms:description "Property.  The Positive Temperature Coefficient of resistance - *PTC*, describes the relative change of a physical property that is associated with a given change in positive temperature. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+    rdf:type rdf:Property;
+    rdfs:label "pTCClass";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nTCClass dcterms:description "Property. The Negative Temperature Coefficient of resistance - *NTC*, describes the relative change of a physical property that is associated with a given change in negative temperature. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "nTCClass";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:moduleSTC dcterms:description "Property. Standard Test Condition measurements. The format is structured by a sub-property of 5 items. Pmax in Watt. Umpp in Volt. Impp in Ampere. Uoc in Volt. Isc in Ampere. Model:'https://schema.org/StructuredValue'";
+    rdf:type rdf:Property;
+    rdfs:label "moduleSTC";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:ModuleSTC.
+sdm:ModuleSTC rdf:type rdfs:Class;
+    rdfs:label "ModuleSTC".
+sdm:Pmax rdf:type rdf:Property;
+    rdfs:label "Pmax";
+    rdfs:domain sdm:ModuleSTC;
+    rdfs:range xsd:decimal.
+sdm:Umpp rdf:type rdf:Property;
+    rdfs:label "Umpp";
+    rdfs:domain sdm:ModuleSTC;
+    rdfs:range xsd:decimal.
+sdm:Impp rdf:type rdf:Property;
+    rdfs:label "Impp";
+    rdfs:domain sdm:ModuleSTC;
+    rdfs:range xsd:decimal.
+sdm:Uoc rdf:type rdf:Property;
+    rdfs:label "Uoc";
+    rdfs:domain sdm:ModuleSTC;
+    rdfs:range xsd:decimal.
+sdm:Isc rdf:type rdf:Property;
+    rdfs:label "Isc";
+    rdfs:domain sdm:ModuleSTC;
+    rdfs:range xsd:decimal.
+sdm:moduleNOCT dcterms:description "Property. Normal Operating Cell Temperature measurements. The format is structured by a sub-property of 5 items. Pmax in Watt. Umpp in Volt. Impp in Ampere. Uoc in Volt. Isc in Ampere. Model:'https://schema.org/StructuredValue'";
+    rdf:type rdf:Property;
+    rdfs:label "moduleNOCT";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:ModuleNOCT.
+sdm:ModuleNOCT rdf:type rdfs:Class;
+    rdfs:label "ModuleNOCT".
+sdm:Pmax rdf:type rdf:Property;
+    rdfs:label "Pmax";
+    rdfs:domain sdm:ModuleNOCT;
+    rdfs:range xsd:decimal.
+sdm:Umpp rdf:type rdf:Property;
+    rdfs:label "Umpp";
+    rdfs:domain sdm:ModuleNOCT;
+    rdfs:range xsd:decimal.
+sdm:Impp rdf:type rdf:Property;
+    rdfs:label "Impp";
+    rdfs:domain sdm:ModuleNOCT;
+    rdfs:range xsd:decimal.
+sdm:Uoc rdf:type rdf:Property;
+    rdfs:label "Uoc";
+    rdfs:domain sdm:ModuleNOCT;
+    rdfs:range xsd:decimal.
+sdm:Isc rdf:type rdf:Property;
+    rdfs:label "Isc";
+    rdfs:domain sdm:ModuleNOCT;
+    rdfs:range xsd:decimal.
+sdm:moduleYieldRate dcterms:description "Property. Positioning of the device in relation to a ground reference system. A unique value. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "moduleYieldRate";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:panelOperatingTemperature dcterms:description "Property. Ambient operating temperature range. This is the minimum and maximum resistance to cold and heat for using the panel. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Units:'Degree Celsius'. Model:'https://schema.org/StructuredValue'";
+    rdf:type rdf:Property;
+    rdfs:label "panelOperatingTemperature";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:PanelOperatingTemperature.
+sdm:PanelOperatingTemperature rdf:type rdfs:Class;
+    rdfs:label "PanelOperatingTemperature".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:PanelOperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:PanelOperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:cellOperatingTemperature dcterms:description "Property. This is the nominal operating temperature range of the cells in which it collects solar energy. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Model:'https://schema.org/StructuredValue'. Units:'Degree Celsius'";
+    rdf:type rdf:Property;
+    rdfs:label "cellOperatingTemperature";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:CellOperatingTemperature.
+sdm:CellOperatingTemperature rdf:type rdfs:Class;
+    rdfs:label "CellOperatingTemperature".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:CellOperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:CellOperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:temperatureCoefficient dcterms:description "Property.  Temperature influence coefficient on the panel. The format is structured by a sub-property of 3 items. Model:'https://schema.org/StructuredValue'. Pmax in Watt. Uoc in Volt. Isc in Ampere";
+    rdf:type rdf:Property;
+    rdfs:label "temperatureCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range sdm:TemperatureCoefficient.
+sdm:TemperatureCoefficient rdf:type rdfs:Class;
+    rdfs:label "TemperatureCoefficient".
+sdm:Pmax rdf:type rdf:Property;
+    rdfs:label "Pmax";
+    rdfs:domain sdm:TemperatureCoefficient;
+    rdfs:range xsd:decimal.
+sdm:Uoc rdf:type rdf:Property;
+    rdfs:label "Uoc";
+    rdfs:domain sdm:TemperatureCoefficient;
+    rdfs:range xsd:decimal.
+sdm:Isc rdf:type rdf:Property;
+    rdfs:label "Isc";
+    rdfs:domain sdm:TemperatureCoefficient;
+    rdfs:range xsd:decimal.
+sdm:performanceLowIrradiance dcterms:description "Property. Average relative yield to Performance at Low Irradiance. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "performanceLowIrradiance";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:panelLifetime dcterms:description "Property. Average lifetime of a panel. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **ANN** represents Year. Model:'https://schema.org/Number'. Units:'year'";
+    rdf:type rdf:Property;
+    rdfs:label "panelLifetime";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:panelYieldCurve rdf:type rdf:Property;
+    rdfs:label "panelYieldCurve";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json>;
+    rdfs:range xsd:string.

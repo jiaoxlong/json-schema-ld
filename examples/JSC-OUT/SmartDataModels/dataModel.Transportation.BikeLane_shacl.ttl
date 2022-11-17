@@ -1,0 +1,43 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/datamodel.Transportation/BikeLane/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI-LD Entity Type. It has to be BikeLanes";
+  sh:name "type";
+  sh:in (sdm:BikeLane);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:laneOccupancy;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates the number of vehicles circulating on the lane.";
+  sh:name "laneOccupancy";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:laneLength;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates the length of the lane.";
+  sh:name "laneLength";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:laneWidth;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates the width of the lane.";
+  sh:name "laneWidth";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTCformat.";
+  sh:name "dateObserved";
+  sh:datatype xsd:dateTime
+].

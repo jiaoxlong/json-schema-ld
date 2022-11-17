@@ -1,0 +1,100 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.ManufacturingMachine/ManufacturingMachineOperation/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity identifier. It has to be ManufacturingMachineOperation";
+  sh:name "type";
+  sh:in (sdm:ManufacturingMachineOperation);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:machine;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:operationType;
+  sh:name "operationType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:result;
+  sh:description "Property. The result of the operation. One of these. Enum:'ok, success, suspended, aborted, failed'";
+  sh:name "result";
+  sh:in (sdm:aborted sdm:failed sdm:ok sdm:success sdm:suspended)
+], [
+  sh:path sdm:plannedStartAt;
+  sh:description "Property. The planned start date/timestamp for the operation. Note that this is advisory and the actual time the operation starts may be before or after the planned start.";
+  sh:name "plannedStartAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:plannedEndAt;
+  sh:description "Property. The planned end date/timestamp for the operation. Note that this is advisory and the actual time the operation finishes may be before or after the planned end.";
+  sh:name "plannedEndAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:status;
+  sh:description "Property. A choice from an enumerated list describing the status. One of these. Enum:'planned, ongoing, finished, scheduled, cancelled'";
+  sh:name "status";
+  sh:in (sdm:cancelled sdm:finished sdm:ongoing sdm:planned sdm:scheduled)
+], [
+  sh:path sdm:operator;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:startedAt;
+  sh:description "Property. Timestamp when the operation actually started to be performed.";
+  sh:name "startedAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:endedAt;
+  sh:description "Property. Timestamp when the operation actually finished.";
+  sh:name "endedAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:commandSequence;
+  sh:name "commandSequence";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:operationOutput;
+  sh:description "Property. A custom property describing the output data of the operation. The properties of the schema of the output highly depends the machine model.";
+  sh:name "operationOutput"
+].
+sdm:OperationOutputShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperationOutput;
+    sh:property [
+  sh:path sdm:unitsPrinted;
+  sh:name "unitsPrinted";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:faults;
+  sh:name "faults";
+  sh:datatype xsd:decimal
+].

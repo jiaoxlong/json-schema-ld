@@ -1,0 +1,77 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json> dcterms:title "Smart Data Models / Privacy Object";
+    dcterms:description "Information about privacy for an IoT device".
+sdm:type dcterms:description "Property. NGSI type property. It has to be PrivacyObject.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PrivacyObject)
+].
+sdm:PrivacyObject rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PrivacyObject".
+sdm:refDevice dcterms:description "Property. Unique identifier from the source data set.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>.
+sdm:isIndoor dcterms:description "Property. Flag to indicate if the entity is installed indoor or outdoor.";
+    rdf:type rdf:Property;
+    rdfs:label "isIndoor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:floor dcterms:description "Property. The floor where the device is installed when in building or equivalent.";
+    rdf:type rdf:Property;
+    rdfs:label "floor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:user dcterms:description "Property. Identifier of an anonymous user. This identifier is in fact a unique URN which can be used to recognize anonymously a user.";
+    rdf:type rdf:Property;
+    rdfs:label "user";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:purpose dcterms:description "Property. Purpose of the data gathering.";
+    rdf:type rdf:Property;
+    rdfs:label "purpose";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:string.
+sdm:recipientList rdf:type rdf:Property;
+    rdfs:label "recipientList";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:isPersonalData dcterms:description "Property. Flag to indicate if the entity is providing or contains personal data.";
+    rdf:type rdf:Property;
+    rdfs:label "isPersonalData";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:retentionPeriod dcterms:description "Property. Period of data retention.";
+    rdf:type rdf:Property;
+    rdfs:label "retentionPeriod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:string.
+sdm:legitimateInterest dcterms:description "Property. Legitimate interest associated to the entity. This means for which high-level finality the data collection is made.";
+    rdf:type rdf:Property;
+    rdfs:label "legitimateInterest";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:string.
+sdm:crossborderTransfer dcterms:description "Property. Indication about the crossborder transfer linked to the entity.";
+    rdf:type rdf:Property;
+    rdfs:label "crossborderTransfer";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    rdfs:range xsd:string.

@@ -1,0 +1,72 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json> dcterms:title "Smart Data models - valueconditional schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource specifies conditions that can be applied to an observed value in any Resource.These conditions are applied by the OCF Server exposing the Resource to any generated notifications because of subscriptions to the Resource.A unicast RETRIEVE to the Resource will receive the most recent value; which may not be the most recent notified value.An OCF Server exposes this Resource in association with the Resource conveying the observed value.This is done by means of a new Resource instance with an RT of ['oic.r.<thing being observed>', 'oic.r.value.conditional'], e.g ['oic.r.temperature', 'oic.r.value.conditional'].The Property 'threshold' is the amount by which the thing being observed must change before a notification is sent.The Property 'minnotifyperiod' is the minimum time in ms (milliseconds) that must elapse before a notification is sent.If the maxnotifyperiod (time in ms (milliseconds)) elapses then a notification must be sent.The Property 'maxnotifyperiod' is a timer that resets each time a notification is sent.A value of '0' for any of 'threshold',' minnotifyperiod' or 'maxnotifyperiod' means that the capability is supported but not active.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.value.conditional)
+].
+sdm:oic.r.value.conditional rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.value.conditional".
+sdm:maxnotifyperiod dcterms:description "Property. The maximum elapsed time in ms before a notification must be sent.";
+    rdf:type rdf:Property;
+    rdfs:label "maxnotifyperiod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>;
+    rdfs:range xsd:integer.
+sdm:minnotifyperiod dcterms:description "Property. The minimum elapsed time in ms before a notification is sent.";
+    rdf:type rdf:Property;
+    rdfs:label "minnotifyperiod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>;
+    rdfs:range xsd:integer.
+sdm:threshold dcterms:description "Property. The amount by which the measured value must change before a notification is sent.";
+    rdf:type rdf:Property;
+    rdfs:label "threshold";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.rw sdm:oic.if.baseline)
+].
+sdm:oic.if.rw rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.rw".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be valueconditional";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/valueconditional/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:valueconditional)
+].
+sdm:valueconditional rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "valueconditional".

@@ -1,0 +1,87 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json> dcterms:title " - SynchroniCity - Transportation / CrowdFlowObserved";
+    dcterms:description "CrowdFlowObserved".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be CrowdFlowObserved";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:CrowdFlowObserved)
+].
+sdm:CrowdFlowObserved rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "CrowdFlowObserved".
+sdm:refRoadSegment dcterms:description "Relationship. Concerned road segment on which the observation has been made. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "refRoadSegment";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>.
+sdm:dateObserved dcterms:description "Property. The date and time of this observation in ISO8601 UTC format. It can be represented by an specific time instant or by an ISO8601 interval. As a workaround for the lack of support of Orion Context Broker for datetime intervals, it can be used two separate attributes: `dateObservedFrom`, `dateObservedTo`. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateObservedFrom dcterms:description "Property. Model:'https://schema.org/DateTime'. Observation period start date and time. See `dateObserved`.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedFrom";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateObservedTo dcterms:description "Property. Observation period end date and time. See `dateObserved`.. Model:'https://schema.org/DateTime'.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:peopleCount dcterms:description "Property. Total number of people detected during this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "peopleCount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:integer.
+sdm:occupancy dcterms:description "Property. Fraction of the observation time where a person has been occupying the observed walkway. Model:'https://schema.org/Number)'";
+    rdf:type rdf:Property;
+    rdfs:label "occupancy";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:averageCrowdSpeed dcterms:description "Property. Average speed of the crowd transiting during the observation period. Model:'https://schema.org/Number'. Units:'Kilometer per hour (Km/h).'";
+    rdf:type rdf:Property;
+    rdfs:label "averageCrowdSpeed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:congested dcterms:description "Property. Flags whether there was a crowd congestion during the observation period in the referred walkway. The absence of this attribute means no crowd congestion. Model:'https://schema.org/Boolean'.";
+    rdf:type rdf:Property;
+    rdfs:label "congested";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:averageHeadwayTime dcterms:description "Property. Average headway time. Headway time is the time\n    elapsed between two consecutive persons. Model:'https://schema.org/Number'. Units:'second (s)'";
+    rdf:type rdf:Property;
+    rdfs:label "averageHeadwayTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:direction dcterms:description "Property. Usual direction of travel in the walkway referred by this observation with respect to the city center. Model:'https://schema.org/Text'. Enum:'inbound, outbound'";
+    rdf:type rdf:Property;
+    rdfs:label "direction";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>.
+sdm:Direction rdf:type skos:ConceptScheme.
+sdm:direction rdfs:range [
+  owl:oneOf (sdm:inbound sdm:outbound)
+].
+sdm:inbound rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "inbound".
+sdm:outbound rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "outbound".

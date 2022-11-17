@@ -81,45 +81,52 @@ export class Traverse{
                     if ('ld.existing' in data.properties[property]) {
                         isExisting = true;
                     }
-                    if (data.properties[property].type === 'string')
+                    if (data.properties[property].type === 'string') {
                         this.createStringProperty(data.properties[property], this.config, property,
                             {
                                 subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
-
-                    if (data.properties[property].type === 'integer')
+                        continue
+                    }
+                    if (data.properties[property].type === 'integer') {
                         this.createIntegerProperty(data.properties[property], this.config, property,
                             {
                                 subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
-
-                    if (data.properties[property].type === 'number')
+                        continue
+                    }
+                    if (data.properties[property].type === 'number') {
                         this.createNumberProperty(data.properties[property], this.config, property,
                             {
                                 subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
+                        continue
+                    }
 
-                    if (data.properties[property].type === 'boolean')
+                    if (data.properties[property].type === 'boolean') {
                         this.createBooleanProperty(data.properties[property], this.config, property,
                             {
                                 subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
-
-                    if (data.properties[property].type === 'null')
+                        continue
+                    }
+                    if (data.properties[property].type === 'null') {
                         this.createNullProperty(data.properties[property], this.config, property,
                             {
                                 subject: uri(this.config.prefix, this.current),
                                 isRequired: isRequired,
                                 isExisting: isExisting
                             });
+                        continue
+                    }
                     if ('anyOf' in data.properties[property])
                         this.createAnyOfProperty(data.properties[property], this.config, property, {
                             subject: uri(this.config.prefix, this.current),
@@ -318,7 +325,7 @@ export class Traverse{
                     }
                 }
             } else {
-                //When an array schema contains non-object schema
+                //When a schema contains non-object schema
                 // isRequired and isExisting are not considered here.
                 if ('items' in data) {
                     if (data.items.type === 'string')
@@ -342,16 +349,16 @@ export class Traverse{
                             {subject: uri(this.config.prefix, this.previous)});
 
                     if ('anyOf' in data.items)
-                        this.createAnyOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
+                        this.createAnyOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('allOf' in data.items)
-                        this.createAllOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
+                        this.createAllOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('oneOf' in data.items)
-                        this.createOneOfProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
+                        this.createOneOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                     if ('not' in data.items)
-                        this.createNotProperty({}, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
+                        this.createNotProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
                 }
                 else {
@@ -359,9 +366,18 @@ export class Traverse{
                      * ad-hoc implementation
                      * Composition schemas may appear just after base schema to combine other schemas in condition.
                      */
-                    const matched = find(CompositionSchemaOpts, data)
+                    const matched = find(CompositionSchemaOpts, data);
                     if (matched.length === 1) {
-                        this.traverse(data[matched[0]]);
+                        let ind = 0;
+                        for (const d in data[matched[0]]){
+                            if (data[matched[0]][d] instanceof Object){
+                                if (Object.hasOwn(data[matched[0]][d], 'properties')) {
+                                    ind = +d;
+                                    break;
+                                }
+                            }
+                        }
+                        this.traverse(data[matched[0]][ind]);
                     }
                 }
             }

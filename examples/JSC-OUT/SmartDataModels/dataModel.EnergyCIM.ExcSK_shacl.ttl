@@ -1,0 +1,181 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSK/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcSK";
+  sh:name "type";
+  sh:in (sdm:ExcSK)
+], [
+  sh:path sdm:efdmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage clipping limit (Efdmax). Default: 0.0";
+  sh:name "efdmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:efdmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage clipping limit (Efdmin). Default: 0.0";
+  sh:name "efdmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum field voltage output (Emax).  Typical Value = 20. Default: 0.0";
+  sh:name "emax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum field voltage output (Emin).  Typical Value = -20. Default: 0.0";
+  sh:name "emin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K).  Typical Value = 1. Default: 0.0";
+  sh:name "k";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Parameter of underexcitation limit (K1).  Typical Value = 0.1364. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k2;
+  sh:description "Property. Model:'https://schema.org/Number'. Parameter of underexcitation limit (K2).  Typical Value = -0.3861. Default: 0.0";
+  sh:name "k2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain (Kc).  Typical Value = 70. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kce;
+  sh:description "Property. Model:'https://schema.org/Number'. Rectifier regulation factor (Kce).  Typical Value = 0. Default: 0.0";
+  sh:name "kce";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kd;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter internal reactance (Kd).  Typical Value = 0. Default: 0.0";
+  sh:name "kd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kgob;
+  sh:description "Property. Model:'https://schema.org/Number'. P controller gain (Kgob).  Typical Value = 10. Default: 0.0";
+  sh:name "kgob";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kp;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain (Kp).  Typical Value = 1. Default: 0.0";
+  sh:name "kp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kqi;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain of integral component (Kqi).  Typical Value = 0. Default: 0.0";
+  sh:name "kqi";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kqob;
+  sh:description "Property. Model:'https://schema.org/Number'. Rate of rise of the reactive power (Kqob). Default: 0.0";
+  sh:name "kqob";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kqp;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain (Kqp).  Typical Value = 0. Default: 0.0";
+  sh:name "kqp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nq;
+  sh:description "Property. Model:'https://schema.org/Number'. Dead band of reactive power (nq).  Determines the range of sensitivity.  Typical Value = 0.001. Default: 0.0";
+  sh:name "nq";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qconoff;
+  sh:description "Property. Model:'https://schema.org/Number'. Secondary voltage control state (Qc_on_off). true = secondary voltage control is ON false = secondary voltage control is OFF. Typical Value = false. Default: False";
+  sh:name "qconoff";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qz;
+  sh:description "Property. Model:'https://schema.org/Number'. Desired value (setpoint) of reactive power, manual setting (Qz). Default: 0.0";
+  sh:name "qz";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:remote;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector to apply automatic calculation in secondary controller model. true = automatic calculation is activated false = manual set is active; the use of desired value of reactive power (Qz) is required. Typical Value = true. Default: False";
+  sh:name "remote";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:sbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Apparent power of the unit (Sbase).  Unit = MVA.  Typical Value = 259. Default: 0.0";
+  sh:name "sbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller phase lead time constant (Tc).  Typical Value = 8. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of gain block (Te).  Typical Value = 0.1. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller phase lead time constant (Ti).  Typical Value = 2. Default: 0";
+  sh:name "ti";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tp;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tp).  Typical Value = 0.1. Default: 0";
+  sh:name "tp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tr;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage transducer time constant (Tr).  Typical Value = 0.01. Default: 0";
+  sh:name "tr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uimax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum error (Uimax).  Typical Value = 10. Default: 0.0";
+  sh:name "uimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uimin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum error (UImin).  Typical Value = -10. Default: 0.0";
+  sh:name "uimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:urmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum controller output (URmax).  Typical Value = 10. Default: 0.0";
+  sh:name "urmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:urmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum controller output (URmin).  Typical Value = -10. Default: 0.0";
+  sh:name "urmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vtmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum terminal voltage input (Vtmax).  Determines the range of voltage dead band.  Typical Value = 1.05. Default: 0.0";
+  sh:name "vtmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vtmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum terminal voltage input (Vtmin).  Determines the range of voltage dead band.  Typical Value = 0.95. Default: 0.0";
+  sh:name "vtmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:yp;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum output (Yp).  Minimum output = 0.  Typical Value = 1. Default: 0.0";
+  sh:name "yp";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,46 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.CPSV-AP/BusinessEvent/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. Model:'https://schema.org/Text'. It has to be BusinessEvent.";
+  sh:name "type";
+  sh:in (sdm:BusinessEvent);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:identifier;
+  sh:description "Property. Model:'dct:identifier'. This property represents an Identifier for the Event.";
+  sh:name "identifier";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:eventType;
+  sh:name "eventType";
+  sh:in (sdm:Registering a company sdm:Needing a licence, permit or certificate to start or continue an activity sdm:Registering Intellectual Property sdm:Registering a branch sdm:Starting a new activity sdm:Financing a company sdm:Hiring an employee sdm:Registering a cross-border business sdm:Registering a branch sdm:Financing a company sdm:Needing a licence, permit or certificate to start or continue an activity sdm:Registering Intellectual Property sdm:Hiring an employee sdm:Participating in public procurement sdm:Notifying and reporting to authorities sdm:Starting a new activity sdm:Registering a branch sdm:Having problems in paying creditors sdm:Restructuring of a company sdm:Dissolution of a company)
+], [
+  sh:path sdm:relatedService;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Array of identifiers format of any NGSI entity."
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Array of URIs format of any NGSI entity."
+])
+].

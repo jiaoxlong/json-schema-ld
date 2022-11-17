@@ -1,0 +1,131 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC6A/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcIEEEAC6A";
+  sh:name "type";
+  sh:in (sdm:ExcIEEEAC6A)
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (K).  Typical Value = 536. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. Rectifier loading factor proportional to commutating reactance (K). Typical Value = 0.173. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kd;
+  sh:description "Property. Model:'https://schema.org/Number'. Demagnetizing factor, a function of exciter alternator reactances (K).  Typical Value = 1.91. Default: 0.0";
+  sh:name "kd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ke;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (K).  Typical Value = 1.6. Default: 0.0";
+  sh:name "ke";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter field current limiter gain (K).  Typical Value = 92. Default: 0.0";
+  sh:name "kh";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seve1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, V, back of commutating reactance (S[V]).  Typical Value = 0.214. Default: 0.0";
+  sh:name "seve1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seve2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, V, back of commutating reactance (S[V]).  Typical Value = 0.044. Default: 0.0";
+  sh:name "seve2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0.086. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 9. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 3. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (T).  Typical Value = 1. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter field current limiter time constant (T).  Typical Value = 0.08. Default: 0";
+  sh:name "th";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tj;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter field current limiter time constant (T).  Typical Value = 0.02. Default: 0";
+  sh:name "tj";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tk;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0.18. Default: 0";
+  sh:name "tk";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 75. Default: 0.0";
+  sh:name "vamax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -75. Default: 0.0";
+  sh:name "vamin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ve1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (V) equals V(V).  Typical Value = 7.4. Default: 0.0";
+  sh:name "ve1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ve2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (V).  Typical Value = 5.55. Default: 0.0";
+  sh:name "ve2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vfelim;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter field current limit reference (V).  Typical Value = 19. Default: 0.0";
+  sh:name "vfelim";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vhmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum field current limiter signal reference (V).  Typical Value = 75. Default: 0.0";
+  sh:name "vhmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 44. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -36. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

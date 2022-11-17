@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcSCRX";
+  sh:name "type";
+  sh:in (sdm:ExcSCRX)
+], [
+  sh:path sdm:cswitch;
+  sh:description "Property. Model:'https://schema.org/Number'. Power source switch (Cswitch). true = fixed voltage of 1.0 PU false = generator terminal voltage. Default: False";
+  sh:name "cswitch";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum field voltage output (Emax).  Typical Value = 5. Default: 0.0";
+  sh:name "emax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum field voltage output (Emin).  Typical Value = 0. Default: 0.0";
+  sh:name "emin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K) (>0).  Typical Value = 200. Default: 0.0";
+  sh:name "k";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rcrfd;
+  sh:description "Property. Model:'https://schema.org/Number'. Rc/Rfd - ratio of field discharge resistance to field winding resistance (RcRfd).  Typical Value = 0. Default: 0.0";
+  sh:name "rcrfd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tatb;
+  sh:description "Property. Model:'https://schema.org/Number'. Ta/Tb - gain reduction ratio of lag-lead element (TaTb). The parameter Ta is not defined explicitly.  Typical Value = 0.1. Default: 0.0";
+  sh:name "tatb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Denominator time constant of lag-lead block (Tb).  Typical Value = 10. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of gain block (Te) (>0).  Typical Value = 0.02. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+].

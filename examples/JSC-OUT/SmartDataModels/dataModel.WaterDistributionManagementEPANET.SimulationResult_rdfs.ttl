@@ -1,0 +1,98 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json> dcterms:title "WaterNetwork - SimulationResult";
+    dcterms:description "This entity contains a harmonised description of a generic simulation result made for the Water Network Management domain. This entity is primarily associated with the water network management vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be SimulationResult";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SimulationResult)
+].
+sdm:SimulationResult rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SimulationResult".
+sdm:hasInputNetwork dcterms:description "Relationship. Model:'https://schema.org/URL'. The ID of the network used in the simulation";
+    rdf:type rdf:Property;
+    rdfs:label "hasInputNetwork";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json>.
+sdm:refSimulationScenario dcterms:description "Relationship. Model:'https://schema.org/URL'. The ID of the simulation scenario";
+    rdf:type rdf:Property;
+    rdfs:label "refSimulationScenario";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json>.
+sdm:outputParameters dcterms:description "Property. Description of the set of results of applied simulation to the network.";
+    rdf:type rdf:Property;
+    rdfs:label "outputParameters";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json>;
+    rdfs:range sdm:OutputParameter.
+sdm:OutputParameter rdf:type rdfs:Class;
+    rdfs:label "OutputParameter".
+sdm:parameter rdf:type rdf:Property;
+    rdfs:label "parameter";
+    rdfs:domain sdm:OutputParameter.
+sdm:Parameter rdf:type skos:ConceptScheme.
+sdm:parameter rdfs:range [
+  owl:oneOf (sdm:demand sdm:energyUse sdm:flow sdm:head sdm:initialQuality sdm:level sdm:pressure sdm:quality sdm:sourceMassInflow sdm:supply sdm:velocity sdm:waterLevel)
+].
+sdm:demand rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "demand".
+sdm:energyUse rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "energyUse".
+sdm:flow rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "flow".
+sdm:head rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "head".
+sdm:initialQuality rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "initialQuality".
+sdm:level rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "level".
+sdm:pressure rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "pressure".
+sdm:quality rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "quality".
+sdm:sourceMassInflow rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "sourceMassInflow".
+sdm:supply rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "supply".
+sdm:velocity rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "velocity".
+sdm:waterLevel rdf:type skos:Concept;
+    skos:inScheme sdm:Parameter;
+    rdfs:label "waterLevel".
+sdm:value rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain sdm:OutputParameter.
+sdm:targetURI rdf:type rdf:Property;
+    rdfs:label "targetURI";
+    rdfs:domain sdm:OutputParameter.
+sdm:outputFile dcterms:description "Property. Link to binary file containing results of applied simulation to the network.";
+    rdf:type rdf:Property;
+    rdfs:label "outputFile";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Result/schema.json>;
+    rdfs:range xsd:anyURI.

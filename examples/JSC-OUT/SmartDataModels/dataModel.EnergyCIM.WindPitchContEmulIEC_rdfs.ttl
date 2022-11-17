@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json> dcterms:title " Smart Data Models - WindPitchContEmulIEC";
+    dcterms:description "Adapted from CIM data models. Pitch control emulator model.  Reference: IEC Standard 61400-27-1 Section 6.6.5.1.".
+sdm:type dcterms:description "Property. NGSI type. It has to be WindPitchContEmulIEC";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WindPitchContEmulIEC)
+].
+sdm:WindPitchContEmulIEC rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WindPitchContEmulIEC".
+sdm:WindGenTurbineType2IEC dcterms:description "Property. Model:'https://schema.org/Number'. Wind turbine type 2 model with which this Pitch control emulator model is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindGenTurbineType2IEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kdroop dcterms:description "Property. Model:'https://schema.org/Number'. Power error gain (). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kdroop";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kipce dcterms:description "Property. Model:'https://schema.org/Number'. Pitch control emulator integral constant (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kipce";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:komegaaero dcterms:description "Property. Model:'https://schema.org/Number'. Aerodynamic power change vs. omegachange (). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "komegaaero";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kppce dcterms:description "Property. Model:'https://schema.org/Number'. Pitch control emulator proportional constant (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kppce";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:omegaref dcterms:description "Property. Model:'https://schema.org/Number'. Rotor speed in initial steady state (omega). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "omegaref";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pimax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum steady state power (). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pimax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pimin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum steady state power (). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pimin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t1 dcterms:description "Property. Model:'https://schema.org/Number'. First time constant in pitch control lag (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t2 dcterms:description "Property. Model:'https://schema.org/Number'. Second time constant in pitch control lag (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpe dcterms:description "Property. Model:'https://schema.org/Number'. Time constant in generator air gap power lag (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpe";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    rdfs:range xsd:decimal.

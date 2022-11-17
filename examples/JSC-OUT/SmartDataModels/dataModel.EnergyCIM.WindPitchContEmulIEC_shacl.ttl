@@ -1,0 +1,76 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindPitchContEmulIEC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be WindPitchContEmulIEC";
+  sh:name "type";
+  sh:in (sdm:WindPitchContEmulIEC)
+], [
+  sh:path sdm:WindGenTurbineType2IEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind turbine type 2 model with which this Pitch control emulator model is associated. Default: None";
+  sh:name "WindGenTurbineType2IEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kdroop;
+  sh:description "Property. Model:'https://schema.org/Number'. Power error gain (). It is case dependent parameter. Default: 0.0";
+  sh:name "kdroop";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kipce;
+  sh:description "Property. Model:'https://schema.org/Number'. Pitch control emulator integral constant (). It is type dependent parameter. Default: 0.0";
+  sh:name "kipce";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:komegaaero;
+  sh:description "Property. Model:'https://schema.org/Number'. Aerodynamic power change vs. omegachange (). It is case dependent parameter. Default: 0.0";
+  sh:name "komegaaero";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kppce;
+  sh:description "Property. Model:'https://schema.org/Number'. Pitch control emulator proportional constant (). It is type dependent parameter. Default: 0.0";
+  sh:name "kppce";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omegaref;
+  sh:description "Property. Model:'https://schema.org/Number'. Rotor speed in initial steady state (omega). It is case dependent parameter. Default: 0.0";
+  sh:name "omegaref";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pimax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum steady state power (). It is case dependent parameter. Default: 0.0";
+  sh:name "pimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pimin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum steady state power (). It is case dependent parameter. Default: 0.0";
+  sh:name "pimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. First time constant in pitch control lag (). It is type dependent parameter. Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t2;
+  sh:description "Property. Model:'https://schema.org/Number'. Second time constant in pitch control lag (). It is type dependent parameter. Default: 0";
+  sh:name "t2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpe;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant in generator air gap power lag (). It is type dependent parameter. Default: 0";
+  sh:name "tpe";
+  sh:datatype xsd:decimal
+].

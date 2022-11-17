@@ -1,0 +1,113 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json> dcterms:title "Satellite Imagery - EOProduct";
+    dcterms:description "This entity contains a harmonised description of a generic EOProduct made for the Satellite Imagerry domain. This entity is primarily associated with the satellite products related to Earth Observation Analysis applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to EOProduct.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:EOProduct)
+].
+sdm:EOProduct rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "EOProduct".
+sdm:productID dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the unique ID of the product";
+    rdf:type rdf:Property;
+    rdfs:label "productID";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:productURL dcterms:description "Property. Model:'https://schema.org/url'. A mandatory url used to declare the downlaod link of the product";
+    rdf:type rdf:Property;
+    rdfs:label "productURL";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:productType dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the type of the product";
+    rdf:type rdf:Property;
+    rdfs:label "productType";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:processingLevel dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the processing level of the product";
+    rdf:type rdf:Property;
+    rdfs:label "processingLevel";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:productFormat dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the format of the product";
+    rdf:type rdf:Property;
+    rdfs:label "productFormat";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:cloudCoverage dcterms:description "Property.  Model:'https://schema.org/Number'. Units:'percent'. The cloud coverage percentage. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "cloudCoverage";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:timeliness dcterms:description "Property. Model:'https://schema.org/Text'. The timeliness of the product";
+    rdf:type rdf:Property;
+    rdfs:label "timeliness";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:string.
+sdm:orbitDirection dcterms:description "Property. Model:'https://schema.org/Text'. The orbit pass orientation";
+    rdf:type rdf:Property;
+    rdfs:label "orbitDirection";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>.
+sdm:OrbitDirection rdf:type skos:ConceptScheme.
+sdm:orbitDirection rdfs:range [
+  owl:oneOf (sdm:Ascending sdm:Descending)
+].
+sdm:Ascending rdf:type skos:Concept;
+    skos:inScheme sdm:OrbitDirection;
+    rdfs:label "Ascending".
+sdm:Descending rdf:type skos:Concept;
+    skos:inScheme sdm:OrbitDirection;
+    rdfs:label "Descending".
+sdm:orbitNumber dcterms:description "Property.  Model:'https://schema.org/Number'. The orbit number of tha satellite pass. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "orbitNumber";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ingestionDate dcterms:description "Property. Model:'https://schema.org/Time'. The time at which the data was made available in the online archive";
+    rdf:type rdf:Property;
+    rdfs:label "ingestionDate";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:sensingDate dcterms:description "Property. Model:'https://schema.org/Time'. The time at which the image was taken by the sensor";
+    rdf:type rdf:Property;
+    rdfs:label "sensingDate";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:sensingStartedAt dcterms:description "Property. Model:'https://schema.org/Time'. The time of the satellite on-board acquisition of the first line of the image in the product";
+    rdf:type rdf:Property;
+    rdfs:label "sensingStartedAt";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:sensingStoppedAt dcterms:description "Property. Model:'https://schema.org/Time'. The time of the satellite on-board acquisition of the last line of the image in the product";
+    rdf:type rdf:Property;
+    rdfs:label "sensingStoppedAt";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:hostedOn dcterms:description "Relationship. The ID of the data hub that the product is hosted on";
+    rdf:type rdf:Property;
+    rdfs:label "hostedOn";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:observedBy dcterms:description "Relationship. The ID of the instrument that the product was observed by";
+    rdf:type rdf:Property;
+    rdfs:label "observedBy";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json>;
+    rdfs:range xsd:anyURI.

@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be TransformerEnd";
+  sh:name "type";
+  sh:in (sdm:TransformerEnd)
+], [
+  sh:path sdm:BaseVoltage;
+  sh:description "Property. Model:'https://schema.org/Number'. Base voltage of the transformer end.  This is essential for PU calculation. Default: None";
+  sh:name "BaseVoltage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:PhaseTapChanger;
+  sh:description "Property. Model:'https://schema.org/Number'. Transformer end to which this phase tap changer belongs. Default: None";
+  sh:name "PhaseTapChanger";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:RatioTapChanger;
+  sh:description "Property. Model:'https://schema.org/Number'. Transformer end to which this ratio tap changer belongs. Default: None";
+  sh:name "RatioTapChanger";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:Terminal;
+  sh:description "Property. Model:'https://schema.org/Number'. Terminal of the power transformer to which this transformer end belongs. Default: None";
+  sh:name "Terminal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:endNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number for this transformer end, corresponding to the end`s order in the power transformer vector group or phase angle clock number.  Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.   Note the transformer end number need not match the terminal sequence number. Default: 0";
+  sh:name "endNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:grounded;
+  sh:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) True if the neutral is solidly grounded. Default: False";
+  sh:name "grounded";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rground;
+  sh:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) Resistance part of neutral impedance where `grounded` is true. Default: 0.0";
+  sh:name "rground";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xground;
+  sh:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) Reactive part of neutral impedance where `grounded` is true. Default: 0.0";
+  sh:name "xground";
+  sh:datatype xsd:decimal
+].

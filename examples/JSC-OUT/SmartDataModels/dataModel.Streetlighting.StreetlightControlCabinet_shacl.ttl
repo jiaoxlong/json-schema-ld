@@ -1,0 +1,317 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Streetlighting/StreetlightControlCabinet/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be StreetlightControlCabinet";
+  sh:name "type";
+  sh:in (sdm:StreetlightControlCabinet);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:serialNumber;
+  sh:description "Property. Model:'https://schema.org/serialNumber'. Serial number of the container.";
+  sh:name "serialNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refStreetlightGroup;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:brandName;
+  sh:description "Property. Name of the cabinet's brand. Model:'https://schema.org/brand'";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelName;
+  sh:description "Property. Name of the cabinet's model. Model:'https://schema.org/model'";
+  sh:name "modelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. Name of the cabinet's manufacturer. Model:'https://schema.org/manufacturer'";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cupboardMadeOf;
+  sh:description "Property. Material the cabinet's cupboard is made of. Enum:'concrete, metal, other, plastic'";
+  sh:name "cupboardMadeOf";
+  sh:in (sdm:concrete sdm:metal sdm:other sdm:plastic)
+], [
+  sh:path sdm:features;
+  sh:name "features";
+  sh:in (sdm:astronomicalClock sdm:individualControl)
+], [
+  sh:path sdm:compliantWith;
+  sh:name "compliantWith";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:annotations;
+  sh:name "annotations";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateServiceStarted;
+  sh:description "Property. Date at which the cabinet controller started giving service. Model:'https://schema.org/DateTime'";
+  sh:name "dateServiceStarted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateLastProgramming;
+  sh:description "Property. Date at which there was a programming operation over the cabinet. Model:'https://schema.org/DateTime'";
+  sh:name "dateLastProgramming";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:nextActuationDeadline;
+  sh:description "Property. Deadline for next actuation to be performed (programming, testing, etc.). Model:'https://schema.org/DateTime'";
+  sh:name "nextActuationDeadline";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:responsible;
+  sh:description "Property. Responsible for the cabinet controller, i.e. entity in charge of actuating (programming, etc.).";
+  sh:name "responsible";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:workingMode;
+  sh:description "Property. Working mode for this cabinet controller.  `automatic` : The cabinet controller decides automatically when light groups are switched on and off. Manual operation is not allowed. `manual` : Human intervention is required for switching on and off. `semiautomatic` : The same as `automatic` but in this case manual intervention is allowed.";
+  sh:name "workingMode";
+  sh:in (sdm:automatic sdm:manual sdm:semiautomatic);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:description;
+  sh:description "Property. Timestamp of the last change of lamp made";
+  sh:name "description";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:maximumPowerAvailable;
+  sh:description "Property. The maximum power available (by contract) for the circuits controlled by this cabinet. Units:'Kilowatts (kW)'";
+  sh:name "maximumPowerAvailable";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:energyConsumed;
+  sh:description "Property. Energy consumed by the circuits controlled since metering started (since dateMeteringStarted). Units:'Kilowatts per hour (kWh)'. Model:'https://schema.org/Number'";
+  sh:name "energyConsumed";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:energyCost;
+  sh:description "Property. Cost of the energy consumed by the circuits controlled since the metering start date. Model:'https://schema.org/Number'";
+  sh:name "energyCost";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactiveEnergyConsumed;
+  sh:description "Property. Energy consumed (with regards to reactive power) by circuits since the metering start date. Model:'https://schema.org/Number'. Units:'KiloVolts-Ampere-Reactive per hour (kVArh)'";
+  sh:name "reactiveEnergyConsumed";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dateMeteringStarted;
+  sh:description "Property. The starting date for metering energy consumed. Model:'https://schema.org/DateTime'";
+  sh:name "dateMeteringStarted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:lastMeterReading;
+  sh:description "Property. Value of the last reading obtained from the energy consumed metering system. Model:'https://schema.org/DateTime'. Units:'Kilowatts per hour (kWh)'";
+  sh:name "lastMeterReading";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:meterReadingPeriod;
+  sh:description "Property. The periodicity of energy consumed meter readings in days. Model:'http://schema.org/Number'";
+  sh:name "meterReadingPeriod";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:frequency;
+  sh:description "Property. The working frequency of the circuit. Units:'Hertz (Hz)'";
+  sh:name "frequency";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalActivePower;
+  sh:description "Property. Active power currently consumed (counting all phases). Units:'KiloWatts (kW)'";
+  sh:name "totalActivePower";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalReactivePower;
+  sh:description "Property. Reactive power currently consumed (counting all phases). Units:'KiloVolts-Ampere-Reactive (kVArh)'";
+  sh:name "totalReactivePower";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePowerR;
+  sh:description "Property. Active power consumed in R phase. Units:'Kilowatts (kW)'. Model:'http://schema.org/Number'";
+  sh:name "activePowerR";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePowerS;
+  sh:description "Property. Active power consumed in S phase. Units:'Kilowatts (kW)'. Model:'http://schema.org/Number'";
+  sh:name "activePowerS";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePowerT;
+  sh:description "Property. Active power consumed in T phase. Units:'Kilowatts (kW)'. Model:'http://schema.org/Number'";
+  sh:name "activePowerT";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePowerR;
+  sh:description "Property. Reactive power in R phase. Units:'KiloVolts-Ampere-Reactive (kVArh)'. Model:'http://schema.org/Number'";
+  sh:name "reactivePowerR";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePowerS;
+  sh:description "Property. Reactive power in S phase. Units:'KiloVolts-Ampere-Reactive (kVArh)'. Model:'http://schema.org/Number'";
+  sh:name "reactivePowerS";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePowerT;
+  sh:description "Property. Reactive power in T phase. Units:'KiloVolts-Ampere-Reactive (kVArh)'. Model:'http://schema.org/Number'";
+  sh:name "reactivePowerT";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactorR;
+  sh:description "Property. Power factor for phase R. Allowed values: A number between -1 and 1. Model:'http://schema.org/Number'";
+  sh:name "powerFactorR";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactorS;
+  sh:description "Property. Power factor for phase S. Allowed values: A number between -1 and 1. Model:'http://schema.org/Number'";
+  sh:name "powerFactorS";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactorT;
+  sh:description "Property. Power factor for phase T. Allowed values: A number between -1 and 1. Model:'http://schema.org/Number'";
+  sh:name "powerFactorT";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:cosPhi;
+  sh:description "Property. Cosine of phi parameter. Model:'https://schema.org/Number'";
+  sh:name "cosPhi";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:intensityR;
+  sh:description "Property. Electric intensity in R phase. Units:'Ampers (A)'. Model:'http://schema.org/Number'";
+  sh:name "intensityR";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:intensityS;
+  sh:description "Property. Electric intensity in S phase. Units:'Ampers (A)'. Model:'http://schema.org/Number'";
+  sh:name "intensityS";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:intensityT;
+  sh:description "Property.  Electric intensity in T phase. Units:'Ampers (A)'. Model:'http://schema.org/Number'";
+  sh:name "intensityT";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageR;
+  sh:description "Property. Electric tension in phase R. Units:'Volts (V)'. Model:'http://schema.org/Number'";
+  sh:name "voltageR";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageS;
+  sh:description "Property. Electric tension in phase S. Units:'Volts (V)'. Model:'http://schema.org/Number'";
+  sh:name "voltageS";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageT;
+  sh:description "Property. Electric tension in phase T. Units:'Volts (V)'. Model:'http://schema.org/Number'";
+  sh:name "voltageT";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrVoltageR;
+  sh:description "Property. Total harmonic distortion (R) of voltage in phase R. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrVoltageR";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrVoltageS;
+  sh:description "Property. Total harmonic distortion (S) of voltage in phase S. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrVoltageS";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrVoltageT;
+  sh:description "Property. Total harmonic distortion (T) of voltage in phase T. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrVoltageT";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrIntensityR;
+  sh:description "Property. Total harmonic distortion (R) of intensity in phase R. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrIntensityR";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrIntensityS;
+  sh:description "Property. Total harmonic distortion (S) of intensity in phase S. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrIntensityS";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdrIntensityT;
+  sh:description "Property. Total harmonic distortion (T) of intensity in phase T. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+  sh:name "thdrIntensityT";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+].

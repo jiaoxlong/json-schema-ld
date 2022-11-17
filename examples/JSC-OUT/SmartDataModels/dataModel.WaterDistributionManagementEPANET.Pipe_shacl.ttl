@@ -1,0 +1,66 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI-LD Entity Type. It has to be Pipe";
+  sh:name "type";
+  sh:in (sdm:Pipe);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:length;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Metre'. The actual length of the pipe. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "length";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:diameter;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Millimetre'. The pipe diameter";
+  sh:name "diameter";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:roughness;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. The roughness coefficient of the Pipe.";
+  sh:name "roughness";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minorLoss;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. Unitless minor loss coefficient associated with bends, fittings, etc";
+  sh:name "minorLoss";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:startsAt;
+  sh:description "Relationship. The ID of the node where the pipe begins";
+  sh:name "startsAt";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:endsAt;
+  sh:description "Relationship. The ID of the node where the pipe ends";
+  sh:name "endsAt";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:wallCoeff;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'mg/m²/day'. The wall reaction coefficient for the pipe. Use a positive value for growth and a negative value for decay. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "wallCoeff";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bulkCoeff;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'reciprocal day' The bulk reaction coefficient for the pipe. Use a positive value for growth and a negative value for decay. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "bulkCoeff";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vertices;
+  sh:xone ()
+].

@@ -1,0 +1,68 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/smart-data-models/incubated/dataModel.OSLO/raw/master/BicycleParkingStation/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be BicycleParkingStation";
+  sh:name "type";
+  sh:in (sdm:BicycleParkingStation);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ParkingFacility.capacity;
+  sh:description "Property. Capacity of a civic structure. Model:'http://schema.mobivoc.org/#capacity'";
+  sh:name "ParkingFacility.capacity";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+sdm:ParkingFacility.capacityShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ParkingFacility.capacity;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:in (sdm:Capacity);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:Capacity.total;
+  sh:description "Property. Model:'http://schema.mobivoc.org/#totalCapacity'. Indicates the capacity of a resource.";
+  sh:name "Capacity.total";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:InfrastructureElement.geometry;
+  sh:description "Property. Model:'http://www.w3.org/ns/locn#geometry'. The geometry corresponding to the infrastructure element.";
+  sh:name "InfrastructureElement.geometry";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+sdm:InfrastructureElement.geometryShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:InfrastructureElement.geometry;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. Model: 'http://www.w3.org/ns/locn#Geometry'";
+  sh:name "type";
+  sh:in (sdm:Geometry);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:Geometry.wkt;
+  sh:description "Property. Model:'http://www.opengis.net/ont/geosparql#asWKT'. Geometry expressed in wkt format.";
+  sh:name "Geometry.wkt";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+].

@@ -1,0 +1,74 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json> dcterms:title " Smart Data Models - LoadGenericNonLinear";
+    dcterms:description "Adapted from CIM data models. These load models (known also as generic non-linear dynamic (GNLD) load models) can be used in mid-term and long-term voltage stability simulations (i.e., to study voltage collapse), as they can replace a more detailed representation of aggregate load, including induction motors, thermostatically controlled and static loads.".
+sdm:type dcterms:description "Property. NGSI type. It has to be LoadGenericNonLinear";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:LoadGenericNonLinear)
+].
+sdm:LoadGenericNonLinear rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "LoadGenericNonLinear".
+sdm:bs dcterms:description "Property. Model:'https://schema.org/Number'. Steady state voltage index for reactive power (BS). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "bs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bt dcterms:description "Property. Model:'https://schema.org/Number'. Transient voltage index for reactive power (BT). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "bt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:genericNonLinearLoadModelType dcterms:description "Property. Model:'https://schema.org/Number'. Type of generic non-linear load model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "genericNonLinearLoadModelType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ls dcterms:description "Property. Model:'https://schema.org/Number'. Steady state voltage index for active power (LS). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ls";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lt dcterms:description "Property. Model:'https://schema.org/Number'. Transient voltage index for active power (LT). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "lt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pt dcterms:description "Property. Model:'https://schema.org/Number'. Dynamic portion of active load (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:qt dcterms:description "Property. Model:'https://schema.org/Number'. Dynamic portion of reactive load (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "qt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tp dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of lag function of active power (T). Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tq dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of lag function of reactive power (T). Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tq";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadGenericNonLinear/schema.json>;
+    rdfs:range xsd:decimal.

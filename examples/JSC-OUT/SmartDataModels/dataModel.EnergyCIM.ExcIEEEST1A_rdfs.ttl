@@ -1,0 +1,124 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json> dcterms:title " Smart Data Models - ExcIEEEST1A";
+    dcterms:description "Adapted from CIM data models. The class represents IEEE Std 421.5-2005 type ST1A model. This model represents systems in which excitation power is supplied through a transformer from the generator terminals (or the unit's auxiliary bus) and is regulated by a controlled rectifier.  The maximum exciter voltage available from such systems is directly related to the generator terminal voltage.  Reference: IEEE Standard 421.5-2005 Section 7.1.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcIEEEST1A";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcIEEEST1A)
+].
+sdm:ExcIEEEST1A rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcIEEEST1A".
+sdm:ilr dcterms:description "Property. Model:'https://schema.org/Number'. Exciter output current limit reference (I).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ilr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (K).  Typical Value = 190. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kc dcterms:description "Property. Model:'https://schema.org/Number'. Rectifier loading factor proportional to commutating reactance (K). Typical Value = 0.08. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gains (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:klr dcterms:description "Property. Model:'https://schema.org/Number'. Exciter output current limiter gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "klr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pssin dcterms:description "Property. Model:'https://schema.org/Number'. Selector of the Power System Stabilizer (PSS) input (PSSin). true = PSS input (Vs) added to error signal false = PSS input (Vs) added to voltage regulator output. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "pssin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 10. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb1 dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tc dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tc1 dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tc1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uelin dcterms:description "Property. Model:'https://schema.org/Number'. Selector of the connection of the UEL input (UELin). Typical Value = ignoreUELsignal. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "uelin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 14.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -14.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vimax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator input limit (V).  Typical Value = 999. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vimax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vimin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator input limit (V).  Typical Value = -999. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vimin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator outputs (V).  Typical Value = 7.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator outputs (V).  Typical Value = -6.7. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    rdfs:range xsd:decimal.

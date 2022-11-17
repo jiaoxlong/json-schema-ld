@@ -1,0 +1,77 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json> dcterms:title "Colour Hue and Saturation";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource describes the colour using hue-saturation conventions. The Property 'hue' is the hue angle, it is a number value as defined by the CIECAM02 model definition (see reference [CIE CIE159:2004]). A Device that does not support fractional hue angles can provide integer values. If Property 'precision' is provided it applies to the hue angle. The Property 'saturation' is an integer value as defined by the CIECAM02 model definition (see reference [CIE CIE159:2004]).  The Property 'saturation' can be converted to a percentage by saturation/maximumsaturation X 100; where maximumsaturation is 32767 if the Property itself is not present. The Property 'maximumsaturation' is the upper bound on the saturation supported by the Device. If not present the maximum value for saturation is 32767. The Resource provides the colour using hue and saturation conventions. ".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.colour.hs)
+].
+sdm:oic.r.colour.hs rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.colour.hs".
+sdm:hue dcterms:description "Property. The hue angle as defined by the CIECAM02 model definition.";
+    rdf:type rdf:Property;
+    rdfs:label "hue";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:saturation dcterms:description "Property. The saturation as defined by the CIECAM02 model definition.";
+    rdf:type rdf:Property;
+    rdfs:label "saturation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>;
+    rdfs:range xsd:integer.
+sdm:maximumsaturation dcterms:description "Property. The maximum supported value of 'saturation' for this Device.";
+    rdf:type rdf:Property;
+    rdfs:label "maximumsaturation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>;
+    rdfs:range xsd:integer.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>;
+    rdfs:range xsd:string.
+sdm:precision dcterms:description "Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+    rdf:type rdf:Property;
+    rdfs:label "precision";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.a sdm:oic.if.baseline)
+].
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be ColourHS";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ColourHS/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ColourHS)
+].
+sdm:ColourHS rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ColourHS".

@@ -1,0 +1,99 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Weather/RainFallRadarObserved/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be RainFallRadarObserved";
+  sh:name "type";
+  sh:in (sdm:RainFallRadarObserved);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. The date and time of this observation in ISO8601 UTC format. It can be represented by a specific time instant or by an ISO8601 interval. Model:'https://schema.org/DateTime'";
+  sh:name "dateObserved";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedFrom;
+  sh:description "Property. Observation period start date and time. See dateObserved. It can be represented by a specific time instant or by an ISO8601 interval. Model:'https://schema.org/DateTime'";
+  sh:name "dateObservedFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedTo;
+  sh:description "Property. Observation period end date and time. See dateObserved. It can be represented by a specific time instant or by an ISO8601 interval. Model:'https://schema.org/DateTime'";
+  sh:name "dateObservedTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:rainFallRadarContent;
+  sh:description "Property. Path and filename which provided the information observed. Model:'https://schema.org/Text'";
+  sh:name "rainFallRadarContent";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:numberOfRow;
+  sh:description "Property. Number of Rows allowing the reading of the `rainFallradarContent` attribute. Model:'https://schema.org/Number'";
+  sh:name "numberOfRow";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:numberOfCol;
+  sh:description "Property. Number of Cols allowing the reading of the `rainFallradarContent` attribute. Model:'https://schema.org/Number'";
+  sh:name "numberOfCol";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:cellsSize;
+  sh:description "Property. Size of each cell constituting the radar. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents **Meters**. Model:'https://schema.org/Number'";
+  sh:name "cellsSize";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mapScale;
+  sh:description "Property. Map Scale. Relationship between the length of the cellSize and its representation on the map. Model:'https://schema.org/Text'";
+  sh:name "mapScale";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:measuredArea;
+  sh:description "Property. Reference of the surface measured. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTK** represents Square Meters. Model:'https://schema.org/Number'. Units:'square meters'";
+  sh:name "measuredArea";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+].

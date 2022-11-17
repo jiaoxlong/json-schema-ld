@@ -1,0 +1,54 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json> dcterms:title " Smart Data Models - BaseVoltage";
+    dcterms:description "Adapted from CIM data models. Defines a system base voltage which is referenced.".
+sdm:type dcterms:description "Property. NGSI type. It has to be BaseVoltage";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:BaseVoltage)
+].
+sdm:BaseVoltage rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "BaseVoltage".
+sdm:ConductingEquipment dcterms:description "Property. Model:'https://schema.org/Number'. Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "ConductingEquipment";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:TopologicalNode dcterms:description "Property. Model:'https://schema.org/Number'. The topological nodes at the base voltage. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "TopologicalNode";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:TransformerEnds dcterms:description "Property. Model:'https://schema.org/Number'. Transformer ends at the base voltage.  This is essential for PU calculation. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "TransformerEnds";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:VoltageLevel dcterms:description "Property. Model:'https://schema.org/Number'. The voltage levels having this base voltage. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "VoltageLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nominalVoltage dcterms:description "Property. Model:'https://schema.org/Number'. The power system resource`s base voltage. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "nominalVoltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    rdfs:range xsd:decimal.

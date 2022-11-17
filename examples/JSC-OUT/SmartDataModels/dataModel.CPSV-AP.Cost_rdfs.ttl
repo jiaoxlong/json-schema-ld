@@ -1,0 +1,59 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json> dcterms:title "Smart Data models - Cost schema";
+    dcterms:description "The Cost class represents any costs related to the execution of a Public Service that the Agent consuming it needs to pay.".
+sdm:type dcterms:description "Property. Model:'https://schema.org/Text'. It has to be Cost.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Cost)
+].
+sdm:Cost rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Cost".
+sdm:identifier dcterms:description "Property. Model:'dct:identifier'. This property represents an Identifier for the Cost. This property should be a URI if it is modelled in RDF.";
+    rdf:type rdf:Property;
+    rdfs:label "identifier";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:string.
+sdm:value dcterms:description "Property. Model:'cv:value'. This property represents a numeric value indicating the amount of the Cost.";
+    rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:currency dcterms:description "Property. Model:'cv:currency'. This property represents the currency in which the Cost needs to be paid and the value of the Cost is expressed. The possible values for this property are described in a controlled vocabulary. The recommended controlled vocabularies are listed in the European Publications Office's Currencies Named Authority List (NAL), following the ISO 4217 (https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/currency).";
+    rdf:type rdf:Property;
+    rdfs:label "currency";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:string.
+sdm:description dcterms:description "Property. Model:'dct:description'. This property represents a free text description of the Cost.";
+    rdf:type rdf:Property;
+    rdfs:label "description";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:string.
+sdm:isDefinedBy dcterms:description "Model:'PublicOrganisation";
+    rdf:type rdf:Property;
+    rdfs:label "isDefinedBy";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:string.
+sdm:ifAccessedThrough dcterms:description "Relationship. Model:'cv:ifAccessedThrough'. Range:'Channel'. Where the cost varies depending on the channel used, for example, if accessed through an online service cf. accessed at a physical location, the cost can be linked to the channel using the If Accessed Through property.";
+    rdf:type rdf:Property;
+    rdfs:label "ifAccessedThrough";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    rdfs:range xsd:string.

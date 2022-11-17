@@ -1,0 +1,192 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json> dcterms:title "Smart Data Models - Solar Energy";
+    dcterms:description "A Data Model for Solar Energy generation.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be SolarEnergy";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SolarEnergy)
+].
+sdm:SolarEnergy rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SolarEnergy".
+sdm:totalActivePower dcterms:description "Property. Total active power consumed by all phases.";
+    rdf:type rdf:Property;
+    rdfs:label "totalActivePower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:phaseCurrent dcterms:description "Property. Current per phase. Ordered triple comprising of active power from three phases in the following order: [R Y B]";
+    rdf:type rdf:Property;
+    rdfs:label "phaseCurrent";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:PhaseCurrent.
+sdm:PhaseCurrent rdf:type rdfs:Class;
+    rdfs:label "PhaseCurrent".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:PhaseCurrent;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:PhaseCurrent;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:PhaseCurrent;
+    rdfs:range xsd:decimal.
+sdm:reactivePower dcterms:description "Property. Model:'http://schema.org/StructuredValue'. Units:'volts-ampere-reactive (VAr)'. Fundamental frequency reactive power. The actual values will be conveyed by subproperties whose names will be equal to the name of each of the alternating current phases: L1, L2, L3.";
+    rdf:type rdf:Property;
+    rdfs:label "reactivePower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:ReactivePower.
+sdm:ReactivePower rdf:type rdfs:Class;
+    rdfs:label "ReactivePower".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:ReactivePower;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:ReactivePower;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:ReactivePower;
+    rdfs:range xsd:decimal.
+sdm:voltage dcterms:description "Property. The value of Voltage in the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "voltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:powerFactor dcterms:description "Property. Model:'http://schema.org/StructuredValue'. Units:'-1 to +1'. Power factor for each phase. The actual values will be conveyed by one subproperty per alternating current phase: L1, L2 and L3";
+    rdf:type rdf:Property;
+    rdfs:label "powerFactor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:PowerFactor.
+sdm:PowerFactor rdf:type rdfs:Class;
+    rdfs:label "PowerFactor".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:PowerFactor;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:PowerFactor;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:PowerFactor;
+    rdfs:range xsd:decimal.
+sdm:current dcterms:description "Property. Model:'http://schema.org/StructuredValue'. Units:'Ampers (A)'. Electrical current. The actual values will be conveyed by one subproperty per alternating current phase and the neutral wire: L1, L2, L3 and N.";
+    rdf:type rdf:Property;
+    rdfs:label "current";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:Current.
+sdm:Current rdf:type rdfs:Class;
+    rdfs:label "Current".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:Current;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:Current;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:Current;
+    rdfs:range xsd:decimal.
+sdm:N rdf:type rdf:Property;
+    rdfs:label "N";
+    rdfs:domain sdm:Current;
+    rdfs:range xsd:decimal.
+sdm:totalReactivePower dcterms:description "Property. Total reactive power for all phases.";
+    rdf:type rdf:Property;
+    rdfs:label "totalReactivePower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:phaseVoltage dcterms:description "Property. Model:'http://schema.org/StructuredValue'. Units:'Volts (V)'. The voltage between each phase and neutral conductor. The actual values will be conveyed by one subproperty per alternating current phase: L1, L2 and L3";
+    rdf:type rdf:Property;
+    rdfs:label "phaseVoltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:PhaseVoltage.
+sdm:PhaseVoltage rdf:type rdfs:Class;
+    rdfs:label "PhaseVoltage".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:PhaseVoltage;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:PhaseVoltage;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:PhaseVoltage;
+    rdfs:range xsd:decimal.
+sdm:activePower dcterms:description "Property. Model:'http://schema.org/StructuredValue'. Units:'watt (W)'.Active power consumed per phase. The actual values will beconveyed by subproperties which names will be equal to the name of each of the alternating current phases: L1, L2, L3. ";
+    rdf:type rdf:Property;
+    rdfs:label "activePower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range sdm:ActivePower.
+sdm:ActivePower rdf:type rdfs:Class;
+    rdfs:label "ActivePower".
+sdm:L1 rdf:type rdf:Property;
+    rdfs:label "L1";
+    rdfs:domain sdm:ActivePower;
+    rdfs:range xsd:decimal.
+sdm:L2 rdf:type rdf:Property;
+    rdfs:label "L2";
+    rdfs:domain sdm:ActivePower;
+    rdfs:range xsd:decimal.
+sdm:L3 rdf:type rdf:Property;
+    rdfs:label "L3";
+    rdfs:domain sdm:ActivePower;
+    rdfs:range xsd:decimal.
+sdm:dataDescriptor dcterms:description "Relationship. URI pointing to the data-descriptor entity";
+    rdf:type rdf:Property;
+    rdfs:label "dataDescriptor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:string.
+sdm:energyGenerated dcterms:description "Property. Energy generated over a specific time range from the energy resource corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "energyGenerated";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxSolarPowerMeasure dcterms:description "Property. A measure of maximum solar energy that can be generated.";
+    rdf:type rdf:Property;
+    rdfs:label "maxSolarPowerMeasure";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:frequency dcterms:description "Property. Frequency observed from the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "frequency";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:totalEnergyGenerated dcterms:description "Property. Total energy generated by the energy resource corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "totalEnergyGenerated";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:observationDateTime dcterms:description "Property. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Energy/SolarEnergy/schema.json>;
+    rdfs:range xsd:dateTime.

@@ -1,0 +1,69 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json> dcterms:title " Smart Data Models - WindDynamicsLookupTable";
+    dcterms:description "Adapted from CIM data models. The class models a look up table for the purpose of wind standard models.".
+sdm:type dcterms:description "Property. NGSI type. It has to be WindDynamicsLookupTable";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WindDynamicsLookupTable)
+].
+sdm:WindDynamicsLookupTable rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WindDynamicsLookupTable".
+sdm:WindContCurrLimIEC dcterms:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this current control limitation model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindContCurrLimIEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindContPType3IEC dcterms:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this P control type 3 model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindContPType3IEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindContRotorRIEC dcterms:description "Property. Model:'https://schema.org/Number'. The rotor resistance control model with which this wind dynamics lookup table is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindContRotorRIEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindPlantFreqPcontrolIEC dcterms:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this frequency and active power wind plant model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindPlantFreqPcontrolIEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:input dcterms:description "Property. Model:'https://schema.org/Number'. Input value (x) for the lookup table function. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "input";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lookupTableFunctionType dcterms:description "Property. Model:'https://schema.org/Number'. Type of the lookup table function. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "lookupTableFunctionType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:output dcterms:description "Property. Model:'https://schema.org/Number'. Output value (y) for the lookup table function. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "output";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:sequence dcterms:description "Property. Model:'https://schema.org/Number'. Sequence numbers of the pairs of the input (x) and the output (y) of the lookup table function. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "sequence";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindDynamicsLookupTable/schema.json>;
+    rdfs:range xsd:decimal.

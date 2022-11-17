@@ -1,0 +1,78 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Ports/BoatPlaceAvailable/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be BoatPlacesAvailable";
+  sh:name "type";
+  sh:in (sdm:BoatPlacesAvailable);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. The date and time of this observation in ISO8601 UTC format. It can be represented by a specific time instant or by an ISO8601 interval. Model:'https://schema.org/DateTime'";
+  sh:name "dateObserved";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:refSeaPort;
+  sh:description "Relationship. Model:'https://schema.org/URL'. Port that belongs to";
+  sh:name "refSeaPort";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:description "Relationship. Model:'https://schema.org/URL'. Point of Interest that the element has relation to";
+  sh:name "refPointOfInterest";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:spotCategoryRange;
+  sh:name "spotCategoryRange";
+  sh:in (sdm:A sdm:B sdm:C sdm:D sdm:E sdm:F sdm:G sdm:H sdm:I sdm:J sdm:K sdm:L sdm:M sdm:N sdm:O sdm:P sdm:Q sdm:R sdm:S sdm:T1 sdm:T2 sdm:U sdm:V sdm:W sdm:X sdm:Y sdm:Z sdm:Z01 sdm:Z02 sdm:Z03 sdm:Z04 sdm:Z05 sdm:Z06 sdm:Z07 sdm:Z08 sdm:Z08 sdm:Z09 sdm:Z10 sdm:Z11 sdm:Z12 sdm:Z13 sdm:Z14 sdm:Z15 sdm:Z16 sdm:Z17)
+], [
+  sh:path sdm:minLength;
+  sh:description "Property. Minimum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'";
+  sh:name "minLength";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxLength;
+  sh:description "Property. Maximum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'";
+  sh:name "maxLength";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxWidth;
+  sh:description "Property. Maximum width allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/width'. Units:'meters'";
+  sh:name "maxWidth";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxDraft;
+  sh:description "Property. Maximum draft allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/depth'. Units:'meters'";
+  sh:name "maxDraft";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalCapacitySpotNumber;
+  sh:description "Property. Total Capacity of Spot in the port for this range. Model:'https://schema.org/Number'";
+  sh:name "totalCapacitySpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:availableSpotNumber;
+  sh:description "Property. Number of places available in the port for this category. Model:'https://schema.org/Number'";
+  sh:name "availableSpotNumber";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+].

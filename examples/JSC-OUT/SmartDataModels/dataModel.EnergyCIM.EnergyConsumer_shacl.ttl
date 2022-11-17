@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EnergyConsumer/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be EnergyConsumer";
+  sh:name "type";
+  sh:in (sdm:EnergyConsumer)
+], [
+  sh:path sdm:LoadDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Load dynamics model used to describe dynamic behavior of this energy consumer. Default: None";
+  sh:name "LoadDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:LoadResponse;
+  sh:description "Property. Model:'https://schema.org/Number'. The load response characteristic of this load.  If missing, this load is assumed to be constant power. Default: None";
+  sh:name "LoadResponse";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p;
+  sh:description "Property. Model:'https://schema.org/Number'. Active power of the load. Load sign convention is used, i.e. positive sign means flow out from a node. For voltage dependent loads the value is at rated voltage. Starting value for a steady state solution. Default: 0.0";
+  sh:name "p";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pfixed;
+  sh:description "Property. Model:'https://schema.org/Number'. Active power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node. Default: 0.0";
+  sh:name "pfixed";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pfixedPct;
+  sh:description "Property. Model:'https://schema.org/Number'. Fixed active power as per cent of load group fixed active power. Load sign convention is used, i.e. positive sign means flow out from a node. Default: 0.0";
+  sh:name "pfixedPct";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power of the load. Load sign convention is used, i.e. positive sign means flow out from a node. For voltage dependent loads the value is at rated voltage. Starting value for a steady state solution. Default: 0.0";
+  sh:name "q";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qfixed;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power of the load that is a fixed quantity. Load sign convention is used, i.e. positive sign means flow out from a node. Default: 0.0";
+  sh:name "qfixed";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qfixedPct;
+  sh:description "Property. Model:'https://schema.org/Number'. Fixed reactive power as per cent of load group fixed reactive power. Load sign convention is used, i.e. positive sign means flow out from a node. Default: 0.0";
+  sh:name "qfixedPct";
+  sh:datatype xsd:decimal
+].

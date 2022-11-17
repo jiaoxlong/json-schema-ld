@@ -1,0 +1,136 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcPIC";
+  sh:name "type";
+  sh:in (sdm:ExcPIC)
+], [
+  sh:path sdm:e1;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage value 1 (E1).  Typical Value = 0. Default: 0.0";
+  sh:name "e1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:e2;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage value 2 (E2).  Typical Value = 0. Default: 0.0";
+  sh:name "e2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:efdmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter maximum limit (Efdmax).  Typical Value = 8. Default: 0.0";
+  sh:name "efdmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:efdmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter minimum limit (Efdmin).  Typical Value = -0.87. Default: 0.0";
+  sh:name "efdmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain (Ka).  Typical Value = 3.15. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter regulation factor (Kc).  Typical Value = 0.08. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ke;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter constant (Ke).  Typical Value = 0. Default: 0.0";
+  sh:name "ke";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kf;
+  sh:description "Property. Model:'https://schema.org/Number'. Rate feedback gain (Kf).  Typical Value = 0. Default: 0.0";
+  sh:name "kf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki;
+  sh:description "Property. Model:'https://schema.org/Number'. Current source gain (Ki).  Typical Value = 0. Default: 0.0";
+  sh:name "ki";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kp;
+  sh:description "Property. Model:'https://schema.org/Number'. Potential source gain (Kp).  Typical Value = 6.5. Default: 0.0";
+  sh:name "kp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:se1;
+  sh:description "Property. Model:'https://schema.org/Number'. Saturation factor at E1 (Se1).  Typical Value = 0. Default: 0.0";
+  sh:name "se1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:se2;
+  sh:description "Property. Model:'https://schema.org/Number'. Saturation factor at E2 (Se2).  Typical Value = 0. Default: 0.0";
+  sh:name "se2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta1;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller time constant (Ta1).  Typical Value = 1. Default: 0";
+  sh:name "ta1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta2;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (Ta2).  Typical Value = 0.01. Default: 0";
+  sh:name "ta2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead time constant (Ta3).  Typical Value = 0. Default: 0";
+  sh:name "ta3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta4;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag time constant (Ta4).  Typical Value = 0. Default: 0";
+  sh:name "ta4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter time constant (Te).  Typical Value = 0. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tf1;
+  sh:description "Property. Model:'https://schema.org/Number'. Rate feedback time constant (Tf1).  Typical Value = 0. Default: 0";
+  sh:name "tf1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tf2;
+  sh:description "Property. Model:'https://schema.org/Number'. Rate feedback lag time constant (Tf2).  Typical Value = 0. Default: 0";
+  sh:name "tf2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vr1;
+  sh:description "Property. Model:'https://schema.org/Number'. PI maximum limit (Vr1).  Typical Value = 1. Default: 0.0";
+  sh:name "vr1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vr2;
+  sh:description "Property. Model:'https://schema.org/Number'. PI minimum limit (Vr2).  Typical Value = -0.87. Default: 0.0";
+  sh:name "vr2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator maximum limit (Vrmax).  Typical Value = 1. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator minimum limit (Vrmin).  Typical Value = -0.87. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

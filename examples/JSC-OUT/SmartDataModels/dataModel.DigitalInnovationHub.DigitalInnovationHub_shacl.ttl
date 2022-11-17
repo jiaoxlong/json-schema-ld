@@ -1,0 +1,80 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHub/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be DigitalInnovationHub";
+  sh:name "type";
+  sh:in (sdm:DigitalInnovationHub);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:website;
+  sh:description "Property. Model:'https://schema.org/URL'. Website of the Digital Innovation Hub.";
+  sh:name "website";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:logo;
+  sh:description "Property. Model:'https://schema.org/URL'. URL of the logo of the Digital Innovation Hub.";
+  sh:name "logo";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:location;
+  sh:description "GeoProperty. Model:'https://geojson.org/schema/Point.json'. GeoJSON Point reference to the location of the Digital Innovation Hub.";
+  sh:name "location"
+].
+sdm:LocationShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Location;
+    sh:property [
+  sh:path sdm:address;
+  sh:description "Property. Model:'https://schema.org/PostalAddress'. PostalAddress of the Digital Innovation Hub.";
+  sh:name "address"
+].
+sdm:AddressShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Address;
+    sh:property [
+  sh:path sdm:socialAccounts;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. SocialAccounts of the Digital Innovation Hub.";
+  sh:name "socialAccounts"
+].
+sdm:SocialAccountShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:SocialAccount;
+    sh:property [
+  sh:path sdm:linkedin;
+  sh:name "linkedin";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:facebook;
+  sh:name "facebook";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:twitter;
+  sh:name "twitter";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:instagram;
+  sh:name "instagram";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dateSubmitted;
+  sh:description "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+  sh:name "dateSubmitted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateUpdated;
+  sh:description "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'";
+  sh:name "dateUpdated";
+  sh:datatype xsd:dateTime
+].

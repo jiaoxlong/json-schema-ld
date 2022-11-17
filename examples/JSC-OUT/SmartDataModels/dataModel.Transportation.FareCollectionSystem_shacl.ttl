@@ -1,0 +1,193 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be FareCollectionSystem";
+  sh:name "type";
+  sh:in (sdm:FareCollectionSystem);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:destinationStopName;
+  sh:description "Property. Model:'https://schema.org/Text'. The name of the destination bus stop corresponding to this observation.";
+  sh:name "destinationStopName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:occupancyLevel;
+  sh:description "Property. Model:'https://schema.org/Text'. Occupancy level in the public transit bus corresponding to this observation. 'Red' indicates the congestion level in the bus is HIGH, 'Yellow' indicates the congestion level in the bus is MODERATE and 'Green' indicates the congestion level in the bus is LOW.";
+  sh:name "occupancyLevel";
+  sh:in (sdm:Red sdm:Yellow sdm:Green)
+], [
+  sh:path sdm:travelDistance;
+  sh:description "Property. Model:'https://schema.org/Number'. The distance between the origin bus stop and the destination bus stop corresponding to this observation.";
+  sh:name "travelDistance";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:passengerCount;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of passengers travelling in the public transit bus corresponding to this observation. This count is computed based on the realtime ticketing transactions in the public transit bus.";
+  sh:name "passengerCount";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:transactionType;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of the transaction corresponding to this observation. For Eg - Issue, ReIssue, Entry, Exit etc.";
+  sh:name "transactionType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ticketTypeCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique ticket type code of the corresponding trip.";
+  sh:name "ticketTypeCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:originStopName;
+  sh:description "Property. Model:'https://schema.org/Text'. The name of the origin bus stop corresponding to this observation.";
+  sh:name "originStopName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:entryAreaCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Area code of the passenger boarding stop (used by the fare collection agency). For example, whether the stop is city-bus-service stop or brts stop or other service type stop etc.";
+  sh:name "entryAreaCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cardId;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique ticket Id of the transaction or Id of the smart card used in the transaction.";
+  sh:name "cardId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:stage;
+  sh:description "Property. Model:'https://schema.org/Number'. Total number of stages from the origin bus stop to the destination bus stop.";
+  sh:name "stage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:equipmentId;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique Id of the equipment corresponding to this observation.";
+  sh:name "equipmentId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:direction_id;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates the direction of travel of the vehicle corresponding to this observation, can be referenced from the GTFS static feed trips.txt. SameAs: 'direction_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+  sh:name "direction_id";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:equipmentSequenceNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Sequence number for the given equipment.";
+  sh:name "equipmentSequenceNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:shiftOfOperation;
+  sh:description "Property. Model:'https://schema.org/Text'. Shift of operation of the public transit vehicle operated by the fare collection agency/ public transit agency or the employee corresponding to this observation. Indicated as '1' when the vehicle operates in the first shift, '2' when the vehicle operates in the second shift and '3' when the vehicle operates in the third shift.";
+  sh:name "shiftOfOperation";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:route_id;
+  sh:description "Property. Model:'https://schema.org/Text'. Route Id assigned to the route on which the bus/vehicle corresponding to the bus in this observation is currently plying on. SameAs: 'route_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+  sh:name "route_id";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:trip_id;
+  sh:description "Property. Model:'https://schema.org/Text'. Trip Id/Trip name alloted to the bus corresponding to this observation, in consideration to the time of the day and the direction of the trip on the given routeId. SameAs: 'trip_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+  sh:name "trip_id";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:originStopCategory;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of the origin bus stop corresponding to this observation.";
+  sh:name "originStopCategory";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:vehicle_label;
+  sh:description "Property. Model:'https://schema.org/Text'. User visible label, i.e., something that must be shown to the passenger to help identify the correct vehicle. SameAs: 'label' field from GTFS Realtime message-VehicleDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-vehicledescriptor)";
+  sh:name "vehicle_label";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:fareForChild;
+  sh:description "Property. Model:'https://schema.org/Number'. The fare for a child in the journey corresponding to this observation.";
+  sh:name "fareForChild";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:transactionDateTime;
+  sh:description "Property. Model:'https://schema.org/Text'. Date-time of the transaction corresponding to this observation.";
+  sh:name "transactionDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:destinationStopId;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique Id of the bus stop at which the passenger deboards from the bus corresponding to this observation.";
+  sh:name "destinationStopId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:originDestinationCode;
+  sh:description "Property. Model:'https://schema.org/Text'. The code for the origin and destination stops corresponding to this observation.";
+  sh:name "originDestinationCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:currentTripCount;
+  sh:description "Property. Model:'https://schema.org/Number'. The current count of trips made by the vehicle corresponding to this observation on the given day of operation.";
+  sh:name "currentTripCount";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:equipmentTypeCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique code indicating the type of equipment used in the transaction (used by fare collection agency).ENUM [1B, 42, 02, 08, 41] 1B - POS, 42 - HTT, 02- Mobile, 08- Fare Gate, 41- Pole Validator";
+  sh:name "equipmentTypeCode";
+  sh:in (sdm:1B sdm:42 sdm:02 sdm:08 sdm:41)
+], [
+  sh:path sdm:destinationStopCategory;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of the destination bus stop corresponding to this observation.";
+  sh:name "destinationStopCategory";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:transactionVehicleNum;
+  sh:description "Property. Model:'https://schema.org/Number'. Code used by fare collection agency for the vehicle number corresponding to the transaction.";
+  sh:name "transactionVehicleNum";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:fareForAdult;
+  sh:description "Property. Model:'https://schema.org/Number'. The fare for an adult in the journey corresponding to this observation.";
+  sh:name "fareForAdult";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:observationDateTime;
+  sh:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+  sh:name "observationDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:equipmentCompanyCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Company/Agency code for the transaction equipment (used by fare collection agency). For example, 103 - CBS (city bus service),102 - BRTS etc.";
+  sh:name "equipmentCompanyCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:transactionTypeDescription;
+  sh:description "Property. Model:'https://schema.org/Text'. Description of the transaction type. Explanation of various transactionTypeId codes used in the data.";
+  sh:name "transactionTypeDescription";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:exitAreaCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Area code of the passenger alighting stop (used by the fare collection agency). For example, whether the stop is city-bus-service stop or BRTS stop or other service type stop etc.";
+  sh:name "exitAreaCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:equipmentType;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of equipment or the name of the equipment corresponding to this observation.";
+  sh:name "equipmentType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:equipmentStopId;
+  sh:description "Property. Model:'https://schema.org/Text'. Stop Id (BRTS) at which the equipment corresponding to this transaction is installed.";
+  sh:name "equipmentStopId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:originStopId;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique Id of the bus stop at which the passenger boards into the bus corresponding to this observation.";
+  sh:name "originStopId";
+  sh:datatype xsd:string
+].

@@ -1,0 +1,79 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Device/PrivacyObject/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type property. It has to be PrivacyObject.";
+  sh:name "type";
+  sh:in (sdm:PrivacyObject);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Relationship. Device linked to this PrivacyObject entity. Model:'https://schema.org/URL'"
+])
+], [
+  sh:path sdm:isIndoor;
+  sh:description "Property. Flag to indicate if the entity is installed indoor or outdoor.";
+  sh:name "isIndoor";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:floor;
+  sh:description "Property. The floor where the device is installed when in building or equivalent.";
+  sh:name "floor";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:user;
+  sh:description "Property. Identifier of an anonymous user. This identifier is in fact a unique URN which can be used to recognize anonymously a user.";
+  sh:name "user";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:purpose;
+  sh:description "Property. Purpose of the data gathering.";
+  sh:name "purpose";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:recipientList;
+  sh:name "recipientList";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:isPersonalData;
+  sh:description "Property. Flag to indicate if the entity is providing or contains personal data.";
+  sh:name "isPersonalData";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:retentionPeriod;
+  sh:description "Property. Period of data retention.";
+  sh:name "retentionPeriod";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:legitimateInterest;
+  sh:description "Property. Legitimate interest associated to the entity. This means for which high-level finality the data collection is made.";
+  sh:name "legitimateInterest";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:crossborderTransfer;
+  sh:description "Property. Indication about the crossborder transfer linked to the entity.";
+  sh:name "crossborderTransfer";
+  sh:datatype xsd:string
+].

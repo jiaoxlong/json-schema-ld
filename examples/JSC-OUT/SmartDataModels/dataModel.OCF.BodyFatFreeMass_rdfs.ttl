@@ -1,0 +1,93 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json> dcterms:title "Smart Data models - BodyFatFreeMass schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource describes the Properties associated with a person's body fat free mass.The unit is a single value that is one of kg, lb or percent.If the unit Property is missing the default is kilograms [kg].The ffm and unit Properties are read-only values that are provided by the Server.When range is omitted the default is 0 to +MAXFLOAT.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.body.ffm)
+].
+sdm:oic.r.body.ffm rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.body.ffm".
+sdm:ffm dcterms:description "Property. Body fat free mass.";
+    rdf:type rdf:Property;
+    rdfs:label "ffm";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:units dcterms:description "Property. Body fat free mass units";
+    rdf:type rdf:Property;
+    rdfs:label "units";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>.
+sdm:Units rdf:type skos:ConceptScheme.
+sdm:units rdfs:range [
+  owl:oneOf (sdm:kg sdm:lb sdm:percent)
+].
+sdm:kg rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "kg".
+sdm:lb rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "lb".
+sdm:percent rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "percent".
+sdm:range rdf:type rdf:Property;
+    rdfs:label "range";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:step dcterms:description "Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+    rdf:type rdf:Property;
+    rdfs:label "step";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:precision dcterms:description "Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+    rdf:type rdf:Property;
+    rdfs:label "precision";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be BodyFatFreeMass";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/BodyFatFreeMass/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:BodyFatFreeMass)
+].
+sdm:BodyFatFreeMass rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "BodyFatFreeMass".

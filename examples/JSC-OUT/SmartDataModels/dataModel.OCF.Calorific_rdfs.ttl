@@ -1,0 +1,67 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json> dcterms:title "Calorific Value";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource describes Properties associated with the energy associated with the consumption of different fuels (including natural gas) The calorific value is a number the calorific value is a measure of the available heat energy, used as part of the calculation to convert a volume of a fuel (e.g. m3) to an energy value (e.g. KWh). ".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.calorificvalue)
+].
+sdm:oic.r.calorificvalue rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.calorificvalue".
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.baseline sdm:oic.if.r)
+].
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:oic.if.r rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.r".
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>;
+    rdfs:range xsd:string.
+sdm:precision dcterms:description "Property. Accuracy granularity of the exposed value";
+    rdf:type rdf:Property;
+    rdfs:label "precision";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:calorific dcterms:description "Property. Calorific value of fuel";
+    rdf:type rdf:Property;
+    rdfs:label "calorific";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Calorific";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Calorific/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Calorific)
+].
+sdm:Calorific rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Calorific".

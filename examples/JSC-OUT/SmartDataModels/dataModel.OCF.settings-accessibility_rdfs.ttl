@@ -1,0 +1,86 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json> dcterms:title "Device Settings Accessibility Resource Type";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. Gets current device accessibility settings.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.settings.accessibility)
+].
+sdm:oic.r.settings.accessibility rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.settings.accessibility".
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.rw sdm:oic.if.baseline)
+].
+sdm:oic.if.rw rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.rw".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:voice-guide dcterms:description "Property. Turns on or off voice guide.";
+    rdf:type rdf:Property;
+    rdfs:label "voice-guide";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:video-description dcterms:description "Property. Turns on or off video description.";
+    rdf:type rdf:Property;
+    rdfs:label "video-description";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:caption dcterms:description "Property. Turns on or off accessibility caption.";
+    rdf:type rdf:Property;
+    rdfs:label "caption";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:caption-mode dcterms:description "Property. Accessibility Caption Mode. Client can change caption-mode using supported-caption-modes property.";
+    rdf:type rdf:Property;
+    rdfs:label "caption-mode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:string.
+sdm:supported-caption-modes rdf:type rdf:Property;
+    rdfs:label "supported-caption-modes";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:string.
+sdm:high-contrast dcterms:description "Property. Turns on or off high contrast.";
+    rdf:type rdf:Property;
+    rdfs:label "high-contrast";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:enlarge dcterms:description "Property. Turns on or off print enlargement.";
+    rdf:type rdf:Property;
+    rdfs:label "enlarge";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:type dcterms:description "Property. NGSI entity type. It has to be settings-accessibility";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-accessibility/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:settings-accessibility)
+].
+sdm:settings-accessibility rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "settings-accessibility".

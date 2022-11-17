@@ -1,0 +1,182 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Device/Device/schema.json> dcterms:title " Smart Data Models - Device schema";
+    dcterms:description "An apparatus (hardware + software + firmware) intended to accomplish a particular task (sensing the environment, actuating, etc.).".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be Device";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Device)
+].
+sdm:Device rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Device".
+sdm:controlledAsset rdf:type rdf:Property;
+    rdfs:label "controlledAsset";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:mnc dcterms:description "Property. Model:'https://schema.org/Text'. This property identifies the Mobile Network Code (MNC) of the network the device is attached to. The MNC is used in combination with a Mobile Country Code (MCC) (also known as a 'MCC / MNC tuple') to uniquely identify a mobile phone operator/carrier using the GSM, CDMA, iDEN, TETRA and 3G / 4G public land mobile networks and some satellite mobile networks.";
+    rdf:type rdf:Property;
+    rdfs:label "mnc";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:mcc dcterms:description "Property. Model:'https://schema.org/Text'. This property identifies the Mobile Country Code";
+    rdf:type rdf:Property;
+    rdfs:label "mcc";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:ipAddress rdf:type rdf:Property;
+    rdfs:label "ipAddress";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string;
+    rdf:type rdf:Property;
+    rdfs:label "ipAddress";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:configuration dcterms:description "Property. Model:'https://schema.org/StructuredValue'. Device's technical configuration. This attribute is intended to be a array properties and their values which capture parameters which have to do with the configuration of a device (timeouts, reporting periods, etc.) and which are not currently covered by the standard attributes defined by this model.";
+    rdf:type rdf:Property;
+    rdfs:label "configuration";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range sdm:Configuration.
+sdm:Configuration rdf:type rdfs:Class;
+    rdfs:label "Configuration".
+sdm:parameter rdf:type rdf:Property;
+    rdfs:label "parameter";
+    rdfs:domain sdm:Configuration;
+    rdfs:range xsd:string.
+sdm:value rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain sdm:Configuration;
+    rdfs:range xsd:string.
+sdm:dateInstalled dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was installed (if it requires installation).";
+    rdf:type rdf:Property;
+    rdfs:label "dateInstalled";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateFirstUsed dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was first used.";
+    rdf:type rdf:Property;
+    rdfs:label "dateFirstUsed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateManufactured dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was manufactured.";
+    rdf:type rdf:Property;
+    rdfs:label "dateManufactured";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:hardwareVersion dcterms:description "Property. Model:'https://schema.org/Text'. The hardware version of this device.";
+    rdf:type rdf:Property;
+    rdfs:label "hardwareVersion";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:softwareVersion dcterms:description "Property. Model:'https://schema.org/Text'. The software version of this device.";
+    rdf:type rdf:Property;
+    rdfs:label "softwareVersion";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:firmwareVersion dcterms:description "Property. Model:'https://schema.org/Text'. The firmware version of this device.";
+    rdf:type rdf:Property;
+    rdfs:label "firmwareVersion";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:osVersion dcterms:description "Property. Model:'https://schema.org/Text'. The version of the host operating system device.";
+    rdf:type rdf:Property;
+    rdfs:label "osVersion";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:distance dcterms:description "Property. Model:'https://schema.org/Distance'. Location of this device represented by a distance from a starting point. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code";
+    rdf:type rdf:Property;
+    rdfs:label "distance";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dstAware dcterms:description "Property. Indicates a device which is Daylight Savings Time Aware (True). In case it is then the Timestamp is automatically adjusted by the device to reflect DST changes. If not (False) the time adjustments must be taken care of by the user.";
+    rdf:type rdf:Property;
+    rdfs:label "dstAware";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:depth dcterms:description "Property. Model:'https://schema.org/depth'. Location of this device represented by a depth from a starting point. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code";
+    rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:relativePosition dcterms:description "Property. Location of this device in a coordinate system according to its local emplacement.";
+    rdf:type rdf:Property;
+    rdfs:label "relativePosition";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:direction dcterms:description "Property. Enum:'Inlet, Outlet, Entry, Exit'.  Model:'https://schema.org/DateTime'. A timestamp which denotes when the device was installed (if it requires installation).";
+    rdf:type rdf:Property;
+    rdfs:label "direction";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:Direction rdf:type skos:ConceptScheme.
+sdm:direction rdfs:range [
+  owl:oneOf (sdm:Inlet sdm:Outlet sdm:Entry sdm:Exit)
+].
+sdm:Inlet rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "Inlet".
+sdm:Outlet rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "Outlet".
+sdm:Entry rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "Entry".
+sdm:Exit rdf:type skos:Concept;
+    skos:inScheme sdm:Direction;
+    rdfs:label "Exit".
+sdm:dateLastCalibration dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes when the last calibration of the device happened.";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastCalibration";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:serialNumber dcterms:description "Property. Model:'https://schema.org/serialNumber'. The serial number assigned by the manufacturer.";
+    rdf:type rdf:Property;
+    rdfs:label "serialNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:provider dcterms:description "Property. Model:'https://schema.org/provider'. The provider of the device.";
+    rdf:type rdf:Property;
+    rdfs:label "provider";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:refDeviceModel dcterms:description "Relationship. Model of the device";
+    rdf:type rdf:Property;
+    rdfs:label "refDeviceModel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:batteryLevel dcterms:description "Property. Model:'https://schema.org/Number'. Device battery level. It must be equal to 1.0 when battery is full. 0.0 when battery is empty. -1 when transiently cannot be determined.";
+    rdf:type rdf:Property;
+    rdfs:label "batteryLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>.
+sdm:rssi dcterms:description "Property. Model:'https://schema.org/Number'. Received signal strength indicator for a wireless enabled device. It must be expressed in dBm or mW, use unitcode to set it out. ";
+    rdf:type rdf:Property;
+    rdfs:label "rssi";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:deviceState dcterms:description "Property. Model:'https://schema.org/Text'. State of this device from an operational point of view. Its value can be vendor dependent.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceState";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateLastValueReported dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes the last time when the device successfully reported data to the cloud.";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastValueReported";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:value dcterms:description "Property. Model:'https://schema.org/QuantitativeValue'. A observed or reported value. For actuator devices, it is an attribute that allows a controlling application to change the actuation setting. For instance, a switch device which is currently _on_ can report a value 'on' of type 'Text'. Obviously, in order to toggle the referred switch, this attribute value will have to be changed to 'off'.";
+    rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/Device/schema.json>;
+    rdfs:range xsd:string.

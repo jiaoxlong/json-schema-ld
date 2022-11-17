@@ -1,0 +1,106 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST5B/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcIEEEST5B";
+  sh:name "type";
+  sh:in (sdm:ExcIEEEST5B)
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. Rectifier regulation factor (K).  Typical Value = 0.004. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kr;
+  sh:description "Property. Model:'https://schema.org/Number'. Regulator gain (K).  Typical Value = 200. Default: 0.0";
+  sh:name "kr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. Firing circuit time constant (T1).  Typical Value = 0.004. Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb1;
+  sh:description "Property. Model:'https://schema.org/Number'. Regulator lag time constant (T).  Typical Value = 6. Default: 0";
+  sh:name "tb1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb2;
+  sh:description "Property. Model:'https://schema.org/Number'. Regulator lag time constant (T).  Typical Value = 0.01. Default: 0";
+  sh:name "tb2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc1;
+  sh:description "Property. Model:'https://schema.org/Number'. Regulator lead time constant (T).  Typical Value = 0.8. Default: 0";
+  sh:name "tc1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc2;
+  sh:description "Property. Model:'https://schema.org/Number'. Regulator lead time constant (T).  Typical Value = 0.08. Default: 0";
+  sh:name "tc2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tob1;
+  sh:description "Property. Model:'https://schema.org/Number'. OEL lag time constant (T).  Typical Value = 2. Default: 0";
+  sh:name "tob1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tob2;
+  sh:description "Property. Model:'https://schema.org/Number'. OEL lag time constant (T).  Typical Value = 0.08. Default: 0";
+  sh:name "tob2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toc1;
+  sh:description "Property. Model:'https://schema.org/Number'. OEL lead time constant (T).  Typical Value = 0.1. Default: 0";
+  sh:name "toc1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toc2;
+  sh:description "Property. Model:'https://schema.org/Number'. OEL lead time constant (T).  Typical Value = 0.08. Default: 0";
+  sh:name "toc2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tub1;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 10. Default: 0";
+  sh:name "tub1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tub2;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0.05. Default: 0";
+  sh:name "tub2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tuc1;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 2. Default: 0";
+  sh:name "tuc1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tuc2;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0.1. Default: 0";
+  sh:name "tuc2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 5. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -4. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

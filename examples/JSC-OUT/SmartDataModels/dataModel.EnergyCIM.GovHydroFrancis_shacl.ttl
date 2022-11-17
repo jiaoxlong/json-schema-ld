@@ -1,0 +1,156 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroFrancis/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovHydroFrancis";
+  sh:name "type";
+  sh:in (sdm:GovHydroFrancis)
+], [
+  sh:path sdm:am;
+  sh:description "Property. Model:'https://schema.org/Number'. Opening section S at the maximum efficiency (Am).  Typical Value = 0.7. Default: 0.0";
+  sh:name "am";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:av0;
+  sh:description "Property. Model:'https://schema.org/Number'. Area of the surge tank (A). Unit = m. Typical Value = 30. Default: 0.0";
+  sh:name "av0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:av1;
+  sh:description "Property. Model:'https://schema.org/Number'. Area of the compensation tank (A). Unit = m. Typical Value = 700. Default: 0.0";
+  sh:name "av1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bp;
+  sh:description "Property. Model:'https://schema.org/Number'. Droop (Bp).  Typical Value = 0.05. Default: 0.0";
+  sh:name "bp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:db1;
+  sh:description "Property. Model:'https://schema.org/Number'. Intentional dead-band width (DB1).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "db1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:etamax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum efficiency (EtaMax).  Typical Value = 1.05. Default: 0.0";
+  sh:name "etamax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:governorControl;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor control flag (Cflag).  Typical Value = mechanicHydrolicTachoAccelerator. Default: None";
+  sh:name "governorControl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:h1;
+  sh:description "Property. Model:'https://schema.org/Number'. Head of compensation chamber water level with respect to the level of penstock (H).  Unit = m. Typical Value = 4. Default: 0.0";
+  sh:name "h1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:h2;
+  sh:description "Property. Model:'https://schema.org/Number'. Head of surge tank water level with respect to the level of penstock (H).  Unit = m. Typical Value = 40. Default: 0.0";
+  sh:name "h2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:hn;
+  sh:description "Property. Model:'https://schema.org/Number'. Rated hydraulic head (H).  Unit = m. Typical Value = 250. Default: 0.0";
+  sh:name "hn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. Penstock loss coefficient (due to friction) (Kc).  Typical Value = 0.025. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kg;
+  sh:description "Property. Model:'https://schema.org/Number'. Water tunnel and surge chamber loss coefficient (due to friction) (Kg).  Typical Value = 0.025. Default: 0.0";
+  sh:name "kg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kt;
+  sh:description "Property. Model:'https://schema.org/Number'. Washout gain (Kt).  Typical Value = 0.25. Default: 0.0";
+  sh:name "kt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qc0;
+  sh:description "Property. Model:'https://schema.org/Number'. No-load turbine flow at nominal head (Qc0).  Typical Value = 0.21. Default: 0.0";
+  sh:name "qc0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qn;
+  sh:description "Property. Model:'https://schema.org/Number'. Rated flow (Q). Unit = m/s. Typical Value = 40. Default: 0.0";
+  sh:name "qn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Derivative gain (Ta).  Typical Value = 3. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:td;
+  sh:description "Property. Model:'https://schema.org/Number'. Washout time constant (Td).  Typical Value = 3. Default: 0";
+  sh:name "td";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ts;
+  sh:description "Property. Model:'https://schema.org/Number'. Gate servo time constant (Ts).  Typical Value = 0.5. Default: 0";
+  sh:name "ts";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:twnc;
+  sh:description "Property. Model:'https://schema.org/Number'. Water inertia time constant (Twnc).  Typical Value = 1. Default: 0";
+  sh:name "twnc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:twng;
+  sh:description "Property. Model:'https://schema.org/Number'. Water tunnel and surge chamber inertia time constant (Twng). Typical Value = 3. Default: 0";
+  sh:name "twng";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tx;
+  sh:description "Property. Model:'https://schema.org/Number'. Derivative feedback gain (Tx).  Typical Value = 1. Default: 0";
+  sh:name "tx";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:va;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening velocity (Va).  Unit = PU/sec.  Typical Value = 0.011. Default: 0.0";
+  sh:name "va";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:valvmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening (ValvMax).  Typical Value = 1. Default: 0.0";
+  sh:name "valvmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:valvmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum gate opening (ValvMin).  Typical Value = 0. Default: 0.0";
+  sh:name "valvmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vc;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate closing velocity (Vc).  Unit = PU/sec.  Typical Value = -0.011. Default: 0.0";
+  sh:name "vc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:waterTunnelSurgeChamberSimulation;
+  sh:description "Property. Model:'https://schema.org/Number'. Water tunnel and surge chamber simulation (Tflag). true = enable of water tunnel and surge chamber simulation false = inhibit of water tunnel and surge chamber simulation. Typical Value = false. Default: False";
+  sh:name "waterTunnelSurgeChamberSimulation";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:zsfc;
+  sh:description "Property. Model:'https://schema.org/Number'. Head of upper water level with respect to the level of penstock (Zsfc).  Unit = m.  Typical Value = 25. Default: 0.0";
+  sh:name "zsfc";
+  sh:datatype xsd:decimal
+].

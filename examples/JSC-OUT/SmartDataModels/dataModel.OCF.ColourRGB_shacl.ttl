@@ -1,0 +1,51 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.OCF/ColourRGB/schema.json>;
+    sh:property [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.colour.rgb);
+  sh:maxLength 64
+], [
+  sh:path sdm:rgbValue;
+  sh:name "rgbValue";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:n;
+  sh:description "Property. Friendly name of the Resource";
+  sh:name "n";
+  sh:maxLength 64;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:range;
+  sh:name "range";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:step;
+  sh:description "Property. Step value across the defined range when the range is an integer.  This is the increment for valid values across the range; so if range is 0..10 and step is 2 then valid values are 0,2,4,6,8,10.";
+  sh:name "step";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.a sdm:oic.if.baseline)
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be ColourRGB";
+  sh:name "type";
+  sh:in (sdm:ColourRGB);
+  sh:minCount 1;
+  sh:maxCount 1
+].

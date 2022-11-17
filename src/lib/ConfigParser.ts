@@ -1,4 +1,4 @@
-import {JSC_LD_PREFIX} from "../utils/Prefix";
+import {JSC_LD_PREFIX, RDFS_PREFIX, SHACL_PREFIX} from "../utils/Prefix";
 import {N3FormatTypes} from "../utils/types";
 import type {Logger} from '@treecg/types';
 import {getLogger}from '@treecg/types';
@@ -35,6 +35,14 @@ export class Config{
      */
     public auto:boolean;
     /**
+     * RDFS prefix
+     */
+    public rdfs_prefix:Record<string, unknown>;
+    /**
+     * SHACL prefix
+     */
+    public shacl_prefix:Record<string, unknown>;
+    /**
      * Serialization format. Formats to ttl.
      */
     public format:typeof N3FormatTypes[number];
@@ -56,6 +64,12 @@ export class Config{
         else
             throw new Error(`Invalid namespace URI ${cliArgs.uri}`)
         this.out = 'out' in cliArgs ? cliArgs.out : 'out'
+        const rdf_buildin_prefix = RDFS_PREFIX;
+        rdf_buildin_prefix['prefixes'][this.prefix] = this.uri;
+        this.rdfs_prefix = rdf_buildin_prefix
+        const shacl_buildin_prefix = SHACL_PREFIX;
+        shacl_buildin_prefix['prefixes'][this.prefix] = this.uri;
+        this.shacl_prefix = shacl_buildin_prefix
         this._source = this.jsc_source_files(cliArgs.source)
         /** for the time being, we set this.auto to true */
         this.auto = true

@@ -1,0 +1,82 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json> dcterms:title "Smart Data models - OpaqueData schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource defines opaque data that can be transfered between endpoints where the data itself is not interpretable by the OCF endpoints.The stringdata is a string of ASCII characters.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.opaquedata)
+].
+sdm:oic.r.opaquedata rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.opaquedata".
+sdm:payload dcterms:description "Property. This Property contains the opaque data.";
+    rdf:type rdf:Property;
+    rdfs:label "payload";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:string.
+sdm:encoding dcterms:description "Property. This Property describes the encoding of the payload, e.g. binary as base64, json, xml, utf-8.";
+    rdf:type rdf:Property;
+    rdfs:label "encoding";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:string.
+sdm:payloadtype dcterms:description "Property. This Property describes the identification of the payload, e.g. what the payload is representing .";
+    rdf:type rdf:Property;
+    rdfs:label "payloadtype";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:string.
+sdm:size dcterms:description "Property. The size in bytes of the decoded binary object.";
+    rdf:type rdf:Property;
+    rdfs:label "size";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:integer.
+sdm:hash dcterms:description "Property. The hash code of the blob. If present, it is used to check the decoded content of the object data point for integrity. The algorithm used for generating the hash value is SHA-2 [15]. The data point contains the hash as a hex encoded value.";
+    rdf:type rdf:Property;
+    rdfs:label "hash";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:string.
+sdm:system dcterms:description "Property. The eco system that is using the payload.";
+    rdf:type rdf:Property;
+    rdfs:label "system";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.baseline sdm:oic.if.rw)
+].
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:oic.if.rw rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.rw".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be OpaqueData";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:OpaqueData)
+].
+sdm:OpaqueData rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "OpaqueData".

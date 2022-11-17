@@ -1,0 +1,145 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson> dcterms:description "Describes geofencing zones and their associated rules and attributes (added in v2.1-RC).".
+gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
+    rdf:type rdf:Property;
+    rdfs:label "last_updated";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    rdfs:range xsd:integer.
+gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+    rdf:type rdf:Property;
+    rdfs:label "ttl";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    rdfs:range xsd:integer.
+gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework.";
+    rdf:type rdf:Property;
+    rdfs:label "version";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    rdfs:range xsd:string.
+gbfs:data dcterms:description "Array that contains geofencing information for the system.";
+    rdf:type rdf:Property;
+    rdfs:label "data";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    rdfs:range gbfs:Datum.
+gbfs:Datum rdf:type rdfs:Class;
+    rdfs:label "Datum".
+gbfs:geofencing_zones dcterms:description "Each geofenced zone and its associated rules and attributes is described as an object within the array of features.";
+    rdf:type rdf:Property;
+    rdfs:label "geofencing_zones";
+    rdfs:domain gbfs:Datum;
+    rdfs:range gbfs:GeofencingZone.
+gbfs:GeofencingZone rdf:type rdfs:Class;
+    rdfs:label "GeofencingZone".
+gbfs:type dcterms:description "FeatureCollection as per IETF RFC 7946.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain gbfs:GeofencingZone.
+gbfs:Type rdf:type skos:ConceptScheme.
+gbfs:type rdfs:range [
+  owl:oneOf (gbfs:FeatureCollection)
+].
+gbfs:FeatureCollection rdf:type skos:Concept;
+    skos:inScheme gbfs:Type;
+    rdfs:label "FeatureCollection".
+gbfs:features dcterms:description "Array of objects.";
+    rdf:type rdf:Property;
+    rdfs:label "features";
+    rdfs:domain gbfs:GeofencingZone;
+    rdfs:range gbfs:Feature.
+gbfs:Feature rdf:type rdfs:Class;
+    rdfs:label "Feature".
+gbfs:type rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain gbfs:Feature.
+gbfs:Type rdf:type skos:ConceptScheme.
+gbfs:type rdfs:range [
+  owl:oneOf (gbfs:Feature)
+].
+gbfs:Feature rdf:type skos:Concept;
+    skos:inScheme gbfs:Type;
+    rdfs:label "Feature".
+gbfs:properties dcterms:description "Describing travel allowances and limitations.";
+    rdf:type rdf:Property;
+    rdfs:label "properties";
+    rdfs:domain gbfs:Feature;
+    rdfs:range gbfs:Property.
+gbfs:Property rdf:type rdfs:Class;
+    rdfs:label "Property".
+gbfs:name dcterms:description "Public name of the geofencing zone.";
+    rdf:type rdf:Property;
+    rdfs:label "name";
+    rdfs:domain gbfs:Property;
+    rdfs:range xsd:string.
+gbfs:start dcterms:description "Start time of the geofencing zone in POSIX time.";
+    rdf:type rdf:Property;
+    rdfs:label "start";
+    rdfs:domain gbfs:Property;
+    rdfs:range xsd:integer.
+gbfs:end dcterms:description "End time of the geofencing zone in POSIX time.";
+    rdf:type rdf:Property;
+    rdfs:label "end";
+    rdfs:domain gbfs:Property;
+    rdfs:range xsd:integer.
+gbfs:rules dcterms:description "Array that contains one object per rule.";
+    rdf:type rdf:Property;
+    rdfs:label "rules";
+    rdfs:domain gbfs:Property;
+    rdfs:range gbfs:Rule.
+gbfs:Rule rdf:type rdfs:Class;
+    rdfs:label "Rule".
+gbfs:vehicle_type_id rdf:type rdf:Property;
+    rdfs:label "vehicle_type_id";
+    rdfs:domain gbfs:Rule;
+    rdfs:range xsd:string.
+gbfs:ride_allowed dcterms:description "Is the undocked ride allowed to stat and end in this zone?";
+    rdf:type rdf:Property;
+    rdfs:label "ride_allowed";
+    rdfs:domain gbfs:Rule;
+    rdfs:range xsd:boolean.
+gbfs:ride_through_allowed dcterms:description "Is the ride allowed to travel through this zone?";
+    rdf:type rdf:Property;
+    rdfs:label "ride_through_allowed";
+    rdfs:domain gbfs:Rule;
+    rdfs:range xsd:boolean.
+gbfs:maximum_speed_kph dcterms:description "What is the maximum speed allowed, in kilometers per hour?";
+    rdf:type rdf:Property;
+    rdfs:label "maximum_speed_kph";
+    rdfs:domain gbfs:Rule;
+    rdfs:range xsd:integer.
+gbfs:station_parking dcterms:description "Vehicle MUST be parked at stations defined in station_information.json within this geofence zone";
+    rdf:type rdf:Property;
+    rdfs:label "station_parking";
+    rdfs:domain gbfs:Rule;
+    rdfs:range xsd:boolean.
+gbfs:geometry dcterms:description "A polygon that describes where rides might not be able to start, end, go through, or have other limitations. Must follow the right-hand rule.";
+    dcterms:title "GeoJSON MultiPolygon";
+    rdf:type rdf:Property;
+    rdfs:label "geometry";
+    rdfs:domain gbfs:Rule;
+    rdfs:range gbfs:Geometry.
+gbfs:Geometry rdf:type rdfs:Class;
+    rdfs:label "Geometry".
+gbfs:type rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain gbfs:Geometry.
+gbfs:Type rdf:type skos:ConceptScheme.
+gbfs:type rdfs:range [
+  owl:oneOf (gbfs:MultiPolygon)
+].
+gbfs:MultiPolygon rdf:type skos:Concept;
+    skos:inScheme gbfs:Type;
+    rdfs:label "MultiPolygon".

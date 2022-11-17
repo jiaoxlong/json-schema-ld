@@ -1,0 +1,88 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json> dcterms:title "Smart Data Models - Agri Greenhouse";
+    dcterms:description "This entity contains a harmonised description of the conditions recorded within a generic greenhouse, a type of AgriParcel.".
+sdm:type dcterms:description "Property. NGSI Entity Type. It has to be AgriGreenhouse";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AgriGreenhouse)
+].
+sdm:AgriGreenhouse rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AgriGreenhouse".
+sdm:ownedBy dcterms:description "Relationship. Owner (Person or Organization) of the AgriGreenhouse";
+    rdf:type rdf:Property;
+    rdfs:label "ownedBy";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>.
+sdm:belongsTo dcterms:description "Relationship. Entity the Greenhouse belongs to";
+    rdf:type rdf:Property;
+    rdfs:label "belongsTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>.
+sdm:hasAgriParcelParent dcterms:description "Relationship. Reference to the AgriParcel entity to which this entity relates";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriParcelParent";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>.
+sdm:hasWeatherObserved dcterms:description "Relationship. Reference to the weather observation record current for this entity";
+    rdf:type rdf:Property;
+    rdfs:label "hasWeatherObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>.
+sdm:relativeHumidity dcterms:description "Property. Model:'http://schema.org/Number'. Units:'Degrees centigrade'. The average greenhouse air temperature nominally in degrees centigrade.";
+    rdf:type rdf:Property;
+    rdfs:label "relativeHumidity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:leafTemperature dcterms:description "Property. Model:'http://schema.org/Number'. The inside relative humidity expressed as a number between 0 and 1 representing the range 0% to 100 (%).<br/><br/>0 <= relativeHumidity <= 1";
+    rdf:type rdf:Property;
+    rdfs:label "leafTemperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    rdfs:range xsd:integer.
+sdm:co2 dcterms:description "Property. Model:'http://schema.org/Number'. Units:'mg/L'. The measured interior C02 concentration nominally in mg/L";
+    rdf:type rdf:Property;
+    rdfs:label "co2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    rdfs:range xsd:integer.
+sdm:dailyLight dcterms:description "Property. Model:'http://schema.org/Number'. Units:'kw/m2'. Daily Accumulated light measured in kW per square metre";
+    rdf:type rdf:Property;
+    rdfs:label "dailyLight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    rdfs:range xsd:integer.
+sdm:drainFlow dcterms:description "Property. Model:'http://schema.org/Number'. Units:'L/s'. The observed drain flow rate in litres per second";
+    rdf:type rdf:Property;
+    rdfs:label "drainFlow";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    rdfs:range sdm:DrainFlow.
+sdm:DrainFlow rdf:type rdfs:Class;
+    rdfs:label "DrainFlow".
+sdm:value rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain sdm:DrainFlow;
+    rdfs:range xsd:decimal.
+sdm:maxValue rdf:type rdf:Property;
+    rdfs:label "maxValue";
+    rdfs:domain sdm:DrainFlow;
+    rdfs:range xsd:decimal.
+sdm:minValue rdf:type rdf:Property;
+    rdfs:label "minValue";
+    rdfs:domain sdm:DrainFlow;
+    rdfs:range xsd:decimal.
+sdm:unitText rdf:type rdf:Property;
+    rdfs:label "unitText";
+    rdfs:domain sdm:DrainFlow;
+    rdfs:range xsd:string.

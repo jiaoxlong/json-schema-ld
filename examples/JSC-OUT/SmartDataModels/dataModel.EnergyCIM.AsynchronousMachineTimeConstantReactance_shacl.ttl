@@ -1,0 +1,46 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachineTimeConstantReactance/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be AsynchronousMachineTimeConstantReactance";
+  sh:name "type";
+  sh:in (sdm:AsynchronousMachineTimeConstantReactance)
+], [
+  sh:path sdm:tpo;
+  sh:description "Property. Model:'https://schema.org/Number'. Transient rotor time constant (T`o) (> T``o).  Typical Value = 5. Default: 0";
+  sh:name "tpo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tppo;
+  sh:description "Property. Model:'https://schema.org/Number'. Subtransient rotor time constant (T``o) (> 0).  Typical Value = 0.03. Default: 0";
+  sh:name "tppo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xp;
+  sh:description "Property. Model:'https://schema.org/Number'. Transient reactance (unsaturated) (X`) (>=X``).  Typical Value = 0.5. Default: 0.0";
+  sh:name "xp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xpp;
+  sh:description "Property. Model:'https://schema.org/Number'. Subtransient reactance (unsaturated) (X``) (> Xl).  Typical Value = 0.2. Default: 0.0";
+  sh:name "xpp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xs;
+  sh:description "Property. Model:'https://schema.org/Number'. Synchronous reactance (Xs) (>= X`).  Typical Value = 1.8. Default: 0.0";
+  sh:name "xs";
+  sh:datatype xsd:decimal
+].

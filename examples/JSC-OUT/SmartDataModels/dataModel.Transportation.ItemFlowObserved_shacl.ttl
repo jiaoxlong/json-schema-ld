@@ -1,0 +1,138 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models/Transportation/ItemFlowObserved/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be ItemFlowObserved";
+  sh:name "type";
+  sh:in (sdm:ItemFlowObserved);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refRoadSegment;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateObservedFrom;
+  sh:description "Property. Observation period : Start date and time in an ISO8601 UTC format.";
+  sh:name "dateObservedFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedTo;
+  sh:description "Property. Observation period : End date and time in an ISO8601 UTC format.";
+  sh:name "dateObservedTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:itemType;
+  sh:description "Property. Reference to an identifier of an existing 'Type' attribute of an NGSI entity (Vehicle / BoatType / Person) or of a future entity listing an item 'Type' to be counted. Enum:'people, ship, vehicle, yacht'";
+  sh:name "itemType";
+  sh:in (sdm:people sdm:ship sdm:vehicle sdm:yacht)
+], [
+  sh:path sdm:itemSubType;
+  sh:description "Property. Reference to an identifier of an existing 'subType' attribute of an NGSI entity (Vehicle / BoatType / Person ) or of a future entity listing an item 'subType' to be counted.";
+  sh:name "itemSubType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:laneId;
+  sh:description "Property. Lane identifier. Lane identification is done using the conventions defined by RoadSegment entity which are based on [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Forward_%26_backward,_left_%26_right).";
+  sh:name "laneId";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:laneDirection;
+  sh:description "Property. Usual direction of travel in the lane referred by this observation. This attribute is useful when the observation is not referencing any road segment, allowing to know the direction of travel of the traffic flow observed. See RoadSegment for a description of the semantics of these values.";
+  sh:name "laneDirection";
+  sh:in (sdm:forward sdm:backward sdm:inbound sdm:outbound sdm:right sdm:left)
+], [
+  sh:path sdm:reversedLane;
+  sh:description "Property. Flags whether traffic in the lane was reversed during the observation period. The absence of this attribute means no lane reversion";
+  sh:name "reversedLane";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:intensity;
+  sh:description "Property. Total number of items detected during this observation period";
+  sh:name "intensity";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:occupancy;
+  sh:description "Property. Fraction of the observation time where a item has been occupying the observed lane";
+  sh:name "occupancy";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:congested;
+  sh:description "Property. Flags whether there was a crowd congestion during the observation period in the referred walkway. The absence of this attribute means no crowd congestion";
+  sh:name "congested";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:averageSpeed;
+  sh:description "Property. Average speed of detected items transiting during the observation period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Depending the type of Flow, the value can be **KMH** f(vehicule, pedestrian, etc.) represents Kilometer per hour (km/h) or **KNT** represents Knot (Boat).";
+  sh:name "averageSpeed";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageLength;
+  sh:description "Property. Average length of detected items transiting during the observation period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter.";
+  sh:name "averageLength";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageHeadwayTime;
+  sh:description "Property. Average headway time. Head away time is the time elapsed between two consecutive items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **SEC** represents Second.";
+  sh:name "averageHeadwayTime";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageGapDistance;
+  sh:description "Property. Average gap distance between consecutive 2 detected items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter.";
+  sh:name "averageGapDistance";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:speedMin;
+  sh:description "Property. Minimum speed detected during the observation period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Depending the type of Flow, the value can be **KMH** (vehicule, pedestrian, ...) represents Kilometer per hour (km/h) or **KNT** represents Knot (Boat).";
+  sh:name "speedMin";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:speedMax;
+  sh:description "Property. Maximum speed detected during the observation period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Depending the type of Flow, the value can be **KMH** (vehicule, pedestrian, ...) represents Kilometer per hour (km/h) or **KNT** represents Knot (Boat).";
+  sh:name "speedMax";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,108 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json> dcterms:title "Smart Data Models WaterNetworkManagementEPANET - Tank";
+    dcterms:description "This entity contains a harmonised description of a generic tank made for the Water Network Management domain. This entity is primarily associated with the water management vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be Tank";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Tank)
+].
+sdm:Tank rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Tank".
+sdm:elevation dcterms:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The elevation above some common reference of the Tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "elevation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:initLevel dcterms:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The height of the water surface above the bottom elevation of the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "initLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minLevel dcterms:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The minimum level that water in the tank can drop to. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "minLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxLevel dcterms:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The height of the water surface above the bottom elevation of the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "maxLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minVolume dcterms:description "Property. Model:'https://schema.org/Number'. Units:'cubic metre'. The volume of water in the tank when it is at its minimum level. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "minVolume";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nominalDiameter dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Metre'. The diameter of the tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "nominalDiameter";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:initialQuality dcterms:description "Property. Model:'https://schema.org/Number'. Units:'mg/L'. Water quality level in the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "initialQuality";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bulkReactionCoefficient dcterms:description "Property. Model:'https://schema.org/Number'. Units:'1/day'. The bulk reaction coefficient used for modelling reactions in the tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "bulkReactionCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mixingModel dcterms:description "Property. Model:'https://schema.org/Text'. A sub-property of the Property sourceCategory. Enum:'2COMP, FIFO, LIFO, MIXED'";
+    rdf:type rdf:Property;
+    rdfs:label "mixingModel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>.
+sdm:MixingModel rdf:type skos:ConceptScheme.
+sdm:mixingModel rdfs:range [
+  owl:oneOf (sdm:2COMP sdm:FIFO sdm:LIFO sdm:MIXED)
+].
+sdm:2COMP rdf:type skos:Concept;
+    skos:inScheme sdm:MixingModel;
+    rdfs:label "2COMP".
+sdm:FIFO rdf:type skos:Concept;
+    skos:inScheme sdm:MixingModel;
+    rdfs:label "FIFO".
+sdm:LIFO rdf:type skos:Concept;
+    skos:inScheme sdm:MixingModel;
+    rdfs:label "LIFO".
+sdm:MIXED rdf:type skos:Concept;
+    skos:inScheme sdm:MixingModel;
+    rdfs:label "MIXED".
+sdm:volumeCurve dcterms:description "Relationship. The ID label of a curve used to describe the relation between tank volume and water level";
+    rdf:type rdf:Property;
+    rdfs:label "volumeCurve";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>.
+sdm:mixingFraction dcterms:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. The fraction of the tank's total volume that comprises the inlet-outlet compartment of the two-compartment (2COMP) mixing model. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "mixingFraction";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:hasInlet dcterms:description "Relationship. A relationship indicating the water inlet points of the Reservoir";
+    rdf:type rdf:Property;
+    rdfs:label "hasInlet";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:hasOutlet dcterms:description "Relationship. A relationship indicating the water outlet points of the Reservoir";
+    rdf:type rdf:Property;
+    rdfs:label "hasOutlet";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    rdfs:range xsd:anyURI.

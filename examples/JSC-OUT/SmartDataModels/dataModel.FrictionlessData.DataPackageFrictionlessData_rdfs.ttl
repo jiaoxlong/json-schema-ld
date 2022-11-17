@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json> dcterms:title "Smart Data Models - Data Package";
+    dcterms:description "Data Package is a simple specification for data access and delivery.Converted for Smart Data Models initiative from original frictionless data".
+sdm:type dcterms:description "Property. It has to be DataPackageFrictionlessData. NGSI entity type";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DataPackageFrictionlessData)
+].
+sdm:DataPackageFrictionlessData rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DataPackageFrictionlessData".
+sdm:profile dcterms:description "Property. Profile. Every Package and Resource descriptor has a profile. The default profile, if none is declared, is `data-package` for Package and `data-resource` for Resource. The profile of this descriptor";
+    rdf:type rdf:Property;
+    rdfs:label "profile";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:name dcterms:description "Property. Name. This is ideally a url-usable and human-readable name. Name `SHOULD` be invariant, meaning it `SHOULD NOT` change when its parent descriptor is updated. An identifier string. Lower case characters with `.`, `_`, `-` and `/` are allowed";
+    rdf:type rdf:Property;
+    rdfs:label "name";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:id dcterms:description "Property. ID. A common usage pattern for Data Packages is as a packaging format within the bounds of a system or platform. In these cases, a unique identifier for a package is desired for common data handling workflows, such as updating an existing package. While at the level of the specification, global uniqueness cannot be validated, consumers using the `id` property `MUST` ensure identifiers are globally unique. A property reserved for globally unique identifiers. Examples of identifiers that are unique include UUIDs and DOIs";
+    rdf:type rdf:Property;
+    rdfs:label "id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:title dcterms:description "Property. Title. . A human-readable title";
+    rdf:type rdf:Property;
+    rdfs:label "title";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:description dcterms:description "Property. Description. . A text description. Markdown is encouraged";
+    rdf:type rdf:Property;
+    rdfs:label "description";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:homepage dcterms:description "Property. Home Page. . The home on the web that is related to this data package";
+    rdf:type rdf:Property;
+    rdfs:label "homepage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:created dcterms:description "Property. Created. The datetime must conform to the string formats for datetime as described in [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.6). The datetime on which this descriptor was created";
+    rdf:type rdf:Property;
+    rdfs:label "created";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:contributors rdf:type rdf:Property;
+    rdfs:label "contributors";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:keywords rdf:type rdf:Property;
+    rdfs:label "keywords";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:image dcterms:description "Property. Image. . A image to represent this package";
+    rdf:type rdf:Property;
+    rdfs:label "image";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:licenses rdf:type rdf:Property;
+    rdfs:label "licenses";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:resources rdf:type rdf:Property;
+    rdfs:label "resources";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:sources rdf:type rdf:Property;
+    rdfs:label "sources";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/DataPackageFrictionlessData/schema.json>;
+    rdfs:range xsd:string.

@@ -1,0 +1,61 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/AeroAllergenObserved/schema.json> dcterms:title " - Pollen levels observed schema";
+    dcterms:description "An observation of pollen levels at a certain place and time.".
+sdm:type dcterms:description "Property. NGSI Entity type";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AeroAllergenObserved/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AeroAllergenObserved)
+].
+sdm:AeroAllergenObserved rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AeroAllergenObserved".
+sdm:dateObserved dcterms:description "Property. The date and time of this observation in ISO8601 UTCformat. It can be represented by a specific time instant or by an ISO8601 interval.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AeroAllergenObserved/schema.json>;
+    rdfs:range xsd:string.
+sdm:allergenRisk dcterms:description "Property. Overall allergen risk corresponding to the aero allergens observed.";
+    rdf:type rdf:Property;
+    rdfs:label "allergenRisk";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AeroAllergenObserved/schema.json>.
+sdm:AllergenRisk rdf:type skos:ConceptScheme.
+sdm:allergenRisk rdfs:range [
+  owl:oneOf (sdm:none sdm:low sdm:moderate sdm:high sdm:veryHigh)
+].
+sdm:none rdf:type skos:Concept;
+    skos:inScheme sdm:AllergenRisk;
+    rdfs:label "none".
+sdm:low rdf:type skos:Concept;
+    skos:inScheme sdm:AllergenRisk;
+    rdfs:label "low".
+sdm:moderate rdf:type skos:Concept;
+    skos:inScheme sdm:AllergenRisk;
+    rdfs:label "moderate".
+sdm:high rdf:type skos:Concept;
+    skos:inScheme sdm:AllergenRisk;
+    rdfs:label "high".
+sdm:veryHigh rdf:type skos:Concept;
+    skos:inScheme sdm:AllergenRisk;
+    rdfs:label "veryHigh".
+sdm:refDevice dcterms:description "Relationship. A reference to the device(s) which captured this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AeroAllergenObserved/schema.json>.

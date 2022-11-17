@@ -563,7 +563,8 @@ export abstract class CompositionSchema extends Schema{
             if (s.type === 'number')  schema = new NumberSchema(s, config, property_name);
             if (s.type === 'boolean') schema = new BooleanSchema(s, config, property_name);
             if (s.type === 'null') schema = new NullSchema(s, config, property_name);
-            this.schemas.push(schema);
+            if (schema instanceof Schema)
+                this.schemas.push(schema);
         }
         this.schema_type = composition;
         /**

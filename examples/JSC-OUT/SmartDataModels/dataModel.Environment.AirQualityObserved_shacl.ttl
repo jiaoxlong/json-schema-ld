@@ -1,0 +1,226 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Environment/AirQualityObserved/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be AirQualityObserved";
+  sh:name "type";
+  sh:in (sdm:AirQualityObserved);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. The date and time of this observation in ISO8601 UTCformat. Model:'https://schema.org/Text' ";
+  sh:name "dateObserved";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:areaServed;
+  sh:description "Property. Higher level area to which this air quality measurement belongs to. Model:'https://schema.org/Text' ";
+  sh:name "areaServed";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:airQualityIndex;
+  sh:description "Property. Model:'https://schema.org/Number'. Air quality index is a number used to report the quality of the air on any given day.";
+  sh:name "airQualityIndex";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:reliability;
+  sh:description "Property. Reliability (percentage, expressed in parts per one) corresponding to the air quality observed. Model:'https://schema.org/Number' ";
+  sh:name "reliability";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:as;
+  sh:description "Property. Model:'https://schema.org/Number'. Arsenic detected";
+  sh:name "as";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:c6h6;
+  sh:description "Property. Benzene detected";
+  sh:name "c6h6";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:cd;
+  sh:description "Property. Cadmium detected";
+  sh:name "cd";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:co;
+  sh:description "Property. Carbon Monoxide detected";
+  sh:name "co";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:coLevel;
+  sh:description "Property. Qualitative Carbon Monoxide presence";
+  sh:name "coLevel";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:co2;
+  sh:description "Property. Carbon Dioxide detected";
+  sh:name "co2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ni;
+  sh:description "Property. Nickel detected";
+  sh:name "ni";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:no;
+  sh:description "Property. Nitrogen monoxide detected";
+  sh:name "no";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:no2;
+  sh:description "Property. Nitrogen dioxide detected";
+  sh:name "no2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nox;
+  sh:description "Property. Other Nitrogen oxides detected";
+  sh:name "nox";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:o3;
+  sh:description "Property. Ozone detected";
+  sh:name "o3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pm10;
+  sh:description "Property. Particulate matter 10 micrometers or less in diameter";
+  sh:name "pm10";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pm25;
+  sh:description "Property. Particulate matter 2.5 micrometers or less in diameter";
+  sh:name "pm25";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pb;
+  sh:description "Property. Lead detected";
+  sh:name "pb";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:precipitation;
+  sh:description "Property. Model:'https://schema.org/Number'. Amount of water rain. Units:'Liters per square meter'.";
+  sh:name "precipitation";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:relativeHumidity;
+  sh:description "Property. Relative Humidity of the air (a number between 0 and 1 representing the range of 0% to 100%)";
+  sh:name "relativeHumidity";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:sh2;
+  sh:description "Property. Hydrogen sulfide detected";
+  sh:name "sh2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:so2;
+  sh:description "Property. Sulfur dioxide detected";
+  sh:name "so2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:typeofLocation;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of location of the sampled item";
+  sh:name "typeofLocation";
+  sh:in (sdm:indoor sdm:outdoor)
+], [
+  sh:path sdm:volatileOrganicCompoundsTotal;
+  sh:description "Property. Alkanes <C10, ketones <C6, aldehydes <C10, carboxylic acids <C5, aspirits<C7, Alkenes <C8, Aromatics";
+  sh:name "volatileOrganicCompoundsTotal";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refWeatherObserved;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:temperature;
+  sh:description "Property. Temperature of the item";
+  sh:name "temperature";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:windDirection;
+  sh:description "Property. Model:'http://schema.org/Number'. Direction of the weather vane";
+  sh:name "windDirection";
+  sh:minInclusive -180;
+  sh:maxInclusive 180;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:windSpeed;
+  sh:description "Property. Model:'http//schema.org/Number'. Intensity of the wind";
+  sh:name "windSpeed";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pm1;
+  sh:description "Property. Particulate matter 1 micrometers or less in diameter.";
+  sh:name "pm1";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,486 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.Energy/ACMeasurement/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI property type. It has to be ACMeasurement";
+  sh:name "type";
+  sh:in (sdm:ACMeasurement);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Date and time of this observation represented by an ISO8601 UTC format. It can be represented by an specific time instant or by an ISO8601 interval to separate attributes `dateObservedFrom`,`dateObservedTo`.";
+  sh:name "dateObserved";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedFrom;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Observation period: Start date and time in an ISO8601 UTC format. The attribute can be used in addition to the `dateObserved` attribute when it corresponds to a time interval to be highlighted.";
+  sh:name "dateObservedFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedTo;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Observation period: End date and time in an ISO8601 UTC format. The attribute can be used in addition to the `dateObserved` attribute when it corresponds to a time interval to be highlighted.";
+  sh:name "dateObservedTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:phaseType;
+  sh:description "Property. Model:'https://schema.org/Text'. Type of Phase. A unique value. Enum:'singlePhase, threePhase'";
+  sh:name "phaseType";
+  sh:in (sdm:singlePhase sdm:threePhase);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:frequency;
+  sh:description "Property. Model:'https://schema.org/Number'. The frequency of the circuit. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Hertz'";
+  sh:name "frequency";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dateEnergyMeteringStarted;
+  sh:description "Property. Model:'https://schema.org/DateTime'. The starting date for metering energy in an ISO8601 UTC format.";
+  sh:name "dateEnergyMeteringStarted";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:activeEnergyImport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Active energy imported i.e. consumed per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilowatt hour'";
+  sh:name "activeEnergyImport"
+].
+sdm:ActiveEnergyImportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ActiveEnergyImport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactiveEnergyImport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Fundamental frequency reactive energy imported i.e. consumed per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-reactive-hour'";
+  sh:name "reactiveEnergyImport"
+].
+sdm:ReactiveEnergyImportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ReactiveEnergyImport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:apparentEnergyImport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Apparent energy imported i.e. consumed per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-hour'";
+  sh:name "apparentEnergyImport"
+].
+sdm:ApparentEnergyImportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ApparentEnergyImport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activeEnergyExport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Active energy exported per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilowatt hour'";
+  sh:name "activeEnergyExport"
+].
+sdm:ActiveEnergyExportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ActiveEnergyExport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactiveEnergyExport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Fundamental frequency reactive energy exported per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-reactive-hour'";
+  sh:name "reactiveEnergyExport"
+].
+sdm:ReactiveEnergyExportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ReactiveEnergyExport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:apparentEnergyExport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Apparent energy exported per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-hour'";
+  sh:name "apparentEnergyExport"
+].
+sdm:ApparentEnergyExportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ApparentEnergyExport;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalActiveEnergyImport;
+  sh:description "Property. Model:'https://schema.org/Number'. Total energy imported i.e. consumed. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilowatt hour'";
+  sh:name "totalActiveEnergyImport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalReactiveEnergyImport;
+  sh:description "Property. Model:'https://schema.org/Number'. Total energy imported i.e. consumed (with regards to fundamental frequency reactive power). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-reactive-hour.'";
+  sh:name "totalReactiveEnergyImport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalApparentEnergyImport;
+  sh:description "Property. Model:'https://schema.org/Number'. Total energy imported i.e. consumed (with regards to apparent power). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-hour.'";
+  sh:name "totalApparentEnergyImport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalActiveEnergyExport;
+  sh:description "Property. Model:'https://schema.org/Number'. Total energy imported i.e. consumed . The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilowatt hour'";
+  sh:name "totalActiveEnergyExport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalReactiveEnergyExport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Total fundamental frequency reactive energy exported. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-reactive-hour'";
+  sh:name "totalReactiveEnergyExport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalApparentEnergyExport;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Total energy exported (with regards to apparent power). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'kilovolt-ampere-hour'";
+  sh:name "totalApparentEnergyExport";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePower;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Active power consumed per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Watt'";
+  sh:name "activePower"
+].
+sdm:ActivePowerShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ActivePower;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePower;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Fundamental frequency reactive power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'volts-ampere-reactive'";
+  sh:name "reactivePower"
+].
+sdm:ReactivePowerShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ReactivePower;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:apparentPower;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Apparent power consumed per phase. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Watt'";
+  sh:name "apparentPower"
+].
+sdm:ApparentPowerShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ApparentPower;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalActivePower;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Active Power consumed. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Watt'";
+  sh:name "totalActivePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalReactivePower;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Reactive Power consumed. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'volt-ampere-reactive'";
+  sh:name "totalReactivePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalApparentPower;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Apparent Power consumed. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'volt-ampere'";
+  sh:name "totalApparentPower";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactor;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Power factor for each phase.";
+  sh:name "powerFactor"
+].
+sdm:PowerFactorShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PowerFactor;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:displacementPowerFactor;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Displacement power factor for each phase. The quantity is based on the fundamental frequency of the system.";
+  sh:name "displacementPowerFactor"
+].
+sdm:DisplacementPowerFactorShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DisplacementPowerFactor;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalPowerFactor;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Sum of Power factor including all phases.";
+  sh:name "totalPowerFactor";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalDisplacementPowerFactor;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Sum of Displacement power factor including all phases. The quantity is based on the fundamental frequency of the system.";
+  sh:name "totalDisplacementPowerFactor";
+  sh:minInclusive -1;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:current;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Electrical current. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Ampere'";
+  sh:name "current"
+].
+sdm:CurrentShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Current;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:N;
+  sh:name "N";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:phaseVoltage;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. The voltage between each phase and neutral conductor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Volts'";
+  sh:name "phaseVoltage"
+].
+sdm:PhaseVoltageShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PhaseVoltage;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdVoltage;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Total harmonic distortion of voltage for each phase.";
+  sh:name "thdVoltage"
+].
+sdm:ThdVoltageShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ThdVoltage;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:thdCurrent;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Total harmonic distortion of current for each phase.";
+  sh:name "thdCurrent"
+].
+sdm:ThdCurrentShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ThdCurrent;
+    sh:property [
+  sh:path sdm:L1;
+  sh:name "L1";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L2;
+  sh:name "L2";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L3;
+  sh:name "L3";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:phaseToPhaseVoltage;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Voltage between phases. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). Units:'Volts'";
+  sh:name "phaseToPhaseVoltage"
+].
+sdm:PhaseToPhaseVoltageShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PhaseToPhaseVoltage;
+    sh:property [
+  sh:path sdm:L12;
+  sh:name "L12";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L23;
+  sh:name "L23";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:L31;
+  sh:name "L31";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+].

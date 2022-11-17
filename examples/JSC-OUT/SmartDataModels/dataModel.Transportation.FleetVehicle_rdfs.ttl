@@ -1,0 +1,47 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json> dcterms:title "Smart Data models - Fleet-Vehicle schema";
+    dcterms:description "This entity contains a harmonised description of a generic fleet vehicle such as a delivery vehicle, an ambulance or a postal vehicle. This entity is primarily associated with the vertical segment of the transport and logistics but may also be used many other related IoT applications.".
+sdm:type dcterms:description "Property. NGSI Entity identifier. It has to be FleetVehicle";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:FleetVehicle)
+].
+sdm:FleetVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "FleetVehicle".
+sdm:vehicle dcterms:description "Relationship. Reference to the related Vehicle entity instance that describes the core attributes of this Fleet Vehicle.";
+    rdf:type rdf:Property;
+    rdfs:label "vehicle";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json>.
+sdm:fleetVehicleType dcterms:description "Property. The type of the Vehicle for example (not limited to) these ones. Enum:'Taxi, Ambulance, Postal, Fire & Rescue, Delivery'";
+    rdf:type rdf:Property;
+    rdfs:label "fleetVehicleType";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json>;
+    rdfs:range xsd:string.
+sdm:operatingCompany dcterms:description "Property. Details of the organization that is operating this fleet vehicle. Based on Schema.org organization. Model:'https://schema.org/Organization'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingCompany";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json>;
+    rdfs:range xsd:string.
+sdm:operator dcterms:description "Relationship. The usual operator/driver/keeper of this fleet vehicle encoded as a Schema.org person. Model:'https://schema.org/Person'";
+    rdf:type rdf:Property;
+    rdfs:label "operator";
+    rdfs:domain <https://smart-data-models.github.io/datamodel.Transportation/FleetVehicle/schema.json>.

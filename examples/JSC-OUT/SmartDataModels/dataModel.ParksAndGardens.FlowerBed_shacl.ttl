@@ -1,0 +1,74 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type: It has to be FlowerBed";
+  sh:name "type";
+  sh:in (sdm:FlowerBed);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:taxon;
+  sh:name "taxon";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:depth;
+  sh:description "Property. Model:'https://schema.org/depth'. Depth of this flower bed.";
+  sh:name "depth";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:width;
+  sh:description "Property. Model:'https://schema.org/width'. Width of this flower bed.";
+  sh:name "width";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:height;
+  sh:description "Property. Model:'https://schema.org/heigth'. Heigth of this flower bed.";
+  sh:name "height";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:category;
+  sh:name "category";
+  sh:in (sdm:hedge sdm:lawnArea sdm:portable sdm:urbanTreeSpot)
+], [
+  sh:path sdm:shape;
+  sh:name "shape";
+  sh:in (sdm:circular sdm:elliptic sdm:polygon sdm:rectangular sdm:square)
+], [
+  sh:path sdm:dateLastWatering;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Timestamp which corresponds to the last watering of the flower bed.";
+  sh:name "dateLastWatering";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:nextWateringDeadline;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Deadline for next watering operation.";
+  sh:name "nextWateringDeadline";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:refGarden;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+].

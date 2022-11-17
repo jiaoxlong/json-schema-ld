@@ -1,0 +1,63 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI-LD Entity Type. It has to be SeaConditions";
+  sh:name "type";
+  sh:in (sdm:SeaConditions);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:waveLevel;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Douglas sea scale'. It indicates the height of the waves and also measures the swell of the sea.";
+  sh:name "waveLevel";
+  sh:minInclusive 0;
+  sh:maxInclusive 9;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:surfaceTemperature;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Celsius degrees'. Sea surface temperature.";
+  sh:name "surfaceTemperature";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:waveHeight;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Meters'. Height of the waves.";
+  sh:name "waveHeight";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:wavePeriod;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Seconds'. Indicates the time between the crests of a wave.";
+  sh:name "wavePeriod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pH;
+  sh:description "Property. Model:'https://schema.org/Number'. Acidity or basicity of an aqueous solution.";
+  sh:name "pH";
+  sh:minInclusive 0;
+  sh:maxInclusive 14;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:salinity;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Parts per thousand'. Amount of salts dissolved in water.";
+  sh:name "salinity";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTC format.";
+  sh:name "dateObserved";
+  sh:datatype xsd:dateTime
+].

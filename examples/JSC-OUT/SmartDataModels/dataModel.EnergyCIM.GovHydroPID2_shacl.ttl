@@ -1,0 +1,131 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovHydroPID2";
+  sh:name "type";
+  sh:in (sdm:GovHydroPID2)
+], [
+  sh:path sdm:atw;
+  sh:description "Property. Model:'https://schema.org/Number'. Factor multiplying Tw (Atw).  Typical Value = 0. Default: 0.0";
+  sh:name "atw";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:d;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine damping factor (D).  Unit = delta P / delta speed.  Typical Value = 0. Default: 0.0";
+  sh:name "d";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:feedbackSignal;
+  sh:description "Property. Model:'https://schema.org/Number'. Feedback signal type flag (Flag). true = use gate position feedback signal false = use Pe. Default: False";
+  sh:name "feedbackSignal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:g0;
+  sh:description "Property. Model:'https://schema.org/Number'. Gate opening at speed no load (G0).  Typical Value = 0. Default: 0.0";
+  sh:name "g0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:g1;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate gate opening (G1).  Typical Value = 0. Default: 0.0";
+  sh:name "g1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:g2;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate gate opening (G2).  Typical Value = 0. Default: 0.0";
+  sh:name "g2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening (Gmax).  Typical Value = 0. Default: 0.0";
+  sh:name "gmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum gate opening (Gmin).  Typical Value = 0. Default: 0.0";
+  sh:name "gmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kd;
+  sh:description "Property. Model:'https://schema.org/Number'. Derivative gain (Kd).  Typical Value = 0. Default: 0.0";
+  sh:name "kd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki;
+  sh:description "Property. Model:'https://schema.org/Number'. Reset gain (Ki).  Unit = PU/ sec.  Typical Value = 0. Default: 0.0";
+  sh:name "ki";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kp;
+  sh:description "Property. Model:'https://schema.org/Number'. Proportional gain (Kp).  Typical Value = 0. Default: 0.0";
+  sh:name "kp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (>0).  Unit = MW. Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p1;
+  sh:description "Property. Model:'https://schema.org/Number'. Power at gate opening G1 (P1).  Typical Value = 0. Default: 0.0";
+  sh:name "p1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p2;
+  sh:description "Property. Model:'https://schema.org/Number'. Power at gate opening G2 (P2).  Typical Value = 0. Default: 0.0";
+  sh:name "p2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p3;
+  sh:description "Property. Model:'https://schema.org/Number'. Power at full opened gate (P3).  Typical Value = 0. Default: 0.0";
+  sh:name "p3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rperm;
+  sh:description "Property. Model:'https://schema.org/Number'. Permanent drop (Rperm).  Typical Value = 0. Default: 0.0";
+  sh:name "rperm";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Controller time constant (Ta) (>0).  Typical Value = 0. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Gate servo time constant (Tb) (>0).  Typical Value = 0. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:treg;
+  sh:description "Property. Model:'https://schema.org/Number'. Speed detector time constant (Treg).  Typical Value = 0. Default: 0";
+  sh:name "treg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tw;
+  sh:description "Property. Model:'https://schema.org/Number'. Water inertia time constant (Tw) (>0).  Typical Value = 0. Default: 0";
+  sh:name "tw";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:velmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening velocity (Velmax).  Unit = PU/sec.  Typical Value = 0. Default: 0.0";
+  sh:name "velmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:velmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate closing velocity (Velmin).  Unit = PU/sec.  Typical Value = 0. Default: 0.0";
+  sh:name "velmin";
+  sh:datatype xsd:decimal
+].

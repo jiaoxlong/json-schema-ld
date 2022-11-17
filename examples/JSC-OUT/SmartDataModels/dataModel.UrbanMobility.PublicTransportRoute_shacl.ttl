@@ -1,0 +1,88 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportRoute/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be PublicTransportRoute";
+  sh:name "type";
+  sh:in (sdm:PublicTransportRoute);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:routeCode;
+  sh:description "Property. ID or code of the route (e.g. HT5200104000).  Model:'https://schema.org/Text'.";
+  sh:name "routeCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:shortRouteCode;
+  sh:description "Property. Shorter form of the ID/code of the route (e.g. 5200104000). Model:'https://schema.org/Text'.";
+  sh:name "shortRouteCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:transportationType;
+  sh:description "Property. Types of public transport using this stop as defined in (https://developers.google.com/transit/gtfs/reference/#routestxt). Model:'https://schema.org/Number'. Enum:'0, 1, 2, 3, 4, 5, 6, 7'";
+  sh:name "transportationType";
+  sh:in (sdm:0 sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7);
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:routeColor;
+  sh:description "Property. Color assigned to route in text.  Model:'https://schema.org/color'.";
+  sh:name "routeColor";
+  sh:pattern "^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:routeTextColor;
+  sh:description "Property. Color assigned to route in hexadecimal.  Model:'https://schema.org/color'.";
+  sh:name "routeTextColor";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:routeSegments;
+  sh:description "Property. Segments of this route defined by their name and stops.";
+  sh:name "routeSegments"
+].
+sdm:RouteSegmentShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:RouteSegment;
+    sh:property [
+  sh:path sdm:segmentName;
+  sh:name "segmentName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refPublicTransportStops;
+  sh:name "refPublicTransportStops";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:schedule;
+  sh:description "Property. Working hours of this route. Model:'https://schema.org/OpeningHoursSpecification'.";
+  sh:name "schedule"
+].
+sdm:ScheduleShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Schedule;
+    sh:property [
+  sh:path sdm:opens;
+  sh:name "opens";
+  sh:pattern "[0-9]{2}:[0-9]{2}";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:closes;
+  sh:name "closes";
+  sh:pattern "[0-9]{2}:[0-9]{2}";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dayOfWeek;
+  sh:name "dayOfWeek";
+  sh:in (sdm:Friday sdm:Monday sdm:PublicHolidays sdm:Saturday sdm:Sunday sdm:Thursday sdm:Tuesday sdm:Wednesday)
+].

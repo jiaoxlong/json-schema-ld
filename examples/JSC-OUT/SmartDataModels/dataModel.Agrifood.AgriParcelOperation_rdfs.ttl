@@ -1,0 +1,175 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json> dcterms:title "Smart Data Models - Agri Parcel Operation";
+    dcterms:description "This entity contains a harmonised description of a generic operations performed on a parcel of land. This entity is primarily associated with the agricultural vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI Entity Type. It has to be AgriParcelOperation";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AgriParcelOperation)
+].
+sdm:AgriParcelOperation rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AgriParcelOperation".
+sdm:hasAgriParcel dcterms:description "Relationship. Reference to the AgriParcel";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriParcel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:operationType dcterms:description "Property. A choice from an enumerated list describing the operation performed on the parcel. Enum:'fertiliser, inspection, pesticide, water, other'";
+    rdf:type rdf:Property;
+    rdfs:label "operationType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:OperationType rdf:type skos:ConceptScheme.
+sdm:operationType rdfs:range [
+  owl:oneOf (sdm:fertiliser sdm:inspection sdm:pesticide sdm:water sdm:other)
+].
+sdm:fertiliser rdf:type skos:Concept;
+    skos:inScheme sdm:OperationType;
+    rdfs:label "fertiliser".
+sdm:inspection rdf:type skos:Concept;
+    skos:inScheme sdm:OperationType;
+    rdfs:label "inspection".
+sdm:pesticide rdf:type skos:Concept;
+    skos:inScheme sdm:OperationType;
+    rdfs:label "pesticide".
+sdm:water rdf:type skos:Concept;
+    skos:inScheme sdm:OperationType;
+    rdfs:label "water".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:OperationType;
+    rdfs:label "other".
+sdm:result dcterms:description "Property. A description of the results of the operation. Enum:'ok, aborted, failed'";
+    rdf:type rdf:Property;
+    rdfs:label "result";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:Result rdf:type skos:ConceptScheme.
+sdm:result rdfs:range [
+  owl:oneOf (sdm:ok sdm:aborted sdm:failed)
+].
+sdm:ok rdf:type skos:Concept;
+    skos:inScheme sdm:Result;
+    rdfs:label "ok".
+sdm:aborted rdf:type skos:Concept;
+    skos:inScheme sdm:Result;
+    rdfs:label "aborted".
+sdm:failed rdf:type skos:Concept;
+    skos:inScheme sdm:Result;
+    rdfs:label "failed".
+sdm:plannedStartAt dcterms:description "Property. Model:'http://schema.org/DateTime'. The planned start date/timestamp for the operation. Note that this is advisory and the actual time the operation starts may be before or after the planned start";
+    rdf:type rdf:Property;
+    rdfs:label "plannedStartAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:plannedEndAt dcterms:description "Property. Model:'http://schema.org/DateTime'. The planned end date/timestamp for the operation. <br/><br/>Note that this is advisory and the actual time the operation finishes may be before or after the planned end.";
+    rdf:type rdf:Property;
+    rdfs:label "plannedEndAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:status dcterms:description "Property. A choice from an enumerated list describing the status. Enum:'planned, ongoing, finished, scheduled, cancelled'";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:planned sdm:ongoing sdm:finished sdm:scheduled sdm:cancelled)
+].
+sdm:planned rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "planned".
+sdm:ongoing rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "ongoing".
+sdm:finished rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "finished".
+sdm:scheduled rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "scheduled".
+sdm:cancelled rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "cancelled".
+sdm:hasOperator dcterms:description "Relationship. Reference to the operator conducting the operation";
+    rdf:type rdf:Property;
+    rdfs:label "hasOperator";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:startedAt dcterms:description "Property. Model:'http://schema.org/DateTime'. Timestamp when the operation actually started to be performed.";
+    rdf:type rdf:Property;
+    rdfs:label "startedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:endedAt dcterms:description "Property. Model:'http://schema.org/DateTime'. Timestamp when the operation actually finished.";
+    rdf:type rdf:Property;
+    rdfs:label "endedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:reportedAt dcterms:description "Property. Model:'http://schema.org/DateTime'. Timestamp when the event fault was reported.";
+    rdf:type rdf:Property;
+    rdfs:label "reportedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:hasAgriProductType dcterms:description "Relationship. Reference to the AgriProductType used/applied.";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriProductType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:quantity dcterms:description "Property. Model:'http://schema.org/Number'. The total quantity of water or product used/ applied. It is recommended this is measured in litres for liquids or kilogrammes for solids.";
+    rdf:type rdf:Property;
+    rdfs:label "quantity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:waterSource dcterms:description "Property. Model:'http://schema.org/Text'. Type of water sources. Enum:'borehole, rainfall, river, rainwater capture, water dam, commercial supply'.";
+    rdf:type rdf:Property;
+    rdfs:label "waterSource";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>.
+sdm:WaterSource rdf:type skos:ConceptScheme.
+sdm:waterSource rdfs:range [
+  owl:oneOf (sdm:borehole sdm:rainfall sdm:river sdm:rainwater capture sdm:water dam sdm:commercial supply)
+].
+sdm:borehole rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "borehole".
+sdm:rainfall rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "rainfall".
+sdm:river rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "river".
+sdm:rainwater capture rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "rainwater capture".
+sdm:water dam rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "water dam".
+sdm:commercial supply rdf:type skos:Concept;
+    skos:inScheme sdm:WaterSource;
+    rdfs:label "commercial supply".
+sdm:workOrder dcterms:description "Relationship. Model:'http://schema.org/URL'. Relationship with the workorder for the execution";
+    rdf:type rdf:Property;
+    rdfs:label "workOrder";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:workRecord dcterms:description "Relationship. Model:'http://schema.org/URL'. Relationship with the work record of the execution";
+    rdf:type rdf:Property;
+    rdfs:label "workRecord";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:irrigationRecord dcterms:description "Relationship. Model:'http://schema.org/URL'. Relationship with the irrigation record of the execution";
+    rdf:type rdf:Property;
+    rdfs:label "irrigationRecord";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelOperation/schema.json>;
+    rdfs:range xsd:anyURI.

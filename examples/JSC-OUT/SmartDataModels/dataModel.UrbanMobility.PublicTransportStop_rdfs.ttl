@@ -1,0 +1,83 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json> dcterms:title "Urban mobility PublicTransportStop schema";
+    dcterms:description "A generic public transport stop".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be PublicTransportStop";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PublicTransportStop)
+].
+sdm:PublicTransportStop rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PublicTransportStop".
+sdm:stopCode dcterms:description "Property. Identifier/code of the public transport stop. Model:'https://schema.org/Text'.";
+    rdf:type rdf:Property;
+    rdfs:label "stopCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>;
+    rdfs:range xsd:string.
+sdm:shortStopCode dcterms:description "Property. Shorter form of the identifier/code of the public transport stop. Model:'https://schema.org/Text'.";
+    rdf:type rdf:Property;
+    rdfs:label "shortStopCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>;
+    rdfs:range xsd:string.
+sdm:transportationType rdf:type rdf:Property;
+    rdfs:label "transportationType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>.
+sdm:TransportationType rdf:type skos:ConceptScheme.
+sdm:transportationType rdfs:range [
+  owl:oneOf (sdm:0 sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7)
+].
+sdm:0 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "0".
+sdm:1 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "1".
+sdm:2 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "2".
+sdm:3 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "3".
+sdm:4 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "4".
+sdm:5 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "5".
+sdm:6 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "6".
+sdm:7 rdf:type skos:Concept;
+    skos:inScheme sdm:TransportationType;
+    rdfs:label "7".
+sdm:refPublicTransportRoute rdf:type rdf:Property;
+    rdfs:label "refPublicTransportRoute";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>.
+sdm:peopleCount dcterms:description "Property. Estimation of people waiting in the stop. Model:'https://schema.org/Number'.";
+    rdf:type rdf:Property;
+    rdfs:label "peopleCount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>;
+    rdfs:range xsd:integer.
+sdm:refPeopleCountDevice dcterms:description "Property. Reference to the [Device](https://github.com/Fiware/dataModels/blob/master/specs/Device/Device/doc/spec.md) providing people count estimate.";
+    rdf:type rdf:Property;
+    rdfs:label "refPeopleCountDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UrbanMobility/PublicTransportStop/schema.json>;
+    rdfs:range xsd:string.

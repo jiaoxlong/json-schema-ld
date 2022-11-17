@@ -1,0 +1,52 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json> dcterms:title "Smart Data models - UAV-ADSB schema";
+    dcterms:description "This entity contains a harmonised description of a generic UnmannedAerialVehicle (UAV) Automatic Dependent Surveillance–Broadcast. This entity is primarily associated with the control and management of Unmanned Aerial Vehicles. Each UAVADSB instance will be related to a specific UAV instance.".
+sdm:type dcterms:description "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleADSB";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:UnmannedAerialVehicleADSB)
+].
+sdm:UnmannedAerialVehicleADSB rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "UnmannedAerialVehicleADSB".
+sdm:UnmannedAerialVehicle dcterms:description "Relationship. Reference to the Unmanned Aerial Vehicle entity to which this broadcast message relates.";
+    rdf:type rdf:Property;
+    rdfs:label "UnmannedAerialVehicle";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>.
+sdm:observedAt dcterms:description "Property. Indicates the date/time of the DBS broadcast.";
+    rdf:type rdf:Property;
+    rdfs:label "observedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:originatedByUnmannedAerialVehicle dcterms:description "Property. A logical indicator of source of the message. True indicates it is the UAV itself, false indicates that it is a different source, a listening station software application or a different UAV.";
+    rdf:type rdf:Property;
+    rdfs:label "originatedByUnmannedAerialVehicle";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:originator dcterms:description "Relationship. Refers to a third party UAV instance or other entity (e.g. listening station) that reported the information in the case the message was not directly originated by the UAV.";
+    rdf:type rdf:Property;
+    rdfs:label "originator";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>.
+sdm:UnmannedAerialVehicleADSBroadcast dcterms:description "Property. A flight message describing the current flight status as a DBSB Message stored as a string of hexadecimal digits.";
+    rdf:type rdf:Property;
+    rdfs:label "UnmannedAerialVehicleADSBroadcast";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleADSB/schema.json>;
+    rdfs:range xsd:string.

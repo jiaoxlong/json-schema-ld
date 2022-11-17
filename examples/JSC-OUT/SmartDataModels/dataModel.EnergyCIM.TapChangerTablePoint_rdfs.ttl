@@ -1,0 +1,59 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json> dcterms:title " Smart Data Models - TapChangerTablePoint";
+    dcterms:description "Adapted from CIM data models. ".
+sdm:type dcterms:description "Property. NGSI type. It has to be TapChangerTablePoint";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:TapChangerTablePoint)
+].
+sdm:TapChangerTablePoint rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "TapChangerTablePoint".
+sdm:b dcterms:description "Property. Model:'https://schema.org/Number'. The magnetizing branch susceptance deviation in percent of nominal value. The actual susceptance is calculated as follows: calculated magnetizing susceptance = b(nominal) * (1 + b(from this class)/100).   The b(nominal) is defined as the static magnetizing susceptance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:g dcterms:description "Property. Model:'https://schema.org/Number'. The magnetizing branch conductance deviation in percent of nominal value. The actual conductance is calculated as follows: calculated magnetizing conductance = g(nominal) * (1 + g(from this class)/100).   The g(nominal) is defined as the static magnetizing conductance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "g";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r dcterms:description "Property. Model:'https://schema.org/Number'. The resistance deviation in percent of nominal value. The actual reactance is calculated as follows: calculated resistance = r(nominal) * (1 + r(from this class)/100).   The r(nominal) is defined as the static resistance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratio dcterms:description "Property. Model:'https://schema.org/Number'. The voltage ratio in per unit. Hence this is a value close to one. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:step dcterms:description "Property. Model:'https://schema.org/Number'. The tap step. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "step";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x dcterms:description "Property. Model:'https://schema.org/Number'. The series reactance deviation in percent of nominal value. The actual reactance is calculated as follows: calculated reactance = x(nominal) * (1 + x(from this class)/100).   The x(nominal) is defined as the static series reactance on the associated power transformer end or ends.  This model assumes the star impedance (pi model) form. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TapChangerTablePoint/schema.json>;
+    rdfs:range xsd:decimal.

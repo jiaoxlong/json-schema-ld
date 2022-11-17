@@ -1,0 +1,73 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json> dcterms:title " Smart Data Models - Organization";
+    dcterms:description "An organization such as a school, NGO, corporation, club, etc, mapped from schema.org".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Organization";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Organization)
+].
+sdm:Organization rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Organization".
+sdm:aggregateRating dcterms:description "Property. The average rating based on multiple ratings or reviews. Privacy:'low'";
+    rdf:type rdf:Property;
+    rdfs:label "aggregateRating";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range sdm:AggregateRating.
+sdm:AggregateRating rdf:type rdfs:Class;
+    rdfs:label "AggregateRating".
+sdm:itemReviewed dcterms:description "Relationship. The item that is being reviewed/rated. ";
+    rdf:type rdf:Property;
+    rdfs:label "itemReviewed";
+    rdfs:domain sdm:AggregateRating.
+sdm:ratingCount rdf:type rdf:Property;
+    rdfs:label "ratingCount";
+    rdfs:domain sdm:AggregateRating;
+    rdfs:range xsd:decimal.
+sdm:reviewCount rdf:type rdf:Property;
+    rdfs:label "reviewCount";
+    rdfs:domain sdm:AggregateRating;
+    rdfs:range xsd:decimal.
+sdm:author dcterms:description "Relationship. Model:'https://schema.org/URL'. The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.";
+    rdf:type rdf:Property;
+    rdfs:label "author";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:bestRating dcterms:description "Property. Model:'https://schema.org/Number'. The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed. ";
+    rdf:type rdf:Property;
+    rdfs:label "bestRating";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:reviewAspect dcterms:description "Property. Model:'https://schema.org/Text'. This Review or Rating is relevant to this part or facet of the itemReviewed";
+    rdf:type rdf:Property;
+    rdfs:label "reviewAspect";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range xsd:string.
+sdm:legalName dcterms:description "Property. Model:'https://schema.org/legalName'. The official name of the organization, e.g. the registered company name.";
+    rdf:type rdf:Property;
+    rdfs:label "legalName";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range xsd:string.
+sdm:taxID dcterms:description "Property. Model:'https://schema.org/taxID'. The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.";
+    rdf:type rdf:Property;
+    rdfs:label "taxID";
+    rdfs:domain <https://smart-data-models.github.io/DataModel.Organization/Organization/schema.json>;
+    rdfs:range xsd:string.

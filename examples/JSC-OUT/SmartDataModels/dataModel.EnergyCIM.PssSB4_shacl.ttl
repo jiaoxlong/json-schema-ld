@@ -1,0 +1,76 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssSB4/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be PssSB4";
+  sh:name "type";
+  sh:in (sdm:PssSB4)
+], [
+  sh:path sdm:kx;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (Kx). Default: 0.0";
+  sh:name "kx";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Ta). Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tb). Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tc). Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:td;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Td). Default: 0";
+  sh:name "td";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Te). Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tt;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tt). Default: 0";
+  sh:name "tt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tx1;
+  sh:description "Property. Model:'https://schema.org/Number'. Reset time constant (Tx1). Default: 0";
+  sh:name "tx1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tx2;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tx2). Default: 0";
+  sh:name "tx2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vsmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Vsmax). Default: 0.0";
+  sh:name "vsmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vsmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Vsmin). Default: 0.0";
+  sh:name "vsmin";
+  sh:datatype xsd:decimal
+].

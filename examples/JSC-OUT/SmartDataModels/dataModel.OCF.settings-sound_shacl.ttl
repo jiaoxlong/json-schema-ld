@@ -1,0 +1,59 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.IoTDataModels/settings-sound/schema.json>;
+    sh:property [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.settings.sound)
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.rw sdm:oic.if.baseline)
+], [
+  sh:path sdm:speaker;
+  sh:description "Property. Device Settings Sound - Speaker. Client can change speaker using supported-speakers property.";
+  sh:name "speaker";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:supported-speakers;
+  sh:name "supported-speakers";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:sound-mode;
+  sh:description "Property. Device Settings Sound - Sound Mode. Client can change sound-mode using supported-sound-modes property.";
+  sh:name "sound-mode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:supported-sound-modes;
+  sh:name "supported-sound-modes";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:auto-volume;
+  sh:description "Property. Automatically equalizes the volume level when switching to antother channel.";
+  sh:name "auto-volume";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:dolby-atmos-compatibility;
+  sh:description "Property. Supports dolby-atmos mode.";
+  sh:name "dolby-atmos-compatibility";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be settings-sound";
+  sh:name "type";
+  sh:in (sdm:settings-sound);
+  sh:minCount 1;
+  sh:maxCount 1
+].

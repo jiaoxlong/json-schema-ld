@@ -92,6 +92,7 @@ catch(e) {
 
 for (const jsc of cp.source){
     const ld = new JSCLDSchema(jsc, cp);
+    console.log(jsc)
     ld.serialize();
     ld.materialize();
 }

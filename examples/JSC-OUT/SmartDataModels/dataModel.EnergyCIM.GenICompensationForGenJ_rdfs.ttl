@@ -1,0 +1,49 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json> dcterms:title " Smart Data Models - GenICompensationForGenJ";
+    dcterms:description "Adapted from CIM data models. This class provides the resistive and reactive components of compensation for the generator associated with the IEEE Type 2 voltage compensator for current flow out of one of the other generators in the interconnection.".
+sdm:type dcterms:description "Property. NGSI type. It has to be GenICompensationForGenJ";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GenICompensationForGenJ)
+].
+sdm:GenICompensationForGenJ rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GenICompensationForGenJ".
+sdm:SynchronousMachineDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Standard synchronous machine out of which current flow is being compensated for. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "SynchronousMachineDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:VcompIEEEType2 dcterms:description "Property. Model:'https://schema.org/Number'. The standard IEEE Type 2 voltage compensator of this compensation. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "VcompIEEEType2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rcij dcterms:description "Property. Model:'https://schema.org/Number'.  Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rcij";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xcij dcterms:description "Property. Model:'https://schema.org/Number'.  Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xcij";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GenICompensationForGenJ/schema.json>;
+    rdfs:range xsd:decimal.

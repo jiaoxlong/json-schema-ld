@@ -1,0 +1,356 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssIEEE4B/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be PssIEEE4B";
+  sh:name "type";
+  sh:in (sdm:PssIEEE4B)
+], [
+  sh:path sdm:bwh1;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 1 (high-frequency band): Three dB bandwidth (B). Default: 0.0";
+  sh:name "bwh1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bwh2;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 2 (high-frequency band): Three dB bandwidth (B). Default: 0.0";
+  sh:name "bwh2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bwl1;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 1 (low-frequency band): Three dB bandwidth (B). Default: 0.0";
+  sh:name "bwl1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bwl2;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 2 (low-frequency band): Three dB bandwidth (B). Default: 0.0";
+  sh:name "bwl2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh;
+  sh:description "Property. Model:'https://schema.org/Number'. High band gain (K).  Typical Value = 120. Default: 0.0";
+  sh:name "kh";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh1;
+  sh:description "Property. Model:'https://schema.org/Number'. High band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "kh1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh11;
+  sh:description "Property. Model:'https://schema.org/Number'. High band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "kh11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh17;
+  sh:description "Property. Model:'https://schema.org/Number'. High band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "kh17";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kh2;
+  sh:description "Property. Model:'https://schema.org/Number'. High band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "kh2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band gain (K).  Typical Value = 30. Default: 0.0";
+  sh:name "ki";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki1;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "ki1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki11;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "ki11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki17;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "ki17";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki2;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "ki2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kl;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band gain (K).  Typical Value = 7.5. Default: 0.0";
+  sh:name "kl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kl1;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "kl1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kl11;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "kl11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kl17;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band first lead-lag blocks coefficient (K).  Typical Value = 1. Default: 0.0";
+  sh:name "kl17";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kl2;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band differential filter gain (K).  Typical Value = 66. Default: 0.0";
+  sh:name "kl2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omeganh1;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 1 (high-frequency band): filter frequency (omega). Default: 0.0";
+  sh:name "omeganh1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omeganh2;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 2 (high-frequency band): filter frequency (omega). Default: 0.0";
+  sh:name "omeganh2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omeganl1;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 1 (low-frequency band): filter frequency (omega). Default: 0.0";
+  sh:name "omeganl1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omeganl2;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter 2 (low-frequency band): filter frequency (omega). Default: 0.0";
+  sh:name "omeganl2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th1;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0.01513. Default: 0";
+  sh:name "th1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th10;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th11;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th12;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th12";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th2;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0.01816. Default: 0";
+  sh:name "th2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th3;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th4;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th5;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th6;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th7;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0.01816. Default: 0";
+  sh:name "th7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th8;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0.02179. Default: 0";
+  sh:name "th8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:th9;
+  sh:description "Property. Model:'https://schema.org/Number'. High band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "th9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti1;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0.173. Default: 0";
+  sh:name "ti1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti10;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti11;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti12;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti12";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti2;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0.2075. Default: 0";
+  sh:name "ti2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti3;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti4;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti5;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti6;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti7;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0.2075. Default: 0";
+  sh:name "ti7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti8;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0.2491. Default: 0";
+  sh:name "ti8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti9;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ti9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl1;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 1.73. Default: 0";
+  sh:name "tl1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl10;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl11;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl11";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl12;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl12";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl2;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 2.075. Default: 0";
+  sh:name "tl2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl3;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl4;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl5;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl6;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl7;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 2.075. Default: 0";
+  sh:name "tl7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl8;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 2.491. Default: 0";
+  sh:name "tl8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl9;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vhmax;
+  sh:description "Property. Model:'https://schema.org/Number'. High band output maximum limit (V).  Typical Value = 0.6. Default: 0.0";
+  sh:name "vhmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vhmin;
+  sh:description "Property. Model:'https://schema.org/Number'. High band output minimum limit (V).  Typical Value = -0.6. Default: 0.0";
+  sh:name "vhmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimax;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band output maximum limit (V).  Typical Value = 0.6. Default: 0.0";
+  sh:name "vimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimin;
+  sh:description "Property. Model:'https://schema.org/Number'. Intermediate band output minimum limit (V).  Typical Value = -0.6. Default: 0.0";
+  sh:name "vimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vlmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band output maximum limit (V).  Typical Value = 0.075. Default: 0.0";
+  sh:name "vlmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vlmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Low band output minimum limit (V).  Typical Value = -0.075. Default: 0.0";
+  sh:name "vlmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vstmax;
+  sh:description "Property. Model:'https://schema.org/Number'. PSS output maximum limit (V).  Typical Value = 0.15. Default: 0.0";
+  sh:name "vstmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vstmin;
+  sh:description "Property. Model:'https://schema.org/Number'. PSS output minimum limit (V).  Typical Value = -0.15. Default: 0.0";
+  sh:name "vstmin";
+  sh:datatype xsd:decimal
+].

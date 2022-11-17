@@ -1,0 +1,51 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindGenTurbineType3IEC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be WindGenTurbineType3IEC";
+  sh:name "type";
+  sh:in (sdm:WindGenTurbineType3IEC)
+], [
+  sh:path sdm:WindAeroLinearIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind aerodynamic model associated with this wind generator type 3 model. Default: None";
+  sh:name "WindAeroLinearIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindContPType3IEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind control P type 3 model associated with this wind turbine type 3 model. Default: None";
+  sh:name "WindContPType3IEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindContPitchAngleIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind control pitch angle model associated with this wind turbine type 3. Default: None";
+  sh:name "WindContPitchAngleIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindMechIEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind mechanical model associated with this wind turbine Type 3 model. Default: None";
+  sh:name "WindMechIEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dipmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum active current ramp rate (di). It is project dependent parameter. Default: 0.0";
+  sh:name "dipmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:diqmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum reactive current ramp rate (di). It is project dependent parameter. Default: 0.0";
+  sh:name "diqmax";
+  sh:datatype xsd:decimal
+].

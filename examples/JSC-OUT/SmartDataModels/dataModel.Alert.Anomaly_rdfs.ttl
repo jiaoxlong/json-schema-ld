@@ -1,0 +1,80 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/incubated/Anomaly/schema.json> dcterms:title "Anomaly";
+    dcterms:description "This entity contains a harmonised description of an anomaly.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be Anomaly";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/incubated/Anomaly/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Anomaly)
+].
+sdm:Anomaly rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Anomaly".
+sdm:detectedBy dcterms:description "Relationship. The ID of the device at which the anomaly was detected";
+    rdf:type rdf:Property;
+    rdfs:label "detectedBy";
+    rdfs:domain <https://smart-data-models.github.io/incubated/Anomaly/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:anomalousProperty dcterms:description "Property. Model:'http://schema.org/Text'. The controlledProperty (of the device) in which the anomaly was detected";
+    rdf:type rdf:Property;
+    rdfs:label "anomalousProperty";
+    rdfs:domain <https://smart-data-models.github.io/incubated/Anomaly/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateDetected dcterms:description "Property. Model:'http://schema.org/DateTime'. The date and time at which the anomaly was first detected";
+    rdf:type rdf:Property;
+    rdfs:label "dateDetected";
+    rdfs:domain <https://smart-data-models.github.io/incubated/Anomaly/schema.json>;
+    rdfs:range xsd:string.
+sdm:thresholdBreach dcterms:description "Property. Model:'https://schema.org/Text'. Description of an observed threshold breach that contributed to detection of an anomaly";
+    rdf:type rdf:Property;
+    rdfs:label "thresholdBreach";
+    rdfs:domain <https://smart-data-models.github.io/incubated/Anomaly/schema.json>;
+    rdfs:range sdm:ThresholdBreach.
+sdm:ThresholdBreach rdf:type rdfs:Class;
+    rdfs:label "ThresholdBreach".
+sdm:dateObserved dcterms:description "Property. Model:'http://schema.org/DateTime'. A sub-property of the Property 'thresholdBreach'. The date and time at which the threshold breach was observed";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain sdm:ThresholdBreach;
+    rdfs:range xsd:string.
+sdm:measuredValue dcterms:description "Property. Model:'http://schema.org/Number'. A sub-property of the Property 'thresholdBreach'. The value measured for the corresponding device and controlled property";
+    rdf:type rdf:Property;
+    rdfs:label "measuredValue";
+    rdfs:domain sdm:ThresholdBreach;
+    rdfs:range xsd:decimal.
+sdm:thresholdType dcterms:description "Property. Model:'https://schema.org/Text'. A sub-property of the Property 'thresholdBreach'. The type of the threshold that was breached";
+    rdf:type rdf:Property;
+    rdfs:label "thresholdType";
+    rdfs:domain sdm:ThresholdBreach.
+sdm:ThresholdType rdf:type skos:ConceptScheme.
+sdm:thresholdType rdfs:range [
+  owl:oneOf (sdm:UPPER sdm:LOWER)
+].
+sdm:UPPER rdf:type skos:Concept;
+    skos:inScheme sdm:ThresholdType;
+    rdfs:label "UPPER".
+sdm:LOWER rdf:type skos:Concept;
+    skos:inScheme sdm:ThresholdType;
+    rdfs:label "LOWER".
+sdm:thresholdValue dcterms:description "Property. Model:'https://schema.org/Number'. A sub-property of the Property 'thresholdBreach'. The value of the threshold that was breached";
+    rdf:type rdf:Property;
+    rdfs:label "thresholdValue";
+    rdfs:domain sdm:ThresholdBreach;
+    rdfs:range xsd:decimal.

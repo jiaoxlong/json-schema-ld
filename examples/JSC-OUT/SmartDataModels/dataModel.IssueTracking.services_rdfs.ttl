@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json> dcterms:title "Smart Data Models. Open311 Services";
+    dcterms:description "As per Open311 an entity of type services is an acceptable 311 service request type. A request type can be unique to the city/jurisdiction.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be services. Enum:'services'";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:services)
+].
+sdm:services rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "services".
+sdm:jurisdiction_id dcterms:description "Property. The unique ID of the legal entity of the service (i.e. city).";
+    rdf:type rdf:Property;
+    rdfs:label "jurisdiction_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+<open311:type> dcterms:description "Property. realtime: The service request ID will be returned immediately after the service request is submitted. batch: A token will be returned immediately after the service request is submitted. This token can then be later used to return the service request ID. blackbox: No service request ID will be returned after the service request is submitted. Enum:'realtime, batch, blackbox'. ";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>.
+<open311:Type> rdf:type skos:ConceptScheme.
+<open311:type> rdfs:range [
+  owl:oneOf (sdm:batch sdm:blackbox sdm:realtime)
+].
+sdm:batch rdf:type skos:Concept;
+    skos:inScheme <open311:Type>;
+    rdfs:label "batch".
+sdm:blackbox rdf:type skos:Concept;
+    skos:inScheme <open311:Type>;
+    rdfs:label "blackbox".
+sdm:realtime rdf:type skos:Concept;
+    skos:inScheme <open311:Type>;
+    rdfs:label "realtime".
+sdm:service_code dcterms:description "Property. The unique identifier for the service request type.";
+    rdf:type rdf:Property;
+    rdfs:label "service_code";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+sdm:service_name dcterms:description "Property. The human readable name of the service request type.";
+    rdf:type rdf:Property;
+    rdfs:label "service_name";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+sdm:keywords dcterms:description "Property. A comma separated list of tags or keywords to help users identify the request type. This can provide synonyms of the service_name and group.";
+    rdf:type rdf:Property;
+    rdfs:label "keywords";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+sdm:group dcterms:description "Property. A category to group this service type within. This provides a way to group several service request types under one category such as sanitation";
+    rdf:type rdf:Property;
+    rdfs:label "group";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+<open311:metadata> dcterms:description "Property. This field is not strictly needed as the proposed entity encompasses the attribute definition as well. If defined, its value must be `true` if the `attributes` property is defined and its array value is not empty. Otherwise it must be equal to `false`";
+    rdf:type rdf:Property;
+    rdfs:label "metadata";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:attributes rdf:type rdf:Property;
+    rdfs:label "attributes";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>.
+sdm:provider dcterms:description "Property. Provider of the service. Model:'http://schema.org/provider'";
+    rdf:type rdf:Property;
+    rdfs:label "provider";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:string.
+sdm:effectiveSince dcterms:description "Property. The date on which the service type was created. This date might be different than the entity creation date. Model:'http://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "effectiveSince";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json>;
+    rdfs:range xsd:dateTime.

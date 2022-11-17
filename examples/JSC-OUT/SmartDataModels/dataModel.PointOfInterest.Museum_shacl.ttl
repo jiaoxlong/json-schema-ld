@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.PointOfInterest/Museum/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Museum";
+  sh:name "type";
+  sh:in (sdm:Museum);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:museumType;
+  sh:name "museumType";
+  sh:in (sdm:appliedArts sdm:scienceAndTechnology sdm:fineArts sdm:music sdm:history sdm:sacredArt sdm:archaeology sdm:specials sdm:decorativeArts sdm:literature sdm:medicineAndPharmacy sdm:maritime sdm:transports sdm:military sdm:wax sdm:popularArtsAndTraditions sdm:numismatic sdm:unesco sdm:ceramics sdm:sumptuaryArts sdm:naturalScience sdm:prehistoric sdm:ethnology sdm:railway sdm:mining sdm:textile sdm:sculpture sdm:multiDisciplinar sdm:painting sdm:paleonthology sdm:modernArt sdm:thematic sdm:architecture sdm:museumHouse sdm:cathedralMuseum sdm:diocesanMuseum sdm:universitary sdm:contemporaryArt sdm:bullfighting)
+], [
+  sh:path sdm:facilities;
+  sh:name "facilities";
+  sh:in (sdm:elevator sdm:cafeteria sdm:shop sdm:auditory sdm:conferenceRoom sdm:audioguide sdm:cloakRoom sdm:forDisabled sdm:forBabies sdm:guidedTour sdm:restaurant sdm:ramp sdm:reservation)
+], [
+  sh:path sdm:historicalPeriod;
+  sh:name "historicalPeriod";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:artPeriod;
+  sh:name "artPeriod";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:buildingType;
+  sh:name "buildingType";
+  sh:in (sdm:prehistoricPlace sdm:acropolis sdm:alcazaba sdm:aqueduct sdm:alcazar sdm:amphitheatre sdm:arch sdm:polularArchitecture sdm:basilica sdm:road sdm:chapel sdm:cartuja sdm:nobleHouse sdm:residence sdm:castle sdm:castro sdm:catacombs sdm:cathedral sdm:cloister sdm:convent sdm:prehistoricCave sdm:dolmen sdm:officeBuilding sdm:houseBuilding sdm:industrialBuilding sdm:militaryBuilding sdm:hermitage sdm:fortress sdm:sculpturalGroups sdm:church sdm:garden sdm:fishMarket sdm:masia sdm:masiaFortificada sdm:minaret sdm:monastery sdm:monolith sdm:walls sdm:necropolis sdm:menhir sdm:mansion sdm:palace sdm:pantheon sdm:pazo sdm:pyramid sdm:bridge sdm:gate sdm:arcade sdm:walledArea sdm:sanctuary sdm:grave sdm:synagogue sdm:taulasTalayotsNavetas sdm:theathre sdm:temple sdm:spring sdm:tower sdm:archeologicalSite sdm:university sdm:graveyard sdm:fortifiedTemple sdm:civilEngineering sdm:square sdm:seminar sdm:bullfightingRing sdm:publicBuilding sdm:town sdm:cavesAndTouristicMines sdm:proCathedral sdm:mosque sdm:circus sdm:burialMound)
+], [
+  sh:path sdm:featuredArtist;
+  sh:or ([ sh:datatype xsd:string ])
+], [
+  sh:path sdm:contactPoint;
+  sh:description "Property. Model:'https://schema.org/ContactPoint'. Contact point for the museum.";
+  sh:name "contactPoint"
+].
+sdm:ContactPointShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ContactPoint;
+    sh:property [
+  sh:path sdm:touristArea;
+  sh:description "Property. Model:'https://schema.org/Text'. Tourist area at which this museum is located. Precise semantics might depend on the application or target country or region. For instance `Costa del Sol`.";
+  sh:name "touristArea";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refSeeAlso;
+  sh:or ()
+].

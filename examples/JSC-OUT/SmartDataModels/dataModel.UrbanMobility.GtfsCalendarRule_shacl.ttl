@@ -1,0 +1,86 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.UrbanMobility/GtfsCalendarRule/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type: It has to be GtfsCalendarRule";
+  sh:name "type";
+  sh:in (sdm:GtfsCalendarRule);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:monday;
+  sh:description "Property. Same as GTFS `monday`. Model:'https://schema.org/Boolean'";
+  sh:name "monday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:tuesday;
+  sh:description "Property. Same as GTFS `tuesday`. Model:'https://schema.org/Boolean'";
+  sh:name "tuesday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:wednesday;
+  sh:description "Property. Same as GTFS `wednesday`. Model:'https://schema.org/Boolean'";
+  sh:name "wednesday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:thursday;
+  sh:description "Property. Same as GTFS `thursday`. Model:'https://schema.org/Boolean'";
+  sh:name "thursday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:friday;
+  sh:description "Property. Same as GTFS `friday`. Model:'https://schema.org/Boolean'";
+  sh:name "friday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:saturday;
+  sh:description "Property. Same as GTFS `saturday`. Model:'https://schema.org/Boolean'";
+  sh:name "saturday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:sunday;
+  sh:description "Property. Same as GTFS `sunday`. Model:'https://schema.org/Boolean'";
+  sh:name "sunday";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:startDate;
+  sh:description "Property. Start date of this rule in `YYYY-MM-DD` format. It can be obtained from the field `start_date` of [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt). Model:'https://schema.org/Date'";
+  sh:name "startDate";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:date
+], [
+  sh:path sdm:endDate;
+  sh:description "Property. End date of this rule in `YYYY-MM-DD` format. It can be obtained from the field `end_date` of [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt). Model:'https://schema.org/Boolean'";
+  sh:name "endDate";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:date
+].

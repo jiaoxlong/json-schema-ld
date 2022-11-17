@@ -1,0 +1,301 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovCT2/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovCT2";
+  sh:name "type";
+  sh:in (sdm:GovCT2)
+], [
+  sh:path sdm:aset;
+  sh:description "Property. Model:'https://schema.org/Number'. Acceleration limiter setpoint (Aset).  Unit = PU/sec.  Typical Value = 10. Default: 0.0";
+  sh:name "aset";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:db;
+  sh:description "Property. Model:'https://schema.org/Number'. Speed governor dead band in per unit speed (db).  In the majority of applications, it is recommended that this value be set to zero.  Typical Value = 0. Default: 0.0";
+  sh:name "db";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dm;
+  sh:description "Property. Model:'https://schema.org/Number'. Speed sensitivity coefficient (Dm).  Dm can represent either the variation of the engine power with the shaft speed or the variation of maximum power capability with shaft speed.  If it is positive it describes the falling slope of the engine speed verses power characteristic as speed increases. A slightly falling characteristic is typical for reciprocating engines and some aero-derivative turbines.  If it is negative the engine power is assumed to be unaffected by the shaft speed, but the maximum permissible fuel flow is taken to fall with falling shaft speed. This is characteristic of single-shaft industrial turbines due to exhaust temperature limits.  Typical Value = 0. Default: 0.0";
+  sh:name "dm";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim1;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 1 (Flim1).  Unit = Hz.  Typical Value = 59. Default: 0.0";
+  sh:name "flim1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim10;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 10 (Flim10).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim2;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 2 (Flim2).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim3;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 3 (Flim3).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim4;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 4 (Flim4).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim5;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 5 (Flim5).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim6;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 6 (Flim6).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim7;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 7 (Flim7).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim8;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 8 (Flim8).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flim9;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency threshold 9 (Flim9).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "flim9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. Acceleration limiter Gain (Ka).  Typical Value = 10. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kdgov;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor derivative gain (Kdgov).  Typical Value = 0. Default: 0.0";
+  sh:name "kdgov";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kigov;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor integral gain (Kigov).  Typical Value = 0.45. Default: 0.0";
+  sh:name "kigov";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kiload;
+  sh:description "Property. Model:'https://schema.org/Number'. Load limiter integral gain for PI controller (Kiload).  Typical Value = 1. Default: 0.0";
+  sh:name "kiload";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kimw;
+  sh:description "Property. Model:'https://schema.org/Number'. Power controller (reset) gain (Kimw).  The default value of 0.01 corresponds to a reset time of 100 seconds.  A value of 0.001 corresponds to a relatively slow acting load controller.  Typical Value = 0. Default: 0.0";
+  sh:name "kimw";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpgov;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor proportional gain (Kpgov).  Typical Value = 4. Default: 0.0";
+  sh:name "kpgov";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpload;
+  sh:description "Property. Model:'https://schema.org/Number'. Load limiter proportional gain for PI controller (Kpload).  Typical Value = 1. Default: 0.0";
+  sh:name "kpload";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kturb;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine gain (Kturb).  Typical Value = 1.9168. Default: 0.0";
+  sh:name "kturb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ldref;
+  sh:description "Property. Model:'https://schema.org/Number'. Load limiter reference value (Ldref).  Typical Value = 1. Default: 0.0";
+  sh:name "ldref";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxerr;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum value for speed error signal (Maxerr).  Typical Value = 1. Default: 0.0";
+  sh:name "maxerr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minerr;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum value for speed error signal (Minerr).  Typical Value = -1. Default: 0.0";
+  sh:name "minerr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (> 0).  Unit = MW. Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim1;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 1 (Plim1).  Typical Value = 0.8325. Default: 0.0";
+  sh:name "plim1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim10;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 10 (Plim10).  Typical Value = 0. Default: 0.0";
+  sh:name "plim10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim2;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 2 (Plim2).  Typical Value = 0. Default: 0.0";
+  sh:name "plim2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim3;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 3 (Plim3).  Typical Value = 0. Default: 0.0";
+  sh:name "plim3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim4;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 4 (Plim4).  Typical Value = 0. Default: 0.0";
+  sh:name "plim4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim5;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 5 (Plim5).  Typical Value = 0. Default: 0.0";
+  sh:name "plim5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim6;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 6 (Plim6).  Typical Value = 0. Default: 0.0";
+  sh:name "plim6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim7;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 7 (Plim7).  Typical Value = 0. Default: 0.0";
+  sh:name "plim7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim8;
+  sh:description "Property. Model:'https://schema.org/Number'. Power limit 8 (Plim8).  Typical Value = 0. Default: 0.0";
+  sh:name "plim8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:plim9;
+  sh:description "Property. Model:'https://schema.org/Number'. Power Limit 9 (Plim9).  Typical Value = 0. Default: 0.0";
+  sh:name "plim9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:prate;
+  sh:description "Property. Model:'https://schema.org/Number'. Ramp rate for frequency-dependent power limit (Prate).  Typical Value = 0.017. Default: 0.0";
+  sh:name "prate";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r;
+  sh:description "Property. Model:'https://schema.org/Number'. Permanent droop (R).  Typical Value = 0.05. Default: 0.0";
+  sh:name "r";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rclose;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum valve closing rate (Rclose).  Unit = PU/sec.  Typical Value = -99. Default: 0.0";
+  sh:name "rclose";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rdown;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum rate of load limit decrease (Rdown).  Typical Value = -99. Default: 0.0";
+  sh:name "rdown";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ropen;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve opening rate (Ropen).  Unit = PU/sec.  Typical Value = 99. Default: 0.0";
+  sh:name "ropen";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rselect;
+  sh:description "Property. Model:'https://schema.org/Number'. Feedback signal for droop (Rselect).  Typical Value = electricalPower. Default: None";
+  sh:name "rselect";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rup;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum rate of load limit increase (Rup).  Typical Value = 99. Default: 0.0";
+  sh:name "rup";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Acceleration limiter time constant (Ta).  Typical Value = 1. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tact;
+  sh:description "Property. Model:'https://schema.org/Number'. Actuator time constant (Tact).  Typical Value = 0.4. Default: 0";
+  sh:name "tact";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine lag time constant (Tb).  Typical Value = 0.1. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine lead time constant (Tc).  Typical Value = 0. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tdgov;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor derivative controller time constant (Tdgov).  Typical Value = 1. Default: 0";
+  sh:name "tdgov";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:teng;
+  sh:description "Property. Model:'https://schema.org/Number'. Transport time delay for diesel engine used in representing diesel engines where there is a small but measurable transport delay between a change in fuel flow setting and the development of torque (Teng).  Teng should be zero in all but special cases where this transport delay is of particular concern.  Typical Value = 0. Default: 0";
+  sh:name "teng";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tfload;
+  sh:description "Property. Model:'https://schema.org/Number'. Load Limiter time constant (Tfload).  Typical Value = 3. Default: 0";
+  sh:name "tfload";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpelec;
+  sh:description "Property. Model:'https://schema.org/Number'. Electrical power transducer time constant (Tpelec).  Typical Value = 2.5. Default: 0";
+  sh:name "tpelec";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tsa;
+  sh:description "Property. Model:'https://schema.org/Number'. Temperature detection lead time constant (Tsa).  Typical Value = 0. Default: 0";
+  sh:name "tsa";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tsb;
+  sh:description "Property. Model:'https://schema.org/Number'. Temperature detection lag time constant (Tsb).  Typical Value = 50. Default: 0";
+  sh:name "tsb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve position limit (Vmax).  Typical Value = 1. Default: 0.0";
+  sh:name "vmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum valve position limit (Vmin).  Typical Value = 0.175. Default: 0.0";
+  sh:name "vmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:wfnl;
+  sh:description "Property. Model:'https://schema.org/Number'. No load fuel flow (Wfnl).  Typical Value = 0.187. Default: 0.0";
+  sh:name "wfnl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:wfspd;
+  sh:description "Property. Model:'https://schema.org/Number'. Switch for fuel source characteristic to recognize that fuel flow, for a given fuel valve stroke, can be proportional to engine speed (Wfspd). true = fuel flow proportional to speed (for some gas turbines and diesel engines with positive displacement fuel injectors) false = fuel control system keeps fuel flow independent of engine speed. Typical Value = false. Default: False";
+  sh:name "wfspd";
+  sh:datatype xsd:decimal
+].

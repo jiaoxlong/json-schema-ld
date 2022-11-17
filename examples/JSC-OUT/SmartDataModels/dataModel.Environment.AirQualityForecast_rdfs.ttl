@@ -1,0 +1,104 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json> dcterms:title "Smart Data Models - Air quality Forecast schema";
+    dcterms:description "A forecast of air quality conditions valid during a period".
+sdm:type dcterms:description "Property. NGSI Entity type: it has to be AirQualityForecast";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AirQualityForecast)
+].
+sdm:AirQualityForecast rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AirQualityForecast".
+sdm:airQualityIndex dcterms:description "Property. Model:'https://schema.org/Number'. Air quality index is a number used to report the quality of the air on any given day.";
+    rdf:type rdf:Property;
+    rdfs:label "airQualityIndex";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:integer.
+sdm:co2 dcterms:description "Property. Carbon Dioxide forecasted";
+    rdf:type rdf:Property;
+    rdfs:label "co2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:no2 dcterms:description "Property. Nitrogen dioxide forecasted";
+    rdf:type rdf:Property;
+    rdfs:label "no2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:o3 dcterms:description "Property. Ozone forecasted";
+    rdf:type rdf:Property;
+    rdfs:label "o3";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nox dcterms:description "Property. Other Nitrogen oxides forecasted";
+    rdf:type rdf:Property;
+    rdfs:label "nox";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:so2 dcterms:description "Property. Sulfur dioxide detected";
+    rdf:type rdf:Property;
+    rdfs:label "so2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pm10 dcterms:description "Property. Particulate matter 10 micrometers or less in diameter";
+    rdf:type rdf:Property;
+    rdfs:label "pm10";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pm25 dcterms:description "Property. Particulate matter 2.5 micrometers or less in diameter";
+    rdf:type rdf:Property;
+    rdfs:label "pm25";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:temperature dcterms:description "Property. Temperature of the item";
+    rdf:type rdf:Property;
+    rdfs:label "temperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:relativeHumidity dcterms:description "Property. Model:'https://schema.org/Number'. Humidity in the Air";
+    rdf:type rdf:Property;
+    rdfs:label "relativeHumidity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:windSpeed dcterms:description "Property. Model:'http//schema.org/Number'. Intensity of the wind";
+    rdf:type rdf:Property;
+    rdfs:label "windSpeed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:precipitation dcterms:description "Property. Model:'https://schema.org/Number'. Amount of water rain. Units:'Liters per square meter'.";
+    rdf:type rdf:Property;
+    rdfs:label "precipitation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:validFrom dcterms:description "Property. The start of the validity period for this forecast as a ISO8601 format";
+    rdf:type rdf:Property;
+    rdfs:label "validFrom";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:validTo dcterms:description "Property. The end of the validity period for this forecast as a ISO8601 format";
+    rdf:type rdf:Property;
+    rdfs:label "validTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:validity dcterms:description "Property. Model:'https://schema.org/Text'. Includes the validity period for this forecast as a ISO8601 time interval.";
+    rdf:type rdf:Property;
+    rdfs:label "validity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityForecast/schema.json>;
+    rdfs:range xsd:string.

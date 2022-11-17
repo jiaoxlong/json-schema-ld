@@ -1,0 +1,233 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://raw.githubusercontent.com/smart-data-models/dataModel.MarineTransport/master/Vessel/schema.json>;
+    sh:property [
+  sh:path sdm:id;
+  sh:description "Property. Unique identifier of the entity";
+  sh:name "id";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Vessel";
+  sh:name "type";
+  sh:in (sdm:Vessel);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:location;
+  sh:description "Geoproperty. Geojson reference to the item. It can be Point, LineString, Polygon, MultiPoint, MultiLineString or MultiPolygoProperty.";
+  sh:name "location"
+].
+sdm:LocationShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Location;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:coordinates;
+  sh:name "coordinates";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:imo;
+  sh:description "Property. Model:'https://schema.org/Number'. International Maritime Organization Number (a global forever UID)";
+  sh:name "imo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mmsi;
+  sh:description "Property. Model:'https://schema.org/Number'. Marine Mobile Service Identity Number (a temporarily assigned UID, issued by that object's current flag state)";
+  sh:name "mmsi";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:callSign;
+  sh:description "Property. Model:'https://schema.org/Text'. Maritime call signs are call signs assigned as unique identifiers to vessels";
+  sh:name "callSign";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:name;
+  sh:description "Property. Model:'https://schema.org/Text'. Vessel Name";
+  sh:name "name";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:speedOverGround;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'meters per second'. Speed Over Ground (SOG).";
+  sh:name "speedOverGround";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:courseOverGround;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'degree'. Course Over Ground (COG).";
+  sh:name "courseOverGround";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:heading;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'degree'. Heading of the Vessel (HDG).";
+  sh:name "heading";
+  sh:minInclusive 0;
+  sh:maxInclusive 511;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rateOfTurn;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'degree'. Rate of Turn (ROT).";
+  sh:name "rateOfTurn";
+  sh:minInclusive 0;
+  sh:maxInclusive 708;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:createdAt;
+  sh:description "Property. Model:'https://schema.org/Text'. Date and time of creation of the entity represented by an ISO 8601 UTC format.";
+  sh:name "createdAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:modifiedAt;
+  sh:description "Property. Model:'https://schema.org/Text'. Date and time of last modification of the entity represented by an ISO 8601 UTC format.";
+  sh:name "modifiedAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:observedAt;
+  sh:description "Property. Model:'https://schema.org/Text'. Date and time of this observation represented by an ISO 8601 UTC format.";
+  sh:name "observedAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:flagCode;
+  sh:description "Property. Model:'https://schema.org/Text'. International Flag Code (ISO 3166-1 alfa-2)";
+  sh:name "flagCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:vesselType;
+  sh:description "Property. Model:'https://schema.org/Number'. Enum: '1=Reserved,2=Wing In Ground,3=Special Category,4=High-Speed Craft,5=Special Category,6=Passenger,7=Cargo,8=Tanker,9=Other'. Code for vessel type";
+  sh:name "vesselType";
+  sh:in (sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7 sdm:8 sdm:9);
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vesselSubType;
+  sh:description "Property. Model:'https://schema.org/Number'. Enum: '0=Not available (default),1-19=Reserved for future use,20=Wing in ground (WIG), all ships of this type,21=Wing in ground (WIG), Hazardous category A,22=Wing in ground (WIG), Hazardous category B,23=Wing in ground (WIG), Hazardous category C,24=Wing in ground (WIG), Hazardous category D,25-29=Wing in ground (WIG), Reserved for future use,30=Fishing,31=Towing,32=Towing: length exceeds 200m or breadth exceeds 25m,33=Dredging or underwater ops,34=Diving ops,35=Military ops,36=Sailing,37=Pleasure Craft,38-39=Reserved,40=High speed craft (HSC), all ships of this type,41=High speed craft (HSC), Hazardous category A,42=High speed craft (HSC), Hazardous category B,43=High speed craft (HSC), Hazardous category C,44=High speed craft (HSC), Hazardous category D,45-48=High speed craft (HSC), Reserved for future use,49=High speed craft (HSC), No additional information,50=Pilot Vessel,51=Search and Rescue vessel,52=Tug,53=Port Tender,54=Anti-pollution equipment,55=Law Enforcement,56-57=Spare - Local Vessel,58=Medical Transport,59=Noncombatant ship according to RR Resolution No. 18,60=Passenger, all ships of this type,61=Passenger, Hazardous category A,62=Passenger, Hazardous category B,63=Passenger, Hazardous category C,64=Passenger, Hazardous category D,65-68=Passenger, Reserved for future use,69=Passenger, No additional information,70=Cargo, all ships of this type,71=Cargo, Hazardous category A,72=Cargo, Hazardous category B,73=Cargo, Hazardous category C,74=Cargo, Hazardous category D,75-78=Cargo, Reserved for future use,79=Cargo, No additional information,80=Tanker, all ships of this type,81=Tanker, Hazardous category A,82=Tanker, Hazardous category B,83=Tanker, Hazardous category C,84=Tanker, Hazardous category D,85-88=Tanker, Reserved for future use,89=Tanker, No additional information,90=Other Type, all ships of this type,91=Other Type, Hazardous category A,92=Other Type, Hazardous category B,93=Other Type, Hazardous category C,94=Other Type, Hazardous category D,95-98=Other Type, Reserved for future use,99=Other Type, no additional information'. Code for vessel Sub-Type";
+  sh:name "vesselSubType";
+  sh:in (sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7 sdm:8 sdm:9 sdm:10 sdm:11 sdm:12 sdm:13 sdm:14 sdm:15 sdm:16 sdm:17 sdm:18 sdm:19 sdm:20 sdm:21 sdm:22 sdm:23 sdm:24 sdm:25 sdm:26 sdm:27 sdm:28 sdm:29 sdm:30 sdm:31 sdm:32 sdm:33 sdm:34 sdm:35 sdm:36 sdm:37 sdm:38 sdm:39 sdm:40 sdm:41 sdm:42 sdm:43 sdm:44 sdm:45 sdm:46 sdm:47 sdm:48 sdm:49 sdm:50 sdm:51 sdm:52 sdm:53 sdm:54 sdm:55 sdm:56 sdm:57 sdm:58 sdm:59 sdm:60 sdm:61 sdm:62 sdm:63 sdm:64 sdm:65 sdm:66 sdm:67 sdm:68 sdm:69 sdm:70 sdm:71 sdm:72 sdm:73 sdm:74 sdm:75 sdm:76 sdm:77 sdm:78 sdm:79 sdm:80 sdm:81 sdm:82 sdm:83 sdm:84 sdm:85 sdm:86 sdm:87 sdm:88 sdm:89 sdm:90 sdm:91 sdm:92 sdm:93 sdm:94 sdm:95 sdm:96 sdm:97 sdm:98 sdm:99);
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:grossTonnage;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'moorson tons'. Gross Tonnage (GT).";
+  sh:name "grossTonnage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:beam;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'meters'. Beam of Vessel.";
+  sh:name "beam";
+  sh:minInclusive 0;
+  sh:maxInclusive 1000;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:length;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'meters'. Length of Vessel.";
+  sh:name "length";
+  sh:minInclusive 0;
+  sh:maxInclusive 8000;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumDraught;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'meters'. Maximum Draught.";
+  sh:name "maximumDraught";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:deadweightTonnage;
+  sh:description "Property. Model:'https://schema.org/Number'. Units: 'tons'. Deadweight Tonnage (DWT).";
+  sh:name "deadweightTonnage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:buildingAt;
+  sh:description "Property. Model:'https://schema.org/Text'. Date and time of building of the vessel represented by an ISO 8601 UTC format.";
+  sh:name "buildingAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:toBow;
+  sh:description "Property. Model:'http://schema.org/Number'. Units: 'meters'. Dimension to Bow.";
+  sh:name "toBow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toStern;
+  sh:description "Property. Model:'http://schema.org/Number'. Units: 'meters'. Dimension to Stern.";
+  sh:name "toStern";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toPort;
+  sh:description "Property. Model:'http://schema.org/Number'. Units: 'meters'. Dimension to Port.";
+  sh:name "toPort";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toStardboard;
+  sh:description "Property. Model:'http://schema.org/Number'. Units: 'meters'. Dimension to Starboard.";
+  sh:name "toStardboard";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:navigationStatus;
+  sh:description "Property. Model:'http://schema.org/Number'. Enum: '0=Under way using engine,1=At anchor,2=Not under command,3=Restricted manoeuverability,4=Constrained by her draught,5=Moored,6=Aground,7=Engaged in Fishing,8=Under way sailing,9=Reserved for future amendment of Navigational Status for HSC,10=Reserved for future amendment of Navigational Status for WIG,11=Reserved for future use,12=Reserved for future use,13=Reserved for future use,14=AIS-SART is active,15=Not defined (default)'. Navigation Status. AIVDM/AIVDO data format.";
+  sh:name "navigationStatus";
+  sh:in (sdm:0 sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7 sdm:8 sdm:9 sdm:10 sdm:11 sdm:12 sdm:13 sdm:14 sdm:15);
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:airDraught;
+  sh:description "Property. Model:'http://schema.org/Number'. Air Draught (distance from the top of a vessel''s highest point to its waterline). Units: 'meters'";
+  sh:name "airDraught";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:draught;
+  sh:description "Property. Model:'http://schema.org/Number'. Draught (vertical distance between the waterline and the bottom of the hull (keel)). Units: 'meters'";
+  sh:name "draught";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:photo;
+  sh:description "Property. Model:'https://schema.org/Text'. Vessel Photo URL";
+  sh:name "photo";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ownerVessel;
+  sh:description "Property. Model:'https://schema.org/Text'. Owner Vessel";
+  sh:name "ownerVessel";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manager;
+  sh:description "Property. Model:'https://schema.org/Text'. Manager Vessel";
+  sh:name "manager";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:financialOwner;
+  sh:description "Property. Model:'https://schema.org/Text'. Financial Owner";
+  sh:name "financialOwner";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:technicalManager;
+  sh:description "Property. Model:'https://schema.org/Text'. Technical Manager";
+  sh:name "technicalManager";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dataProvider;
+  sh:description "Property. Model:'https://schema.org/Text'. A sequence of characters identifying the provider of the harmonised data entity";
+  sh:name "dataProvider";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:destinationPort;
+  sh:description "Property. Model:'https://schema.org/Text'. Destination Port (Geographic coding scheme UN/LOCODE (United Nations Code for Trade and Transport Locations). https://unece.org/trade/publications/recommendation-ndeg16-united-nations-code-trade-and-transport-locations)";
+  sh:name "destinationPort";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:previousPort;
+  sh:description "Property. Model:'https://schema.org/Text'. Previous Port (Geographic coding scheme UN/LOCODE (United Nations Code for Trade and Transport Locations). https://unece.org/trade/publications/recommendation-ndeg16-united-nations-code-trade-and-transport-locations)";
+  sh:name "previousPort";
+  sh:datatype xsd:string
+].

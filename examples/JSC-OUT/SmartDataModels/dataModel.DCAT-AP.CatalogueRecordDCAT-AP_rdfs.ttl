@@ -1,0 +1,67 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json> dcterms:title "Smart Data models - DCAT-AP catalogue Record,";
+    dcterms:description "This is a Catalogue Record belonging to a dataset according to the DCAT-AP standard 2.0.1".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be CatalogueRecordDCAT-AP";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:CatalogueRecordDCAT-AP)
+].
+sdm:CatalogueRecordDCAT-AP rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "CatalogueRecordDCAT-AP".
+sdm:primaryTopic dcterms:description "Property. Model:'foaf:primaryTopic'. This property links the Catalogue Record to the Dataset, Data service or Catalog described in the record.";
+    rdf:type rdf:Property;
+    rdfs:label "primaryTopic";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:modificationDate dcterms:description "Property. Model:'https://schema.org/DateTime'. This property contains the most recent date on which the Catalogue entry was changed or modified..";
+    rdf:type rdf:Property;
+    rdfs:label "modificationDate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:applicationProfile dcterms:description "Property. Model:'dct:conformsTo'. This property refers to an Application Profile that the Dataset’s metadata conforms to";
+    rdf:type rdf:Property;
+    rdfs:label "applicationProfile";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:changeType dcterms:description "Property. Model:'adms:status'. This property refers to the type of the latest revision of a Dataset's entry in the Catalogue.";
+    rdf:type rdf:Property;
+    rdfs:label "changeType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:listingDate dcterms:description "Property. Model:'dct:issued'. This property contains the date on which the description of the Dataset was included in the Catalogue.";
+    rdf:type rdf:Property;
+    rdfs:label "listingDate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:language rdf:type rdf:Property;
+    rdfs:label "language";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:sourceMetadata dcterms:description "Property. Model:'dct:source'. This property refers to the original metadata that was used in creating metadata for the Dataset.";
+    rdf:type rdf:Property;
+    rdfs:label "sourceMetadata";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:title rdf:type rdf:Property;
+    rdfs:label "title";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/CatalogueRecordDCAT-AP/schema.json>;
+    rdfs:range xsd:string.

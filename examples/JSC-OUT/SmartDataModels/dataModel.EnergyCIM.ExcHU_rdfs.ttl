@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json> dcterms:title " Smart Data Models - ExcHU";
+    dcterms:description "Adapted from CIM data models. Hungarian Excitation System Model, with built-in voltage transducer.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcHU";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcHU)
+].
+sdm:ExcHU rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcHU".
+sdm:ae dcterms:description "Property. Model:'https://schema.org/Number'. Major loop PI tag gain factor (Ae).  Typical Value = 3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ae";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ai dcterms:description "Property. Model:'https://schema.org/Number'. Minor loop PI tag gain factor (Ai).  Typical Value = 22. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ai";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:atr dcterms:description "Property. Model:'https://schema.org/Number'. AVR constant (Atr).  Typical Value = 2.19. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "atr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:emax dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage control signal upper limit on AVR base (Emax).  Typical Value = 0.996. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "emax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:emin dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage control signal lower limit on AVR base (Emin).  Typical Value = -0.866. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "emin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:imax dcterms:description "Property. Model:'https://schema.org/Number'. Major loop PI tag output signal upper limit (Imax).  Typical Value = 2.19. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "imax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:imin dcterms:description "Property. Model:'https://schema.org/Number'. Major loop PI tag output signal lower limit (Imin).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "imin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Voltage base conversion constant (Ke).  Typical Value = 4.666. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Current base conversion constant (Ki).  Typical Value = 0.21428. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Major loop PI tag integration time constant (Te).  Typical Value = 0.154. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ti dcterms:description "Property. Model:'https://schema.org/Number'. Minor loop PI control tag integration time constant (Ti).  Typical Value = 0.01333. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ti";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tr dcterms:description "Property. Model:'https://schema.org/Number'. Filter time constant (Tr). If a voltage compensator is used in conjunction with this excitation system model, Tr should be set to 0.  Typical Value = 0.01. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcHU/schema.json>;
+    rdfs:range xsd:decimal.

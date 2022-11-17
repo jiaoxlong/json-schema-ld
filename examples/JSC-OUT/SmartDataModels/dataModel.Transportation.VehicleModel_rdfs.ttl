@@ -1,0 +1,216 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json> dcterms:title " - Vehicle / Vehicle Model";
+    dcterms:description "This entity models a particular vehicle model, including all properties which are common to multiple vehicle instances belonging to such model.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be VehicleModel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:VehicleModel)
+].
+sdm:VehicleModel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "VehicleModel".
+sdm:vehicleType dcterms:description "Property. Type of vehicle from the point of view of its structural characteristics. This is different than the vehicle category . Model:'https://schema.org/Text'. Enum:'agriculturalVehicle, anyVehicle, articulatedVehicle, bicycle, binTrolley, bus, car, caravan, carOrLightVehicle, carWithCaravan, carWithTrailer, cleaningTrolley, constructionOrMaintenanceVehicle, fourWheelDrive, highSidedVehicle, lorry, minibus, moped, motorcycle, motorcycleWithSideCar, motorscooter, sweepingMachine, tanker, threeWheeledVehicle, trailer, tram, twoWheeledVehicle, trolley, van, vehicleWithoutCatalyticConverter, vehicleWithCaravan, vehicleWithTrailer, withEvenNumberedRegistrationPlates, withOddNumberedRegistrationPlates, other'. The following values defined by _VehicleTypeEnum_ and _VehicleTypeEnum2_, [DATEX 2 version 2.3](http://d2docs.ndwcloud.nu/_static/umlmodel/v2.3/index.htm)";
+    rdf:type rdf:Property;
+    rdfs:label "vehicleType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>.
+sdm:VehicleType rdf:type skos:ConceptScheme.
+sdm:vehicleType rdfs:range [
+  owl:oneOf (sdm:agriculturalVehicle sdm:bicycle sdm:binTrolley sdm:bus sdm:car sdm:caravan sdm:carWithCaravan sdm:carWithTrailer sdm:cleaningTrolley sdm:constructionOrMaintenanceVehicle sdm:lorry sdm:minibus sdm:moped sdm:motorcycle sdm:motorcycleWithSideCar sdm:motorscooter sdm:sweepingMachine sdm:tanker sdm:trailer sdm:tram sdm:van sdm:trolley)
+].
+sdm:agriculturalVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "agriculturalVehicle".
+sdm:bicycle rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "bicycle".
+sdm:binTrolley rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "binTrolley".
+sdm:bus rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "bus".
+sdm:car rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "car".
+sdm:caravan rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "caravan".
+sdm:carWithCaravan rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "carWithCaravan".
+sdm:carWithTrailer rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "carWithTrailer".
+sdm:cleaningTrolley rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "cleaningTrolley".
+sdm:constructionOrMaintenanceVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "constructionOrMaintenanceVehicle".
+sdm:lorry rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "lorry".
+sdm:minibus rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "minibus".
+sdm:moped rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "moped".
+sdm:motorcycle rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "motorcycle".
+sdm:motorcycleWithSideCar rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "motorcycleWithSideCar".
+sdm:motorscooter rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "motorscooter".
+sdm:sweepingMachine rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "sweepingMachine".
+sdm:tanker rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "tanker".
+sdm:trailer rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "trailer".
+sdm:tram rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "tram".
+sdm:van rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "van".
+sdm:trolley rdf:type skos:Concept;
+    skos:inScheme sdm:VehicleType;
+    rdfs:label "trolley".
+sdm:brandName dcterms:description "Property. Vehicle's brand name. Model:'https://schema.org/brand'.";
+    rdf:type rdf:Property;
+    rdfs:label "brandName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:modelName dcterms:description "Property. Vehicle's model name. Model:'https://schema.org/model'.";
+    rdf:type rdf:Property;
+    rdfs:label "modelName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:manufacturerName dcterms:description "Property. Vehicle's manufacturer name. Model:'https://schema.org/Text'.";
+    rdf:type rdf:Property;
+    rdfs:label "manufacturerName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:vehicleModelDate dcterms:description "Property. The release date of a vehicle model (often used to differentiate versions of the same make and model). Model:'https://schema.org/vehicleModelDate'.";
+    rdf:type rdf:Property;
+    rdfs:label "vehicleModelDate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:cargoVolume dcterms:description "Property. The available volume for cargo or luggage. For automobiles, this is usually the trunk volume. Model:'https://schema.org/cargoVolume'. Units:'Liters'. If only a single value is provided (type Number) it will refer to the maximum volume.";
+    rdf:type rdf:Property;
+    rdfs:label "cargoVolume";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:fuelType dcterms:description "Property. The type of fuel suitable for the engine or engines of the vehicle. Model:'https://schema.org/DateTime'. Enum:'autogas, biodiesel, ethanol, cng, diesel, electric, gasoline, hybrid electric/diesel, hybrid electric/petrol, hydrogen, lpg, petrol, petrol(unleaded), petrol(leaded), other'";
+    rdf:type rdf:Property;
+    rdfs:label "fuelType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>.
+sdm:FuelType rdf:type skos:ConceptScheme.
+sdm:fuelType rdfs:range [
+  owl:oneOf (sdm:autogas sdm:biodiesel sdm:cng sdm:diesel sdm:electric sdm:ethanol sdm:gasoline sdm:hybrid_electric_diesel sdm:hybrid_electric_petrol sdm:hydrogen sdm:lpg sdm:petrol sdm:petrol(unleaded) sdm:petrol(leaded) sdm:other)
+].
+sdm:autogas rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "autogas".
+sdm:biodiesel rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "biodiesel".
+sdm:cng rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "cng".
+sdm:diesel rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "diesel".
+sdm:electric rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "electric".
+sdm:ethanol rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "ethanol".
+sdm:gasoline rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "gasoline".
+sdm:hybrid_electric_diesel rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "hybrid_electric_diesel".
+sdm:hybrid_electric_petrol rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "hybrid_electric_petrol".
+sdm:hydrogen rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "hydrogen".
+sdm:lpg rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "lpg".
+sdm:petrol rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "petrol".
+sdm:petrol(unleaded) rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "petrol(unleaded)".
+sdm:petrol(leaded) rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "petrol(leaded)".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:FuelType;
+    rdfs:label "other".
+sdm:fuelConsumption dcterms:description "Property. The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km). Model:'https://schema.org/fuelConsumption'. Units:'liters per 100 kilometer'";
+    rdf:type rdf:Property;
+    rdfs:label "fuelConsumption";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:height dcterms:description "Property. Vehicle's height. Model:'https://schema.org/height'.";
+    rdf:type rdf:Property;
+    rdfs:label "height";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:width dcterms:description "Property. Vehicle's width. Model:'https://schema.org/width'.";
+    rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:depth dcterms:description "Property. Vehicle's depth. Model:'https://schema.org/depth'.";
+    rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:weight dcterms:description "Property. Vehicle's weigth. Model:'https://schema.org/weigth'.";
+    rdf:type rdf:Property;
+    rdfs:label "weight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vehicleEngine dcterms:description "Property. Information about the engine or engines of the vehicle. Model:'https://schema.org/vehicleEngine'.";
+    rdf:type rdf:Property;
+    rdfs:label "vehicleEngine";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:string.
+sdm:url dcterms:description "Property. URL which provides a description of this vehicle model. Model:'https://schema.org/URL'.";
+    rdf:type rdf:Property;
+    rdfs:label "url";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/VehicleModel/schema.json>;
+    rdfs:range xsd:anyURI.

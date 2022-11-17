@@ -1,0 +1,64 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json> dcterms:title "Sea Conditions schema";
+    dcterms:description "This entity contains a harmonised geographic description of sea conditions".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be SeaConditions";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SeaConditions)
+].
+sdm:SeaConditions rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SeaConditions".
+sdm:waveLevel dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Douglas sea scale'. It indicates the height of the waves and also measures the swell of the sea.";
+    rdf:type rdf:Property;
+    rdfs:label "waveLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:surfaceTemperature dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Celsius degrees'. Sea surface temperature.";
+    rdf:type rdf:Property;
+    rdfs:label "surfaceTemperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:waveHeight dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Meters'. Height of the waves.";
+    rdf:type rdf:Property;
+    rdfs:label "waveHeight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:wavePeriod dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Seconds'. Indicates the time between the crests of a wave.";
+    rdf:type rdf:Property;
+    rdfs:label "wavePeriod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pH dcterms:description "Property. Model:'https://schema.org/Number'. Acidity or basicity of an aqueous solution.";
+    rdf:type rdf:Property;
+    rdfs:label "pH";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:salinity dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Parts per thousand'. Amount of salts dissolved in water.";
+    rdf:type rdf:Property;
+    rdfs:label "salinity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dateObserved dcterms:description "Property. Model:'https://schema.org/DateTime'. The date and time of this observation in ISO8601 UTC format.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/SeaConditions/schema.json>;
+    rdfs:range xsd:dateTime.

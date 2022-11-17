@@ -1,0 +1,77 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json> dcterms:title "Consumable";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource specifies a thing that can be consumed such as filter material, printer toner etc The Propert 'typeofconsumable' is an enumeration defining the thing being consumed as defined by the Smart Home Device Specification The Property 'remaining' is an integer capturing the percentatge remaining life The Property 'orderpercentage' is an integer capturing the percentage life at which replacement or replenishment is recommended by the manufacturer The Property 'url' is a string containing a URL at which further information may be obtained with respect to the consumable.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.consumable)
+].
+sdm:oic.r.consumable rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.consumable".
+sdm:remaining dcterms:description "Property. The percentage remaining lifespan.";
+    rdf:type rdf:Property;
+    rdfs:label "remaining";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>;
+    rdfs:range xsd:integer.
+sdm:typeofconsumable dcterms:description "Property. The thing that is being consumed.";
+    rdf:type rdf:Property;
+    rdfs:label "typeofconsumable";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>;
+    rdfs:range xsd:string.
+sdm:url dcterms:description "Property. The URL at which additional ordering information may be found.";
+    rdf:type rdf:Property;
+    rdfs:label "url";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:orderpercentage dcterms:description "Property. The percentage at which re-ordering is recommended by the manufacturer.";
+    rdf:type rdf:Property;
+    rdfs:label "orderpercentage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>;
+    rdfs:range xsd:integer.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be consumable";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/consumable/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:consumable)
+].
+sdm:consumable rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "consumable".

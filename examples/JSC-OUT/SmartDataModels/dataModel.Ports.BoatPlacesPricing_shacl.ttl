@@ -1,0 +1,169 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Ports/BoatPlacePricing/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be BoatPlacePricing";
+  sh:name "type";
+  sh:in (sdm:BoatPlacesPricing);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:dateLastReported;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes the last time when the device successfully reported data. The date and time of this observation in ISO8601 UTCformat";
+  sh:name "dateLastReported";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:refSeaPort;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:spotCategoryRange;
+  sh:name "spotCategoryRange";
+  sh:in (sdm:A sdm:B sdm:C sdm:D sdm:E sdm:F sdm:G sdm:H sdm:I sdm:J sdm:K sdm:L sdm:M sdm:N sdm:O sdm:P sdm:Q sdm:R sdm:S sdm:T1 sdm:T2 sdm:U sdm:V sdm:W sdm:X sdm:Y sdm:Z sdm:Z01 sdm:Z02 sdm:Z03 sdm:Z04 sdm:Z05 sdm:Z06 sdm:Z07 sdm:Z08 sdm:Z08 sdm:Z09 sdm:Z10 sdm:Z11 sdm:Z12 sdm:Z13 sdm:Z14 sdm:Z15 sdm:Z16 sdm:Z17)
+], [
+  sh:path sdm:minLength;
+  sh:description "Property. Model:'https://schema.org/number'. Minimum length allowed to access the spot. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Units:'metres'";
+  sh:name "minLength";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxLength;
+  sh:description "Property. Model:'https://schema.org/number'. Maximum length allowed to access the spot. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Units:'metres'";
+  sh:name "maxLength";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxWidth;
+  sh:description "Property. Model:'https://schema.org/width'. Maximum width allowed to access the spot. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Units:'metres'";
+  sh:name "maxWidth";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxDraft;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum draft allowed to access the spot. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . Units:'metres'";
+  sh:name "maxDraft";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:validFrom;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Start date and time of the pricing rules.";
+  sh:name "validFrom";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:validThrough;
+  sh:description "Property. Model:'https://schema.org/DateTime'. End date and time of the pricing rules.";
+  sh:name "validThrough";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:period;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Type of period defined the date From and Through: A free text or a unique value of the different combination allowed 'season / offSeason' - 'summer / winter' - 'low / medium / high'. enum:'high, low, medium, offSeason, season, summer, winter'";
+  sh:name "period";
+  sh:in (sdm:high sdm:low sdm:medium sdm:offSeason sdm:season sdm:summer sdm:winter)
+], [
+  sh:path sdm:passage;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Ticket price of the place for passing boats for this category / period. A structured value with 3 subproperties where each items is a string in the format `key` : `price` in Euro €";
+  sh:name "passage"
+].
+sdm:PassageShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Passage;
+    sh:property [
+  sh:path sdm:day;
+  sh:name "day";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:week;
+  sh:name "week";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:month;
+  sh:name "month";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:resident;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Ticket price of the place for resident boats for this category / period. A structured value with 2 subproperties where each items is a string in the format `key` : `price` in Euro €";
+  sh:name "resident"
+].
+sdm:ResidentShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Resident;
+    sh:property [
+  sh:path sdm:month;
+  sh:name "month";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:annual;
+  sh:name "annual";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:wintering;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Ticket price of the place for wintering boats for this category / period. A structured value with 3 subproperties where each items is a string in the format `key` : `price` in Euro €";
+  sh:name "wintering"
+].
+sdm:WinteringShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Wintering;
+    sh:property [
+  sh:path sdm:day;
+  sh:name "day";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:week;
+  sh:name "week";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:month;
+  sh:name "month";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:fairing;
+  sh:description "Property. Model:'https://schema.org/StructuredValue'. Ticket price of the place for fairing boats for this category / period. A structured value with 3 subproperties where each items is a string in the format `key` : `price` in Euro €";
+  sh:name "fairing"
+].
+sdm:FairingShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Fairing;
+    sh:property [
+  sh:path sdm:day;
+  sh:name "day";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:week;
+  sh:name "week";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:month;
+  sh:name "month";
+  sh:datatype xsd:decimal
+].

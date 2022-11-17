@@ -1,0 +1,73 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterJunction/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be WasteWaterJunction. NGSI-LD Entity Type";
+  sh:name "type";
+  sh:in (sdm:WasteWaterJunction);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:toc;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'mg/L'. Total Organic Carbon concentration measured in the influent or effluent.";
+  sh:name "toc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tic;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'mg/L'. Total Inorganic Carbon concentration measured in the influent or effluent.";
+  sh:name "tic";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:po4;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'mg/L'. Ortho-phosphate concentration measured in wastewater.";
+  sh:name "po4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bod;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'mg/L'. Biological Oxygen Demand concentration measured in the influent or effluent.";
+  sh:name "bod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:cod;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'mg/L'. Chemical Oxygen Demand concentration measured in the influent or effluent.";
+  sh:name "cod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:flowrate;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'm3/h'. Flowrate of wastewater.";
+  sh:name "flowrate";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pressure;
+  sh:description "Property. Model: https://schema.org/Number. Units: kPa. Pressure measured at given location. Most relevant for airflow as provided by blowers to wastewater tanks";
+  sh:name "pressure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emissionFlow;
+  sh:description "Property. Model: https://schema.org/Number. Units: 'm3'. Gas emission flow volume measured at a junction prior to being emitted in an off-gas stack.";
+  sh:name "emissionFlow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:startsAt;
+  sh:description "Relationship. A relationship indicating the entity the junction is connected to in the upstream point";
+  sh:name "startsAt";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:endsAt;
+  sh:description "Relationship. A relationship indicating the entity the junction is connected to in the downstream point";
+  sh:name "endsAt";
+  sh:datatype xsd:anyURI
+].

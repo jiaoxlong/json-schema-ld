@@ -1,0 +1,71 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSEXS/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcSEXS";
+  sh:name "type";
+  sh:in (sdm:ExcSEXS)
+], [
+  sh:path sdm:efdmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage clipping maximum limit (Efdmax).  Typical Value = 5. Default: 0.0";
+  sh:name "efdmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:efdmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Field voltage clipping minimum limit (Efdmin).  Typical Value = -5. Default: 0.0";
+  sh:name "efdmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum field voltage output (Emax).  Typical Value = 5. Default: 0.0";
+  sh:name "emax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:emin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum field voltage output (Emin).  Typical Value = -5. Default: 0.0";
+  sh:name "emin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K) (>0).  Typical Value = 100. Default: 0.0";
+  sh:name "k";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller gain (Kc).  Typical Value = 0.08. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tatb;
+  sh:description "Property. Model:'https://schema.org/Number'. Ta/Tb - gain reduction ratio of lag-lead element (TaTb).  Typical Value = 0.1. Default: 0.0";
+  sh:name "tatb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Denominator time constant of lag-lead block (Tb).  Typical Value = 10. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller phase lead time constant (Tc).  Typical Value = 0. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of gain block (Te).  Typical Value = 0.05. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,46 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/DiscExcContIEEEDEC2A/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be DiscExcContIEEEDEC2A";
+  sh:name "type";
+  sh:in (sdm:DiscExcContIEEEDEC2A)
+], [
+  sh:path sdm:td1;
+  sh:description "Property. Model:'https://schema.org/Number'. Discontinuous controller time constant (). Default: 0";
+  sh:name "td1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:td2;
+  sh:description "Property. Model:'https://schema.org/Number'. Discontinuous controller washout time constant (). Default: 0";
+  sh:name "td2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vdmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (). Default: 0.0";
+  sh:name "vdmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vdmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (). Default: 0.0";
+  sh:name "vdmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vk;
+  sh:description "Property. Model:'https://schema.org/Number'. Discontinuous controller input reference (). Default: 0.0";
+  sh:name "vk";
+  sh:datatype xsd:decimal
+].

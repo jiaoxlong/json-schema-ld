@@ -73,9 +73,7 @@ export class JSCLDSchema{
         /** The base JSC-LD schema */
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
         /** The N3Writer instance that writes RDF vocab */
-        this.rdf_writer = new N3.Writer({...RDFS_PREFIX,...{'format':this.config.format}});
-        // shacl_base_uri
-        //https://w3id.org/gbfs/shapes/stationinfo#{shapename}
+        this.rdf_writer = new N3.Writer({...this.config.rdfs_prefix,...{'format':this.config.format}});
         this.base_resource_name = extract_resource_from_uri(this.base_schema.id)
         //when base_url is ended with either '#' or '/'
         const base_shacl_shape_uri = this.config.uri.slice(0,-1)+'/shapes/'+ this.base_resource_name + '#';
@@ -83,7 +81,7 @@ export class JSCLDSchema{
         const shacl_prefix = SHACL_PREFIX
         shacl_prefix.prefixes[this.config.prefix+'shape']= base_shacl_shape_uri
         /** The N3Writer instance writes RDF shapes */
-        this.shacl_writer = new N3.Writer({...shacl_prefix,...{'format':this.config.format}});
+        this.shacl_writer = new N3.Writer({...this.config.shacl_prefix,...{'format':this.config.format}});
         /** Schema instances parsed from JSON schema */
         this.schemas = new Traverse(this.base_schema.id,this.data, this.config).schemas;
     }
@@ -240,11 +238,17 @@ export class JSCLDSchema{
                     //composition schema
                     if (s instanceof CompositionSchema) {
                         const shacl_com_blank_nodes = []
-
                         for (const schema of s.schemas){
-                            const shacl_temp = schema.shacl;
+
+                            if(schema.annotation!== undefined) {
+                                for (const [k, v] of schema.annotation) {
+                                    schema.shacl.push(
+                                        blank_node_literal(SCHEMA_SHACL_ANNOTATION[k], v));
+                                }
+                            }
                             shacl_com_blank_nodes.push(
                                 this.shacl_writer.blank(add_writer_list(schema.shacl, this.shacl_writer)))
+
                         }
                         const shacl_com_node = {
                             'predicate':namedNode(s.logical_opt),
@@ -294,7 +298,7 @@ export class JSCLDSchema{
     materialize(){
         const path = require('path');
         if(!fs.existsSync(path.resolve(this.config.out)))
-            fs.mkdirSync(path.resolve(this.config.out))
+            fs.mkdirSync(path.resolve(this.config.out), {recursive: true})
         this.rdf_writer.end((error:any, result:any) =>
             fs.writeFile(path.join(this.config.out, path.parse(this.jsc).name+'_rdfs.ttl'), result, (err:any) => {
                 if (err) throw err;

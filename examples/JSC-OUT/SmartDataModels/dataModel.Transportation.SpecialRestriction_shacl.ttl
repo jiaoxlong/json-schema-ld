@@ -1,0 +1,44 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Transportation/SpecialRestriction/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be SpecialRestriction";
+  sh:name "type";
+  sh:in (sdm:SpecialRestriction);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:notAllowedVehicleType;
+  sh:name "notAllowedVehicleType";
+  sh:in (sdm:anyVehicle sdm:agriculturalVehicle sdm:bicycle sdm:bus sdm:car sdm:caravan sdm:carWithCaravan sdm:carWithTrailer sdm:constructionOrMaintenanceVehicle sdm:dieselCarEuro0 sdm:dieselCarEuro1 sdm:dieselCarEuro2 sdm:dieselCarEuro3 sdm:dieselCarEuro4 sdm:dieselCarEuro5a sdm:dieselCarEuro5b sdm:dieselCarEuro6 sdm:freightTransportVehicle sdm:lorry sdm:moped sdm:motorcycle sdm:motorcycleWithSideCar sdm:motorscooter sdm:petrolCarEuro0 sdm:petrolCarEuro1 sdm:petrolCarEuro2 sdm:petrolCarEuro3 sdm:petrolCarEuro4 sdm:petrolCarEuro5 sdm:petrolCarEuro6 sdm:tanker sdm:trailer sdm:van)
+], [
+  sh:path sdm:restrictionValidityHours;
+  sh:description "Property. Days of the week and hours in which the traffic restriction is active.";
+  sh:name "restrictionValidityHours";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refRestrictedTrafficArea;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+].

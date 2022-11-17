@@ -1,0 +1,101 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC2A/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcIEEEDC2A";
+  sh:name "type";
+  sh:in (sdm:ExcIEEEDC2A)
+], [
+  sh:path sdm:efd1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (E).  Typical Value = 3.05. Default: 0.0";
+  sh:name "efd1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:efd2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (E).  Typical Value = 2.29. Default: 0.0";
+  sh:name "efd2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:exclim;
+  sh:description "Property. Model:'https://schema.org/Number'. (exclim).  IEEE standard is ambiguous about lower limit on exciter output. Typical Value = - 999  which means that there is no limit applied. Default: 0.0";
+  sh:name "exclim";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (K).  Typical Value = 300. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ke;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (K).  Typical Value = 1. Default: 0.0";
+  sh:name "ke";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kf;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (K).  Typical Value = 0.1. Default: 0.0";
+  sh:name "kf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seefd1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, E (S[E]).  Typical Value = 0.279. Default: 0.0";
+  sh:name "seefd1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seefd2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, E (S[E]).  Typical Value = 0.117. Default: 0.0";
+  sh:name "seefd2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0.01. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (T).  Typical Value = 1.33. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tf;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (T).  Typical Value = 0.675. Default: 0";
+  sh:name "tf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uelin;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL input (uelin). true = input is connected to the HV gate false = input connects to the error signal. Typical Value = true. Default: False";
+  sh:name "uelin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 4.95. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -4.9. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

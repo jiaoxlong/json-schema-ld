@@ -1,0 +1,69 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json> dcterms:title " Smart Data Models - ExcitationSystemDynamics";
+    dcterms:description "Adapted from CIM data models. Excitation system function block whose behavior is described by reference to a standard model".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcitationSystemDynamics";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcitationSystemDynamics)
+].
+sdm:ExcitationSystemDynamics rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcitationSystemDynamics".
+sdm:DiscontinuousExcitationControlDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Discontinuous excitation control model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "DiscontinuousExcitationControlDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:OverexcitationLimiterDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Overexcitation limiter model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "OverexcitationLimiterDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PFVArControllerType1Dynamics dcterms:description "Property. Model:'https://schema.org/Number'. Power Factor or VAr controller Type I model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PFVArControllerType1Dynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PFVArControllerType2Dynamics dcterms:description "Property. Model:'https://schema.org/Number'. Power Factor or VAr controller Type II model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PFVArControllerType2Dynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PowerSystemStabilizerDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Power system stabilizer model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PowerSystemStabilizerDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:SynchronousMachineDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Synchronous machine model with which this excitation system model is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "SynchronousMachineDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:UnderexcitationLimiterDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Undrexcitation limiter model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "UnderexcitationLimiterDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:VoltageCompensatorDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Voltage compensator model associated with this excitation system model. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "VoltageCompensatorDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcitationSystemDynamics/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,228 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_informationjson#>.
+
+gbfsshape:system_informationjsonShape rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    sh:property [
+  sh:path gbfs:last_updated;
+  sh:description "Last time the data in the feed was updated in POSIX time.";
+  sh:name "last_updated";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:version;
+  sh:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+  sh:name "version";
+  sh:hasValue "2.3";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:data;
+  sh:description "Response data in the form of name:value pairs.";
+  sh:name "data";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:DatumShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Datum;
+    sh:property [
+  sh:path gbfs:system_id;
+  sh:description "Identifier for this vehicle share system. This should be globally unique (even between different systems).";
+  sh:name "system_id";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:language;
+  sh:description "The language that will be used throughout the rest of the files. It must match the value in the gbfs.json file.";
+  sh:name "language";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^[a-z]{2,3}(-[A-Z]{2})?$";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:name;
+  sh:description "Name of the system to be displayed to customers.";
+  sh:name "name";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:short_name;
+  sh:description "Optional abbreviation for a system.";
+  sh:name "short_name";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:operator;
+  sh:description "Name of the operator";
+  sh:name "operator";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:url;
+  sh:description "The URL of the vehicle share system.";
+  sh:name "url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:purchase_url;
+  sh:description "URL where a customer can purchase a membership.";
+  sh:name "purchase_url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:start_date;
+  sh:description "Date that the system began operations.";
+  sh:name "start_date";
+  sh:datatype xsd:date
+], [
+  sh:path gbfs:phone_number;
+  sh:description "A single voice telephone number for the specified system that presents the telephone number as typical for the system's service area.";
+  sh:name "phone_number";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:email;
+  sh:description "Email address actively monitored by the operator's customer service department.";
+  sh:name "email";
+  sh:datatype schema:email
+], [
+  sh:path gbfs:feed_contact_email;
+  sh:description "A single contact email address for consumers of this feed to report technical issues (added in v1.1).";
+  sh:name "feed_contact_email";
+  sh:datatype schema:email
+], [
+  sh:path gbfs:timezone;
+  sh:description "The time zone where the system is located.";
+  sh:name "timezone";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:license_url;
+  sh:description "A fully qualified URL of a page that defines the license terms for the GBFS data for this system.";
+  sh:name "license_url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:brand_assets;
+  sh:description "An object where each key defines one of the items listed below (added in v2.3-RC).";
+  sh:name "brand_assets"
+].
+gbfs:BrandAssetShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:BrandAsset;
+    sh:property [
+  sh:path gbfs:brand_last_modified;
+  sh:description "Date that indicates the last time any included brand assets were updated (added in v2.3-RC).";
+  sh:name "brand_last_modified";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:date
+], [
+  sh:path gbfs:brand_terms_url;
+  sh:description "A fully qualified URL pointing to the location of a page that defines the license terms of brand icons, colors or other trademark information (added in v2.3-RC).";
+  sh:name "brand_terms_url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:brand_image_url;
+  sh:description "A fully qualified URL pointing to the location of a graphic file representing the brand for the service (added in v2.3-RC). ";
+  sh:name "brand_image_url";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:brand_image_url_dark;
+  sh:description "A fully qualified URL pointing to the location of a graphic file representing the brand for the service for use in dark mode (added in v2.3-RC).";
+  sh:name "brand_image_url_dark";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:color;
+  sh:description "Color used to represent the brand for the service (added in v2.3-RC)";
+  sh:name "color";
+  sh:pattern "^#([a-fA-F0-9]{6})$";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:terms_url;
+  sh:description "A fully qualified URL pointing to the terms of service (added in v2.3-RC)";
+  sh:name "terms_url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:terms_last_updated;
+  sh:description "The date that the terms of service provided at terms_url were last updated (added in v2.3-RC)";
+  sh:name "terms_last_updated";
+  sh:datatype xsd:date
+], [
+  sh:path gbfs:privacy_url;
+  sh:description "A fully qualified URL pointing to the privacy policy for the service (added in v2.3-RC).";
+  sh:name "privacy_url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:privacy_last_updated;
+  sh:description "The date that the privacy policy provided at privacy_url was last updated (added in v2.3-RC).";
+  sh:name "privacy_last_updated";
+  sh:datatype xsd:date
+], [
+  sh:path gbfs:rental_apps;
+  sh:description "Contains rental app information in the android and ios JSON objects (added in v1.1).";
+  sh:name "rental_apps"
+].
+gbfs:RentalAppShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:RentalApp;
+    sh:property [
+  sh:path gbfs:android;
+  sh:description "Contains rental app download and app discovery information for the Android platform. (added in v1.1)";
+  sh:name "android"
+].
+gbfs:AndroidShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Android;
+    sh:property [
+  sh:path gbfs:store_uri;
+  sh:description "URI where the rental Android app can be downloaded from (added in v1.1).";
+  sh:name "store_uri";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:discovery_uri;
+  sh:description "URI that can be used to discover if the rental Android app is installed on the device (added in v1.1).";
+  sh:name "discovery_uri";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:ios;
+  sh:description "Contains rental information for the iOS platform (added in v1.1).";
+  sh:name "ios"
+].
+gbfs:IoShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Io;
+    sh:property [
+  sh:path gbfs:store_uri;
+  sh:description "URI where the rental iOS app can be downloaded from (added in v1.1).";
+  sh:name "store_uri";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:discovery_uri;
+  sh:description "URI that can be used to discover if the rental iOS app is installed on the device (added in v1.1).";
+  sh:name "discovery_uri";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+].

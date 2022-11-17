@@ -1,0 +1,114 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.OCF/Activity/schema.json>;
+    sh:property [
+  sh:path sdm:activity;
+  sh:description "Property. This Property describes the recognized current activity type of user";
+  sh:name "activity";
+  sh:in (sdm:sleep sdm:sit sdm:stand sdm:walk sdm:run sdm:unknown);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:steps_day;
+  sh:description "Property. This Property describes the user's step count that measures the number of steps the user has taken since the beginning of the day.";
+  sh:name "steps_day";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:steps_reset;
+  sh:description "Property. This Property describes the user's step count that measures the number of steps the user has taken since the last reset.";
+  sh:name "steps_reset";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:ccal_day;
+  sh:description "Property. This Property describes the burned off calories of user since the beginning of the day.";
+  sh:name "ccal_day";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_reset;
+  sh:description "Property. This Property describes the burned off calories of user since the last reset.";
+  sh:name "ccal_reset";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.activity)
+], [
+  sh:path sdm:n;
+  sh:description "Property. Friendly name of the Resource";
+  sh:name "n";
+  sh:maxLength 64;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.s sdm:oic.if.baseline)
+], [
+  sh:path sdm:steps_day_range;
+  sh:name "steps_day_range";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:steps_day_step;
+  sh:description "Property. Property. Step value across the defined range when the range is an integer.  This is the increment for valid values across the range; so if range is 0..10 and step is 2 then valid values are 0,2,4,6,8,10.";
+  sh:name "steps_day_step";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:steps_reset_range;
+  sh:name "steps_reset_range";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:steps_reset_step;
+  sh:description "Property. Property. Step value across the defined range when the range is an integer.  This is the increment for valid values across the range; so if range is 0..10 and step is 2 then valid values are 0,2,4,6,8,10.";
+  sh:name "steps_reset_step";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:ccal_day_range;
+  sh:name "ccal_day_range";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_day_step;
+  sh:description "Property. Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+  sh:name "ccal_day_step";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_day_precision;
+  sh:description "Property. Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+  sh:name "ccal_day_precision";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_reset_range;
+  sh:name "ccal_reset_range";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_reset_step;
+  sh:description "Property. Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+  sh:name "ccal_reset_step";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ccal_reset_precision;
+  sh:description "Property. Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+  sh:name "ccal_reset_precision";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be Activity";
+  sh:name "type";
+  sh:in (sdm:Activity);
+  sh:minCount 1;
+  sh:maxCount 1
+].

@@ -9,7 +9,6 @@ export const RDFS_PREFIX =  {
         "dcterms": "http://purl.org/dc/terms/",
         "owl": "http://www.w3.org/2002/07/owl#",
         "jsonsc": "https://www.w3.org/2019/wot/json-schema#",
-        "gbfs": "https://w3id.org/gbfs#",
         "jsonsc-ld":"http://w3id.org/jsonsc-ld/",
         "api":"http://purl.org/linked-data/api/vocab",
         "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",

@@ -1,0 +1,71 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/Road/schema.json> dcterms:title " - Transportation / Road";
+    dcterms:description "This entity contains a harmonised geographic and contextual description of a road.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be Road";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/Road/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Road)
+].
+sdm:Road rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Road".
+sdm:roadClass dcterms:description "Property. The classification of this road. Model:'https://schema.org/Text'. Enum:'motorway, primary, residential, secondary, service, tertiary, trunk, unclassified'.  Allowed values: Those described by [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Key:highway).";
+    rdf:type rdf:Property;
+    rdfs:label "roadClass";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/Road/schema.json>.
+sdm:RoadClass rdf:type skos:ConceptScheme.
+sdm:roadClass rdfs:range [
+  owl:oneOf (sdm:motorway sdm:primary sdm:residential sdm:secondary sdm:service sdm:tertiary sdm:trunk sdm:unclassified)
+].
+sdm:motorway rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "motorway".
+sdm:primary rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "primary".
+sdm:residential rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "residential".
+sdm:secondary rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "secondary".
+sdm:service rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "service".
+sdm:tertiary rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "tertiary".
+sdm:trunk rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "trunk".
+sdm:unclassified rdf:type skos:Concept;
+    skos:inScheme sdm:RoadClass;
+    rdfs:label "unclassified".
+sdm:length dcterms:description "Property. Total length of this road in kilometers. Model:'https://schema.org/length'. Units:'Kilometer (Km)'";
+    rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/Road/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:responsible dcterms:description "Property. Responsible for the road i.e. the organism or company in charge of its maintenance. Model:'https://schema.org/Text'.";
+    rdf:type rdf:Property;
+    rdfs:label "responsible";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/Road/schema.json>;
+    rdfs:range xsd:string.

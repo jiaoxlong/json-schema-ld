@@ -1,0 +1,127 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json> dcterms:title "Smart Data models - AirQuality schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource describes a qualitative or measured contaminant that can be used to infer Air Quality.The Property 'valueType' indicates a qualitative or measured reading within the contaminantvalue Property.The Property 'contaminantvalue' can contain the actual sensed value with units per contaminant type.Qualitative is a representative value within the range provided where the minimum value is minimum contamination and maximum value is maximum contamination for the specific contaminant.The Property 'contaminantvalue' contains the actual measured or qualitative level.The Property 'range' contains the allowed range for the value that is being reported.If valueType is 'Measured' then the units for the contaminant types are as follows: Methanol (also known as Formaldehyde): CH2O (ug/m^3), Carbon Dioxide: CO2 (ppm), Carbon Monoxide: CO (ppm), Particulate Matter (less than 1 micron in diameter): PM1 (ug/m^3), Particulate Matter (less than 2.5 microns in diameter): PM2.5 (ug/m^3), Particulate Matter (less than 10 microns in diameter): PM10 (ug/m^3), Volatile Organic Compounds: VOC (ug/m^3), Ozone: 03 (ppm), Nitrogen dioxide: NO2 (ppm), Sulphur dioxide: SO2 (ppm) ".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.airquality)
+].
+sdm:oic.r.airquality rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.airquality".
+sdm:contaminanttype dcterms:description "Property. The contaminant being measured.";
+    rdf:type rdf:Property;
+    rdfs:label "contaminanttype";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>.
+sdm:Contaminanttype rdf:type skos:ConceptScheme.
+sdm:contaminanttype rdfs:range [
+  owl:oneOf (sdm:CH2O sdm:CO2 sdm:CO sdm:PM1 sdm:PM2.5 sdm:PM10 sdm:VOC sdm:Smoke sdm:Odor sdm:AirPollution sdm:NO2 sdm:SO2 sdm:O3)
+].
+sdm:CH2O rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "CH2O".
+sdm:CO2 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "CO2".
+sdm:CO rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "CO".
+sdm:PM1 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "PM1".
+sdm:PM2.5 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "PM2.5".
+sdm:PM10 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "PM10".
+sdm:VOC rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "VOC".
+sdm:Smoke rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "Smoke".
+sdm:Odor rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "Odor".
+sdm:AirPollution rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "AirPollution".
+sdm:NO2 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "NO2".
+sdm:SO2 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "SO2".
+sdm:O3 rdf:type skos:Concept;
+    skos:inScheme sdm:Contaminanttype;
+    rdfs:label "O3".
+sdm:valuetype dcterms:description "Property. The property that indicates whether the provided value is qualitative or measured.";
+    rdf:type rdf:Property;
+    rdfs:label "valuetype";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>.
+sdm:Valuetype rdf:type skos:ConceptScheme.
+sdm:valuetype rdfs:range [
+  owl:oneOf (sdm:Qualitative sdm:Measured)
+].
+sdm:Qualitative rdf:type skos:Concept;
+    skos:inScheme sdm:Valuetype;
+    rdfs:label "Qualitative".
+sdm:Measured rdf:type skos:Concept;
+    skos:inScheme sdm:Valuetype;
+    rdfs:label "Measured".
+sdm:contaminantvalue dcterms:description "Property. The measured or qualitative value for the contaminant.";
+    rdf:type rdf:Property;
+    rdfs:label "contaminantvalue";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>;
+    rdfs:range xsd:integer.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>;
+    rdfs:range xsd:string.
+sdm:range rdf:type rdf:Property;
+    rdfs:label "range";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>;
+    rdfs:range xsd:integer.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be AirQuality";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/AirQuality/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AirQuality)
+].
+sdm:AirQuality rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AirQuality".

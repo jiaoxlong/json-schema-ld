@@ -1,0 +1,319 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.TourismDestinations/Event/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be Event. NGSI entity type. Model:'https://schema.org/event'";
+  sh:name "type";
+  sh:in (sdm:Event);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:accessPlan;
+  sh:description "Property.  Text or Link to the access plan to the item.";
+  sh:name "accessPlan";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:category;
+  sh:name "category";
+  sh:in (sdm:excursion sdm:gastronomy sdm:history sdm:museum sdm:outdoorActivities sdm:parksAndGardens sdm:religiousWorship sdm:shopping sdm:spectacle sdm:wellness)
+], [
+  sh:path sdm:subCategory;
+  sh:name "subCategory";
+  sh:in (sdm:--museum-- sdm:archaeology sdm:contemporaryArt sdm:modernArt sdm:appliedArts sdm:decorativeArts sdm:scienceAndTechnology sdm:fineArts sdm:music sdm:history sdm:sacredArt sdm:specials sdm:literature sdm:medicineAndPharmacy sdm:maritime sdm:transports sdm:military sdm:wax sdm:popularArtsAndTraditions sdm:numismatic sdm:ceramics sdm:sumptuaryArts sdm:naturalScience sdm:prehistoric sdm:ethnology sdm:railway sdm:mining sdm:textile sdm:sculpture sdm:multiDisciplinar sdm:painting sdm:paleonthology sdm:thematic sdm:architecture sdm:museumHouse sdm:universitary sdm:bullfighting sdm:--excursion-- sdm:sea sdm:mountain sdm:river sdm:countryside sdm:ancientCity sdm:cultural sdm:culinary sdm:wineRoute sdm:--parksAndGardens-- sdm:park sdm:garden sdm:fountain sdm:--religiousWorship-- sdm:church sdm:cathedral sdm:synagogue sdm:mosque sdm:buddhistTemple sdm:hinduTemple sdm:monastery sdm:sanctuary sdm:cemetery sdm:sumptuar sdm:--history-- sdm:castle sdm:warMemorials sdm:memorial sdm:fortifiedCastles sdm:archaeologicalSite sdm:crypt sdm:cave sdm:--shopping-- sdm:departmentStore sdm:luxuryStores sdm:outlet sdm:mall sdm:clothing sdm:mensClothing sdm:womensClothing sdm:childrenClothing sdm:localProducts sdm:souvenir sdm:wine sdm:pastry sdm:chocolate sdm:confectionery sdm:jewelry sdm:watch sdm:shoe sdm:perfume sdm:cosmetics sdm:press sdm:sport sdm:optics sdm:leatherGoods sdm:decoration sdm:market sdm:bike sdm:book sdm:computer sdm:convenience sdm:electronic sdm:florist sdm:furniture sdm:garden sdm:grocery sdm:home sdm:liquor sdm:mobile sdm:movierental sdm:music sdm:pawnShop sdm:tire sdm:toy sdm:--gastronomy-- sdm:worldCuisine sdm:traditional sdm:provencal sdm:mediterranean sdm:greek sdm:spanish sdm:brazilian sdm:lebanese sdm:creole sdm:mauritian sdm:reunion sdm:hawaiian sdm:mexican sdm:american sdm:texMex sdm:vegetarian sdm:fish sdm:seafood sdm:indian sdm:vietnamese sdm:thai sdm:laosian sdm:cambodian sdm:chinese sdm:moroccan sdm:tunisian sdm:african sdm:sushi sdm:japanese sdm:scandinavian sdm:russian sdm:pastry sdm:wine sdm:--outdoorActivities-- sdm:rafting sdm:canyoning sdm:aquatichiking sdm:hiking sdm:viaferrata sdm:climbing sdm:kitesurfing sdm:canoeing sdm:paddleboarding sdm:jetSki sdm:catamaran sdm:sailing sdm:surfing sdm:deltaPlane sdm:skiing sdm:scooter sdm:karting sdm:--wellness-- sdm:spa sdm:haman sdm:jacuzzi sdm:hotSpring sdm:thalasso sdm:bodyCare sdm:swimmingPool sdm:relaxationArea sdm:massage sdm:careCenter)
+], [
+  sh:path sdm:thematic;
+  sh:name "thematic";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:title;
+  sh:description "Property.  Title of the Event.";
+  sh:name "title";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:slogan;
+  sh:description "Property. Event header line, matches the text hook. ";
+  sh:name "slogan";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:language;
+  sh:name "language";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:superEvent;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:subEvent;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:eventStatus;
+  sh:name "eventStatus";
+  sh:in (sdm:opened sdm:closed sdm:suspended sdm:cancelled sdm:scheduled sdm:finished sdm:postponed sdm:rescheduled)
+], [
+  sh:path sdm:eventSchedule;
+  sh:description "Property. An Event that is associated with a Schedule using this property should not have `startDate` or `endDate` properties. These are instead defined within the associated Schedule, this avoids any ambiguity for clients using the data. The property might have repeated values to specify different schedules (different months or seasons).*** ";
+  sh:name "eventSchedule"
+].
+sdm:EventScheduleShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:EventSchedule;
+    sh:property [
+  sh:path sdm:dayOfWeek;
+  sh:name "dayOfWeek";
+  sh:in (sdm:Monday sdm:Tuesday sdm:Wednesday sdm:Thursday sdm:Friday sdm:Saturday sdm:Sunday sdm:PublicHolidays)
+], [
+  sh:path sdm:byDay;
+  sh:name "byDay";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:byMonth;
+  sh:name "byMonth";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:byMonthDay;
+  sh:name "byMonthDay";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:byMonthWeek;
+  sh:name "byMonthWeek";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:exceptDate;
+  sh:name "exceptDate";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:duration;
+  sh:name "duration";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:repeatFrequency;
+  sh:name "repeatFrequency";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:repeatCount;
+  sh:name "repeatCount";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:duration;
+  sh:description "Property. The duration of each show. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HUR** represents **Hours**.";
+  sh:name "duration";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:doorTimeOpen;
+  sh:description "Property. Doors opening time to access the show.";
+  sh:name "doorTimeOpen";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:doorTimeClose;
+  sh:description "Property. Doors closing time to access the show..";
+  sh:name "doorTimeClose";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:pitch;
+  sh:description "Property. Pitch of the Event. Each items have the format based on the [Internationalization (i18N) - W3C recommendation for multilanguage](https://www.w3.org/TR/json-ld/#string-internationalization) integrating all items in a single property (ex number 71). Each item is represented by a string with Language Value : Article Value. ";
+  sh:name "pitch"
+].
+sdm:PitchShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Pitch;
+    sh:property [
+  sh:path sdm:language;
+  sh:name "language";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:article;
+  sh:name "article";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:webSite;
+  sh:description "Property. Link to the official website for more information.";
+  sh:name "webSite";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:contentURL;
+  sh:description "Property. Specifies the URL to the official image or video of the Event for more information.";
+  sh:name "contentURL";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:performer;
+  sh:name "performer";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:actor;
+  sh:name "actor";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:composer;
+  sh:name "composer";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:director;
+  sh:name "director";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:criticReview;
+  sh:description "Property. Review written or published by a source that is recognized for its reviewing activities. Each items have the format based on the  [Internationalization (i18N) - W3C recommendation for multilanguage](https://www.w3.org/TR/json-ld/#string-internationalization) integrating all items in a single property (ex number 71). Each item is represented by a string with 'Language Value' : 'Article Value'";
+  sh:name "criticReview"
+].
+sdm:CriticReviewShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:CriticReview;
+    sh:property [
+  sh:path sdm:language;
+  sh:name "language";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ratingValueAverage;
+  sh:description "Property. Rating value of Event. Usage guidelines: Use values from 0 to 10 depending on your standard. This is the average value of all detailed scores of `starRatingDetailed` attribute";
+  sh:name "ratingValueAverage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:starRatingDetailed;
+  sh:description "Property. Detailed star ratings which led to the average value expressed in the ratingValue. Instructions for use: A structured value from 1 to 10 occurrences (Stars) where each element is a string in the format: `NumberOfSTar`: Percent. ";
+  sh:name "starRatingDetailed"
+].
+sdm:StarRatingDetailedShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:StarRatingDetailed;
+    sh:property [
+  sh:path sdm:1;
+  sh:name "1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:2;
+  sh:name "2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:3;
+  sh:name "3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:4;
+  sh:name "4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:5;
+  sh:name "5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:6;
+  sh:name "6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:7;
+  sh:name "7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:8;
+  sh:name "8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:9;
+  sh:name "9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:10;
+  sh:name "10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:audience;
+  sh:name "audience";
+  sh:in (sdm:adult sdm:allPublic sdm:children sdm:family sdm:senior sdm:teenager)
+], [
+  sh:path sdm:wheelChairAccessible;
+  sh:description "Property. Access possible for Person with Reduced Mobility.";
+  sh:name "wheelChairAccessible";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:maximumAttendeeCapacity;
+  sh:description "Property. The total number of people who can attend to the Event at that location.";
+  sh:name "maximumAttendeeCapacity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eventPriceFrom;
+  sh:description "Property. Min Price. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **EUR** represents **€uro**.";
+  sh:name "eventPriceFrom";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eventPriceTo;
+  sh:description "Property. Max Price. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **EUR** represents **€uro**.";
+  sh:name "eventPriceTo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:priceSpecification;
+  sh:description "Property. A structured value representing a price or price range depending categories or public.";
+  sh:name "priceSpecification"
+].
+sdm:PriceSpecificationShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PriceSpecification;
+    sh:property [
+  sh:path sdm:categoryDescription;
+  sh:name "categoryDescription";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:audience;
+  sh:name "audience";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:eligibleQuantity;
+  sh:name "eligibleQuantity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:price;
+  sh:name "price";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minPrice;
+  sh:name "minPrice";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxPrice;
+  sh:name "maxPrice";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:paymentAccepted;
+  sh:name "paymentAccepted";
+  sh:in (sdm:Cash sdm:CreditCard sdm:CryptoCurrency sdm:other)
+], [
+  sh:path sdm:currencyAccepted;
+  sh:name "currencyAccepted";
+  sh:in (sdm:EUR sdm:USD)
+], [
+  sh:path sdm:routeType;
+  sh:name "routeType";
+  sh:in (sdm:bus sdm:cableCar sdm:cableTram sdm:ferry sdm:funicular sdm:monorail sdm:subway sdm:train sdm:tram sdm:trolleybus)
+], [
+  sh:path sdm:transportServices;
+  sh:name "transportServices";
+  sh:in (sdm:parkingShuttle sdm:taxi sdm:uber sdm:vtc)
+], [
+  sh:path sdm:electricTransport;
+  sh:name "electricTransport";
+  sh:in (sdm:electricBicycle sdm:electricCar sdm:electricMotorBike sdm:electricScooter)
+].

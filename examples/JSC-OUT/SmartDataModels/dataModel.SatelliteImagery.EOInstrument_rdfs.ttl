@@ -1,0 +1,59 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json> dcterms:title "Satellite Imagery - EOInstrument";
+    dcterms:description "This entity contains a harmonised description of a generic EOInstrument made for the Satellite Imagerry domain. This entity is primarily associated with the satellite instruments related to Earth Observation Analysis applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to EOInstrument.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:EOInstrument)
+].
+sdm:EOInstrument rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "EOInstrument".
+sdm:instrumentID dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the ID of the instrument payload";
+    rdf:type rdf:Property;
+    rdfs:label "instrumentID";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:string.
+sdm:instrumentName dcterms:description "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the name of the instrument payload";
+    rdf:type rdf:Property;
+    rdfs:label "instrumentName";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:string.
+sdm:operationalMode dcterms:description "Property. Model:'https://schema.org/Text'. A text string used to declare the supported sensor modes if available";
+    rdf:type rdf:Property;
+    rdfs:label "operationalMode";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:string.
+sdm:polarizationMode dcterms:description "Property. Model:'https://schema.org/Text'. A text string used to declare the polarization modes if available";
+    rdf:type rdf:Property;
+    rdfs:label "polarizationMode";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:string.
+sdm:swathID dcterms:description "Property. Model:'https://schema.org/Text'. A text string used to declare the swath ID if available";
+    rdf:type rdf:Property;
+    rdfs:label "swathID";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:string.
+sdm:carriedOn dcterms:description "Relationship. The ID of the satellite platform that the instrument is carried on";
+    rdf:type rdf:Property;
+    rdfs:label "carriedOn";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json>;
+    rdfs:range xsd:anyURI.

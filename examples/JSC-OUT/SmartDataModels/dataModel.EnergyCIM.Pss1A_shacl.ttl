@@ -1,0 +1,131 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1A/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be Pss1A";
+  sh:name "type";
+  sh:in (sdm:Pss1A)
+], [
+  sh:path sdm:a1;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A1). Default: 0.0";
+  sh:name "a1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a2;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A2). Default: 0.0";
+  sh:name "a2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a3;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A3). Default: 0.0";
+  sh:name "a3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a4;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A4). Default: 0.0";
+  sh:name "a4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a5;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A5). Default: 0.0";
+  sh:name "a5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a6;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A6). Default: 0.0";
+  sh:name "a6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a7;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A7). Default: 0.0";
+  sh:name "a7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a8;
+  sh:description "Property. Model:'https://schema.org/Number'. Notch filter parameter (A8). Default: 0.0";
+  sh:name "a8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:inputSignalType;
+  sh:description "Property. Model:'https://schema.org/Number'. Type of input signal. Default: None";
+  sh:name "inputSignalType";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kd;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector (Kd).  true = e used false = e not used. Default: False";
+  sh:name "kd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ks;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer gain (Ks). Default: 0.0";
+  sh:name "ks";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T1). Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t2;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T2). Default: 0";
+  sh:name "t2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T3). Default: 0";
+  sh:name "t3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t4;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T4). Default: 0";
+  sh:name "t4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t5;
+  sh:description "Property. Model:'https://schema.org/Number'. Washout time constant (T5). Default: 0";
+  sh:name "t5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t6;
+  sh:description "Property. Model:'https://schema.org/Number'. Transducer time constant (T6). Default: 0";
+  sh:name "t6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tdelay;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tdelay). Default: 0";
+  sh:name "tdelay";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vcl;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer input cutoff threshold (Vcl). Default: 0.0";
+  sh:name "vcl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vcu;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer input cutoff threshold (Vcu). Default: 0.0";
+  sh:name "vcu";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum stabilizer output (Vrmax). Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum stabilizer output (Vrmin). Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

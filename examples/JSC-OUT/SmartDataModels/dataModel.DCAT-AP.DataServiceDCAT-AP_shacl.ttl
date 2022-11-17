@@ -1,0 +1,53 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be DataServiceDCAT-AP";
+  sh:name "type";
+  sh:in (sdm:DataServiceDCAT-AP);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:endPointURL;
+  sh:name "endPointURL";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:title;
+  sh:name "title";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:endPointDescription;
+  sh:name "endPointDescription";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:servesDataset;
+  sh:name "servesDataset";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:accessRights;
+  sh:description "Property. This property MAY include information regarding access or restrictions based on privacy, security, or other policies";
+  sh:name "accessRights";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dataServiceDescription;
+  sh:name "dataServiceDescription";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:license;
+  sh:description "Property. This property contains the licence under which the Data service is made available.";
+  sh:name "license";
+  sh:datatype xsd:string
+].
