@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json",
+  "title": "Smart Data models - UnmannedAerialVehicleEvent schema",
+  "description": "The UAVEvent records the incursion of a specific UAV into or near protected airspace or locations. It also records the control measure taken. This entity is primarily associated with UAV command and control and related UAV transport applications.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleEvent",
+          "enum": [
+            "UnmannedAerialVehicleEvent"
+          ]
+        },
+        "UnmannedAerialVehicle": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the UnmannedAerialVehicle entity to which this event relates."
+        },
+        "originator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Refers to a third party UAV instance or other entity (e.g. listening station) that reported the information in the case the event was not directly originated by the UAV."
+        },
+        "elevation": {
+          "type": "number",
+          "description": "Property. The elevation of the UAV (relative to ground level at the specified location). Specify value and units of measure."
+        },
+        "endAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Indicates the date/time of when the event ended (if it has ended)."
+        },
+        "startAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Indicates the date/time of when the event started."
+        },
+        "eventType": {
+          "type": "string",
+          "description": "Property. The type of the UAV event, a choice from the list. Enum:'illegalFlight, closeToUnpermittedAirspace, overSpeed, overHeight, illegalWork'",
+          "enum": [
+            "illegalFlight",
+            "closeToUnpermittedAirspace",
+            "overSpeed",
+            "overHeight",
+            "illegalWork"
+          ]
+        },
+        "eventResult": {
+          "type": "string",
+          "description": "Property. The handling result of the event, a choice from ths list, Enum:'logged, notify, alarm, forceLand, forceBack, forceHover'",
+          "enum": [
+            "alarm",
+            "forceBack",
+            "forceHover",
+            "forceLand",
+            "logged",
+            "notify"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

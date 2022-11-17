@@ -223,7 +223,13 @@ export class Traverse{
                                     {subject: ld_blank_class});
                                 this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_blank_class;
-                                this.traverse(data.properties[property]);
+                                if ('patternProperties' in data.properties[property]) {
+                                    for (const pp in data.properties[property].patternProperties) {
+                                        this.traverse(data.properties[property].patternProperties[pp])
+                                    }
+                                } else {
+                                    this.traverse(data.properties[property]);
+                                }
                                 this.current = this.previous;
                             }
 

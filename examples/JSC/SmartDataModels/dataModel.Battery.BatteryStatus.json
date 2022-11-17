@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Battery/BatteryStatus/schema.json",
+    "$schemaVersion": "0.0.2",
+    "title": "Smart Data Models - BatteryStatus",
+    "description": "Represent a status for a physical battery.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BatteryStatus"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be BatteryStatus"
+                }
+            },
+            "refBattery": {
+                "oneOf": [
+                    {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    {
+                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+                    }
+                ],
+                "description": "Relationship. Model:'http://schema.org/URL'. Reference to the battery entity"
+            },
+            "statusPercent": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Property. Model:'http://schema.org/Number'. Percentage of charge available for the battery"
+            },
+            "acPowerInput": {
+                "type": "number",
+                "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate current charge. Units:'volts'"
+            },
+            "acPowerOutput": {
+                "type": "number",
+                "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate output. Units:'volts'"
+            },
+            "dcPowerInput": {
+                "type": "number",
+                "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'"
+            },
+            "dcPowerOutput": {
+                "type": "number",
+                "description": "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'"
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "refBattery",
+        "statusPercent"
+    ]
+}

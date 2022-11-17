@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.1",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/datamodel.COVID19/VaccinationCertificate/schema.json",
+    "title": " Smart Data Models - Vaccination Certificates",
+    "description": "Description of a COVID-19 Vaccination Certificate.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "VaccinationCertificate"
+                    ],
+                    "description": "Property. NSGI Entity Type. it has to be VaccinationCertificate"
+                },
+                "issuanceDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/DateTime'. Date and time of issuance"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/DateTime'. Date and time of expiry"
+                },
+                "issuer": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. Model:'http://schema.org/URL'. Identity of the issuer"
+                },
+                "credentialSubject": {
+                    "type": "object",
+                    "description": "Property. Vaccine, Vaccine Event and recipient object",
+                    "properties": {
+                        "batchNumber": {
+                            "type": "string",
+                            "description": "Property. Model:'https://schema.org/Text'. A distinctive combination of numbers and/or letters which specifically identifies a batch"
+                        },
+                        "administeringCentre": {
+                            "type": "string",
+                            "description": "Property. Model:'https://schema.org/Text'. Name/code of administering centre or a health authority responsible for the vaccination event"
+                        },
+                        "healthProfessional": {
+                            "type": "string",
+                            "description": "Property. Model:'https://schema.org/Text'. Name or health professional code responsible for administering the vaccine or prophylaxis"
+                        },
+                        "countryOfVaccination": {
+                            "type": "string",
+                            "description": "Property. Model:'https://schema.org/Text'. The country in which the vaccine recipient was vaccinated"
+                        },
+                        "recipient": {
+                            "type": "object",
+                            "description": "Property. Model:'https://schema.org/Patient'. The recipient of the vaccine",
+                            "properties": {
+                                "givenName": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. The non-family name with which the vaccine recipient identifies"
+                                },
+                                "familyName": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. The name of the family with which the vaccine recipient identifies"
+                                },
+                                "gender": {
+                                    "type": "string",
+                                    "enum": [
+                                        "male",
+                                        "female",
+                                        "other"
+                                    ],
+                                    "description": "Property. Model:'https://schema.org/Text'. Enum:'male, female, other'. The gender of the vaccine recipient"
+                                },
+                                "birthDate": {
+                                    "type": "string",
+                                    "format": "date",
+                                    "description": "Property. Model:'https://schema.org/Date'. this rule applies to. The date on which the vaccine recipient was born"
+                                }
+                            }
+                        },
+                        "vaccine": {
+                            "type": "object",
+                            "description": "Property. Generic description of the vaccine/prophylaxis or its component(s)",
+                            "properties": {
+                                "disease": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. Disease or agent that the vaccination administered to the recipient provides protection against"
+                                },
+                                "atcCode": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. Anatomical Therapeutic Chemical Code"
+                                },
+                                "medicinalProductName": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. Medicinal product name"
+                                },
+                                "marketingAuthorizationHolder": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. Marketing Authorization Holder"
+                                }
+                            }
+                        },
+                        "proof": {
+                            "type": "object",
+                            "description": "Property. Proof of Immunization",
+                            "properties": {
+                                "created": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "description": "Property. Model:'https://schema.org/DateTime'. Date and time of proof creation"
+                                },
+                                "proofValue": {
+                                    "type": "string",
+                                    "description": "Property. Model:'https://schema.org/Text'. Signature, Hash or JWT value of the proof"
+                                },
+                                "verificationMethod": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "minLength": 1,
+                                            "maxLength": 256,
+                                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                                            "description": "Property. Identifier format of any NGSI entity"
+                                        },
+                                        {
+                                            "type": "string",
+                                            "format": "uri",
+                                            "description": "Property. Identifier format of any NGSI entity"
+                                        }
+                                    ],
+                                    "description": "Relationship. Model:'http://schema.org/URL'. verificationMethod object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ]
+}

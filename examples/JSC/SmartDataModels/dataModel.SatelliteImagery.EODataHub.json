@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EODataHub/schema.json",
+    "title": "Satellite Imagery - EODataHub",
+    "description": "This entity contains a harmonised description of a generic EOInstrument made for the Satellite Imagerry domain. This entity is primarily associated with the data hub related to Earth Observation Analysis applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to EODataHub.",
+                    "enum": [
+                        "EODataHub"
+                    ]
+                },
+                "dataHubName": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the name of the used data hub"
+                },
+                "dataHubURL": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/url'. A mandatory text string used to declare the url of the used data hub"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ],
+    "$schemaVersion": "0.0.1"
+}

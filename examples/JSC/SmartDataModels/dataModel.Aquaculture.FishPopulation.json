@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.Aquaculture/FishContaiment/schema.json",
+  "title": " Fish Containment",
+  "description": "",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/dataModel.Agrifood/agrifood-schema.json#/definitions/AgriFood-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "FishPopulation"
+          ]
+        }
+      },
+      "fishRemoved": {
+        "type": "number",
+        "description": "Property. Number of removed fishes."
+      },
+      "initialNumber": {
+        "type": "number",
+        "description": "Property. Number of initial number of cultured fishes."
+      },
+      "bodyMasse": {
+        "type": "number",
+        "description": "Property. The average body masse cultured fishes."
+      },
+      "culturedIn": {
+        "type": "number",
+        "description": "Relationship. Reference to the FishContainment."
+      },
+      "refSpecie": {
+        "type": "number",
+        "description": "Relationship. Reference to the Specie."
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "culturedIn",
+    "refSpecie"
+  ]
+}

@@ -1,0 +1,128 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.2",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.PointOfInterest/Beach/schema.json",
+    "title": " Smart Data Models- Beach schema",
+    "description": "This entity contains a harmonised geographic description of a beach.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "dateObserved": {
+                "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/dateObserved"
+            }
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "Beach"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be Beach"
+                },
+                "width": {
+                    "type": "number",
+                    "description": "Property. Model:'https://schema.org/width'. Width of this beach. Units:'meter'."
+                },
+                "length": {
+                    "type": "number",
+                    "description": "Property. Model:'https://schema.org/length'. Length of this beach. Units:'meter'"
+                },
+                "beachType": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/Text'. Type of beach according to different criteria. Enum:'whiteSand, urban, isolated, calmWaters, blueFlag, Q-Quality, strongWaves, windy, blackSand'. Or any other value needed by an application.",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "whiteSand",
+                            "urban",
+                            "isolated",
+                            "calmWaters",
+                            "blueFlag",
+                            "Q-Quality",
+                            "strongWaves",
+                            "windy",
+                            "blackSand"
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "occupationRate": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. Typical occupation rate of this beach. Enum:'low, medium, high, none'",
+                    "enum": [
+                        "high",
+                        "medium",
+                        "low",
+                        "none"
+                    ]
+                },
+                "peopleOccupancy": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Model:'https://schema.org/Number'. Amount of people at the location"
+                },
+                "facilities": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/Text'. Describes different facilities offered by this beach. Enum:'promenade, showers, cleaningServices, lifeGuard, sunshadeRental, sunLoungerRental, waterCraftRental, toilets, touristOffice, litterBins, telephone,surfPracticeArea, accessforDisabled'",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "promenade",
+                            "showers",
+                            "cleaningServices",
+                            "lifeGuard",
+                            "sunshadeRental",
+                            "sunLoungerRental",
+                            "waterCraftRental",
+                            "toilets",
+                            "touristOffice",
+                            "litterBins",
+                            "telephone",
+                            "surfPracticeArea",
+                            "accessforDisabled"
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "accessType": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/Text'. Enum:'privateVehicle, boat, onFoot, publicTransport'. Describes how to get to this beach.",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "privateVehicle",
+                            "boat",
+                            "onFoot",
+                            "publicTransport"
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "refSeeAlso": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/URL'. List of references to one or more related entities.",
+                    "items": {
+                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+                    }
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location",
+        "name"
+    ]
+}

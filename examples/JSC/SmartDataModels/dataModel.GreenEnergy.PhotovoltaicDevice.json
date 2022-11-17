@@ -1,0 +1,461 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/data-models.Energy/PhotovoltaicDevice/schema.json",
+  "title": "PhotovoltaicDevice schema",
+  "$schemaVersion": "0.0.2",
+  "description": "The Data Model is intended to describe the mechanical, electrical and thermal characteristics of photo-voltaic panels according to *STC - Standard Test Condition* and *NOCT - Normal Operating Cell Temperature*. *Remark* : This Data Model can be used directly as a main entity to describe the `Photovoltaic Device`  or as a sub-entity of the Data Model  `DEVICE` using a reference by the `refDevice` attribute. The measures performed for STC and NOCT are `Pmax` (Maximum Nominal Power), `Umpp` (Optimal operating voltage), `Impp` (Optimal Operating Current), `Uoc` (Open Circuit Voltage), `Isc` (Short Circuit Current). *Additional Information about Data Model:* This Data Model can be used directly as a main entity to describe the device [PHOTOVOLTAIC] or as a sub-entity of the Data Model [DEVICE] using a reference by the `refDevice` attribute.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "PhotovoltaicDevice"
+          ],
+          "description": "Property. NGSI Entity type. It has to be PhotovoltaicDevice"
+        },
+        "refDevice": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Property. Reference to the Main Entity [Device](https://github.com/smart-data-models/dataModel.Device/blob/master/Device/doc/spec.md) if used as second link. Model:'https://schema.org/URL'"
+        },
+        "refPointOfInterest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Reference to a [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) linked with the Repository."
+        },
+        "dateLastReported": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. A timestamps which denotes the last time when the device successfully reported data. Date and time in an ISO8601 UTCformat."
+        },
+        "brandName": {
+          "type": "string",
+          "description": "Property. Brand Name of the item. Model:'https://schema.org/brand'"
+        },
+        "modelName": {
+          "type": "string",
+          "description": "Property. Model Name of the item. Model:'https://schema.org/model'"
+        },
+        "manufacturerName": {
+          "type": "string",
+          "description": "Property. Manufacturer Name of the item. Model:'https://schema.org/manufacturer'"
+        },
+        "serialNumber": {
+          "type": "array",
+          "description": "Property. List of serial numbers of Photo-voltaic device supplied by the manufacturer and assembled in operating mode on a single location. Model:'https://schema.org/serialNumber'",
+          "items": {
+            "type": "string"
+          }
+        },
+        "application": {
+          "type": "array",
+          "description": "Property. Target application regarding the Type of Solar panel (In our case `electric`). A unique value. https://schema.org/Text. Enum:'electric, thermal, other'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electric",
+              "thermal",
+              "other"
+            ]
+          }
+        },
+        "cellType": {
+          "type": "array",
+          "description": "Property. Type of cells used to built the photo-voltaic unit. 2 kinds of Technologies *`Cristalline`* or  *`Thin layers`*. A unique value. Model:'https://schema.org/Text'. Enum:'amorphousSilicon, CfTe, CIS, monocrystalline, polycrystalline, other'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "amorphousSilicon",
+              "CfTe",
+              "CIS",
+              "monocrystalline",
+              "polycrystalline",
+              "other"
+            ]
+          }
+        },
+        "typeOfUse": {
+          "type": "array",
+          "description": "Property. Accepted use regarding its positioning in an indoor / outdoor environment. A unique value. Model:'https://schema.org/Text'. Enum:'indoor, outdoor, mixed, other'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "indoor",
+              "outdoor",
+              "mixed",
+              "other"
+            ]
+          }
+        },
+        "installationMode": {
+          "type": "array",
+          "description": "Property. Positioning of the device in relation to a ground reference system. A unique value. Model:'https://schema.org/Text'. Enum:'ground, other, pole, roofing, wall'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ground",
+              "other",
+              "pole",
+              "roofing",
+              "wall"
+            ]
+          }
+        },
+        "installationCondition": {
+          "type": "array",
+          "description": "Property. Condition and possibility of use in the following environments. A combination. Model:'https://schema.org/Text'. Enum:'desert, dust, extremeHeat, extremeCold, extremeClimate, extremeHumidity, marine, none, other, saline, sand, seismic'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "desert",
+              "dust",
+              "extremeHeat",
+              "extremeCold",
+              "extremeClimate",
+              "extremeHumidity",
+              "marine",
+              "none",
+              "other",
+              "saline",
+              "sand",
+              "seismic"
+            ]
+          }
+        },
+        "possibilityOfUse": {
+          "type": "array",
+          "description": "Property. Possibility of use. A unique value. Model:'https://schema.org/Text'. Enum:'mixed, mobile, other, stationary'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "mixed",
+              "mobile",
+              "other",
+              "stationary"
+            ]
+          }
+        },
+        "documentation": {
+          "type": "string",
+          "description": "Property. Technical Documentation (Installation / maintenance / used). Model:'https://schema.org/Text'"
+        },
+        "cellDimension": {
+          "type": "object",
+          "description": "Property. External dimension of a cell. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter.",
+          "properties": {
+            "length": {
+              "type": "number",
+              "minimum": 0
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "thickness": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "moduleNbCells": {
+          "type": "number",
+          "description": "Property. Number of 'cells' per 'module'. Model:'https://schema.org/Number'"
+        },
+        "moduleDimension": {
+          "type": "object",
+          "description": "Property.  External dimension of a module. A module can be an assembly of 1 to n cells. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter. Units:'Millimeters'",
+          "properties": {
+            "length": {
+              "type": "number",
+              "minimum": 0
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "thickness": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "PanelNbModules": {
+          "type": "number",
+          "description": "Property. Number of 'Modules' per 'Panel'. Model:'https://schema.org/Number'"
+        },
+        "panelDimension": {
+          "type": "object",
+          "description": "Property. External dimension of a Panel. A solar panel can be an assembly of 1 to n modules, which themselves are made of several cells which collect heat from the sun's rays. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MMT** represents Millimeter.",
+          "properties": {
+            "length": {
+              "type": "number",
+              "minimum": 0
+            },
+            "width": {
+              "type": "number",
+              "minimum": 0
+            },
+            "thickness": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "panelWeight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Weight of a panel (Sometime the reference used is Kg / m\u00b2). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KGM** represents Kilogram. Model:'https://schema.org/Number'. Units:'kilograms'"
+        },
+        "areaWeight": {
+          "type": "number",
+          "description": "Property. Area Weight measured in Kg/m\u00b2. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **28** represents Kilogram per square meter. Model:'https://schema.org/Number'. Units:'kilograms per square meter'"
+        },
+        "MaxPressureLoad": {
+          "type": "object",
+          "description": "Property. aximum mechanics Pressure (shear, elasticity, compression) load on a Panel. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **PAL** represents Pascal. Model:'https://schema.org/Number'. Units:'Pascal'",
+          "properties": {
+            "hail": {
+              "type": "number",
+              "minimum": 0
+            },
+            "snow": {
+              "type": "number",
+              "minimum": 0
+            },
+            "wind": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "NominalPower": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Nominal Power for the **panel**. This is the same value of items [Pmax] for [moduleSTC] attribute. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **WTT** represents Watt. Model:'https://schema.org/Number'. Units:'watts'"
+        },
+        "MaximumSystemVoltage": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Maximum system voltage permitted for the **module**. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'"
+        },
+        "applicationClass": {
+          "type": "array",
+          "description": "Property. Evaluation of the potential hazards associated with the module. A unique value. Model:'https://schema.org/Text'. Enum:'A, B, C'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        },
+        "fireClass": {
+          "type": "array",
+          "description": "Property. Evaluation to the fire (IEC 61730). A unique value. Model:'https://schema.org/Text'. Enum:'A, B, C'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ]
+          }
+        },
+        "protectionIP": {
+          "type": "string",
+          "description": "Property. IP 'Ingress Protection' for the Junction Box. This is the level classifies and rates the degree of protection provided by mechanical casings and electrical enclosures against intrusion, dust, accidental contact, and water according to International Electrotechnical Commission standard (EN 60-529). First digit: Solid particle protection (Single numeral: 0\u20136 or 'X'). Second digit: Liquid ingress protection (Single numeral: 0\u20139 or 'X' ).Third digit: Personal Protection  against access to dangerous parts (optional additional letter). Fourth digit: Other protections (optional additional letter). Model:'https://schema.org/Text'"
+        },
+        "pTCClass": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property.  The Positive Temperature Coefficient of resistance - *PTC*, describes the relative change of a physical property that is associated with a given change in positive temperature. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent."
+        },
+        "nTCClass": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. The Negative Temperature Coefficient of resistance - *NTC*, describes the relative change of a physical property that is associated with a given change in negative temperature. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'"
+        },
+        "moduleSTC": {
+          "type": "object",
+          "description": "Property. Standard Test Condition measurements. The format is structured by a sub-property of 5 items. Pmax in Watt. Umpp in Volt. Impp in Ampere. Uoc in Volt. Isc in Ampere. Model:'https://schema.org/StructuredValue'",
+          "properties": {
+            "Pmax": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Umpp": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Impp": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Uoc": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Isc": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "moduleNOCT": {
+          "type": "object",
+          "description": "Property. Normal Operating Cell Temperature measurements. The format is structured by a sub-property of 5 items. Pmax in Watt. Umpp in Volt. Impp in Ampere. Uoc in Volt. Isc in Ampere. Model:'https://schema.org/StructuredValue'",
+          "properties": {
+            "Pmax": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Umpp": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Impp": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Uoc": {
+              "type": "number",
+              "minimum": 0
+            },
+            "Isc": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "moduleYieldRate": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Positioning of the device in relation to a ground reference system. A unique value. Model:'https://schema.org/Number'"
+        },
+        "panelOperatingTemperature": {
+          "type": "object",
+          "description": "Property. Ambient operating temperature range. This is the minimum and maximum resistance to cold and heat for using the panel. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Units:'Degree Celsius'. Model:'https://schema.org/StructuredValue'",
+          "properties": {
+            "min": {
+              "type": "number",
+              "minimum": -50
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "cellOperatingTemperature": {
+          "type": "object",
+          "description": "Property. This is the nominal operating temperature range of the cells in which it collects solar energy. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Model:'https://schema.org/StructuredValue'. Units:'Degree Celsius'",
+          "properties": {
+            "min": {
+              "type": "number",
+              "minimum": 0
+            },
+            "max": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "temperatureCoefficient": {
+          "type": "object",
+          "description": "Property.  Temperature influence coefficient on the panel. The format is structured by a sub-property of 3 items. Model:'https://schema.org/StructuredValue'. Pmax in Watt. Uoc in Volt. Isc in Ampere",
+          "properties": {
+            "Pmax": {
+              "type": "number",
+              "minimum": -1
+            },
+            "Uoc": {
+              "type": "number",
+              "minimum": -1
+            },
+            "Isc": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "performanceLowIrradiance": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Average relative yield to Performance at Low Irradiance. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'"
+        },
+        "panelLifetime": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Average lifetime of a panel. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **ANN** represents Year. Model:'https://schema.org/Number'. Units:'year'"
+        },
+        "panelYieldCurve": {
+          "type": "array",
+          "description": "Property. Option 1. Energy production yield curve of the panel from its [NominalPower] at [T0] and along its [panelLifetime]. The Measurements provided in the list are a sequence of Energy Production Capacity represented in Percent starting at 5 years with a 'Step' of 5 years according to the information provided by the manufacturer. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. ",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "panelYieldRate": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "Property. Option 2. Panel energy loss rate per year from its NominalPower at 'T0' and along its panelLifetime according to the information provided by the manufacturer. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'https://schema.org/Number'"
+      },
+      "panelTiltReference": {
+        "type": "object",
+        "description": "Property. Panel tilt reference limit for best performance. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **DD** represents Degree Unit of Angle. Model:'https://schema.org/StructuredValue'. Enum:'",
+        "properties": {
+          "min": {
+            "type": "number",
+            "minimum": 0
+          },
+          "max": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "location",
+    "dateLastReported"
+  ]
+}

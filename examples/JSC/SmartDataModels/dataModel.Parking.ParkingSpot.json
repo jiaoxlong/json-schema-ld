@@ -1,0 +1,131 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.1.0",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Parking/ParkingSpot/schema.json",
+    "title": "Parking Spot",
+    "description": "A parking spot is an area well delimited where one vehicle can be parked.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/PhysicalObject-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ParkingSpot"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be ParkingSpot"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "closed",
+                        "free",
+                        "occupied",
+                        "unknown"
+                    ],
+                    "description": "Property. Model:'https://schema.org/Text'. Status of the parking spot from the point of view of occupancy. Enum:'closed, free, occupied, unknown'"
+                },
+                "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Model:'https://schema.org/width'. Width of the parking spot."
+                },
+                "length": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Model:'https://schema.org/length'. Length of the parking spot."
+                },
+                "refParkingGroup": {
+                    "description": "Relationship. Group to which the parking spot belongs to. For model simplification purposes only one group is allowed per parking spot.",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ]
+                },
+                "refParkingSite": {
+                    "description": "Relationship. Parking site to which the parking spot belongs to.",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ]
+                },
+                "category": {
+                    "type": "array",
+                    "description": "Property. Category(ies) of the parking spot. `onStreet` : The parking spot belongs to an onStreet parking site. `offStreet` : The parking spot belongs to an offStreet parking site.",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "onStreet",
+                            "offStreet"
+                        ]
+                    }
+                },
+                "refDevice": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 256,
+                                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            },
+                            {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            }
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "description": "Relationship. The device representing the physical sensor used to monitor this parking spot."
+                },
+                "timeInstant": {
+                    "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/timeInstant"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "location",
+        "type",
+        "status",
+        "category",
+        "refParkingSite"
+    ]
+}

@@ -126,7 +126,6 @@ export class JSCLDSchema{
         }
 
         // Shacl Shape
-
         let shacl_shape_uri:string = this.shacl_shape_uri+ this.base_resource_name+'Shape';
         this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'rdf:type', 'sh:NodeShape'));
         this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'sh:targetClass',  this.base_schema.id));
@@ -152,10 +151,8 @@ export class JSCLDSchema{
                  * Classes
                  */
                 if (s instanceof ClassSchema){
-                    if (s.id.includes('#'))
-                        shacl_shape_uri = this.config.prefix + ':' + s.id.substring(s.id.lastIndexOf('#')+1)+'Shape';
-                    else if (s.id.includes('/')) {
-                        shacl_shape_uri = this.config.prefix + ':' + s.id.substring(s.id.lastIndexOf('/') + 1) + 'Shape';
+                    if ((s.id.includes('#')) || (s.id.includes('/')) || (s.id.includes(':'))){
+                        shacl_shape_uri = this.config.prefix + ':' + extract_resource_from_uri(s.id)+'Shape';
                     }
                     else
                         shacl_shape_uri = this.config.prefix + ':'+s.id+'Shape'

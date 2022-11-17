@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMUser/schema.json",
+    "$schemaVersion": "0.1.0",
+    "title": "Social Media - SMUser",
+    "description": "This entity contains a harmonised description of a generic SMUser made for the Social Media domain. This entity is primarily associated with the description of a user of Social Media applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to SMUser.",
+                    "enum": [
+                        "SMUser"
+                    ]
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "Property.  Model:'https://schema.org/Text'. The User ID of the SMUser."
+                },
+                "platform": {
+                    "type": "string",
+                    "description": "Property. Description of the  social platform of the user."
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "Property.  Model:'https://schema.org/Text'. The username of the SMUser. Privacy:'Low'"
+                },
+                "createdPosts": {
+                    "type": "array",
+                    "description": "Relationship. The ID of the post that the SMUser created.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 256,
+                                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            },
+                            {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            }
+                        ]
+                    }
+                },
+                "isMentionedBy": {
+                    "type": "array",
+                    "description": "Relationship. The ID of a post that mentions the SMUser.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 256,
+                                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            },
+                            {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "platform",
+        "userName"
+    ]
+}

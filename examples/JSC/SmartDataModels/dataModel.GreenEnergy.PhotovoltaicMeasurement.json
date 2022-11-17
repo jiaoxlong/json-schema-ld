@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/data-models.Energy/PhotovoltaicMeasurement/schema.json",
+  "title": "PhotovoltaicMeasurement schema",
+  "$schemaVersion": "0.0.2",
+  "description": "The Data Model is intended to measure the continuous power transferred by the photo-voltaic panel to an Inverter Device.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "PhotovoltaicMeasurement"
+          ],
+          "description": "Property. NGSI Entity type. It has to be PhotovoltaicMeasurement"
+        },
+        "refPhotovoltaicDevice": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]'|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to a [Photovoltaic Device](https://github.com/smart-data-models/dataModel.Energy/PhotovoltaicDevice/doc/spec.md) which captured this observation, if the entity is used Model:'https://schema.org/URL'"
+        },
+        "refPointOfInterest": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]'|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Reference to a [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) linked with the Repository."
+        },
+        "dateObservedFrom": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Observation period: Start date and time in an ISO8601 UTC format. The attribute can be used in addition to the 'dateObserved attribute when it corresponds to a time interval to be highlighted. Model:'https://schema.org/DateTime'"
+        },
+        "dateObservedTo": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Observation period: End date and time in an ISO8601 UTC format. The attribute can be used in addition to the 'dateObserved' attribute when it corresponds to a time interval to be highlighted. Model:'https://schema.org/DateTime'"
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Temperature recorded at the time of Observation compared to the  nominal reference temperature of the device. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Model:'https://schema.org/Number'. Units:'degrees celsius'"
+        },
+        "dateEnergyMeteringStarted": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The starting date for metering energy in an ISO8601 UTC format. Model:'https://schema.org/DateTime'"
+        },
+        "nominalPeakPowerGeneration": {
+          "type": "number",
+          "description": "Property. nominalPeakPowerGeneration is a number. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Model:'https://schema.org/Number'. Units:'Kilowatt'"
+        },
+        "activePower": {
+          "type": "number",
+          "description": "Property. Active Power,where phi is the phase shift of the current compared to the voltage. The unit code (text) is given using the UN/CEFACT_Common_Codes (max 3 characters). For instance, For instance, **KWT** represents Kilowatt. Model:'https://schema.org/Number'. Units:'Kilowatt'"
+        },
+        "reactivePower": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Reactive Power used by circuits. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **K5** represents kilovolt-ampere-reactive. Model:'https://schema.org/Number'"
+        },
+        "current": {
+          "type": "number",
+          "description": "Property. Electrical intensity of the current. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'"
+        },
+        "inverterStatus": {
+          "type": "array",
+          "description": "Property. Active Power,where phi is the phase shift of the current compared to the voltage. The unit code (text) is given using the UN/CEFACT_Common_Codes (max 3 characters). For instance, For instance, **KWT** represents Kilowatt. Model:'https://schema.org/Number'. Enum:'00-On sector, 01-Power failure / On battery, 02-Loss of communication,  03-Battery fault, 04-System shutdown, 05-Tension dip, 06-Overvoltage, 07-Voltage drop, 08-Voltage increase, 09-Line noise, 10-Frequency variation, 11-Transient distortion, 12-Harmonic distortion'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "00-On sector",
+              "01-Power failure / On battery",
+              "02-Loss of communication",
+              "03-Battery fault",
+              "04-System shutdown",
+              "05-Tension dip",
+              "06-Overvoltage",
+              "07-Voltage drop",
+              "08-Voltage increase",
+              "09-Line noise",
+              "10-Frequency variation",
+              "11-Transient distortion",
+              "12-Harmonic distortion"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "location",
+    "dateObserved",
+    "refPhotovoltaicDevice",
+    "dateEnergyMeteringStarted",
+    "temperature"
+  ]
+}

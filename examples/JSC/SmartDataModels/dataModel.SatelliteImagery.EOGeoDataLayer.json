@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOGeoDataLayer/schema.json",
+    "title": "Satellite Imagery - EOGeoDataLayer",
+    "description": "This entity contains a harmonised description of a generic EOGeoDataLayer made for the Satellite Imagerry domain. This entity is primarily associated with the output data layers related to Earth Observation Analysis applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to EOGeoDataLayer.",
+                    "enum": [
+                        "EOGeoDataLayer"
+                    ]
+                },
+                "localServerPath": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the path that the output data layer is saved on the server"
+                },
+                "storageFormat": {
+                    "type": "string",
+                    "description": "Property. Entity's satorage format."
+                },
+                "geoMetadata": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A text string used to declare the metadata file if available"
+                },
+                "contentInformation": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "layer_name": {
+                                "type": "string"
+                            },
+                            "layer_categorization": {
+                                "type": "string",
+                                "enum": [
+                                    "categorical",
+                                    "numerical"
+                                ]
+                            },
+                            "values_explanation": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "description": "Property. An array that describes for each layer (e.g. band1) or entity name, the type of information (e.g. categorical, numerical) and an array with the explanation of the depicted values (e.g. [1:oil, 0:no oil])"
+                },
+                "isOutputOf": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. The ID of the analysis that was performed to extract this data layer"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "localServerPath",
+        "storageFormat"
+    ],
+    "$schemaVersion": "0.0.1"
+}

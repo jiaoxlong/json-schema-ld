@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMRefLocation/schema.json",
+    "title": "Social Media - SMRefLocation",
+    "description": "This entity contains a harmonised description of a generic SM Reference Location (SMRefLocation) made for the Social Media domain.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to SMRefLocation.",
+                    "enum": [
+                        "SMRefLocation"
+                    ]
+                },
+                "locationReferencedBy": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. The ID of the post that references this location."
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location"
+    ],
+    "$schemaVersion": "0.0.1"
+}

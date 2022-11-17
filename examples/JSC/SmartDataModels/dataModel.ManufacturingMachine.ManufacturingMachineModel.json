@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.ManufacturingMachine/ManufacturingMachineModel/schema.json",
+  "title": "Smart Data models - Machine-Model schema",
+  "description": "This entity contains a harmonised description of a generic machine model. This entity is primarily associated with the industry segment and related IoT applications. The machineModel includes a hierarchical structure that allows machine models to be grouped in a flexible way.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be ManufacturingMachineModel",
+          "enum": [
+            "ManufacturingMachineModel"
+          ]
+        },
+        "documentation": {
+          "type": "string",
+          "description": "Property. Reference to data sheet or other manufacturer’s documentation about this MachineModel."
+        },
+        "manufacturerName": {
+          "type": "string",
+          "description": "Property. The name of manufacturer of this MachineModel."
+        },
+        "brandName": {
+          "type": "string",
+          "description": "Property. The brand name of this MachineModel."
+        },
+        "manufacturingMachineType": {
+          "type": "array",
+          "description": "Property. A List of functional categories which this machineModel supports. Enum:'robot, cnc, 2dPrinter, 3dPrinter, 3dScanner, lathe, injectionMolding, laserCutter, millingMachine, grindingMachine, stampingMachine, oven, kiln, packaging, mixer, dryer, fan, saw'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "2dPrinter",
+              "3dPrinter",
+              "3dScanner",
+              "cnc",
+              "dryer",
+              "fan",
+              "grindingMachine",
+              "injectionMolding",
+              "kiln",
+              "laserCutter",
+              "lathe",
+              "millingMachine",
+              "mixer",
+              "oven",
+              "packaging",
+              "robot",
+              "saw",
+              "stampingMachine"
+            ]
+          }
+        },
+        "version": {
+          "type": "string",
+          "description": "Property. The manufacturer defined version number for the machine model."
+        },
+        "machineModelParent": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. References any higher level MachineModel that this machine model is based on."
+        },
+        "machineModelChildren": {
+          "type": "array",
+          "description": "Relationship. References any lower level MachineModel entities that are based on this machine model.",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256,
+                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                "description": "Property. Identifier format of any NGSI entity"
+              },
+              {
+                "type": "string",
+                "format": "uri",
+                "description": "Property. Identifier format of any NGSI entity"
+              }
+            ]
+          }
+        },
+        "processDescription": {
+          "type": "string",
+          "description": "Property. A description of the industrial process carried out by this machine."
+        },
+        "standardOperations": {
+          "type": "array",
+          "description": "Property. Lists the standard set of operations supported by this machineModel.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "root": {
+          "type": "boolean",
+          "description": "Property. A logical indicator that this Manufacturing Machine Model is the root of a Machine Model hierarchy.True indicates it is the root, false indicates that it is not the root."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.2.1",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.KeyPerformanceIndicator/keyPerformanceIndicator/schema.json",
+  "title": "Key Performance Indicator",
+  "description": "A Key Performance Indicator (KPI) is a type of performance measurement. KPIs evaluate the success of an organization or of a particular activity in which it engages.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "KeyPerformanceIndicator"
+          ],
+          "description": "Property. It must be KeyPerformanceIndicator. Enum:'KeyPerformanceIndicator'"
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Indicator category. Allowed values: (quantitative, qualitative, leading, lagging, input, process, output, practical, directional, actionable, financial). Check Wikipedia for a description of each category listed above. - Any other value meaningful to the application and not covered by the above list.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "actionable",
+              "directional",
+              "financial",
+              "input",
+              "lagging",
+              "leading",
+              "output",
+              "practical",
+              "process",
+              "qualitative",
+              "quantitative"
+            ]
+          }
+        },
+        "organization": {
+          "type": "string",
+          "description": "Property. Subject organization evaluated by the KPI. Model:' https://schema.org/organization'"
+        },
+        "process": {
+          "type": "string",
+          "description": "Property. Either process or product must be defined"
+        },
+        "product": {
+          "type": "string",
+          "description": "Property. Either process or product must be defined"
+        },
+        "provider": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/provider'. Provider of the product or service, if any, that this KPI evaluates."
+        },
+        "businessTarget": {
+          "type": "string",
+          "description": "Property. For informative purposes, the business target to which this KPI is related to."
+        },
+        "calculationFrequency": {
+          "type": "string",
+          "description": "Property. How often the KPI is calculated. Allowed values: one Of (hourly, daily, weekly, monthly, yearly, quarterly, bimonthly, biweekly). Or any other value meaningful for the application and not covered by the above list.",
+          "enum": [
+            "hourly",
+            "daily",
+            "weekly",
+            "monthly",
+            "yearly",
+            "quarterly",
+            "bimonthly",
+            "biweekly"
+          ]
+        },
+        "calculatedBy": {
+          "type": "string",
+          "description": "Property. The organization in charge of calculating the KPI."
+        },
+        "calculationMethod": {
+          "type": "string",
+          "description": "Property. The calculation method used.",
+          "enum": [
+            "manual",
+            "automatic",
+            "semiautomatic"
+          ]
+        },
+        "calculationFormula": {
+          "type": "string",
+          "description": "Property. For informative purposes, the formula used for calculating the indicator."
+        },
+        "aggregatedData": {
+          "type": "array",
+          "description": "Property.  Entity(ies) and attribute(s) aggregated by the KPI.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "entityType": {
+                "type": "string"
+              },
+              "attrs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "minItems": 1
+              }
+            }
+          }
+        },
+        "calculationPeriod": {
+          "type": "object",
+          "description": "Property. KPI's period of time.",
+          "properties": {
+            "from": {
+              "type": "string",
+              "format": "date"
+            },
+            "to": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "currentStanding": {
+          "type": "string",
+          "description": "Property. The KPI's current standing as per its kpiValue. Allowed values: one Of (very good, good, fair, bad, very bad)",
+          "enum": [
+            "veryGood",
+            "good",
+            "fair",
+            "bad",
+            "veryBad"
+          ]
+        },
+        "kpiValue": {
+          "oneOf": [
+            {"type": "string"},
+            {"type": "number"},
+            {"type": "boolean"},
+            {"type": "object"},
+            {"type": "array"}
+          ],
+          "description": "Property. Value of the KPI. It can be of any type."
+        },
+        "effectiveSince": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The date on which the organization created this KPI. This date might be different than the entity creation date."
+        },
+        "dateNextCalculation": {
+          "type": "string",
+          "format": "date",
+          "description": "Property. Date on which a new calculation of the KPI should be available."
+        },
+        "dateExpires": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The date on which the KPI will be no longer necessary or meaningful."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Last update date of the KPI data. This can be different than the last update date of the KPI's value."
+        },
+        "area": {
+          "type": "string",
+          "description": "Property. For organizational purposes, it allows to add extra textual geographical information such as district, borough, or any other hint which can help to identify the KPI coverage."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

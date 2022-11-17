@@ -1,0 +1,538 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModels.Ports/SeaPort/schema.json",
+  "$schemaVersion": "0.0.1",
+  "title": "Seaport facilities schema",
+  "description": "The Data Model is intended to provide information about ports that can accommodate pleasure craft, commerce or passenger  transport. It permit to represent the parameters of each port, its location, its mooring capacities and the free or paid services associated with it provided directly by the port or by professionals working on or near the port.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/DateTime-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. It has to be SeaPortFacilities",
+          "enum": [
+            "SeaPortFacilities"
+          ]
+        },
+        "dateLastReported": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'http://schema.org/DateTime'. A timestamp which denotes the last time when a flow successfully reported data. The date and time of this Repository in ISO8601 UTCformat"
+        },
+        "refDevice": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the Main Entity [Device](https://github.com/smart-data-models/dataModel.Device/blob/master/Device/doc/spec.md) if used as second link"
+        }
+      },
+      "refPointOfInterest": {
+        "anyOf": [
+          {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 256,
+            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+            "description": "Property. Identifier format of any NGSI entity"
+          },
+          {
+            "type": "string",
+            "format": "uri",
+            "description": "Property. Identifier format of any NGSI entity"
+          }
+        ],
+        "description": "Relationship. Reference to a [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) linked with the Repository"
+      },
+      "refBoatAuthorized": {
+        "type": "array",
+        "description": "Reference to a list of [Entity](https://github.com/smart-data-models/dataModel.Port/blob/master/BoatAuthorized/doc/spec.md).",
+        "items": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+        }
+      },
+      "refBoatPlaceAvailable": {
+        "type": "array",
+        "description": "Property. Model:'https://schema.org/URL'. Reference to a list of [Entity](https://github.com/smart-data-models/dataModel.Port/blob/master/BoatPlaceAvailable/doc/spec.md)",
+        "items": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+        }
+      },
+      "refBoatPlacePricing": {
+        "type": "array",
+        "description": "Relationship. Model:'https://schema.org/URL'. Reference to a list of [Entity](https://github.com/smart-data-models/dataModel.Port/blob/master/BoatPlacePricing/doc/spec.md)",
+        "items": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+        }
+      },
+      "contractingAuthority": {
+        "type": "string",
+        "description": "Property. Model:'https://schema.org/Text'. Name of the contracting authority"
+      },
+      "contractingCompany": {
+        "type": "string",
+        "description": "Property. Model:'http://schema.org/DateTime'. The Contracting Company responsible of the management of the port."
+      },
+      "contactPoint": {
+        "type": "object",
+        "description": "Property. https://schema.org/ContactPoint"
+      },
+      "webSite": {
+        "type": "string",
+        "description": "Property. Model:'https://schema.org/Text'. Link to the official website of the harbor for more information."
+      },
+      "typeOfPort": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. A Type of harbor. A combination of : marina, merchandise, cruise, ferry, passengers, yachting, fishing, military, river, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "marina",
+            "merchandise",
+            "cruise",
+            "ferry",
+            "passengers",
+            "yachting",
+            "fishing",
+            "military",
+            "river",
+            "other"
+          ]
+        }
+      },
+      "authorizedPropulsion": {
+        "type": "array",
+        "description": "Property. Model:'https://schema.org/Text'. A Type of propulsions authorized to enter in the harbor. A combination of motor, sail, electric, oar, nuclear, lng, lpg, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "motor",
+            "sail",
+            "electric",
+            "oar",
+            "nuclear",
+            "lng",
+            "lpg",
+            "other"
+          ]
+        }
+      },
+      "maxTonnage": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Units:'TNE'. Maximum tonnage authorized to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **TNE** represents Tonne Metric.",
+        "minimum": 0
+      },
+      "numberOfPlace": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Total number of place in the harbor.",
+        "minimum": 0
+      },
+      "minimumLength": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Units:'MTR'. A Minimum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter",
+        "minimum": 0
+      },
+      "maximumLength": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Units:'MTR'. A Maximum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter",
+        "minimum": 0
+      },
+      "maxWidth": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Units:'MTR'. A Maximum width allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter",
+        "minimum": 0
+      },
+      "maxDraft": {
+        "type": "number",
+        "description": "Property. Model:'http://schema.org/Number'. Units:'MTR'. A Maximum draft allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter",
+        "minimum": 0
+      },
+      "portServicesProvided": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/Text'. Description of the services provided directly by the harbor. A combination of : harborOffice, weather, customsServices, porters, boatRingRental, mooringAssistance, handlingAssistance, publicWifi, privateWifi, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "harborOffice",
+            "weather",
+            "customsServices",
+            "porters",
+            "boatRingRental",
+            "mooringAssistance",
+            "handlingAssistance",
+            "publicWifi",
+            "privateWifi",
+            "other"
+          ]
+        }
+      },
+      "boatSupplyingServices": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. escription of the complementary supplying services for the boat offered by professionals working on or near the harbor. A combination of guarding, fuelStation, fuelTankerTruck , drinkingWaterTankerTruck, provisioning, dryFairing, waterFairing, repair, expertise, gangways, liftingCranes, towing, wasteWaterPumping, boatConveying, boatTransfer, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "guarding",
+            "fuelStation",
+            "fuelTankerTruck",
+            "drinkingWaterTankerTruck",
+            "provisioning",
+            "dryFairing",
+            "waterFairing",
+            "repair",
+            "expertise",
+            "gangways",
+            "liftingCranes",
+            "towing",
+            "wasteWaterPumping",
+            "boatConveying",
+            "boatTransfer",
+            "other"
+          ]
+        }
+      },
+      "facilities": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/Text'. Description of the proposed facilities on the harbor. A combination of : toilets, showers, laundry, telephone, dustbins, dumpsters, container, selectiveSortingWaste, electricTerminal, waterTerminal, indoorRoomReservation, wifi, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "toilets",
+            "showers",
+            "laundry",
+            "telephone",
+            "dustbins",
+            "dumpsters",
+            "container",
+            "selectiveSortingWaste",
+            "electricTerminal",
+            "waterTerminal",
+            "indoorRoomReservation ",
+            "wifi",
+            "other"
+          ]
+        }
+      },
+      "nearbyServices": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. Description of the additional services on the geographical area on or near the harbor. A combination of :touristOffice, fittingsStores, travelAgency, exchangeOffice, medicalOffice, pharmacy, groceryStores, restaurants, presses, bar, shops, seaExcursions, cityTour, touristicExcursions, others",
+        "items": {
+          "type": "string",
+          "enum": [
+            "touristOffice",
+            "fittingsStores",
+            "travelAgency",
+            "exchangeOffice",
+            "medicalOffice",
+            "pharmacy",
+            "groceryStores",
+            "restaurants",
+            "presses",
+            "bar",
+            "shops",
+            "seaExcursions",
+            "cityTour",
+            "touristicExcursions",
+            "others"
+          ]
+        }
+      },
+      "rentalSaleServices": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. ADescription of services provided by professional sales or rental agencies on the geographical area on or near the harbor. A combination of : boatRental, boatSale, jetSkiRental, jetSkiSale, carRental, luxuryCarRental, vanRental, bikeRental, scooterRental, Caddie, palletTransport, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "boatRental",
+            "boatSale",
+            "jetSkiRental",
+            "jetSkiSale",
+            "carRental",
+            "luxuryCarRental",
+            "vanRental",
+            "bikeRental",
+            "scooterRental",
+            "Caddie",
+            "palletTransport",
+            "Others"
+          ]
+        }
+      },
+      "transportServices": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. Description of the services provided for dedicated transport and shuttle services. A combination of : arking, shuttlesToAirport, shuttlesToRailway, internalShuttles, taxis, heliport, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "parking",
+            "shuttlesToAirport",
+            "shuttlesToRailway",
+            "internalShuttle",
+            "taxis",
+            "heliport",
+            "Others"
+          ]
+        }
+      },
+      "routeType": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/Text'. List of the different types of urban transport Mode (Metro, Bus, Tram, ...) from the urban transport Mode GFTS standard [STOP](https://developers.google.com/transit/gtfs/reference/#stopstxt). A combination of values composed only of the attribute 'description' tram(0), metro(1), train(2), bus(3), ferry(4), cableTram(5), cableCar(6), funicular(7), trolleybus(11), monorail(12)",
+        "items": {
+          "type": "string",
+          "enum": [
+            "tram",
+            "metro",
+            "train",
+            "bus",
+            "ferry",
+            "cableTram",
+            "cableCar",
+            "funicular",
+            "trolleybus",
+            "monorail"
+          ]
+        }
+      },
+      "electricTransport": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/Text'.  List of the different types of electric transport proposed by the city. A combination of electricCar, electricBycicle, electricMotorBike, electricScooter ",
+        "items": {
+          "type": "string",
+          "enum": [
+            "electricCar",
+            "electricBycicle",
+            "electricMotorBike",
+            "electricScooter"
+          ]
+        }
+      },
+      "paymentAccepted": {
+        "type": "array",
+        "description": "Property. Model:'http://schema.org/DateTime'. Accepted payment. A combination of a list of active codes defined in the model : Cash, CreditCard, CryptoCurrency, other",
+        "items": {
+          "type": "string",
+          "enum": [
+            "Cash",
+            "CreditCard",
+            "CryptoCurrency",
+            "other"
+          ]
+        }
+      },
+      "currencyAccepted": {
+        "type": "array",
+        "description": "Property. Model:'https://schema.org/currenciesAccepted, '.Currency accepted for payment. A combination of a list of active codes defined in the model [Norme ISO 4217](http://en.wikipedia.org/wiki/ISO_4217), [Crypto Currencies](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) , [Exchange Trading System](https://en.wikipedia.org/wiki/Local_exchange_trading_system",
+        "items": {
+          "type": "string",
+          "enum": [
+            "AUD",
+            "GBP",
+            "EUR",
+            "JPY",
+            "CHF",
+            "USD",
+            "AFN",
+            "ALL",
+            "DZD",
+            "AOA",
+            "ARS",
+            "AMD",
+            "AWG",
+            "AUD",
+            "ATS (EURO)",
+            "BEF (EURO)",
+            "AZN",
+            "BSD",
+            "BHD",
+            "BDT",
+            "BBD",
+            "BYR",
+            "BZD",
+            "BMD",
+            "BTN",
+            "BOB",
+            "BAM",
+            "BWP",
+            "BRL",
+            "GBP",
+            "BND",
+            "BGN",
+            "BIF",
+            "XOF",
+            "XAF",
+            "XPF",
+            "KHR",
+            "CAD",
+            "CVE",
+            "KYD",
+            "CLP",
+            "CNY",
+            "COP",
+            "KMF",
+            "CDF",
+            "CRC",
+            "HRK",
+            "CUC",
+            "CUP",
+            "CYP (EURO)",
+            "CZK",
+            "DKK",
+            "DJF",
+            "DOP",
+            "XCD",
+            "EGP",
+            "SVC",
+            "EEK (EURO)",
+            "ETB",
+            "EUR",
+            "FKP",
+            "FIM (EURO)",
+            "FJD",
+            "GMD",
+            "GEL",
+            "DMK (EURO)",
+            "GHS",
+            "GIP",
+            "GRD (EURO)",
+            "GTQ",
+            "GNF",
+            "GYD",
+            "HTG",
+            "HNL",
+            "HKD",
+            "HUF",
+            "ISK",
+            "INR",
+            "IDR",
+            "IRR",
+            "IQD",
+            "IED (EURO)",
+            "ILS",
+            "ITL (EURO)",
+            "JMD",
+            "JPY",
+            "JOD",
+            "KZT",
+            "KES",
+            "KWD",
+            "KGS",
+            "LAK",
+            "LVL (EURO)",
+            "LBP",
+            "LSL",
+            "LRD",
+            "LYD",
+            "LTL (EURO)",
+            "LUF (EURO)",
+            "MOP",
+            "MKD",
+            "MGA",
+            "MWK",
+            "MYR",
+            "MVR",
+            "MTL (EURO)",
+            "MRO",
+            "MUR",
+            "MXN",
+            "MDL",
+            "MNT",
+            "MAD",
+            "MZN",
+            "MMK",
+            "ANG",
+            "NAD",
+            "NPR",
+            "NLG (EURO)",
+            "NZD",
+            "NIO",
+            "NGN",
+            "KPW",
+            "NOK",
+            "OMR",
+            "PKR",
+            "PAB",
+            "PGK",
+            "PYG",
+            "PEN",
+            "PHP",
+            "PLN",
+            "PTE (EURO)",
+            "QAR",
+            "RON",
+            "RUB",
+            "RWF",
+            "WST",
+            "STD",
+            "SAR",
+            "RSD",
+            "SCR",
+            "SLL",
+            "SGD",
+            "SKK (EURO)",
+            "SIT (EURO)",
+            "SBD",
+            "SOS",
+            "ZAR",
+            "KRW",
+            "ESP (EURO)",
+            "LKR",
+            "SHP",
+            "SDG",
+            "SRD",
+            "SZL",
+            "SEK",
+            "CHF",
+            "SYP",
+            "TWD",
+            "TZS",
+            "THB",
+            "TOP",
+            "TTD",
+            "TND",
+            "TRY",
+            "TMM",
+            "USD",
+            "UGX",
+            "UAH",
+            "UYU",
+            "AED",
+            "VUV",
+            "VEB",
+            "VND",
+            "YER",
+            "ZMK",
+            "ZWD"
+          ]
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "location",
+    "dateLastReported",
+    "typeOfPort"
+  ]
+}

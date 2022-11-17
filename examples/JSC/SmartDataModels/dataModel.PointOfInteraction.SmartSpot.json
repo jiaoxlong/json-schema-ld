@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.1.0",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.PointOfInteraction/SmartSpot/schema.json",
+    "title": "Smart Data Models - Smart Spot",
+    "description": "Smart Data models Smart Spot entity schema intended for validation tools",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "SmartSpot"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be SmartSpot"
+                },
+                "announcedUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Property. URL broadcasted by the device. Model:'https://schema.org/URL'"
+                },
+                "signalStrength": {
+                    "type": "string",
+                    "enum": [
+                        "highest",
+                        "lowest",
+                        "medium"
+                    ],
+                    "description": "Property. Signal strength to adjust the announcement range. Enum:'highest, lowest, medium'"
+                },
+                "bluetoothChannel": {
+                    "type": "string",
+                    "description": "Property. Bluetooth channels where to transmit the announcement.  Model:'https://schema.org/Text'",
+                    "enum": [
+                        "37",
+                        "38",
+                        "39",
+                        "37,38",
+                        "38,39",
+                        "37,39",
+                        "37,38,39"
+                    ]
+                },
+                "coverageRadius": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Property. Radius of the spot coverage area in meters. Model:'https://schema.org/Number'"
+                },
+                "announcementPeriod": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 4000,
+                    "description": "Property. Period between announcements in milliseconds. Model:'https://schema.org/Number'"
+                },
+                "availability": {
+                    "type": "string",
+                    "description": "Property. Specifies the time intervals in which this interactive service is available, but this is a general information while Smart Spots have their own real availability in order to allow advanced configurations. Model:'https://schema.org/openingHours'"
+                },
+                "refSmartPointOfInteraction": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. Reference to the Smart Point of Interaction which includes this Smart Spot. Model:'https://schema.org/URL'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ]
+}

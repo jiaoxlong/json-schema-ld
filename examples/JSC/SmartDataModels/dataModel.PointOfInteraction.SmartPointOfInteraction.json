@@ -1,0 +1,77 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.2",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.PointOfInteraction/SmartPointOfInteraction/schema.json",
+    "title": "Smart Data Models - Smart Point of Interaction",
+    "description": "Smart Data Models Smart Point of Interaction entity schema intended for validation tools",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "SmartPointOfInteraction"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be SmartPointOfInteraction"
+                },
+                "category": {
+                    "type": "array",
+                    "description": "Property. Defines the type of interaction. Enum:'co-creation, entertainment, information, infotainment'. Model:'http://schema.org/Text'",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "co-creation",
+                            "entertainment",
+                            "information",
+                            "infotainment"
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "areaCovered": {
+                    "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons/properties/location"
+                },
+                "applicationUrl": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Property. This field specifies the real URL containing the solution or application (information, co-creation, etc) while the SmartSpot 'announcedUrl' field specifies the broadcast URL which could be this same URL or a shortened one. Model:'https://schema.org/URL'"
+                },
+                "availability": {
+                    "type": "string",
+                    "description": "Property. Specifies the time intervals in which this interactive service is generally available. It is noteworthy that Smart Spots have their own real availability in order to allow advanced configurations. The syntax must be conformant with schema.org. Model:'https://schema.org/openingHours'. For instance, a service which is only active on weekdays will be encoded as 'availability': 'Mo,Tu,We,Th,Fr,Sa 09:00-20:00'."
+                },
+                "refRelatedEntity": {
+                    "type": "array",
+                    "description": "Relationship. List of entities improved with this Smart Point of Interaction. The entity type could be any such as a Parking, Point of Interest, etc.Model:'http://schema.org/Text'",
+                    "items": {
+                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "refSmartSpot": {
+                    "type": "array",
+                    "description": "Property.  References to the Smart Spot devices which are part of the Smart Point of Interaction. Model:'https://schema.org/URL'",
+                    "items": {
+                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ]
+}

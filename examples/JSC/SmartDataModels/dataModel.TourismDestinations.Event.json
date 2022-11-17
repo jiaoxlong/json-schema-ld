@@ -1,0 +1,657 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.1.1",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.TourismDestinations/Event/schema.json",
+  "title": "Smart Data Models - Event",
+  "description": "Upcoming or past event associated with this place, organization, or action.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Event"
+          ],
+          "description": "Property. It has to be Event. NGSI entity type. Model:'https://schema.org/event'"
+        },
+        "touristType": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/touristType"
+        },
+        "url": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/image"
+        },
+        "isAccessibleForFree": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/isAccessibleForFree"
+        },
+        "publicAccess": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/publicAccess"
+        },
+        "startDate": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/startDate"
+        },
+        "endDate": {
+          "$ref": "https://smart-data-models.github.io/data-models/schema-org.json#/definitions/endDate"
+        },
+        "refPointOfInterest": {
+          "type": "array",
+          "description": "Relationship. Reference to all the Point Of interest [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) included in the Event. The POI list does not have a chronological order.",
+          "items": {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+          }
+        },
+        "contactPoint": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Contact-Commons/properties/contactPoint"
+        },
+        "accessPlan": {
+          "type": "string",
+          "description": "Property.  Text or Link to the access plan to the item."
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Category of the Event. A combination of free text to remain flexible to a specific context is offered below as an initial repository or any other value needed by an application. Enum:'shopping, gastronomy, museum, religiousWorship, parksAndGardens, history, outdoorActivities, excursion, wellness'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "excursion",
+              "gastronomy",
+              "history",
+              "museum",
+              "outdoorActivities",
+              "parksAndGardens",
+              "religiousWorship",
+              "shopping",
+              "spectacle",
+              "wellness"
+            ]
+          }
+        },
+        "subCategory": {
+          "type": "array",
+          "description": "Property. Sub-category of the `category` attribute. A combination of free text to remain flexible to a specific context is offered below as an initial example or any other value needed by an application. ",
+          "items": {
+            "type": "string",
+            "enum": [
+              "--museum--",
+              "archaeology",
+              "contemporaryArt",
+              "modernArt",
+              "appliedArts",
+              "decorativeArts",
+              "scienceAndTechnology",
+              "fineArts",
+              "music",
+              "history",
+              "sacredArt",
+              "specials",
+              "literature",
+              "medicineAndPharmacy",
+              "maritime",
+              "transports",
+              "military",
+              "wax",
+              "popularArtsAndTraditions",
+              "numismatic",
+              "ceramics",
+              "sumptuaryArts",
+              "naturalScience",
+              "prehistoric",
+              "ethnology",
+              "railway",
+              "mining",
+              "textile",
+              "sculpture",
+              "multiDisciplinar",
+              "painting",
+              "paleonthology",
+              "thematic",
+              "architecture",
+              "museumHouse",
+              "universitary",
+              "bullfighting",
+              "--excursion--",
+              "sea",
+              "mountain",
+              "river",
+              "countryside",
+              "ancientCity",
+              "cultural",
+              "culinary",
+              "wineRoute",
+              "--parksAndGardens--",
+              "park",
+              "garden",
+              "fountain",
+              "--religiousWorship--",
+              "church",
+              "cathedral",
+              "synagogue",
+              "mosque",
+              "buddhistTemple",
+              "hinduTemple",
+              "monastery",
+              "sanctuary",
+              "cemetery",
+              "sumptuar",
+              "--history--",
+              "castle",
+              "warMemorials",
+              "memorial",
+              "fortifiedCastles",
+              "archaeologicalSite",
+              "crypt",
+              "cave",
+              "--shopping--",
+              "departmentStore",
+              "luxuryStores",
+              "outlet",
+              "mall",
+              "clothing",
+              "mensClothing",
+              "womensClothing",
+              "childrenClothing",
+              "localProducts",
+              "souvenir",
+              "wine",
+              "pastry",
+              "chocolate",
+              "confectionery",
+              "jewelry",
+              "watch",
+              "shoe",
+              "perfume",
+              "cosmetics",
+              "press",
+              "sport",
+              "optics",
+              "leatherGoods",
+              "decoration",
+              "market",
+              "bike",
+              "book",
+              "computer",
+              "convenience",
+              "electronic",
+              "florist",
+              "furniture",
+              "garden",
+              "grocery",
+              "home",
+              "liquor",
+              "mobile",
+              "movierental",
+              "music",
+              "pawnShop",
+              "tire",
+              "toy",
+              "--gastronomy--",
+              "worldCuisine",
+              "traditional",
+              "provencal",
+              "mediterranean",
+              "greek",
+              "spanish",
+              "brazilian",
+              "lebanese",
+              "creole",
+              "mauritian",
+              "reunion",
+              "hawaiian",
+              "mexican",
+              "american",
+              "texMex",
+              "vegetarian",
+              "fish",
+              "seafood",
+              "indian",
+              "vietnamese",
+              "thai",
+              "laosian",
+              "cambodian",
+              "chinese",
+              "moroccan",
+              "tunisian",
+              "african",
+              "sushi",
+              "japanese",
+              "scandinavian",
+              "russian",
+              "pastry",
+              "wine",
+              "--outdoorActivities--",
+              "rafting",
+              "canyoning",
+              "aquatichiking",
+              "hiking",
+              "viaferrata",
+              "climbing",
+              "kitesurfing",
+              "canoeing",
+              "paddleboarding",
+              "jetSki",
+              "catamaran",
+              "sailing",
+              "surfing",
+              "deltaPlane",
+              "skiing",
+              "scooter",
+              "karting",
+              "--wellness--",
+              "spa",
+              "haman",
+              "jacuzzi",
+              "hotSpring",
+              "thalasso",
+              "bodyCare",
+              "swimmingPool",
+              "relaxationArea",
+              "massage",
+              "careCenter"
+            ]
+          }
+        },
+        "thematic": {
+          "type": "array",
+          "description": "Property. A list of thematic as keywords",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string",
+          "description": "Property.  Title of the Event."
+        },
+        "slogan": {
+          "type": "string",
+          "description": "Property. Event header line, matches the text hook. "
+        },
+        "language": {
+          "type": "array",
+          "description": "Property. List of Formal language used during the Event expressed from the IETF [BCP 47](https://tools.ietf.org/html/bcp47) standard. Model:'https://schema.org/language'",
+          "items": {
+            "type": "string"
+          }
+        },
+        "superEvent": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Property. Reference to the Major Event that includes this Event."
+        },
+        "subEvent": {
+          "type": "array",
+          "description": "Property. Reference to a list of Minor Events that are part of this major Event",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256,
+                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                "description": "Property. Identifier format of any NGSI entity"
+              },
+              {
+                "type": "string",
+                "format": "uri",
+                "description": "Property. Identifier format of any NGSI entity"
+              }
+            ]
+          }
+        },
+        "eventStatus": {
+          "type": "array",
+          "description": "Property. Event Status regarding this event.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "opened",
+              "closed",
+              "suspended",
+              "cancelled",
+              "scheduled",
+              "finished",
+              "postponed",
+              "rescheduled"
+            ]
+          }
+        },
+        "eventSchedule": {
+          "type": "array",
+          "description": "Property. An Event that is associated with a Schedule using this property should not have `startDate` or `endDate` properties. These are instead defined within the associated Schedule, this avoids any ambiguity for clients using the data. The property might have repeated values to specify different schedules (different months or seasons).*** ",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dayOfWeek": {
+                "type": "string",
+                "enum": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday",
+                  "PublicHolidays"
+                ]
+              },
+              "byDay": {
+                "type": "string"
+              },
+              "byMonth": {
+                "type": "number"
+              },
+              "byMonthDay": {
+                "type": "number"
+              },
+              "byMonthWeek": {
+                "type": "number"
+              },
+              "exceptDate": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "duration": {
+                "type": "number"
+              },
+              "repeatFrequency": {
+                "type": "string"
+              },
+              "repeatCount": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "duration": {
+          "type": "number",
+          "description": "Property. The duration of each show. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HUR** represents **Hours**."
+        },
+        "doorTimeOpen": {
+          "type": "string",
+          "description": "Property. Doors opening time to access the show."
+        },
+        "doorTimeClose": {
+          "type": "string",
+          "description": "Property. Doors closing time to access the show.."
+        },
+        "openingHoursSpecification": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/DateTime-Commons/properties/openingHoursSpecification"
+        },
+        "pitch": {
+          "type": "array",
+          "description": "Property. Pitch of the Event. Each items have the format based on the [Internationalization (i18N) - W3C recommendation for multilanguage](https://www.w3.org/TR/json-ld/#string-internationalization) integrating all items in a single property (ex number 71). Each item is represented by a string with Language Value : Article Value. ",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string"
+              },
+              "article": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "webSite": {
+          "type": "string",
+          "format": "uri",
+          "description": "Property. Link to the official website for more information."
+        },
+        "contentURL": {
+          "type": "string",
+          "format": "uri",
+          "description": "Property. Specifies the URL to the official image or video of the Event for more information."
+        },
+        "performer": {
+          "type": "array",
+          "description": "Property. Main actor or presenter or musician or musical group of the event.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "actor": {
+          "type": "array",
+          "description": "Property. List of actors or music group.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "composer": {
+          "type": "array",
+          "description": "Property. List of person who wrote the composition.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "director": {
+          "type": "array",
+          "description": "Property. List of director who manage the composition.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "criticReview": {
+          "type": "array",
+          "description": "Property. Review written or published by a source that is recognized for its reviewing activities. Each items have the format based on the  [Internationalization (i18N) - W3C recommendation for multilanguage](https://www.w3.org/TR/json-ld/#string-internationalization) integrating all items in a single property (ex number 71). Each item is represented by a string with 'Language Value' : 'Article Value'",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string"
+              },
+              "reviews": {
+                "type": "array",
+                "items": {
+                  "article": {
+                    "type": "string"
+                  },
+                  "origin": {
+                    "type": "string"
+                  },
+                  "ratingValue": {
+                    "type": "number"
+                  },
+                  "starRating": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ratingValueAverage": {
+          "type": "number",
+          "description": "Property. Rating value of Event. Usage guidelines: Use values from 0 to 10 depending on your standard. This is the average value of all detailed scores of `starRatingDetailed` attribute"
+        },
+        "starRatingDetailed": {
+          "type": "object",
+          "description": "Property. Detailed star ratings which led to the average value expressed in the ratingValue. Instructions for use: A structured value from 1 to 10 occurrences (Stars) where each element is a string in the format: `NumberOfSTar`: Percent. ",
+          "properties": {
+            "10": {
+              "type": "number"
+            },
+            "9": {
+              "type": "number"
+            },
+            "8": {
+              "type": "number"
+            },
+            "7": {
+              "type": "number"
+            },
+            "6": {
+              "type": "number"
+            },
+            "5": {
+              "type": "number"
+            },
+            "4": {
+              "type": "number"
+            },
+            "3": {
+              "type": "number"
+            },
+            "2": {
+              "type": "number"
+            },
+            "1": {
+              "type": "number"
+            }
+          }
+        },
+        "audience": {
+          "type": "array",
+          "description": "Property. Type of public concerned by this Event. A combination of Free text (family, adult, children, teenager, senior, allPublic, ...). Enum:'adult, allPublic, children, family, senior, teenager'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "adult",
+              "allPublic",
+              "children",
+              "family",
+              "senior",
+              "teenager"
+            ]
+          }
+        },
+        "wheelChairAccessible": {
+          "type": "boolean",
+          "description": "Property. Access possible for Person with Reduced Mobility."
+        },
+        "maximumAttendeeCapacity": {
+          "type": "number",
+          "description": "Property. The total number of people who can attend to the Event at that location."
+        },
+        "eventPriceFrom": {
+          "type": "number",
+          "description": "Property. Min Price. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **EUR** represents **\u20acuro**."
+        },
+        "eventPriceTo": {
+          "type": "number",
+          "description": "Property. Max Price. The unit code (text) of measurement is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **EUR** represents **\u20acuro**."
+        },
+        "priceSpecification": {
+          "type": "array",
+          "description": "Property. A structured value representing a price or price range depending categories or public.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "categoryDescription": {
+                "type": "string"
+              },
+              "audience": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "eligibleQuantity": {
+                "type": "number"
+              },
+              "price": {
+                "type": "number"
+              },
+              "minPrice": {
+                "type": "number"
+              },
+              "maxPrice": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "paymentAccepted": {
+          "type": "array",
+          "description": "Property. Accepted payment if `isAccessibleForFree` is False. A combination of a list of active codes defined in the model. Enum:'Cash, CreditCard, CryptoCurrency, other'. Model:'https://schema.org/paymentAccepted'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Cash",
+              "CreditCard",
+              "CryptoCurrency",
+              "other"
+            ]
+          }
+        },
+        "currencyAccepted": {
+          "type": "array",
+          "description": "Property. Currency accepted for payment if `isAccessibleForFree` is False. A combination of a list of active codes defined in the model. Model:'https://schema.org/currenciesAccepted'. [Standard ISO 4217](http://en.wikipedia.org/wiki/ISO_4217), [Crypto Currencies](https://en.wikipedia.org/wiki/List_of_cryptocurrencies) , [Exchange Trading System](https://en.wikipedia.org/wiki/Local_exchange_trading_system)",
+          "items": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "USD"
+            ]
+          }
+        },
+        "routeType": {
+          "type": "array",
+          "description": "Property. List of the urban transports (subway, Bus, Tram, ...) available near the event according to the GFTS standard [STOP](https://developers.google.com/transit/gtfs/reference/#stopstxt). A combination of values. Enum:' bus, cableCar, cableTram, ferry, funicular, monorail, subway, train, tram, trolleybus'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "bus",
+              "cableCar",
+              "cableTram",
+              "ferry",
+              "funicular",
+              "monorail",
+              "subway",
+              "train",
+              "tram",
+              "trolleybus"
+            ]
+          }
+        },
+        "transportServices": {
+          "type": "array",
+          "description": "Property. List of private transport available near the Event. In example taxi, uber, vtc, parkingShuttle ",
+          "items": {
+            "type": "string",
+            "enum": [
+              "parkingShuttle",
+              "taxi",
+              "uber",
+              "vtc"
+            ]
+          }
+        },
+        "electricTransport": {
+          "type": "array",
+          "description": "Property.  List of the different types of electric transport proposed by the city. A combination of. Enum:'electricBicycle, electricCar, electricMotorBike, electricScooter'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "electricBicycle",
+              "electricCar",
+              "electricMotorBike",
+              "electricScooter"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

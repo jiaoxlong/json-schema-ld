@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.GreenEnergy/GreenEnergyGenerator/schema.json",
+  "title": "GSMA / Smart Data Models - GreenEnergyGenerator",
+  "description": "A generic generator station which can generate energy from green energy",
+  "$schemaVersion": "0.0.2",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "GreenEnergyGenerator"
+          ],
+          "description": "Property. NGSI Entity Type. It has to be GreenEnergyGenerator. Model:'https://schema.org/Text'"
+        },
+        "status": {
+          "type": "string",
+          "description": "Property. Status of the green energy generator. Model:'https://schema.org/Text'. Enum:'outOfService, withIncidence, working'",
+          "enum": [
+            "outOfService",
+            "withIncidence",
+            "working"
+          ]
+        },
+        "generationSources": {
+          "type": "array",
+          "description": "Property. A list of sources used for power generation. Model:'https://schema.org/ItemList'. Enum:'biomass, eolic, geothermal, hydropower, solar'",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "biomass",
+              "eolic",
+              "geothermal",
+              "hydropower",
+              "solar"
+            ]
+          }
+        },
+        "selfConsumption": {
+          "type": "boolean",
+          "description": "Property. Indicate whether energy generated will use for self. Model:'https://schema.org/Boolean'"
+        },
+        "redistribution": {
+          "type": "boolean",
+          "description": "Property. Indicates whether the generated energy will be dumped into the network. Model:'https://schema.org/Boolean'"
+        },
+        "maxSolarPowerMeasure": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. A measure of maximum solar energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters)."
+        },
+        "maxEolicPowerMeasure": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. A measure of maximum eolic energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters)."
+        },
+        "maxHydroPowerMeasure": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. A measure of maximum hydropower energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters)."
+        },
+        "maxBiomassMeasure": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. A measure of maximum biomass energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters)."
+        },
+        "maxGeothermalPowerGenerated": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. A measure of maximum geothermal energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters)."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

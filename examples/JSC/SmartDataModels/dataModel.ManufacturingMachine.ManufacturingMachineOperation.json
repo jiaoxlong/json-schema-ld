@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.2",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.ManufacturingMachine/ManufacturingMachineOperation/schema.json",
+  "title": "Smart Data models - Machine-Operation schema",
+  "description": "This entity contains a harmonised description of a generic machine operation. This entity is primarily associated with the industry segment and related IoT applications. Each MachineOperation instance will be related to a specific Machine instance.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be ManufacturingMachineOperation",
+          "enum": [
+            "ManufacturingMachineOperation"
+          ]
+        },
+        "machine": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. A reference to the associated Machine for this machine operation."
+        },
+        "operationType": {
+          "type": "array",
+          "description": "Property. Defines the type of operation conducted/ requested. This will be one of a defined list of operation types specific to the machine/ machineModel.Including these. Enum:'process, setup，maintenance, repair，breakdown'. The list of operation types highly depends on the machine model.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "result": {
+          "type": "string",
+          "description": "Property. The result of the operation. One of these. Enum:'ok, success, suspended, aborted, failed'",
+          "enum": [
+            "aborted",
+            "failed",
+            "ok",
+            "success",
+            "suspended"
+          ]
+        },
+        "plannedStartAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The planned start date/timestamp for the operation. Note that this is advisory and the actual time the operation starts may be before or after the planned start."
+        },
+        "plannedEndAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The planned end date/timestamp for the operation. Note that this is advisory and the actual time the operation finishes may be before or after the planned end."
+        },
+        "status": {
+          "type": "string",
+          "description": "Property. A choice from an enumerated list describing the status. One of these. Enum:'planned, ongoing, finished, scheduled, cancelled'",
+          "enum": [
+            "cancelled",
+            "finished",
+            "ongoing",
+            "planned",
+            "scheduled"
+          ]
+        },
+        "operator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the operator conducting the operation"
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Timestamp when the operation actually started to be performed."
+        },
+        "endedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Timestamp when the operation actually finished."
+        },
+        "commandSequence": {
+          "type": "array",
+          "description": "Property. The command sequence executed/ requested for the machine in a representation format relevant to the machine.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "operationOutput": {
+          "type": "object",
+          "description": "Property. A custom property describing the output data of the operation. The properties of the schema of the output highly depends the machine model.",
+          "properties": {
+            "unitsPrinted": {
+              "type": "number"
+            },
+            "faults": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

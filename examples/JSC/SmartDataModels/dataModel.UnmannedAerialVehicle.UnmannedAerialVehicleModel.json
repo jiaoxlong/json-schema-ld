@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.2",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.UnmannedAerialVehicleModel/UnmannedAerialVehicleModel/schema.json",
+  "title": "Smart Data models - UnmannedAerialVehicleModel schema",
+  "description": "This entity contains a harmonised description of a generic Unmanned Ariel Vehicle (UAV) model and is applicable to UAV command and control and related UAV transport applications.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicle",
+          "enum": [
+            "UnmannedAerialVehicleModel"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "description": "Property. The UAV models identifier, which may be a Unmanned Aerial Vehicle Model."
+        },
+        "documentation": {
+          "type": "string",
+          "description": "Property. URI reference (URL/URN) to Product Data Sheet or other manufacturers documentation about this Unmanned Aerial Vehicle Model."
+        },
+        "manufacturerName": {
+          "type": "string",
+          "description": "Property. The name of the manufacturer of this Unmanned Aerial Vehicle Model."
+        },
+        "brandName": {
+          "type": "string",
+          "description": "Property. A description of the brand name of this Unmanned Aerial Vehicle Model."
+        },
+        "categoryUAV": {
+          "type": "string",
+          "description": "Property. The work category of the UAVModel. A choice from the following listnum:'aerialPhotography, plantProtection, industry, routingInspection, mailing, transportation'",
+          "enum": [
+            "aerialPhotography",
+            "industry",
+            "mailing",
+            "plantProtection",
+            "routingInspection",
+            "transportation"
+          ]
+        },
+        "rotors": {
+          "type": "number",
+          "description": "Property. The number of the rotors of the Unmanned Aerial Vehicle Model."
+        },
+        "fuelType": {
+          "type": "string",
+          "description": "Property. The fuel type powering the UAVModel. A choice from an enumerated list describing the power source. Enum:'gasoline, petrol(unleaded), petrol(leaded), petrol, diesel, electric, hydrogen, lpg autogas, cng, biodiesel, ethanol, hybrid electric/petrol, hybrid electric/diesel, other'",
+          "enum": [
+            "biodiesel",
+            "cng",
+            "diesel",
+            "electric",
+            "ethanol",
+            "gasoline",
+            "hybrid electric/petrol",
+            "hybrid electric/diesel",
+            "hydrogen",
+            "lpgAutogas",
+            "other",
+            "petrol",
+            "petrol(unleaded)",
+            "petrol(leaded)"
+          ]
+        },
+        "maxFlightTime": {
+          "type": "number",
+          "description": "Property. The maximum duration of flight of the Unmanned Aerial Vehicle Model with full fuel and no load. Specify value and units of measure."
+        },
+        "maxFlightAltitude": {
+          "type": "number",
+          "description": "Property. The maximum flight altitude of the Unmanned Aerial Vehicle Model above ground. Specify value and units of measure."
+        },
+        "maxGroundVelocity": {
+          "type": "number",
+          "description": "Property. The maximum ground velocity of the Unmanned Aerial Vehicle Model (under still wind conditions). Specify value and units of measure."
+        },
+        "minWeight": {
+          "type": "number",
+          "description": "Property. The weight of the Unmanned Aerial Vehicle without fuel or load. Specify value and units of measure."
+        },
+        "minUnladenWeight": {
+          "type": "number",
+          "description": "Property. The weight of the Unmanned Aerial Vehicle with full fuel but no load. Specify value and units of measure."
+        },
+        "maxLoad": {
+          "type": "number",
+          "description": "Property. The maximum load that the Unmanned Aerial Vehicle is permitted to transport. Specify value and units of measure."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

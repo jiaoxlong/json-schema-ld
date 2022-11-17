@@ -1,0 +1,662 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.1.2",
+  "modelTags": "IUDX",
+  "$id": "https://smart-data-models.github.io/dataModel.Parking/OffStreetParking/schema.json",
+  "title": "Smart Data Models - Parking / Off Street Parking",
+  "description": "Off street parking",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "OffStreetParking"
+          ],
+          "description": "Property. It has to be OffStreetParking"
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Parking site's category(ies). The purpose of this field is to allow to tag, generally speaking, off street parking entities",
+          "items": {
+            "type": "string",
+            "enum": [
+              "barrierAccess",
+              "feeCharged",
+              "forCustomers",
+              "forDisabled",
+              "forElectricalCharging",
+              "forEmployees",
+              "forMembers",
+              "forResidents",
+              "forStudents",
+              "forVisitors",
+              "free",
+              "freeAccess",
+              "gateAccess",
+              "guarded",
+              "ground",
+              "longTerm",
+              "mediumTerm",
+              "onlyResidents",
+              "onlyWithPermit",
+              "parkingGarage",
+              "parkingLot",
+              "private",
+              "public",
+              "publicPrivate",
+              "shortTerm",
+              "staffed",
+              "underground",
+              "urbanDeterrentParking",
+              "other"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "extCategory": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Property. External category to complement category."
+        },
+        "allowedVehicleType": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'.  Vehicle type(s) allowed. The first element of this array _MUST_ be the principal vehicle type allowed. Free spot numbers of other allowed vehicle types might be reported under the attribute `extraSpotNumber` and through specific entities of type _ParkingGroup_. The following values defined by _VehicleTypeEnum_, [DATEX 2 version 2.3](http://d2docs.ndwcloud.nu/downloads/modelv23.html). Enum:'agriculturalVehicle, anyVehicle, bicycle, bus, car, caravan, carWithCaravan, carWithTrailer, constructionOrMaintenanceVehicle, lorry, moped, motorcycle, motorcycleWithSideCar, motorscooter, tanker, trailer, van'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "agriculturalVehicle",
+              "anyVehicle",
+              "bicycle",
+              "bus",
+              "car",
+              "caravan",
+              "carWithCaravan",
+              "carWithTrailer",
+              "constructionOrMaintenanceVehicle",
+              "lorry",
+              "moped",
+              "motorcycle",
+              "motorcycleWithSideCar",
+              "motorscooter",
+              "tanker",
+              "trailer",
+              "van"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "chargeType": {
+          "type": "array",
+          "description": "Property. Type(s) of charge performed by the parking site. Allowed values: Some of those defined by the DATEX II version 2.3 _ ChargeTypeEnum_ enumeration. Enum:'additionalIntervalPrice, annualPayment, firstIntervalPrice, flat, free, minimum, maximum, monthlyPayment, other, seasonTicket, temporaryPrice'. Or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "additionalIntervalPrice",
+              "annualPayment",
+              "firstIntervalPrice",
+              "flat",
+              "free",
+              "minimum",
+              "maximum",
+              "monthlyPayment",
+              "other",
+              "seasonTicket",
+              "temporaryPrice"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "requiredPermit": {
+          "type": "array",
+          "description": "Property. This attribute captures what permit(s) might be needed to park at this site. Semantics is that at least _one of_ these permits is needed to park. When a permit is composed by more than one item (and) they can be combined with a ','. For instance 'residentPermit,disabledPermit' stays that both, at the same time, a resident and a disabled permit are needed to park. If the list is empty no permit is needed. Allowed values: The following, defined by the _PermitTypeEnum_ enumeration of DATEX II version 2.3. Enum:'employeePermit, fairPermit, governmentPermit, noPermitNeeded, residentPermit, specificIdentifiedVehiclePermit, studentPermit, visitorPermit'. Or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "employeePermit",
+              "fairPermit",
+              "governmentPermit",
+              "noPermitNeeded",
+              "residentPermit",
+              "specificIdentifiedVehiclePermit",
+              "studentPermit",
+              "visitorPermit"
+            ]
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "occupancyDetectionType": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Occupancy detection method(s).  Allowed values: The following from DATEX II version 2.3 _OccupancyDetectionTypeEnum_. Enum:'balancing, manual, modelBased, none, singleSpaceDetection'. Or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "balancing",
+              "manual",
+              "modelBased",
+              "none",
+              "singleSpaceDetection"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "occupiedSpotNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Model:'http://schema.org/Number'. Number of total parking spots occupied in the smart parking site corresponding to this observation. This must a positive number lower than or equal to the totalSpotNumber"
+        },
+        "occupancyModified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'http://schema.org/Number'. Relative value of occupied spots out of the total spots. Allowed values: 0 - 1"
+        },
+        "occupancy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Property. Model:'http://schema.org/Number'. Relative value of occupied spots out of the total spots."
+        },
+        "acceptedPaymentMethod": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/acceptedPaymentMethod'. Enum:'ByBankTransferInAdvance, ByInvoice, Cash, CheckInAdvance, COD, DirectDebit, GoogleCheckout, PayPal, PaySwarm'. Accepted payment method(s).",
+          "items": {
+            "type": "string",
+            "enum": [
+              "ByBankTransferInAdvance",
+              "ByInvoice",
+              "Cash",
+              "CheckInAdvance",
+              "COD",
+              "DirectDebit",
+              "GoogleCheckout",
+              "PayPal",
+              "PaySwarm"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "priceRatePerMinute": {
+          "type": "number",
+          "description": "Property. Model: 'https://schema.org/Number'. Price rate per minute."
+        },
+        "priceCurrency": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/priceCurrency'. Price currency of price rate per minute"
+        },
+        "layout": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Parking layout. Gives more details to the `category` attribute. Allowed values: As per the _ParkingLayoutEnum_ of DATEX II version 2.3. Enum:'automatedParkingGarage, carports, covered, field, garageBoxes, multiLevel, multiStorey, nested, openSpace, rooftop, sheds, singleLevel, surface, other'. See also [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Tag:amenity%3Dparking). Or any other value useful for the application and not covered above.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "automatedParkingGarage",
+              "carports",
+              "covered",
+              "field",
+              "garageBoxes",
+              "multiLevel",
+              "multiStorey",
+              "nested",
+              "openSpace",
+              "rooftop",
+              "sheds",
+              "singleLevel",
+              "surface",
+              "other"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "usageScenario": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Usage scenario(s). Gives more details to the `category` attribute. Allowed values: Those defined by the enumeration _ParkingUsageScenarioEnum_ of DATEX II version 2.3. Enum:'automaticParkingGuidance, carSharing, dropOffWithValet, dropOffMechanical, dropOff, eventParking, kissAndRide, liftShare, loadingBay, overnightParking, parkAndCycle, parkAndRide, parkAndWalk, restArea, serviceArea, staffGuidesToSpace, truckParking, vehicleLift, other'. Or any other value useful for the application and not covered above.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "automaticParkingGuidance",
+              "carSharing",
+              "dropOffWithValet",
+              "dropOffMechanical",
+              "dropOff",
+              "eventParking",
+              "kissAndRide",
+              "liftShare",
+              "loadingBay",
+              "overnightParking",
+              "parkAndCycle",
+              "parkAndRide",
+              "parkAndWalk",
+              "restArea",
+              "serviceArea",
+              "staffGuidesToSpace",
+              "truckParking",
+              "vehicleLift",
+              "other"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "parkingMode": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Parking mode(s). Allowed values: Those defined by the DATEX II version 2.3 _ParkingModeEnum_ enumeration. Enum:'echelonParking, parallelParking, perpendicularParking'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "echelonParking",
+              "parallelParking",
+              "perpendicularParking"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "facilities": {
+          "type": "array",
+          "description": "Property. Model:''. Allowed values: The following defined by the _EquipmentTypeEnum_ enumeration of DATEX II version 2.3. Enum:'bikeParking, cashMachine, copyMachineOrService, defibrillator, dumpingStation, electricChargingStation, elevator, faxMachineOrService, fireHose, fireExtinguisher, fireHydrant, firstAidEquipment, freshWater, iceFreeScaffold, informationPoint, internetWireless, luggageLocker, payDesk, paymentMachine, playground, publicPhone, refuseBin, safeDeposit, shower, toilet, tollTerminal, vendingMachine, wasteDisposal' . Any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "bikeParking",
+              "cashMachine",
+              "copyMachineOrService",
+              "defibrillator",
+              "dumpingStation",
+              "electricChargingStation",
+              "elevator",
+              "faxMachineOrService",
+              "fireHose",
+              "fireExtinguisher",
+              "fireHydrant",
+              "firstAidEquipment",
+              "freshWater",
+              "iceFreeScaffold",
+              "informationPoint",
+              "internetWireless",
+              "luggageLocker",
+              "payDesk",
+              "paymentMachine",
+              "playground",
+              "publicPhone",
+              "refuseBin",
+              "safeDeposit",
+              "shower",
+              "toilet",
+              "tollTerminal",
+              "vendingMachine",
+              "wasteDisposal"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "security": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Security aspects provided by this parking site. Allowed values: The following, some of them, defined by _ParkingSecurityEnum_ of DATEX II version 2.3. Enum:'areaSeparatedFromSurroundings, cctv, dog, externalSecurity, fences, floodLight, guard24hours, lighting, patrolled, securityStaff' . or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "areaSeparatedFromSurroundings",
+              "cctv",
+              "dog",
+              "externalSecurity",
+              "fences",
+              "floodLight",
+              "guard24hours",
+              "lighting",
+              "patrolled",
+              "securityStaff"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "highestFloor": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. For parking sites with multiple floor levels, highest floor. An integer number. 0 is ground level. Upper floors are positive numbers. Lower floors are negative ones."
+        },
+        "lowestFloor": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. For parking sites with multiple floor levels, lowest floor. Allowed values: An integer number."
+        },
+        "maximumParkingDuration": {
+          "type": "string",
+          "description": "Property. Model:'http://schema.org/Text'. Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration or with any other string relevant for parking.  An empty value or when non present indicates an indefinite duration"
+        },
+        "totalSpotNumber": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. The total number of spots offered by this parking site.  This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines. Allowed values: Any positive integer number or 0. Normative references: DATEX 2 version 2.3 attribute _parkingNumberOfSpaces_ of the _ParkingRecord_ class.",
+          "minimum": 1
+        },
+        "availableSpotNumber": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. The number of spots available (_including_ all  vehicle types or reserved spaces, such as those for disabled people, long term parkers and so on). This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines. Allowed values: A positive integer number, including 0. It must lower or equal than `totalSpotNumber`.",
+          "minimum": 0
+        },
+        "extraSpotNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Property. Model:'http://schema.org/Number'. The number of extra spots _available_, i.e. free. This value must aggregate free spots from all groups mentioned below: A/ Those reserved for special purposes and usually require a permit. Permit details will be found at parking group level (entity of type `ParkingGroup`). B/ Those reserved for other vehicle types different than the principal allowed vehicle type. C/ Any other group of parking spots not subject to the general condition rules conveyed by this entity."
+        },
+        "openingHours": {
+          "type": "string",
+          "description": "Property. Model:'http://schema.org/openingHours'. Opening hours of the parking site."
+        },
+        "firstAvailableFloor": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. Number of the floor closest to the ground which currently has available parking spots. Allowed values: Stories are numbered between -n and n, being 0 ground floor."
+        },
+        "specialLocation": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. If the parking site is at a special location (airport, department store, etc.) it conveys what is such special location.  Allowed values: Those defined by _ParkingSpecialLocationEnum_ of [DATEX II version 2.3](http://www.datex2.eu/content/parking-publications-extension-v10a). Enum:'airportTerminal, cableCarStation, campground, cinema, coachStation, conventionCentre, exhibitionCentre, ferryTerminal, hotel, market, publicTransportStation, religiousCentre, shoppingCentre, skilift, specificFacility, themePark, trainStation, vehicleOnRailTerminal, other'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "airportTerminal",
+              "cableCarStation",
+              "campground",
+              "cinema",
+              "coachStation",
+              "conventionCentre",
+              "exhibitionCentre",
+              "ferryTerminal",
+              "hotel",
+              "market",
+              "publicTransportStation",
+              "religiousCentre",
+              "shoppingCentre",
+              "skilift",
+              "specificFacility",
+              "themePark",
+              "trainStation",
+              "vehicleOnRailTerminal",
+              "other"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "status": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Status of the parking site. Allowed values: The following defined by the following enumerations defined by DATEX II version 2.3. Enum:'almostFull, closed, closedAbnormal, full, fullAtEntrance, open, openingTimesInForce, spacesAvailable'. Or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "almostFull",
+              "closed",
+              "closedAbnormal",
+              "full",
+              "fullAtEntrance",
+              "open",
+              "openingTimesInForce",
+              "spacesAvailable"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "reservationType": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. he following specified by _ReservationTypeEnum_ of DATEX II version 2.3. Enum:'mandatory, notAvailable, optional, partly'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "mandatory",
+              "notAvailable",
+              "optional",
+              "partly"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "provider": {
+          "type": "object",
+          "description": "Property. Parking site service provider. Model:'https://schema.org/provider'"
+        },
+        "measuresPeriod": {
+          "type": "number",
+          "description": "Property. Model:'http://schema.org/Number'. The measures period related to availableSpotNumber and priceRatePerMinute."
+        },
+        "measuresPeriodUnit": {
+          "type": "string",
+          "description": "Property. Model:'http://schema.org/unitText'. The measures period unit related to availableSpotNumber and PriceRatePerMinute."
+        },
+        "contactPoint": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/contactPoint'. Parking site contact point."
+        },
+        "averageSpotWidth": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'http://schema.org/width'. Units:'meters'. The average width of parking spots."
+        },
+        "averageSpotLength": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/length'. Units:'meters'. The average length of parking spots."
+        },
+        "maximumAllowedHeight": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/heigth'. Units:'meters'. Maximum allowed height for vehicles. If there are multiple zones, it will be the minimum height of all the zones."
+        },
+        "maximumAllowedWidth": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/width'. Units:'Meters'. Maximum allowed width for vehicles. If there are multiple zones, it will be the minimum width of all the zones."
+        },
+        "refParkingAccess": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$"
+            },
+            {
+              "type": "string",
+              "format": "uri"
+            }
+          ],
+          "description": "Relationship. Model:'http://schema.org/URL'. Parking site's access point(s)."
+        },
+        "refParkingGroup": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$"
+            },
+            {
+              "type": "string",
+              "format": "uri"
+            }
+          ],
+          "description": "Relationship. Model:'http://schema.org/URL'. Parking site identified group(s). A group can correspond to a zone, a complete storey, a group of spots, etc."
+        },
+        "refParkingSpot": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$"
+            },
+            {
+              "type": "string",
+              "format": "uri"
+            }
+          ],
+          "description": "Relationship. Individual parking spots belonging to this offStreet parking site."
+        },
+        "aggregateRating": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/aggregateRating'. Aggregated rating for this parking site."
+        },
+        "vehicleEntranceCount": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'http://schema.org/Number'. Aggregated number of vehicle that enter the parking site in a period of time."
+        },
+        "vehicleExitCount": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'http://schema.org/Number'. Aggregated number of vehicle that leave the parking site in a period of time."
+        },
+        "accessModified": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/DateTime'. Timestamp when `vehicleEntranceCount` and `vehicleExitCount` was updated. Allowed values: ISO8601"
+        },
+        "images": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/image'. A URL containing a photo of this parking site",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "outOfServiceSlotNumber": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. The number of bike racks/bike-docking slots or parking slots that are out of order and cannot be used to hire or park a bike in the bike docking station or parking site corresponding to this observation."
+        },
+        "parkingSiteId": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. The unique ID of the parking site or parking lot corresponding to this observation."
+        },
+        "observationDateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/Text'. Last reported time of observation."
+        },
+        "fourWheelerSlots": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/Text. Four wheeler parking spot availability status in parking site corresponding to this observation.",
+          "properties": {
+            "availableSlotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positive number lower than or equal to the totalSpotNumber."
+            },
+            "totalSlotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation."
+            },
+            "occupiedSlotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber."
+            }
+          }
+        },
+        "unclassifiedSlots": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/Text. Unclassified vehicles or other vehicles parking spot availability status in parking site corresponding to this observation.",
+          "properties": {
+            "availableSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber."
+            },
+            "totalSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation."
+            },
+            "occupiedSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber."
+            }
+          }
+        },
+        "twoWheelerSlots": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/Text. Two wheeler parking spot availability status in parking site corresponding to this observation.",
+          "properties": {
+            "availableSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber."
+            },
+            "totalSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation."
+            },
+            "occupiedSpotNumber": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber."
+            }
+          }
+        },
+        "municipalityInfo": {
+          "type": "object",
+          "description": "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.",
+          "properties": {
+            "district": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. District name corresponding to this observation."
+            },
+            "ulbName": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Name of the Urban Local Body corresponding to this observation."
+            },
+            "cityId": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. City ID corresponding to this observation."
+            },
+            "wardId": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Ward ID corresponding to this observation."
+            },
+            "stateName": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation."
+            },
+            "cityName": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. City name corresponding to this observation"
+            },
+            "zoneName": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Zone name corresponding to this observation."
+            },
+            "zoneId": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Zone ID corresponding to this observation."
+            },
+            "wardName": {
+              "type": "string",
+              "description": "Property. Model:'https://schema.org/Text'. Ward name corresponding to this observation."
+            },
+            "wardNum": {
+              "type": "number",
+              "description": "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation."
+            }
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "location"
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json",
+  "title": " - Street Lighting / Streetlight model",
+  "description": "A Street light model",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/PhysicalObject-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "StreetlightModel"
+          ],
+          "description": "Property. NGSI Entity type. It has to be StreetlightModel"
+        },
+        "maxPowerConsumption": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Maximum power consumption supported by the lantern. Model:'https://schema.org/Number'. Units:'Watts (W)'."
+        },
+        "minPowerConsumption": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Minimum power consumption supported by the lantern. Model:'https://schema.org/Number'. Units:'Watts (W)'."
+        },
+        "columnBrandName": {
+          "type": "string",
+          "description": "Property. Name of the column's brand. Model:'https://schema.org/brand'."
+        },
+        "columnModelName": {
+          "type": "string",
+          "description": "Property. Name of the column's model. Model:'https://schema.org/model'"
+        },
+        "columnManufacturerName": {
+          "type": "string",
+          "description": "Property. Name of the column's manufacturer. Model:'https://schema.org/manufacturer'"
+        },
+        "columnMadeOf": {
+          "type": "string",
+          "enum": [
+            "steel",
+            "aluminium",
+            "wood",
+            "other"
+          ],
+          "description": "Property. Material column is made of. Enum:'steel, aluminium, wood, other'. Model:'https://schema.org/Text'"
+        },
+        "columnColor": {
+          "type": "string",
+          "description": "Property. Column's painting color. Model:'https://schema.org/color'. Allowed Values: A color keyword as specified by [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords). A color value as specified by [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)"
+        },
+        "lanternModelName": {
+          "type": "string",
+          "description": "Property. Name of the lantern's model. Model:'https://schema.org/Text'"
+        },
+        "lanternBrandName": {
+          "type": "string",
+          "description": "Property. Name of the lantern's brand. Model:'https://schema.org/brand'"
+        },
+        "lanternManufacturerName": {
+          "type": "string",
+          "description": "Property. Name of the lantern's manufacturer. Model:'https://schema.org/manufacturer'"
+        },
+        "lanternWeight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Lantern's weight. Model:'https://schema.org/weight'. Units:'Kilograms (kg)'"
+        },
+        "lampModelName": {
+          "type": "string",
+          "description": "Property. Name of the lamp's model. Model:'https://schema.org/model'"
+        },
+        "lampBrandName": {
+          "type": "string",
+          "description": "Property. Name of the lamp's brand. Model:'https://schema.org/brand'"
+        },
+        "lampManufacturerName": {
+          "type": "string",
+          "description": "Property. Name of the lamp's manufacturer."
+        },
+        "lampWeight": {
+          "type": "string",
+          "description": "Property. Lamp's weight. Model:'Kilograms (kg)'. Units:'Kilograms (kg)'"
+        },
+        "workingLife": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. The estimated number of hours working (the lamp) without failure. Units:'Hours'. Model:'https://schema.org/Number'"
+        },
+        "lampTechnology": {
+          "type": "string",
+          "enum": [
+            "LED",
+            "LPS",
+            "HPS"
+          ],
+          "description": "Property. Technology used by the lamp. Enum:'LED, LPS, HPS'. Or any other value not covered by the above list and meaningful to the application."
+        },
+        "colorTemperature": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Correlated color temperature of the lamp. Model:'https://schema.org/Number'. Units:'Kelvin degrees (K)'"
+        },
+        "colorRenderingIndex": {
+          "type": "number",
+          "description": "Property. Color rendering index of the lamp. Model:'https://schema.org/Number'"
+        },
+        "luminousFlux": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Maximum light output which can be provided by the lamp. Units:'Lumens (lm)'. Model:'https://schema.org/Number'"
+        },
+        "powerConsumption": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. (Nominal) power consumption made by the lamp. Model:'https://schema.org/Number'. Units:'Watts (W)'"
+        },
+        "compliantWith": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Property. A list of standards to which this streetlight model is compliant with. Model:'https://schema.org/Text'"
+        },
+        "category": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "bollard",
+              "flashingBeacon",
+              "lamppost",
+              "lightTower",
+              "ornamentalLantern",
+              "postTop",
+              "sideEntry",
+              "signLight"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Property. Type of asset which implements the street light. Enum:'`postTop, bollard, lamppost, lightTower, flashingBeacon, sideEntry, signLight, ornamentalLantern'. Or any other value not defined above and meaningful for the application"
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "name"
+  ]
+}

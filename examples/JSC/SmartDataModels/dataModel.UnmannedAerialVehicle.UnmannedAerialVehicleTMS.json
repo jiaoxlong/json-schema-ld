@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleTMS/schema.json",
+  "title": "Smart Data models - UAV-Traffic Management Software schema",
+  "description": "This entity contains a harmonized description of a specific Unmanned Aerial Vehicle (UAV) Traffic Management Software Application that is designed to listen to and monitor the information transmitted by UAV’s, typically this software application would be operated at a ground station. This entity is primarily associated with UAV command and control applications.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleTMS",
+          "enum": [
+            "UnmannedAerialVehicleTMS"
+          ]
+        },
+        "softwareApplication": {
+          "type": "object",
+          "description": "Property. Details about the software application using the Schema.org definition Model:'https://schema.org/SoftwareApplication'. ",
+          "properties": {
+            "operatingSystem": {
+              "type": "string"
+            },
+            "softwareVersion": {
+              "type": "string"
+            },
+            "applicationCategory": {
+              "type": "string"
+            }
+          }
+        },
+        "operationalInstance": {
+          "type": "string",
+          "description": "Property. URL linking to an operational instance (assumed to be web based) for the UAV Traffic Management Software.",
+          "format": "uri"
+        },
+        "operator": {
+          "type": "array",
+          "description": "Property. A list detailing the operator or operators of the UAV. Refers to one or more Schema.org person or organization.https://schema.org/Person or https://schema.org/Organization",
+          "items": {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "required"
+  ]
+}

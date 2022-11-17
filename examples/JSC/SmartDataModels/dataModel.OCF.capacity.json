@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.2",
+  "modelTags": "OCF",
+  "$id": "https://smart-data-models.github.io/dataModel.OCF/capacity/schema.json",
+  "title": "Smart Data models - capacity schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels",
+  "description": "This Resource describes the capacity (heating or cooling) of a HVAC system. 'capacity' is a number in units of kW (kilowatts). To convert from kW to other units that may be commonly used in certain geographic locales the following conversions should be applied: - to convert to BTU/hr: BTU/hr = 3412.142 * kW - to convert to ton: ton = kW/3.5168525",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "rt": {
+          "description": "Property. The Resource Type.",
+          "items": {
+            "enum": [
+              "oic.r.hvac.capacity"
+            ],
+            "maxLength": 64,
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "capacity": {
+          "description": "Property. The rated capacity for the Device.",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "readOnly": true,
+          "type": "number"
+        },
+        "n": {
+          "type": "string",
+          "maxLength": 64,
+          "readOnly": true,
+          "description": "Property. Friendly name of the Resource"
+        },
+        "if": {
+          "description": "Property. The OCF Interface set supported by this Resource.",
+          "items": {
+            "enum": [
+              "oic.if.r",
+              "oic.if.baseline"
+            ],
+            "type": "string"
+          },
+          "minItems": 2,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "capacity"
+          ],
+          "description": "Property. NGSI entity type. It has to be capacity"
+        }
+      }
+    }
+  ],
+  "license": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
+  "derivedFrom": "https://raw.githubusercontent.com/openconnectivityfoundation/IoTDataModels/master/HVACCapacityResURI.swagger.json",
+  "required": [
+    "capacity",
+    "id",
+    "type"
+  ]
+}

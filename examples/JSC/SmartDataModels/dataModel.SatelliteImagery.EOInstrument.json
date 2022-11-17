@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOInstrument/schema.json",
+    "title": "Satellite Imagery - EOInstrument",
+    "description": "This entity contains a harmonised description of a generic EOInstrument made for the Satellite Imagerry domain. This entity is primarily associated with the satellite instruments related to Earth Observation Analysis applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to EOInstrument.",
+                    "enum": [
+                        "EOInstrument"
+                    ]
+                },
+                "instrumentID": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the ID of the instrument payload"
+                },
+                "instrumentName": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the name of the instrument payload"
+                },
+                "operationalMode": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A text string used to declare the supported sensor modes if available"
+                },
+                "polarizationMode": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A text string used to declare the polarization modes if available"
+                },
+                "swathID": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A text string used to declare the swath ID if available"
+                },
+                "carriedOn": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. The ID of the satellite platform that the instrument is carried on"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ],
+    "$schemaVersion": "0.0.1"
+}

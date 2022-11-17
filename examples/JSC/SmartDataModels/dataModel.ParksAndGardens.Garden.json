@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.3",
+  "$id": "https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json",
+  "title": "Smart Data Models - Parks and Gardens / Garden",
+  "description": "A garden is a distinguishable planned space, usually outdoors, set aside for the display, cultivation, and enjoyment of plants and other forms of nature.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/PhysicalObject-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Garden"
+          ],
+          "description": "Property. NGSI Entity Type: It has to be Garden"
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text'. Garden's category. Enum:'public, private, botanical, castle, community, monastery, residential, fencedOff'. Or any other value needed by an application.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "botanical",
+              "castle",
+              "community",
+              "fencedOff",
+              "monastery",
+              "private",
+              "public",
+              "residential"
+            ]
+          }
+        },
+        "style": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Enum:'public, english, french, chinese, japanese, zen, rosarium, herb_garden, kitchen'. Garden's style.",
+          "enum": [
+            "chinese",
+            "english",
+            "french",
+            "herb_garden",
+            "japanese",
+            "kitchen",
+            "public",
+            "rosarium",
+            "zen"
+          ]
+        },
+        "openingHours": {
+          "type": "string",
+          "description": "Property. Opening hours of this garden. Model:'https://schema.org/openingHours'"
+        },
+        "areaServed": {
+          "type": "string",
+          "description": "Property. Higher level area to which the garden belongs to. It can be used to group gardens per responsible, district, neighbourhood, etc. Model:'https://schema.org/Text'"
+        },
+        "dateLastWatering": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Timestamp which corresponds to the last watering of this garden. Model:'https://schema.org/DateTime'"
+        },
+        "nextWateringDeadline": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Deadline for next watering operation to be done on this garden. Model:'https://schema.org/DateTime'"
+        },
+        "refRecord": {
+          "type": "array",
+          "description": "Relationship. List of records which contain measurements related to this garden. Model:'https://schema.org/URL'",
+          "items": {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+          }
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,131 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.TourismDestinations/TouristDestination/schema.json",
+    "title": "Smart Data Models - Tourist Destination",
+    "description": "A tourist destination. In principle any Place can be a TouristDestination from a City, Region or Country to an AmusementPark or Hotel.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "TouristDestination"
+                    ],
+                    "description": "Property. It has to be TouristDestination. Model:'https://schema.org/TouristDestination'"
+                },
+                "includesAttraction": {
+                    "type": "array",
+                    "description": "Property. Model:''. ",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "AmusementPark",
+                                        "Apartment",
+                                        "Aquarium",
+                                        "ArtGallery",
+                                        "AutoRental",
+                                        "BarOrPub",
+                                        "Beach",
+                                        "BedAndBreakfast",
+                                        "BodyOfWater",
+                                        "Brewery",
+                                        "BusinessEvent",
+                                        "BusStation",
+                                        "BusStop",
+                                        "CafeOrCoffeeShop",
+                                        "Campground",
+                                        "Casino",
+                                        "Cemetery",
+                                        "City",
+                                        "CivilBuilding",
+                                        "CivicStructure",
+                                        "Distillery",
+                                        "Embassy",
+                                        "EmergencyService",
+                                        "Event",
+                                        "EventVenue",
+                                        "ExhibitionEvent",
+                                        "Festival",
+                                        "FinancialService",
+                                        "FoodEstablishment",
+                                        "FoodEvent",
+                                        "funerario",
+                                        "GasStation",
+                                        "GolfCourse",
+                                        "HealthAndBeautyBusiness",
+                                        "Hostel",
+                                        "Hotel",
+                                        "House",
+                                        "IceCreamShop",
+                                        "Landform",
+                                        "LandmarksOrHistoricalBuildings",
+                                        "Library",
+                                        "LodgingBusiness",
+                                        "Mountain",
+                                        "MovieTheater",
+                                        "Museum",
+                                        "MusicEvent",
+                                        "MusicVenue",
+                                        "NightClub",
+                                        "Offer",
+                                        "Organization",
+                                        "Park",
+                                        "ParkingFacility",
+                                        "Person",
+                                        "Place",
+                                        "PlaceOfWorship",
+                                        "Restaurant",
+                                        "RVPark",
+                                        "ShoppingCenter",
+                                        "SkiResort",
+                                        "SportsActivityLocation",
+                                        "SportsEvent",
+                                        "Store",
+                                        "SubwayStation",
+                                        "TaxiStand",
+                                        "TouristAttraction",
+                                        "TouristDestination",
+                                        "TouristInformationCenter",
+                                        "TouristTrip",
+                                        "TrainStation",
+                                        "TravelAgency",
+                                        "Volcano",
+                                        "Waterfall",
+                                        "WorldHeritageSite",
+                                        "Winery",
+                                        "Zoo"
+                                    ]
+                                }
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string",
+                                "format": "uri"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ],
+    "$schemaVersion": "0.0.1"
+}

@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.1.0",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.IssueTracking/services/schema.json",
+    "title": "Smart Data Models. Open311 Services",
+    "description": "As per Open311 an entity of type services is an acceptable 311 service request type. A request type can be unique to the city/jurisdiction.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "services"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be services. Enum:'services'"
+                },
+                "jurisdiction_id": {
+                    "type": "string",
+                    "description": "Property. The unique ID of the legal entity of the service (i.e. city)."
+                },
+                "open311:type": {
+                    "type": "string",
+                    "enum": [
+                        "batch",
+                        "blackbox",
+                        "realtime"
+                    ],
+                    "description": "Property. realtime: The service request ID will be returned immediately after the service request is submitted. batch: A token will be returned immediately after the service request is submitted. This token can then be later used to return the service request ID. blackbox: No service request ID will be returned after the service request is submitted. Enum:'realtime, batch, blackbox'. "
+                },
+                "service_code": {
+                    "type": "string",
+                    "description": "Property. The unique identifier for the service request type."
+                },
+                "service_name": {
+                    "type": "string",
+                    "description": "Property. The human readable name of the service request type."
+                },
+                "keywords": {
+                    "type": "string",
+                    "description": "Property. A comma separated list of tags or keywords to help users identify the request type. This can provide synonyms of the service_name and group."
+                },
+                "group": {
+                    "type": "string",
+                    "description": "Property. A category to group this service type within. This provides a way to group several service request types under one category such as sanitation"
+                },
+                "open311:metadata": {
+                    "type": "boolean",
+                    "description": "Property. This field is not strictly needed as the proposed entity encompasses the attribute definition as well. If defined, its value must be `true` if the `attributes` property is defined and its array value is not empty. Otherwise it must be equal to `false`"
+                },
+                "attributes": {
+                    "type": "array",
+                    "description": "Property. As per the [Service Definition](http://wiki.open311.org/GeoReport_v2/#get-service-definition) structure defined by Open 311.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object"
+                            },
+                            {
+                                "type": "array"
+                            },
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    }
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "Property. Provider of the service. Model:'http://schema.org/provider'"
+                },
+                "effectiveSince": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. The date on which the service type was created. This date might be different than the entity creation date. Model:'http://schema.org/DateTime'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type"
+    ]
+}

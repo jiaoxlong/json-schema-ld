@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.2",
+  "$id": "https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json",
+  "title": "Smart data models - Parks and Gardens / Flower Bed",
+  "description": "A garden plot in which flowers (or other plants) are grown. Usually you will find flower beds in parks, gardens, pedestrian areas or at big highway interchanges.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/PhysicalObject-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "FlowerBed"
+          ],
+          "description": "Property. NGSI Entity Type: It has to be FlowerBed"
+        },
+        "taxon": {
+          "type": "array",
+          "description": "Property. Used to indicate the biological [taxon](http://en.wikipedia.org/wiki/en:taxon) to which the trees, or plants in the flower bed belong. Model:'https://schema.org/Text'",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "depth": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/depth'. Depth of this flower bed."
+        },
+        "width": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/width'. Width of this flower bed."
+        },
+        "height": {
+          "type": "string",
+          "minimum": 0,
+          "description": "Property. Model:'https://schema.org/heigth'. Heigth of this flower bed."
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text'. Category of this flower bed. Enum:'hedge, lawnArea, portable, urbanTreeSpot'. Or any extended value needed by the application.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "hedge",
+              "lawnArea",
+              "portable",
+              "urbanTreeSpot"
+            ]
+          }
+        },
+        "shape": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Property. Model:'https://schema.org/depth'. Shape of this flower bed. Enum:'rectangular, square, elliptic, polygonal, circular'. Or any other required by an application.",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "circular",
+              "elliptic",
+              "polygon",
+              "rectangular",
+              "square"
+            ]
+          }
+        },
+        "dateLastWatering": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. Timestamp which corresponds to the last watering of the flower bed."
+        },
+        "nextWateringDeadline": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. Deadline for next watering operation."
+        },
+        "refGarden": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Model:'https://schema.org/URL'. Flower bed's garden (if it belongs to any)."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.1.2",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.Parking/ParkingGroup/schema.json",
+  "title": "Smart Data Models - Parking / Parking Group",
+  "description": "Parking Group ",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "ParkingGroup"
+          ],
+          "description": "Property. NGSI Entity type. It has to be ParkingGroup"
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Parking Group's category. Model:'http://schema.org/Text'. Enum:'adjacentSpaces, blueZone, completeFloor, free, feeCharged, greenZone, loadUnloadZone, nonAdjacentSpaces, offStreet, onlyDisabled, onlyElectricalCharging, onlyResidents, onlyWithPermit, onStreet, particularConditionsSpaces, shortTermMediumTermLongTerm, statisticsOnly, vehicleTypeSpaces'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "adjacentSpaces",
+              "blueZone",
+              "completeFloor",
+              "free",
+              "feeCharged",
+              "greenZone",
+              "loadUnloadZone",
+              "nonAdjacentSpaces",
+              "offStreet",
+              "onlyDisabled",
+              "onlyElectricalCharging",
+              "onlyResidents",
+              "onlyWithPermit",
+              "onStreet",
+              "particularConditionsSpaces",
+              "shortTermMediumTermLongTerm",
+              "statisticsOnly",
+              "vehicleTypeSpaces"
+            ]
+          }
+        },
+        "refParkingSite": {
+          "description": "Relationship. Parking site to which this zone belongs to. A group cannot be orphan. A group cannot have subgroups. Reference to an OffStreetParking or to an OnStreetParking",
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ]
+        },
+        "allowedVehicleType": {
+          "type": "string",
+          "description": "Property. Vehicle type allowed (a parking group only allows one vehicle type). Model:'http://schema.org/Text'. Enum:'bicycle, bus, car, caravan, motorcycle, motorscooter, truck' ",
+          "enum": [
+            "bicycle",
+            "bus",
+            "car",
+            "caravan",
+            "motorcycle",
+            "motorscooter",
+            "truck"
+          ]
+        },
+        "maximumParkingDuration": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Maximum allowed stay encoded as a ISO8601 duration. When non present or equals to the empty string it means indefinite. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined."
+        },
+        "chargeType": {
+          "type": "array",
+          "description": "Property. Type of charge(s) performed by the parking site. Enum:'additionalIntervalPrice, annualPayment, firstIntervalPrice, flat, free, minimum, maximum, monthlyPayment, seasonTicket, temporaryFee, temporaryPrice, unknown, other'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "additionalIntervalPrice",
+              "annualPayment",
+              "firstIntervalPrice",
+              "flat",
+              "free",
+              "minimum",
+              "maximum",
+              "monthlyPayment",
+              "seasonTicket",
+              "temporaryFee",
+              "temporaryPrice",
+              "unknown",
+              "other"
+            ]
+          }
+        },
+        "requiredPermit": {
+          "type": "array",
+          "description": "Property. This attribute captures what permit(s) might be needed to park at this site. Semantics is that at least _one of_ these permits is needed to park. When a permit is composed by more than one item (and) they can be combined with a ','. For instance 'residentPermit,disabledPermit' stays that both, at the same time, a resident and a disabled permit are needed to park. If list is empty, no permit is needed. Model:'http://schema.org/Text'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "employeePermit",
+              "studentPermit",
+              "fairPermit",
+              "governmentPermit",
+              "residentPermit",
+              "specificIdentifiedVehiclePermit",
+              "disabledPermit",
+              "visitorPermit",
+              "blueZonePermit",
+              "careTakingPermit",
+              "carpoolingPermit",
+              "carSharingPermit",
+              "emergencyVehiclePermit",
+              "maintenanceVehiclePermit",
+              "roadWorksPermit",
+              "taxiPermit",
+              "transportationPermit",
+              "noPermitNeeded"
+            ]
+          }
+        },
+        "permitActiveHours": {
+          "type": "object",
+          "description": "Property. This attribute allows to capture situations when a permit is only needed at specific hours or days of week. It is an structured value which must contain a subproperty per each required permit, indicating when the permit is active. If nothing specified for a permit it will mean that a permit is always required. Empty object means always active. The syntax must be conformant with schema.org [opening hours specification](https://schema.org/openingHours). For instance, a blue zone which is only active on dayweeks will be encoded as 'blueZonePermit': 'Mo,Tu,We,Th,Fr,Sa 09:00-20:00'. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Model:'https://schema.org/openingHours'"
+        },
+        "reservationType": {
+          "type": "string",
+          "description": "Property. Conditions for reservation. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Enum:'mandatory, notAvailable, optional, partly'.",
+          "enum": [
+            "mandatory",
+            "notAvailable",
+            "optional",
+            "partly"
+          ]
+        },
+        "areBordersMarked": {
+          "type": "boolean",
+          "description": "Property. Denotes whether parking spots are delimited (with blank lines or similar) or not. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Model:'https://schema.org/Boolean'"
+        },
+        "totalSpotNumber": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. The total number of spots pertaining to this group. Allowed values: Any positive integer number or 0. Normative references: DATEX 2 version 2.3 attribute _parkingNumberOfSpaces_ of the _ParkingRecord_ class.",
+          "minimum": 1
+        },
+        "availableSpotNumber": {
+          "type": "integer",
+          "description": "Property. Model:'http://schema.org/Number'. The number of spots available in this group. It must lower or equal than `totalSpotNumber`.",
+          "minimum": 0
+        },
+        "occupancyDetectionType": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Allowed values: The following from DATEX II version 2.3 _OccupancyDetectionTypeEnum_. Enum:'balancing, manual, modelBased, none, singleSpaceDetection'. Or any other application-specific",
+          "items": {
+            "type": "string",
+            "enum": [
+              "balancing",
+              "manual",
+              "modelBased",
+              "none",
+              "singleSpaceDetection"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "parkingMode": {
+          "type": "array",
+          "description": "Property. Model:'http://schema.org/Text'. Parking mode(s). Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined. Allowed values: Those defined by the DATEX II version 2.3 _ParkingModeEnum_ enumeration. Enum:'echelonParking, parallelParking, perpendicularParking'",
+          "items": {
+            "type": "string",
+            "enum": [
+              "echelonParking",
+              "parallelParking",
+              "perpendicularParking"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "averageSpotWidth": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/width'. Units:'meters'. The average width of parking spots. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined."
+        },
+        "averageSpotLength": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/length'. Units:'meters'. The average length of parking spots. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined."
+        },
+        "maximumAllowedHeight": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/heigth'. Units:'meters'. Maximum allowed height for vehicles.  Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined."
+        },
+        "maximumAllowedWidth": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true,
+          "description": "Property. Model:'http://schema.org/width'. Units:'Meters'. Maximum allowed width for vehicles. Applications _SHOULD_ inspect the value of this property at parent's level if it is not defined."
+        },
+        "refParkingSpot": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$"
+            },
+            {
+              "type": "string",
+              "format": "uri"
+            }
+          ],
+          "description": "Relationship. Individual parking spots belonging to this parking group."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "refParkingSite"
+  ]
+}

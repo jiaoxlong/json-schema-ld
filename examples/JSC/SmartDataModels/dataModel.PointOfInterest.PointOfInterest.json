@@ -1,0 +1,87 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.2.0",
+  "modelTags": "IUDX",
+  "$id": "https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json",
+  "title": "Smart Data Models - Point of Interest schema",
+  "description": "This entity contains a harmonised geographic description of a Point of Interest",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "PointOfInterest"
+          ],
+          "description": "Property. NGSI Entity type. It has to be PointOfInterest"
+        },
+        "category": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text'. Category of this point of interest. Allowed values: Those defined by the [Factual taxonomy](https://github.com/Factual/places/blob/master/categories/factual_taxonomy.json) together with the extended categories described by the specification. For instance the value `113` corresponds to beaches, and the value `311` corresponds to museums.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "contactPoint": {
+          "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Contact-Commons/properties/contactPoint"
+        },
+        "refSeeAlso": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/URL'. List of references to one or more related entities.",
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+              }
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "wardId": {
+          "type": "string",
+          "description": "Property. Ward ID of the entity corresponding to this observation."
+        },
+        "zoneId": {
+          "type": "string",
+          "description": "Property. Zone ID of the entity corresponding to this observation."
+        },
+        "additionalInfoURL": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. URL from which additional information of the subject can be obtained"
+        },
+        "zoneName": {
+          "type": "string",
+          "description": "Property. Zone name of the entity corresponding to this observation."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type",
+    "category",
+    "name"
+  ]
+}

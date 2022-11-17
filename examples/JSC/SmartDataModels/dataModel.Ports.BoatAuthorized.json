@@ -1,0 +1,201 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Ports/BoatAuthorized/schema.json",
+    "$schemaVersion": "0.0.1",
+    "title": "Boat Authorized schema",
+    "description": "The data model is intended to provide information on the boats authorized to operate within the port according to the ISO 8666 standard for Boat Category. This repository is created by type of category of boat (pleasure craft, trade, passengers, ...). For each type of category, a list of optional subtypes of category can be associated.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BoatAuthorized"
+                    ],
+                    "description": "Property. It has to be BoatAuthorized. NGSI Entity type"
+                },
+                "dateLastReported": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/DateTime'. Last time data were gathered"
+                },
+                "refSeaPort": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. Model:'https://schema.org/URL'. Port that belongs to"
+                },
+                "refPointOfInterest": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. Model:'https://schema.org/URL'. Point of Interest that the element has relation to"
+                },
+                "boatType": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/Text'. A unique value of the list. Enum:'cargo, fishing, historic, passenger, specialist, Tanker, war, yachting'",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "cargo",
+                            "fishing",
+                            "historic",
+                            "passenger",
+                            "specialist",
+                            "Tanker",
+                            "war",
+                            "yachting"
+                        ]
+                    }
+                },
+                "boatSubType": {
+                    "type": "array",
+                    "description": "Property. Model:'https://schema.org/Text'. Sub Type for a boatType. A combination of the elements. Enum:'aircraftCarrier, amphibiousAssaultShip, anchorHandlingVessel, artisanVessel, bac, barge, bargeCarrier, bulkCarrier, buoyTenderBoat, butaneCarrier, cableLayer, canoe, caravel, cargoCarrier, carrack, catamaran, chemicalCarrier, clipper, coastalFerry, cog, containerCarrier, corvette, craneBarge, crudeCarrier, cruise, cruiser, destroyer, dhow, divingVessel, djong, dredger, drifter, drillRig, factoryShip, ferry, fireBoat, fisheriesResearchVessel, flagshipBoat, floatingProductionStorageUnit, floatingStorageUnit, fluyt, frigate, gabare, galleon, galley, gondola, harbourFerry, helicopterCarrier, highSpeedVessel, houseBoat, hovercraft, iceBreakerShip, jetSki, junk, koch, lifeBoat, lightShip, liner, lineVessel, LiquefiedGasCarrier, littoralCombatShip, livestockCarrier, lngCarrier, longLiner, lpgCarrier, mineSweeping, monoHull, mooringBoat, multipurposeVessel, oceanographicBoat, other, paddleSteamer, pilotBoat, pinisi, pipeLayer, productCarrier, productionPlatform, referCarrier, researchVessel, roroCarrier, sailboat, sailingShip, salvageOperation, seiner, speedBoat, submarineAttack, submarineBallisticMissile, submarineCruiseMissile, supplyShip, tanker, timberCarrier, trawler, trimaran, tugBoat, viking, yacht, zodiac'",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "aircraftCarrier",
+                            "amphibiousAssaultShip",
+                            "anchorHandlingVessel",
+                            "artisanVessel",
+                            "bac",
+                            "barge",
+                            "bargeCarrier",
+                            "bulkCarrier",
+                            "buoyTenderBoat",
+                            "butaneCarrier",
+                            "cableLayer",
+                            "canoe",
+                            "caravel",
+                            "cargoCarrier",
+                            "carrack",
+                            "catamaran",
+                            "chemicalCarrier",
+                            "clipper",
+                            "coastalFerry",
+                            "cog",
+                            "containerCarrier",
+                            "corvette",
+                            "craneBarge",
+                            "crudeCarrier",
+                            "cruise",
+                            "cruiser",
+                            "destroyer",
+                            "dhow",
+                            "divingVessel",
+                            "djong",
+                            "dredger",
+                            "drifter",
+                            "drillRig",
+                            "factoryShip",
+                            "ferry",
+                            "fireBoat",
+                            "fisheriesResearchVessel",
+                            "flagshipBoat",
+                            "floatingProductionStorageUnit",
+                            "floatingStorageUnit",
+                            "fluyt",
+                            "frigate",
+                            "gabare",
+                            "galleon",
+                            "galley",
+                            "gondola",
+                            "harbourFerry",
+                            "helicopterCarrier",
+                            "highSpeedVessel",
+                            "houseBoat",
+                            "hovercraft",
+                            "iceBreakerShip",
+                            "jetSki",
+                            "junk",
+                            "koch",
+                            "lifeBoat",
+                            "lightShip",
+                            "liner",
+                            "lineVessel",
+                            "LiquefiedGasCarrier",
+                            "littoralCombatShip",
+                            "livestockCarrier",
+                            "lngCarrier",
+                            "longLiner",
+                            "lpgCarrier",
+                            "mineSweeping",
+                            "monoHull",
+                            "mooringBoat",
+                            "multipurposeVessel",
+                            "oceanographicBoat",
+                            "other",
+                            "paddleSteamer",
+                            "pilotBoat",
+                            "pinisi",
+                            "pipeLayer",
+                            "productCarrier",
+                            "productionPlatform",
+                            "referCarrier",
+                            "researchVessel",
+                            "roroCarrier",
+                            "sailboat",
+                            "sailingShip",
+                            "salvageOperation",
+                            "seiner",
+                            "speedBoat",
+                            "submarineAttack",
+                            "submarineBallisticMissile",
+                            "submarineCruiseMissile",
+                            "supplyShip",
+                            "tanker",
+                            "timberCarrier",
+                            "trawler",
+                            "trimaran",
+                            "tugBoat",
+                            "viking",
+                            "yacht",
+                            "zodiac"
+                        ]
+                    }
+                },
+                "openingHoursSpecification": {
+                    "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/DateTime-Commons/properties/openingHoursSpecification"
+                },
+                "maxTonnage": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Maximum tonnage authorized to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **TNE** represents Tonne Metric. Units:'Tons'"
+                },
+                "minLength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Minimum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'"
+                },
+                "maxLength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Maximum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'"
+                },
+                "maxWidth": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Maximum width allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/width'. Units:'meters'"
+                },
+                "maxDraft": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Maximum draft allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/depth'. Units:'meters'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location",
+        "dateLastReported",
+        "refSeaPort"
+    ]
+}

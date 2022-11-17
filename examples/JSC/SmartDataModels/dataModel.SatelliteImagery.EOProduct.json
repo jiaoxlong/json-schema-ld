@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOProduct/schema.json",
+    "title": "Satellite Imagery - EOProduct",
+    "description": "This entity contains a harmonised description of a generic EOProduct made for the Satellite Imagerry domain. This entity is primarily associated with the satellite products related to Earth Observation Analysis applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to EOProduct.",
+                    "enum": [
+                        "EOProduct"
+                    ]
+                },
+                "productID": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the unique ID of the product"
+                },
+                "productURL": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/url'. A mandatory url used to declare the downlaod link of the product"
+                },
+                "productType": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the type of the product"
+                },
+                "processingLevel": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the processing level of the product"
+                },
+                "productFormat": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. A mandatory text string used to declare the format of the product"
+                },
+                "cloudCoverage": {
+                    "type": "number",
+                    "description": "Property.  Model:'https://schema.org/Number'. Units:'percent'. The cloud coverage percentage. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code."
+                },
+                "timeliness": {
+                    "type": "string",
+                    "description": "Property. Model:'https://schema.org/Text'. The timeliness of the product"
+                },
+                "orbitDirection": {
+                    "type": "string",
+                    "enum": [
+                        "Ascending",
+                        "Descending"
+                    ],
+                    "description": "Property. Model:'https://schema.org/Text'. The orbit pass orientation"
+                },
+                "orbitNumber": {
+                    "type": "number",
+                    "description": "Property.  Model:'https://schema.org/Number'. The orbit number of tha satellite pass. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code."
+                },
+                "ingestionDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/Time'. The time at which the data was made available in the online archive"
+                },
+                "sensingDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/Time'. The time at which the image was taken by the sensor"
+                },
+                "sensingStartedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/Time'. The time of the satellite on-board acquisition of the first line of the image in the product"
+                },
+                "sensingStoppedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/Time'. The time of the satellite on-board acquisition of the last line of the image in the product"
+                },
+                "hostedOn": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. The ID of the data hub that the product is hosted on"
+                },
+                "observedBy": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. The ID of the instrument that the product was observed by"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "productID",
+        "productURL",
+        "location",
+        "productFormat",
+        "sensingDate"
+    ],
+    "$schemaVersion": "0.0.1"
+}

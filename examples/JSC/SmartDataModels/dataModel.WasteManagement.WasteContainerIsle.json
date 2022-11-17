@@ -1,0 +1,62 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.1",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainerIsle/schema.json",
+    "title": " - Waste Management / Waste Container Isle",
+    "description": "A waste container isle",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "WasteContainerIsle"
+                    ],
+                    "description": "Property. NGSI Entity Type: It has to be WasteContainerIsle"
+                },
+                "features": {
+                    "type": "array",
+                    "description": "Property. A list of features provided by the isle.",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "containerFix",
+                            "underground",
+                            "fenced",
+                            "other"
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true
+                },
+                "insertHolesNumber": {
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "Property. Number of insert holes the isle has. Model:'https://schema.org/Number'"
+                },
+                "refWasteContainer": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/EntityIdentifierType"
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "description": "Property. List of containers present in the isle. Model:'http://schema.org/URL'."
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location"
+    ]
+}

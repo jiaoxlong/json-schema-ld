@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleTMSFlightMessage/schema.json",
+  "title": "Smart Data models - UAV-UTM-Flight-Message schema",
+  "description": "This entity contains a harmonised description of a generic UAV UTM Flight Message, which contains a Global UTM Association protocol message. This entity is primarily associated with the control and management of Unmanned Aerial Vehicles. Each UnmannedAerialVehicleTMSFlightMessage instance is related to a specific UAV instance.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleTMSFlightMessage",
+          "enum": [
+            "UnmannedAerialVehicleTMSFlightMessage"
+          ]
+        },
+        "unmannedAerialVehicle": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the UAV entity to which this UAVFlightMessage relates."
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Indicates the date/time of the UAVFlightMessage record."
+        },
+        "originatedByUnmannedAutonomousVehicle": {
+          "type": "boolean",
+          "description": "Property. A logical indicator of source of the message. True indicates it is the UAV itself, false indicates that it is a different source, a listening station software application or a different UAV."
+        },
+        "originator": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Refers to a third party UAV instance or other entity (e.g. listening station) that reported the information in the case the message was not directly originated by the UAV."
+        },
+        "flightMessage": {
+          "type": "object",
+          "description": "Property. A flight message describing the current flight status encoded as a Global UTM Message encoded as a JSON object. https://bitbucket.org/global_utm/flight-declaration-protocol",
+          "properties": {
+            "flightId": {
+              "type": "string"
+            },
+            "sequenceNumber": {
+              "type": "number"
+            },
+            "flightDeclaration": {
+              "type": "object",
+              "properties": {
+                "parts": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "purpose": {
+                  "type": "string"
+                },
+                "expectTelemetry": {
+                  "type": "boolean"
+                },
+                "originatingParty": {
+                  "type": "string"
+                },
+                "contactUrl": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "operationMode": {
+                  "type": "string",
+                  "enum": [
+                    "vlos",
+                    "evlos",
+                    "bvlos",
+                    "automated"
+                  ]
+                },
+                "idents": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "actualTakeOffTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "actualLandingTime": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "dateObserved": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Indicates the date/time the observation was recorded.Note this field was defined for use with NGSIv2 and is now deprecated. For new entities and applications replace with **observedAt**"
+        }
+      }
+    }
+  ]
+}

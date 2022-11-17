@@ -1,0 +1,173 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.2",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json",
+    "title": " - Street Lighting / Streetlight Group",
+    "description": "A Street light group",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/PhysicalObject-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "StreetlightGroup"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be StreetlightGroup"
+                },
+                "powerState": {
+                    "type": "string",
+                    "enum": [
+                        "bootingUp",
+                        "low",
+                        "off",
+                        "on"
+                    ],
+                    "description": "Property. Streetlight group's power state. Enum:'on, off, low, bootingUp'. Model:'htts://schema.org/Text'. Enum:'bootingUp, low, off, on'"
+                },
+                "refStreetlightControlCabinet": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. Streetlight group's control cabinet"
+                },
+                "dateLastSwitchingOn": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Timestamp of the last switching on. Model:'http://schema.org/DateTime'"
+                },
+                "dateLastSwitchingOff": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Timestamp of the last switching off. Model:'http://schema.org/DateTime'"
+                },
+                "switchingOnHours": {
+                    "type": "array",
+                    "description": "Property. Switching on hours. It is used normally to set special schedules for certain dates.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "from": {
+                                "type": "string",
+                                "oneOf": [
+                                    {
+                                        "format": "date"
+                                    },
+                                    {
+                                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/dateYearLess"
+                                    }
+                                ]
+                            },
+                            "to": {
+                                "type": "string",
+                                "oneOf": [
+                                    {
+                                        "format": "date"
+                                    },
+                                    {
+                                        "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/dateYearLess"
+                                    }
+                                ],
+                                "description": "Property. Ending date (it can be yearless)"
+                            },
+                            "hours": {
+                                "type": "string",
+                                "description": "Property. Timestamp of the last change of lamp made"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "Property. Timestamp of the last change of lamp made"
+                            }
+                        },
+                        "required": [
+                            "from",
+                            "to",
+                            "hours"
+                        ]
+                    }
+                },
+                "switchingMode": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "night-ON",
+                            "night-OFF",
+                            "night-LOW",
+                            "always-ON",
+                            "day-ON",
+                            "day-OFF",
+                            "day-LOW"
+                        ]
+                    },
+                    "description": "Property. Timestamp of the last change of lamp made. Enum:' night-ON, night-OFF, night-LOW, always-ON, day-ON, day-OFF, day-LOW'"
+                },
+                "illuminanceLevel": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Property. Relative illuminance level setting for the group. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'"
+                },
+                "activeProgramId": {
+                    "type": "string",
+                    "description": "Property. Identifier of the active program for this streetlight group. Model:'https://schema.org/Text'"
+                },
+                "annotations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Property. A field reserved for annotations (incidences, remarks, etc.)."
+                },
+                "refStreetlight": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 256,
+                                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            },
+                            {
+                                "type": "string",
+                                "format": "uri",
+                                "description": "Property. Identifier format of any NGSI entity"
+                            }
+                        ]
+                    },
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "description": "Relationship. List of streetlight entities belonging to this group. List of references to entities fo type Streetlight. Allowed values: There must topographical integrity between the location of the group and of the individual streetlights."
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location"
+    ]
+}

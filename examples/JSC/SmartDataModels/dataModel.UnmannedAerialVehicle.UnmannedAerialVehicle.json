@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "GSMA",
+  "$id": "https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicle/schema.json",
+  "title": "Smart Data models - Unmanned Aerial Vehicle schema",
+  "description": "This entity contains a harmonised description of a specific Unmanned Aerial Vehicle (UAV). This entity is primarily associated with UAV command and control and related UAV transport applications.",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicle",
+          "enum": [
+            "UnmannedAerialVehicle"
+          ]
+        },
+        "UnmannedAerialVehicleModel": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256,
+              "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+              "description": "Property. Identifier format of any NGSI entity"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "description": "Property. Identifier format of any NGSI entity"
+            }
+          ],
+          "description": "Relationship. Reference to the UAV Model definition which describes the UAV in more detail."
+        },
+        "operator": {
+          "type": "array",
+          "description": "Relationship. A list detailing the operator or operators of the UAV. Refers to one or more Schema.org person or organization.https://schema.org/Personhttps://schema.org/Organization",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256,
+                "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                "description": "Property. Identifier format of any NGSI entity"
+              },
+              {
+                "type": "string",
+                "format": "uri",
+                "description": "Property. Identifier format of any NGSI entity"
+              }
+            ]
+          }
+        },
+        "operationMode": {
+          "type": "string",
+          "description": "Property. Text describing the choice from these values. Enum:'vlos, evlos, bvlos, automated'. Note: descriptions align with UTM Flight message.",
+          "enum": [
+            "vlos",
+            "evlos",
+            "bvlos",
+            "automated"
+          ]
+        },
+        "elevation": {
+          "type": "number",
+          "description": "Property. The elevation of the UAV (relative to ground level at the specified location). Specify value and units of measure."
+        },
+        "flightStatus": {
+          "type": "string",
+          "description": "Property. The flight status of the UAV, including these. Enum:'stop, takeoff, flight, hover, land'",
+          "enum": [
+            "flight",
+            "hover",
+            "land",
+            "stop",
+            "takeoff"
+          ]
+        },
+        "workStatus": {
+          "type": "string",
+          "description": "Property. The work status of the UAV, including these. Enum:'stop, prepare, work, finish'",
+          "enum": [
+            "finish",
+            "prepare",
+            "stop",
+            "work"
+          ]
+        },
+        "groundSpeed": {
+          "type": "number",
+          "description": "Property. The latest reported ground speed of the UAV. Specify value and units of measure"
+        },
+        "fuel": {
+          "type": "number",
+          "description": "Property. Current fuel load of the UAV. Specify value and units of measure"
+        },
+        "observedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Indicates the date/time of the latest monitoring report or update."
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.1",
+  "modelTags": "OCF",
+  "$id": "https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json",
+  "title": "Smart Data models - mediaSourceList schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels",
+  "description": "This Resource provides the list of input media sources available on the device.The sources are an array of Media Source(s) see Resource Type 'oic.r.mediasource'",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "rt": {
+          "description": "Property. Resource Type",
+          "items": {
+            "enum": [
+              "oic.r.media.input"
+            ],
+            "maxLength": 64,
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "properties": {
+              "sourceName": {
+                "description": "Specifies a pre-defined media input or output",
+                "type": "string"
+              },
+              "sourceNumber": {
+                "description": "Label to specify the instance",
+                "readOnly": true,
+                "type": "string"
+              },
+              "sourceType": {
+                "description": "Specifies the type of the source",
+                "enum": [
+                  "audioOnly",
+                  "videoOnly",
+                  "audioPlusVideo"
+                ],
+                "readOnly": true,
+                "type": "string"
+              },
+              "status": {
+                "description": "Specifies if the specific source instance is selected or not",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "type": "array",
+          "description": "Property. The list of sources"
+        },
+        "n": {
+          "type": "string",
+          "maxLength": 64,
+          "readOnly": true,
+          "description": "Property. Friendly name of the Resource"
+        },
+        "if": {
+          "description": "Property. The OCF Interface set supported by this Resource",
+          "items": {
+            "enum": [
+              "oic.if.a",
+              "oic.if.baseline"
+            ],
+            "type": "string"
+          },
+          "minItems": 2,
+          "uniqueItems": true,
+          "readOnly": true,
+          "type": "array"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "mediaSourceList"
+          ],
+          "description": "Property. NGSI entity type. It has to be mediaSourceList"
+        }
+      }
+    }
+  ],
+  "license": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
+  "derivedFrom": "https://raw.githubusercontent.com/openconnectivityfoundation/IoTDataModels/master/mediaSourceInputResURI.swagger.json",
+  "required": [
+    "sources",
+    "id",
+    "type"
+  ]
+}

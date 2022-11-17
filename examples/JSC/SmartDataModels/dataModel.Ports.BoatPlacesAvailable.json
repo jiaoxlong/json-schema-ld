@@ -1,0 +1,156 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Ports/BoatPlaceAvailable/schema.json",
+    "$schemaVersion": "0.0.1",
+    "title": "Boat Place Available schema",
+    "description": "The purpose of the data model is to provide information on the availability of mooring rings for boats in the port by category. The information received relates only to pleasure boats and excludes commercial and passenger transport boats. The information on the Spot categories for boats is taken from the ISO 8666 standard.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "BoatPlacesAvailable"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be BoatPlacesAvailable"
+                },
+                "dateObserved": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. The date and time of this observation in ISO8601 UTC format. It can be represented by a specific time instant or by an ISO8601 interval. Model:'https://schema.org/DateTime'"
+                },
+                "refSeaPort": {
+                    "type": "string",
+                    "description": "Relationship. Model:'https://schema.org/URL'. Port that belongs to",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ]
+                },
+                "refPointOfInterest": {
+                    "type": "string",
+                    "description": "Relationship. Model:'https://schema.org/URL'. Point of Interest that the element has relation to",
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ]
+                },
+                "spotCategoryRange": {
+                    "type": "array",
+                    "description": "Property.  List from the lowest to the highest categories: A combination of the items listed. Enum:'A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T1, T2, U, V, W, X, Y, Z, Z01, Z02, Z03, Z04, Z05, Z06, Z07, Z08, Z08, Z09, Z10, Z11, Z12, Z13, Z14, Z15, Z16, Z17'. Model:'https://schema.org/Text'",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "A",
+                            "B",
+                            "C",
+                            "D",
+                            "E",
+                            "F",
+                            "G",
+                            "H",
+                            "I",
+                            "J",
+                            "K",
+                            "L",
+                            "M",
+                            "N",
+                            "O",
+                            "P",
+                            "Q",
+                            "R",
+                            "S",
+                            "T1",
+                            "T2",
+                            "U",
+                            "V",
+                            "W",
+                            "X",
+                            "Y",
+                            "Z",
+                            "Z01",
+                            "Z02",
+                            "Z03",
+                            "Z04",
+                            "Z05",
+                            "Z06",
+                            "Z07",
+                            "Z08",
+                            "Z08",
+                            "Z09",
+                            "Z10",
+                            "Z11",
+                            "Z12",
+                            "Z13",
+                            "Z14",
+                            "Z15",
+                            "Z16",
+                            "Z17"
+                        ]
+                    }
+                },
+                "minLength": {
+                    "type": "number",
+                    "description": "Property. Minimum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'"
+                },
+                "maxLength": {
+                    "type": "number",
+                    "description": "Property. Maximum length allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Model:'https://schema.org/length'. Units:'meters'"
+                },
+                "maxWidth": {
+                    "type": "number",
+                    "description": "Property. Maximum width allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/width'. Units:'meters'"
+                },
+                "maxDraft": {
+                    "type": "number",
+                    "description": "Property. Maximum draft allowed to access the harbor. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes) . For instance, **MTR** represents Meter. Model:'https://schema.org/depth'. Units:'meters'"
+                },
+                "totalCapacitySpotNumber": {
+                    "type": "number",
+                    "description": "Property. Total Capacity of Spot in the port for this range. Model:'https://schema.org/Number'"
+                },
+                "availableSpotNumber": {
+                    "type": "number",
+                    "description": "Property. Number of places available in the port for this category. Model:'https://schema.org/Number'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location",
+        "dateObserved",
+        "refSeaPort",
+        "spotCategoryRange",
+        "availableSpotNumber"
+    ]
+}

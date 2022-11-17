@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "modelTags": "",
+    "$id": "https://raw.githubusercontent.com/smart-data-models/dataModel.SatelliteImagery/master/EOAnalysis/schema.json",
+    "title": "Satellite Imagery - EOAnalysis",
+    "description": "This entity contains a harmonised description of a generic EOAnalysis made for the Satellite Imagerry domain. This entity is primarily associated with the process of analysis of Earth Observation applications.",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Property. NGSI-LD Entity Type. It must be equal to EOAnalysis.",
+                    "enum": [
+                        "EOAnalysis"
+                    ]
+                },
+                "analyzedAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Property. Model:'https://schema.org/Time'. The time at which the analysis finished"
+                },
+                "provider": {
+                    "type": "string",
+                    "description": "Property.  Model:'https://schema.org/Text'. The provider of the algorithm"
+                },
+                "resultDescription": {
+                    "type": "string",
+                    "description": "Property. The description of the analysis outcome."
+                },
+                "analysisType": {
+                    "type": "string",
+                    "description": "Property. Entity's type of analysis applied."
+                },
+                "isAnalysisOf": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Relationship. The ID of the product that was used in the analysis"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "analysisType",
+        "provider"
+    ],
+    "$schemaVersion": "0.0.1"
+}

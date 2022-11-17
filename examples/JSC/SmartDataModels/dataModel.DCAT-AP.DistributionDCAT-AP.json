@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$schemaVersion": "0.0.2",
+  "modelTags": "",
+  "$id": "https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json",
+  "title": "Smart Data models -DCAT-AP distribution of a Dataset,",
+  "description": "this is a distribution belonging ot a dataset according to the DCAT-AP standard 2.0.1",
+  "type": "object",
+  "required": [
+    "id",
+    "type"
+  ],
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "DistributionDCAT-AP"
+          ],
+          "description": "Property. NGSI entity type. It has to be DistributionDCAT-AP"
+        },
+        "accessUrl": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property contains a URL that gives access to a Distribution of the Dataset. The resource at the access URL may contain information about how to get the Dataset.",
+          "items": {
+            "type": "string",
+            "minItems": 1
+          }
+        },
+        "availability": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property indicates how long it is planned to keep the Distribution of the Dataset available."
+        },
+        "format": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the file format of the Distribution."
+        },
+        "license": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to a data service that gives access to the distribution of the dataset"
+        },
+        "accessService": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to a data service that gives access to the distribution of the dataset",
+          "items": {
+            "type": "string"
+          }
+        },
+        "byteSize": {
+          "type": "number",
+          "description": "Property. Model:'https://schema.org/Number'. This property contains the size of a Distribution in bytes."
+        },
+        "checksum": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property provides a mechanism that can be used to verify that the contents of a distribution have not changed. The checksum is related to the downloadURL."
+        },
+        "compressionFormat": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file. It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA"
+        },
+        "documentation": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to a page or document about this Distribution.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "downloadURL": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property contains a URL that is a directlink to a downloadable file in a givenformat.",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "hasPolicy": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the policy expressing the rights associated with the distribution if using the ODRL vocabulary"
+        },
+        "language": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to a language used in the Distribution. This property can be repeated if the metadata is provided in multiple languages.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "linkedSchemas": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to an established schema to which the described Distribution conforms.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mediaType": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA"
+        },
+        "packagingFormat": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together. It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA"
+        },
+        "releaseDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. This property contains the date of formal issuance (e.g., publication) of the Distribution."
+        },
+        "rights": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to a statement that specifies rights associated with the Distribution."
+        },
+        "spatialResolution": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to the minimum spatial separation resolvable in a dataset distribution, measured in meters. Units:'Meters",
+          "items": {
+            "type": "number"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Completed",
+            "Deprecated",
+            "Under Development",
+            "Withdrawn"
+          ],
+          "description": "Property. Model:'https://schema.org/Text'. This property refers to the maturity of the Distribution. It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn"
+        },
+        "temporalResolution": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property refers to the minimum time period resolvable in the dataset distribution",
+          "items": {
+            "type": "number"
+          }
+        },
+        "title": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text. This property contains a name given to the Distribution. This property can be repeated for parallel language versions of the description.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "modifiedDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. Model:'https://schema.org/DateTime'. This property contains the most recent date on which the Distribution was changed or modified."
+        }
+      }
+    }
+  ]
+}

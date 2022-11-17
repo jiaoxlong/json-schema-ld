@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$schemaVersion": "0.0.3",
+  "$id": "https://smart-data-models.github.io/dataModel.DIH/DigitalInnovationHubService/schema.json",
+  "title": "Sample DIH Service",
+  "description": "Provision of insights and trend on markets to companies to stimulate their internal innovation.",
+  "type": "object",
+  "modelTags": "DIH",
+  "allOf": [
+    {
+      "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+    },
+    {
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Property. NGSI entity type. It has to be DigitalInnovationHubService",
+          "enum": [
+            "DigitalInnovationHubService"
+          ]
+        },
+        "serviceImage": {
+          "type": "string",
+          "format": "uri",
+          "description": "Property. Model:'https://schema.org/URL'. URL of the image of the Digital Innovation Hub Service."
+        },
+        "category": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Category of the Digital Innovation Hub Service."
+        },
+        "serviceType": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. ServiceType of the Digital Innovation Hub Service."
+        },
+        "serviceSubType": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. ServiceSubType of the Digital Innovation Hub Service."
+        },
+        "target": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/Text'. Targets of the Digital Innovation Hub Service.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "url": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/URL'. URL of the Digital Innovation Hub Service."
+        },
+        "additionalMaterial": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/StructuredValue'. Additional Materials of the Digital Innovation Hub.",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            }
+          ]
+        },
+        "contacts": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/StructuredValue'. Contacts of the Digital Innovation Hub.",
+          "items": [
+            {
+              "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Contact-Commons"
+            }
+          ]
+        },
+        "author": {
+          "type": "string",
+          "description": "Property. Model:'https://schema.org/Text'. Author of the Digital Innovation Hub Service."
+        },
+        "relation": {
+          "type": "array",
+          "description": "Property. Model:'https://schema.org/StructuredValue'. Relations of the Digital Innovation Hub Service.",
+          "items": [
+            {
+              "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+            }
+          ]
+        },
+        "dateSubmitted": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'"
+        },
+        "dateUpdated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Property. The date and time of this observation in ISO8601 UTC format. Model:'https://schema.org/DateTime'"
+        }
+      }
+    }
+  ],
+  "required": [
+    "id",
+    "type"
+  ]
+}

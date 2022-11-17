@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "$schemaVersion": "0.0.1",
+    "modelTags": "",
+    "$id": "https://smart-data-models.github.io/dataModel.Parking/ParkingAccess/schema.json",
+    "title": " - Parking / Parking Access",
+    "description": "Parking Access - TODO: Provide a complete Schema",
+    "type": "object",
+    "allOf": [
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/GSMA-Commons"
+        },
+        {
+            "$ref": "https://smart-data-models.github.io/data-models/common-schema.json#/definitions/Location-Commons"
+        },
+        {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": [
+                        "ParkingAccess"
+                    ],
+                    "description": "Property. NGSI Entity type. It has to be ParkingAccess"
+                },
+                "category": {
+                    "type": "array",
+                    "description": "Property. Category of the access point (entrance, exit, etc.). Allowed values: Those specified by the DATEX II _AccessCategoryEnum_ or other values meaningful to the application.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "refOffStreetParking": {
+                    "anyOf": [
+                        {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 256,
+                            "pattern": "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        },
+                        {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Property. Identifier format of any NGSI entity"
+                        }
+                    ],
+                    "description": "Relationship. The offstreet parking site this access point gives access to."
+                },
+                "features": {
+                    "type": "array",
+                    "description": "Property. Those specified by the DATEX II _essEquipmentEnum_ and by _AccessibilityEnum_ or other values meaningful to the application.",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "width": {
+                    "type": "number",
+                    "description": "Property. Width of the access point. Model:'https://schema.org/width'"
+                },
+                "height": {
+                    "type": "number",
+                    "description": "Property. Height of the access point. Model:'https://schema.org/height'"
+                },
+                "slope": {
+                    "type": "number",
+                    "description": "Property. Slope of the access point (in relative terms). Model:'https://schema.org/Number'"
+                }
+            }
+        }
+    ],
+    "required": [
+        "id",
+        "type",
+        "location"
+    ]
+}
