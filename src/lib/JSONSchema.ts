@@ -389,6 +389,8 @@ export class NullSchema extends Schema {
         super(data,config, property_name,
             {subject, range, isExisting,isIgnored, isRequired});
         this.schema_type = 'null';
+        this.rdfs = namedNode('jsonsc:NullSchema');
+        this.shacl.push(blank_node_namedNode('sh:datatype', this.rdfs));
     }
 }
 
