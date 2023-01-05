@@ -1,6 +1,6 @@
 # JSON Schema LD specification
 
-JSON Schema for Linked Data, hereafter JSON-Schema-LD/jsc-ld, is a syntactic sugar for [JSON Schema](https://json-schema.org/) to enable generative interoperability
+JSON Schema for Linked Data, hereafter JSON-Schema-LD/json-schema-ld/jsc-ld, is a syntactic sugar for [JSON Schema](https://json-schema.org/) to enable generative interoperability
 by means of representing JSON schema in RDF vocabularies ([RDF Schema](https://www.w3.org/TR/rdf-schema/)) and RDF
 shapes ([SHACL](https://www.w3.org/TR/shacl/)).
 
@@ -15,7 +15,7 @@ implementation model in JSON Schema and represented in [RDF Schema](https://www.
 ### Prerequisites
 
 
-* [How to install JSON-Schema-LD](jsc_ld_installation.md#jsc-ld-installation)
+* [How to install json-schema-ld](jsc_ld_installation.md#jsc-ld-installation)
 
 * [JSC-LD Annotation Syntax](jsc_ld_syntax.md#jsc-ld-syntax)
 
@@ -23,8 +23,8 @@ implementation model in JSON Schema and represented in [RDF Schema](https://www.
 ```
 Synopsis
 
-  $ jsc-ld --source json_schema.js --out out --prefix example --url "http://example.com/"
-  $ jsc-ld -s PATH/TO/FOLDER/ -p example -u "http://example.com" 
+  $ json-schema-ld --source json_schema.js --out out --prefix example --url "http://example.com/"
+  $ json-schema-ld -s PATH/TO/FOLDER/ -p example -u "http://example.com" 
 
 Options
 
