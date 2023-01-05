@@ -81,7 +81,7 @@ export const SCHEMA_STRING_BUILDIN ={
     "idn-hostname": "xsd:string", // alternative?
     'ipv4': "xsd:string", // alternative?
     'ipv6': "xsd:string", // alternative?
-    'uuid': "uuidType",
+    'uuid': "xsd:uuidType",
     'uri': "xsd:anyURI",
     'uri-reference': "xsd:string", // alternative?
     'iri': "xsd:string", // alternative?
