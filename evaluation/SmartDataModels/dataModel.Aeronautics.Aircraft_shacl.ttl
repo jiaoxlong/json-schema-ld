@@ -1,0 +1,64 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Aeronautics/Aircraft/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Aircraft";
+  sh:name "type";
+  sh:in (sdm:Aircraft);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:registration;
+  sh:description "Property. Model:'http://schema.org/Text'. Tail number or aircraft registration";
+  sh:name "registration";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^[A-Z]-[A-Z]{4}|[A-Z]{2}-[A-Z]{3}|[A-Z]{5}|N[0-9]{1,5}[A-Z]{0,2}$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:speed;
+  sh:description "Property. Model:'http://schema.org/Number'. Current aircraft speed in kilometres per hour. Units:'kilometres per hour'";
+  sh:name "speed";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:verticalSpeed;
+  sh:description "Property. Model:'http://schema.org/Number'. Current vertical aircraft speed in metres per second. Units:'metres per second'";
+  sh:name "verticalSpeed";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:isOnGround;
+  sh:description "Property. Model:'http://schema.org/Boolean'. Logical indicator that determines if an aircraft is on ground";
+  sh:name "isOnGround";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:heading;
+  sh:description "Property. Model:'http://schema.org/Number'. Current aircraft heading in degrees. Untis: 'degrees'";
+  sh:name "heading";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dateIssued;
+  sh:description "Property. Model:'http://schema.org/DateTime'. Date when the meassure was taken";
+  sh:name "dateIssued";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:belongsToAircraftModel;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+].

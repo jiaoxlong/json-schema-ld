@@ -1,0 +1,7 @@
+rt
+foamstrength
+n
+range
+step
+if
+type

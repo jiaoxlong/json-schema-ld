@@ -1,0 +1,73 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json> dcterms:title "Smart Data models - Measurement schema,";
+    dcterms:description "Description of a generic measurement entity coming from a device or other data source.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be Measurement";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DeviceMeasurement)
+].
+sdm:DeviceMeasurement rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DeviceMeasurement".
+sdm:numValue dcterms:description "Property. Model:'https://schema.org/Number'. Numerical value of the measurement";
+    rdf:type rdf:Property;
+    rdfs:label "numValue";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:textValue dcterms:description "Property. Model:'https://schema.org/Text'. Textual value of the measurement";
+    rdf:type rdf:Property;
+    rdfs:label "textValue";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:string.
+sdm:controlledProperty dcterms:description "Property. Model:'https://schema.org/Text'. Property being measured by the device";
+    rdf:type rdf:Property;
+    rdfs:label "controlledProperty";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:string.
+sdm:refDevice dcterms:description "Relationship. Device taking the measurement";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>.
+sdm:deviceType dcterms:description "Property. Model:'https://schema.org/Text'. Type of device taking the measurement";
+    rdf:type rdf:Property;
+    rdfs:label "deviceType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:string.
+sdm:measurementType dcterms:description "Property. The type of measurement to be taken";
+    rdf:type rdf:Property;
+    rdfs:label "measurementType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateObserved dcterms:description "Property. Model:'https://schema.org/Text'. The date and time of this observation in ISO8601 UTC format";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:outlier dcterms:description "Property. Model:'https://schema.org/Boolean'. Value for marking the measurement to be specially processed";
+    rdf:type rdf:Property;
+    rdfs:label "outlier";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:unit dcterms:description "Property. Units of the measurement. In case of use of an acronym use units accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "unit";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Device/DeviceMeasurement/schema.json>;
+    rdfs:range xsd:string.

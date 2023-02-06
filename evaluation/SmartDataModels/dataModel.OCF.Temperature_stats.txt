@@ -1,0 +1,9 @@
+rt
+temperature
+units
+n
+range
+step
+precision
+if
+type

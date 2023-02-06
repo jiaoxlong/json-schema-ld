@@ -1,0 +1,88 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json> dcterms:title "Smart Data Models - Agri Parcel Record";
+    dcterms:description "This entity contains a harmonised description of the conditions recorded on a parcel of land. This entity is primarily associated with the agricultural vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI Entity Type. It has to be AgriParcelRecord";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AgriParcelRecord)
+].
+sdm:AgriParcelRecord rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AgriParcelRecord".
+sdm:hasAgriParcel dcterms:description "Relationship. Reference to the AgriParcel";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriParcel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>.
+sdm:soilTemperature dcterms:description "Property. Model:'http://schema.org/Number'. The observed soil temperature nominally in degrees centigrade. Units:'degrees centigrade'";
+    rdf:type rdf:Property;
+    rdfs:label "soilTemperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilMoistureVwc dcterms:description "Property. Model:'http://schema.org/Number'. Measured as Volumetric Water Content, VWC as a percentage. 0 <= soilMoistureVwc <= 1 ";
+    rdf:type rdf:Property;
+    rdfs:label "soilMoistureVwc";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilMoistureEC dcterms:description "Property. Model:'http://schema.org/Number'. Measured as Electrical Conductivity, EC nominally in units of Siemens per meter. Units:'siemens / m'";
+    rdf:type rdf:Property;
+    rdfs:label "soilMoistureEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:solarRadiation dcterms:description "Property. Model:'http://schema.org/Number'. Instantaneous solar radiation measured in kW/m2. Units:'kW/m2'";
+    rdf:type rdf:Property;
+    rdfs:label "solarRadiation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:soilSalinity dcterms:description "Property. Model:'http://schema.org/Number'. It is the salt content in the soil";
+    rdf:type rdf:Property;
+    rdfs:label "soilSalinity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:relativeHumidity dcterms:description "Property. Model:'http://schema.org/Number'. Relative Humidity a number between 0 and 1 representing the range of 0% to 100%.";
+    rdf:type rdf:Property;
+    rdfs:label "relativeHumidity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:leafWetness dcterms:description "Property. Model:'http://schema.org/Number'. It is a meteorological parameter that describes the amount of dew and precipitation left on surfaces.";
+    rdf:type rdf:Property;
+    rdfs:label "leafWetness";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:leafRelativeHumidity dcterms:description "Property. Model:'http://schema.org/Number'. Relative humidity on the surface of the leaves";
+    rdf:type rdf:Property;
+    rdfs:label "leafRelativeHumidity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:leafTemperature dcterms:description "Property. Model:'http://schema.org/Number'. The observed leaf temperature nominally in degrees centigrade. Units:'degrees centigrade'";
+    rdf:type rdf:Property;
+    rdfs:label "leafTemperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:atmosphericPressure dcterms:description "Property. Model:'http://schema.org/Number'. Atmospheric Pressure nominally in units of hecto Pascals. Units:'hecto Pascals'";
+    rdf:type rdf:Property;
+    rdfs:label "atmosphericPressure";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:depth dcterms:description "Property. Model:'http://schema.org/Number'. Metadata to indicate the associated depth where soil measurements are taken";
+    rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcelRecord/schema.json>;
+    rdfs:range xsd:decimal.

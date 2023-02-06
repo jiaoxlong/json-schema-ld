@@ -1,0 +1,6 @@
+type
+efdBaseRatio
+ifdBaseType
+ifdBaseValue
+saturationFactor120QAxis
+saturationFactorQAxis

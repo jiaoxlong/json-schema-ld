@@ -1,0 +1,15 @@
+type
+website
+logo
+location
+Location
+address
+Address
+socialAccounts
+SocialAccount
+linkedin
+facebook
+twitter
+instagram
+dateSubmitted
+dateUpdated

@@ -1,0 +1,12 @@
+type
+baseUML
+baseURI
+date
+differenceModelURI
+entsoeUML
+entsoeURIcore
+entsoeURIoperation
+modelDescriptionURI
+namespaceRDF
+namespaceUML
+shortName

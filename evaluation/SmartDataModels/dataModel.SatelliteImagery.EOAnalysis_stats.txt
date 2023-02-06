@@ -1,0 +1,6 @@
+type
+analyzedAt
+provider
+resultDescription
+analysisType
+isAnalysisOf

@@ -1,0 +1,16 @@
+type
+kf
+kpe
+ks
+kw
+pmin
+t10
+t5
+t6
+t7
+t8
+t9
+tpe
+vadat
+vsmn
+vsmx

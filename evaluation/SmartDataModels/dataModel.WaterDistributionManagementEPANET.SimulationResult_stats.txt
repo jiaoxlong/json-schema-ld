@@ -1,0 +1,9 @@
+type
+hasInputNetwork
+refSimulationScenario
+outputParameters
+OutputParameter
+parameter
+value
+targetURI
+outputFile

@@ -1,0 +1,7 @@
+rt
+strength
+amountrequested
+strengthrange
+n
+if
+type

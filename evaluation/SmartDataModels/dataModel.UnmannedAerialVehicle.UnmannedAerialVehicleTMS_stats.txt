@@ -1,0 +1,7 @@
+type
+softwareApplication
+SoftwareApplication
+operatingSystem
+softwareVersion
+applicationCategory
+operationalInstance

@@ -1,0 +1,6 @@
+type
+ExcitationSystemDynamics
+GenICompensationForGenJ
+MechanicalLoadDynamics
+SynchronousMachine
+TurbineGovernorDynamics

@@ -1,0 +1,119 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json> dcterms:title " Smart Data Models - LoadStatic";
+    dcterms:description "Adapted from CIM data models. General static load model representing the sensitivity of the real and reactive power consumed by the load to the amplitude and frequency of the bus voltage.".
+sdm:type dcterms:description "Property. NGSI type. It has to be LoadStatic";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:LoadStatic)
+].
+sdm:LoadStatic rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "LoadStatic".
+sdm:LoadAggregate dcterms:description "Property. Model:'https://schema.org/Number'. Aggregate load to which this aggregate static load belongs. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "LoadAggregate";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ep1 dcterms:description "Property. Model:'https://schema.org/Number'. First term voltage exponent for active power (Ep1).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ep1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ep2 dcterms:description "Property. Model:'https://schema.org/Number'. Second term voltage exponent for active power (Ep2).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ep2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ep3 dcterms:description "Property. Model:'https://schema.org/Number'. Third term voltage exponent for active power (Ep3).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ep3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eq1 dcterms:description "Property. Model:'https://schema.org/Number'. First term voltage exponent for reactive power (Eq1).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eq1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eq2 dcterms:description "Property. Model:'https://schema.org/Number'. Second term voltage exponent for reactive power (Eq2).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eq2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eq3 dcterms:description "Property. Model:'https://schema.org/Number'. Third term voltage exponent for reactive power (Eq3).  Used only when .staticLoadModelType = exponential. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eq3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp1 dcterms:description "Property. Model:'https://schema.org/Number'. First term voltage coefficient for active power (Kp1).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp2 dcterms:description "Property. Model:'https://schema.org/Number'. Second term voltage coefficient for active power (Kp2).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp3 dcterms:description "Property. Model:'https://schema.org/Number'. Third term voltage coefficient for active power (Kp3).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp4 dcterms:description "Property. Model:'https://schema.org/Number'. Frequency coefficient for active power (Kp4).  Must be non-zero when .staticLoadModelType = ZIP2.  Not used for all other values of .staticLoadModelType. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpf dcterms:description "Property. Model:'https://schema.org/Number'. Frequency deviation coefficient for active power (Kpf).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kq1 dcterms:description "Property. Model:'https://schema.org/Number'. First term voltage coefficient for reactive power (Kq1).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kq1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kq2 dcterms:description "Property. Model:'https://schema.org/Number'. Second term voltage coefficient for reactive power (Kq2).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kq2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kq3 dcterms:description "Property. Model:'https://schema.org/Number'. Third term voltage coefficient for reactive power (Kq3).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kq3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kq4 dcterms:description "Property. Model:'https://schema.org/Number'. Frequency coefficient for reactive power (Kq4).  Must be non-zero when .staticLoadModelType = ZIP2.  Not used for all other values of .staticLoadModelType. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kq4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kqf dcterms:description "Property. Model:'https://schema.org/Number'. Frequency deviation coefficient for reactive power (Kqf).  Not used when .staticLoadModelType = constantZ. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kqf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:staticLoadModelType dcterms:description "Property. Model:'https://schema.org/Number'. Type of static load model.  Typical Value = constantZ. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "staticLoadModelType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadStatic/schema.json>;
+    rdfs:range xsd:decimal.

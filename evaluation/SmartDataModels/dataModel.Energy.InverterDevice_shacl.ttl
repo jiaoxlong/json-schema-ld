@@ -1,0 +1,429 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.Energy/InverterDevice/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be InverterDevice";
+  sh:name "type";
+  sh:in (sdm:InverterDevice);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateLastReported;
+  sh:description "Property. A timestamps which denotes the last time when the device successfully reported data. Date and time in an ISO8601 UTCformat. Model:'https://schema.org/DateTime'";
+  sh:name "dateLastReported";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:brandName;
+  sh:description "Property. Brand Name of the item. Model:'https://schema.org/brand'";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelName;
+  sh:description "Property. Model name of the item. Model:'https://schema.org/model'";
+  sh:name "modelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. Manufacturer Name of the item. Model:'https://schema.org/manufacturer'";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:serialNumber;
+  sh:description "Property. Serial numbers of the item. Model:'https://schema.org/brand'";
+  sh:name "serialNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:application;
+  sh:name "application";
+  sh:in (sdm:electricMobility sdm:energyStorage sdm:emergencyStorage sdm:lighting sdm:industrialStorage sdm:houseHoldStorage sdm:robotics sdm:production sdm:other)
+], [
+  sh:path sdm:typeOfUse;
+  sh:description "Property. Accepted use regarding its positioning in an indoor / outdoor environment.. Enum:'indoor, outdoor, mixed, other'";
+  sh:name "typeOfUse";
+  sh:in (sdm:indoor sdm:outdoor sdm:mixed sdm:other)
+], [
+  sh:path sdm:installationMode;
+  sh:description "Property. Positioning of the device in relation to a ground reference system. A unique value. Enum:'aerial, ground, pole, roofing, underGround, wall, other'";
+  sh:name "installationMode";
+  sh:in (sdm:aerial sdm:ground sdm:pole sdm:roofing sdm:underGround sdm:wall sdm:other)
+], [
+  sh:path sdm:installationCondition;
+  sh:name "installationCondition";
+  sh:in (sdm:extremeHeat sdm:extremeCold sdm:extremeHumidity sdm:extremeClimate sdm:desert sdm:sand sdm:marine sdm:saline sdm:dust sdm:seismic sdm:other)
+], [
+  sh:path sdm:possibilityOfUse;
+  sh:description "Property. Possibility of use. Enum:'mixed, mobile, stationary, other'";
+  sh:name "possibilityOfUse";
+  sh:in (sdm:mixed sdm:mobile sdm:stationary sdm:other)
+], [
+  sh:path sdm:documentation;
+  sh:description "Property. Technical Documentation (Installation / maintenance / used). Model:'https://schema.org/URL'";
+  sh:name "documentation";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:phaseType;
+  sh:description "Property. Type of Phase. A unique value. Enum:'singlePhase,threePhase'";
+  sh:name "phaseType";
+  sh:in (sdm:singlePhase sdm:threePhase);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:supplyPhaseNb;
+  sh:description "Property. Number of power supply phases. Model:'https://schema.org/Number'";
+  sh:name "supplyPhaseNb";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dimension;
+  sh:description "Property. External dimension of a Panel. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CMT** represents Centimeter. Units:'Centimeters'";
+  sh:name "dimension"
+].
+sdm:DimensionShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Dimension;
+    sh:property [
+  sh:path sdm:length;
+  sh:name "length";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:height;
+  sh:name "height";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:depth;
+  sh:name "depth";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:weight;
+  sh:description "Property. Weight. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KGM** represents Kilogram. Units:'Kilograms'. Model:'https://schema.org/Number'";
+  sh:name "weight";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:protectionIP;
+  sh:description "Property. IP '*Ingress Protection*' for the Junction Box. This is the level classifies and rates the degree of protection provided by mechanical casings and electrical enclosures against intrusion, dust, accidental contact, and water according to International Electrotechnical Commission standard (EN 60-529). - First digit: Solid particle protection (Single numeral: 0–6 or 'X'). - Second digit: Liquid ingress protection (Single numeral: 0–9 or 'X' ).- Third digit: Personal Protection  against access to dangerous parts (optional additional letter).- Fourth digit: Other protections (optional additional letter).";
+  sh:name "protectionIP";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:protectionIK;
+  sh:description "Property. IK '*Mecanic Protection*' level relating to numeric classification for the degrees of protection provided by enclosures for electrical equipment against external mechanical impacts, according to International Electro technical Commission standard (EN 62-262). - IK varies from 0 (minimum resistance) to 10 (maximum resistance) which represents an Impact Energy (Unit Joule). Model:'https://schema.org/Number'";
+  sh:name "protectionIK";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:protectionClassSLK;
+  sh:description "Property. Protection class (SKL). - 0 : main insulation without earth connection. - 1 : main insulation and additional insulation (earth terminal). - 2 : double or reinforced insulation (equivalent to twice the main insulation) without accessible metal part. - 3 : operating in very low safety voltage (SELV) (50V maximum).";
+  sh:name "protectionClassSLK";
+  sh:in (sdm:0 sdm:1 sdm:2 sdm:3)
+], [
+  sh:path sdm:overVoltageCategory;
+  sh:description "Property. Over voltage category. - I : connection to circuits with transient over voltages at an appropriate low level. - II : main insulation and additional insulation (earth terminal). - III : fixed installations with reliability and availability making subject to specific specifications. - IV : materials at the origin of the electrical installation such as electric meters and main materials over current protection.";
+  sh:name "overVoltageCategory";
+  sh:in (sdm:I sdm:II sdm:III sdm:IV)
+], [
+  sh:path sdm:operatingTemperature;
+  sh:description "Property. Ambient operating temperature range. This is the minimum and maximum resistance to cold and heat. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius.";
+  sh:name "operatingTemperature"
+].
+sdm:OperatingTemperatureShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingTemperature;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive -50;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingAirHumidity;
+  sh:description "Property. Ambient operating Air Humidity range. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+  sh:name "operatingAirHumidity"
+].
+sdm:OperatingAirHumidityShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingAirHumidity;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalPowerDC;
+  sh:description "Property. Nominal Power or Maximum Power factor for cos phi=1. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **WTT** represents Watt. Model:'https://schema.org/Number'. Units:'Watt'";
+  sh:name "nominalPowerDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalVoltageDC;
+  sh:description "Property. Nominal voltage. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'";
+  sh:name "nominalVoltageDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalAmpereDC;
+  sh:description "Property. Nominal Amperage. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'";
+  sh:name "nominalAmpereDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalFrequencyDC;
+  sh:description "Property.  Nominal Frequency. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Model:'https://schema.org/Number'. Units:'Hertz'";
+  sh:name "nominalFrequencyDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingVoltageDC;
+  sh:description "Property. Minimum and Maximum voltage allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt.. Model:'https://schema.org/Number'. Units:'Volt'";
+  sh:name "operatingVoltageDC"
+].
+sdm:OperatingVoltageDCShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingVoltageDC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingAmpereDC;
+  sh:description "Property. Minimum and Maximum Ampere allowed.. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'";
+  sh:name "operatingAmpereDC"
+].
+sdm:OperatingAmpereDCShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingAmpereDC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingFrequencyDC;
+  sh:description "Property. Minimum and Maximum Frequency allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Model:'https://schema.org/Number'. Units:'Hertz'";
+  sh:name "operatingFrequencyDC"
+].
+sdm:OperatingFrequencyDCShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingFrequencyDC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mPPTPVVoltageDC;
+  sh:description "Property. Minimum and Maximum Photo-voltaic voltage range, MPPT allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'";
+  sh:name "mPPTPVVoltageDC"
+].
+sdm:MPPTPVVoltageDCShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:MPPTPVVoltageDC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:startingVoltageDC;
+  sh:description "Property. Starting voltage. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'";
+  sh:name "startingVoltageDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nbMPPTrackersDC;
+  sh:description "Property. Number of MPP trackers. Model:'https://schema.org/Number'.";
+  sh:name "nbMPPTrackersDC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nbInputParallelDC;
+  sh:description "Property. Maximum Number of inputs (in parallel). Model:'https://schema.org/Number'.";
+  sh:name "nbInputParallelDC";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:maxInputCurrentParallelAssembly;
+  sh:description "Property. Max. Current Input with an Parallel Assembly. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'";
+  sh:name "maxInputCurrentParallelAssembly";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalPowerAC;
+  sh:description "Property. Nominal Power . The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **WTT** represents Watt. Model:'https://schema.org/Number'. Units:'Watt'";
+  sh:name "nominalPowerAC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxOutputPowerAC;
+  sh:description "Property. Maximum Power or Apparent Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **D46** represents Volt Ampere. Model:'https://schema.org/Number'. Units:'Volt Ampere'";
+  sh:name "maxOutputPowerAC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalVoltageAC;
+  sh:description "Property. Nominal battery voltage *(Code U)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Model:'https://schema.org/Number'. Units:'Volt'";
+  sh:name "nominalVoltageAC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalAmpereAC;
+  sh:description "Property. Nominal Amperage *(Code I)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'https://schema.org/Number'. Units:'Ampere'";
+  sh:name "nominalAmpereAC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalFrequencyAC;
+  sh:description "Property. Nominal Frequency. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Model:'https://schema.org/Number'. Units:'Hertz'";
+  sh:name "nominalFrequencyAC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingVoltageAC;
+  sh:description "Property. Minimum and Maximum voltage allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'Volt'. Model:'http://schema.org/StructuredValue'";
+  sh:name "operatingVoltageAC"
+].
+sdm:OperatingVoltageACShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingVoltageAC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingAmpereAC;
+  sh:description "Property. Minimum and Maximum Ampere allowed.. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Model:'http://schema.org/Number'. Units:'Ampere'";
+  sh:name "operatingAmpereAC"
+].
+sdm:OperatingAmpereACShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingAmpereAC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingFrequencyAC;
+  sh:description "Property. Minimum and Maximum Frequency allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Units:'Volt'. Model:'http://schema.org/StructuredValue'. Units:'Hertz'";
+  sh:name "operatingFrequencyAC"
+].
+sdm:OperatingFrequencyACShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingFrequencyAC;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactorAC;
+  sh:description "Property. Power factor for cos phi. A value between [0,1] Units:'Volt'. Model:'http://schema.org/Number'";
+  sh:name "powerFactorAC";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:moduleYieldRate;
+  sh:description "Property. Yield Rate of the Device. The format is structured by a sub-property of 2 items (European Standard - Manufacturer Standard). The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent. Model:'http://schema.org/StructuredValue'";
+  sh:name "moduleYieldRate"
+].
+sdm:ModuleYieldRateShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ModuleYieldRate;
+    sh:property [
+  sh:path sdm:euro;
+  sh:name "euro";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eta;
+  sh:name "eta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:noiseLevel;
+  sh:description "Property. Sound Power level of the Device. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **2N** represents Decibel. Units:'dB'. Model:'http://schema.org/Number'";
+  sh:name "noiseLevel";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:self-consumption;
+  sh:description "Property. Self-consumption during nigth. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes).  For instance, **WTT** represents Watt. Units:'Watt'. Model:'http://schema.org/Number'";
+  sh:name "self-consumption";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:topology;
+  sh:description "Property. Description of the topology of the installation.";
+  sh:name "topology";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:coolingSystem;
+  sh:description "Property.  Cooling System of the Device. Enum:'Convection, OptiCool, Regulated-fan, Other'";
+  sh:name "coolingSystem";
+  sh:in (sdm:Convection sdm:OptiCool sdm:Regulated-fan sdm:Other)
+], [
+  sh:path sdm:inverterStatus;
+  sh:name "inverterStatus";
+  sh:in (sdm:00-OnSector <sdm:01-PowerFailure/OnBattery> sdm:02-LossCommunication sdm:03-BatteryFault sdm:04-SystemShutDown sdm:05-TensionDip sdm:06-OverVoltage sdm:07-VoltageDrop sdm:08-VoltageIncrease sdm:09-LineNoise sdm:10-FrequencyVariation sdm:11-TransientDistortion sdm:12-HarmonicDistortion)
+].

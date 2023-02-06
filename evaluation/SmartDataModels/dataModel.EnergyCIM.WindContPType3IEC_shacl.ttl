@@ -1,0 +1,136 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be WindContPType3IEC";
+  sh:name "type";
+  sh:in (sdm:WindContPType3IEC)
+], [
+  sh:path sdm:WindDynamicsLookupTable;
+  sh:description "Property. Model:'https://schema.org/Number'. The P control type 3 model with which this wind dynamics lookup table is associated. Default: 'list'";
+  sh:name "WindDynamicsLookupTable";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindGenTurbineType3IEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind turbine type 3 model with which this Wind control P type 3 model is associated. Default: None";
+  sh:name "WindGenTurbineType3IEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dpmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum wind turbine power ramp rate (). It is project dependent parameter. Default: 0.0";
+  sh:name "dpmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dtrisemaxlvrt;
+  sh:description "Property. Model:'https://schema.org/Number'. Limitation of torque rise rate during LVRT for S (d). It is project dependent parameter. Default: 0.0";
+  sh:name "dtrisemaxlvrt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kdtd;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain for active drive train damping (). It is type dependent parameter. Default: 0.0";
+  sh:name "kdtd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kip;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller integration parameter (). It is type dependent parameter. Default: 0.0";
+  sh:name "kip";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpp;
+  sh:description "Property. Model:'https://schema.org/Number'. PI controller proportional gain (). It is type dependent parameter. Default: 0.0";
+  sh:name "kpp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mplvrt;
+  sh:description "Property. Model:'https://schema.org/Number'. Enable LVRT power control mode (M true = 1: voltage control false = 0: reactive power control.  It is project dependent parameter. Default: False";
+  sh:name "mplvrt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:omegaoffset;
+  sh:description "Property. Model:'https://schema.org/Number'. Offset to reference value that limits controller action during rotor speed changes (omega). It is case dependent parameter. Default: 0.0";
+  sh:name "omegaoffset";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pdtdmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum active drive train damping power (). It is type dependent parameter. Default: 0.0";
+  sh:name "pdtdmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rramp;
+  sh:description "Property. Model:'https://schema.org/Number'. Ramp limitation of torque, required in some grid codes (). It is project dependent parameter. Default: 0.0";
+  sh:name "rramp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tdvs;
+  sh:description "Property. Model:'https://schema.org/Number'. Timedelay after deep voltage sags (T). It is project dependent parameter. Default: 0";
+  sh:name "tdvs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:temin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum electrical generator torque (). It is type dependent parameter. Default: 0.0";
+  sh:name "temin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tomegafilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter time constant for generator speed measurement (). It is type dependent parameter. Default: 0";
+  sh:name "tomegafilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpfilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter time constant for power measurement (). It is type dependent parameter. Default: 0";
+  sh:name "tpfilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpord;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant in power order lag (). It is type dependent parameter. Default: 0.0";
+  sh:name "tpord";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tufilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter time constant for voltage measurement (). It is type dependent parameter. Default: 0";
+  sh:name "tufilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tuscale;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage scaling factor of reset-torque (T). It is project dependent parameter. Default: 0.0";
+  sh:name "tuscale";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:twref;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant in speed reference filter (). It is type dependent parameter. Default: 0";
+  sh:name "twref";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:udvs;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage limit for hold LVRT status after deep voltage sags (). It is project dependent parameter. Default: 0.0";
+  sh:name "udvs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:updip;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage dip threshold for P-control ().  Part of turbine control, often different (e.g 0.8) from converter thresholds. It is project dependent parameter. Default: 0.0";
+  sh:name "updip";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:wdtd;
+  sh:description "Property. Model:'https://schema.org/Number'. Active drive train damping frequency (omega). It can be calculated from two mass model parameters. It is type dependent parameter. Default: 0.0";
+  sh:name "wdtd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:zeta;
+  sh:description "Property. Model:'https://schema.org/Number'. Coefficient for active drive train damping (zeta). It is type dependent parameter. Default: 0.0";
+  sh:name "zeta";
+  sh:datatype xsd:decimal
+].

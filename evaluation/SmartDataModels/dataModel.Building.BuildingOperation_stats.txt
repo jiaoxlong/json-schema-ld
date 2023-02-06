@@ -1,0 +1,11 @@
+type
+refBuilding
+refOperator
+operationType
+result
+startDate
+endDate
+dateStarted
+dateFinished
+status
+operationSequence

@@ -1,0 +1,11 @@
+rt
+ratedarrayvoltage
+ratedarraycurrent
+arrayvoltage
+arraycurrent
+leakagecurrent
+insulationresistance
+timestamp
+n
+if
+type

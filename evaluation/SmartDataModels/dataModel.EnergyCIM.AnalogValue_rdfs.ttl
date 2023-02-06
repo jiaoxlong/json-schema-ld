@@ -1,0 +1,44 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AnalogValue/schema.json> dcterms:title " Smart Data Models - AnalogValue";
+    dcterms:description "Adapted from CIM data models. AnalogValue represents an analog MeasurementValue.".
+sdm:type dcterms:description "Property. NGSI type. It has to be AnalogValue";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AnalogValue/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AnalogValue)
+].
+sdm:AnalogValue rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AnalogValue".
+sdm:Analog dcterms:description "Property. Model:'https://schema.org/Number'. The values connected to this measurement. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "Analog";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AnalogValue/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:AnalogControl dcterms:description "Property. Model:'https://schema.org/Number'. The MeasurementValue that is controlled. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "AnalogControl";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AnalogValue/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:value dcterms:description "Property. Model:'https://schema.org/Number'. The value to supervise. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "value";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AnalogValue/schema.json>;
+    rdfs:range xsd:decimal.

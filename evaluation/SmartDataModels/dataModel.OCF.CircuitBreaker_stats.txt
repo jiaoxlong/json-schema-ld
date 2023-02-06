@@ -1,0 +1,11 @@
+rt
+status
+ratedcurrent
+ratedbreakingcurrent
+ratedvoltage
+leakagecurrent
+insulationresistance
+timestamp
+n
+if
+type

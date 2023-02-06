@@ -1,0 +1,7 @@
+type
+appliedProduct
+quantity
+date
+phaseOutPeriod
+animals
+veterinarian

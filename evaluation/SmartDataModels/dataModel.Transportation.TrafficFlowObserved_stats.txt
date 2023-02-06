@@ -1,0 +1,17 @@
+type
+laneId
+refRoadSegment
+dateObserved
+dateObservedFrom
+dateObservedTo
+intensity
+occupancy
+averageVehicleSpeed
+averageVehicleLength
+averageGapDistance
+congested
+averageHeadwayTime
+laneDirection
+reversedLane
+vehicleType
+vehicleSubType

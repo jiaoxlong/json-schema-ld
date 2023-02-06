@@ -1,0 +1,15 @@
+type
+fleetVehicle
+fleetVehicleOperation
+restFuelAmount
+lastFuellingAmount
+currentStatus
+currentOperative
+CurrentOperative
+givenName
+jobTitle
+speed
+bearing
+lastKnownPositionUpdatedAt
+inRestrictedArea
+mileageFromOdometer

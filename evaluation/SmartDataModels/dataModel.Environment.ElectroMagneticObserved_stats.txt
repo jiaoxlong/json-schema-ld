@@ -1,0 +1,8 @@
+type
+refDevice
+refPointOfInterest
+dateObserved
+dateObservedFrom
+dateObservedTo
+eMF
+reliability

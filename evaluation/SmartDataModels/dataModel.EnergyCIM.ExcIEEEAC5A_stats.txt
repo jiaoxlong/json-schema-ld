@@ -1,0 +1,15 @@
+type
+efd1
+efd2
+ka
+ke
+kf
+seefd1
+seefd2
+ta
+te
+tf1
+tf2
+tf3
+vrmax
+vrmin

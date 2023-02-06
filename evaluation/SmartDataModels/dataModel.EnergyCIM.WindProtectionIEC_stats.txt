@@ -1,0 +1,11 @@
+type
+WindTurbineType1or2IEC
+WindTurbineType3or4IEC
+fover
+funder
+tfover
+tfunder
+tuover
+tuunder
+uover
+uunder

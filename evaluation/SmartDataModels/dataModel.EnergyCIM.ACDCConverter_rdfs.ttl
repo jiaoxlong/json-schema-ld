@@ -1,0 +1,124 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json> dcterms:title " Smart Data Models - ACDCConverter";
+    dcterms:description "Adapted from CIM data models. A unit with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ACDCConverter";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ACDCConverter)
+].
+sdm:ACDCConverter rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ACDCConverter".
+sdm:DCTerminals dcterms:description "Property. Model:'https://schema.org/Number'.  Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "DCTerminals";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PccTerminal dcterms:description "Property. Model:'https://schema.org/Number'. All converters` DC sides linked to this point of common coupling terminal. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PccTerminal";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:baseS dcterms:description "Property. Model:'https://schema.org/Number'. Base apparent power of the converter pole. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "baseS";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:idc dcterms:description "Property. Model:'https://schema.org/Number'. Converter DC current, also called Id. Converter state variable, result from power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "idc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:idleLoss dcterms:description "Property. Model:'https://schema.org/Number'. Active power loss in pole at no power transfer. Converter configuration data used in power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "idleLoss";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxUdc dcterms:description "Property. Model:'https://schema.org/Number'. The maximum voltage on the DC side at which the converter should operate. Converter configuration data used in power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxUdc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minUdc dcterms:description "Property. Model:'https://schema.org/Number'. Min allowed converter DC voltage. Converter configuration data used in power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minUdc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:numberOfValves dcterms:description "Property. Model:'https://schema.org/Number'. Number of valves in the converter. Used in loss calculations. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "numberOfValves";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p dcterms:description "Property. Model:'https://schema.org/Number'. Active power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for a steady state solution in the case a simplified power flow model is used. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:poleLossP dcterms:description "Property. Model:'https://schema.org/Number'. The active power loss at a DC Pole  = idleLoss + switchingLoss*|Idc| + resitiveLoss*Idc^2 For lossless operation Pdc=Pac For rectifier operation with losses Pdc=Pac-lossP For inverter operation with losses Pdc=Pac+lossP Converter state variable used in power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "poleLossP";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power at the point of common coupling. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for a steady state solution in the case a simplified power flow model is used. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratedUdc dcterms:description "Property. Model:'https://schema.org/Number'. Rated converter DC voltage, also called UdN. Converter configuration data used in power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratedUdc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:resistiveLoss dcterms:description "Property. Model:'https://schema.org/Number'. Converter configuration data used in power flow. Refer to poleLossP. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "resistiveLoss";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:switchingLoss dcterms:description "Property. Model:'https://schema.org/Number'. Switching losses, relative to the base apparent power `baseS`. Refer to poleLossP. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "switchingLoss";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:targetPpcc dcterms:description "Property. Model:'https://schema.org/Number'. Real power injection target in AC grid, at point of common coupling. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "targetPpcc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:targetUdc dcterms:description "Property. Model:'https://schema.org/Number'. Target value for DC voltage magnitude. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "targetUdc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uc dcterms:description "Property. Model:'https://schema.org/Number'. Converter voltage, the voltage at the AC side of the bridge. Converter state variable, result from power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "uc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:udc dcterms:description "Property. Model:'https://schema.org/Number'. Converter voltage at the DC side, also called Ud. Converter state variable, result from power flow. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "udc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:valveU0 dcterms:description "Property. Model:'https://schema.org/Number'. Valve threshold voltage. Forward voltage drop when the valve is conducting. Used in loss calculations, i.e. the switchLoss depend on numberOfValves * valveU0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "valveU0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ACDCConverter/schema.json>;
+    rdfs:range xsd:decimal.

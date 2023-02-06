@@ -1,0 +1,12 @@
+type
+epfd
+epfs
+epvd
+epvs
+eqfd
+eqfs
+eqvd
+eqvs
+h
+lfrac
+pfrac

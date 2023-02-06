@@ -1,0 +1,59 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json> dcterms:title "Data Service DCAT-AP 2.0 schema";
+    dcterms:description "Data Service adapted from DCAT-AP 2.0 specification, but extended with additional properties and compatible with NGSI standard".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be DataServiceDCAT-AP";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DataServiceDCAT-AP)
+].
+sdm:DataServiceDCAT-AP rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DataServiceDCAT-AP".
+sdm:endPointURL rdf:type rdf:Property;
+    rdfs:label "endPointURL";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:title rdf:type rdf:Property;
+    rdfs:label "title";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:endPointDescription rdf:type rdf:Property;
+    rdfs:label "endPointDescription";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:servesDataset rdf:type rdf:Property;
+    rdfs:label "servesDataset";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:accessRights dcterms:description "Property. This property MAY include information regarding access or restrictions based on privacy, security, or other policies";
+    rdf:type rdf:Property;
+    rdfs:label "accessRights";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:dataServiceDescription rdf:type rdf:Property;
+    rdfs:label "dataServiceDescription";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:license dcterms:description "Property. This property contains the licence under which the Data service is made available.";
+    rdf:type rdf:Property;
+    rdfs:label "license";
+    rdfs:domain <https://github.com/smart-data-models/dataModel.DCAT-AP/edit/master/DataServiceDCAT-AP/schema.json>;
+    rdfs:range xsd:string.

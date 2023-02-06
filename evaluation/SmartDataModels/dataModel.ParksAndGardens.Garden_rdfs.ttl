@@ -1,0 +1,115 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json> dcterms:title "Smart Data Models - Parks and Gardens / Garden";
+    dcterms:description "A garden is a distinguishable planned space, usually outdoors, set aside for the display, cultivation, and enjoyment of plants and other forms of nature.".
+sdm:type dcterms:description "Property. NGSI Entity Type: It has to be Garden";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Garden)
+].
+sdm:Garden rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Garden".
+sdm:category rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>.
+sdm:Category rdf:type skos:ConceptScheme.
+sdm:category rdfs:range [
+  owl:oneOf (sdm:botanical sdm:castle sdm:community sdm:fencedOff sdm:monastery sdm:private sdm:public sdm:residential)
+].
+sdm:botanical rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "botanical".
+sdm:castle rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "castle".
+sdm:community rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "community".
+sdm:fencedOff rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "fencedOff".
+sdm:monastery rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "monastery".
+sdm:private rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "private".
+sdm:public rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "public".
+sdm:residential rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "residential".
+sdm:style dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'public, english, french, chinese, japanese, zen, rosarium, herb_garden, kitchen'. Garden's style.";
+    rdf:type rdf:Property;
+    rdfs:label "style";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>.
+sdm:Style rdf:type skos:ConceptScheme.
+sdm:style rdfs:range [
+  owl:oneOf (sdm:chinese sdm:english sdm:french sdm:herb_garden sdm:japanese sdm:kitchen sdm:public sdm:rosarium sdm:zen)
+].
+sdm:chinese rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "chinese".
+sdm:english rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "english".
+sdm:french rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "french".
+sdm:herb_garden rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "herb_garden".
+sdm:japanese rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "japanese".
+sdm:kitchen rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "kitchen".
+sdm:public rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "public".
+sdm:rosarium rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "rosarium".
+sdm:zen rdf:type skos:Concept;
+    skos:inScheme sdm:Style;
+    rdfs:label "zen".
+sdm:openingHours dcterms:description "Property. Opening hours of this garden. Model:'https://schema.org/openingHours'";
+    rdf:type rdf:Property;
+    rdfs:label "openingHours";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>;
+    rdfs:range xsd:string.
+sdm:areaServed dcterms:description "Property. Higher level area to which the garden belongs to. It can be used to group gardens per responsible, district, neighbourhood, etc. Model:'https://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "areaServed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateLastWatering dcterms:description "Property. Timestamp which corresponds to the last watering of this garden. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastWatering";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:nextWateringDeadline dcterms:description "Property. Deadline for next watering operation to be done on this garden. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "nextWateringDeadline";
+    rdfs:domain <https://smart-data-models.github.io/dataModel/ParksAndGardens/Garden/schema.json>;
+    rdfs:range xsd:dateTime.

@@ -1,0 +1,9 @@
+type
+amountCollected
+mediaURL
+equipmentId
+equipmentType
+titleCode
+reportId
+observationDateTime
+paymentStatus

@@ -1,0 +1,329 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json> dcterms:title " Smart Data Models - Streetlight";
+    dcterms:description "A Street light".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be Streetlight";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Streetlight)
+].
+sdm:Streetlight rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Streetlight".
+sdm:circuit dcterms:description "Property. The circuit to which this streetlight connects to and gets power from. Typically it will contain an identifier that will allow to obtain more information about such circuit.";
+    rdf:type rdf:Property;
+    rdfs:label "circuit";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:string.
+sdm:refStreetlightModel dcterms:description "Relationship. Streetlight's model.";
+    rdf:type rdf:Property;
+    rdfs:label "refStreetlightModel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:refStreetlightControlCabinet dcterms:description "Relationship. If this streetlight is individually controlled, reference to the control cabinet in charge of.";
+    rdf:type rdf:Property;
+    rdfs:label "refStreetlightControlCabinet";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:status dcterms:description "Property. The overall status of this street light. Enum:'brokenLantern, columnIssue, defectiveLamp, ok'";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:brokenLantern sdm:columnIssue sdm:defectiveLamp sdm:ok)
+].
+sdm:brokenLantern rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "brokenLantern".
+sdm:columnIssue rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "columnIssue".
+sdm:defectiveLamp rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "defectiveLamp".
+sdm:ok rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "ok".
+sdm:powerState dcterms:description "Property. Model:'https://schema.org/Text'. Streetlight's power state. Enum:'bootingUp, low, off, on'";
+    rdf:type rdf:Property;
+    rdfs:label "powerState";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:PowerState rdf:type skos:ConceptScheme.
+sdm:powerState rdfs:range [
+  owl:oneOf (sdm:bootingUp sdm:low sdm:off sdm:on)
+].
+sdm:bootingUp rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "bootingUp".
+sdm:low rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "low".
+sdm:off rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "off".
+sdm:on rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "on".
+sdm:refDevice rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:refStreetlightGroup dcterms:description "Relationship. Streetlight's group, if this streetlight belongs to any group.";
+    rdf:type rdf:Property;
+    rdfs:label "refStreetlightGroup";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:dateLastLampChange dcterms:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last change of lamp made";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastLampChange";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateLastSwitchingOn dcterms:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last switching on";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastSwitchingOn";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateLastSwitchingOff dcterms:description "Property. Model:'https://schema.org/DateTime'. Timestamp of the last switching off";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastSwitchingOff";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:controllingMethod dcterms:description "Property. The method used to control this streetlight. Enum:'group, individual'. ";
+    rdf:type rdf:Property;
+    rdfs:label "controllingMethod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:ControllingMethod rdf:type skos:ConceptScheme.
+sdm:controllingMethod rdfs:range [
+  owl:oneOf (sdm:group sdm:individual)
+].
+sdm:group rdf:type skos:Concept;
+    skos:inScheme sdm:ControllingMethod;
+    rdfs:label "group".
+sdm:individual rdf:type skos:Concept;
+    skos:inScheme sdm:ControllingMethod;
+    rdfs:label "individual".
+sdm:dateServiceStarted dcterms:description "Property. Model:'https://schema.org/Date'. Date at which the streetlight started giving service";
+    rdf:type rdf:Property;
+    rdfs:label "dateServiceStarted";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:image dcterms:description "Relationship. Model:'https://schema.org/image'. A URL containing a photo of the streetlight";
+    rdf:type rdf:Property;
+    rdfs:label "image";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:locationCategory dcterms:description "Property. Category of the location where the streetlight is placed. Enum:'bridge, centralIsland, facade, garden, park, parking, pedestrianPath, playground, road, sidewalk, tunnel'";
+    rdf:type rdf:Property;
+    rdfs:label "locationCategory";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:LocationCategory rdf:type skos:ConceptScheme.
+sdm:locationCategory rdfs:range [
+  owl:oneOf (sdm:bridge sdm:centralIsland sdm:facade sdm:garden sdm:park sdm:parking sdm:pedestrianPath sdm:playground sdm:road sdm:sidewalk sdm:tunnel)
+].
+sdm:bridge rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "bridge".
+sdm:centralIsland rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "centralIsland".
+sdm:facade rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "facade".
+sdm:garden rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "garden".
+sdm:park rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "park".
+sdm:parking rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "parking".
+sdm:pedestrianPath rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "pedestrianPath".
+sdm:playground rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "playground".
+sdm:road rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "road".
+sdm:sidewalk rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "sidewalk".
+sdm:tunnel rdf:type skos:Concept;
+    skos:inScheme sdm:LocationCategory;
+    rdfs:label "tunnel".
+sdm:lanternHeight dcterms:description "Property. Lantern's height. In columns with many arms this can vary between streetlights. Another variation source of this property are wall-mounted streetlights.";
+    rdf:type rdf:Property;
+    rdfs:label "lanternHeight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:illuminanceLevel dcterms:description "Property. Relative illuminance level setting. A number between 0 and 1.";
+    rdf:type rdf:Property;
+    rdfs:label "illuminanceLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:powerConsumption dcterms:description "Property. Model:'https://schema.org/Number'. Power consumed by the LED or the streetlight bulb corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "powerConsumption";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:current dcterms:description "Property. Model:'https://schema.org/Number'. Current value of the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "current";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:powerRating dcterms:description "Property. Model:'https://schema.org/Number'. Power rating of the LED or the streetlight bulb corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "powerRating";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:powerFactor dcterms:description "Property. Model:'https://schema.org/Number'. Power factor or the ratio of working power of the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "powerFactor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:voltage dcterms:description "Property. Model:'https://schema.org/Number'. Voltage value of the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "voltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:feederPillarNum dcterms:description "Property. Model:'https://schema.org/Text'. Streetlight feeder pillar information associated with the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "feederPillarNum";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:string.
+sdm:streetPoleNum dcterms:description "Property. Model:'https://schema.org/Text'. Street pole information associated with the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "streetPoleNum";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:string.
+sdm:observationDateTime dcterms:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:feederID dcterms:description "Relationship. Model:'https://schema.org/Text. Unique ID of the streetlight feeder panel associated with the streetlight corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "feederID";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:municipalityInfo dcterms:description "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "municipalityInfo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range sdm:MunicipalityInfo.
+sdm:MunicipalityInfo rdf:type rdfs:Class;
+    rdfs:label "MunicipalityInfo".
+sdm:district dcterms:description "Property. Model:'https://schema.org/Text'. District name corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "district";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:ulbName dcterms:description "Property. Model:'https://schema.org/Text'.Name of the Urban Local Body corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "ulbName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:cityId dcterms:description "Property. Model:'https://schema.org/Text'. City ID corresponding to this observation";
+    rdf:type rdf:Property;
+    rdfs:label "cityId";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:stateName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "stateName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:cityName dcterms:description "Property. Model:'https://schema.org/Text'. City name corresponding to this observation";
+    rdf:type rdf:Property;
+    rdfs:label "cityName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:zoneId dcterms:description "Property. Model:'https://schema.org/Text'. Zone ID corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "zoneId";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:wardNum dcterms:description "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardNum";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:decimal.
+sdm:deviceInfo dcterms:description "Property. Model:'https://schema.org/Text. Information about the device associated with the observations.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceInfo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range sdm:DeviceInfo.
+sdm:DeviceInfo rdf:type rdfs:Class;
+    rdfs:label "DeviceInfo".
+sdm:RFId dcterms:description "Property. Model:'https://schema.org/Text'. Gives the ID of the RFID reader.";
+    rdf:type rdf:Property;
+    rdfs:label "RFId";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceBatteryStatus dcterms:description "Property. Model:'https://schema.org/Text'. Gives the Battery charging status of the reporting device(Connected, Disconnected).";
+    rdf:type rdf:Property;
+    rdfs:label "deviceBatteryStatus";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceName dcterms:description "Property. Model:'https://schema.org/Text'. Device Name or Station name of the sensor device/station corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceName";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceId dcterms:description "Property. Model:'https://schema.org/Text'. Device ID of the physical sensor/ measurement station corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceId";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:measurand dcterms:description "Property. Model:'https://schema.org/Text'. Property/properties sensed/observed/measured by the device.";
+    rdf:type rdf:Property;
+    rdfs:label "measurand";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceSimNumber dcterms:description "Property. Model:'https://schema.org/Text'. Gives the sim number of the device in the waste management vehicle.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceSimNumber";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceModel dcterms:description "Property. Model:'https://schema.org/Text'. Describes the information of the device, sensor or system in consideration.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceModel";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:DeviceModel.
+sdm:DeviceModel rdf:type rdfs:Class;
+    rdfs:label "DeviceModel".
+sdm:brandName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the brand associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "brandName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:manufacturerName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the manufacturer associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "manufacturerName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:modelName dcterms:description "Property. Model:'https://schema.org/Text'. Name of a specific model associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "modelName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:modelURL dcterms:description "Property. Model:'https://schema.org/Text'. URL providing further information of a specific model associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "modelURL";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.

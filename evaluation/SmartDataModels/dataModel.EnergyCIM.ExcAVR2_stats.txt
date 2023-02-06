@@ -1,0 +1,14 @@
+type
+e1
+e2
+ka
+kf
+se1
+se2
+ta
+tb
+te
+tf1
+tf2
+vrmn
+vrmx

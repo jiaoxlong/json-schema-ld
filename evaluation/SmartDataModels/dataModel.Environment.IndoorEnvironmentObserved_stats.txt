@@ -1,0 +1,12 @@
+type
+dateObserved
+refDevice
+refPointOfInterest
+sensorPlacement
+sensorHeight
+peopleCount
+temperature
+relativeHumidity
+atmosphericPressure
+illuminance
+co2

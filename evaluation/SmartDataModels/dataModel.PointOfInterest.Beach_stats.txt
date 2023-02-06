@@ -1,0 +1,8 @@
+type
+width
+length
+beachType
+occupationRate
+peopleOccupancy
+facilities
+accessType

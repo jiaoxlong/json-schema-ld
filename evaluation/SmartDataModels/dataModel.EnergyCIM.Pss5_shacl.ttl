@@ -1,0 +1,106 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be Pss5";
+  sh:name "type";
+  sh:in (sdm:Pss5)
+], [
+  sh:path sdm:ctw2;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector for Second washout enabling (C). true = second washout filter is bypassed false = second washout filter in use. Typical Value = true. Default: False";
+  sh:name "ctw2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:deadband;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer output dead band (DeadBand).  Typical Value = 0. Default: 0.0";
+  sh:name "deadband";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:isfreq;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector for Frequency/shaft speed input (IsFreq). true = speed false = frequency. Typical Value = true. Default: False";
+  sh:name "isfreq";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kf;
+  sh:description "Property. Model:'https://schema.org/Number'. Frequency/shaft speed input gain (K).  Typical Value = 5. Default: 0.0";
+  sh:name "kf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpe;
+  sh:description "Property. Model:'https://schema.org/Number'. Electric power input gain (K).  Typical Value = 0.3. Default: 0.0";
+  sh:name "kpe";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpss;
+  sh:description "Property. Model:'https://schema.org/Number'. PSS gain (K).  Typical Value = 1. Default: 0.0";
+  sh:name "kpss";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmm;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum power PSS enabling (P).  Typical Value = 0.25. Default: 0.0";
+  sh:name "pmm";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl2;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tl4;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tl4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpe;
+  sh:description "Property. Model:'https://schema.org/Number'. Electric power filter time constant (T).  Typical Value = 0.05. Default: 0";
+  sh:name "tpe";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tw1;
+  sh:description "Property. Model:'https://schema.org/Number'. First WashOut (T).  Typical Value = 3.5. Default: 0";
+  sh:name "tw1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tw2;
+  sh:description "Property. Model:'https://schema.org/Number'. Second WashOut (T).  Typical Value = 0. Default: 0";
+  sh:name "tw2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vadat;
+  sh:description "Property. Model:'https://schema.org/Number'.  Default: False";
+  sh:name "vadat";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vsmn;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer output max limit (V).  Typical Value = -0.1. Default: 0.0";
+  sh:name "vsmn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vsmx;
+  sh:description "Property. Model:'https://schema.org/Number'. Stabilizer output min limit (V).  Typical Value = 0.1. Default: 0.0";
+  sh:name "vsmx";
+  sh:datatype xsd:decimal
+].

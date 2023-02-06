@@ -1,0 +1,5 @@
+type
+a
+b
+d
+e

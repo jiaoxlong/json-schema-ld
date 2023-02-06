@@ -1,0 +1,64 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json> dcterms:title " Smart Data Models - RotatingMachine";
+    dcterms:description "Adapted from CIM data models. A rotating machine which may be used as a generator or motor.".
+sdm:type dcterms:description "Property. NGSI type. It has to be RotatingMachine";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:RotatingMachine)
+].
+sdm:RotatingMachine rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "RotatingMachine".
+sdm:GeneratingUnit dcterms:description "Property. Model:'https://schema.org/Number'. A synchronous machine may operate as a generator and as such becomes a member of a generating unit. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "GeneratingUnit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:HydroPump dcterms:description "Property. Model:'https://schema.org/Number'. The synchronous machine drives the turbine which moves the water from a low elevation to a higher elevation. The direction of machine rotation for pumping may or may not be the same as for generating. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "HydroPump";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p dcterms:description "Property. Model:'https://schema.org/Number'. Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for a steady state solution. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for a steady state solution. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratedPowerFactor dcterms:description "Property. Model:'https://schema.org/Number'. Power factor (nameplate data). It is primarily used for short circuit data exchange according to IEC 60909. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratedPowerFactor";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratedS dcterms:description "Property. Model:'https://schema.org/Number'. Nameplate apparent power rating for the unit. The attribute shall have a positive value. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratedS";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratedU dcterms:description "Property. Model:'https://schema.org/Number'. Rated voltage (nameplate data, Ur in IEC 60909-0). It is primarily used for short circuit data exchange according to IEC 60909. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratedU";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/RotatingMachine/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,7 @@
+type
+category
+style
+openingHours
+areaServed
+dateLastWatering
+nextWateringDeadline

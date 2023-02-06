@@ -1,0 +1,12 @@
+type
+bp
+ktm
+mnef
+mxef
+rymn
+rymx
+ta
+tc
+tcm
+tm
+tv

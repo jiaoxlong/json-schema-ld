@@ -1,0 +1,38 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.Ports/SeaPort/schema.json> dcterms:title "Seaport facilities schema";
+    dcterms:description "The Data Model is intended to provide information about ports that can accommodate pleasure craft, commerce or passenger  transport. It permit to represent the parameters of each port, its location, its mooring capacities and the free or paid services associated with it provided directly by the port or by professionals working on or near the port.".
+sdm:type dcterms:description "Property. It has to be SeaPortFacilities";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.Ports/SeaPort/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SeaPortFacilities)
+].
+sdm:SeaPortFacilities rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SeaPortFacilities".
+sdm:dateLastReported dcterms:description "Property. Model:'http://schema.org/DateTime'. A timestamp which denotes the last time when a flow successfully reported data. The date and time of this Repository in ISO8601 UTCformat";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastReported";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.Ports/SeaPort/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:refDevice dcterms:description "Relationship. Reference to the Main Entity [Device](https://github.com/smart-data-models/dataModel.Device/blob/master/Device/doc/spec.md) if used as second link";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.Ports/SeaPort/schema.json>.

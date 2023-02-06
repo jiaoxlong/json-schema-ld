@@ -1,0 +1,10 @@
+type
+b0ch
+bch
+g0ch
+gch
+r
+r0
+shortCircuitEndTemperature
+x
+x0

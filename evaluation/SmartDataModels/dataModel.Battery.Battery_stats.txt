@@ -1,0 +1,10 @@
+type
+refDevice
+status
+cycleLife
+autonomyTime
+rechargeTime
+acPowerInput
+acPowerOutput
+dcPowerInput
+dcPowerOutput

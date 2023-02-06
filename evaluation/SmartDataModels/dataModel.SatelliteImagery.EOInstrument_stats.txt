@@ -1,0 +1,7 @@
+type
+instrumentID
+instrumentName
+operationalMode
+polarizationMode
+swathID
+carriedOn

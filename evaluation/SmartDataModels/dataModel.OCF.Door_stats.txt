@@ -1,0 +1,7 @@
+rt
+openDuration
+openState
+openAlarm
+n
+if
+type

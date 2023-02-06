@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json> dcterms:title "Smart Data Models - CSV Dialect";
+    dcterms:description "The CSV dialect descriptor.Converted for Smart Data Models initiative from original frictionless data".
+sdm:type dcterms:description "Property. It has to be CSVDialectFrictionlessData. NGSI entity type";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:CSVDialectFrictionlessData)
+].
+sdm:CSVDialectFrictionlessData rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "CSVDialectFrictionlessData".
+sdm:csvddfVersion dcterms:description "Property. CSV Dialect schema version. A number to indicate the schema version of CSV Dialect. Version 1.0 was named CSV Dialect Description Format and used different field names";
+    rdf:type rdf:Property;
+    rdfs:label "csvddfVersion";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:delimiter dcterms:description "Property. Delimiter. A character sequence to use as the field separator";
+    rdf:type rdf:Property;
+    rdfs:label "delimiter";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:doubleQuote dcterms:description "Property. Double Quote. If Double Quote is set to true, two consecutive quotes must be interpreted as one. Specifies the handling of quotes inside fields";
+    rdf:type rdf:Property;
+    rdfs:label "doubleQuote";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:lineTerminator dcterms:description "Property. Line Terminator. Specifies the character sequence that must be used to terminate rows";
+    rdf:type rdf:Property;
+    rdfs:label "lineTerminator";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:nullSequence dcterms:description "Property. Null Sequence. Specifies the null sequence, for example, \\ and then 'N'";
+    rdf:type rdf:Property;
+    rdfs:label "nullSequence";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:quoteChar dcterms:description "Property. Quote Character. Specifies a one-character string to use as the quoting character";
+    rdf:type rdf:Property;
+    rdfs:label "quoteChar";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:escapeChar dcterms:description "Property. Escape Character. Specifies a one-character string to use as the escape character";
+    rdf:type rdf:Property;
+    rdfs:label "escapeChar";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:skipInitialSpace dcterms:description "Property. Skip Initial Space. Specifies the interpretation of whitespace immediately following a delimiter. If false, whitespace immediately after a delimiter should be treated as part of the subsequent field";
+    rdf:type rdf:Property;
+    rdfs:label "skipInitialSpace";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:header dcterms:description "Property. Header. Specifies if the file includes a header row, always as the first row in the file";
+    rdf:type rdf:Property;
+    rdfs:label "header";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:commentChar dcterms:description "Property. Comment Character. Specifies that any row beginning with this one-character string, without preceding whitespace, causes the entire line to be ignored";
+    rdf:type rdf:Property;
+    rdfs:label "commentChar";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:string.
+sdm:caseSensitiveHeader dcterms:description "Property. Case Sensitive Header. Use of case in source CSV files is not always an intentional decision. For example, should 'CAT' and 'Cat' be considered to have the same meaning. Specifies if the case of headers is meaningful";
+    rdf:type rdf:Property;
+    rdfs:label "caseSensitiveHeader";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.FrictionlessData/CSVDialectFrictionlessData/schema.json>;
+    rdfs:range xsd:boolean.

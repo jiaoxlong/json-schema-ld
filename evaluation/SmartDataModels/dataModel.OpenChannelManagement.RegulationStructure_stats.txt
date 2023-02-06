@@ -1,0 +1,10 @@
+type
+numberOfGates
+numberOfSpillways
+teleCommand
+hasSluiceGate
+hasSpillway
+position
+Position
+distance
+refPoint

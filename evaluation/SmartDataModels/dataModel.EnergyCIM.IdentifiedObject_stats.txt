@@ -1,0 +1,7 @@
+type
+DiagramObjects
+description
+energyIdentCodeEic
+mRID
+name
+shortName

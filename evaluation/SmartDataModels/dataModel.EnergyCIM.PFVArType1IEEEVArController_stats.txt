@@ -1,0 +1,7 @@
+type
+tvarc
+vvar
+vvarcbw
+vvarref
+vvtmax
+vvtmin

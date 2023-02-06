@@ -1,0 +1,7 @@
+type
+disease
+diagnosticTest
+date
+veterinarianTreatment
+animals
+veterinarian

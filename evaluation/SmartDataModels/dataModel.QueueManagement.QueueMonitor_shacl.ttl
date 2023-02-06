@@ -1,0 +1,93 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models/dataModel.QueueManagement/QueueMonitor/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be QueueMonitor.";
+  sh:name "type";
+  sh:in (sdm:QueueMonitor);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:localId;
+  sh:description "Property. Unique identifier from the source data set.";
+  sh:name "localId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:officeName;
+  sh:description "Property.  name of the service provided at the counter. Model:'https://schema.org/Text'";
+  sh:name "officeName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:serviceName;
+  sh:description "Property. Unique identifier from the source data set. Model:'https://schema.org/Text'";
+  sh:name "serviceName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:serviceId;
+  sh:description "Property. Id of the service provided at the counter. The same service could be provided by many offices. Model:'https://schema.org/Text'";
+  sh:name "serviceId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:serviceStatus;
+  sh:description "Property. Status of the service at timestamp time. Enum:'Closed, Open, Suspended'";
+  sh:name "serviceStatus";
+  sh:in (sdm:Closed sdm:Open sdm:Suspended)
+], [
+  sh:path sdm:serviceStatusNote;
+  sh:description "Property. Additional note to the service status. Model:'https://schema.org/Text'";
+  sh:name "serviceStatusNote";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:scheduleTime;
+  sh:description "Property. Scheduled working time of the service. Model:'https://schema.org/DateTime'";
+  sh:name "scheduleTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:queueLine;
+  sh:description "Property. Description about the queue line associated to the service. The same office counter could serve different queue lines with different priority level. Model:'https://schema.org/Text'";
+  sh:name "queueLine";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:linePriority;
+  sh:description "Property. Level of priority of this line at Counter Queue. Model:'https://schema.org/Integer'";
+  sh:name "linePriority";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:lastTicketIssued;
+  sh:description "Property. Last ticket number issued or this line at Counter Queue. Model:'https://schema.org/Integer'";
+  sh:name "lastTicketIssued";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:lastTicketIssuedLabel;
+  sh:description "Property. Label associated to the lastTicketIssued. Model:'https://schema.org/Text'";
+  sh:name "lastTicketIssuedLabel";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ticketServed;
+  sh:description "Property. Ticket number currently served by this line at Counter Queue. Model:'https://schema.org/Integer'";
+  sh:name "ticketServed";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:ticketServedLabel;
+  sh:description "Property. Identifier (unique) from the source data set. Model:'https://schema.org/Text'";
+  sh:name "ticketServedLabel";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ticketsToServe;
+  sh:description "Property. Tickets left to serve as ticketIssued minus lastTicketServed. Model:'https://schema.org/Text'";
+  sh:name "ticketsToServe";
+  sh:datatype xsd:integer
+].

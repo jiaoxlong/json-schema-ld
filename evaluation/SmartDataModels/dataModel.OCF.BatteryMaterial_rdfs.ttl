@@ -1,0 +1,299 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json> dcterms:title "Battery Material";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource describes the battery material represented as an enumerated set of strings.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.batterymaterial)
+].
+sdm:oic.r.batterymaterial rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.batterymaterial".
+sdm:material dcterms:description "Property. The battery construction material (type).";
+    rdf:type rdf:Property;
+    rdfs:label "material";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>.
+sdm:Material rdf:type skos:ConceptScheme.
+sdm:material rdfs:range [
+  owl:oneOf (sdm:Alkaline sdm:Aluminium Air sdm:Aluminium Ion sdm:Atomic Betavoltaics sdm:Atomic Optoelectric Nuclear sdm:Atomic Nuclear sdm:Bunsen Cell sdm:Chromic Acid Cell sdm:Poggendorff Cell sdm:Clark Cell sdm:Daniell Cell sdm:Dry Cell sdm:Earth sdm:Flow sdm:Flow Vanadium Redox sdm:Flow Zinc Bromine sdm:Flow Zinc Cerium sdm:Frog sdm:Fuel sdm:Galvanic Cell sdm:Glass sdm:Grove Cell sdm:Lead Acid sdm:Lead Acid Deep Cycle sdm:Lead Acid VRLA sdm:Lead Acid AGM sdm:Lead Acid Gel sdm:Leclanche Cell sdm:Lemon Potato sdm:Lithium sdm:Lithium Air sdm:Lithium Ion sdm:Lithium Ion Cobalt Oxide (ICR) sdm:Lithium Ion Manganese Oxide (IMR) sdm:Lithium Ion Polymer sdm:Lithium Iron Phosphate sdm:Lithium Sulfur sdm:Lithium Titanate sdm:Lithium Ion Thin Film sdm:Magnesium sdm:Magnesium Ion sdm:Mercury sdm:Molten Salt sdm:Nickel Cadmium sdm:Nickel Cadmium Vented Cell sdm:Nickel Hydrogen sdm:Nickel Iron  sdm:Nickel Metal Hydride sdm:Nickel Metal Hydride Low Self-Discharge sdm:Nickel Oxyhydroxide sdm:Nickel Oxyride sdm:Nickel Zinc sdm:Organic Radical sdm:Paper sdm:Polymer Based sdm:Polysulfide Bromide sdm:Potassium Ion sdm:Pulvermachers Chain sdm:Silicon Air sdm:Silver Calcium sdm:Silver Oxide sdm:Silver Zinc sdm:Sodium Ion sdm:Sodium Sulfur sdm:Solid State sdm:Sugar sdm:Super Iron sdm:UltraBattery sdm:Voltaic Pile sdm:Voltaic Pile Penny sdm:Voltaic Pile Trough sdm:Water Activated sdm:Weston Cell sdm:Zinc Air sdm:Zinc Carbon sdm:Zinc Chloride sdm:Zinc Ion sdm:Unknown)
+].
+sdm:Alkaline rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Alkaline".
+sdm:Aluminium Air rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Aluminium Air".
+sdm:Aluminium Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Aluminium Ion".
+sdm:Atomic Betavoltaics rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Atomic Betavoltaics".
+sdm:Atomic Optoelectric Nuclear rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Atomic Optoelectric Nuclear".
+sdm:Atomic Nuclear rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Atomic Nuclear".
+sdm:Bunsen Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Bunsen Cell".
+sdm:Chromic Acid Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Chromic Acid Cell".
+sdm:Poggendorff Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Poggendorff Cell".
+sdm:Clark Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Clark Cell".
+sdm:Daniell Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Daniell Cell".
+sdm:Dry Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Dry Cell".
+sdm:Earth rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Earth".
+sdm:Flow rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Flow".
+sdm:Flow Vanadium Redox rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Flow Vanadium Redox".
+sdm:Flow Zinc Bromine rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Flow Zinc Bromine".
+sdm:Flow Zinc Cerium rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Flow Zinc Cerium".
+sdm:Frog rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Frog".
+sdm:Fuel rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Fuel".
+sdm:Galvanic Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Galvanic Cell".
+sdm:Glass rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Glass".
+sdm:Grove Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Grove Cell".
+sdm:Lead Acid rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lead Acid".
+sdm:Lead Acid Deep Cycle rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lead Acid Deep Cycle".
+sdm:Lead Acid VRLA rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lead Acid VRLA".
+sdm:Lead Acid AGM rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lead Acid AGM".
+sdm:Lead Acid Gel rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lead Acid Gel".
+sdm:Leclanche Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Leclanche Cell".
+sdm:Lemon Potato rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lemon Potato".
+sdm:Lithium rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium".
+sdm:Lithium Air rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Air".
+sdm:Lithium Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Ion".
+sdm:Lithium Ion Cobalt Oxide (ICR) rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Ion Cobalt Oxide (ICR)".
+sdm:Lithium Ion Manganese Oxide (IMR) rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Ion Manganese Oxide (IMR)".
+sdm:Lithium Ion Polymer rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Ion Polymer".
+sdm:Lithium Iron Phosphate rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Iron Phosphate".
+sdm:Lithium Sulfur rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Sulfur".
+sdm:Lithium Titanate rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Titanate".
+sdm:Lithium Ion Thin Film rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Lithium Ion Thin Film".
+sdm:Magnesium rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Magnesium".
+sdm:Magnesium Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Magnesium Ion".
+sdm:Mercury rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Mercury".
+sdm:Molten Salt rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Molten Salt".
+sdm:Nickel Cadmium rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Cadmium".
+sdm:Nickel Cadmium Vented Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Cadmium Vented Cell".
+sdm:Nickel Hydrogen rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Hydrogen".
+sdm:Nickel Iron  rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Iron ".
+sdm:Nickel Metal Hydride rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Metal Hydride".
+sdm:Nickel Metal Hydride Low Self-Discharge rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Metal Hydride Low Self-Discharge".
+sdm:Nickel Oxyhydroxide rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Oxyhydroxide".
+sdm:Nickel Oxyride rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Oxyride".
+sdm:Nickel Zinc rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Nickel Zinc".
+sdm:Organic Radical rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Organic Radical".
+sdm:Paper rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Paper".
+sdm:Polymer Based rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Polymer Based".
+sdm:Polysulfide Bromide rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Polysulfide Bromide".
+sdm:Potassium Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Potassium Ion".
+sdm:Pulvermachers Chain rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Pulvermachers Chain".
+sdm:Silicon Air rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Silicon Air".
+sdm:Silver Calcium rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Silver Calcium".
+sdm:Silver Oxide rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Silver Oxide".
+sdm:Silver Zinc rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Silver Zinc".
+sdm:Sodium Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Sodium Ion".
+sdm:Sodium Sulfur rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Sodium Sulfur".
+sdm:Solid State rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Solid State".
+sdm:Sugar rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Sugar".
+sdm:Super Iron rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Super Iron".
+sdm:UltraBattery rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "UltraBattery".
+sdm:Voltaic Pile rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Voltaic Pile".
+sdm:Voltaic Pile Penny rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Voltaic Pile Penny".
+sdm:Voltaic Pile Trough rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Voltaic Pile Trough".
+sdm:Water Activated rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Water Activated".
+sdm:Weston Cell rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Weston Cell".
+sdm:Zinc Air rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Zinc Air".
+sdm:Zinc Carbon rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Zinc Carbon".
+sdm:Zinc Chloride rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Zinc Chloride".
+sdm:Zinc Ion rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Zinc Ion".
+sdm:Unknown rdf:type skos:Concept;
+    skos:inScheme sdm:Material;
+    rdfs:label "Unknown".
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be BatteryMaterial";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:BatteryMaterial)
+].
+sdm:BatteryMaterial rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "BatteryMaterial".

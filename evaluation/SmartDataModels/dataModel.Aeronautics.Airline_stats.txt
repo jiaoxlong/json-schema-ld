@@ -1,0 +1,4 @@
+type
+codeIATA
+codeICAO
+callSign

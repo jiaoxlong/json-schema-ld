@@ -1,0 +1,12 @@
+type
+kx
+ta
+tb
+tc
+td
+te
+tt
+tx1
+tx2
+vsmax
+vsmin

@@ -1,0 +1,5 @@
+type
+b0PerSection
+bPerSection
+g0PerSection
+gPerSection

@@ -1,0 +1,11 @@
+rt
+interval
+intervalsecond
+stopTime
+startTime
+repeat
+triggertiming
+state
+n
+if
+type

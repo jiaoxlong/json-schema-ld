@@ -1,0 +1,57 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Curve/schema.json> dcterms:title "WaterNetwork - Curve";
+    dcterms:description "This entity contains a harmonised description of a generic curve made for the Water Network Management domain. This entity is primarily associated with the water management vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to Curve.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Curve/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Curve)
+].
+sdm:Curve rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Curve".
+sdm:curveType dcterms:description "Property. Entity's curve type. Enum:'FLOW-HEAD, FLOW-EFFICIENCY, FLOW-HEADLOSS, LEVEL-VOLUME'";
+    rdf:type rdf:Property;
+    rdfs:label "curveType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Curve/schema.json>.
+sdm:CurveType rdf:type skos:ConceptScheme.
+sdm:curveType rdfs:range [
+  owl:oneOf (sdm:FLOW-HEAD sdm:FLOW-EFFICIENCY sdm:FLOW-HEADLOSS sdm:LEVEL-VOLUME)
+].
+sdm:FLOW-HEAD rdf:type skos:Concept;
+    skos:inScheme sdm:CurveType;
+    rdfs:label "FLOW-HEAD".
+sdm:FLOW-EFFICIENCY rdf:type skos:Concept;
+    skos:inScheme sdm:CurveType;
+    rdfs:label "FLOW-EFFICIENCY".
+sdm:FLOW-HEADLOSS rdf:type skos:Concept;
+    skos:inScheme sdm:CurveType;
+    rdfs:label "FLOW-HEADLOSS".
+sdm:LEVEL-VOLUME rdf:type skos:Concept;
+    skos:inScheme sdm:CurveType;
+    rdfs:label "LEVEL-VOLUME".
+sdm:xData rdf:type rdf:Property;
+    rdfs:label "xData";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Curve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:yData rdf:type rdf:Property;
+    rdfs:label "yData";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Curve/schema.json>;
+    rdfs:range xsd:decimal.

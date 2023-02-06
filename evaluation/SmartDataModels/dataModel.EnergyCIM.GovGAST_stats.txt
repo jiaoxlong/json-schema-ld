@@ -1,0 +1,11 @@
+type
+at
+dturb
+kt
+mwbase
+r
+t1
+t2
+t3
+vmax
+vmin

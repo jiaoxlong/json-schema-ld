@@ -1,0 +1,11 @@
+type
+aggregateRating
+AggregateRating
+itemReviewed
+ratingCount
+reviewCount
+author
+bestRating
+reviewAspect
+legalName
+taxID

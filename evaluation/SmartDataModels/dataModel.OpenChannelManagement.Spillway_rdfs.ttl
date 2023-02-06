@@ -1,0 +1,125 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json> dcterms:title "Open Channel Management - Spillway";
+    dcterms:description "This entity contains a harmonised description for a generic Spillway made for Raw-Water (Open Channels) System Management domain. Spillway represents a junction-type object, controlling the release of water from a dam or regulation structure downstream.".
+sdm:type dcterms:description "Property. NGSI Entity Type. It has to be Spillway.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Spillway)
+].
+sdm:Spillway rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Spillway".
+sdm:spillwayType dcterms:description "Property. The type of the spillway. In the case of “Specified Spillway”, only “Elevation – discharge” curve is required. Enum:'Broad-Crested, Ogee, Sharp-Crested, Specified Spillway'.";
+    rdf:type rdf:Property;
+    rdfs:label "spillwayType";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.
+sdm:SpillwayType rdf:type skos:ConceptScheme.
+sdm:spillwayType rdfs:range [
+  owl:oneOf (sdm:Broad-Crested sdm:Ogee sdm:Sharp-Crested sdm:Specified Spillway)
+].
+sdm:Broad-Crested rdf:type skos:Concept;
+    skos:inScheme sdm:SpillwayType;
+    rdfs:label "Broad-Crested".
+sdm:Ogee rdf:type skos:Concept;
+    skos:inScheme sdm:SpillwayType;
+    rdfs:label "Ogee".
+sdm:Sharp-Crested rdf:type skos:Concept;
+    skos:inScheme sdm:SpillwayType;
+    rdfs:label "Sharp-Crested".
+sdm:Specified Spillway rdf:type skos:Concept;
+    skos:inScheme sdm:SpillwayType;
+    rdfs:label "Specified Spillway".
+sdm:crestElevation dcterms:description "Property. The crest elevation of the Spillway. Required only for 'Broad-Crested', 'Ogee' and 'Sharp-Crested'. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "crestElevation";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:crestLength dcterms:description "Property. The length of the Spillway equals to the total length through which water passes. Required only for 'Broad-Crested', 'Ogee' and 'Sharp-Crested'. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "crestLength";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:spillwayWidth dcterms:description "Property. The width of the spillway (m). Only for 'Broad-Crested' type. Units:'meters'.";
+    rdf:type rdf:Property;
+    rdfs:label "spillwayWidth";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:numberAbutments dcterms:description "Property. The number of abutments of an ogee spillway. Only for 'Ogee' type.";
+    rdf:type rdf:Property;
+    rdfs:label "numberAbutments";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:apronElevation dcterms:description "Property. The elevation at the bottom of the ogee spillway structure (P), just upstream of the spillway.";
+    rdf:type rdf:Property;
+    rdfs:label "apronElevation";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:apronLength dcterms:description "Property. The total length of the spillway bottom. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "apronLength";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dischargeCoefficient dcterms:description "Property. The discharge coefficient for energy losses as water enters, flows and exits the spillway. Units:'m^0.5/s'.";
+    rdf:type rdf:Property;
+    rdfs:label "dischargeCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:designHead dcterms:description "Property. The total upstream energy head for which the spillway is designed (Ho) for 'Ogee Spillway'. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "designHead";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:designDischarge dcterms:description "Property. The design discharge (Qo) of the Spillway. Units: 'm^3/s'.";
+    rdf:type rdf:Property;
+    rdfs:label "designDischarge";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:designDischargeCoefficient dcterms:description "Property. The discharge coefficient (Co) for energy losses for the design discharge (Ho).";
+    rdf:type rdf:Property;
+    rdfs:label "designDischargeCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxFloodElevation dcterms:description "Property. The maximum elevation of water that can pass the spillway.";
+    rdf:type rdf:Property;
+    rdfs:label "maxFloodElevation";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:waterDischarge dcterms:description "Property. The discharge over the spillway (Q). Units: 'm^3/s'";
+    rdf:type rdf:Property;
+    rdfs:label "waterDischarge";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:controlCrossSection dcterms:description "Relationship. A relationship indicating the ID of an entity of type Cross Section, indicating the cross section that controls the flow over the Spillway.";
+    rdf:type rdf:Property;
+    rdfs:label "controlCrossSection";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.
+sdm:curveElevationDischarge dcterms:description "Relationship. The URI of an OpenChannelCurve entity that represents discharge (Q) as a function of water elevation (H).";
+    rdf:type rdf:Property;
+    rdfs:label "curveElevationDischarge";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.
+sdm:curveDischargeCoefficient dcterms:description "Relationship. The URI of an OpenChannelCurve entity that represents the discharge coefficient (C) as a function of upstream head (H) and spillway geometry. For instance, discharge coefficient as a function of upstream head over spillway width (C-H/L), or C/Co-H/Ho.";
+    rdf:type rdf:Property;
+    rdfs:label "curveDischargeCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.
+sdm:curveDesignDischargeCoefficient dcterms:description "Relationship. The URI of an OpenChannelCurve entity that represents the design discharge coefficient (Co) as a function of apron Elevation over design upstream head (Co-P/Ho).";
+    rdf:type rdf:Property;
+    rdfs:label "curveDesignDischargeCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>.

@@ -1,0 +1,13 @@
+type
+noiseAnnoyanceIndex
+LANight
+LAmax2
+LAeq2
+noiseOrigin
+LAeq
+LAeq_d
+LAmax
+validFrom
+validTo
+validity
+dateIssued

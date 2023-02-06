@@ -1,0 +1,9 @@
+type
+ovex
+tpfc
+vitmin
+vpf
+vpfcbw
+vpfref
+vvtmax
+vvtmin

@@ -1,0 +1,77 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json> dcterms:title "Impact Sensor";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource provides a status and properties of an impact sensor. Included is the current status (boolean), horizontal and vertical direction (in degrees) and impact level (g force).".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.impactsensor)
+].
+sdm:oic.r.impactsensor rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.impactsensor".
+sdm:impactstatus dcterms:description "Property. The 'impactstatus' Property indicates the impact as: 'true' A physical impact is detected, 'false' Normal status, an impact is not detected.";
+    rdf:type rdf:Property;
+    rdfs:label "impactstatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:impactlevel dcterms:description "Property. The 'impactlevel' Property provides the level of impact. The unit is in 'G' (G-force).";
+    rdf:type rdf:Property;
+    rdfs:label "impactlevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:impactdirectionhorizontal dcterms:description "Property. The 'impactdirectionhorizontal' Property shows a horizontal direction where the impact comes from. The value is 0 to 360 degrees. 0 is the front of the sensor and clockwise increment.";
+    rdf:type rdf:Property;
+    rdfs:label "impactdirectionhorizontal";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:impactdirectionvertical dcterms:description "Property. The 'impactdirectionvertical' Property shows a vertical direction where the impact comes from. The value is 0 to 360 degrees. 0 is the front of the sensor and upward increment.";
+    rdf:type rdf:Property;
+    rdfs:label "impactdirectionvertical";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be ImpactSensor";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/ImpactSensor/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ImpactSensor)
+].
+sdm:ImpactSensor rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ImpactSensor".

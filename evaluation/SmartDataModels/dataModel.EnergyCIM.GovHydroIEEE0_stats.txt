@@ -1,0 +1,9 @@
+type
+k
+mwbase
+pmax
+pmin
+t1
+t2
+t3
+t4

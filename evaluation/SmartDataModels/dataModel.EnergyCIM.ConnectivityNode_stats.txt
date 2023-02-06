@@ -1,0 +1,11 @@
+type
+ConnectivityNodeContainer
+Terminals
+TopologicalNode
+boundaryPoint
+fromEndIsoCode
+fromEndName
+fromEndNameTso
+toEndIsoCode
+toEndName
+toEndNameTso

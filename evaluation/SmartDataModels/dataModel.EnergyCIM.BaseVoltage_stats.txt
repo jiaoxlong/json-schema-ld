@@ -1,0 +1,6 @@
+type
+ConductingEquipment
+TopologicalNode
+TransformerEnds
+VoltageLevel
+nominalVoltage

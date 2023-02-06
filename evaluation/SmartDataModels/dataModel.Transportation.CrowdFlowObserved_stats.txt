@@ -1,0 +1,11 @@
+type
+refRoadSegment
+dateObserved
+dateObservedFrom
+dateObservedTo
+peopleCount
+occupancy
+averageCrowdSpeed
+congested
+averageHeadwayTime
+direction

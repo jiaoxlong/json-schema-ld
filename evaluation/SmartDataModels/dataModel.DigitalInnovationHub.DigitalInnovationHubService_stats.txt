@@ -1,0 +1,10 @@
+type
+serviceImage
+category
+serviceType
+serviceSubType
+target
+url
+author
+dateSubmitted
+dateUpdated

@@ -1,0 +1,8 @@
+type
+announcedUrl
+signalStrength
+bluetoothChannel
+coverageRadius
+announcementPeriod
+availability
+refSmartPointOfInteraction

@@ -1,0 +1,11 @@
+type
+toc
+tic
+po4
+bod
+cod
+flowrate
+pressure
+emissionFlow
+startsAt
+endsAt

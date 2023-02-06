@@ -1,0 +1,11 @@
+type
+jurisdiction_id
+type
+service_code
+service_name
+keywords
+group
+metadata
+attributes
+provider
+effectiveSince

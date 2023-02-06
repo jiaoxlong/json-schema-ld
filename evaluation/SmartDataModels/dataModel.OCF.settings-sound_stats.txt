@@ -1,0 +1,9 @@
+rt
+if
+speaker
+supported-speakers
+sound-mode
+supported-sound-modes
+auto-volume
+dolby-atmos-compatibility
+type

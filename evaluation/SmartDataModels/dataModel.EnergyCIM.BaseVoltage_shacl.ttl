@@ -1,0 +1,46 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/BaseVoltage/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be BaseVoltage";
+  sh:name "type";
+  sh:in (sdm:BaseVoltage)
+], [
+  sh:path sdm:ConductingEquipment;
+  sh:description "Property. Model:'https://schema.org/Number'. Base voltage of this conducting equipment.  Use only when there is no voltage level container used and only one base voltage applies.  For example, not used for transformers. Default: 'list'";
+  sh:name "ConductingEquipment";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:TopologicalNode;
+  sh:description "Property. Model:'https://schema.org/Number'. The topological nodes at the base voltage. Default: 'list'";
+  sh:name "TopologicalNode";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:TransformerEnds;
+  sh:description "Property. Model:'https://schema.org/Number'. Transformer ends at the base voltage.  This is essential for PU calculation. Default: 'list'";
+  sh:name "TransformerEnds";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:VoltageLevel;
+  sh:description "Property. Model:'https://schema.org/Number'. The voltage levels having this base voltage. Default: 'list'";
+  sh:name "VoltageLevel";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalVoltage;
+  sh:description "Property. Model:'https://schema.org/Number'. The power system resource`s base voltage. Default: 0.0";
+  sh:name "nominalVoltage";
+  sh:datatype xsd:decimal
+].

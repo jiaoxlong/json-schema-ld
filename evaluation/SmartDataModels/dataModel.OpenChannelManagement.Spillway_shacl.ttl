@@ -1,0 +1,146 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.OpenChannelManagement/Spillway/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type. It has to be Spillway.";
+  sh:name "type";
+  sh:in (sdm:Spillway)
+], [
+  sh:path sdm:spillwayType;
+  sh:description "Property. The type of the spillway. In the case of “Specified Spillway”, only “Elevation – discharge” curve is required. Enum:'Broad-Crested, Ogee, Sharp-Crested, Specified Spillway'.";
+  sh:name "spillwayType";
+  sh:in (sdm:Broad-Crested sdm:Ogee sdm:Sharp-Crested sdm:Specified Spillway)
+], [
+  sh:path sdm:crestElevation;
+  sh:description "Property. The crest elevation of the Spillway. Required only for 'Broad-Crested', 'Ogee' and 'Sharp-Crested'. Units:'meters'";
+  sh:name "crestElevation";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:crestLength;
+  sh:description "Property. The length of the Spillway equals to the total length through which water passes. Required only for 'Broad-Crested', 'Ogee' and 'Sharp-Crested'. Units:'meters'";
+  sh:name "crestLength";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:spillwayWidth;
+  sh:description "Property. The width of the spillway (m). Only for 'Broad-Crested' type. Units:'meters'.";
+  sh:name "spillwayWidth";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:numberAbutments;
+  sh:description "Property. The number of abutments of an ogee spillway. Only for 'Ogee' type.";
+  sh:name "numberAbutments";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:apronElevation;
+  sh:description "Property. The elevation at the bottom of the ogee spillway structure (P), just upstream of the spillway.";
+  sh:name "apronElevation";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:apronLength;
+  sh:description "Property. The total length of the spillway bottom. Units:'meters'";
+  sh:name "apronLength";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dischargeCoefficient;
+  sh:description "Property. The discharge coefficient for energy losses as water enters, flows and exits the spillway. Units:'m^0.5/s'.";
+  sh:name "dischargeCoefficient";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:designHead;
+  sh:description "Property. The total upstream energy head for which the spillway is designed (Ho) for 'Ogee Spillway'. Units:'meters'";
+  sh:name "designHead";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:designDischarge;
+  sh:description "Property. The design discharge (Qo) of the Spillway. Units: 'm^3/s'.";
+  sh:name "designDischarge";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:designDischargeCoefficient;
+  sh:description "Property. The discharge coefficient (Co) for energy losses for the design discharge (Ho).";
+  sh:name "designDischargeCoefficient";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxFloodElevation;
+  sh:description "Property. The maximum elevation of water that can pass the spillway.";
+  sh:name "maxFloodElevation";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:waterDischarge;
+  sh:description "Property. The discharge over the spillway (Q). Units: 'm^3/s'";
+  sh:name "waterDischarge";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:controlCrossSection;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:curveElevationDischarge;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:curveDischargeCoefficient;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:curveDesignDischargeCoefficient;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+].

@@ -1,0 +1,109 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json> dcterms:title " Smart Data Models - EquivalentInjection";
+    dcterms:description "Adapted from CIM data models. This class represents equivalent injections (generation or load).  Voltage regulation is allowed only at the point of connection.".
+sdm:type dcterms:description "Property. NGSI type. It has to be EquivalentInjection";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:EquivalentInjection)
+].
+sdm:EquivalentInjection rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "EquivalentInjection".
+sdm:ReactiveCapabilityCurve dcterms:description "Property. Model:'https://schema.org/Number'. The equivalent injection using this reactive capability curve. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "ReactiveCapabilityCurve";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxP dcterms:description "Property. Model:'https://schema.org/Number'. Maximum active power of the injection. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxP";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxQ dcterms:description "Property. Model:'https://schema.org/Number'. Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxQ";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minP dcterms:description "Property. Model:'https://schema.org/Number'. Minimum active power of the injection. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minP";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minQ dcterms:description "Property. Model:'https://schema.org/Number'. Used for modeling of infeed for load flow exchange. Not used for short circuit modeling.  If maxQ and minQ are not used ReactiveCapabilityCurve can be used. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minQ";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p dcterms:description "Property. Model:'https://schema.org/Number'. Equivalent active power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q dcterms:description "Property. Model:'https://schema.org/Number'. Equivalent reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r dcterms:description "Property. Model:'https://schema.org/Number'. Positive sequence resistance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r0 dcterms:description "Property. Model:'https://schema.org/Number'. Zero sequence resistance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r2 dcterms:description "Property. Model:'https://schema.org/Number'. Negative sequence resistance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:regulationCapability dcterms:description "Property. Model:'https://schema.org/Number'. Specifies whether or not the EquivalentInjection has the capability to regulate the local voltage. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "regulationCapability";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:regulationStatus dcterms:description "Property. Model:'https://schema.org/Number'. Specifies the default regulation status of the EquivalentInjection.  True is regulating.  False is not regulating. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "regulationStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:regulationTarget dcterms:description "Property. Model:'https://schema.org/Number'. The target voltage for voltage regulation. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "regulationTarget";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x dcterms:description "Property. Model:'https://schema.org/Number'. Positive sequence reactance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x0 dcterms:description "Property. Model:'https://schema.org/Number'. Zero sequence reactance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x2 dcterms:description "Property. Model:'https://schema.org/Number'. Negative sequence reactance. Used to represent Extended-Ward (IEC 60909). Usage : Extended-Ward is a result of network reduction prior to the data exchange. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EquivalentInjection/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,17 @@
+type
+identifier
+keyword
+sector
+thematicArea
+publicServiceType
+language
+status
+spatial
+processingTime
+isGroupedBy
+hasCriterion
+hasCompetentAuthority
+hasInput
+follows
+hasContactPoint
+hasCost

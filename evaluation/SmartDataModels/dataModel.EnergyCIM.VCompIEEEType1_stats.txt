@@ -1,0 +1,4 @@
+type
+rc
+tr
+xc

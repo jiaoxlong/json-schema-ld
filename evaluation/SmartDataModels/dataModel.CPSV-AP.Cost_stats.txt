@@ -1,0 +1,7 @@
+type
+identifier
+value
+currency
+description
+isDefinedBy
+ifAccessedThrough

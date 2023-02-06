@@ -1,0 +1,9 @@
+type
+deviceClass
+function
+supportedUnits
+energyLimitationClass
+documentation
+brandName
+modelName
+manufacturerName

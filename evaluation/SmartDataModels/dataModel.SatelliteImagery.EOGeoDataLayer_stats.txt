@@ -1,0 +1,10 @@
+type
+localServerPath
+storageFormat
+geoMetadata
+contentInformation
+ContentInformation
+layer_name
+layer_categorization
+values_explanation
+isOutputOf

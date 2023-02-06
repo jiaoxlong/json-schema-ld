@@ -1,0 +1,134 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json> dcterms:title " Smart Data Models - GovSteamIEEE1";
+    dcterms:description "Adapted from CIM data models. IEEE steam turbine governor model.  Ref".
+sdm:type dcterms:description "Property. NGSI type. It has to be GovSteamIEEE1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GovSteamIEEE1)
+].
+sdm:GovSteamIEEE1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GovSteamIEEE1".
+sdm:k dcterms:description "Property. Model:'https://schema.org/Number'. Governor gain (reciprocal of droop) (K) (> 0).  Typical Value = 25. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k1 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after first boiler pass (K1).  Typical Value = 0.2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k2 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after first boiler pass (K2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k3 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after second boiler pass (K3).  Typical Value = 0.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k4 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after second boiler pass (K4).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k5 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after third boiler pass (K5).  Typical Value = 0.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k6 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after third boiler pass (K6).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k7 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after fourth boiler pass (K7).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k7";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k8 dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after fourth boiler pass (K8).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k8";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mwbase dcterms:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (> 0) Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "mwbase";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum valve opening (Pmax) (> Pmin).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum valve opening (Pmin) (>= 0).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t1 dcterms:description "Property. Model:'https://schema.org/Number'. Governor lag time constant (T1).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t2 dcterms:description "Property. Model:'https://schema.org/Number'. Governor lead time constant (T2).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t3 dcterms:description "Property. Model:'https://schema.org/Number'. Valve positioner time constant (T3) (> 0).  Typical Value = 0.1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t4 dcterms:description "Property. Model:'https://schema.org/Number'. Inlet piping/steam bowl time constant (T4).  Typical Value = 0.3. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t5 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of second boiler pass (T5).  Typical Value = 5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t6 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of third boiler pass (T6).  Typical Value = 0.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t7 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of fourth boiler pass (T7).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t7";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uc dcterms:description "Property. Model:'https://schema.org/Number'. Maximum valve closing velocity (Uc) (< 0).  Unit = PU/sec.  Typical Value = -10. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "uc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uo dcterms:description "Property. Model:'https://schema.org/Number'. Maximum valve opening velocity (Uo) (> 0).  Unit = PU/sec.  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "uo";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    rdfs:range xsd:decimal.

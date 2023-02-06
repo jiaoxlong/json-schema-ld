@@ -1,0 +1,55 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json> dcterms:title "Smart Data Models - Point of Interest schema";
+    dcterms:description "This entity contains a harmonised geographic description of a Point of Interest".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be PointOfInterest";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PointOfInterest)
+].
+sdm:PointOfInterest rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PointOfInterest".
+sdm:category rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>;
+    rdfs:range xsd:string.
+sdm:refSeeAlso rdf:type rdf:Property;
+    rdfs:label "refSeeAlso";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>.
+sdm:wardId dcterms:description "Property. Ward ID of the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>;
+    rdfs:range xsd:string.
+sdm:zoneId dcterms:description "Property. Zone ID of the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "zoneId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>;
+    rdfs:range xsd:string.
+sdm:additionalInfoURL dcterms:description "Relationship. URL from which additional information of the subject can be obtained";
+    rdf:type rdf:Property;
+    rdfs:label "additionalInfoURL";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>.
+sdm:zoneName dcterms:description "Property. Zone name of the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "zoneName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/PointOfInterest/schema.json>;
+    rdfs:range xsd:string.

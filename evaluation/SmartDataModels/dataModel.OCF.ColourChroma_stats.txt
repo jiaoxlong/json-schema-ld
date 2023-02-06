@@ -1,0 +1,9 @@
+rt
+ct
+hue
+saturation
+maximumsaturation
+csc
+n
+if
+type

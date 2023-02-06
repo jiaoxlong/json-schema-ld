@@ -1,0 +1,9 @@
+type
+BaseVoltage
+PhaseTapChanger
+RatioTapChanger
+Terminal
+endNumber
+grounded
+rground
+xground

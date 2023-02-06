@@ -1,0 +1,8 @@
+rt
+hue
+saturation
+maximumsaturation
+n
+precision
+if
+type

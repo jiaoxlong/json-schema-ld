@@ -1,0 +1,11 @@
+cgmtype
+cgmstatus
+gtrend
+malfunction
+rt
+n
+if
+range
+step
+precision
+type

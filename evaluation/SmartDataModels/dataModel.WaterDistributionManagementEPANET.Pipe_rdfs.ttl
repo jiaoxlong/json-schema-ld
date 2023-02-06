@@ -1,0 +1,73 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json> dcterms:title "Smart Data Models. WaterNetworkManagementEPANET - Pipe";
+    dcterms:description "This entity contains a harmonised description of a generic pipe made for the Water Network Management domain. This entity is primarily associated with the water management vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be Pipe";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Pipe)
+].
+sdm:Pipe rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Pipe".
+sdm:length dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Metre'. The actual length of the pipe. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:diameter dcterms:description "Property. Model:'https://schema.org/Number'. Units:'Millimetre'. The pipe diameter";
+    rdf:type rdf:Property;
+    rdfs:label "diameter";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:roughness dcterms:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. The roughness coefficient of the Pipe.";
+    rdf:type rdf:Property;
+    rdfs:label "roughness";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minorLoss dcterms:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. Unitless minor loss coefficient associated with bends, fittings, etc";
+    rdf:type rdf:Property;
+    rdfs:label "minorLoss";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:startsAt dcterms:description "Relationship. The ID of the node where the pipe begins";
+    rdf:type rdf:Property;
+    rdfs:label "startsAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:endsAt dcterms:description "Relationship. The ID of the node where the pipe ends";
+    rdf:type rdf:Property;
+    rdfs:label "endsAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:wallCoeff dcterms:description "Property. Model:'https://schema.org/Number'. Units:'mg/m²/day'. The wall reaction coefficient for the pipe. Use a positive value for growth and a negative value for decay. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "wallCoeff";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bulkCoeff dcterms:description "Property. Model:'https://schema.org/Number'. Units:'reciprocal day' The bulk reaction coefficient for the pipe. Use a positive value for growth and a negative value for decay. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "bulkCoeff";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vertices dcterms:description "Geoproperty. Coordinates of all vertices in the pipe, ordered from the startsAt node to the endsAt node and encoded as a GeoJSON ";
+    rdf:type rdf:Property;
+    rdfs:label "vertices";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Pipe/schema.json>.

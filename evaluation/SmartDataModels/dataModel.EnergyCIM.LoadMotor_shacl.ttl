@@ -1,0 +1,91 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadMotor/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be LoadMotor";
+  sh:name "type";
+  sh:in (sdm:LoadMotor)
+], [
+  sh:path sdm:LoadAggregate;
+  sh:description "Property. Model:'https://schema.org/Number'. Aggregate load to which this aggregate motor (dynamic) load belongs. Default: None";
+  sh:name "LoadAggregate";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:d;
+  sh:description "Property. Model:'https://schema.org/Number'. Damping factor (D).  Unit = delta P/delta speed.  Typical Value = 2. Default: 0.0";
+  sh:name "d";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:h;
+  sh:description "Property. Model:'https://schema.org/Number'. Inertia constant (H) (not=0).  Typical Value = 0.4. Default: 0";
+  sh:name "h";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lfac;
+  sh:description "Property. Model:'https://schema.org/Number'. Loading factor - ratio of initial P to motor MVA base (Lfac).  Typical Value = 0.8. Default: 0.0";
+  sh:name "lfac";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lp;
+  sh:description "Property. Model:'https://schema.org/Number'. Transient reactance (Lp).  Typical Value = 0.15. Default: 0.0";
+  sh:name "lp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lpp;
+  sh:description "Property. Model:'https://schema.org/Number'. Subtransient reactance (Lpp).  Typical Value = 0.15. Default: 0.0";
+  sh:name "lpp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ls;
+  sh:description "Property. Model:'https://schema.org/Number'. Synchronous reactance (Ls).  Typical Value = 3.2. Default: 0.0";
+  sh:name "ls";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pfrac;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of constant-power load to be represented by this motor model (Pfrac) (>=0.0 and <=1.0).  Typical Value = 0.3. Default: 0.0";
+  sh:name "pfrac";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ra;
+  sh:description "Property. Model:'https://schema.org/Number'. Stator resistance (Ra).  Typical Value = 0. Default: 0.0";
+  sh:name "ra";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tbkr;
+  sh:description "Property. Model:'https://schema.org/Number'. Circuit breaker operating time (Tbkr).  Typical Value = 0.08. Default: 0";
+  sh:name "tbkr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpo;
+  sh:description "Property. Model:'https://schema.org/Number'. Transient rotor time constant (Tpo) (not=0).  Typical Value = 1. Default: 0";
+  sh:name "tpo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tppo;
+  sh:description "Property. Model:'https://schema.org/Number'. Subtransient rotor time constant (Tppo).  Typical Value = 0.02. Default: 0";
+  sh:name "tppo";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tv;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage trip pickup time (Tv).  Typical Value = 0.1. Default: 0";
+  sh:name "tv";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vt;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage threshold for tripping (Vt).  Typical Value = 0.7. Default: 0.0";
+  sh:name "vt";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,131 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachine/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. Model:'https://schema.org/Number'. Modes that this synchronous machine can operate in. Default: None. NGSI entity type. it has to be SynchronousMachine";
+  sh:name "type";
+  sh:in (sdm:SynchronousMachine)
+], [
+  sh:path sdm:InitialReactiveCapabilityCurve;
+  sh:description "Property. Model:'https://schema.org/Number'. Synchronous machines using this curve as default. Default: None";
+  sh:name "InitialReactiveCapabilityCurve";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:SynchronousMachineDynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Synchronous machine dynamics model used to describe dynamic behavior of this synchronous machine. Default: None";
+  sh:name "SynchronousMachineDynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:earthing;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates whether or not the generator is earthed. Used for short circuit data exchange according to IEC 60909 Default: False";
+  sh:name "earthing";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:earthingStarPointR;
+  sh:description "Property. Model:'https://schema.org/Number'. Generator star point earthing resistance (Re). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+  sh:name "earthingStarPointR";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:earthingStarPointX;
+  sh:description "Property. Model:'https://schema.org/Number'. Generator star point earthing reactance (Xe). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+  sh:name "earthingStarPointX";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ikk;
+  sh:description "Property. Model:'https://schema.org/Number'. Steady-state short-circuit current (in A for the profile) of generator with compound excitation during 3-phase short circuit. - Ikk=0: Generator with no compound excitation. - Ikk?0: Generator with compound excitation. Ikk is used to calculate the minimum steady-state short-circuit current for generators with compound excitation (Section 4.6.1.2 in the IEC 60909-0) Used only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0) Default: 0.0";
+  sh:name "ikk";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxQ;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum reactive power limit. This is the maximum (nameplate) limit for the unit. Default: 0.0";
+  sh:name "maxQ";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minQ;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum reactive power limit for the unit. Default: 0.0";
+  sh:name "minQ";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mu;
+  sh:description "Property. Model:'https://schema.org/Number'. Factor to calculate the breaking current (Section 4.5.2.1 in the IEC 60909-0). Used only for single fed short circuit on a generator (Section 4.3.4.2. in the IEC 60909-0). Default: 0.0";
+  sh:name "mu";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingMode;
+  sh:description "Property. Model:'https://schema.org/Number'. Current mode of operation. Default: None";
+  sh:name "operatingMode";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:qPercent;
+  sh:description "Property. Model:'https://schema.org/Number'. Percent of the coordinated reactive control that comes from this machine. Default: 0.0";
+  sh:name "qPercent";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r;
+  sh:description "Property. Model:'https://schema.org/Number'. Equivalent resistance (RG) of generator. RG is considered for the calculation of all currents, except for the calculation of the peak current ip. Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+  sh:name "r";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence resistance of the synchronous machine. Default: 0.0";
+  sh:name "r0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r2;
+  sh:description "Property. Model:'https://schema.org/Number'. Negative sequence resistance. Default: 0.0";
+  sh:name "r2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:referencePriority;
+  sh:description "Property. Model:'https://schema.org/Number'. Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on. Default: 0";
+  sh:name "referencePriority";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:satDirectSubtransX;
+  sh:description "Property. Model:'https://schema.org/Number'. Direct-axis subtransient reactance saturated, also known as Xd`sat. Default: 0.0";
+  sh:name "satDirectSubtransX";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:satDirectSyncX;
+  sh:description "Property. Model:'https://schema.org/Number'. Direct-axes saturated synchronous reactance (xdsat); reciprocal of short-circuit ration. Used for short circuit data exchange, only for single fed short circuit on a generator. (Section 4.3.4.2. in the IEC 60909-0). Default: 0.0";
+  sh:name "satDirectSyncX";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:satDirectTransX;
+  sh:description "Property. Model:'https://schema.org/Number'. Saturated Direct-axis transient reactance. The attribute is primarily used for short circuit calculations according to ANSI. Default: 0.0";
+  sh:name "satDirectTransX";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:shortCircuitRotorType;
+  sh:description "Property. Model:'https://schema.org/Number'. Type of rotor, used by short circuit applications, only for single fed short circuit according to IEC 60909. Default: None";
+  sh:name "shortCircuitRotorType";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageRegulationRange;
+  sh:description "Property. Model:'https://schema.org/Number'. Range of generator voltage regulation (PG in the IEC 60909-0) used for calculation of the impedance correction factor KG defined in IEC 60909-0 This attribute is used to describe the operating voltage of the generating unit. Default: 0.0";
+  sh:name "voltageRegulationRange";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:x0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence reactance of the synchronous machine. Default: 0.0";
+  sh:name "x0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:x2;
+  sh:description "Property. Model:'https://schema.org/Number'. Negative sequence reactance. Default: 0.0";
+  sh:name "x2";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,6 @@
+type
+WindTurbineType4bIEC
+dpmax
+tpaero
+tpord
+tufilt

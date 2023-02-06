@@ -1,0 +1,10 @@
+type
+RegulatingCondEq
+RegulationSchedule
+Terminal
+discrete
+enabled
+mode
+targetDeadband
+targetValue
+targetValueUnitMultiplier

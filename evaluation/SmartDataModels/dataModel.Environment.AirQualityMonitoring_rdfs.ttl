@@ -1,0 +1,360 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/AirQualityMonitoring/schema.json> dcterms:title "Smart Data Models - Air quality Monitoring";
+    dcterms:description "Air Quality Monitoring (AQM) Data Model.".
+sdm:type dcterms:description "Property. NGSI type. it has to be AirQualityMonitoring";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityMonitoring/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AirQualityMonitoring)
+].
+sdm:AirQualityMonitoring rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AirQualityMonitoring".
+sdm:deviceInfo dcterms:description "Property. Information about the device associated with the observations.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceInfo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/AirQualityMonitoring/schema.json>;
+    rdfs:range sdm:DeviceInfo.
+sdm:DeviceInfo rdf:type rdfs:Class;
+    rdfs:label "DeviceInfo".
+sdm:deviceList dcterms:description "Property. Model:'https://schema.org/Text'. Information of device part number and sub devices corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceList";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceBatteryStatus dcterms:description "Property. Model:'https://schema.org/Text'. Gives the Battery charging status of the reporting device(Connected, Disconnected).";
+    rdf:type rdf:Property;
+    rdfs:label "deviceBatteryStatus";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceName dcterms:description "Property. Model:'https://schema.org/Text'. Device Name or Station name of the sensor device/station corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceName";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceID dcterms:description "Property. Model:'https://schema.org/Text'. Device ID of the physical sensor/ measurement station corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceID";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:RFID dcterms:description "Property. Model:'https://schema.org/Text'. Gives the ID of the RFID reader.";
+    rdf:type rdf:Property;
+    rdfs:label "RFID";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:measurand dcterms:description "Property. Model:'https://schema.org/Text'. Property/properties sensed/observed/measured by the device.";
+    rdf:type rdf:Property;
+    rdfs:label "measurand";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceSimNumber dcterms:description "Property. Model:'https://schema.org/Text'. Gives the sim number of the device in the waste management vehicle.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceSimNumber";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:deviceModel dcterms:description "Property. Describes the information of the device, sensor or system in consideration.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceModel";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:DeviceModel.
+sdm:DeviceModel rdf:type rdfs:Class;
+    rdfs:label "DeviceModel".
+sdm:brandName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the brand associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "brandName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:manufacturerName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the manufacturer associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "manufacturerName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:modelName dcterms:description "Property. Model:'https://schema.org/Text'. Name of a specific model associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "modelName";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:modelURL dcterms:description "Property. Model:'https://schema.org/Text'. URL providing further information of a specific model associated with an entity, e.g., sensor, device etc.";
+    rdf:type rdf:Property;
+    rdfs:label "modelURL";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:areaServed dcterms:description "Property. Model:'https://schema.org/Text'. Area served by the entity or a service. ";
+    rdf:type rdf:Property;
+    rdfs:label "areaServed";
+    rdfs:domain sdm:DeviceModel;
+    rdfs:range xsd:string.
+sdm:refDevice dcterms:description "Relationship. Unique identifier of the entity";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain sdm:DeviceInfo.
+sdm:observationDateTime dcterms:description "Property. Model:'https://schema.org/DateTime'. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:dateTime.
+sdm:deviceStatus dcterms:description "Property. Model:'https://schema.org/Text'. Indicates the status of physical device or devices.";
+    rdf:type rdf:Property;
+    rdfs:label "deviceStatus";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:atmosphericPressure dcterms:description "Property. Model:'https://schema.org/Number'. Observed air (atmospheric or barometric) pressure.";
+    rdf:type rdf:Property;
+    rdfs:label "atmosphericPressure";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:decimal.
+sdm:airQualityIndex dcterms:description "Property. Model:'https://schema.org/Number'. Overall Air Quality Index (AQI) for the observed air quality.";
+    rdf:type rdf:Property;
+    rdfs:label "airQualityIndex";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:decimal.
+sdm:airQualityLevel dcterms:description "Property. Model:'https://schema.org/Text'. Air Quality Category Indication. Qualitative level defined according to the local health agencies. For example, 'GOOD', 'MODERATE', 'POOR', 'UNHEALTHY', 'SEVERE', 'HAZARDOUS' etc.";
+    rdf:type rdf:Property;
+    rdfs:label "airQualityLevel";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:string.
+sdm:aqiMajorPollutant dcterms:description "Property. Model:'https://schema.org/Text'. Major pollutant in the Air Quality Index (AQI). Enum:'arsenic, bap, benzene, co2, nh3, no, no2, o2, o3, so2, pb'";
+    rdf:type rdf:Property;
+    rdfs:label "aqiMajorPollutant";
+    rdfs:domain sdm:DeviceInfo.
+sdm:AqiMajorPollutant rdf:type skos:ConceptScheme.
+sdm:aqiMajorPollutant rdfs:range [
+  owl:oneOf (sdm:arsenic sdm:bap sdm:benzene sdm:co2 sdm:nh3 sdm:no sdm:no2 sdm:o2 sdm:o3 sdm:so2 sdm:pb)
+].
+sdm:arsenic rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "arsenic".
+sdm:bap rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "bap".
+sdm:benzene rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "benzene".
+sdm:co2 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "co2".
+sdm:nh3 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "nh3".
+sdm:no rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "no".
+sdm:no2 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "no2".
+sdm:o2 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "o2".
+sdm:o3 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "o3".
+sdm:so2 rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "so2".
+sdm:pb rdf:type skos:Concept;
+    skos:inScheme sdm:AqiMajorPollutant;
+    rdfs:label "pb".
+sdm:airTemperatureTSA dcterms:description "Property. Air temperature time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "airTemperatureTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:AirTemperatureTSA.
+sdm:AirTemperatureTSA rdf:type rdfs:Class;
+    rdfs:label "AirTemperatureTSA".
+sdm:ambientNoiseTSA dcterms:description "Property. ambient Noise time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "ambientNoiseTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:AmbientNoiseTSA.
+sdm:AmbientNoiseTSA rdf:type rdfs:Class;
+    rdfs:label "AmbientNoiseTSA".
+sdm:arsenicTSA dcterms:description "Property. Arsenic time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "arsenicTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:ArsenicTSA.
+sdm:ArsenicTSA rdf:type rdfs:Class;
+    rdfs:label "ArsenicTSA".
+sdm:atmosphericPressureTSA dcterms:description "Property. Atmospheric pressure time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "atmosphericPressureTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:AtmosphericPressureTSA.
+sdm:AtmosphericPressureTSA rdf:type rdfs:Class;
+    rdfs:label "AtmosphericPressureTSA".
+sdm:bapTSA dcterms:description "Property. Benzo(a)Pyrene time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "bapTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:BapTSA.
+sdm:BapTSA rdf:type rdfs:Class;
+    rdfs:label "BapTSA".
+sdm:benzeneTSA dcterms:description "Property. Benzene time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "benzeneTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:BenzeneTSA.
+sdm:BenzeneTSA rdf:type rdfs:Class;
+    rdfs:label "BenzeneTSA".
+sdm:coTSA dcterms:description "Property. Carbon monoxide time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "coTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:CoTSA.
+sdm:CoTSA rdf:type rdfs:Class;
+    rdfs:label "CoTSA".
+sdm:co2TSA dcterms:description "Property. Carbon dioxide time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "co2TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:Co2TSA.
+sdm:Co2TSA rdf:type rdfs:Class;
+    rdfs:label "Co2TSA".
+sdm:nh3TSA dcterms:description "Property. Ammonia time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "nh3TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:Nh3TSA.
+sdm:Nh3TSA rdf:type rdfs:Class;
+    rdfs:label "Nh3TSA".
+sdm:nickelTSA dcterms:description "Property. Nickel time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "nickelTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:NickelTSA.
+sdm:NickelTSA rdf:type rdfs:Class;
+    rdfs:label "NickelTSA".
+sdm:noTSA dcterms:description "Property. Nitrogen monoxide time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "noTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:NoTSA.
+sdm:NoTSA rdf:type rdfs:Class;
+    rdfs:label "NoTSA".
+sdm:no2TSA dcterms:description "Property. Nitrogen dioxide time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "no2TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:No2TSA.
+sdm:No2TSA rdf:type rdfs:Class;
+    rdfs:label "No2TSA".
+sdm:o2TSA dcterms:description "Property. Oxygen time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "o2TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:O2TSA.
+sdm:O2TSA rdf:type rdfs:Class;
+    rdfs:label "O2TSA".
+sdm:o3TSA dcterms:description "Property. Ozone time series aggregation ";
+    rdf:type rdf:Property;
+    rdfs:label "o3TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:O3TSA.
+sdm:O3TSA rdf:type rdfs:Class;
+    rdfs:label "O3TSA".
+sdm:pm10TSA dcterms:description "Property. Particulate matter in the air with a diameter of 10 micrometers or less time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "pm10TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:Pm10TSA.
+sdm:Pm10TSA rdf:type rdfs:Class;
+    rdfs:label "Pm10TSA".
+sdm:pm25TSA dcterms:description "Property. Particulate matter in the air with a diameter of 25 micrometers or less time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "pm25TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:Pm25TSA.
+sdm:Pm25TSA rdf:type rdfs:Class;
+    rdfs:label "Pm25TSA".
+sdm:relativeHumidityTSA dcterms:description "Property. Relative Humidity time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "relativeHumidityTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:RelativeHumidityTSA.
+sdm:RelativeHumidityTSA rdf:type rdfs:Class;
+    rdfs:label "RelativeHumidityTSA".
+sdm:so2TSA dcterms:description "Property. Sulfur dioxide time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "so2TSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:So2TSA.
+sdm:So2TSA rdf:type rdfs:Class;
+    rdfs:label "So2TSA".
+sdm:pbTSA dcterms:description "Property. Lead time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "pbTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:PbTSA.
+sdm:PbTSA rdf:type rdfs:Class;
+    rdfs:label "PbTSA".
+sdm:uvTSA dcterms:description "Property. Ultra violet radiation time series aggregation";
+    rdf:type rdf:Property;
+    rdfs:label "uvTSA";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:UvTSA.
+sdm:UvTSA rdf:type rdfs:Class;
+    rdfs:label "UvTSA".
+sdm:illuminance dcterms:description "Property. Measured illuminance";
+    rdf:type rdf:Property;
+    rdfs:label "illuminance";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:decimal.
+sdm:solarRadiation dcterms:description "Property. Model:'http://schema.org/Number'. Instantaneous solar radiation measured in kW/m2. Units:'kW/m2'";
+    rdf:type rdf:Property;
+    rdfs:label "solarRadiation";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:decimal.
+sdm:precipitation dcterms:description "Property. Model:'https://schema.org/Number'. Observed precipitation/rainfall level over a given duration.";
+    rdf:type rdf:Property;
+    rdfs:label "precipitation";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range xsd:decimal.
+sdm:versionInfo dcterms:description "Property. Version information corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "versionInfo";
+    rdfs:domain sdm:DeviceInfo;
+    rdfs:range sdm:VersionInfo.
+sdm:VersionInfo rdf:type rdfs:Class;
+    rdfs:label "VersionInfo".
+sdm:startDateTime dcterms:description "Property. Model:'https://schema.org/DateTime'. Reported start time corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "startDateTime";
+    rdfs:domain sdm:VersionInfo;
+    rdfs:range xsd:dateTime.
+sdm:endDateTime dcterms:description "Property. Model:'https://schema.org/DateTime'. Reported end time corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "endDateTime";
+    rdfs:domain sdm:VersionInfo;
+    rdfs:range xsd:dateTime.
+sdm:versionName dcterms:description "Property. Model:'https://schema.org/Text'. Version name corresponding to this observation";
+    rdf:type rdf:Property;
+    rdfs:label "versionName";
+    rdfs:domain sdm:VersionInfo;
+    rdfs:range xsd:string.
+sdm:comments dcterms:description "Property. Model:'https://schema.org/Text'. User comments corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "comments";
+    rdfs:domain sdm:VersionInfo;
+    rdfs:range xsd:string.
+sdm:windType dcterms:description "Property. Wind type dominate during the last 24 hours.";
+    rdf:type rdf:Property;
+    rdfs:label "windType";
+    rdfs:domain sdm:VersionInfo;
+    rdfs:range xsd:string.

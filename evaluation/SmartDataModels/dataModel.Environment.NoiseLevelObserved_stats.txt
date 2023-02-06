@@ -1,0 +1,15 @@
+type
+dateObserved
+dateObservedFrom
+dateObservedTo
+sonometerClass
+refDevice
+refPointOfInterest
+refWeatherObserved
+LAS
+LAeq
+LAeq_d
+LAmax
+obstacles
+heightAverage
+distanceAverage

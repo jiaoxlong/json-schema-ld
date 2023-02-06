@@ -1,0 +1,8 @@
+rt
+if
+antenna
+supported-antennas
+location-info
+carrier-info
+auto-program
+type

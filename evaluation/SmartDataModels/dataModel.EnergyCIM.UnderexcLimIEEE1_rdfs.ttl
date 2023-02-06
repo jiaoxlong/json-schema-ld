@@ -1,0 +1,104 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json> dcterms:title " Smart Data Models - UnderexcLimIEEE1";
+    dcterms:description "Adapted from CIM data models. The class represents the Type UEL1 model which has a circular limit boundary when plotted in terms of machine reactive power vs. real power output.  Reference: IEEE UEL1 421.5-2005 Section 10.1.".
+sdm:type dcterms:description "Property. NGSI type. It has to be UnderexcLimIEEE1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:UnderexcLimIEEE1)
+].
+sdm:UnderexcLimIEEE1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "UnderexcLimIEEE1".
+sdm:kuc dcterms:description "Property. Model:'https://schema.org/Number'. UEL center setting (K).  Typical Value = 1.38. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kuc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kuf dcterms:description "Property. Model:'https://schema.org/Number'. UEL excitation system stabilizer gain (K).  Typical Value = 3.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kuf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kui dcterms:description "Property. Model:'https://schema.org/Number'. UEL integral gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kui";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kul dcterms:description "Property. Model:'https://schema.org/Number'. UEL proportional gain (K).  Typical Value = 100. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kul";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kur dcterms:description "Property. Model:'https://schema.org/Number'. UEL radius setting (K).  Typical Value = 1.95. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kur";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu1 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu2 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0.05. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu3 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu4 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vucmax dcterms:description "Property. Model:'https://schema.org/Number'. UEL maximum limit for operating point phasor magnitude (V).  Typical Value = 5.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vucmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vuimax dcterms:description "Property. Model:'https://schema.org/Number'. UEL integrator output maximum limit (V). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vuimax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vuimin dcterms:description "Property. Model:'https://schema.org/Number'. UEL integrator output minimum limit (V). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vuimin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vulmax dcterms:description "Property. Model:'https://schema.org/Number'. UEL output maximum limit (V).  Typical Value = 18. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vulmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vulmin dcterms:description "Property. Model:'https://schema.org/Number'. UEL output minimum limit (V).  Typical Value = -18. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vulmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vurmax dcterms:description "Property. Model:'https://schema.org/Number'. UEL maximum limit for radius phasor magnitude (V).  Typical Value = 5.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vurmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE1/schema.json>;
+    rdfs:range xsd:decimal.

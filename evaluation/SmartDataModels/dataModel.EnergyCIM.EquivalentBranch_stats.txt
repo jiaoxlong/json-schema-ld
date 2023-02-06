@@ -1,0 +1,17 @@
+type
+negativeR12
+negativeR21
+negativeX12
+negativeX21
+positiveR12
+positiveR21
+positiveX12
+positiveX21
+r
+r21
+x
+x21
+zeroR12
+zeroR21
+zeroX12
+zeroX21

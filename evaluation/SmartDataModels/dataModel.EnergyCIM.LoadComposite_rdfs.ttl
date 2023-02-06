@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json> dcterms:title " Smart Data Models - LoadComposite";
+    dcterms:description "Adapted from CIM data models. This models combines static load and induction motor load effects. The dynamics of the motor are simplified by linearizing the induction machine equations.".
+sdm:type dcterms:description "Property. NGSI type. It has to be LoadComposite";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:LoadComposite)
+].
+sdm:LoadComposite rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "LoadComposite".
+sdm:epfd dcterms:description "Property. Model:'https://schema.org/Number'. Active load-frequency dependence index (dynamic) (Epfd).  Typical Value = 1.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "epfd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:epfs dcterms:description "Property. Model:'https://schema.org/Number'. Active load-frequency dependence index (static) (Epfs).  Typical Value = 1.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "epfs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:epvd dcterms:description "Property. Model:'https://schema.org/Number'. Active load-voltage dependence index (dynamic) (Epvd).  Typical Value = 0.7. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "epvd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:epvs dcterms:description "Property. Model:'https://schema.org/Number'. Active load-voltage dependence index (static) (Epvs).  Typical Value = 0.7. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "epvs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eqfd dcterms:description "Property. Model:'https://schema.org/Number'. Reactive load-frequency dependence index (dynamic) (Eqfd).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eqfd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eqfs dcterms:description "Property. Model:'https://schema.org/Number'. Reactive load-frequency dependence index (static) (Eqfs).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eqfs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eqvd dcterms:description "Property. Model:'https://schema.org/Number'. Reactive load-voltage dependence index (dynamic) (Eqvd).  Typical Value = 2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eqvd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:eqvs dcterms:description "Property. Model:'https://schema.org/Number'. Reactive load-voltage dependence index (static) (Eqvs).  Typical Value = 2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "eqvs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:h dcterms:description "Property. Model:'https://schema.org/Number'. Inertia constant (H).  Typical Value = 2.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "h";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lfrac dcterms:description "Property. Model:'https://schema.org/Number'. Loading factor - ratio of initial P to motor MVA base (Lfrac).  Typical Value = 0.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "lfrac";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pfrac dcterms:description "Property. Model:'https://schema.org/Number'. Fraction of constant-power load to be represented by this motor model (Pfrac) (>=0.0 and <=1.0).  Typical Value = 0.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pfrac";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    rdfs:range xsd:decimal.

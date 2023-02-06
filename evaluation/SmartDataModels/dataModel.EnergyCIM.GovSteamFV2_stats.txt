@@ -1,0 +1,14 @@
+type
+dt
+k
+mwbase
+r
+t1
+t3
+ta
+tb
+tc
+ti
+tt
+vmax
+vmin

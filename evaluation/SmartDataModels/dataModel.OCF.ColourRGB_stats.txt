@@ -1,0 +1,7 @@
+rt
+rgbValue
+n
+range
+step
+if
+type

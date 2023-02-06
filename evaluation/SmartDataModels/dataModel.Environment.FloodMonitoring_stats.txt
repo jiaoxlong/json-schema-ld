@@ -1,0 +1,9 @@
+type
+alertLevel
+currentLevel
+dangerLevel
+measuredDistance
+referenceLevel
+floodLevelStatus
+stationID
+observationDateTime

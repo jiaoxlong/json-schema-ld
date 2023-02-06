@@ -1,0 +1,8 @@
+type
+WindGenTurbineType3IEC
+WindTurbineType1or2IEC
+WindTurbineType4bIEC
+cdrt
+hgen
+hwtr
+kdrt

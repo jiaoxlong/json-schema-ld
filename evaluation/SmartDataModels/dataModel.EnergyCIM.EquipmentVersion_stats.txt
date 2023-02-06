@@ -1,0 +1,15 @@
+type
+baseUML
+baseURIcore
+baseURIoperation
+baseURIshortCircuit
+date
+differenceModelURI
+entsoeUML
+entsoeURIcore
+entsoeURIoperation
+entsoeURIshortCircuit
+modelDescriptionURI
+namespaceRDF
+namespaceUML
+shortName

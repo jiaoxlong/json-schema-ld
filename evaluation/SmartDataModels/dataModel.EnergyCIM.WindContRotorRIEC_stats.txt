@@ -1,0 +1,11 @@
+type
+WindDynamicsLookupTable
+WindGenTurbineType2IEC
+kirr
+komegafilt
+kpfilt
+kprr
+rmax
+rmin
+tomegafilt
+tpfilt

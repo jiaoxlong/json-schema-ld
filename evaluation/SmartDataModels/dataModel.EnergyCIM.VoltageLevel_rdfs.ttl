@@ -1,0 +1,54 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json> dcterms:title " Smart Data Models - VoltageLevel";
+    dcterms:description "Adapted from CIM data models. A collection of equipment at one common system voltage forming a switchgear. The equipment typically consist of breakers, busbars, instrumentation, control, regulation and protection devices as well as assemblies of all these.".
+sdm:type dcterms:description "Property. NGSI type. It has to be VoltageLevel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:VoltageLevel)
+].
+sdm:VoltageLevel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "VoltageLevel".
+sdm:BaseVoltage dcterms:description "Property. Model:'https://schema.org/Number'. The base voltage used for all equipment within the voltage level. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "BaseVoltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:Bays dcterms:description "Property. Model:'https://schema.org/Number'. The bays within this voltage level. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "Bays";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:Substation dcterms:description "Property. Model:'https://schema.org/Number'. The substation of the voltage level. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "Substation";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:highVoltageLimit dcterms:description "Property. Model:'https://schema.org/Number'. The bus bar`s high voltage limit Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "highVoltageLimit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lowVoltageLimit dcterms:description "Property. Model:'https://schema.org/Number'. The bus bar`s low voltage limit Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "lowVoltageLimit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/VoltageLevel/schema.json>;
+    rdfs:range xsd:decimal.

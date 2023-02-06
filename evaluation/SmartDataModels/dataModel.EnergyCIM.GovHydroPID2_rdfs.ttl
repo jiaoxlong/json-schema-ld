@@ -1,0 +1,139 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json> dcterms:title " Smart Data Models - GovHydroPID2";
+    dcterms:description "Adapted from CIM data models. Hydro turbine and governor. Represents plants with straight forward penstock configurations and three term electro-hydraulic governors (i.e. Woodard electronic).".
+sdm:type dcterms:description "Property. NGSI type. It has to be GovHydroPID2";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GovHydroPID2)
+].
+sdm:GovHydroPID2 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GovHydroPID2".
+sdm:atw dcterms:description "Property. Model:'https://schema.org/Number'. Factor multiplying Tw (Atw).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "atw";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:d dcterms:description "Property. Model:'https://schema.org/Number'. Turbine damping factor (D).  Unit = delta P / delta speed.  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "d";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:feedbackSignal dcterms:description "Property. Model:'https://schema.org/Number'. Feedback signal type flag (Flag). true = use gate position feedback signal false = use Pe. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "feedbackSignal";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:g0 dcterms:description "Property. Model:'https://schema.org/Number'. Gate opening at speed no load (G0).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "g0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:g1 dcterms:description "Property. Model:'https://schema.org/Number'. Intermediate gate opening (G1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "g1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:g2 dcterms:description "Property. Model:'https://schema.org/Number'. Intermediate gate opening (G2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "g2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate opening (Gmax).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum gate opening (Gmin).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kd dcterms:description "Property. Model:'https://schema.org/Number'. Derivative gain (Kd).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Reset gain (Ki).  Unit = PU/ sec.  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Proportional gain (Kp).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mwbase dcterms:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (>0).  Unit = MW. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "mwbase";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p1 dcterms:description "Property. Model:'https://schema.org/Number'. Power at gate opening G1 (P1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p2 dcterms:description "Property. Model:'https://schema.org/Number'. Power at gate opening G2 (P2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p3 dcterms:description "Property. Model:'https://schema.org/Number'. Power at full opened gate (P3).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rperm dcterms:description "Property. Model:'https://schema.org/Number'. Permanent drop (Rperm).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rperm";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. Controller time constant (Ta) (>0).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. Gate servo time constant (Tb) (>0).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:treg dcterms:description "Property. Model:'https://schema.org/Number'. Speed detector time constant (Treg).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "treg";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tw dcterms:description "Property. Model:'https://schema.org/Number'. Water inertia time constant (Tw) (>0).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tw";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:velmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate opening velocity (Velmax).  Unit = PU/sec.  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "velmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:velmin dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate closing velocity (Velmin).  Unit = PU/sec.  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "velmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroPID2/schema.json>;
+    rdfs:range xsd:decimal.

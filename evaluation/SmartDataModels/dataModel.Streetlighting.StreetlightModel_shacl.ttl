@@ -1,0 +1,143 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be StreetlightModel";
+  sh:name "type";
+  sh:in (sdm:StreetlightModel);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:maxPowerConsumption;
+  sh:description "Property. Maximum power consumption supported by the lantern. Model:'https://schema.org/Number'. Units:'Watts (W)'.";
+  sh:name "maxPowerConsumption";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minPowerConsumption;
+  sh:description "Property. Minimum power consumption supported by the lantern. Model:'https://schema.org/Number'. Units:'Watts (W)'.";
+  sh:name "minPowerConsumption";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:columnBrandName;
+  sh:description "Property. Name of the column's brand. Model:'https://schema.org/brand'.";
+  sh:name "columnBrandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:columnModelName;
+  sh:description "Property. Name of the column's model. Model:'https://schema.org/model'";
+  sh:name "columnModelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:columnManufacturerName;
+  sh:description "Property. Name of the column's manufacturer. Model:'https://schema.org/manufacturer'";
+  sh:name "columnManufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:columnMadeOf;
+  sh:description "Property. Material column is made of. Enum:'steel, aluminium, wood, other'. Model:'https://schema.org/Text'";
+  sh:name "columnMadeOf";
+  sh:in (sdm:steel sdm:aluminium sdm:wood sdm:other)
+], [
+  sh:path sdm:columnColor;
+  sh:description "Property. Column's painting color. Model:'https://schema.org/color'. Allowed Values: A color keyword as specified by [W3C Color Keywords](https://www.w3.org/TR/SVG/types.html#ColorKeywords). A color value as specified by [W3C Color Data Type](https://www.w3.org/TR/SVG/types.html#BasicDataTypes)";
+  sh:name "columnColor";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lanternModelName;
+  sh:description "Property. Name of the lantern's model. Model:'https://schema.org/Text'";
+  sh:name "lanternModelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lanternBrandName;
+  sh:description "Property. Name of the lantern's brand. Model:'https://schema.org/brand'";
+  sh:name "lanternBrandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lanternManufacturerName;
+  sh:description "Property. Name of the lantern's manufacturer. Model:'https://schema.org/manufacturer'";
+  sh:name "lanternManufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lanternWeight;
+  sh:description "Property. Lantern's weight. Model:'https://schema.org/weight'. Units:'Kilograms (kg)'";
+  sh:name "lanternWeight";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lampModelName;
+  sh:description "Property. Name of the lamp's model. Model:'https://schema.org/model'";
+  sh:name "lampModelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lampBrandName;
+  sh:description "Property. Name of the lamp's brand. Model:'https://schema.org/brand'";
+  sh:name "lampBrandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lampManufacturerName;
+  sh:description "Property. Name of the lamp's manufacturer.";
+  sh:name "lampManufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:lampWeight;
+  sh:description "Property. Lamp's weight. Model:'Kilograms (kg)'. Units:'Kilograms (kg)'";
+  sh:name "lampWeight";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:workingLife;
+  sh:description "Property. The estimated number of hours working (the lamp) without failure. Units:'Hours'. Model:'https://schema.org/Number'";
+  sh:name "workingLife";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lampTechnology;
+  sh:description "Property. Technology used by the lamp. Enum:'LED, LPS, HPS'. Or any other value not covered by the above list and meaningful to the application.";
+  sh:name "lampTechnology";
+  sh:in (sdm:LED sdm:LPS sdm:HPS)
+], [
+  sh:path sdm:colorTemperature;
+  sh:description "Property. Correlated color temperature of the lamp. Model:'https://schema.org/Number'. Units:'Kelvin degrees (K)'";
+  sh:name "colorTemperature";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:colorRenderingIndex;
+  sh:description "Property. Color rendering index of the lamp. Model:'https://schema.org/Number'";
+  sh:name "colorRenderingIndex";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:luminousFlux;
+  sh:description "Property. Maximum light output which can be provided by the lamp. Units:'Lumens (lm)'. Model:'https://schema.org/Number'";
+  sh:name "luminousFlux";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerConsumption;
+  sh:description "Property. (Nominal) power consumption made by the lamp. Model:'https://schema.org/Number'. Units:'Watts (W)'";
+  sh:name "powerConsumption";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:compliantWith;
+  sh:name "compliantWith";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:category;
+  sh:name "category";
+  sh:in (sdm:bollard sdm:flashingBeacon sdm:lamppost sdm:lightTower sdm:ornamentalLantern sdm:postTop sdm:sideEntry sdm:signLight)
+].

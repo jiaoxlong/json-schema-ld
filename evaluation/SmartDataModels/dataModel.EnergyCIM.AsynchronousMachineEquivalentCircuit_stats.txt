@@ -1,0 +1,6 @@
+type
+rr1
+rr2
+xlr1
+xlr2
+xm

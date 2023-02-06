@@ -1,0 +1,7 @@
+type
+stopCode
+shortStopCode
+transportationType
+refPublicTransportRoute
+peopleCount
+refPeopleCountDevice

@@ -1,0 +1,17 @@
+type
+AngleRefTopologicalIsland
+BaseVoltage
+ConnectivityNodeContainer
+ConnectivityNodes
+ReportingGroup
+SvInjection
+SvVoltage
+Terminal
+TopologicalIsland
+boundaryPoint
+fromEndIsoCode
+fromEndName
+fromEndNameTso
+toEndIsoCode
+toEndName
+toEndNameTso

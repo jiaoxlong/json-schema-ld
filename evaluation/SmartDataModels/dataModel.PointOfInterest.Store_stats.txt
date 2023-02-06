@@ -1,0 +1,8 @@
+type
+currenciesAccepted
+paymentAccepted
+logo
+telephone
+email
+url
+category

@@ -1,0 +1,55 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.CPSV-AP/Cost/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. Model:'https://schema.org/Text'. It has to be Cost.";
+  sh:name "type";
+  sh:in (sdm:Cost);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:identifier;
+  sh:description "Property. Model:'dct:identifier'. This property represents an Identifier for the Cost. This property should be a URI if it is modelled in RDF.";
+  sh:name "identifier";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:value;
+  sh:description "Property. Model:'cv:value'. This property represents a numeric value indicating the amount of the Cost.";
+  sh:name "value";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:currency;
+  sh:description "Property. Model:'cv:currency'. This property represents the currency in which the Cost needs to be paid and the value of the Cost is expressed. The possible values for this property are described in a controlled vocabulary. The recommended controlled vocabularies are listed in the European Publications Office's Currencies Named Authority List (NAL), following the ISO 4217 (https://op.europa.eu/en/web/eu-vocabularies/dataset/-/resource?uri=http://publications.europa.eu/resource/dataset/currency).";
+  sh:name "currency";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:description;
+  sh:description "Property. Model:'dct:description'. This property represents a free text description of the Cost.";
+  sh:name "description";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:isDefinedBy;
+  sh:description "Model:'PublicOrganisation";
+  sh:name "isDefinedBy";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ifAccessedThrough;
+  sh:description "Relationship. Model:'cv:ifAccessedThrough'. Range:'Channel'. Where the cost varies depending on the channel used, for example, if accessed through an online service cf. accessed at a physical location, the cost can be linked to the channel using the If Accessed Through property.";
+  sh:name "ifAccessedThrough";
+  sh:datatype xsd:string
+].

@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json> dcterms:title "Smart Data Models - Noise Pollution Forecast";
+    dcterms:description "Noise Pollution forecast stores the expectation about noise pollution based on some input elements and the noise elements present.".
+sdm:type dcterms:description "Property. NGSI type. It has to be NoisePollutionForecast";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:NoisePollutionForecast)
+].
+sdm:NoisePollutionForecast rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "NoisePollutionForecast".
+sdm:noiseAnnoyanceIndex dcterms:description "Property. Index (1 to 10) according to noise annoyance level";
+    rdf:type rdf:Property;
+    rdfs:label "noiseAnnoyanceIndex";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LANight dcterms:description "Property. Average sound level recorded during the night (8h)";
+    rdf:type rdf:Property;
+    rdfs:label "LANight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAmax2 dcterms:description "Property. Maximum sound level recorded for the last 2 hours";
+    rdf:type rdf:Property;
+    rdfs:label "LAmax2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAeq2 dcterms:description "Property. Average sound level over the last 2 hours";
+    rdf:type rdf:Property;
+    rdfs:label "LAeq2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:noiseOrigin dcterms:description "Property. Main origin (source) of the recorded noise at installation of the sensor";
+    rdf:type rdf:Property;
+    rdfs:label "noiseOrigin";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:string.
+sdm:LAeq dcterms:description "Property. Average sound level (equivalent) recorded during the measuring time";
+    rdf:type rdf:Property;
+    rdfs:label "LAeq";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAeq_d dcterms:description "Property. Average sound level during the day (8h)";
+    rdf:type rdf:Property;
+    rdfs:label "LAeq_d";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAmax dcterms:description "Property. Maximum sound level recorded during the measuring time";
+    rdf:type rdf:Property;
+    rdfs:label "LAmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:validFrom dcterms:description "Property. The start of the validity period for this forecast as a ISO8601 format";
+    rdf:type rdf:Property;
+    rdfs:label "validFrom";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:validTo dcterms:description "Property. The end of the validity period for this forecast as a ISO8601 format";
+    rdf:type rdf:Property;
+    rdfs:label "validTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:validity dcterms:description "Property. Model:'https://schema.org/Text'. Includes the validity period for this forecast as a ISO8601 time interval.";
+    rdf:type rdf:Property;
+    rdfs:label "validity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateIssued dcterms:description "Property. The date and time the forecast was issued by the service provider in ISO8601 UTC format.";
+    rdf:type rdf:Property;
+    rdfs:label "dateIssued";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoisePollutionForecast/schema.json>;
+    rdfs:range xsd:dateTime.

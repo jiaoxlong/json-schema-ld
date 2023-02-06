@@ -1,0 +1,8 @@
+type
+DiagramElements
+DiagramStyle
+orientation
+x1InitialView
+x2InitialView
+y1InitialView
+y2InitialView

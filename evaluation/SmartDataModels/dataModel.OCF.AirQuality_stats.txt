@@ -1,0 +1,8 @@
+rt
+contaminanttype
+valuetype
+contaminantvalue
+n
+range
+if
+type

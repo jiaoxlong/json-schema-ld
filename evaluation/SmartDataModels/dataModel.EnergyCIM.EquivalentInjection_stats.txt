@@ -1,0 +1,17 @@
+type
+ReactiveCapabilityCurve
+maxP
+maxQ
+minP
+minQ
+p
+q
+r
+r0
+r2
+regulationCapability
+regulationStatus
+regulationTarget
+x
+x0
+x2

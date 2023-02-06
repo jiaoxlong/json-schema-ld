@@ -1,0 +1,12 @@
+type
+refDevice
+refPointOfInterest
+dateObserved
+dateObservedFrom
+dateObservedTo
+rainFallRadarContent
+numberOfRow
+numberOfCol
+cellsSize
+mapScale
+measuredArea

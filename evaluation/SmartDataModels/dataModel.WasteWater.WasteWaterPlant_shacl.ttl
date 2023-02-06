@@ -1,0 +1,197 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.WasteWater/WasteWaterPlant/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be WasteWaterPlant";
+  sh:name "type";
+  sh:in (sdm:WasteWaterPlant);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:no3;
+  sh:description "Property. Model:'https://schema.org/Number'. Nitrate concentration measured in waste-water treatment plant corresponding to this observation.";
+  sh:name "no3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bod;
+  sh:description "Property. Model:'https://schema.org/Number'. Biological Oxygen Demand concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "bod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:inFlow;
+  sh:description "Property. Model:'https://schema.org/Number'. In-flow amount into the treatment plant/reservoir corresponding to this observation.";
+  sh:name "inFlow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toc;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Organic Carbon concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "toc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nh4;
+  sh:description "Property. Model:'https://schema.org/Number'. Ammonium concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "nh4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:redox;
+  sh:description "Property. Model:'https://schema.org/Number'. Reduction potential or oxidation measured in waste-water treatment plant corresponding to this observation.";
+  sh:name "redox";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:do;
+  sh:description "Property. Model:'https://schema.org/Number'. Dissolved oxygen measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "do";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:treatmentPlantId;
+  sh:description "Property. Model:'https://schema.org/Number'. Unique identification number for the waste-water treatment plant corresponding to this observation.";
+  sh:name "treatmentPlantId";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:outFlow;
+  sh:description "Property. Model:'https://schema.org/Number'. Out-flow amount into the treatment plant/reservoir corresponding to this observation.";
+  sh:name "outFlow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tss;
+  sh:description "Property. Model:'https://schema.org/Number'. Total suspended solids concentration measured in a waste-water treatment plant corresponding to this observation.";
+  sh:name "tss";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:treatmentPlantCapacity;
+  sh:description "Property. Model:'https://schema.org/Number'. Handling capacity of the waste-water treatment plant corresponding to this observation.";
+  sh:name "treatmentPlantCapacity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tic;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Inorganic Carbon concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "tic";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tn;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Nitrogen concentration measured in waste-water treatment plant corresponding to this observation.";
+  sh:name "tn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:po4;
+  sh:description "Property. Model:'https://schema.org/Number'. Ortho-phosphate concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "po4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:cod;
+  sh:description "Property. Model:'https://schema.org/Number'. Chemical Oxygen Demand concentration measured in the waste-water treatment plant corresponding to this observation.";
+  sh:name "cod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:treatmentPlantName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the waste-water treatment plant corresponding to this observation.";
+  sh:name "treatmentPlantName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:treatmentPlantCode;
+  sh:description "Property. Model:'https://schema.org/Text'. Unique code for the waste-water treatment plant corresponding to this observation.";
+  sh:name "treatmentPlantCode";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:observationDateTime;
+  sh:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+  sh:name "observationDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:pHTSA;
+  sh:description "Property. Model:'https://schema.org/Text. Acidity level or basicity level observed in the water. Object defining the temporal processing of the magnitude property during a period. It provides maximum, minimum, instant value and average";
+  sh:name "pHTSA"
+].
+sdm:PHTSAShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:PHTSA;
+    sh:property [
+  sh:path sdm:avgOverTime;
+  sh:description "Property. Model:'https://schema.org/Number'. Describes the average value of a time-series data over a specified duration in past. The duration is specified using another parameter in the value descriptor object related to this value";
+  sh:name "avgOverTime";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxOverTime;
+  sh:description "Property. Model:'https://schema.org/Number'. Describes the maximum value of a time-series data over a specified duration in past. The duration is specified using another parameter in the value descriptor object related to this value";
+  sh:name "maxOverTime";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:instValue;
+  sh:description "Property. Model:'https://schema.org/Number'. Describes the instantaneous value (associated with the current timestamp) of a time varying quantity.";
+  sh:name "instValue";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minOverTime;
+  sh:description "Property. Model:'https://schema.org/Number'. Describes the minimum value of a time-series data over a specified duration in past. The duration is specified using another parameter in the value descriptor object related to this value.";
+  sh:name "minOverTime";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:municipalityInfo;
+  sh:description "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.";
+  sh:name "municipalityInfo"
+].
+sdm:MunicipalityInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:MunicipalityInfo;
+    sh:property [
+  sh:path sdm:district;
+  sh:description "Property. Model:'https://schema.org/Text'. District name corresponding to this observation.";
+  sh:name "district";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ulbName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the Urban Local Body corresponding to this observation.";
+  sh:name "ulbName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityId;
+  sh:description "Property. Model:'https://schema.org/Text'. City Id corresponding to this observation.";
+  sh:name "cityId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardId;
+  sh:description "Property. Model:'https://schema.org/Text'. Ward Id corresponding to this observation.";
+  sh:name "wardId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:stateName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation.";
+  sh:name "stateName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityName;
+  sh:description "Property. Model:'https://schema.org/Text'. City name corresponding to this observation";
+  sh:name "cityName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:zoneName;
+  sh:description "Property. Model:'https://schema.org/Text'. Zone name corresponding to this observation.";
+  sh:name "zoneName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:zoneId;
+  sh:description "Property. Model:'https://schema.org/Text'. Zone Id corresponding to this observation.";
+  sh:name "zoneId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardName;
+  sh:description "Property. Model:'https://schema.org/Text'. Ward name corresponding to this observation.";
+  sh:name "wardName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardNum;
+  sh:description "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation.";
+  sh:name "wardNum";
+  sh:datatype xsd:decimal
+].

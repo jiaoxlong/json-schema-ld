@@ -1,0 +1,15 @@
+type
+ownedBy
+belongsTo
+hasAgriParcelParent
+hasWeatherObserved
+relativeHumidity
+leafTemperature
+co2
+dailyLight
+drainFlow
+DrainFlow
+value
+maxValue
+minValue
+unitText

@@ -1,0 +1,10 @@
+type
+ka
+kc
+ta
+tb
+tc
+vimax
+vimin
+vrmax
+vrmin

@@ -1,0 +1,7 @@
+rt
+dimmingSetting
+n
+range
+step
+if
+type

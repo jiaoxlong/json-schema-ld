@@ -1,0 +1,6 @@
+rt
+mode
+currentstate
+n
+if
+type

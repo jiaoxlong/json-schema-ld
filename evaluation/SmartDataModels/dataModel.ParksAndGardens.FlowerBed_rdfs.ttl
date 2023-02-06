@@ -1,0 +1,103 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json> dcterms:title "Smart data models - Parks and Gardens / Flower Bed";
+    dcterms:description "A garden plot in which flowers (or other plants) are grown. Usually you will find flower beds in parks, gardens, pedestrian areas or at big highway interchanges.".
+sdm:type dcterms:description "Property. NGSI Entity Type: It has to be FlowerBed";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:FlowerBed)
+].
+sdm:FlowerBed rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "FlowerBed".
+sdm:taxon rdf:type rdf:Property;
+    rdfs:label "taxon";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:string.
+sdm:depth dcterms:description "Property. Model:'https://schema.org/depth'. Depth of this flower bed.";
+    rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:width dcterms:description "Property. Model:'https://schema.org/width'. Width of this flower bed.";
+    rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:height dcterms:description "Property. Model:'https://schema.org/heigth'. Heigth of this flower bed.";
+    rdf:type rdf:Property;
+    rdfs:label "height";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:string.
+sdm:category rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>.
+sdm:Category rdf:type skos:ConceptScheme.
+sdm:category rdfs:range [
+  owl:oneOf (sdm:hedge sdm:lawnArea sdm:portable sdm:urbanTreeSpot)
+].
+sdm:hedge rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "hedge".
+sdm:lawnArea rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "lawnArea".
+sdm:portable rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "portable".
+sdm:urbanTreeSpot rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "urbanTreeSpot".
+sdm:shape rdf:type rdf:Property;
+    rdfs:label "shape";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>.
+sdm:Shape rdf:type skos:ConceptScheme.
+sdm:shape rdfs:range [
+  owl:oneOf (sdm:circular sdm:elliptic sdm:polygon sdm:rectangular sdm:square)
+].
+sdm:circular rdf:type skos:Concept;
+    skos:inScheme sdm:Shape;
+    rdfs:label "circular".
+sdm:elliptic rdf:type skos:Concept;
+    skos:inScheme sdm:Shape;
+    rdfs:label "elliptic".
+sdm:polygon rdf:type skos:Concept;
+    skos:inScheme sdm:Shape;
+    rdfs:label "polygon".
+sdm:rectangular rdf:type skos:Concept;
+    skos:inScheme sdm:Shape;
+    rdfs:label "rectangular".
+sdm:square rdf:type skos:Concept;
+    skos:inScheme sdm:Shape;
+    rdfs:label "square".
+sdm:dateLastWatering dcterms:description "Property. Model:'https://schema.org/DateTime'. Timestamp which corresponds to the last watering of the flower bed.";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastWatering";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:nextWateringDeadline dcterms:description "Property. Model:'https://schema.org/DateTime'. Deadline for next watering operation.";
+    rdf:type rdf:Property;
+    rdfs:label "nextWateringDeadline";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:refGarden dcterms:description "Relationship. Model:'https://schema.org/URL'. Flower bed's garden (if it belongs to any).";
+    rdf:type rdf:Property;
+    rdfs:label "refGarden";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.ParksAndGardens/FlowerBed/schema.json>.

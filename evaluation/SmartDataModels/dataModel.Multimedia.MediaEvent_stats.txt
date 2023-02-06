@@ -1,0 +1,6 @@
+type
+eventType
+data
+Datum
+deviceSource
+observedEntities

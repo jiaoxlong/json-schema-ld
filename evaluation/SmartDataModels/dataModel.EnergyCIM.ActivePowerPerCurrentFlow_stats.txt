@@ -1,0 +1,6 @@
+type
+denominatorMultiplier
+denominatorUnit
+multiplier
+unit
+value

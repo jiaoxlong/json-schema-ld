@@ -1,0 +1,68 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.OCF/OpaqueData/schema.json>;
+    sh:property [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.opaquedata);
+  sh:maxLength 64
+], [
+  sh:path sdm:payload;
+  sh:description "Property. This Property contains the opaque data.";
+  sh:name "payload";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:encoding;
+  sh:description "Property. This Property describes the encoding of the payload, e.g. binary as base64, json, xml, utf-8.";
+  sh:name "encoding";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:payloadtype;
+  sh:description "Property. This Property describes the identification of the payload, e.g. what the payload is representing .";
+  sh:name "payloadtype";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:size;
+  sh:description "Property. The size in bytes of the decoded binary object.";
+  sh:name "size";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:hash;
+  sh:description "Property. The hash code of the blob. If present, it is used to check the decoded content of the object data point for integrity. The algorithm used for generating the hash value is SHA-2 [15]. The data point contains the hash as a hex encoded value.";
+  sh:name "hash";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:system;
+  sh:description "Property. The eco system that is using the payload.";
+  sh:name "system";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.baseline sdm:oic.if.rw)
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be OpaqueData";
+  sh:name "type";
+  sh:in (sdm:OpaqueData);
+  sh:minCount 1;
+  sh:maxCount 1
+].

@@ -1,0 +1,54 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json> dcterms:title " Smart Data Models - PFVArType2Common1";
+    dcterms:description "Adapted from CIM data models. Power factor / Reactive power regulator. This model represents the power factor or reactive power controller such as the Basler SCP-250. The controller measures power factor or reactive power (PU on generator rated power) and compares it with the operator's set point.".
+sdm:type dcterms:description "Property. NGSI type. It has to be PFVArType2Common1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PFVArType2Common1)
+].
+sdm:PFVArType2Common1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PFVArType2Common1".
+sdm:j dcterms:description "Property. Model:'https://schema.org/Number'. Selector (J). true = control mode for reactive power false = control mode for power factor. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "j";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Reset gain (Ki). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Proportional gain (Kp). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:max dcterms:description "Property. Model:'https://schema.org/Number'. Output limit (max). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ref dcterms:description "Property. Model:'https://schema.org/Number'. Reference value of reactive power or power factor (Ref). The reference value is initialised by this model. This initialisation may override the value exchanged by this attribute to represent a plant operator`s change of the reference setting. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ref";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType2Common1/schema.json>;
+    rdfs:range xsd:decimal.

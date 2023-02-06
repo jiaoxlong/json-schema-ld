@@ -1,0 +1,10 @@
+type
+noiseAnnoyanceIndex
+noiseOrigin
+buildingsType
+groundType
+wallsType
+LAmax2
+LAeq2
+dateObservedFrom
+dateObservedTo

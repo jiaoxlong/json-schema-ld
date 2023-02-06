@@ -1,0 +1,76 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LoadComposite/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be LoadComposite";
+  sh:name "type";
+  sh:in (sdm:LoadComposite)
+], [
+  sh:path sdm:epfd;
+  sh:description "Property. Model:'https://schema.org/Number'. Active load-frequency dependence index (dynamic) (Epfd).  Typical Value = 1.5. Default: 0.0";
+  sh:name "epfd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:epfs;
+  sh:description "Property. Model:'https://schema.org/Number'. Active load-frequency dependence index (static) (Epfs).  Typical Value = 1.5. Default: 0.0";
+  sh:name "epfs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:epvd;
+  sh:description "Property. Model:'https://schema.org/Number'. Active load-voltage dependence index (dynamic) (Epvd).  Typical Value = 0.7. Default: 0.0";
+  sh:name "epvd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:epvs;
+  sh:description "Property. Model:'https://schema.org/Number'. Active load-voltage dependence index (static) (Epvs).  Typical Value = 0.7. Default: 0.0";
+  sh:name "epvs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eqfd;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive load-frequency dependence index (dynamic) (Eqfd).  Typical Value = 0. Default: 0.0";
+  sh:name "eqfd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eqfs;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive load-frequency dependence index (static) (Eqfs).  Typical Value = 0. Default: 0.0";
+  sh:name "eqfs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eqvd;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive load-voltage dependence index (dynamic) (Eqvd).  Typical Value = 2. Default: 0.0";
+  sh:name "eqvd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eqvs;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive load-voltage dependence index (static) (Eqvs).  Typical Value = 2. Default: 0.0";
+  sh:name "eqvs";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:h;
+  sh:description "Property. Model:'https://schema.org/Number'. Inertia constant (H).  Typical Value = 2.5. Default: 0";
+  sh:name "h";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lfrac;
+  sh:description "Property. Model:'https://schema.org/Number'. Loading factor - ratio of initial P to motor MVA base (Lfrac).  Typical Value = 0.8. Default: 0.0";
+  sh:name "lfrac";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pfrac;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of constant-power load to be represented by this motor model (Pfrac) (>=0.0 and <=1.0).  Typical Value = 0.5. Default: 0.0";
+  sh:name "pfrac";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,13 @@
+type
+ae
+ai
+atr
+emax
+emin
+imax
+imin
+ke
+ki
+te
+ti
+tr

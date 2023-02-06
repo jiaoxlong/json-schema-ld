@@ -1,0 +1,13 @@
+type
+validTo
+validFrom
+consequence
+description
+event
+threat
+severity
+isOutputOf
+sourceRisk
+affects
+mitigatedBy
+linkTo

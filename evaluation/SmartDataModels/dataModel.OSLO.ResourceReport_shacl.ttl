@@ -1,0 +1,149 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/smart-data-models/dataModel.OSLO/raw/master/ResourceReport/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be ResourceReport.";
+  sh:name "type";
+  sh:in (sdm:ResourceReport);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceReport.actuator;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#actuator'. Engine of the means of transport.";
+  sh:name "ResourceReport.actuator"
+].
+sdm:ResourceReport.actuatorShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.actuator;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:in (sdm:ActuatorType);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ActuatorType.preferredLabel;
+  sh:description "Property. Model: 'http://www.w3.org/2004/02/skos/core#prefLabel'. Preferred label. Enum:'combustionEngine, electric, electricWithSupport, human'";
+  sh:name "ActuatorType.preferredLabel";
+  sh:in (sdm:combustionEngine sdm:electric sdm:electricWithSupport sdm:human);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceReport.location;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#location'. Location of the Resource. This could be a bike parking station or the real-time location of the vehicle, e.g. in free-floating part transport.";
+  sh:name "ResourceReport.location"
+].
+sdm:ResourceReport.locationShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.location;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:object;
+  sh:name "object";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:ResourceReport.meansOfTransport;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#Mobiliteitsdienst.vervoermiddel'. The type of means of transport of the Resource.";
+  sh:name "ResourceReport.meansOfTransport"
+].
+sdm:ResourceReport.meansOfTransportShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.meansOfTransport;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:in (sdm:MeansOfTransport);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:MeansOfTransport.preferredLabel;
+  sh:description "Property. Model: 'http://www.w3.org/2004/02/skos/core#prefLabel'. Preferred label. Enum:'airplane, bicycle, boat, bus, car, escalator, lift, motorcycle, onFoot, pedelec, scooter, skateboard, step, subway, train, tram, treadmill, truck'";
+  sh:name "MeansOfTransport.preferredLabel";
+  sh:in (sdm:airplane sdm:bicycle sdm:boat sdm:bus sdm:car sdm:escalator sdm:lift sdm:motorcycle sdm:onFoot sdm:pedelec sdm:scooter sdm:skateboard sdm:step sdm:subway sdm:train sdm:tram sdm:treadmill sdm:truck);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceReport.number;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#number'. The number of resources.";
+  sh:name "ResourceReport.number";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:ResourceReport.reportTime;
+  sh:description "Property. Model:'http://purl.org/dc/elements/1.1/date'. Point in time for which the report is valid.";
+  sh:name "ResourceReport.reportTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:ResourceReport.service;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#service'. The MobilityService used within the ResourceReport.";
+  sh:name "ResourceReport.service"
+].
+sdm:ResourceReport.serviceShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.service;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:object;
+  sh:name "object";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:ResourceReport.status;
+  sh:description "Property. Model:'https://purl.eu/ns/mobility/passenger-transport-hubs#status'. State of a Resource. E.g. reserved, inactive, available. Determines whether a resource can be used.";
+  sh:name "ResourceReport.status"
+].
+sdm:ResourceReport.statusShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.status;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:in (sdm:ResourceStatus);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceStatus.preferredLabel;
+  sh:description "Property. Model: 'http://www.w3.org/2004/02/skos/core#prefLabel'. Preferred label. Enum:'available, deleted, inactive, inUse, relocated, reserved, unavailable'";
+  sh:name "ResourceStatus.preferredLabel";
+  sh:in (sdm:available sdm:deleted sdm:inactive sdm:inUse sdm:relocated sdm:reserved sdm:unavailable);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceReport.type;
+  sh:description "Property. Model:'http://purl.org/dc/terms/type'. Nature of the Resource.";
+  sh:name "ResourceReport.type"
+].
+sdm:ResourceReport.typeShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ResourceReport.type;
+    sh:property [
+  sh:path sdm:type;
+  sh:name "type";
+  sh:in (sdm:ResourceType);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ResourceType.preferredLabel;
+  sh:description "Property. Model: 'http://www.w3.org/2004/02/skos/core#prefLabel'. Preferred label. Enum:'chargingStation, parkingSpace, room, seating, vehicle'";
+  sh:name "ResourceType.preferredLabel";
+  sh:in (sdm:chargingStation sdm:parkingSpace sdm:room sdm:seating sdm:vehicle);
+  sh:minCount 1;
+  sh:maxCount 1
+].

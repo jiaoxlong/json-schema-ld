@@ -1,0 +1,144 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json> dcterms:title " Smart Data Models - ExcPIC";
+    dcterms:description "Adapted from CIM data models. Proportional/Integral Regulator Excitation System Model.  This model can be used to represent excitation systems with a proportional-integral (PI) voltage regulator controller.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcPIC";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcPIC)
+].
+sdm:ExcPIC rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcPIC".
+sdm:e1 dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage value 1 (E1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "e1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:e2 dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage value 2 (E2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "e2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efdmax dcterms:description "Property. Model:'https://schema.org/Number'. Exciter maximum limit (Efdmax).  Typical Value = 8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efdmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efdmin dcterms:description "Property. Model:'https://schema.org/Number'. Exciter minimum limit (Efdmin).  Typical Value = -0.87. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efdmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. PI controller gain (Ka).  Typical Value = 3.15. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kc dcterms:description "Property. Model:'https://schema.org/Number'. Exciter regulation factor (Kc).  Typical Value = 0.08. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant (Ke).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Rate feedback gain (Kf).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Current source gain (Ki).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Potential source gain (Kp).  Typical Value = 6.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:se1 dcterms:description "Property. Model:'https://schema.org/Number'. Saturation factor at E1 (Se1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "se1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:se2 dcterms:description "Property. Model:'https://schema.org/Number'. Saturation factor at E2 (Se2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "se2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta1 dcterms:description "Property. Model:'https://schema.org/Number'. PI controller time constant (Ta1).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta2 dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (Ta2).  Typical Value = 0.01. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta3 dcterms:description "Property. Model:'https://schema.org/Number'. Lead time constant (Ta3).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta4 dcterms:description "Property. Model:'https://schema.org/Number'. Lag time constant (Ta4).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant (Te).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf1 dcterms:description "Property. Model:'https://schema.org/Number'. Rate feedback time constant (Tf1).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf2 dcterms:description "Property. Model:'https://schema.org/Number'. Rate feedback lag time constant (Tf2).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vr1 dcterms:description "Property. Model:'https://schema.org/Number'. PI maximum limit (Vr1).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vr1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vr2 dcterms:description "Property. Model:'https://schema.org/Number'. PI minimum limit (Vr2).  Typical Value = -0.87. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vr2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator maximum limit (Vrmax).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator minimum limit (Vrmin).  Typical Value = -0.87. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcPIC/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,6 @@
+type
+UnmannedAerialVehicle
+observedAt
+originatedByUnmannedAerialVehicle
+originator
+UnmannedAerialVehicleADSBroadcast

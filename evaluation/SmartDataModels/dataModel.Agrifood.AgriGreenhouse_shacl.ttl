@@ -1,0 +1,119 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Agrifood/AgriGreenhouse/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type. It has to be AgriGreenhouse";
+  sh:name "type";
+  sh:in (sdm:AgriGreenhouse);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:ownedBy;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:belongsTo;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:hasAgriParcelParent;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:hasWeatherObserved;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:relativeHumidity;
+  sh:description "Property. Model:'http://schema.org/Number'. Units:'Degrees centigrade'. The average greenhouse air temperature nominally in degrees centigrade.";
+  sh:name "relativeHumidity";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:leafTemperature;
+  sh:description "Property. Model:'http://schema.org/Number'. The inside relative humidity expressed as a number between 0 and 1 representing the range 0% to 100 (%).<br/><br/>0 <= relativeHumidity <= 1";
+  sh:name "leafTemperature";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:co2;
+  sh:description "Property. Model:'http://schema.org/Number'. Units:'mg/L'. The measured interior C02 concentration nominally in mg/L";
+  sh:name "co2";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:dailyLight;
+  sh:description "Property. Model:'http://schema.org/Number'. Units:'kw/m2'. Daily Accumulated light measured in kW per square metre";
+  sh:name "dailyLight";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:drainFlow;
+  sh:description "Property. Model:'http://schema.org/Number'. Units:'L/s'. The observed drain flow rate in litres per second";
+  sh:name "drainFlow"
+].
+sdm:DrainFlowShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:DrainFlow;
+    sh:property [
+  sh:path sdm:value;
+  sh:name "value";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxValue;
+  sh:name "maxValue";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minValue;
+  sh:name "minValue";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:unitText;
+  sh:name "unitText";
+  sh:datatype xsd:string
+].

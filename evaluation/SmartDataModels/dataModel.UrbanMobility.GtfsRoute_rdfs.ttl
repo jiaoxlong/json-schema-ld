@@ -1,0 +1,85 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json> dcterms:title "Smart Data Models. GTFS Schema - Route";
+    dcterms:description "GTFS Route".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be GtfsRoute";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GtfsRoute)
+].
+sdm:GtfsRoute rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GtfsRoute".
+sdm:routeColor dcterms:description "Property. Same as GTFS `route_color`. Model:'https://schema.org/Text'. See [GTFS](https://developers.google.com/transit/gtfs/reference/#routestxt)";
+    rdf:type rdf:Property;
+    rdfs:label "routeColor";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>;
+    rdfs:range xsd:string.
+sdm:routeTextColor dcterms:description "Property. Same as GTFS `route_text_color`. Model:'https://schema.org/Text'. See [GTFS](https://developers.google.com/transit/gtfs/reference/#routestxt)";
+    rdf:type rdf:Property;
+    rdfs:label "routeTextColor";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>;
+    rdfs:range xsd:string.
+sdm:routeType dcterms:description "Property. Same as GTFS `route_type`. Model:'https://schema.org/Text'. allowed values those allowed for `route_type` as prescribed by [GTFS](https://developers.google.com/transit/gtfs/reference/#routestxt). Enum:'0, 1, 2, 3, 4, 5, 6, 7'";
+    rdf:type rdf:Property;
+    rdfs:label "routeType";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>.
+sdm:RouteType rdf:type skos:ConceptScheme.
+sdm:routeType rdfs:range [
+  owl:oneOf (sdm:0 sdm:1 sdm:2 sdm:3 sdm:4 sdm:5 sdm:6 sdm:7)
+].
+sdm:0 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "0".
+sdm:1 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "1".
+sdm:2 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "2".
+sdm:3 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "3".
+sdm:4 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "4".
+sdm:5 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "5".
+sdm:6 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "6".
+sdm:7 rdf:type skos:Concept;
+    skos:inScheme sdm:RouteType;
+    rdfs:label "7".
+sdm:routeSortOrder dcterms:description "Property. Same as GTFS `route_sort_order`. Model:'https://schema.org/Number'.";
+    rdf:type rdf:Property;
+    rdfs:label "routeSortOrder";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>;
+    rdfs:range xsd:integer.
+sdm:operatedBy dcterms:description "Relationship. Agency that operates this route. Model:'https://schema.org/Text'. It shall point to an Entity of Type GtfsAgency";
+    rdf:type rdf:Property;
+    rdfs:label "operatedBy";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>.
+sdm:shortName dcterms:description "Property. Same as GTFS `route_short_name`. Model:'https://schema.org/Text'.";
+    rdf:type rdf:Property;
+    rdfs:label "shortName";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/UrbanMobility/GtfsRoute/schema.json>;
+    rdfs:range xsd:string.

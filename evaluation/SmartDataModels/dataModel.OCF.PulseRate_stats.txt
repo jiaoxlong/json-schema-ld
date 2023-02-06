@@ -1,0 +1,7 @@
+rt
+pulserate
+if
+range
+step
+n
+type

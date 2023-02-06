@@ -1,0 +1,8 @@
+rt
+exercise
+range
+step
+precision
+n
+if
+type

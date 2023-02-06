@@ -1,0 +1,8 @@
+type
+mode
+nominalU
+offsetCurrent
+positionCurrent
+xGroundMax
+xGroundMin
+xGroundNominal

@@ -1,0 +1,5 @@
+type
+AsynchronousMachine
+MechanicalLoadDynamics
+TurbineGovernorDynamics
+WindTurbineType1or2Dynamics

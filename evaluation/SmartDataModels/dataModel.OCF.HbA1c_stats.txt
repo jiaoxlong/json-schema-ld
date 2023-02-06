@@ -1,0 +1,8 @@
+rt
+hba1c
+range
+step
+precision
+n
+if
+type

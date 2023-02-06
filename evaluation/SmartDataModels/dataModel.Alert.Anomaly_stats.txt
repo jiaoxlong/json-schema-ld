@@ -1,0 +1,10 @@
+type
+detectedBy
+anomalousProperty
+dateDetected
+thresholdBreach
+ThresholdBreach
+dateObserved
+measuredValue
+thresholdType
+thresholdValue

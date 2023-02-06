@@ -1,0 +1,7 @@
+rt
+connected
+ratedchargingcapacity
+rateddischargingcapacity
+n
+if
+type

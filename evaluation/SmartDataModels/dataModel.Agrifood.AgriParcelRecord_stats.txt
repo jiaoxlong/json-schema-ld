@@ -1,0 +1,13 @@
+type
+hasAgriParcel
+soilTemperature
+soilMoistureVwc
+soilMoistureEC
+solarRadiation
+soilSalinity
+relativeHumidity
+leafWetness
+leafRelativeHumidity
+leafTemperature
+atmosphericPressure
+depth

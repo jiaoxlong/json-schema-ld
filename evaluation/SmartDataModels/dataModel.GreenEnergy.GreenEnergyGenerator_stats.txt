@@ -1,0 +1,10 @@
+type
+status
+generationSources
+selfConsumption
+redistribution
+maxSolarPowerMeasure
+maxEolicPowerMeasure
+maxHydroPowerMeasure
+maxBiomassMeasure
+maxGeothermalPowerGenerated

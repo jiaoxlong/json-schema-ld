@@ -1,0 +1,17 @@
+type
+width
+height
+depth
+weight
+cargoVolume
+maximumLoad
+recommendedLoad
+category
+insertHolesNumber
+madeOf
+madeOfCode
+brandName
+modelName
+manufacturerName
+compliantWith
+features

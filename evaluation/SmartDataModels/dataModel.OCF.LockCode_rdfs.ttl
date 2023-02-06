@@ -1,0 +1,61 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json> dcterms:title "Lock Code";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. The Resource describing a lock code. The Property 'lockCodeList' is an array of possible codes that may be associated with a lock. The codes are all presented as strings.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.lock.code)
+].
+sdm:oic.r.lock.code rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.lock.code".
+sdm:lockCodeList rdf:type rdf:Property;
+    rdfs:label "lockCodeList";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json>;
+    rdfs:range xsd:string.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.a sdm:oic.if.baseline)
+].
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be LockCode";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/LockCode/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:LockCode)
+].
+sdm:LockCode rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "LockCode".

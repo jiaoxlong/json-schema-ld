@@ -1,0 +1,7 @@
+type
+adjslew
+taoff
+taon
+vadjf
+vadjmax
+vadjmin

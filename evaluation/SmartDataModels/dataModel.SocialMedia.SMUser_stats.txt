@@ -1,0 +1,6 @@
+type
+userId
+platform
+userName
+createdPosts
+isMentionedBy

@@ -1,0 +1,8 @@
+type
+GeneratingUnit
+HydroPump
+p
+q
+ratedPowerFactor
+ratedS
+ratedU

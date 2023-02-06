@@ -1,0 +1,12 @@
+spo2
+perfusion
+rt
+n
+if
+spo2_range
+perfusion_range
+spo2_step
+perfusion_step
+spo2_precision
+perfusion_precision
+type

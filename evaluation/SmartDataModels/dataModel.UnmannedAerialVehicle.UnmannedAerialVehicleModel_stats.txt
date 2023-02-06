@@ -1,0 +1,14 @@
+type
+model
+documentation
+manufacturerName
+brandName
+categoryUAV
+rotors
+fuelType
+maxFlightTime
+maxFlightAltitude
+maxGroundVelocity
+minWeight
+minUnladenWeight
+maxLoad

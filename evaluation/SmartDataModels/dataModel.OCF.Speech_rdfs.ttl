@@ -1,0 +1,71 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json> dcterms:title "Speech Synthesis-TTS";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource may be created on the OCF Server that is capable of rendering speech by an OCF Client and allows the client to provide an SSML document with text to render  or may be created on the OIC Server by some resident application. The audio rendered is at this stage local to the Server (i.e. not streamed). The utterance is an SSML document. The supportedLanguages is an array of the RFC5646 defined language tags that are supported. The supportedVoices is an SSML document fragment indicating the voices that are supported. Utterance in the example shall be a properly escaped (JSON rules) SSML document. An example:   '<?xml version='1.0' encoding='ISO-8859-1'?> \r   <speak version='1.1' xmlns='http://www.w3.org/2001/10/synthesis' \r   \txmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' \r   \txsi:schemaLocation='http://www.w3.org/2001/10/synthesis \r   \thttp://www.w3.org/TR/speech-synthesis11/synthesis.xsd' \r   \txml:lang='en-US'> \r    \r   \tThe title of the movie is: \r   \t'Monty Pythons The Meaning of Life' \r   \twhich is directed by Terry Jones. \r   </speak' ".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.speech.tts)
+].
+sdm:oic.r.speech.tts rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.speech.tts".
+sdm:supportedLanguages rdf:type rdf:Property;
+    rdfs:label "supportedLanguages";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>;
+    rdfs:range xsd:string.
+sdm:supportedVoices dcterms:description "Property. The SSML document fragment indicating supported voices.";
+    rdf:type rdf:Property;
+    rdfs:label "supportedVoices";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>;
+    rdfs:range xsd:string.
+sdm:utterance dcterms:description "Property. The SSML document including the speech body.";
+    rdf:type rdf:Property;
+    rdfs:label "utterance";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>;
+    rdfs:range xsd:string.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.a sdm:oic.if.baseline)
+].
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Speech";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Speech/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Speech)
+].
+sdm:Speech rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Speech".

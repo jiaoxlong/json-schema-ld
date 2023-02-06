@@ -1,0 +1,196 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroDD/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovHydroDD";
+  sh:name "type";
+  sh:in (sdm:GovHydroDD)
+], [
+  sh:path sdm:aturb;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine numerator multiplier (Aturb) (note 3).  Typical Value = -1. Default: 0.0";
+  sh:name "aturb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bturb;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine denominator multiplier (Bturb) (note 3).  Typical Value = 0.5. Default: 0.0";
+  sh:name "bturb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:db1;
+  sh:description "Property. Model:'https://schema.org/Number'. Intentional dead-band width (db1).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "db1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:db2;
+  sh:description "Property. Model:'https://schema.org/Number'. Unintentional dead-band (db2).  Unit = MW.  Typical Value = 0. Default: 0.0";
+  sh:name "db2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:eps;
+  sh:description "Property. Model:'https://schema.org/Number'. Intentional db hysteresis (eps).  Unit = Hz.  Typical Value = 0. Default: 0.0";
+  sh:name "eps";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening (Gmax).  Typical Value = 0. Default: 0.0";
+  sh:name "gmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum gate opening (Gmin).  Typical Value = 0. Default: 0.0";
+  sh:name "gmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv1;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 1, PU gv (Gv1).  Typical Value = 0. Default: 0.0";
+  sh:name "gv1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv2;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 2, PU gv (Gv2).  Typical Value = 0. Default: 0.0";
+  sh:name "gv2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv3;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 3, PU gv (Gv3).  Typical Value = 0. Default: 0.0";
+  sh:name "gv3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv4;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 4, PU gv (Gv4).  Typical Value = 0. Default: 0.0";
+  sh:name "gv4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv5;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 5, PU gv (Gv5).  Typical Value = 0. Default: 0.0";
+  sh:name "gv5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gv6;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 6, PU gv (Gv6).  Typical Value = 0. Default: 0.0";
+  sh:name "gv6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:inputSignal;
+  sh:description "Property. Model:'https://schema.org/Number'. Input signal switch (Flag).  true = Pe input is used false = feedback is received from CV. Flag is normally dependent on Tt.  If Tf is zero, Flag is set to false. If Tf is not zero, Flag is set to true.   Typical Value = true. Default: False";
+  sh:name "inputSignal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Single derivative gain (K1).  Typical Value = 3.6. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k2;
+  sh:description "Property. Model:'https://schema.org/Number'. Double derivative gain (K2).  Typical Value = 0.2. Default: 0.0";
+  sh:name "k2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kg;
+  sh:description "Property. Model:'https://schema.org/Number'. Gate servo gain (Kg).  Typical Value = 3. Default: 0.0";
+  sh:name "kg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ki;
+  sh:description "Property. Model:'https://schema.org/Number'. Integral gain (Ki).  Typical Value = 1. Default: 0.0";
+  sh:name "ki";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (>0).  Unit = MW. Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv1;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 1, PU power (Pgv1).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv2;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 2, PU power (Pgv2).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv3;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 3, PU power (Pgv3).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv4;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 4, PU power (Pgv4).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv5;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 5, PU power (Pgv5).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pgv6;
+  sh:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 6, PU power (Pgv6).  Typical Value = 0. Default: 0.0";
+  sh:name "pgv6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening, PU of MWbase (Pmax).  Typical Value = 1. Default: 0.0";
+  sh:name "pmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum gate opening, PU of MWbase (Pmin).  Typical Value = 0. Default: 0.0";
+  sh:name "pmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r;
+  sh:description "Property. Model:'https://schema.org/Number'. Steady state droop (R).  Typical Value = 0.05. Default: 0.0";
+  sh:name "r";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:td;
+  sh:description "Property. Model:'https://schema.org/Number'. Input filter time constant (Td).  Typical Value = 0. Default: 0";
+  sh:name "td";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tf;
+  sh:description "Property. Model:'https://schema.org/Number'. Washout time constant (Tf).  Typical Value = 0.1. Default: 0";
+  sh:name "tf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tp;
+  sh:description "Property. Model:'https://schema.org/Number'. Gate servo time constant (Tp).  Typical Value = 0.35. Default: 0";
+  sh:name "tp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tt;
+  sh:description "Property. Model:'https://schema.org/Number'. Power feedback time constant (Tt).  Typical Value = 0.02. Default: 0";
+  sh:name "tt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tturb;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine time constant (Tturb) (note 3).  Typical Value = 0.8. Default: 0";
+  sh:name "tturb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:velcl;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate closing velocity (Velcl).  Unit = PU/sec.  Typical Value = -0.14. Default: 0.0";
+  sh:name "velcl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:velop;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum gate opening velocity (Velop).  Unit = PU/sec.  Typical Value = 0.09. Default: 0.0";
+  sh:name "velop";
+  sh:datatype xsd:decimal
+].

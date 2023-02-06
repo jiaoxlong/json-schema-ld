@@ -1,0 +1,10 @@
+type
+hasStop
+arrivalTime
+departureTime
+stopSequence
+distanceTravelled
+pickupType
+stopHeadsign
+dropOffType
+timepoint

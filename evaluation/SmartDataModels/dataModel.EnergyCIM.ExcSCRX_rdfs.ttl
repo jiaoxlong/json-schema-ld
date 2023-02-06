@@ -1,0 +1,69 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json> dcterms:title " Smart Data Models - ExcSCRX";
+    dcterms:description "Adapted from CIM data models. Simple excitation system model representing generic characteristics of many excitation systems; intended for use where negative field current may be a problem.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcSCRX";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcSCRX)
+].
+sdm:ExcSCRX rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcSCRX".
+sdm:cswitch dcterms:description "Property. Model:'https://schema.org/Number'. Power source switch (Cswitch). true = fixed voltage of 1.0 PU false = generator terminal voltage. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "cswitch";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:emax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum field voltage output (Emax).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "emax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:emin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum field voltage output (Emin).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "emin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k dcterms:description "Property. Model:'https://schema.org/Number'. Gain (K) (>0).  Typical Value = 200. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rcrfd dcterms:description "Property. Model:'https://schema.org/Number'. Rc/Rfd - ratio of field discharge resistance to field winding resistance (RcRfd).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rcrfd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tatb dcterms:description "Property. Model:'https://schema.org/Number'. Ta/Tb - gain reduction ratio of lag-lead element (TaTb). The parameter Ta is not defined explicitly.  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "tatb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. Denominator time constant of lag-lead block (Tb).  Typical Value = 10. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of gain block (Te) (>0).  Typical Value = 0.02. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcSCRX/schema.json>;
+    rdfs:range xsd:decimal.

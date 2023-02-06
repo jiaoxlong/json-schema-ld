@@ -1,0 +1,8 @@
+rt
+impactstatus
+impactlevel
+impactdirectionhorizontal
+impactdirectionvertical
+n
+if
+type

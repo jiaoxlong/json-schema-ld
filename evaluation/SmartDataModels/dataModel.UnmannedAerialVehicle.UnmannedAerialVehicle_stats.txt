@@ -1,0 +1,10 @@
+type
+UnmannedAerialVehicleModel
+operator
+operationMode
+elevation
+flightStatus
+workStatus
+groundSpeed
+fuel
+observedAt

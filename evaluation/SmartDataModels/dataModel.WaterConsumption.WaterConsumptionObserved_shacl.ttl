@@ -1,0 +1,82 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Waterconsumption/WaterconsumptionObserved/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be WaterConsumptionObserved. NGSI type";
+  sh:name "type";
+  sh:in (sdm:WaterConsumptionObserved);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:acquisitionStageFailure;
+  sh:description "Property. No inductive response of metering device";
+  sh:name "acquisitionStageFailure";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:alarmFlowPersistence;
+  sh:description "Property. Alarm signifying continuous water use";
+  sh:name "alarmFlowPersistence";
+  sh:in (sdm:Nothing to report sdm:No persistence sdm:In progress impacting persistence sdm:In progress persistence sdm:Past Persistence during the period)
+], [
+  sh:path sdm:alarmInProgress;
+  sh:description "Property. Indicates that one or more alarms are in progress";
+  sh:name "alarmInProgress";
+  sh:in (sdm:0 sdm:1);
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:alarmStopsLeaks;
+  sh:description "Property. Alarm signifying the potential for an intermittent leak";
+  sh:name "alarmStopsLeaks";
+  sh:in (sdm:0 sdm:1);
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:alarmTamper;
+  sh:description "Property. Alarm signifying the potential of mechanical tampering with the device";
+  sh:name "alarmTamper";
+  sh:in (sdm:0 sdm:1);
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:alarmWaterQuality;
+  sh:description "Property. Alarm signifying the potential of backflows occurring";
+  sh:name "alarmWaterQuality";
+  sh:in (sdm:0 sdm:1);
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:maxFlow;
+  sh:description "Property. Maximum flow rate observed during the last week. Units:'litres/hour'";
+  sh:name "maxFlow";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:minFlow;
+  sh:description "Property. Minimum flow rate observed during the last week. Units:'litres/hour'";
+  sh:name "minFlow";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:moduleTampered;
+  sh:description "Property. Removal of module from metering device";
+  sh:name "moduleTampered";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:persistenceFlowDuration;
+  sh:description "Property. The duration that persistence flow (continuous flow) is recorded by the meter. Text  field showing durations in minutes (m), hours (h) or days (d).";
+  sh:name "persistenceFlowDuration";
+  sh:in (sdm:15m < 60m sdm:60m < 3h sdm:3h < 6h sdm:6h < 12h sdm:12h < 24h sdm:24h < 2d sdm:2d < 4d sdm:4d < 8d sdm:8d < 15d sdm:15d < 30d sdm:30d < 90d sdm:90d < 180d sdm:> 180d)
+], [
+  sh:path sdm:waterConsumption;
+  sh:description "Property. The water meter reading. Note – this is total volume passed through the meter and is therefore a cumulative total at the time. Units:'Cubic meters'";
+  sh:name "waterConsumption";
+  sh:datatype xsd:integer
+].

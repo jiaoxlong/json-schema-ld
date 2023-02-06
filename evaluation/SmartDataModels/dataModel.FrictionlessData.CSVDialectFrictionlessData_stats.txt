@@ -1,0 +1,12 @@
+type
+csvddfVersion
+delimiter
+doubleQuote
+lineTerminator
+nullSequence
+quoteChar
+escapeChar
+skipInitialSpace
+header
+commentChar
+caseSensitiveHeader

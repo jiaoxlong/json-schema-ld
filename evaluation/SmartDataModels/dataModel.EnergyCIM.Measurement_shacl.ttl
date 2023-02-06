@@ -1,0 +1,51 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be Measurement";
+  sh:name "type";
+  sh:in (sdm:Measurement)
+], [
+  sh:path sdm:PowerSystemResource;
+  sh:description "Property. Model:'https://schema.org/Number'. The measurements associated with this power system resource. Default: None";
+  sh:name "PowerSystemResource";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:Terminal;
+  sh:description "Property. Model:'https://schema.org/Number'. One or more measurements may be associated with a terminal in the network. Default: None";
+  sh:name "Terminal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:measurementType;
+  sh:description "Property. Model:'https://schema.org/Number'. Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc. Default: ''";
+  sh:name "measurementType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:phases;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates to which phases the measurement applies and avoids the need to use `measurementType` to also encode phase information (which would explode the types). The phase information in Measurement, along with `measurementType` and `phases` uniquely defines a Measurement for a device, based on normal network phase. Their meaning will not change when the computed energizing phasing is changed due to jumpers or other reasons. If the attribute is missing three phases (ABC) shall be assumed. Default: None";
+  sh:name "phases";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:unitMultiplier;
+  sh:description "Property. Model:'https://schema.org/Number'. The unit multiplier of the measured quantity. Default: None";
+  sh:name "unitMultiplier";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:unitSymbol;
+  sh:description "Property. Model:'https://schema.org/Number'. The unit of measure of the measured quantity. Default: None";
+  sh:name "unitSymbol";
+  sh:datatype xsd:decimal
+].

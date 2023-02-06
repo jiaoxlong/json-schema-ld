@@ -1,0 +1,8 @@
+type
+waveLevel
+surfaceTemperature
+waveHeight
+wavePeriod
+pH
+salinity
+dateObserved

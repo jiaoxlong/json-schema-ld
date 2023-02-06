@@ -1,0 +1,124 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json> dcterms:title " Smart Data Models - ExcIEEEDC4B";
+    dcterms:description "Adapted from CIM data models. The class represents IEEE Std 421.5-2005 type DC4B model. These excitation systems utilize a field-controlled dc commutator exciter with a continuously acting voltage regulator having supplies obtained from the generator or auxiliary bus.  Reference: IEEE Standard 421.5-2005 Section 5.4.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcIEEEDC4B";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcIEEEDC4B)
+].
+sdm:ExcIEEEDC4B rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcIEEEDC4B".
+sdm:efd1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (E).  Typical Value = 1.75. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efd1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efd2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter voltage at which exciter saturation is defined (E).  Typical Value = 2.33. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efd2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (K).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kd dcterms:description "Property. Model:'https://schema.org/Number'. Regulator derivative gain (K).  Typical Value = 20. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (K).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Regulator integral gain (K).  Typical Value = 20. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Regulator proportional gain (K).  Typical Value = 20. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:oelin dcterms:description "Property. Model:'https://schema.org/Number'. OEL input (OELin). true = LV gate false = subtract from error signal. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "oelin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seefd1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, E (S[E]).  Typical Value = 0.08. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seefd1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seefd2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, E (S[E]).  Typical Value = 0.27. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seefd2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:td dcterms:description "Property. Model:'https://schema.org/Number'. Regulator derivative filter time constant(T).  Typical Value = 0.01. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "td";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (T).  Typical Value = 0.8. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uelin dcterms:description "Property. Model:'https://schema.org/Number'. UEL input (UELin). true = HV gate false = add to error signal. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "uelin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vemin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum exciter voltage output(V).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vemin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 2.7. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -0.9. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEDC4B/schema.json>;
+    rdfs:range xsd:decimal.

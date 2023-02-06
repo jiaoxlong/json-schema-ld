@@ -1,0 +1,12 @@
+type
+refPhotovoltaicDevice
+refPointOfInterest
+dateObservedFrom
+dateObservedTo
+temperature
+dateEnergyMeteringStarted
+nominalPeakPowerGeneration
+activePower
+reactivePower
+current
+inverterStatus

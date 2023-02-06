@@ -1,0 +1,101 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json> dcterms:title "Smart Data models - UnmannedAerialVehicleEvent schema";
+    dcterms:description "The UAVEvent records the incursion of a specific UAV into or near protected airspace or locations. It also records the control measure taken. This entity is primarily associated with UAV command and control and related UAV transport applications.".
+sdm:type dcterms:description "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleEvent";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:UnmannedAerialVehicleEvent)
+].
+sdm:UnmannedAerialVehicleEvent rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "UnmannedAerialVehicleEvent".
+sdm:UnmannedAerialVehicle dcterms:description "Relationship. Reference to the UnmannedAerialVehicle entity to which this event relates.";
+    rdf:type rdf:Property;
+    rdfs:label "UnmannedAerialVehicle";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>.
+sdm:originator dcterms:description "Relationship. Refers to a third party UAV instance or other entity (e.g. listening station) that reported the information in the case the event was not directly originated by the UAV.";
+    rdf:type rdf:Property;
+    rdfs:label "originator";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>.
+sdm:elevation dcterms:description "Property. The elevation of the UAV (relative to ground level at the specified location). Specify value and units of measure.";
+    rdf:type rdf:Property;
+    rdfs:label "elevation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:endAt dcterms:description "Property. Indicates the date/time of when the event ended (if it has ended).";
+    rdf:type rdf:Property;
+    rdfs:label "endAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:startAt dcterms:description "Property. Indicates the date/time of when the event started.";
+    rdf:type rdf:Property;
+    rdfs:label "startAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:eventType dcterms:description "Property. The type of the UAV event, a choice from the list. Enum:'illegalFlight, closeToUnpermittedAirspace, overSpeed, overHeight, illegalWork'";
+    rdf:type rdf:Property;
+    rdfs:label "eventType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>.
+sdm:EventType rdf:type skos:ConceptScheme.
+sdm:eventType rdfs:range [
+  owl:oneOf (sdm:illegalFlight sdm:closeToUnpermittedAirspace sdm:overSpeed sdm:overHeight sdm:illegalWork)
+].
+sdm:illegalFlight rdf:type skos:Concept;
+    skos:inScheme sdm:EventType;
+    rdfs:label "illegalFlight".
+sdm:closeToUnpermittedAirspace rdf:type skos:Concept;
+    skos:inScheme sdm:EventType;
+    rdfs:label "closeToUnpermittedAirspace".
+sdm:overSpeed rdf:type skos:Concept;
+    skos:inScheme sdm:EventType;
+    rdfs:label "overSpeed".
+sdm:overHeight rdf:type skos:Concept;
+    skos:inScheme sdm:EventType;
+    rdfs:label "overHeight".
+sdm:illegalWork rdf:type skos:Concept;
+    skos:inScheme sdm:EventType;
+    rdfs:label "illegalWork".
+sdm:eventResult dcterms:description "Property. The handling result of the event, a choice from ths list, Enum:'logged, notify, alarm, forceLand, forceBack, forceHover'";
+    rdf:type rdf:Property;
+    rdfs:label "eventResult";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>.
+sdm:EventResult rdf:type skos:ConceptScheme.
+sdm:eventResult rdfs:range [
+  owl:oneOf (sdm:alarm sdm:forceBack sdm:forceHover sdm:forceLand sdm:logged sdm:notify)
+].
+sdm:alarm rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "alarm".
+sdm:forceBack rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "forceBack".
+sdm:forceHover rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "forceHover".
+sdm:forceLand rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "forceLand".
+sdm:logged rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "logged".
+sdm:notify rdf:type skos:Concept;
+    skos:inScheme sdm:EventResult;
+    rdfs:label "notify".

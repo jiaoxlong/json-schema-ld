@@ -1,0 +1,283 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json> dcterms:title " - Waste Management / Waste Container";
+    dcterms:description "A waste container".
+sdm:type dcterms:description "Property. NGSI Entity Type: It has to be WasteContainer";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WasteContainer)
+].
+sdm:WasteContainer rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WasteContainer".
+sdm:fillingLevel dcterms:description "Property. Model:'https://schema.org/Number'. Filling level of the container";
+    rdf:type rdf:Property;
+    rdfs:label "fillingLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:category rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:Category rdf:type skos:ConceptScheme.
+sdm:category rdfs:range [
+  owl:oneOf (sdm:fixed sdm:ground sdm:other sdm:portable sdm:underground)
+].
+sdm:fixed rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "fixed".
+sdm:ground rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "ground".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "other".
+sdm:portable rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "portable".
+sdm:underground rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "underground".
+sdm:cargoWeight dcterms:description "Property. Model:'https://schema.org/Number'. Weight of the container load.";
+    rdf:type rdf:Property;
+    rdfs:label "cargoWeight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:temperature dcterms:description "Property. Temperature inside the container. Model:'http://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "temperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:methaneConcentration dcterms:description "Property. Model:'https://schema.org/Number'. Methane (CH4) concentration inside the container.";
+    rdf:type rdf:Property;
+    rdfs:label "methaneConcentration";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:storedWasteKind dcterms:description "Property. Model:'https://schema.org/Text'. Kind/s of waste stored by the container. Enum:'organic, inorganic, glass, oil, plastic, metal, paper, batteries, electronics, hazardous, other'. Or any other value which does not fit within the former. ";
+    rdf:type rdf:Property;
+    rdfs:label "storedWasteKind";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:StoredWasteKind rdf:type skos:ConceptScheme.
+sdm:storedWasteKind rdfs:range [
+  owl:oneOf (sdm:organic sdm:inorganic sdm:glass sdm:oil sdm:plastic sdm:metal sdm:paper sdm:batteries sdm:electronics sdm:hazardous sdm:other)
+].
+sdm:organic rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "organic".
+sdm:inorganic rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "inorganic".
+sdm:glass rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "glass".
+sdm:oil rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "oil".
+sdm:plastic rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "plastic".
+sdm:metal rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "metal".
+sdm:paper rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "paper".
+sdm:batteries rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "batteries".
+sdm:electronics rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "electronics".
+sdm:hazardous rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "hazardous".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteKind;
+    rdfs:label "other".
+sdm:storedWasteOrigin dcterms:description "Property. Model:'https://schema.org/Text'. Origin of the waste stored. Enum:'household, municipal, industrial, construction, hostelry, agriculture, other' ";
+    rdf:type rdf:Property;
+    rdfs:label "storedWasteOrigin";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:StoredWasteOrigin rdf:type skos:ConceptScheme.
+sdm:storedWasteOrigin rdfs:range [
+  owl:oneOf (sdm:household sdm:municipal sdm:industrial sdm:construction sdm:hostelry sdm:agriculture sdm:other)
+].
+sdm:household rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "household".
+sdm:municipal rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "municipal".
+sdm:industrial rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "industrial".
+sdm:construction rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "construction".
+sdm:hostelry rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "hostelry".
+sdm:agriculture rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "agriculture".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:StoredWasteOrigin;
+    rdfs:label "other".
+sdm:storedWasteCode dcterms:description "Property. Model:'https://schema.org/Text' As per the regulation, waste codes which precisely identifies waste origin and kind. Depend on the target regulation. For Europe, check [Europe's List of Waste](http://ec.europa.eu/environment/waste/framework/list.htm).";
+    rdf:type rdf:Property;
+    rdfs:label "storedWasteCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:serialNumber dcterms:description "Property. Model:'https://schema.org/serialNumber'. Serial number of the container.";
+    rdf:type rdf:Property;
+    rdfs:label "serialNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:regulation dcterms:description "Property. Regulation under which the container is operating. Model:'http://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "regulation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:responsible dcterms:description "Property. Responsible for the container, i.e. entity in charge of  actuating (emptying, collecting, etc). Model:'https://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "responsible";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateServiceStarted dcterms:description "Property. Model:'https://schema.org/Date'. Date at which the container started giving service.";
+    rdf:type rdf:Property;
+    rdfs:label "dateServiceStarted";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateLastEmptying dcterms:description "Property. Model:'https://schema.org/DateTime'. Timestamp which represents when the container was emptied last time.";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastEmptying";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:nextActuationDeadline dcterms:description "Property. Model:'https://schema.org/DateTime'. Deadline for next actuation to be performed (emptying, picking up, etc.).";
+    rdf:type rdf:Property;
+    rdfs:label "nextActuationDeadline";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:actuationHours dcterms:description "Property. Model:'openingHours'. Hours suitable for performing actuations over the container.";
+    rdf:type rdf:Property;
+    rdfs:label "actuationHours";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateLastCleaning dcterms:description "Property. When the container was cleaned last time. Model:'https://schema.org/DateTime'. ";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastCleaning";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:nextCleaningDeadline dcterms:description "Property. Model:'https://schema.org/DateTime'. Deadline for next cleaning.";
+    rdf:type rdf:Property;
+    rdfs:label "nextCleaningDeadline";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:isleId dcterms:description "Property. Identifier (or name) of the isle where the container is placed. This attribute should be used when entities of type `WasteContainerIsle` are not being modelled specifically. Otherwise, `refWasteContainerIsle` should be used.";
+    rdf:type rdf:Property;
+    rdfs:label "isleId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:status dcterms:description "Property. Container's status from the point of view of safety. Enum:'ok , lidOpen , dropped , moved , vandalized , burning , unknown'.  -   `ok`. Container is where it must be and stands properly. `lidOpen`. Container's lid has been opened and not closed after a certain amount of time. `dropped`. Container has been dropped for some reason. `moved`. Container has been moved from its regular position and has not come back. `vandalized`. Container has been damaged or destroyed due to vandalism. `burning`. Container is burning and an immediate action has to be taken. `unknown`. The status of the container is not known to the system.";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:ok sdm:lidOpen sdm:dropped sdm:moved sdm:vandalized sdm:burning sdm:unknown)
+].
+sdm:ok rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "ok".
+sdm:lidOpen rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "lidOpen".
+sdm:dropped rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "dropped".
+sdm:moved rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "moved".
+sdm:vandalized rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "vandalized".
+sdm:burning rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "burning".
+sdm:unknown rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "unknown".
+sdm:refWasteContainerModel dcterms:description "Relationship. Container's model. Model:'http://schema.org/URL'";
+    rdf:type rdf:Property;
+    rdfs:label "refWasteContainerModel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:refWasteContainerIsle dcterms:description "Relationship. Isle where the container is placed. Model:'http://schema.org/URL'";
+    rdf:type rdf:Property;
+    rdfs:label "refWasteContainerIsle";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>.
+sdm:binCapacity dcterms:description "Property. Model:'https://schema.org/Number'. Total capacity in terms of the volume of waste the bin can hold.";
+    rdf:type rdf:Property;
+    rdfs:label "binCapacity";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:binColor dcterms:description "Property. Model:'https://schema.org/Text'. Color of the bin. Could be used for indicating the type of waste. The color coding should follow the conventions applicable to the geographical area the bins are located.";
+    rdf:type rdf:Property;
+    rdfs:label "binColor";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:wardId dcterms:description "Property. Model:'https://schema.org/Text. Ward Id of the entity corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:license_plate dcterms:description "Property. Model:'https://schema.org/Text. Gives the License Plate number of the vehicle. SameAs: 'license_plate' field from GTFS Realtime message-VehicleDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-vehicledescriptor)";
+    rdf:type rdf:Property;
+    rdfs:label "license_plate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:RFID dcterms:description "Property. Model:'https://schema.org/Text. Gives the ID of the RFID reader.";
+    rdf:type rdf:Property;
+    rdfs:label "RFID";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:binFullnessThreshold dcterms:description "Property. Model:'https://schema.org/Number'. The fullness threshold level of the bin defined as the level (in terms of percentage) when the bin full alert or notification will be generated.";
+    rdf:type rdf:Property;
+    rdfs:label "binFullnessThreshold";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:binRecommendedLoad dcterms:description "Property. Model:'https://schema.org/Number'. Recommended load (weight) that the waste bin corresponding to this observation can hold.";
+    rdf:type rdf:Property;
+    rdfs:label "binRecommendedLoad";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:binId dcterms:description "Property. Model:'https://schema.org/Text. Id of the waste carrying bin";
+    rdf:type rdf:Property;
+    rdfs:label "binId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:string.
+sdm:binMaxLoad dcterms:description "Property. Model:'https://schema.org/Number'. Maximum load (weight) that the waste bin can hold.";
+    rdf:type rdf:Property;
+    rdfs:label "binMaxLoad";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:binLoggedTime dcterms:description "Property. Model:'https://schema.org/Text'. Time when the bin's level was last logged.";
+    rdf:type rdf:Property;
+    rdfs:label "binLoggedTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.WasteManagement/WasteContainer/schema.json>;
+    rdfs:range xsd:dateTime.

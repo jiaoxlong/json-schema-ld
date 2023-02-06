@@ -1,0 +1,89 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json> dcterms:title " Smart Data Models - ExcAVR1";
+    dcterms:description "Adapted from CIM data models. Italian excitation system corresponding to IEEE (1968) Type 1 Model. It represents exciter dynamo and electromechanical regulator.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcAVR1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcAVR1)
+].
+sdm:ExcAVR1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcAVR1".
+sdm:e1 dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage value 1  (E1).  Typical Value = 4.18. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "e1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:e2 dcterms:description "Property. Model:'https://schema.org/Number'. Field voltage value 2 (E2).  Typical Value = 3.14. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "e2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. AVR gain (K).  Typical Value = 500. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Rate feedback gain (K).  Typical Value = 0.02. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:se1 dcterms:description "Property. Model:'https://schema.org/Number'. Saturation factor at E1 (S(E1)).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "se1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:se2 dcterms:description "Property. Model:'https://schema.org/Number'. Saturation factor at E2 (S(E2)).  Typical Value = 0.03. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "se2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. AVR time constant (T).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. AVR time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Rate feedback time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmn dcterms:description "Property. Model:'https://schema.org/Number'. Maximum AVR output (V).  Typical Value = -6. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmn";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmx dcterms:description "Property. Model:'https://schema.org/Number'. Minimum AVR output (V).  Typical Value = 7. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmx";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR1/schema.json>;
+    rdfs:range xsd:decimal.

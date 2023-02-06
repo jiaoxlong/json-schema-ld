@@ -1,0 +1,54 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json> dcterms:title " Smart Data Models - WindContPType4bIEC";
+    dcterms:description "Adapted from CIM data models. P control model Type 4B.  Reference: IEC Standard 61400-27-1 Section 6.6.5.5.".
+sdm:type dcterms:description "Property. NGSI type. It has to be WindContPType4bIEC";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WindContPType4bIEC)
+].
+sdm:WindContPType4bIEC rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WindContPType4bIEC".
+sdm:WindTurbineType4bIEC dcterms:description "Property. Model:'https://schema.org/Number'. Wind turbine type 4B model with which this wind control P type 4B model is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindTurbineType4bIEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dpmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum wind turbine power ramp rate (). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "dpmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpaero dcterms:description "Property. Model:'https://schema.org/Number'. Time constant in aerodynamic power response (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpaero";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpord dcterms:description "Property. Model:'https://schema.org/Number'. Time constant in power order lag (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpord";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tufilt dcterms:description "Property. Model:'https://schema.org/Number'. Voltage measurement filter time constant (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tufilt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType4bIEC/schema.json>;
+    rdfs:range xsd:decimal.

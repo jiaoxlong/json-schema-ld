@@ -1,0 +1,78 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json> dcterms:title "Smart Data models TrafficViolations-schema";
+    dcterms:description "A Data Model for Traffic Violations registered and E-Challans generated in Cities.".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be TrafficViolation.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:TrafficViolation)
+].
+sdm:TrafficViolation rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "TrafficViolation".
+sdm:amountCollected dcterms:description "Property. Model:'https://schema.org/Number'. Amount collected towards the service corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "amountCollected";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mediaURL dcterms:description "Property. Model:'https://schema.org/URL'. URL providing further information of any image(s) or media of the complaint or place.";
+    rdf:type rdf:Property;
+    rdfs:label "mediaURL";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:string.
+sdm:equipmentId dcterms:description "Property. Model:'https://schema.org/Text'. Unique Id of the equipment corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:string.
+sdm:equipmentType dcterms:description "Property. Model:'https://schema.org/Text'. Type of equipment or the name of the equipment corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:string.
+sdm:titleCode dcterms:description "Property. Model:'https://schema.org/Text'. The code assigned to the title corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "titleCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:string.
+sdm:reportId dcterms:description "Property. Model:'https://schema.org/Text'. Unique Id assigned for the issue or report or feedback or transaction corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "reportId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:string.
+sdm:observationDateTime dcterms:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:paymentStatus dcterms:description "Property. Model:'https://schema.org/Text.  The payment status of the fine or violation or challan corresponding to this observation. Enum:'Paid, Unpaid'.";
+    rdf:type rdf:Property;
+    rdfs:label "paymentStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/TrafficViolations/schema.json>.
+sdm:PaymentStatus rdf:type skos:ConceptScheme.
+sdm:paymentStatus rdfs:range [
+  owl:oneOf (sdm:Paid sdm:Unpaid)
+].
+sdm:Paid rdf:type skos:Concept;
+    skos:inScheme sdm:PaymentStatus;
+    rdfs:label "Paid".
+sdm:Unpaid rdf:type skos:Concept;
+    skos:inScheme sdm:PaymentStatus;
+    rdfs:label "Unpaid".

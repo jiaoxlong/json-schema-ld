@@ -1,0 +1,14 @@
+type
+efdmax
+ka
+kc
+ke
+kf
+ki
+kp
+ta
+te
+tf
+uelin
+vrmax
+vrmin

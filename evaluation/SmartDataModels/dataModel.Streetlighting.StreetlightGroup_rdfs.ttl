@@ -1,0 +1,134 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json> dcterms:title " - Street Lighting / Streetlight Group";
+    dcterms:description "A Street light group".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be StreetlightGroup";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:StreetlightGroup)
+].
+sdm:StreetlightGroup rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "StreetlightGroup".
+sdm:powerState dcterms:description "Property. Streetlight group's power state. Enum:'on, off, low, bootingUp'. Model:'htts://schema.org/Text'. Enum:'bootingUp, low, off, on'";
+    rdf:type rdf:Property;
+    rdfs:label "powerState";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:PowerState rdf:type skos:ConceptScheme.
+sdm:powerState rdfs:range [
+  owl:oneOf (sdm:bootingUp sdm:low sdm:off sdm:on)
+].
+sdm:bootingUp rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "bootingUp".
+sdm:low rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "low".
+sdm:off rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "off".
+sdm:on rdf:type skos:Concept;
+    skos:inScheme sdm:PowerState;
+    rdfs:label "on".
+sdm:refStreetlightControlCabinet dcterms:description "Relationship. Streetlight group's control cabinet";
+    rdf:type rdf:Property;
+    rdfs:label "refStreetlightControlCabinet";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:dateLastSwitchingOn dcterms:description "Property. Timestamp of the last switching on. Model:'http://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastSwitchingOn";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateLastSwitchingOff dcterms:description "Property. Timestamp of the last switching off. Model:'http://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastSwitchingOff";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:switchingOnHours dcterms:description "Property. Switching on hours. It is used normally to set special schedules for certain dates.";
+    rdf:type rdf:Property;
+    rdfs:label "switchingOnHours";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range sdm:SwitchingOnHour.
+sdm:SwitchingOnHour rdf:type rdfs:Class;
+    rdfs:label "SwitchingOnHour".
+sdm:from rdf:type rdf:Property;
+    rdfs:label "from";
+    rdfs:domain sdm:SwitchingOnHour;
+    rdfs:range xsd:string.
+sdm:to dcterms:description "Property. Ending date (it can be yearless)";
+    rdf:type rdf:Property;
+    rdfs:label "to";
+    rdfs:domain sdm:SwitchingOnHour;
+    rdfs:range xsd:string.
+sdm:hours dcterms:description "Property. Timestamp of the last change of lamp made";
+    rdf:type rdf:Property;
+    rdfs:label "hours";
+    rdfs:domain sdm:SwitchingOnHour;
+    rdfs:range xsd:string.
+sdm:description dcterms:description "Property. Timestamp of the last change of lamp made";
+    rdf:type rdf:Property;
+    rdfs:label "description";
+    rdfs:domain sdm:SwitchingOnHour;
+    rdfs:range xsd:string.
+sdm:switchingMode rdf:type rdf:Property;
+    rdfs:label "switchingMode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.
+sdm:SwitchingMode rdf:type skos:ConceptScheme.
+sdm:switchingMode rdfs:range [
+  owl:oneOf (sdm:night-ON sdm:night-OFF sdm:night-LOW sdm:always-ON sdm:day-ON sdm:day-OFF sdm:day-LOW)
+].
+sdm:night-ON rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "night-ON".
+sdm:night-OFF rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "night-OFF".
+sdm:night-LOW rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "night-LOW".
+sdm:always-ON rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "always-ON".
+sdm:day-ON rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "day-ON".
+sdm:day-OFF rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "day-OFF".
+sdm:day-LOW rdf:type skos:Concept;
+    skos:inScheme sdm:SwitchingMode;
+    rdfs:label "day-LOW".
+sdm:illuminanceLevel dcterms:description "Property. Relative illuminance level setting for the group. Allowed values: A number between 0 and 1. Model:'http://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "illuminanceLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:activeProgramId dcterms:description "Property. Identifier of the active program for this streetlight group. Model:'https://schema.org/Text'";
+    rdf:type rdf:Property;
+    rdfs:label "activeProgramId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:string.
+sdm:annotations rdf:type rdf:Property;
+    rdfs:label "annotations";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>;
+    rdfs:range xsd:string.
+sdm:refStreetlight rdf:type rdf:Property;
+    rdfs:label "refStreetlight";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Streetlighting/Streetlight/schema.json>.

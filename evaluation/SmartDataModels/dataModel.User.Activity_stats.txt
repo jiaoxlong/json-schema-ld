@@ -1,0 +1,7 @@
+dateActivityStarted
+dateActivityEnded
+refObject
+activityType
+refTarget
+refAgent
+type

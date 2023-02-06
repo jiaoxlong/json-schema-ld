@@ -1,0 +1,7 @@
+type
+solarPowerGenerated
+eolicPowerGenerated
+hydroPowerGenerated
+biomassPowerGenerated
+geothermalPowerGenerated
+refGreenEnergyGenerator

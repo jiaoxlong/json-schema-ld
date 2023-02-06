@@ -1,0 +1,548 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json> dcterms:title "Smart Data Models/ On Street Parking";
+    dcterms:description "A site, open space zone, on street, (metered or not) with direct access from a road, intended to park vehicles.".
+sdm:type dcterms:description "Property. Entity type. It must be equal to OnStreetParking";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:OnStreetParking)
+].
+sdm:OnStreetParking rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "OnStreetParking".
+sdm:category rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:Category rdf:type skos:ConceptScheme.
+sdm:category rdfs:range [
+  owl:oneOf (sdm:barrierAccess sdm:blueZone sdm:feeCharged sdm:forDisabled sdm:forElectricalCharging sdm:forLoadUnload sdm:forResidents sdm:free sdm:greenZone sdm:mediumTerm sdm:onlyWithPermit sdm:public sdm:shortTerm sdm:taxiStop sdm:underground)
+].
+sdm:barrierAccess rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "barrierAccess".
+sdm:blueZone rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "blueZone".
+sdm:feeCharged rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "feeCharged".
+sdm:forDisabled rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "forDisabled".
+sdm:forElectricalCharging rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "forElectricalCharging".
+sdm:forLoadUnload rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "forLoadUnload".
+sdm:forResidents rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "forResidents".
+sdm:free rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "free".
+sdm:greenZone rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "greenZone".
+sdm:mediumTerm rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "mediumTerm".
+sdm:onlyWithPermit rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "onlyWithPermit".
+sdm:public rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "public".
+sdm:shortTerm rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "shortTerm".
+sdm:taxiStop rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "taxiStop".
+sdm:underground rdf:type skos:Concept;
+    skos:inScheme sdm:Category;
+    rdfs:label "underground".
+sdm:allowedVehicleType rdf:type rdf:Property;
+    rdfs:label "allowedVehicleType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:AllowedVehicleType rdf:type skos:ConceptScheme.
+sdm:allowedVehicleType rdfs:range [
+  owl:oneOf (sdm:agriculturalVehicle sdm:anyVehicle sdm:articulatedVehicle sdm:bicycle sdm:bus sdm:car sdm:caravan sdm:carOrLightVehicle sdm:carWithCaravan sdm:carWithTrailer sdm:constructionOrMaintenanceVehicle sdm:fourWheelDrive sdm:highSidedVehicle sdm:lorry sdm:moped sdm:motorcycle sdm:motorcycleWithSideCar sdm:motorscooter sdm:tanker sdm:threeWheeledVehicle sdm:trailer sdm:tram sdm:twoWheeledVehicle sdm:van sdm:vehicleWithCatalyticConverter sdm:vehicleWithoutCatalyticConverter sdm:vehicleWithCaravan sdm:vehicleWithTrailer sdm:withEvenNumberedRegistrationPlates sdm:withOddNumberedRegistrationPlates sdm:other)
+].
+sdm:agriculturalVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "agriculturalVehicle".
+sdm:anyVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "anyVehicle".
+sdm:articulatedVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "articulatedVehicle".
+sdm:bicycle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "bicycle".
+sdm:bus rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "bus".
+sdm:car rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "car".
+sdm:caravan rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "caravan".
+sdm:carOrLightVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "carOrLightVehicle".
+sdm:carWithCaravan rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "carWithCaravan".
+sdm:carWithTrailer rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "carWithTrailer".
+sdm:constructionOrMaintenanceVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "constructionOrMaintenanceVehicle".
+sdm:fourWheelDrive rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "fourWheelDrive".
+sdm:highSidedVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "highSidedVehicle".
+sdm:lorry rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "lorry".
+sdm:moped rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "moped".
+sdm:motorcycle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "motorcycle".
+sdm:motorcycleWithSideCar rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "motorcycleWithSideCar".
+sdm:motorscooter rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "motorscooter".
+sdm:tanker rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "tanker".
+sdm:threeWheeledVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "threeWheeledVehicle".
+sdm:trailer rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "trailer".
+sdm:tram rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "tram".
+sdm:twoWheeledVehicle rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "twoWheeledVehicle".
+sdm:van rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "van".
+sdm:vehicleWithCatalyticConverter rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "vehicleWithCatalyticConverter".
+sdm:vehicleWithoutCatalyticConverter rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "vehicleWithoutCatalyticConverter".
+sdm:vehicleWithCaravan rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "vehicleWithCaravan".
+sdm:vehicleWithTrailer rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "vehicleWithTrailer".
+sdm:withEvenNumberedRegistrationPlates rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "withEvenNumberedRegistrationPlates".
+sdm:withOddNumberedRegistrationPlates rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "withOddNumberedRegistrationPlates".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:AllowedVehicleType;
+    rdfs:label "other".
+sdm:requiredPermit rdf:type rdf:Property;
+    rdfs:label "requiredPermit";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:string.
+sdm:permitActiveHours dcterms:description "Property. This attribute allows to capture situations when a permit is only needed at specific hours or days of week. It is a structured value which must contain a subproperty per each required permit, indicating when the permit is active. If nothing specified for a permit it will mean that a permit is always required. An empty JSON Object means always active. The syntax must be conformant with schema.org";
+    rdf:type rdf:Property;
+    rdfs:label "permitActiveHours";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range sdm:PermitActiveHour.
+sdm:PermitActiveHour rdf:type rdfs:Class;
+    rdfs:label "PermitActiveHour".
+sdm:maximumParkingDuration dcterms:description "Property. Maximum allowed stay at site encoded as a ISO8601 duration. An empty value indicates an indefinite duration.";
+    rdf:type rdf:Property;
+    rdfs:label "maximumParkingDuration";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:occupiedSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of total parking spots occupied in the smart parking site corresponding to this observation. This must a positive number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "occupiedSpotNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:occupancyModified dcterms:description "Property. Model:'https://schema.org/DateTime'. Date last time the occupancy of the parking has being modified";
+    rdf:type rdf:Property;
+    rdfs:label "occupancyModified";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:layout rdf:type rdf:Property;
+    rdfs:label "layout";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:string.
+sdm:chargeType rdf:type rdf:Property;
+    rdfs:label "chargeType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:ChargeType rdf:type skos:ConceptScheme.
+sdm:chargeType rdfs:range [
+  owl:oneOf (sdm:additionalIntervalPrice sdm:annualPayment sdm:firstIntervalPrice sdm:flat sdm:free sdm:minimum sdm:maximum sdm:monthlyPayment sdm:seasonTicket sdm:temporaryFee sdm:temporaryPrice sdm:unknown sdm:other)
+].
+sdm:additionalIntervalPrice rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "additionalIntervalPrice".
+sdm:annualPayment rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "annualPayment".
+sdm:firstIntervalPrice rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "firstIntervalPrice".
+sdm:flat rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "flat".
+sdm:free rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "free".
+sdm:minimum rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "minimum".
+sdm:maximum rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "maximum".
+sdm:monthlyPayment rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "monthlyPayment".
+sdm:seasonTicket rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "seasonTicket".
+sdm:temporaryFee rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "temporaryFee".
+sdm:temporaryPrice rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "temporaryPrice".
+sdm:unknown rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "unknown".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:ChargeType;
+    rdfs:label "other".
+sdm:acceptedPaymentMethod dcterms:description "Property. Type of charge(s) performed by the parking site. Enum:'ByBankTransferInAdvance, ByInvoice, Cash, CheckInAdvance, COD, DirectDebit, GoogleCheckout, PayPal, PaySwarm'";
+    rdf:type rdf:Property;
+    rdfs:label "acceptedPaymentMethod";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:AcceptedPaymentMethod rdf:type skos:ConceptScheme.
+sdm:acceptedPaymentMethod rdfs:range [
+  owl:oneOf (sdm:ByBankTransferInAdvance sdm:ByInvoice sdm:Cash sdm:CheckInAdvance sdm:COD sdm:DirectDebit sdm:GoogleCheckout sdm:PayPal sdm:PaySwarm)
+].
+sdm:ByBankTransferInAdvance rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "ByBankTransferInAdvance".
+sdm:ByInvoice rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "ByInvoice".
+sdm:Cash rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "Cash".
+sdm:CheckInAdvance rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "CheckInAdvance".
+sdm:COD rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "COD".
+sdm:DirectDebit rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "DirectDebit".
+sdm:GoogleCheckout rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "GoogleCheckout".
+sdm:PayPal rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "PayPal".
+sdm:PaySwarm rdf:type skos:Concept;
+    skos:inScheme sdm:AcceptedPaymentMethod;
+    rdfs:label "PaySwarm".
+sdm:usageScenario dcterms:description "Property. Type of charge(s) performed by the parking site. Enum:'carSharing, dropOff, kissAndRide, liftShare, loadingBay, overnightParking, parkAndRide, parkAndCycle, parkAndWalk, vehicleLift,'";
+    rdf:type rdf:Property;
+    rdfs:label "usageScenario";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:UsageScenario rdf:type skos:ConceptScheme.
+sdm:usageScenario rdfs:range [
+  owl:oneOf (sdm:carSharing sdm:dropOff sdm:kissAndRide sdm:liftShare sdm:loadingBay sdm:overnightParking sdm:parkAndRide sdm:parkAndCycle sdm:parkAndWalk sdm:vehicleLift sdm:other)
+].
+sdm:carSharing rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "carSharing".
+sdm:dropOff rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "dropOff".
+sdm:kissAndRide rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "kissAndRide".
+sdm:liftShare rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "liftShare".
+sdm:loadingBay rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "loadingBay".
+sdm:overnightParking rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "overnightParking".
+sdm:parkAndRide rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "parkAndRide".
+sdm:parkAndCycle rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "parkAndCycle".
+sdm:parkAndWalk rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "parkAndWalk".
+sdm:vehicleLift rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "vehicleLift".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:UsageScenario;
+    rdfs:label "other".
+sdm:totalSpotNumber dcterms:description "Property. The total number of spots offered by this parking site. This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines. Model:'http://schema.org/Number'. Normative references: DATEX 2 version 2.3 attribute _parkingNumberOfSpaces_ of the _ParkingRecord_ class.";
+    rdf:type rdf:Property;
+    rdfs:label "totalSpotNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:integer.
+sdm:availableSpotNumber dcterms:description "Property. The number of spots available globally, including reserved spaces, such as those for disabled people, long term parkers and so on. This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines. Model:'http://schema.org/Number'";
+    rdf:type rdf:Property;
+    rdfs:label "availableSpotNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:integer.
+sdm:extraSpotNumber dcterms:description "Property. The number of extra spots available, i.e. free. Extra    spots are those reserved for special purposes and usually require a permit. Permit details will be found at parking group level (entity of type `ParkingGroup`). This value must aggregate free spots from all groups devoted to special parking conditions. Model:'http://schema.org/Number'. Allowed values: A positive integer number, including 0. `extraSpotNumber` plus `availableSpotNumber` must be lower than or equal to `totalSpotNumber";
+    rdf:type rdf:Property;
+    rdfs:label "extraSpotNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:integer.
+sdm:occupancyDetectionType rdf:type rdf:Property;
+    rdfs:label "occupancyDetectionType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:OccupancyDetectionType rdf:type skos:ConceptScheme.
+sdm:occupancyDetectionType rdfs:range [
+  owl:oneOf (sdm:balancing sdm:manual sdm:modelBased sdm:none sdm:singleSpaceDetection)
+].
+sdm:balancing rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyDetectionType;
+    rdfs:label "balancing".
+sdm:manual rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyDetectionType;
+    rdfs:label "manual".
+sdm:modelBased rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyDetectionType;
+    rdfs:label "modelBased".
+sdm:none rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyDetectionType;
+    rdfs:label "none".
+sdm:singleSpaceDetection rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyDetectionType;
+    rdfs:label "singleSpaceDetection".
+sdm:parkingMode dcterms:description "Property. Parking mode(s). Enum:'echelonParking, parallelParking, perpendicularParking'";
+    rdf:type rdf:Property;
+    rdfs:label "parkingMode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>.
+sdm:ParkingMode rdf:type skos:ConceptScheme.
+sdm:parkingMode rdfs:range [
+  owl:oneOf (sdm:echelonParking sdm:parallelParking sdm:perpendicularParking)
+].
+sdm:echelonParking rdf:type skos:Concept;
+    skos:inScheme sdm:ParkingMode;
+    rdfs:label "echelonParking".
+sdm:parallelParking rdf:type skos:Concept;
+    skos:inScheme sdm:ParkingMode;
+    rdfs:label "parallelParking".
+sdm:perpendicularParking rdf:type skos:Concept;
+    skos:inScheme sdm:ParkingMode;
+    rdfs:label "perpendicularParking".
+sdm:areBordersMarked dcterms:description "Property. Denotes whether parking spots are delimited (with blank lines or similar) or not. Model:'https://schema.org/Boolean'";
+    rdf:type rdf:Property;
+    rdfs:label "areBordersMarked";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:averageSpotWidth dcterms:description "Property. The average width of parking spots. Model:'https://schema.org/width'";
+    rdf:type rdf:Property;
+    rdfs:label "averageSpotWidth";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:averageSpotLength dcterms:description "Property. The average length of parking spots. Model:'https://schema.org/length'";
+    rdf:type rdf:Property;
+    rdfs:label "averageSpotLength";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:refParkingSpot rdf:type rdf:Property;
+    rdfs:label "refParkingSpot";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:refParkingGroup rdf:type rdf:Property;
+    rdfs:label "refParkingGroup";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:string.
+sdm:outOfServiceSlotNumber dcterms:description "Property. Model:'https://schema.org/Number'. The number of bike racks/bike-docking slots or parking slots that are out of order and cannot be used to hire or park a bike in the bike docking station or parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "outOfServiceSlotNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:parkingSiteId dcterms:description "Property. Model:'https://schema.org/Text'. The unique ID of the parking site or parking lot corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "parkingSiteId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:string.
+sdm:observationDateTime dcterms:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:fourWheelerSlots dcterms:description "Property. Model:'https://schema.org/Text. Four wheeler parking spot availability status in parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "fourWheelerSlots";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range sdm:FourWheelerSlot.
+sdm:FourWheelerSlot rdf:type rdfs:Class;
+    rdfs:label "FourWheelerSlot".
+sdm:availableSlotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "availableSlotNumber";
+    rdfs:domain sdm:FourWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:totalSlotNumber dcterms:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "totalSlotNumber";
+    rdfs:domain sdm:FourWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:occupiedSlotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "occupiedSlotNumber";
+    rdfs:domain sdm:FourWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:unclassifiedSlots dcterms:description "Property. Model:'https://schema.org/Text. Unclassified vehicles or other vehicles parking spot availability status in parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "unclassifiedSlots";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range sdm:UnclassifiedSlot.
+sdm:UnclassifiedSlot rdf:type rdfs:Class;
+    rdfs:label "UnclassifiedSlot".
+sdm:availableSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "availableSpotNumber";
+    rdfs:domain sdm:UnclassifiedSlot;
+    rdfs:range xsd:decimal.
+sdm:totalSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "totalSpotNumber";
+    rdfs:domain sdm:UnclassifiedSlot;
+    rdfs:range xsd:decimal.
+sdm:occupiedSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "occupiedSpotNumber";
+    rdfs:domain sdm:UnclassifiedSlot;
+    rdfs:range xsd:decimal.
+sdm:twoWheelerSlots dcterms:description "Property. Model:'https://schema.org/Text. Two wheeler parking spot availability status in parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "twoWheelerSlots";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range sdm:TwoWheelerSlot.
+sdm:TwoWheelerSlot rdf:type rdfs:Class;
+    rdfs:label "TwoWheelerSlot".
+sdm:availableSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "availableSpotNumber";
+    rdfs:domain sdm:TwoWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:totalSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "totalSpotNumber";
+    rdfs:domain sdm:TwoWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:occupiedSpotNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+    rdf:type rdf:Property;
+    rdfs:label "occupiedSpotNumber";
+    rdfs:domain sdm:TwoWheelerSlot;
+    rdfs:range xsd:decimal.
+sdm:municipalityInfo dcterms:description "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "municipalityInfo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Parking/OnStreetParking/schema.json>;
+    rdfs:range sdm:MunicipalityInfo.
+sdm:MunicipalityInfo rdf:type rdfs:Class;
+    rdfs:label "MunicipalityInfo".
+sdm:district dcterms:description "Property. Model:'https://schema.org/Text'. District name corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "district";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:ulbName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the Urban Local Body corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "ulbName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:cityId dcterms:description "Property. Model:'https://schema.org/Text'. City ID corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "cityId";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:wardId dcterms:description "Property. Model:'https://schema.org/Text'. Ward ID corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardId";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:stateName dcterms:description "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "stateName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:cityName dcterms:description "Property. Model:'https://schema.org/Text'. City name corresponding to this observation";
+    rdf:type rdf:Property;
+    rdfs:label "cityName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:zoneName dcterms:description "Property. Model:'https://schema.org/Text'. Zone name corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "zoneName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:zoneId dcterms:description "Property. Model:'https://schema.org/Text'. Zone ID corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "zoneId";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:wardName dcterms:description "Property. Model:'https://schema.org/Text'. Ward name corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardName";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:string.
+sdm:wardNum dcterms:description "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "wardNum";
+    rdfs:domain sdm:MunicipalityInfo;
+    rdfs:range xsd:decimal.

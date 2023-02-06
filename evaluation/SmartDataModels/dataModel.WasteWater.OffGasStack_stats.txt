@@ -1,0 +1,7 @@
+type
+n2o
+co2
+ch4
+o2
+startsAt
+endsAt

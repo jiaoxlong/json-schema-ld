@@ -1,0 +1,12 @@
+type
+efdmax
+efdmin
+k
+switch
+t1
+t2
+t3
+t4
+vrmax
+vrmin
+xe

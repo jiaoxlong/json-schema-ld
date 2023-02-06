@@ -1,0 +1,8 @@
+type
+registration
+speed
+verticalSpeed
+isOnGround
+heading
+dateIssued
+belongsToAircraftModel

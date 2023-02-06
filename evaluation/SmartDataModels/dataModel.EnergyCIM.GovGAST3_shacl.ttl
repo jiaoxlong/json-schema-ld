@@ -1,0 +1,126 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovGAST3";
+  sh:name "type";
+  sh:in (sdm:GovGAST3)
+], [
+  sh:path sdm:bca;
+  sh:description "Property. Model:'https://schema.org/Number'. Acceleration limit set-point (Bca).  Unit = 1/s.  Typical Value = 0.01. Default: 0.0";
+  sh:name "bca";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bp;
+  sh:description "Property. Model:'https://schema.org/Number'. Droop (bp).  Typical Value = 0.05. Default: 0.0";
+  sh:name "bp";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dtc;
+  sh:description "Property. Model:'https://schema.org/Number'. Exhaust temperature variation due to fuel flow increasing from 0 to 1 PU (deltaTc).  Typical Value = 390. Default: 0.0";
+  sh:name "dtc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum fuel flow (Ka).  Typical Value = 0.23. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kac;
+  sh:description "Property. Model:'https://schema.org/Number'. Fuel system feedback (K).  Typical Value = 0. Default: 0.0";
+  sh:name "kac";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kca;
+  sh:description "Property. Model:'https://schema.org/Number'. Acceleration control integral gain (Kca). Unit = 1/s.  Typical Value = 100. Default: 0.0";
+  sh:name "kca";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ksi;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain of radiation shield (Ksi).  Typical Value = 0.8. Default: 0.0";
+  sh:name "ksi";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ky;
+  sh:description "Property. Model:'https://schema.org/Number'. Coefficient of transfer function of fuel valve positioner (Ky).  Typical Value = 1. Default: 0.0";
+  sh:name "ky";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mnef;
+  sh:description "Property. Model:'https://schema.org/Number'. Fuel flow maximum negative error value (MN).  Typical Value = -0.05. Default: 0.0";
+  sh:name "mnef";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mxef;
+  sh:description "Property. Model:'https://schema.org/Number'. Fuel flow maximum positive error value (MX).  Typical Value = 0.05. Default: 0.0";
+  sh:name "mxef";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rcmn;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum fuel flow (RCMN).  Typical Value = -0.1. Default: 0.0";
+  sh:name "rcmn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rcmx;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum fuel flow (RCMX).  Typical Value = 1. Default: 0.0";
+  sh:name "rcmx";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tac;
+  sh:description "Property. Model:'https://schema.org/Number'. Fuel control time constant (Tac).  Typical Value = 0.1. Default: 0";
+  sh:name "tac";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Compressor discharge volume time constant (Tc).  Typical Value = 0.2. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:td;
+  sh:description "Property. Model:'https://schema.org/Number'. Temperature controller derivative gain (Td).  Typical Value = 3.3. Default: 0";
+  sh:name "td";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tfen;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine rated exhaust temperature correspondent to Pm=1 PU (Tfen).  Typical Value = 540. Default: 0.0";
+  sh:name "tfen";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tg;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of speed governor (Tg).  Typical Value = 0.05. Default: 0";
+  sh:name "tg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tsi;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of radiation shield (Tsi).  Typical Value = 15. Default: 0";
+  sh:name "tsi";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tt;
+  sh:description "Property. Model:'https://schema.org/Number'. Temperature controller integration rate (Tt).  Typical Value = 250. Default: 0.0";
+  sh:name "tt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ttc;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of thermocouple (Ttc).  Typical Value = 2.5. Default: 0";
+  sh:name "ttc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ty;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of fuel valve positioner (Ty).  Typical Value = 0.2. Default: 0";
+  sh:name "ty";
+  sh:datatype xsd:decimal
+].

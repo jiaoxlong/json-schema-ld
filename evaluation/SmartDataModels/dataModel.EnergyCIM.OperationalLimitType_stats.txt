@@ -1,0 +1,5 @@
+type
+OperationalLimit
+acceptableDuration
+direction
+limitType

@@ -1,0 +1,8 @@
+interval
+rt
+n
+if
+range
+step
+precision
+type

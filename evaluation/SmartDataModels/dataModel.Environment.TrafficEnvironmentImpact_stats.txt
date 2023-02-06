@@ -1,0 +1,8 @@
+type
+co2
+dateObservedFrom
+dateObservedTo
+traffic
+Traffic
+vehicleClass
+refTrafficFlowObserved

@@ -1,0 +1,2 @@
+type
+WindContPType4aIEC

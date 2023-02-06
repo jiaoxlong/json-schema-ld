@@ -1,0 +1,91 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/CsConverter/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be CsConverter";
+  sh:name "type";
+  sh:in (sdm:CsConverter)
+], [
+  sh:path sdm:alpha;
+  sh:description "Property. Model:'https://schema.org/Number'. Firing angle, typical value between 10 and 18 degrees for a rectifier. CSC state variable, result from power flow. Default: 0.0";
+  sh:name "alpha";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:gamma;
+  sh:description "Property. Model:'https://schema.org/Number'. Extinction angle. CSC state variable, result from power flow. Default: 0.0";
+  sh:name "gamma";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxAlpha;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum firing angle. CSC configuration data used in power flow. Default: 0.0";
+  sh:name "maxAlpha";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxGamma;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum extinction angle. CSC configuration data used in power flow. Default: 0.0";
+  sh:name "maxGamma";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxIdc;
+  sh:description "Property. Model:'https://schema.org/Number'. The maximum direct current (Id) on the DC side at which the converter should operate. Converter configuration data use in power flow. Default: 0.0";
+  sh:name "maxIdc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minAlpha;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum firing angle. CSC configuration data used in power flow. Default: 0.0";
+  sh:name "minAlpha";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minGamma;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum extinction angle. CSC configuration data used in power flow. Default: 0.0";
+  sh:name "minGamma";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minIdc;
+  sh:description "Property. Model:'https://schema.org/Number'. The minimum direct current (Id) on the DC side at which the converter should operate. CSC configuration data used in power flow. Default: 0.0";
+  sh:name "minIdc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingMode;
+  sh:description "Property. Model:'https://schema.org/Number'. Indicates whether the DC pole is operating as an inverter or as a rectifier. CSC control variable used in power flow. Default: None";
+  sh:name "operatingMode";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pPccControl;
+  sh:description "Property. Model:'https://schema.org/Number'.  Default: None";
+  sh:name "pPccControl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ratedIdc;
+  sh:description "Property. Model:'https://schema.org/Number'. Rated converter DC current, also called IdN. Converter configuration data used in power flow. Default: 0.0";
+  sh:name "ratedIdc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:targetAlpha;
+  sh:description "Property. Model:'https://schema.org/Number'. Target firing angle. CSC control variable used in power flow. Default: 0.0";
+  sh:name "targetAlpha";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:targetGamma;
+  sh:description "Property. Model:'https://schema.org/Number'. Target extinction angle. CSC  control variable used in power flow. Default: 0.0";
+  sh:name "targetGamma";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:targetIdc;
+  sh:description "Property. Model:'https://schema.org/Number'. DC current target value. CSC control variable used in power flow. Default: 0.0";
+  sh:name "targetIdc";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,9 @@
+last_updated
+ttl
+version
+data
+Datum
+feeds
+Feed
+name
+url

@@ -1,0 +1,61 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteam0/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovSteam0";
+  sh:name "type";
+  sh:in (sdm:GovSteam0)
+], [
+  sh:path sdm:dt;
+  sh:description "Property. Model:'https://schema.org/Number'. Turbine damping coefficient (Dt).  Unit = delta P / delta speed. Typical Value = 0. Default: 0.0";
+  sh:name "dt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase)  (>0).  Unit = MW. Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r;
+  sh:description "Property. Model:'https://schema.org/Number'. Permanent droop (R).  Typical Value = 0.05. Default: 0.0";
+  sh:name "r";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. Steam bowl time constant (T1).  Typical Value = 0.5. Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t2;
+  sh:description "Property. Model:'https://schema.org/Number'. Numerator time constant of T2/T3 block (T2).  Typical Value = 3. Default: 0";
+  sh:name "t2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3;
+  sh:description "Property. Model:'https://schema.org/Number'. Reheater time constant (T3).  Typical Value = 10. Default: 0";
+  sh:name "t3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve position, PU of mwcap (Vmax).  Typical Value = 1. Default: 0.0";
+  sh:name "vmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum valve position, PU of mwcap (Vmin).  Typical Value = 0. Default: 0.0";
+  sh:name "vmin";
+  sh:datatype xsd:decimal
+].

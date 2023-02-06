@@ -1,0 +1,15 @@
+type
+at
+dturb
+gmax
+gmin
+hdam
+mwbase
+qnl
+rperm
+rtemp
+tf
+tg
+tr
+tw
+velm

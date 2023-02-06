@@ -1,0 +1,5 @@
+rt
+autoWhiteBalance
+n
+if
+type

@@ -1,0 +1,14 @@
+type
+EnergySchedulingType
+WindTurbineType3or4Dynamics
+activePower
+nominalVoltage
+r
+r0
+reactivePower
+rn
+voltageAngle
+voltageMagnitude
+x
+x0
+xn

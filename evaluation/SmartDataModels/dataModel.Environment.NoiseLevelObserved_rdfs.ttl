@@ -1,0 +1,108 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json> dcterms:title " Smart Data Models - Noise Level observed schema";
+    dcterms:description "An observation of those acoustic parameters that estimate noise pressure levels at a certain place and time. ".
+sdm:type dcterms:description "Property. NGSI Entity type";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:NoiseLevelObserved)
+].
+sdm:NoiseLevelObserved rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "NoiseLevelObserved".
+sdm:dateObserved dcterms:description "Property. The date and time of this observation represented by an ISO8601 interval.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:string.
+sdm:dateObservedFrom dcterms:description "Property. Model:'https://schema.org/DateTime'. Observation period start date and time.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedFrom";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateObservedTo dcterms:description "Property. Model:'https://schema.org/Text'. Observation period end date and time. See dateObserved.";
+    rdf:type rdf:Property;
+    rdfs:label "dateObservedTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:sonometerClass dcterms:description "Property. Model:'https://schema.org/Text'. Class of sonometer (0, 1, 2) according to ANSI used for taking this observation";
+    rdf:type rdf:Property;
+    rdfs:label "sonometerClass";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>.
+sdm:SonometerClass rdf:type skos:ConceptScheme.
+sdm:sonometerClass rdfs:range [
+  owl:oneOf (sdm:0 sdm:1 sdm:2)
+].
+sdm:0 rdf:type skos:Concept;
+    skos:inScheme sdm:SonometerClass;
+    rdfs:label "0".
+sdm:1 rdf:type skos:Concept;
+    skos:inScheme sdm:SonometerClass;
+    rdfs:label "1".
+sdm:2 rdf:type skos:Concept;
+    skos:inScheme sdm:SonometerClass;
+    rdfs:label "2".
+sdm:refDevice dcterms:description "Relationship. A reference to the device which captured this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>.
+sdm:refPointOfInterest dcterms:description "Relationship. A reference to a point of interest associated to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refPointOfInterest";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>.
+sdm:refWeatherObserved dcterms:description "Relationship. Reference to the associated weather conditions.";
+    rdf:type rdf:Property;
+    rdfs:label "refWeatherObserved";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>.
+sdm:LAS dcterms:description "Property. The frequency weighted sound level (A-weighting) for a slow sound, one second mor more up and down.";
+    rdf:type rdf:Property;
+    rdfs:label "LAS";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAeq dcterms:description "Property. The frequency weighted Leq sound level (A-weighting).";
+    rdf:type rdf:Property;
+    rdfs:label "LAeq";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAeq_d dcterms:description "Property. Acoustic Level frequency weigthed (A-weghting) equivalent for  a day";
+    rdf:type rdf:Property;
+    rdfs:label "LAeq_d";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LAmax dcterms:description "Property. Acoustic level frequency weigthed (A-weghting) maximum sound level";
+    rdf:type rdf:Property;
+    rdfs:label "LAmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:obstacles dcterms:description "Property. Type of potential obstacles between the sensor and the noise source.";
+    rdf:type rdf:Property;
+    rdfs:label "obstacles";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:string.
+sdm:heightAverage dcterms:description "Property. Type of potential obstacles between the sensor and the noise source. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "heightAverage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:string.
+sdm:distanceAverage dcterms:description "Property. Average distance between sensor and potential noise sources. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "distanceAverage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Environment/NoiseLevelObserved/schema.json>;
+    rdfs:range xsd:string.

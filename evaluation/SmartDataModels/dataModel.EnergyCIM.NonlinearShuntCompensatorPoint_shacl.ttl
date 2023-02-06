@@ -1,0 +1,51 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/NonlinearShuntCompensatorPoint/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be NonlinearShuntCompensatorPoint";
+  sh:name "type";
+  sh:in (sdm:NonlinearShuntCompensatorPoint)
+], [
+  sh:path sdm:NonlinearShuntCompensator;
+  sh:description "Property. Model:'https://schema.org/Number'. Non-linear shunt compensator owning this point. Default: None";
+  sh:name "NonlinearShuntCompensator";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:b;
+  sh:description "Property. Model:'https://schema.org/Number'. Positive sequence shunt (charging) susceptance per section Default: 0.0";
+  sh:name "b";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:b0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence shunt (charging) susceptance per section Default: 0.0";
+  sh:name "b0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:g;
+  sh:description "Property. Model:'https://schema.org/Number'. Positive sequence shunt (charging) conductance per section Default: 0.0";
+  sh:name "g";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:g0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence shunt (charging) conductance per section Default: 0.0";
+  sh:name "g0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:sectionNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. The number of the section. Default: 0";
+  sh:name "sectionNumber";
+  sh:datatype xsd:decimal
+].

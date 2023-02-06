@@ -1,0 +1,229 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json> dcterms:title "Smart Dta Models - FareCollectionSystem";
+    dcterms:description "A public transit fare collection system Data Model".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be FareCollectionSystem";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:FareCollectionSystem)
+].
+sdm:FareCollectionSystem rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "FareCollectionSystem".
+sdm:destinationStopName dcterms:description "Property. Model:'https://schema.org/Text'. The name of the destination bus stop corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "destinationStopName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:occupancyLevel dcterms:description "Property. Model:'https://schema.org/Text'. Occupancy level in the public transit bus corresponding to this observation. 'Red' indicates the congestion level in the bus is HIGH, 'Yellow' indicates the congestion level in the bus is MODERATE and 'Green' indicates the congestion level in the bus is LOW.";
+    rdf:type rdf:Property;
+    rdfs:label "occupancyLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>.
+sdm:OccupancyLevel rdf:type skos:ConceptScheme.
+sdm:occupancyLevel rdfs:range [
+  owl:oneOf (sdm:Red sdm:Yellow sdm:Green)
+].
+sdm:Red rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyLevel;
+    rdfs:label "Red".
+sdm:Yellow rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyLevel;
+    rdfs:label "Yellow".
+sdm:Green rdf:type skos:Concept;
+    skos:inScheme sdm:OccupancyLevel;
+    rdfs:label "Green".
+sdm:travelDistance dcterms:description "Property. Model:'https://schema.org/Number'. The distance between the origin bus stop and the destination bus stop corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "travelDistance";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:passengerCount dcterms:description "Property. Model:'https://schema.org/Number'. Number of passengers travelling in the public transit bus corresponding to this observation. This count is computed based on the realtime ticketing transactions in the public transit bus.";
+    rdf:type rdf:Property;
+    rdfs:label "passengerCount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:transactionType dcterms:description "Property. Model:'https://schema.org/Text'. Type of the transaction corresponding to this observation. For Eg - Issue, ReIssue, Entry, Exit etc.";
+    rdf:type rdf:Property;
+    rdfs:label "transactionType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:ticketTypeCode dcterms:description "Property. Model:'https://schema.org/Text'. Unique ticket type code of the corresponding trip.";
+    rdf:type rdf:Property;
+    rdfs:label "ticketTypeCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:originStopName dcterms:description "Property. Model:'https://schema.org/Text'. The name of the origin bus stop corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "originStopName";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:entryAreaCode dcterms:description "Property. Model:'https://schema.org/Text'. Area code of the passenger boarding stop (used by the fare collection agency). For example, whether the stop is city-bus-service stop or brts stop or other service type stop etc.";
+    rdf:type rdf:Property;
+    rdfs:label "entryAreaCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:cardId dcterms:description "Property. Model:'https://schema.org/Text'. Unique ticket Id of the transaction or Id of the smart card used in the transaction.";
+    rdf:type rdf:Property;
+    rdfs:label "cardId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:stage dcterms:description "Property. Model:'https://schema.org/Number'. Total number of stages from the origin bus stop to the destination bus stop.";
+    rdf:type rdf:Property;
+    rdfs:label "stage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:equipmentId dcterms:description "Property. Model:'https://schema.org/Text'. Unique Id of the equipment corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:direction_id dcterms:description "Property. Model:'https://schema.org/Number'. Indicates the direction of travel of the vehicle corresponding to this observation, can be referenced from the GTFS static feed trips.txt. SameAs: 'direction_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+    rdf:type rdf:Property;
+    rdfs:label "direction_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:equipmentSequenceNumber dcterms:description "Property. Model:'https://schema.org/Number'. Sequence number for the given equipment.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentSequenceNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:shiftOfOperation dcterms:description "Property. Model:'https://schema.org/Text'. Shift of operation of the public transit vehicle operated by the fare collection agency/ public transit agency or the employee corresponding to this observation. Indicated as '1' when the vehicle operates in the first shift, '2' when the vehicle operates in the second shift and '3' when the vehicle operates in the third shift.";
+    rdf:type rdf:Property;
+    rdfs:label "shiftOfOperation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:route_id dcterms:description "Property. Model:'https://schema.org/Text'. Route Id assigned to the route on which the bus/vehicle corresponding to the bus in this observation is currently plying on. SameAs: 'route_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+    rdf:type rdf:Property;
+    rdfs:label "route_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:trip_id dcterms:description "Property. Model:'https://schema.org/Text'. Trip Id/Trip name alloted to the bus corresponding to this observation, in consideration to the time of the day and the direction of the trip on the given routeId. SameAs: 'trip_id' field from GTFS Realtime message-TripDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-tripdescriptor)";
+    rdf:type rdf:Property;
+    rdfs:label "trip_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:originStopCategory dcterms:description "Property. Model:'https://schema.org/Text'. Type of the origin bus stop corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "originStopCategory";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:vehicle_label dcterms:description "Property. Model:'https://schema.org/Text'. User visible label, i.e., something that must be shown to the passenger to help identify the correct vehicle. SameAs: 'label' field from GTFS Realtime message-VehicleDescriptor (https://developers.google.com/transit/gtfs-realtime/reference#message-vehicledescriptor)";
+    rdf:type rdf:Property;
+    rdfs:label "vehicle_label";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:fareForChild dcterms:description "Property. Model:'https://schema.org/Number'. The fare for a child in the journey corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "fareForChild";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:transactionDateTime dcterms:description "Property. Model:'https://schema.org/Text'. Date-time of the transaction corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "transactionDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:destinationStopId dcterms:description "Property. Model:'https://schema.org/Text'. Unique Id of the bus stop at which the passenger deboards from the bus corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "destinationStopId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:originDestinationCode dcterms:description "Property. Model:'https://schema.org/Text'. The code for the origin and destination stops corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "originDestinationCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:currentTripCount dcterms:description "Property. Model:'https://schema.org/Number'. The current count of trips made by the vehicle corresponding to this observation on the given day of operation.";
+    rdf:type rdf:Property;
+    rdfs:label "currentTripCount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:equipmentTypeCode dcterms:description "Property. Model:'https://schema.org/Text'. Unique code indicating the type of equipment used in the transaction (used by fare collection agency).ENUM [1B, 42, 02, 08, 41] 1B - POS, 42 - HTT, 02- Mobile, 08- Fare Gate, 41- Pole Validator";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentTypeCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>.
+sdm:EquipmentTypeCode rdf:type skos:ConceptScheme.
+sdm:equipmentTypeCode rdfs:range [
+  owl:oneOf (sdm:1B sdm:42 sdm:02 sdm:08 sdm:41)
+].
+sdm:1B rdf:type skos:Concept;
+    skos:inScheme sdm:EquipmentTypeCode;
+    rdfs:label "1B".
+sdm:42 rdf:type skos:Concept;
+    skos:inScheme sdm:EquipmentTypeCode;
+    rdfs:label "42".
+sdm:02 rdf:type skos:Concept;
+    skos:inScheme sdm:EquipmentTypeCode;
+    rdfs:label "02".
+sdm:08 rdf:type skos:Concept;
+    skos:inScheme sdm:EquipmentTypeCode;
+    rdfs:label "08".
+sdm:41 rdf:type skos:Concept;
+    skos:inScheme sdm:EquipmentTypeCode;
+    rdfs:label "41".
+sdm:destinationStopCategory dcterms:description "Property. Model:'https://schema.org/Text'. Type of the destination bus stop corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "destinationStopCategory";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:transactionVehicleNum dcterms:description "Property. Model:'https://schema.org/Number'. Code used by fare collection agency for the vehicle number corresponding to the transaction.";
+    rdf:type rdf:Property;
+    rdfs:label "transactionVehicleNum";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:fareForAdult dcterms:description "Property. Model:'https://schema.org/Number'. The fare for an adult in the journey corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "fareForAdult";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:observationDateTime dcterms:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+    rdf:type rdf:Property;
+    rdfs:label "observationDateTime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:equipmentCompanyCode dcterms:description "Property. Model:'https://schema.org/Text'. Company/Agency code for the transaction equipment (used by fare collection agency). For example, 103 - CBS (city bus service),102 - BRTS etc.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentCompanyCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:transactionTypeDescription dcterms:description "Property. Model:'https://schema.org/Text'. Description of the transaction type. Explanation of various transactionTypeId codes used in the data.";
+    rdf:type rdf:Property;
+    rdfs:label "transactionTypeDescription";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:exitAreaCode dcterms:description "Property. Model:'https://schema.org/Text'. Area code of the passenger alighting stop (used by the fare collection agency). For example, whether the stop is city-bus-service stop or BRTS stop or other service type stop etc.";
+    rdf:type rdf:Property;
+    rdfs:label "exitAreaCode";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:equipmentType dcterms:description "Property. Model:'https://schema.org/Text'. Type of equipment or the name of the equipment corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:equipmentStopId dcterms:description "Property. Model:'https://schema.org/Text'. Stop Id (BRTS) at which the equipment corresponding to this transaction is installed.";
+    rdf:type rdf:Property;
+    rdfs:label "equipmentStopId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.
+sdm:originStopId dcterms:description "Property. Model:'https://schema.org/Text'. Unique Id of the bus stop at which the passenger boards into the bus corresponding to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "originStopId";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FareCollectionSystem/schema.json>;
+    rdfs:range xsd:string.

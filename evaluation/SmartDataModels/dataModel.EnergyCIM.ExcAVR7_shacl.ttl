@@ -1,0 +1,126 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcAVR7/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcAVR7";
+  sh:name "type";
+  sh:in (sdm:ExcAVR7)
+], [
+  sh:path sdm:a1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead coefficient (A1).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a2;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag coefficient (A2).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead coefficient (A3).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a4;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag coefficient (A4).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a5;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead coefficient (A5).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:a6;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag coefficient (A6).  Typical Value = 0.5. Default: 0.0";
+  sh:name "a6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K1).  Typical Value = 1. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k3;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K3).  Typical Value = 3. Default: 0.0";
+  sh:name "k3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k5;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K5).  Typical Value = 1. Default: 0.0";
+  sh:name "k5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead time constant (T1).  Typical Value = 0.05. Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t2;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag time constant (T2).  Typical Value = 0.1. Default: 0";
+  sh:name "t2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead time constant (T3).  Typical Value = 0.1. Default: 0";
+  sh:name "t3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t4;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag time constant (T4).  Typical Value = 0.1. Default: 0";
+  sh:name "t4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t5;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead time constant (T5).  Typical Value = 0.1. Default: 0";
+  sh:name "t5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t6;
+  sh:description "Property. Model:'https://schema.org/Number'. Lag time constant (T6).  Typical Value = 0.1. Default: 0";
+  sh:name "t6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmax1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag max. limit (Vmax1).  Typical Value = 5. Default: 0.0";
+  sh:name "vmax1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmax3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag max. limit (Vmax3).  Typical Value = 5. Default: 0.0";
+  sh:name "vmax3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmax5;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag max. limit (Vmax5).  Typical Value = 5. Default: 0.0";
+  sh:name "vmax5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmin1;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag min. limit (Vmin1).  Typical Value = -5. Default: 0.0";
+  sh:name "vmin1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmin3;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag min. limit (Vmin3).  Typical Value = -5. Default: 0.0";
+  sh:name "vmin3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmin5;
+  sh:description "Property. Model:'https://schema.org/Number'. Lead-lag min. limit (Vmin5).  Typical Value = -2. Default: 0.0";
+  sh:name "vmin5";
+  sh:datatype xsd:decimal
+].

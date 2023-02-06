@@ -1,0 +1,12 @@
+type
+codeIATA
+codeICAO
+length
+wingSpan
+height
+mtow
+maximumAllowedSpeed
+maximumAllowedFuel
+ceiling
+numberOfEngines
+capacity

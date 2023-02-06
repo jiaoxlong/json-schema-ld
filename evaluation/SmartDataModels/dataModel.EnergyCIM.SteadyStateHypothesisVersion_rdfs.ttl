@@ -1,0 +1,79 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json> dcterms:title " Smart Data Models - SteadyStateHypothesisVersion";
+    dcterms:description "Adapted from CIM data models. Version details.".
+sdm:type dcterms:description "Property. NGSI type. It has to be SteadyStateHypothesisVersion";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SteadyStateHypothesisVersion)
+].
+sdm:SteadyStateHypothesisVersion rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SteadyStateHypothesisVersion".
+sdm:baseUML dcterms:description "Property. Model:'https://schema.org/Number'. Base UML provided by CIM model manager. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "baseUML";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:baseURI dcterms:description "Property. Model:'https://schema.org/Number'. Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. It is given for information only and to identify the closest IEC profile to which this CGMES profile is based on. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "baseURI";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:date dcterms:description "Property. Model:'https://schema.org/Number'. Profile creation date Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "date";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:differenceModelURI dcterms:description "Property. Model:'https://schema.org/Number'. Difference model URI defined by IEC 61970-552. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "differenceModelURI";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:entsoeUML dcterms:description "Property. Model:'https://schema.org/Number'. UML provided by ENTSO-E. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "entsoeUML";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:entsoeURI dcterms:description "Property. Model:'https://schema.org/Number'. Profile URI defined by ENTSO-E and used in the Model Exchange header.  It uniquely identifies the Profile and its version. The last two elements in the URI (http://entsoe.eu/CIM/SteadyStateHypothesis/yy/zzz) indicate major and minor versions where:  - yy - indicates a major version; - zzz - indicates a minor version. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "entsoeURI";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:modelDescriptionURI dcterms:description "Property. Model:'https://schema.org/Number'. Model Description URI defined by IEC 61970-552. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "modelDescriptionURI";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:namespaceRDF dcterms:description "Property. Model:'https://schema.org/Number'. RDF namespace. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "namespaceRDF";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:namespaceUML dcterms:description "Property. Model:'https://schema.org/Number'. CIM UML namespace. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "namespaceUML";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:shortName dcterms:description "Property. Model:'https://schema.org/Number'. The short name of the profile used in profile documentation. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "shortName";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SteadyStateHypothesisVersion/schema.json>;
+    rdfs:range xsd:decimal.

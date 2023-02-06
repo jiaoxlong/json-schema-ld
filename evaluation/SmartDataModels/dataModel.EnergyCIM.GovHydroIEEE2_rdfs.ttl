@@ -1,0 +1,159 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json> dcterms:title " Smart Data Models - GovHydroIEEE2";
+    dcterms:description "Adapted from CIM data models. IEEE hydro turbine governor model represents plants with straightforward penstock configurations and hydraulic-dashpot governors.  Ref".
+sdm:type dcterms:description "Property. NGSI type. It has to be GovHydroIEEE2";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GovHydroIEEE2)
+].
+sdm:GovHydroIEEE2 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GovHydroIEEE2".
+sdm:aturb dcterms:description "Property. Model:'https://schema.org/Number'. Turbine numerator multiplier (Aturb).  Typical Value = -1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "aturb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bturb dcterms:description "Property. Model:'https://schema.org/Number'. Turbine denominator multiplier (Bturb).  Typical Value = 0.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "bturb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv1 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 1, PU gv (Gv1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv2 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 2, PU gv (Gv2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv3 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 3, PU gv (Gv3).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv4 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 4, PU gv (Gv4).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv5 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 5, PU gv (Gv5).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:gv6 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 6, PU gv (Gv6).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "gv6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kturb dcterms:description "Property. Model:'https://schema.org/Number'. Turbine gain (Kturb).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kturb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mwbase dcterms:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (> 0).  Unit = MW. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "mwbase";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv1 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 1, PU power (Pgv1).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv2 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 2, PU power (Pgv2).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv3 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 3, PU power (Pgv3).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv4 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 4, PU power (Pgv4).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv5 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 5, PU power (Pgv5).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pgv6 dcterms:description "Property. Model:'https://schema.org/Number'. Nonlinear gain point 6, PU power (Pgv6).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pgv6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate opening (Pmax).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum gate opening (Pmin).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rperm dcterms:description "Property. Model:'https://schema.org/Number'. Permanent droop (Rperm).  Typical Value = 0.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rperm";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rtemp dcterms:description "Property. Model:'https://schema.org/Number'. Temporary droop (Rtemp).  Typical Value = 0.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rtemp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tg dcterms:description "Property. Model:'https://schema.org/Number'. Gate servo time constant (Tg).  Typical Value = 0.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tp dcterms:description "Property. Model:'https://schema.org/Number'. Pilot servo valve time constant (Tp).  Typical Value = 0.03. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tr dcterms:description "Property. Model:'https://schema.org/Number'. Dashpot time constant (Tr).  Typical Value = 12. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tw dcterms:description "Property. Model:'https://schema.org/Number'. Water inertia time constant (Tw).  Typical Value = 2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tw";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uc dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate closing velocity (Uc) (<0).  Typical Value = -0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "uc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uo dcterms:description "Property. Model:'https://schema.org/Number'. Maximum gate opening velocity (Uo). Unit = PU/sec.  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "uo";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovHydroIEEE2/schema.json>;
+    rdfs:range xsd:decimal.

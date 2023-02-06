@@ -1,0 +1,8 @@
+type
+endPointURL
+title
+endPointDescription
+servesDataset
+accessRights
+dataServiceDescription
+license

@@ -1,0 +1,9 @@
+rt
+silenttime
+sensitivity
+n
+range
+step
+precision
+if
+type

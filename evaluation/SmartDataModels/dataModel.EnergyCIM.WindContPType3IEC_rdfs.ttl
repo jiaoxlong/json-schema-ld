@@ -1,0 +1,144 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json> dcterms:title " Smart Data Models - WindContPType3IEC";
+    dcterms:description "Adapted from CIM data models. P control model Type 3.  Reference: IEC Standard 61400-27-1 Section 6.6.5.3.".
+sdm:type dcterms:description "Property. NGSI type. It has to be WindContPType3IEC";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WindContPType3IEC)
+].
+sdm:WindContPType3IEC rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WindContPType3IEC".
+sdm:WindDynamicsLookupTable dcterms:description "Property. Model:'https://schema.org/Number'. The P control type 3 model with which this wind dynamics lookup table is associated. Default: 'list'";
+    rdf:type rdf:Property;
+    rdfs:label "WindDynamicsLookupTable";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindGenTurbineType3IEC dcterms:description "Property. Model:'https://schema.org/Number'. Wind turbine type 3 model with which this Wind control P type 3 model is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindGenTurbineType3IEC";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dpmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum wind turbine power ramp rate (). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "dpmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dtrisemaxlvrt dcterms:description "Property. Model:'https://schema.org/Number'. Limitation of torque rise rate during LVRT for S (d). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "dtrisemaxlvrt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kdtd dcterms:description "Property. Model:'https://schema.org/Number'. Gain for active drive train damping (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kdtd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kip dcterms:description "Property. Model:'https://schema.org/Number'. PI controller integration parameter (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kip";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpp dcterms:description "Property. Model:'https://schema.org/Number'. PI controller proportional gain (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mplvrt dcterms:description "Property. Model:'https://schema.org/Number'. Enable LVRT power control mode (M true = 1: voltage control false = 0: reactive power control.  It is project dependent parameter. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "mplvrt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:omegaoffset dcterms:description "Property. Model:'https://schema.org/Number'. Offset to reference value that limits controller action during rotor speed changes (omega). It is case dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "omegaoffset";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pdtdmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum active drive train damping power (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pdtdmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rramp dcterms:description "Property. Model:'https://schema.org/Number'. Ramp limitation of torque, required in some grid codes (). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rramp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tdvs dcterms:description "Property. Model:'https://schema.org/Number'. Timedelay after deep voltage sags (T). It is project dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tdvs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:temin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum electrical generator torque (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "temin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tomegafilt dcterms:description "Property. Model:'https://schema.org/Number'. Filter time constant for generator speed measurement (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tomegafilt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpfilt dcterms:description "Property. Model:'https://schema.org/Number'. Filter time constant for power measurement (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpfilt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpord dcterms:description "Property. Model:'https://schema.org/Number'. Time constant in power order lag (). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "tpord";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tufilt dcterms:description "Property. Model:'https://schema.org/Number'. Filter time constant for voltage measurement (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tufilt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tuscale dcterms:description "Property. Model:'https://schema.org/Number'. Voltage scaling factor of reset-torque (T). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "tuscale";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:twref dcterms:description "Property. Model:'https://schema.org/Number'. Time constant in speed reference filter (). It is type dependent parameter. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "twref";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:udvs dcterms:description "Property. Model:'https://schema.org/Number'. Voltage limit for hold LVRT status after deep voltage sags (). It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "udvs";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:updip dcterms:description "Property. Model:'https://schema.org/Number'. Voltage dip threshold for P-control ().  Part of turbine control, often different (e.g 0.8) from converter thresholds. It is project dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "updip";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:wdtd dcterms:description "Property. Model:'https://schema.org/Number'. Active drive train damping frequency (omega). It can be calculated from two mass model parameters. It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "wdtd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:zeta dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient for active drive train damping (zeta). It is type dependent parameter. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "zeta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContPType3IEC/schema.json>;
+    rdfs:range xsd:decimal.

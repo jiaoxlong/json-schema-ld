@@ -1,0 +1,17 @@
+type
+hasAgriParcel
+operationType
+result
+plannedStartAt
+plannedEndAt
+status
+hasOperator
+startedAt
+endedAt
+reportedAt
+hasAgriProductType
+quantity
+waterSource
+workOrder
+workRecord
+irrigationRecord

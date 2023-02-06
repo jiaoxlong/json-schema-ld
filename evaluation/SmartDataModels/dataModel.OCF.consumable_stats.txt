@@ -1,0 +1,8 @@
+rt
+remaining
+typeofconsumable
+url
+orderpercentage
+n
+if
+type

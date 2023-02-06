@@ -1,0 +1,119 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json> dcterms:title " Smart Data Models - ExternalNetworkInjection";
+    dcterms:description "Adapted from CIM data models. This class represents external network and it is used for IEC 60909 calculations.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExternalNetworkInjection";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExternalNetworkInjection)
+].
+sdm:ExternalNetworkInjection rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExternalNetworkInjection".
+sdm:governorSCD dcterms:description "Property. Model:'https://schema.org/Number'. Power Frequency Bias. This is the change in power injection divided by the change in frequency and negated.  A positive value of the power frequency bias provides additional power injection upon a drop in frequency. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "governorSCD";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ikSecond dcterms:description "Property. Model:'https://schema.org/Number'. Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik`). Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "ikSecond";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxInitialSymShCCurrent dcterms:description "Property. Model:'https://schema.org/Number'. Maximum initial symmetrical short-circuit currents (Ik` max) in A (Ik` = Sk`/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxInitialSymShCCurrent";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxP dcterms:description "Property. Model:'https://schema.org/Number'. Maximum active power of the injection. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxP";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxQ dcterms:description "Property. Model:'https://schema.org/Number'. Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxQ";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxR0ToX0Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Maximum ratio of zero sequence resistance of Network Feeder to its zero sequence reactance (R(0)/X(0) max). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxR0ToX0Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxR1ToX1Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Maximum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) max). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxR1ToX1Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxZ0ToZ1Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Maximum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) max). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "maxZ0ToZ1Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minInitialSymShCCurrent dcterms:description "Property. Model:'https://schema.org/Number'. Minimum initial symmetrical short-circuit currents (Ik` min) in A (Ik` = Sk`/(SQRT(3) Un)). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minInitialSymShCCurrent";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minP dcterms:description "Property. Model:'https://schema.org/Number'. Minimum active power of the injection. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minP";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minQ dcterms:description "Property. Model:'https://schema.org/Number'. Not for short circuit modelling; It is used for modelling of infeed for load flow exchange. If maxQ and minQ are not used ReactiveCapabilityCurve can be used Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minQ";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minR0ToX0Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Indicates whether initial symmetrical short-circuit current and power have been calculated according to IEC (Ik`). Used for short circuit data exchange according to IEC 6090 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minR0ToX0Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minR1ToX1Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Minimum ratio of positive sequence resistance of Network Feeder to its positive sequence reactance (R(1)/X(1) min). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minR1ToX1Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minZ0ToZ1Ratio dcterms:description "Property. Model:'https://schema.org/Number'. Minimum ratio of zero sequence impedance to its positive sequence impedance (Z(0)/Z(1) min). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "minZ0ToZ1Ratio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p dcterms:description "Property. Model:'https://schema.org/Number'. Active power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:referencePriority dcterms:description "Property. Model:'https://schema.org/Number'. Priority of unit for use as powerflow voltage phase angle reference bus selection. 0 = don t care (default) 1 = highest priority. 2 is less than 1 and so on. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "referencePriority";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:voltageFactor dcterms:description "Property. Model:'https://schema.org/Number'. Voltage factor in pu, which was used to calculate short-circuit current Ik` and power Sk`. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "voltageFactor";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExternalNetworkInjection/schema.json>;
+    rdfs:range xsd:decimal.

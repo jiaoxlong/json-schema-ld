@@ -1,0 +1,9 @@
+rt
+value
+measurement
+precision
+n
+range
+step
+if
+type

@@ -1,0 +1,11 @@
+type
+power
+speed
+startsAt
+endsAt
+vertices
+headCurve
+pumpPattern
+efficCurve
+energyPrice
+energyPattern

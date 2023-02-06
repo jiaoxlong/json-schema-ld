@@ -1,0 +1,15 @@
+type
+ks
+modelType
+rotorType
+tc
+tpdo
+tppdo
+tppqo
+tpqo
+xDirectSubtrans
+xDirectSync
+xDirectTrans
+xQuadSubtrans
+xQuadSync
+xQuadTrans

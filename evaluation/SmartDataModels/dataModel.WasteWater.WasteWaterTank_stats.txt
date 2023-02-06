@@ -1,0 +1,12 @@
+type
+sludgeLevel
+power
+Power
+measured
+estimated
+airflow
+Airflow
+measured
+estimated
+startsAt
+endsAt

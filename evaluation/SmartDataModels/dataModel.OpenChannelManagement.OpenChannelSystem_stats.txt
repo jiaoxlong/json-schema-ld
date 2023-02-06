@@ -1,0 +1,5 @@
+type
+isComposedOf
+hasSubSystem
+mostUpstreamPoint
+mostDownstreamPoint

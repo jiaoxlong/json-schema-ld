@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json> dcterms:title " Smart Data Models - AsynchronousMachine";
+    dcterms:description "Adapted from CIM data models. A rotating machine whose shaft rotates asynchronously with the electrical field.  Also known as an induction machine with no external connection to the rotor windings, e.g squirrel-cage induction machine.".
+sdm:type dcterms:description "Property. NGSI type. It has to be AsynchronousMachine";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AsynchronousMachine)
+].
+sdm:AsynchronousMachine rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AsynchronousMachine".
+sdm:AsynchronousMachineDynamics dcterms:description "Property. Model:'https://schema.org/Number'. Asynchronous machine dynamics model used to describe dynamic behavior of this asynchronous machine. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "AsynchronousMachineDynamics";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:asynchronousMachineType dcterms:description "Property. Model:'https://schema.org/Number'. Indicates the type of Asynchronous Machine (motor or generator). Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "asynchronousMachineType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:converterFedDrive dcterms:description "Property. Model:'https://schema.org/Number'. Indicates whether the machine is a converter fed drive. Used for short circuit data exchange according to IEC 60909 Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "converterFedDrive";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:efficiency dcterms:description "Property. Model:'https://schema.org/Number'. Efficiency of the asynchronous machine at nominal operation in percent. Indicator for converter drive motors. Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "efficiency";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:iaIrRatio dcterms:description "Property. Model:'https://schema.org/Number'. Ratio of locked-rotor current to the rated current of the motor (Ia/Ir). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "iaIrRatio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nominalFrequency dcterms:description "Property. Model:'https://schema.org/Number'. Nameplate data indicates if the machine is 50 or 60 Hz. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "nominalFrequency";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nominalSpeed dcterms:description "Property. Model:'https://schema.org/Number'. Nameplate data.  Depends on the slip and number of pole pairs. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "nominalSpeed";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:polePairNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of pole pairs of stator. Used for short circuit data exchange according to IEC 60909 Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "polePairNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ratedMechanicalPower dcterms:description "Property. Model:'https://schema.org/Number'. Rated mechanical power (Pr in the IEC 60909-0). Used for short circuit data exchange according to IEC 60909. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ratedMechanicalPower";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:reversible dcterms:description "Property. Model:'https://schema.org/Number'. Indicates for converter drive motors if the power can be reversible. Used for short circuit data exchange according to IEC 60909 Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "reversible";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rxLockedRotorRatio dcterms:description "Property. Model:'https://schema.org/Number'. Locked rotor ratio (R/X). Used for short circuit data exchange according to IEC 60909 Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rxLockedRotorRatio";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/AsynchronousMachine/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,6 @@
+type
+Location
+sequenceNumber
+xPosition
+yPosition
+zPosition

@@ -1,0 +1,76 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Battery/Battery/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be Battery";
+  sh:name "type";
+  sh:in (sdm:Battery);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:status;
+  sh:name "status";
+  sh:in (sdm:outOfService sdm:withIncidence sdm:working)
+], [
+  sh:path sdm:cycleLife;
+  sh:description "Property. Model:'http://schema.org/Number'. Numeric value of the load/unload operation cycles for the item'";
+  sh:name "cycleLife";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:autonomyTime;
+  sh:description "Property. Model:'http://schema.org/Number'. Autonomy of operations of the item without further charge.";
+  sh:name "autonomyTime";
+  sh:pattern "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:rechargeTime;
+  sh:description "Property. Model:'http://schema.org/Number'. Time for the full charge of the battery.";
+  sh:name "rechargeTime";
+  sh:pattern "^(-?)P(?=\\d|T\\d)(?:(\\d+)Y)?(?:(\\d+)M)?(?:(\\d+)([DW]))?(?:T(?:(\\d+)H)?(?:(\\d+)M)?(?:(\\d+(?:\\.\\d+)?)S)?)?$";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:acPowerInput;
+  sh:description "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate current charge. Units:'volts'";
+  sh:name "acPowerInput";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:acPowerOutput;
+  sh:description "Property. Model:'http://schema.org/Number'. Numeric value in volts for the alternate output. Units:'volts'";
+  sh:name "acPowerOutput";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dcPowerInput;
+  sh:description "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'";
+  sh:name "dcPowerInput";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dcPowerOutput;
+  sh:description "Property. Model:'http://schema.org/Number'. Numeric value in volts for the continuous current charge. Units:'volts'";
+  sh:name "dcPowerOutput";
+  sh:datatype xsd:decimal
+].

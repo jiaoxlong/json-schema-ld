@@ -1,0 +1,10 @@
+type
+openStatus
+diameter
+valveType
+setting
+minorLoss
+startsAt
+endsAt
+valveCurve
+vertices

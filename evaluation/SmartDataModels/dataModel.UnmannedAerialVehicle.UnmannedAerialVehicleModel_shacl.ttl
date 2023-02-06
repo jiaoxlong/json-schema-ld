@@ -1,0 +1,88 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicleModel/UnmannedAerialVehicleModel/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicle";
+  sh:name "type";
+  sh:in (sdm:UnmannedAerialVehicleModel);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:model;
+  sh:description "Property. The UAV models identifier, which may be a Unmanned Aerial Vehicle Model.";
+  sh:name "model";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:documentation;
+  sh:description "Property. URI reference (URL/URN) to Product Data Sheet or other manufacturers documentation about this Unmanned Aerial Vehicle Model.";
+  sh:name "documentation";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. The name of the manufacturer of this Unmanned Aerial Vehicle Model.";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:brandName;
+  sh:description "Property. A description of the brand name of this Unmanned Aerial Vehicle Model.";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:categoryUAV;
+  sh:description "Property. The work category of the UAVModel. A choice from the following listnum:'aerialPhotography, plantProtection, industry, routingInspection, mailing, transportation'";
+  sh:name "categoryUAV";
+  sh:in (sdm:aerialPhotography sdm:industry sdm:mailing sdm:plantProtection sdm:routingInspection sdm:transportation)
+], [
+  sh:path sdm:rotors;
+  sh:description "Property. The number of the rotors of the Unmanned Aerial Vehicle Model.";
+  sh:name "rotors";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:fuelType;
+  sh:description "Property. The fuel type powering the UAVModel. A choice from an enumerated list describing the power source. Enum:'gasoline, petrol(unleaded), petrol(leaded), petrol, diesel, electric, hydrogen, lpg autogas, cng, biodiesel, ethanol, hybrid electric/petrol, hybrid electric/diesel, other'";
+  sh:name "fuelType";
+  sh:in (sdm:biodiesel sdm:cng sdm:diesel sdm:electric sdm:ethanol sdm:gasoline <sdm:hybrid electric/petrol> <sdm:hybrid electric/diesel> sdm:hydrogen sdm:lpgAutogas sdm:other sdm:petrol sdm:petrol(unleaded) sdm:petrol(leaded))
+], [
+  sh:path sdm:maxFlightTime;
+  sh:description "Property. The maximum duration of flight of the Unmanned Aerial Vehicle Model with full fuel and no load. Specify value and units of measure.";
+  sh:name "maxFlightTime";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxFlightAltitude;
+  sh:description "Property. The maximum flight altitude of the Unmanned Aerial Vehicle Model above ground. Specify value and units of measure.";
+  sh:name "maxFlightAltitude";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxGroundVelocity;
+  sh:description "Property. The maximum ground velocity of the Unmanned Aerial Vehicle Model (under still wind conditions). Specify value and units of measure.";
+  sh:name "maxGroundVelocity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minWeight;
+  sh:description "Property. The weight of the Unmanned Aerial Vehicle without fuel or load. Specify value and units of measure.";
+  sh:name "minWeight";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minUnladenWeight;
+  sh:description "Property. The weight of the Unmanned Aerial Vehicle with full fuel but no load. Specify value and units of measure.";
+  sh:name "minUnladenWeight";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxLoad;
+  sh:description "Property. The maximum load that the Unmanned Aerial Vehicle is permitted to transport. Specify value and units of measure.";
+  sh:name "maxLoad";
+  sh:datatype xsd:decimal
+].

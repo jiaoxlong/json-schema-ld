@@ -1,0 +1,12 @@
+type
+WindGenTurbineType2IEC
+kdroop
+kipce
+komegaaero
+kppce
+omegaref
+pimax
+pimin
+t1
+t2
+tpe

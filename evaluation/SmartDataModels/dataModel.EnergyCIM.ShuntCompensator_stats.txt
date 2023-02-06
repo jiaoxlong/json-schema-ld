@@ -1,0 +1,11 @@
+type
+SvShuntCompensatorSections
+aVRDelay
+grounded
+maximumSections
+nomU
+normalSections
+sections
+switchOnCount
+switchOnDate
+voltageSensitivity

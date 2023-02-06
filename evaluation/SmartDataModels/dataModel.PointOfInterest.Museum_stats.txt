@@ -1,0 +1,11 @@
+type
+museumType
+facilities
+historicalPeriod
+artPeriod
+buildingType
+featuredArtist
+contactPoint
+ContactPoint
+touristArea
+refSeeAlso

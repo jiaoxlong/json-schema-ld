@@ -1,0 +1,14 @@
+type
+k
+k0
+k1
+k2
+k3
+k4
+t1
+t2
+t3
+t4
+td
+vsmax
+vsmin

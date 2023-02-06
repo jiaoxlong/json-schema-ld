@@ -1,0 +1,14 @@
+type
+service_request_id
+jurisdiction_id
+service_code
+service_name
+agency_responsible
+service_notice
+status
+status_notes
+requested_datetime
+updated_datetime
+expected_datetime
+media_url
+device_id

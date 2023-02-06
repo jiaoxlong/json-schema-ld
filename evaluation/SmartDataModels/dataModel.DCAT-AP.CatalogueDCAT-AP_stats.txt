@@ -1,0 +1,17 @@
+type
+dataset
+publisher
+title
+homepage
+language
+licence
+releaseDate
+themes
+modificationDate
+hasPart
+isPartOf
+record
+rights
+service
+catalogue
+creator

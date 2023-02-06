@@ -1,0 +1,12 @@
+rt
+status
+ratedpower
+minvoltmppt
+maxvoltmppt
+inputvoltage
+inputcurrent
+outputpower
+timestamp
+n
+if
+type

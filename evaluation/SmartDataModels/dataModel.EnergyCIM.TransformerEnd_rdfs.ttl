@@ -1,0 +1,69 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json> dcterms:title " Smart Data Models - TransformerEnd";
+    dcterms:description "Adapted from CIM data models. A conducting connection point of a power transformer. It corresponds to a physical transformer winding terminal.  In earlier CIM versions, the TransformerWinding class served a similar purpose, but this class is more flexible because it associates to terminal but is not a specialization of ConductingEquipment.".
+sdm:type dcterms:description "Property. NGSI type. It has to be TransformerEnd";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:TransformerEnd)
+].
+sdm:TransformerEnd rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "TransformerEnd".
+sdm:BaseVoltage dcterms:description "Property. Model:'https://schema.org/Number'. Base voltage of the transformer end.  This is essential for PU calculation. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "BaseVoltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PhaseTapChanger dcterms:description "Property. Model:'https://schema.org/Number'. Transformer end to which this phase tap changer belongs. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PhaseTapChanger";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:RatioTapChanger dcterms:description "Property. Model:'https://schema.org/Number'. Transformer end to which this ratio tap changer belongs. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "RatioTapChanger";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:Terminal dcterms:description "Property. Model:'https://schema.org/Number'. Terminal of the power transformer to which this transformer end belongs. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "Terminal";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:endNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number for this transformer end, corresponding to the end`s order in the power transformer vector group or phase angle clock number.  Highest voltage winding should be 1.  Each end within a power transformer should have a unique subsequent end number.   Note the transformer end number need not match the terminal sequence number. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "endNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:grounded dcterms:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) True if the neutral is solidly grounded. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "grounded";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rground dcterms:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) Resistance part of neutral impedance where `grounded` is true. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rground";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xground dcterms:description "Property. Model:'https://schema.org/Number'. (for Yn and Zn connections) Reactive part of neutral impedance where `grounded` is true. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xground";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TransformerEnd/schema.json>;
+    rdfs:range xsd:decimal.

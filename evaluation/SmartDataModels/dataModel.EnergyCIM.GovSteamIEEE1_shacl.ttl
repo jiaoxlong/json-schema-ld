@@ -1,0 +1,126 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovSteamIEEE1/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be GovSteamIEEE1";
+  sh:name "type";
+  sh:in (sdm:GovSteamIEEE1)
+], [
+  sh:path sdm:k;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor gain (reciprocal of droop) (K) (> 0).  Typical Value = 25. Default: 0.0";
+  sh:name "k";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after first boiler pass (K1).  Typical Value = 0.2. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k2;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after first boiler pass (K2).  Typical Value = 0. Default: 0.0";
+  sh:name "k2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k3;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after second boiler pass (K3).  Typical Value = 0.3. Default: 0.0";
+  sh:name "k3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k4;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after second boiler pass (K4).  Typical Value = 0. Default: 0.0";
+  sh:name "k4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k5;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after third boiler pass (K5).  Typical Value = 0.5. Default: 0.0";
+  sh:name "k5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k6;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after third boiler pass (K6).  Typical Value = 0. Default: 0.0";
+  sh:name "k6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k7;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of HP shaft power after fourth boiler pass (K7).  Typical Value = 0. Default: 0.0";
+  sh:name "k7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k8;
+  sh:description "Property. Model:'https://schema.org/Number'. Fraction of LP shaft power after fourth boiler pass (K8).  Typical Value = 0. Default: 0.0";
+  sh:name "k8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mwbase;
+  sh:description "Property. Model:'https://schema.org/Number'. Base for power values (MWbase) (> 0) Default: 0.0";
+  sh:name "mwbase";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve opening (Pmax) (> Pmin).  Typical Value = 1. Default: 0.0";
+  sh:name "pmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum valve opening (Pmin) (>= 0).  Typical Value = 0. Default: 0.0";
+  sh:name "pmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t1;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor lag time constant (T1).  Typical Value = 0. Default: 0";
+  sh:name "t1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t2;
+  sh:description "Property. Model:'https://schema.org/Number'. Governor lead time constant (T2).  Typical Value = 0. Default: 0";
+  sh:name "t2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t3;
+  sh:description "Property. Model:'https://schema.org/Number'. Valve positioner time constant (T3) (> 0).  Typical Value = 0.1. Default: 0";
+  sh:name "t3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t4;
+  sh:description "Property. Model:'https://schema.org/Number'. Inlet piping/steam bowl time constant (T4).  Typical Value = 0.3. Default: 0";
+  sh:name "t4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t5;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of second boiler pass (T5).  Typical Value = 5. Default: 0";
+  sh:name "t5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t6;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of third boiler pass (T6).  Typical Value = 0.5. Default: 0";
+  sh:name "t6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:t7;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant of fourth boiler pass (T7).  Typical Value = 0. Default: 0";
+  sh:name "t7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uc;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve closing velocity (Uc) (< 0).  Unit = PU/sec.  Typical Value = -10. Default: 0.0";
+  sh:name "uc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uo;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum valve opening velocity (Uo) (> 0).  Unit = PU/sec.  Typical Value = 1. Default: 0.0";
+  sh:name "uo";
+  sh:datatype xsd:decimal
+].

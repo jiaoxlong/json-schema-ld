@@ -1,0 +1,7 @@
+type
+airflow
+energy
+pressure
+airflowEstimation
+startsAt
+endsAt

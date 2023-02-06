@@ -1,0 +1,71 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/TopologyBoundaryVersion/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be TopologyBoundaryVersion";
+  sh:name "type";
+  sh:in (sdm:TopologyBoundaryVersion)
+], [
+  sh:path sdm:baseUML;
+  sh:description "Property. Model:'https://schema.org/Number'. Base UML provided by CIM model manager. Default: ''";
+  sh:name "baseUML";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:baseURI;
+  sh:description "Property. Model:'https://schema.org/Number'. Profile URI used in the Model Exchange header and defined in IEC standards.  It uniquely identifies the Profile and its version. It is given for information only and to identify the closest IEC profile to which this CGMES profile is based on. Default: ''";
+  sh:name "baseURI";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:date;
+  sh:description "Property. Model:'https://schema.org/Number'. Profile creation date Form is YYYY-MM-DD for example for January 5, 2009 it is 2009-01-05. Default: ''";
+  sh:name "date";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:differenceModelURI;
+  sh:description "Property. Model:'https://schema.org/Number'. Difference model URI defined by IEC 61970-552. Default: ''";
+  sh:name "differenceModelURI";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:entsoeUML;
+  sh:description "Property. Model:'https://schema.org/Number'. UML provided by ENTSO-E. Default: ''";
+  sh:name "entsoeUML";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:entsoeURI;
+  sh:description "Property. Model:'https://schema.org/Number'. Profile URI defined by ENTSO-E and used in the Model Exchange header.  It uniquely identifies the Profile and its version. The last two elements in the URI (http://entsoe.eu/CIM/TopologyBoundary/yy/zzz) indicate major and minor versions where:  - yy - indicates a major version; - zzz - indicates a minor version. Default: ''";
+  sh:name "entsoeURI";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:modelDescriptionURI;
+  sh:description "Property. Model:'https://schema.org/Number'. Model Description URI defined by IEC 61970-552. Default: ''";
+  sh:name "modelDescriptionURI";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:namespaceRDF;
+  sh:description "Property. Model:'https://schema.org/Number'. RDF namespace. Default: ''";
+  sh:name "namespaceRDF";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:namespaceUML;
+  sh:description "Property. Model:'https://schema.org/Number'. CIM UML namespace. Default: ''";
+  sh:name "namespaceUML";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:shortName;
+  sh:description "Property. Model:'https://schema.org/Number'. The short name of the profile used in profile documentation. Default: ''";
+  sh:name "shortName";
+  sh:datatype xsd:decimal
+].

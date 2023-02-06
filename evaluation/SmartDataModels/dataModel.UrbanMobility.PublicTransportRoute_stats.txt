@@ -1,0 +1,15 @@
+type
+routeCode
+shortRouteCode
+transportationType
+routeColor
+routeTextColor
+routeSegments
+RouteSegment
+segmentName
+refPublicTransportStops
+schedule
+Schedule
+opens
+closes
+dayOfWeek

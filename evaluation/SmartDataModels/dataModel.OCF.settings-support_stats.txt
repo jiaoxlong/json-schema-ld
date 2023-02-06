@@ -1,0 +1,5 @@
+rt
+if
+remote-management
+software-auto-update
+type

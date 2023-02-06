@@ -1,0 +1,74 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.OCF/Alarm/schema.json>;
+    sh:property [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.alarm)
+], [
+  sh:path sdm:status;
+  sh:description "Property. This Property describes the status of the alarm: true - on, false - off.";
+  sh:name "status";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:duration;
+  sh:description "Property. This Property describes the alarm duration (seconds).";
+  sh:name "duration";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:time;
+  sh:description "Property. This Property describes the alarm time using ISO 8601 datetime format (e.g: 2007-04-05T14:30Z, 2007-04-05T14:30+09:00).";
+  sh:name "time";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:alarmtype;
+  sh:description "Property. The Alarm Type.";
+  sh:name "alarmtype";
+  sh:in (sdm:General sdm:Fire sdm:Flood sdm:Weather sdm:Security)
+], [
+  sh:path sdm:n;
+  sh:description "Property. Friendly name of the Resource";
+  sh:name "n";
+  sh:maxLength 64;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.baseline sdm:oic.if.rw)
+], [
+  sh:path sdm:range;
+  sh:name "range";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:step;
+  sh:description "Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+  sh:name "step";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:precision;
+  sh:description "Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+  sh:name "precision";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be Alarm";
+  sh:name "type";
+  sh:in (sdm:Alarm);
+  sh:minCount 1;
+  sh:maxCount 1
+].

@@ -1,0 +1,156 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcELIN2/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcELIN2";
+  sh:name "type";
+  sh:in (sdm:ExcELIN2)
+], [
+  sh:path sdm:efdbas;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (Efdbas).  Typical Value = 0.1. Default: 0.0";
+  sh:name "efdbas";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:iefmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Iefmax).  Typical Value = 1. Default: 0.0";
+  sh:name "iefmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:iefmax2;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum open circuit excitation voltage (Iefmax2).  Typical Value = -5. Default: 0.0";
+  sh:name "iefmax2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:iefmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Iefmin).  Typical Value = 1. Default: 0.0";
+  sh:name "iefmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator input gain (K1).  Typical Value = 0. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1ec;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator input limit (K1ec).  Typical Value = 2. Default: 0.0";
+  sh:name "k1ec";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k2;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K2).  Typical Value = 5. Default: 0.0";
+  sh:name "k2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k3;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K3).  Typical Value = 0.1. Default: 0.0";
+  sh:name "k3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k4;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (K4).  Typical Value = 0. Default: 0.0";
+  sh:name "k4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kd1;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage controller derivative gain (Kd1).  Typical Value = 34.5. Default: 0.0";
+  sh:name "kd1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ke2;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (Ke2).  Typical Value = 0.1. Default: 0.0";
+  sh:name "ke2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ketb;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain (Ketb).  Typical Value = 0.06. Default: 0.0";
+  sh:name "ketb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pid1max;
+  sh:description "Property. Model:'https://schema.org/Number'. Controller follow up gain (PID1max).  Typical Value = 2. Default: 0.0";
+  sh:name "pid1max";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seve1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Ve1, back of commutating reactance (Se[Ve1]).  Typical Value = 0. Default: 0.0";
+  sh:name "seve1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:seve2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, Ve2, back of commutating reactance (Se[Ve2]).  Typical Value = 1. Default: 0.0";
+  sh:name "seve2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb1;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage controller derivative washout time constant (Tb1).  Typical Value = 12.45. Default: 0";
+  sh:name "tb1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Te).  Typical Value = 0. Default: 0";
+  sh:name "te";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:te2;
+  sh:description "Property. Model:'https://schema.org/Number'. Time Constant (Te2).  Typical Value = 1. Default: 0";
+  sh:name "te2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti1;
+  sh:description "Property. Model:'https://schema.org/Number'. Controller follow up dead band (Ti1).  Typical Value = 0. Default: 0.0";
+  sh:name "ti1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti3;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Ti3).  Typical Value = 3. Default: 0";
+  sh:name "ti3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ti4;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Ti4).  Typical Value = 0. Default: 0";
+  sh:name "ti4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tr4;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant (Tr4).  Typical Value = 1. Default: 0";
+  sh:name "tr4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:upmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Upmax).  Typical Value = 3. Default: 0.0";
+  sh:name "upmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:upmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Limiter (Upmin).  Typical Value = 0. Default: 0.0";
+  sh:name "upmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ve1;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (Ve1).  Typical Value = 3. Default: 0.0";
+  sh:name "ve1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ve2;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (Ve2).  Typical Value = 0. Default: 0.0";
+  sh:name "ve2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xp;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation transformer effective reactance (Xp).  Typical Value = 1. Default: 0.0";
+  sh:name "xp";
+  sh:datatype xsd:decimal
+].

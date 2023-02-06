@@ -1,0 +1,8 @@
+rt
+supportedwatertypes
+supportedadditivetypes
+currentwatertype
+currentadditivetypes
+n
+if
+type

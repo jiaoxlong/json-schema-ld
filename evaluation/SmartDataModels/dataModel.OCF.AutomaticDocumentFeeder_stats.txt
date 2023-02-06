@@ -1,0 +1,6 @@
+rt
+adfStates
+currentAdfState
+n
+if
+type

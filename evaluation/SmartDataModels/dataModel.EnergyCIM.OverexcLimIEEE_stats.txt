@@ -1,0 +1,7 @@
+type
+hyst
+ifdlim
+ifdmax
+itfpu
+kcd
+kramp

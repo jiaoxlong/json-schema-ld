@@ -1,0 +1,6 @@
+type
+includesAttraction
+IncludesAttraction
+type
+name
+url

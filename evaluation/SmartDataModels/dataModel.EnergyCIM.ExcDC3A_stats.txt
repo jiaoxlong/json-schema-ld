@@ -1,0 +1,17 @@
+type
+edfmax
+efd1
+efd2
+efdlim
+efdmin
+exclim
+ke
+kr
+ks
+kv
+seefd1
+seefd2
+te
+trh
+vrmax
+vrmin

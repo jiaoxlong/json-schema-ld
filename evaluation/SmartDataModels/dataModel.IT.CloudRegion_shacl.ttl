@@ -1,0 +1,38 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.IT/CloudRegion/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be CloudRegion";
+  sh:name "type";
+  sh:in (sdm:CloudRegion);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:cloudName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name assigned to the corresponding region.";
+  sh:name "cloudName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:version;
+  sh:description "Property. Model:'https://schema.org/Text'. Corresponding Cloud version of the region.";
+  sh:name "version";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:test;
+  sh:description "Relationship. Model:'https://schema.org/Text'. Identification of the tests executed.";
+  sh:name "test";
+  sh:datatype xsd:anyURI
+].

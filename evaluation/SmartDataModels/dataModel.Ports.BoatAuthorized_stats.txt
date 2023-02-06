@@ -1,0 +1,11 @@
+type
+dateLastReported
+refSeaPort
+refPointOfInterest
+boatType
+boatSubType
+maxTonnage
+minLength
+maxLength
+maxWidth
+maxDraft

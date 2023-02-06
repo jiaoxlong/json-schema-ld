@@ -1,0 +1,15 @@
+type
+machine
+operationType
+result
+plannedStartAt
+plannedEndAt
+status
+operator
+startedAt
+endedAt
+commandSequence
+operationOutput
+OperationOutput
+unitsPrinted
+faults

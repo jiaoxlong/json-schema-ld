@@ -1,0 +1,12 @@
+type
+dateRetrieved
+dateIssued
+validity
+validFrom
+validTo
+dayMaximum
+DayMaximum
+dayMinimum
+DayMinimum
+uVIndexMax
+precipitation

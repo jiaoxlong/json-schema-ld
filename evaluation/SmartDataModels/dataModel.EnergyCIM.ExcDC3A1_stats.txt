@@ -1,0 +1,15 @@
+type
+exclim
+ka
+ke
+kf
+ki
+kp
+ta
+te
+tf
+vb1max
+vblim
+vbmax
+vrmax
+vrmin

@@ -1,0 +1,49 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json> dcterms:title " Smart Data Models - OverexcLim2";
+    dcterms:description "Adapted from CIM data models. Different from LimIEEEOEL, LimOEL2 has a fixed pickup threshold and reduces the excitation set-point by mean of non-windup integral regulator. Irated is the rated machine excitation current (calculated from nameplate conditions: V, P, CosPhi).".
+sdm:type dcterms:description "Property. NGSI type. It has to be OverexcLim2";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:OverexcLim2)
+].
+sdm:OverexcLim2 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "OverexcLim2".
+sdm:ifdlim dcterms:description "Property. Model:'https://schema.org/Number'. Limit value of rated field current (I).  Typical Value = 1.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ifdlim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:koi dcterms:description "Property. Model:'https://schema.org/Number'. Gain Over excitation limiter (K).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "koi";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:voimax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum error signal (V).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "voimax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:voimin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum error signal (V).  Typical Value = -9999. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "voimin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/OverexcLim2/schema.json>;
+    rdfs:range xsd:decimal.

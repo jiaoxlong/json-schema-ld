@@ -1,0 +1,109 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json> dcterms:title "Smart Data models - Inverter schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource describes functions for the control and monitoring of IEC 61850 based circuit breaker.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.inverter)
+].
+sdm:oic.r.inverter rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.inverter".
+sdm:status dcterms:description "Property. The inverter status. The status can only be reset out of bounds.";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:on sdm:off sdm:trip)
+].
+sdm:on rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "on".
+sdm:off rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "off".
+sdm:trip rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "trip".
+sdm:ratedpower dcterms:description "Property. The rated power in kW, defined at manufacturing time.";
+    rdf:type rdf:Property;
+    rdfs:label "ratedpower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minvoltmppt dcterms:description "Property. Minimum voltage for MPPT (Maximum power point tracking) control method (V), defined at manufacturing time.";
+    rdf:type rdf:Property;
+    rdfs:label "minvoltmppt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxvoltmppt dcterms:description "Property. Maximum voltage for MPPT (Maximum power point tracking) control method (V), defined at manufacturing time.";
+    rdf:type rdf:Property;
+    rdfs:label "maxvoltmppt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:inputvoltage dcterms:description "Property. input voltage in Volts.";
+    rdf:type rdf:Property;
+    rdfs:label "inputvoltage";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:inputcurrent dcterms:description "Property. input current in Amperes.";
+    rdf:type rdf:Property;
+    rdfs:label "inputcurrent";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:outputpower dcterms:description "Property. output power in kW.";
+    rdf:type rdf:Property;
+    rdfs:label "outputpower";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:timestamp dcterms:description "Property. An RFC3339 formatted time indicating when the data was observed (e.g.: 2016-02-15T09:19Z, 1996-12-19T16:39:57-08:00). Resolution in 1/100 second.";
+    rdf:type rdf:Property;
+    rdfs:label "timestamp";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Inverter";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Inverter/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Inverter)
+].
+sdm:Inverter rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Inverter".

@@ -1,0 +1,72 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.UnmannedAerialVehicle/UnmannedAerialVehicleEvent/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity identifier. It has to be UnmannedAerialVehicleEvent";
+  sh:name "type";
+  sh:in (sdm:UnmannedAerialVehicleEvent);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:UnmannedAerialVehicle;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:originator;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:elevation;
+  sh:description "Property. The elevation of the UAV (relative to ground level at the specified location). Specify value and units of measure.";
+  sh:name "elevation";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:endAt;
+  sh:description "Property. Indicates the date/time of when the event ended (if it has ended).";
+  sh:name "endAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:startAt;
+  sh:description "Property. Indicates the date/time of when the event started.";
+  sh:name "startAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:eventType;
+  sh:description "Property. The type of the UAV event, a choice from the list. Enum:'illegalFlight, closeToUnpermittedAirspace, overSpeed, overHeight, illegalWork'";
+  sh:name "eventType";
+  sh:in (sdm:illegalFlight sdm:closeToUnpermittedAirspace sdm:overSpeed sdm:overHeight sdm:illegalWork)
+], [
+  sh:path sdm:eventResult;
+  sh:description "Property. The handling result of the event, a choice from ths list, Enum:'logged, notify, alarm, forceLand, forceBack, forceHover'";
+  sh:name "eventResult";
+  sh:in (sdm:alarm sdm:forceBack sdm:forceHover sdm:forceLand sdm:logged sdm:notify)
+].

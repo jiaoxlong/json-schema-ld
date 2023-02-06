@@ -1,0 +1,5 @@
+type
+initialWeight
+weight
+date
+animal

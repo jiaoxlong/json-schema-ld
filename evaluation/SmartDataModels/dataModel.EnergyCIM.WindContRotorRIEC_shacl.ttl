@@ -1,0 +1,71 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/WindContRotorRIEC/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be WindContRotorRIEC";
+  sh:name "type";
+  sh:in (sdm:WindContRotorRIEC)
+], [
+  sh:path sdm:WindDynamicsLookupTable;
+  sh:description "Property. Model:'https://schema.org/Number'. The wind dynamics lookup table associated with this rotor resistance control model. Default: 'list'";
+  sh:name "WindDynamicsLookupTable";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindGenTurbineType2IEC;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind turbine type 2 model with whitch this wind control rotor resistance model is associated. Default: None";
+  sh:name "WindGenTurbineType2IEC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kirr;
+  sh:description "Property. Model:'https://schema.org/Number'. Integral gain in rotor resistance PI controller (). It is type dependent parameter. Default: 0.0";
+  sh:name "kirr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:komegafilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter gain for generator speed measurement (K). It is type dependent parameter. Default: 0.0";
+  sh:name "komegafilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpfilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter gain for power measurement (). It is type dependent parameter. Default: 0.0";
+  sh:name "kpfilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kprr;
+  sh:description "Property. Model:'https://schema.org/Number'. Proportional gain in rotor resistance PI controller (). It is type dependent parameter. Default: 0.0";
+  sh:name "kprr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum rotor resistance (). It is type dependent parameter. Default: 0.0";
+  sh:name "rmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum rotor resistance (). It is type dependent parameter. Default: 0.0";
+  sh:name "rmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tomegafilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter time constant for generator speed measurement (). It is type dependent parameter. Default: 0";
+  sh:name "tomegafilt";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tpfilt;
+  sh:description "Property. Model:'https://schema.org/Number'. Filter time constant for power measurement (). It is type dependent parameter. Default: 0";
+  sh:name "tpfilt";
+  sh:datatype xsd:decimal
+].

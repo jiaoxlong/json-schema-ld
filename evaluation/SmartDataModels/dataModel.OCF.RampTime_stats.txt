@@ -1,0 +1,8 @@
+rt
+rampTime
+n
+range
+step
+precision
+if
+type

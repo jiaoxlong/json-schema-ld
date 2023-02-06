@@ -1,0 +1,6 @@
+type
+validTo
+validFrom
+analysisType
+affects
+generate

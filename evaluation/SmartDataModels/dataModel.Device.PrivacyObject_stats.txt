@@ -1,0 +1,11 @@
+type
+refDevice
+isIndoor
+floor
+user
+purpose
+recipientList
+isPersonalData
+retentionPeriod
+legitimateInterest
+crossborderTransfer

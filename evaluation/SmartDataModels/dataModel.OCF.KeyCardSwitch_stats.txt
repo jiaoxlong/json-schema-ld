@@ -1,0 +1,5 @@
+rt
+stateofcard
+n
+if
+type

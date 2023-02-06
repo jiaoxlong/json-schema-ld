@@ -1,0 +1,117 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json> dcterms:title "Open Channel Management - Channel";
+    dcterms:description "This entity contains a harmonised description of a generic Channel made for Raw-Water (Open Channels) System Management domain.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. it has to be OpenChannel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:OpenChannel)
+].
+sdm:OpenChannel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "OpenChannel".
+sdm:downstreamNode dcterms:description "Relationship. A relationship indicating the ID of the downstream node (e.g., Junction, Regulation Structure), where the channel ends.";
+    rdf:type rdf:Property;
+    rdfs:label "downstreamNode";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>.
+sdm:upstreamNode dcterms:description "Relationship. A relationship indicating the ID of the upstream node (e.g., Junction, Regulation Structure), where the channel begins.";
+    rdf:type rdf:Property;
+    rdfs:label "upstreamNode";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>.
+sdm:geometryType dcterms:description "Property. The geometry of the channel. Enum:'Trapezoidal, Circular'].";
+    rdf:type rdf:Property;
+    rdfs:label "geometryType";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>.
+sdm:GeometryType rdf:type skos:ConceptScheme.
+sdm:geometryType rdfs:range [
+  owl:oneOf (sdm:Circular sdm:Trapezoidal)
+].
+sdm:Circular rdf:type skos:Concept;
+    skos:inScheme sdm:GeometryType;
+    rdfs:label "Circular".
+sdm:Trapezoidal rdf:type skos:Concept;
+    skos:inScheme sdm:GeometryType;
+    rdfs:label "Trapezoidal".
+sdm:bottomSlope dcterms:description "Property. The bottom slope of the channel. All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "bottomSlope";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:leftSideSlope dcterms:description "Property. The slope of the left bank of the channel (for 'Trapezoidal' geometry). All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "leftSideSlope";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rightSideSlope dcterms:description "Property. The slope of the right bank of the channel (for 'Trapezoidal' geometry). All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "rightSideSlope";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bottomWidth dcterms:description "Property. The bottom width of the channel (for 'Trapezoidal' geometry). All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "bottomWidth";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:diameter dcterms:description "Property. The diameter of a circular channel. All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "diameter";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:maxWaterDepth dcterms:description "Property. The maximum allowable water depth in the channel. All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "maxWaterDepth";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:roughnessCoefficient dcterms:description "Property. The Manning’s roughness coefficient.";
+    rdf:type rdf:Property;
+    rdfs:label "roughnessCoefficient";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:flowType dcterms:description "Property. Text defining the type of flow in the channel. Enum:'Free-Surface flow'.";
+    rdf:type rdf:Property;
+    rdfs:label "flowType";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>.
+sdm:FlowType rdf:type skos:ConceptScheme.
+sdm:flowType rdfs:range [
+  owl:oneOf (sdm:Free-Surface flow)
+].
+sdm:Free-Surface flow rdf:type skos:Concept;
+    skos:inScheme sdm:FlowType;
+    rdfs:label "Free-Surface flow".
+sdm:celerity dcterms:description "Property. Velocity of a surge propagated along the channel after the opening or close of a sluice gate.";
+    rdf:type rdf:Property;
+    rdfs:label "celerity";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:travelDuration dcterms:description "Property. The duration of the surge travelling from the downstream node (i.e., Regulation Structure) to the upstream node.";
+    rdf:type rdf:Property;
+    rdfs:label "travelDuration";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:waterLoss dcterms:description "Property. Water leakages/losses from the channel - percentage of flow of the channel or a number (flow).";
+    rdf:type rdf:Property;
+    rdfs:label "waterLoss";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:length dcterms:description "Property. The length of the channel. All units are accepted in CEFACT code.";
+    rdf:type rdf:Property;
+    rdfs:label "length";
+    rdfs:domain <https://smart-data-models.github.io/data-models.OpenChannelManagement/Channel/schema.json>;
+    rdfs:range xsd:decimal.

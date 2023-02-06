@@ -1,0 +1,8 @@
+type
+category
+notAllowedVehicleType
+restrictionValidityHours
+regulation
+validityStartDate
+validityEndDate
+security

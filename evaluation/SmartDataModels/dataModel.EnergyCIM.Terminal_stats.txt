@@ -1,0 +1,13 @@
+type
+ConductingEquipment
+ConnectivityNode
+ConverterDCSides
+HasFirstMutualCoupling
+HasSecondMutualCoupling
+RegulatingControl
+RemoteInputSignal
+SvPowerFlow
+TieFlow
+TopologicalNode
+TransformerEnd
+phases

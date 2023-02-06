@@ -1,0 +1,51 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PFVArType1IEEEVArController/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be PFVArType1IEEEVArController";
+  sh:name "type";
+  sh:in (sdm:PFVArType1IEEEVArController)
+], [
+  sh:path sdm:tvarc;
+  sh:description "Property. Model:'https://schema.org/Number'. Var controller time delay ().  Typical Value = 5. Default: 0";
+  sh:name "tvarc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vvar;
+  sh:description "Property. Model:'https://schema.org/Number'. Synchronous machine power factor (). Default: 0.0";
+  sh:name "vvar";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vvarcbw;
+  sh:description "Property. Model:'https://schema.org/Number'. Var controller dead band ().  Typical Value = 0.02. Default: 0.0";
+  sh:name "vvarcbw";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vvarref;
+  sh:description "Property. Model:'https://schema.org/Number'. Var controller reference (). Default: 0.0";
+  sh:name "vvarref";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vvtmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum machine terminal voltage needed for pf/var controller to be enabled (). Default: 0.0";
+  sh:name "vvtmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vvtmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum machine terminal voltage needed to enable pf/var controller (). Default: 0.0";
+  sh:name "vvtmin";
+  sh:datatype xsd:decimal
+].

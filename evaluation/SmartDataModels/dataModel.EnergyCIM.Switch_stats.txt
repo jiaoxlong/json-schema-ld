@@ -1,0 +1,6 @@
+type
+SwitchSchedules
+normalOpen
+open
+ratedCurrent
+retained

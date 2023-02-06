@@ -1,0 +1,11 @@
+type
+documentation
+manufacturerName
+brandName
+manufacturingMachineType
+version
+machineModelParent
+machineModelChildren
+processDescription
+standardOperations
+root

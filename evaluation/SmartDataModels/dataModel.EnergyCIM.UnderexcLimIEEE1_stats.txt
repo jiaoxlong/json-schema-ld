@@ -1,0 +1,16 @@
+type
+kuc
+kuf
+kui
+kul
+kur
+tu1
+tu2
+tu3
+tu4
+vucmax
+vuimax
+vuimin
+vulmax
+vulmin
+vurmax

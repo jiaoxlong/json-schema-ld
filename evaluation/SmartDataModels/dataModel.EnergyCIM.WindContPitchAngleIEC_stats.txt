@@ -1,0 +1,12 @@
+type
+WindGenTurbineType3IEC
+dthetamax
+dthetamin
+kic
+kiomega
+kpc
+kpomega
+kpx
+thetamax
+thetamin
+ttheta

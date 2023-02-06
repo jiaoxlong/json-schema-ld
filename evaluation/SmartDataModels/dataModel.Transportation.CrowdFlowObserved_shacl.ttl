@@ -1,0 +1,87 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Transportation/CrowdFlowObserved/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity type. It has to be CrowdFlowObserved";
+  sh:name "type";
+  sh:in (sdm:CrowdFlowObserved);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refRoadSegment;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateObserved;
+  sh:description "Property. The date and time of this observation in ISO8601 UTC format. It can be represented by an specific time instant or by an ISO8601 interval. As a workaround for the lack of support of Orion Context Broker for datetime intervals, it can be used two separate attributes: `dateObservedFrom`, `dateObservedTo`. Model:'https://schema.org/URL'.";
+  sh:name "dateObserved";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dateObservedFrom;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Observation period start date and time. See `dateObserved`.";
+  sh:name "dateObservedFrom";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:dateObservedTo;
+  sh:description "Property. Observation period end date and time. See `dateObserved`.. Model:'https://schema.org/DateTime'.";
+  sh:name "dateObservedTo";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:peopleCount;
+  sh:description "Property. Total number of people detected during this observation.";
+  sh:name "peopleCount";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:occupancy;
+  sh:description "Property. Fraction of the observation time where a person has been occupying the observed walkway. Model:'https://schema.org/Number)'";
+  sh:name "occupancy";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageCrowdSpeed;
+  sh:description "Property. Average speed of the crowd transiting during the observation period. Model:'https://schema.org/Number'. Units:'Kilometer per hour (Km/h).'";
+  sh:name "averageCrowdSpeed";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:congested;
+  sh:description "Property. Flags whether there was a crowd congestion during the observation period in the referred walkway. The absence of this attribute means no crowd congestion. Model:'https://schema.org/Boolean'.";
+  sh:name "congested";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:averageHeadwayTime;
+  sh:description "Property. Average headway time. Headway time is the time\n    elapsed between two consecutive persons. Model:'https://schema.org/Number'. Units:'second (s)'";
+  sh:name "averageHeadwayTime";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:direction;
+  sh:description "Property. Usual direction of travel in the walkway referred by this observation with respect to the city center. Model:'https://schema.org/Text'. Enum:'inbound, outbound'";
+  sh:name "direction";
+  sh:in (sdm:inbound sdm:outbound)
+].

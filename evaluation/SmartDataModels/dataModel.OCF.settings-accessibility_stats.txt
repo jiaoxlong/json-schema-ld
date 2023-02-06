@@ -1,0 +1,10 @@
+rt
+if
+voice-guide
+video-description
+caption
+caption-mode
+supported-caption-modes
+high-contrast
+enlarge
+type

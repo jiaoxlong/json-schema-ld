@@ -1,0 +1,12 @@
+type
+ParkingFacility.capacity
+ParkingFacility.capacity
+type
+Capacity.total
+InfrastructureElement.geometry
+InfrastructureElement.geometry
+type
+Geometry.wkt
+validity
+validFrom
+validTo

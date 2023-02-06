@@ -1,0 +1,221 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be UnderexcLimIEEE2";
+  sh:name "type";
+  sh:in (sdm:UnderexcLimIEEE2)
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL terminal voltage exponent applied to real power input to UEL limit look-up table (k1).  Typical Value = 2. Default: 0.0";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k2;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL terminal voltage exponent applied to reactive power output from UEL limit look-up table (k2).  Typical Value = 2. Default: 0.0";
+  sh:name "k2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kfb;
+  sh:description "Property. Model:'https://schema.org/Number'. Gain associated with optional integrator feedback input signal to UEL (K).  Typical Value = 0. Default: 0.0";
+  sh:name "kfb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kuf;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL excitation system stabilizer gain (K).  Typical Value = 0. Default: 0.0";
+  sh:name "kuf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kui;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL integral gain (K).  Typical Value = 0.5. Default: 0.0";
+  sh:name "kui";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kul;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL proportional gain (K).  Typical Value = 0.8. Default: 0.0";
+  sh:name "kul";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p0;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0. Default: 0.0";
+  sh:name "p0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p1;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.3. Default: 0.0";
+  sh:name "p1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p10;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p2;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.6. Default: 0.0";
+  sh:name "p2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p3;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.9. Default: 0.0";
+  sh:name "p3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p4;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 1.02. Default: 0.0";
+  sh:name "p4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p5;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p6;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p7;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p8;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:p9;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+  sh:name "p9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q0;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.31. Default: 0.0";
+  sh:name "q0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q1;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.31. Default: 0.0";
+  sh:name "q1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q10;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q10";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q2;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.28. Default: 0.0";
+  sh:name "q2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q3;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.21. Default: 0.0";
+  sh:name "q3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q4;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = 0. Default: 0.0";
+  sh:name "q4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q5;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q5";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q6;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q6";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q7;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q7";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q8;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q8";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:q9;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+  sh:name "q9";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tu1;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tu1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tu2;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tu2";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tu3;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tu3";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tu4;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tu4";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tul;
+  sh:description "Property. Model:'https://schema.org/Number'. Time constant associated with optional integrator feedback input signal to UEL (T).  Typical Value = 0. Default: 0";
+  sh:name "tul";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tup;
+  sh:description "Property. Model:'https://schema.org/Number'. Real power filter time constant (T).  Typical Value = 5. Default: 0";
+  sh:name "tup";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tuq;
+  sh:description "Property. Model:'https://schema.org/Number'. Reactive power filter time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tuq";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tuv;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage filter time constant (T).  Typical Value = 5. Default: 0";
+  sh:name "tuv";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vuimax;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL integrator output maximum limit (V).  Typical Value = 0.25. Default: 0.0";
+  sh:name "vuimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vuimin;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL integrator output minimum limit (V).  Typical Value = 0. Default: 0.0";
+  sh:name "vuimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vulmax;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL output maximum limit (V).  Typical Value = 0.25. Default: 0.0";
+  sh:name "vulmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vulmin;
+  sh:description "Property. Model:'https://schema.org/Number'. UEL output minimum limit (V).  Typical Value = 0. Default: 0.0";
+  sh:name "vulmin";
+  sh:datatype xsd:decimal
+].

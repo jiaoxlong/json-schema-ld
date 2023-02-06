@@ -1,0 +1,222 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json> dcterms:title "EU DCC";
+    dcterms:description "EU Digital Covid Certificate version 1.3.0 adapted to work with NGSI standard by Smart Data Models Program".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be EUProofOfVaccination";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:EUProofOfVaccination)
+].
+sdm:EUProofOfVaccination rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "EUProofOfVaccination".
+sdm:ver dcterms:description "Property. Schema version. Version of the schema, according to Semantic versioning (ISO, https://semver.org/ version 2.0.0 or newer)";
+    rdf:type rdf:Property;
+    rdfs:label "ver";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range xsd:string.
+sdm:nam dcterms:description "Property. Surname(s), forename(s) - in that order";
+    rdf:type rdf:Property;
+    rdfs:label "nam";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range sdm:Nam.
+sdm:Nam rdf:type rdfs:Class;
+    rdfs:label "Nam".
+sdm:fn dcterms:description "Property. Surname. The surname or primary name(s) of the person addressed in the certificate";
+    rdf:type rdf:Property;
+    rdfs:label "fn";
+    rdfs:domain sdm:Nam;
+    rdfs:range xsd:string.
+sdm:fnt dcterms:description "Property. Standardised surname. The surname(s) of the person, transliterated ICAO 9303";
+    rdf:type rdf:Property;
+    rdfs:label "fnt";
+    rdfs:domain sdm:Nam;
+    rdfs:range xsd:string.
+sdm:gn dcterms:description "Property. Forename. The forename(s) of the person addressed in the certificate";
+    rdf:type rdf:Property;
+    rdfs:label "gn";
+    rdfs:domain sdm:Nam;
+    rdfs:range xsd:string.
+sdm:gnt dcterms:description "Property. Standardised forename. The forename(s) of the person, transliterated ICAO 9303";
+    rdf:type rdf:Property;
+    rdfs:label "gnt";
+    rdfs:domain sdm:Nam;
+    rdfs:range xsd:string.
+sdm:dob dcterms:description "Property. Date of birth. Date of Birth of the person addressed in the DCC. ISO 8601 date format restricted to range 1900-2099 or empty";
+    rdf:type rdf:Property;
+    rdfs:label "dob";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range xsd:string.
+sdm:v dcterms:description "Vaccination Group";
+    rdf:type rdf:Property;
+    rdfs:label "v";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range sdm:V.
+sdm:V rdf:type rdfs:Class;
+    rdfs:label "V".
+sdm:tg dcterms:description "Property. Disease or agent targeted. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.1. For COVID19 the value has to be 840539006. More info in https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/disease-agent-targeted.json For other values check https://www.snomed.org/snomed-ct/five-step-briefing";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:vp dcterms:description "Property. Vaccine or prophylaxis. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.2. For COVID19 the values have to be 1119349007 for SARS-CoV-2 mRNA vaccine,1119305005 for SARS-CoV-2 antigen vaccine,J07BX03 for covid-19 vaccines. More info at https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/vaccine-prophylaxis.json and other values at https://www.snomed.org/snomed-ct";
+    rdf:type rdf:Property;
+    rdfs:label "vp";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:mp dcterms:description "Property. Vaccine medicinal product. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.3. The values are EU/1/20/1528 for Comirnaty, EU/1/20/1507 for COVID-19 Vaccine Moderna, EU/1/21/1529 for Vaxzevria, EU/1/20/1525 for COVID-19 Vaccine Janssen, CVnCoV for CVnCoV, Sputnik-V for Sputnik-V, Convidecia for Convidecia, EpiVacCorona for EpiVacCorona, BBIBP-CorV for BBIBP-CorV, Inactivated-SARS-CoV-2-Vero-Cell for Inactivated SARS-CoV-2 (Vero Cell), CoronaVac for CoronaVac, Covaxin for Covaxin (also known as BBV152 A, B, C). More info at https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/vaccine-medicinal-product.json";
+    rdf:type rdf:Property;
+    rdfs:label "mp";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:ma dcterms:description "Property. Marketing Authorization Holder - if no MAH present, then manufacturer. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.4. The values are ORG-100001699 for AstraZeneca AB, ORG-100030215 for Biontech Manufacturing GmbH, ORG-100001417 for Janssen-Cilag International, ORG-100031184 for Moderna Biotech Spain S.L., ORG-100006270 for Curevac AG, ORG-100013793 for CanSino Biologics, ORG-100020693 for China Sinopharm International Corp. - Beijing location, ORG-100010771 for Sinopharm Weiqida Europe Pharmaceutical s.r.o. - Prague location, ORG-100024420 for Sinopharm Zhijun (Shenzhen) Pharmaceutical Co. Ltd. - Shenzhen location, ORG-100032020 for Novavax CZ AS, Gamaleya-Research-Institute for Gamaleya Research Institute, Vector-Institute for Vector Institute, Sinovac-Biotech for Sinovac Biotech, Bharat-Biotech for Bharat Biotech. More info at https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/vaccine-mah-manf.json";
+    rdf:type rdf:Property;
+    rdfs:label "ma";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:dn dcterms:description "Property. Dose Number. Dose Number / Total doses in Series: positive integer";
+    rdf:type rdf:Property;
+    rdfs:label "dn";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:integer.
+sdm:sd dcterms:description "Property. Total Series of Doses: positive integer";
+    rdf:type rdf:Property;
+    rdfs:label "sd";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:integer.
+sdm:dt dcterms:description "ISO8601 complete date: Date of Vaccination";
+    rdf:type rdf:Property;
+    rdfs:label "dt";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:date.
+sdm:co dcterms:description "Country of Vaccination / Test, ISO 3166 alpha-2 where possible";
+    rdf:type rdf:Property;
+    rdfs:label "co";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:is dcterms:description "Certificate Issuer";
+    rdf:type rdf:Property;
+    rdfs:label "is";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:ci dcterms:description "Property. Unique Certificate Identifier: UVCI. Certificate Identifier, format as per UVCI: Annex 2 in  https://ec.europa.eu/health/sites/health/files/ehealth/docs/vaccination-proof_interoperability-guidelines_en.pdf";
+    rdf:type rdf:Property;
+    rdfs:label "ci";
+    rdfs:domain sdm:V;
+    rdfs:range xsd:string.
+sdm:t dcterms:description "Property. Test Group";
+    rdf:type rdf:Property;
+    rdfs:label "t";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range sdm:T.
+sdm:T rdf:type rdfs:Class;
+    rdfs:label "T".
+sdm:tg dcterms:description "Property. Disease or agent targeted. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.1. For COVID19 the value has to be 840539006. More info in https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/disease-agent-targeted.json For other values check https://www.snomed.org/snomed-ct/five-step-briefing";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:tt dcterms:description "Property. Type of Test. EU eHealthNetwork: Value Sets for Digital Covid Certificates version 1.0, 2021-04-16, section 2.7. The values for COVID19 are LP6464-4 for Nucleic acid amplification with probe detection, LP217198-3 for Rapid immunoassay. ";
+    rdf:type rdf:Property;
+    rdfs:label "tt";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:nm dcterms:description "NAA Test Name";
+    rdf:type rdf:Property;
+    rdfs:label "nm";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:ma dcterms:description "Property. RAT Test name and manufacturer. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.4. The values are ORG-100001699 for AstraZeneca AB, ORG-100030215 for Biontech Manufacturing GmbH, ORG-100001417 for Janssen-Cilag International, ORG-100031184 for Moderna Biotech Spain S.L., ORG-100006270 for Curevac AG, ORG-100013793 for CanSino Biologics, ORG-100020693 for China Sinopharm International Corp. - Beijing location, ORG-100010771 for Sinopharm Weiqida Europe Pharmaceutical s.r.o. - Prague location, ORG-100024420 for Sinopharm Zhijun (Shenzhen) Pharmaceutical Co. Ltd. - Shenzhen location, ORG-100032020 for Novavax CZ AS, Gamaleya-Research-Institute for Gamaleya Research Institute, Vector-Institute for Vector Institute, Sinovac-Biotech for Sinovac Biotech, Bharat-Biotech for Bharat Biotech. More info at https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/vaccine-mah-manf.json";
+    rdf:type rdf:Property;
+    rdfs:label "ma";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:sc dcterms:description "Date/Time of Sample Collection";
+    rdf:type rdf:Property;
+    rdfs:label "sc";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:dateTime.
+sdm:tr dcterms:description "Property. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.9. Test Result. the values for COVID19 are 260415000 for Not detected and 260373001 for Detected. More info at https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/test-result.json";
+    rdf:type rdf:Property;
+    rdfs:label "tr";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:tc dcterms:description "Testing Centre";
+    rdf:type rdf:Property;
+    rdfs:label "tc";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:co dcterms:description "Property. Country of Test, ISO 3166 alpha-2 where possible";
+    rdf:type rdf:Property;
+    rdfs:label "co";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:is dcterms:description "Certificate Issuer";
+    rdf:type rdf:Property;
+    rdfs:label "is";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:ci dcterms:description "Property. Unique Certificate Identifier: UVCI. Certificate Identifier, format as per UVCI: Annex 2 in  https://ec.europa.eu/health/sites/health/files/ehealth/docs/vaccination-proof_interoperability-guidelines_en.pdf";
+    rdf:type rdf:Property;
+    rdfs:label "ci";
+    rdfs:domain sdm:T;
+    rdfs:range xsd:string.
+sdm:r dcterms:description "Recovery Group";
+    rdf:type rdf:Property;
+    rdfs:label "r";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.COVID19/EUProofOfVaccination/schema.json>;
+    rdfs:range sdm:R.
+sdm:R rdf:type rdfs:Class;
+    rdfs:label "R".
+sdm:tg dcterms:description "Property. Disease or agent targeted. EU eHealthNetwork: Value Sets for Digital Covid Certificates. version 1.0, 2021-04-16, section 2.1. For COVID19 the value has to be 840539006. More info in https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/release/1.3.0/valuesets/disease-agent-targeted.json For other values check https://www.snomed.org/snomed-ct/five-step-briefing";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:string.
+sdm:fr dcterms:description "ISO 8601 complete date of first positive NAA test result";
+    rdf:type rdf:Property;
+    rdfs:label "fr";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:date.
+sdm:co dcterms:description "Property. Country of Vaccination / Test, ISO 3166 alpha-2 where possible";
+    rdf:type rdf:Property;
+    rdfs:label "co";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:string.
+sdm:is dcterms:description "Certificate Issuer";
+    rdf:type rdf:Property;
+    rdfs:label "is";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:string.
+sdm:df dcterms:description "ISO 8601 complete date: Certificate Valid From";
+    rdf:type rdf:Property;
+    rdfs:label "df";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:date.
+sdm:du dcterms:description "ISO 8601 complete date: Certificate Valid Until";
+    rdf:type rdf:Property;
+    rdfs:label "du";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:date.
+sdm:ci dcterms:description "Property. Unique Certificate Identifier: UVCI. Certificate Identifier, format as per UVCI: Annex 2 in  https://ec.europa.eu/health/sites/health/files/ehealth/docs/vaccination-proof_interoperability-guidelines_en.pdf";
+    rdf:type rdf:Property;
+    rdfs:label "ci";
+    rdfs:domain sdm:R;
+    rdfs:range xsd:string.

@@ -1,0 +1,139 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json> dcterms:title " Smart Data Models - ProprietaryParameterDynamics";
+    dcterms:description "Adapted from CIM data models. Supports definition of one or more parameters of several different datatypes for use by proprietary user-defined models.  NOTE: This class does not inherit from IdentifiedObject since it is not intended that a single instance of it be referenced by more than one proprietary user-defined model instance.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ProprietaryParameterDynamics";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ProprietaryParameterDynamics)
+].
+sdm:ProprietaryParameterDynamics rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ProprietaryParameterDynamics".
+sdm:AsynchronousMachineUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "AsynchronousMachineUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:DiscontinuousExcitationControlUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "DiscontinuousExcitationControlUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ExcitationSystemUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "ExcitationSystemUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:LoadUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "LoadUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:MechanicalLoadUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "MechanicalLoadUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:OverexcitationLimiterUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "OverexcitationLimiterUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PFVArControllerType1UserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PFVArControllerType1UserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PFVArControllerType2UserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PFVArControllerType2UserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:PowerSystemStabilizerUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PowerSystemStabilizerUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:SynchronousMachineUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "SynchronousMachineUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:TurbineGovernorUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "TurbineGovernorUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:TurbineLoadControllerUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "TurbineLoadControllerUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:UnderexcitationLimiterUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "UnderexcitationLimiterUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:VoltageAdjusterUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "VoltageAdjusterUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:VoltageCompensatorUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "VoltageCompensatorUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindPlantUserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindPlantUserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindType1or2UserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindType1or2UserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:WindType3or4UserDefined dcterms:description "Property. Model:'https://schema.org/Number'. Proprietary user-defined model with which this parameter is associated. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "WindType3or4UserDefined";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:booleanParameterValue dcterms:description "Property. Model:'https://schema.org/Number'. Used for boolean parameter value. If this attribute is populated, integerParameterValue and floatParameterValue will not be. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "booleanParameterValue";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:floatParameterValue dcterms:description "Property. Model:'https://schema.org/Number'. Used for floating point parameter value.  If this attribute is populated, booleanParameterValue and integerParameterValue will not be. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "floatParameterValue";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:integerParameterValue dcterms:description "Property. Model:'https://schema.org/Number'. Used for integer parameter value.  If this attribute is populated, booleanParameterValue and floatParameterValue will not be. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "integerParameterValue";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:parameterNumber dcterms:description "Property. Model:'https://schema.org/Number'. Sequence number of the parameter among the set of parameters associated with the related proprietary user-defined model. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "parameterNumber";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ProprietaryParameterDynamics/schema.json>;
+    rdfs:range xsd:decimal.

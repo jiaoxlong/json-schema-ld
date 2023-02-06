@@ -1,0 +1,12 @@
+type
+area
+category
+belongsTo
+ownedBy
+hasAgriParcelParent
+hasAgriCrop
+hasAgriSoil
+cropStatus
+lastPlantedAt
+soilTextureType
+irrigationSystemType

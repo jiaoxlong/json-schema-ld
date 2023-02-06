@@ -1,0 +1,7 @@
+type
+b
+g
+r
+ratio
+step
+x

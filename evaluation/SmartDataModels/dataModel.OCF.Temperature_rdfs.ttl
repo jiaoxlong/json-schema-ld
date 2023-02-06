@@ -1,0 +1,96 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json> dcterms:title "Smart Data models - Temperature schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource describes a sensed or actuated Temperature value.The Property 'temperature' describes the current value measured.The Property 'units' is a single value that is one of 'C', 'F' or 'K'.It provides the unit of measurement for the 'temperature' value.It is a read-only value that is provided by the server.If the 'units' Property is missing the default is Celsius [C].When the Property 'range' is omitted the default is +/- MAXINT.A client can specify the units for the requested temperature by use of a query parameter.If no query parameter is provided the server provides its default measure or set value.It is recommended to return always the units Property in the result.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.temperature)
+].
+sdm:oic.r.temperature rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.temperature".
+sdm:temperature dcterms:description "Property. The current temperature setting or measurement.";
+    rdf:type rdf:Property;
+    rdfs:label "temperature";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:units dcterms:description "Property. The unit for the conveyed temperature value, Note that when doing an UPDATE, the unit on the device does NOT change, it only indicates the unit of the conveyed value during the UPDATE operation.";
+    rdf:type rdf:Property;
+    rdfs:label "units";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>.
+sdm:Units rdf:type skos:ConceptScheme.
+sdm:units rdfs:range [
+  owl:oneOf (sdm:C sdm:F sdm:K)
+].
+sdm:C rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "C".
+sdm:F rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "F".
+sdm:K rdf:type skos:Concept;
+    skos:inScheme sdm:Units;
+    rdfs:label "K".
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>;
+    rdfs:range xsd:string.
+sdm:range rdf:type rdf:Property;
+    rdfs:label "range";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:step dcterms:description "Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+    rdf:type rdf:Property;
+    rdfs:label "step";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:precision dcterms:description "Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+    rdf:type rdf:Property;
+    rdfs:label "precision";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.baseline sdm:oic.if.s sdm:oic.if.a)
+].
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Temperature";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/Temperature/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Temperature)
+].
+sdm:Temperature rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Temperature".

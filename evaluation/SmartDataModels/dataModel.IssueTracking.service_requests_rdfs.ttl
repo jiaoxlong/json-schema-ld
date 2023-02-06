@@ -1,0 +1,102 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json> dcterms:title "FIWARE - Open311 Service Requests";
+    dcterms:description "An entity of type ServiceRequest is an acceptable Open 311 service request. Such entity encompasses all the properties defined by Open 311 at POST Service Request and GET Service Request.".
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be service_requests. Enum:'service_requests'";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:service_requests)
+].
+sdm:service_requests rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "service_requests".
+sdm:service_request_id dcterms:description "Property. The unique ID of the service request created.";
+    rdf:type rdf:Property;
+    rdfs:label "service_request_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:jurisdiction_id dcterms:description "Property. The unique ID of the legal entity of the service (i.e. city).";
+    rdf:type rdf:Property;
+    rdfs:label "jurisdiction_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:service_code dcterms:description "Property. The unique identifier for the service request type.";
+    rdf:type rdf:Property;
+    rdfs:label "service_code";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:service_name dcterms:description "Property. The human readable name of the service request type.";
+    rdf:type rdf:Property;
+    rdfs:label "service_name";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:agency_responsible dcterms:description "Property. Please note that this is semantically equivalent to the provider property (name subproperty) of schema.org. Model:'http://schema.org/provider'";
+    rdf:type rdf:Property;
+    rdfs:label "agency_responsible";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:service_notice dcterms:description "Property. Information about the action expected to fulfill the request or otherwise address the information reported.";
+    rdf:type rdf:Property;
+    rdfs:label "service_notice";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:status dcterms:description "Property. Allows one to search for requests which have a specific status. This defaults to all statuses; can be declared multiple times, comma delimited. Enum:'open, closed'";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:closed sdm:open)
+].
+sdm:closed rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "closed".
+sdm:open rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "open".
+sdm:status_notes dcterms:description "Property. Explanation of why status was changed to current state or more details on current status than conveyed with status alone.";
+    rdf:type rdf:Property;
+    rdfs:label "status_notes";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:requested_datetime dcterms:description "Property. The date and time when the service request was made. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "requested_datetime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:updated_datetime dcterms:description "Property. The date and time when the service request was last modified. For requests with status=closed, this will be the date the request was closed. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "updated_datetime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:expected_datetime dcterms:description "Property. The date and time when the service request can be expected to be fulfilled. This may be based on a service-specific service level agreement. Model:'https://schema.org/DateTime'";
+    rdf:type rdf:Property;
+    rdfs:label "expected_datetime";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:media_url dcterms:description "Property. A URL to media associated with the request, eg an image. Model:'https://schema.org/URL'";
+    rdf:type rdf:Property;
+    rdfs:label "media_url";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>;
+    rdfs:range xsd:string.
+sdm:device_id dcterms:description "Relationship. The unique device ID of the device submitting the request. This is usually only used for mobile devices. Model:'https://schema.org/URL'";
+    rdf:type rdf:Property;
+    rdfs:label "device_id";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IssueTracking/service_requests/schema.json>.

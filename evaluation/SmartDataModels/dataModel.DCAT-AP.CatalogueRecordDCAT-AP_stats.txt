@@ -1,0 +1,9 @@
+type
+primaryTopic
+modificationDate
+applicationProfile
+changeType
+listingDate
+language
+sourceMetadata
+title

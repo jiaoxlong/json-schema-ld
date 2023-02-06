@@ -1,0 +1,16 @@
+type
+cameraName
+cameraUsage
+streamURL
+cameraType
+endDateTime
+cameraOrientation
+CameraOrientation
+comments
+annotatedMap
+cameraNum
+mediaURL
+streamName
+startDateTime
+on
+imageSnapshot

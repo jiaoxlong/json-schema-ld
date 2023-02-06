@@ -1,0 +1,8 @@
+rt
+acceleration
+n
+range
+step
+precision
+if
+type

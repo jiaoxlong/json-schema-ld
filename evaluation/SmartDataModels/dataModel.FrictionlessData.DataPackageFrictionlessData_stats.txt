@@ -1,0 +1,14 @@
+type
+profile
+name
+id
+title
+description
+homepage
+created
+contributors
+keywords
+image
+licenses
+resources
+sources

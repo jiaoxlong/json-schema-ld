@@ -1,0 +1,7 @@
+type
+WindAeroLinearIEC
+WindContPType3IEC
+WindContPitchAngleIEC
+WindMechIEC
+dipmax
+diqmax

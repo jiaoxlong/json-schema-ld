@@ -1,0 +1,458 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be StorageBatteryDevice. Model:'https://schema.org/Text' ";
+  sh:name "type";
+  sh:in (sdm:StorageBatteryDevice);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:refPointOfInterest;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:dateLastReported;
+  sh:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes the last time when the device successfully reported data. Date and time in an ISO8601 UTCformat. ";
+  sh:name "dateLastReported";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:batteryAssessmentMethods;
+  sh:description "Property. Model:'https://schema.org/Text'. Enum:'ampereHourMeter, dischargeTest, electrolyteDensity, highFrequencyImpedance, lowFrequencyImpedance, mathematicalModel, operatingVoltageWithClosedCircuit, quiescentVoltageWithOpenCircuit'.  ";
+  sh:name "batteryAssessmentMethods";
+  sh:in (sdm:ampereHourMeter sdm:dischargeTest sdm:electrolyteDensity sdm:highFrequencyImpedance sdm:lowFrequencyImpedance sdm:mathematicalModel sdm:operatingVoltageWithClosedCircuit sdm:quiescentVoltageWithOpenCircuit)
+], [
+  sh:path sdm:brandName;
+  sh:description "Property. Model:'https://schema.org/Text'. Brand Name of the item.";
+  sh:name "brandName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:modelName;
+  sh:description "Property. Model:'https://schema.org/Text'. Model Name of the item. ";
+  sh:name "modelName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:manufacturerName;
+  sh:description "Property. Model:'https://schema.org/Text'. Manufacturer Name of the item.";
+  sh:name "manufacturerName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:serialNumber;
+  sh:description "Property. Model:'https://schema.org/Text'. Serial numbers of the item.";
+  sh:name "serialNumber";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:application;
+  sh:name "application";
+  sh:in (sdm:electricMobility sdm:energyStorage sdm:emergencyStorage sdm:houseHoldStorage sdm:industrialStorage sdm:lighting sdm:production sdm:robotics sdm:other)
+], [
+  sh:path sdm:typeOfUse;
+  sh:description "Property. Model:'https://schema.org/Text'. Accepted use regarding its positioning in an indoor / outdoor environment. Enum:' indoor, mixed, outdoor, other'";
+  sh:name "typeOfUse";
+  sh:in (sdm:indoor sdm:mixed sdm:outdoor sdm:other)
+], [
+  sh:path sdm:installationMode;
+  sh:description "Property. Model:'https://schema.org/Text'. Enum:'aerial, ground, pole, roofing, underGround, wall, other'. Positioning of the device in relation to a ground reference system.";
+  sh:name "installationMode";
+  sh:in (sdm:aerial sdm:ground sdm:pole sdm:roofing sdm:underGround sdm:wall sdm:other)
+], [
+  sh:path sdm:installationCondition;
+  sh:name "installationCondition";
+  sh:in (sdm:desert sdm:dust sdm:extremeClimate sdm:extremeCold sdm:extremeHeat sdm:extremeHumidity sdm:marine sdm:saline sdm:sand sdm:seismic sdm:other)
+], [
+  sh:path sdm:possibilityOfUse;
+  sh:description "Property. Model:'https://schema.org/Text'. Possibility of use. A unique value. Enum:'mobile, mixed, stationary, other'.  ";
+  sh:name "possibilityOfUse";
+  sh:in (sdm:mobile sdm:mixed sdm:stationary sdm:other)
+], [
+  sh:path sdm:batteryType;
+  sh:description "Property. Model:'https://schema.org/Text'. Enum:'alkaline, gel, lead, lead-AGM, Li-Ion, Li-Po, Li-Po4, LMP, Li-Air, Na-NiCl2(Zebra), Ni-Cd, Ni-MH, Ni-Zn, other'. Type of battery used.";
+  sh:name "batteryType";
+  sh:in (sdm:alkaline sdm:gel sdm:lead sdm:lead-AGM sdm:Li-Ion sdm:Li-Po sdm:Li-Po4 sdm:LMP sdm:Li-Air sdm:Na-NiCl2(Zebra) sdm:Ni-Cd sdm:Ni-MH sdm:Ni-Zn sdm:other);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:rechargeEnergySource;
+  sh:description "Property. Model:'https://schema.org/Text'. Enum:'electric, hydraulic, windTurbine, other'. Recharge Energy Source. A unique value of the list ";
+  sh:name "rechargeEnergySource";
+  sh:in (sdm:electric sdm:hydraulic sdm:windTurbine sdm:other);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:typeEnergySource;
+  sh:name "typeEnergySource";
+  sh:in (sdm:dam sdm:fall sdm:generator sdm:network sdm:photovoltaic sdm:river sdm:sea sdm:waterTurbine sdm:wind sdm:other)
+], [
+  sh:path sdm:documentation;
+  sh:description "Property. Model:'https://schema.org/URL'. Technical Documentation (Installation / maintenance / use).";
+  sh:name "documentation";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:dimension;
+  sh:description "Property. External dimension of a Panel. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CMT** represents Centimeter. Units:'Centimeters'";
+  sh:name "dimension"
+].
+sdm:DimensionShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Dimension;
+    sh:property [
+  sh:path sdm:height;
+  sh:name "height";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:width;
+  sh:name "width";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:depth;
+  sh:name "depth";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:weight;
+  sh:description "Property. Model:'https://schema.org/weight'. Weight. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KGM** represents KiloGramme. Units:'Kilograms'";
+  sh:name "weight";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:protectionIP;
+  sh:description "Property. IP *Ingress Protection* for the Junction Box. This is the level classifies and rates the degree of protection provided by mechanical casings and electrical enclosures against intrusion, dust, accidental contact, and water according to International Electrotechnical Commission standard (EN 60-529). - First digit: Solid particle protection (Single numeral: 0–6 or 'X'). - Second digit: Liquid ingress protection (Single numeral: 0–9 or 'X'). - Third digit: Personal Protection  against access to dangerous parts (optional additional letter). - Fourth digit: Other protections (optional additional letter). Model:'https://en.wikipedia.org/wiki/IP_Code'.";
+  sh:name "protectionIP";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:protectionIK;
+  sh:description "Property. IK 'Mecanic Protection' level relating to numeric classification for the degrees of protection provided by enclosures for electrical equipment against external mechanical impacts, according to International Electro technical Commission standard (EN 62-262). - IK varies from 0 (minimum resistance) to 10 (maximum resistance) which represents an Impact Energy (Unit Joule). Model:''https://schema.org/Number'.";
+  sh:name "protectionIK";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingTemperature;
+  sh:description "Property. Ambient operating temperature range. This is the minimum and maximum resistance to cold and heat for an [event]. The format is structured by a sub-property of 3 items with the format  {`event`:[`min`,`max`]}. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Units:'degrees Celsius'";
+  sh:name "operatingTemperature"
+].
+sdm:OperatingTemperatureShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingTemperature;
+    sh:property [
+  sh:path sdm:storage;
+  sh:name "storage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:discharge;
+  sh:name "discharge";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:charge;
+  sh:name "charge";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalVoltage;
+  sh:description "Property. Model:'https://schema.org/Number'. Nominal battery voltage. *(Code U)* The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'.";
+  sh:name "nominalVoltage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalAmpere;
+  sh:description "Property. Model:'https://schema.org/Number'. Nominal Amperage. *(Code I)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Units:'amperes'";
+  sh:name "nominalAmpere";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalFrequency;
+  sh:description "Property. Model:'https://schema.org/Number'. Nominal Frequency. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Units:'hertz'";
+  sh:name "nominalFrequency";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalCapacity;
+  sh:description "Property. Model:'https://schema.org/Number'. Nominal Energy capacity. *(Code C)* to link with the attribute [CapacityCnnn] to measure the predefined levels parameters C / xx h of discharge regimes. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMH** represents Ampere Hour. Units:'Ampere Hour'";
+  sh:name "nominalCapacity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:storableEnergy;
+  sh:description "Property. Model:'https://schema.org/Number'. Total Storage Energy = [nominalVoltage] * [nominalCapacity]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWH** represents Kilowatt Hour. Units:'Kw Hour'";
+  sh:name "storableEnergy";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:usableEnergy;
+  sh:description "Property. Model:'https://schema.org/Number'. Usable Energy. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWH** represents Kilowatt Hour. Units:'Kw Hour'";
+  sh:name "usableEnergy";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingVoltage;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum and Maximum voltage allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volt'";
+  sh:name "operatingVoltage"
+].
+sdm:OperatingVoltageShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingVoltage;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingAmpere;
+  sh:description "Property. Model:'https://schema.org/Number'.  Minimum and Maximum Ampere allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Units:'amperes'";
+  sh:name "operatingAmpere"
+].
+sdm:OperatingAmpereShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingAmpere;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:operatingFrequency;
+  sh:description "Property. Model:'https://schema.org/Number'.  Minimum and Maximum frequency allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Units:'hertz'";
+  sh:name "operatingFrequency"
+].
+sdm:OperatingFrequencyShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingFrequency;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:massEnergyDensity;
+  sh:description "Property. Model:'https://schema.org/Number'. Mass Energy density *(Code D)*. Ratio between the capacity of the battery to deliver a certain power for a certain time and its weight. The format is structured by a sub-property of 2 items. The unit code (text) of measurement is **Wh/Kg** WattHour per Kilogram. Units:'W hour / Kg'";
+  sh:name "massEnergyDensity"
+].
+sdm:MassEnergyDensityShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:MassEnergyDensity;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:volEnergyDensity;
+  sh:description "Property. Model:'https://schema.org/Number'. Volume Energy density *(Code D)*. The format is structured by a sub-property of 2 items. The unit code (text) of measurement is **Wh/L** WattHour per Liter. Units:'Wh/L'";
+  sh:name "volEnergyDensity"
+].
+sdm:VolEnergyDensityShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:VolEnergyDensity;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxOutputPower;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Units:'Kw'";
+  sh:name "maxOutputPower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:peakPower;
+  sh:description "Property. Model:'https://schema.org/Number'.  Maximum intensity extractable over a short period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Units:'Kw'";
+  sh:name "peakPower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:durationPeakPower;
+  sh:description "Property. Model:'https://schema.org/Number'. Reference Time recorded for the attribute [peakPower]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **SEC** represents Second. Units:'seconds'";
+  sh:name "durationPeakPower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:communication;
+  sh:name "communication";
+  sh:in (sdm:CAN 2.0 B sdm:dryContactTerminal sdm:maintenanceInterface sdm:RS485 sdm:RS485BMS sdm:RS485Inverter sdm:other)
+], [
+  sh:path sdm:operatingAltitude;
+  sh:description "Property. Model:'https://schema.org/Number'. Operating altitude with minimum and maximum resistance to height and depth. The format is structured by a sub-property of 2 items with the keys [min] =<0 and [max] >=0. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Units:'meters'";
+  sh:name "operatingAltitude"
+].
+sdm:OperatingAltitudeShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:OperatingAltitude;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageLife;
+  sh:description "Property. Model:'https://schema.org/Number'. average life under normal battery usage conditions at reference temperatures. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **ANN** represents Year. Units:'year'";
+  sh:name "averageLife";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:lifeCycleNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of admissible charge / discharge life cycles. The format is structured by a sub-property of 2 items.";
+  sh:name "lifeCycleNumber"
+].
+sdm:LifeCycleNumberShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:LifeCycleNumber;
+    sh:property [
+  sh:path sdm:min;
+  sh:name "min";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:max;
+  sh:name "max";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:toolBMS;
+  sh:description "Property. Model:'https://schema.org/Boolean'. Use of a Battery Management System tool to protect, guarantee and optimize battery life. (`true` for yes)";
+  sh:name "toolBMS";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:chargingModeAllowed;
+  sh:name "chargingModeAllowed";
+  sh:in (sdm:normal sdm:quick sdm:fast)
+], [
+  sh:path sdm:overloadAccepted;
+  sh:description "Property. Model:'https://schema.org/Boolean'. Overload is permitted after exceeding the threshold.(`true` for yes)";
+  sh:name "overloadAccepted";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:overloadAcceptedTime;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Accepted overcharge time without damage to the battery.";
+  sh:name "overloadAcceptedTime";
+  sh:datatype xsd:time
+], [
+  sh:path sdm:selfDischargeRate;
+  sh:description "Property. Model:'https://schema.org/Number'. Battery discharge rate without any use on a baseline of 1 month according the [temperature of reference]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percentage.";
+  sh:name "selfDischargeRate";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:capacityCnnn;
+  sh:description "Property. Model:'https://schema.org/Number'. Remaining energy as a function of the discharge time for 6 keys according the temperature of reference. Each Key is a structured value with the format {`Cnnn`:[`value1`,`value2`]} describing the different measurement of [CapacityCnnn].";
+  sh:name "capacityCnnn"
+].
+sdm:CapacityCnnnShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:CapacityCnnn;
+    sh:property [
+  sh:path sdm:C001;
+  sh:name "C001";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:C005;
+  sh:name "C005";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:C010;
+  sh:name "C010";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:C020;
+  sh:name "C020";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:C050;
+  sh:name "C050";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:C100;
+  sh:name "C100";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:roundTripEfficiency;
+  sh:description "Property. Model:'https://schema.org/Number'. Round-Trip Efficiency. Efficiency, defined as the ratio between stored energy and returned energy. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+  sh:name "roundTripEfficiency";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:chargeDischargeReactivity;
+  sh:description "Property. Model:'https://schema.org/Number'.  Charge and Discharge Reactivity which characterizes the reactive behavior of the system. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **SEC** represents Second. Units:'seconds'";
+  sh:name "chargeDischargeReactivity";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:chargePower;
+  sh:description "Property. Model:'https://schema.org/Number'. Load Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+  sh:name "chargePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:chargeEfficiency;
+  sh:description "Property. Model:'https://schema.org/Number'. Charge Efficiency *(code PV-BAT)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+  sh:name "chargeEfficiency";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumVoltageEOC;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum authorized voltage after end of charge and Battery still connected to to a charge generator. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+  sh:name "maximumVoltageEOC";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dischargePower;
+  sh:description "Property. Model:'https://schema.org/Number'. Discharge Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+  sh:name "dischargePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:dischargeEfficiency;
+  sh:description "Property. Model:'https://schema.org/Number'. Discharge Efficiency *(code PV-OND)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+  sh:name "dischargeEfficiency";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minimumVoltageEOD;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage after end of discharge and not connected to to a charge generator. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+  sh:name "minimumVoltageEOD";
+  sh:datatype xsd:decimal
+].

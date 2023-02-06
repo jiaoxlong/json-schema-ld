@@ -1,0 +1,12 @@
+type
+dtc
+dtf
+dtp
+k
+m
+t1
+t2
+t3
+t4
+tf
+tp

@@ -1,0 +1,4 @@
+type
+notAllowedVehicleType
+restrictionValidityHours
+refRestrictedTrafficArea

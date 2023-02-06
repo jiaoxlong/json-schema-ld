@@ -1,0 +1,84 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json> dcterms:title " Smart Data Models - SynchronousMachineEquivalentCircuit";
+    dcterms:description "Adapted from CIM data models. The electrical equations for all variations of the synchronous models are based on the SynchronousEquivalentCircuit diagram for the direct and quadrature axes.    =  +   =  +  *  / ( + )  =  +  * *  / ( *  +  *  +  * )  =  +   =  +  *  / (+ )  =  +  **  / ( *  +  *  +  * )  = ( + ) / ( * )  = ( *  +  *  +  * ) / ( *  * ( + )  = ( + ) / ( * )  = ( *  +  *  +  * )/ ( *  * ( + ) Same equations using CIM attributes from SynchronousMachineTimeConstantReactance class on left of = sign and SynchronousMachineEquivalentCircuit class on right (except as noted): xDirectSync = xad + RotatingMachineDynamics.statorLeakageReactance xDirectTrans = RotatingMachineDynamics.statorLeakageReactance + xad * xfd / (xad + xfd) xDirectSubtrans = RotatingMachineDynamics.statorLeakageReactance + xad * xfd * x1d / (xad * xfd + xad * x1d + xfd * x1d) xQuadSync = xaq + RotatingMachineDynamics.statorLeakageReactance xQuadTrans = RotatingMachineDynamics.statorLeakageReactance + xaq * x1q / (xaq+ x1q) xQuadSubtrans = RotatingMachineDynamics.statorLeakageReactance + xaq * x1q* x2q / (xaq * x1q + xaq * x2q + x1q * x2q)  tpdo = (xad + xfd) / (2*pi*nominal frequency * rfd) tppdo = (xad * xfd + xad * x1d + xfd * x1d) / (2*pi*nominal frequency * r1d * (xad + xfd) tpqo = (xaq + x1q) / (2*pi*nominal frequency * r1q) tppqo = (xaq * x1q + xaq * x2q + x1q * x2q)/ (2*pi*nominal frequency * r2q * (xaq + x1q).  Are only valid for a simplified model where 'Canay' reactance is zero.".
+sdm:type dcterms:description "Property. NGSI type. It has to be SynchronousMachineEquivalentCircuit";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SynchronousMachineEquivalentCircuit)
+].
+sdm:SynchronousMachineEquivalentCircuit rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SynchronousMachineEquivalentCircuit".
+sdm:r1d dcterms:description "Property. Model:'https://schema.org/Number'. D-axis damper 1 winding resistance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r1d";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r1q dcterms:description "Property. Model:'https://schema.org/Number'. Q-axis damper 1 winding resistance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r1q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:r2q dcterms:description "Property. Model:'https://schema.org/Number'. Q-axis damper 2 winding resistance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "r2q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rfd dcterms:description "Property. Model:'https://schema.org/Number'. Field winding resistance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rfd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x1d dcterms:description "Property. Model:'https://schema.org/Number'. D-axis damper 1 winding leakage reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x1d";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x1q dcterms:description "Property. Model:'https://schema.org/Number'. Q-axis damper 1 winding leakage reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x1q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:x2q dcterms:description "Property. Model:'https://schema.org/Number'. Q-axis damper 2 winding leakage reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "x2q";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xad dcterms:description "Property. Model:'https://schema.org/Number'. D-axis mutual reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xad";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xaq dcterms:description "Property. Model:'https://schema.org/Number'. Q-axis mutual reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xaq";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xf1d dcterms:description "Property. Model:'https://schema.org/Number'. Differential mutual (`Canay`) reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xf1d";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xfd dcterms:description "Property. Model:'https://schema.org/Number'. Field winding leakage reactance. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xfd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SynchronousMachineEquivalentCircuit/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,11 @@
+rt
+status
+duration
+time
+alarmtype
+n
+if
+range
+step
+precision
+type

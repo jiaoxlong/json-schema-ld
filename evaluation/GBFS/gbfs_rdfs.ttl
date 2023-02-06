@@ -1,0 +1,98 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson> dcterms:description "Auto-discovery file that links to all of the other files published by the system.".
+gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
+    rdf:type rdf:Property;
+    rdfs:label "last_updated";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
+    rdfs:range xsd:integer.
+gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+    rdf:type rdf:Property;
+    rdfs:label "ttl";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
+    rdfs:range xsd:integer.
+gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "version";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
+    rdfs:range xsd:string.
+gbfs:data dcterms:description "Response data in the form of name:value pairs.";
+    rdf:type rdf:Property;
+    rdfs:label "data";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
+    rdfs:range gbfs:Datum.
+gbfs:Datum rdf:type rdfs:Class;
+    rdfs:label "Datum".
+gbfs:feeds dcterms:description "An array of all of the feeds that are published by the auto-discovery file. Each element in the array is an object with the keys below.";
+    rdf:type rdf:Property;
+    rdfs:label "feeds";
+    rdfs:domain gbfs:Datum;
+    rdfs:range gbfs:Feed.
+gbfs:Feed rdf:type rdfs:Class;
+    rdfs:label "Feed".
+gbfs:name dcterms:description "Key identifying the type of feed this is. The key must be the base file name defined in the spec for the corresponding feed type.";
+    rdf:type rdf:Property;
+    rdfs:label "name";
+    rdfs:domain gbfs:Feed.
+gbfs:Name rdf:type skos:ConceptScheme.
+gbfs:name rdfs:range [
+  owl:oneOf (gbfs:gbfs gbfs:gbfs_versions gbfs:system_information gbfs:vehicle_types gbfs:station_information gbfs:station_status gbfs:free_bike_status gbfs:system_hours gbfs:system_alerts gbfs:system_calendar gbfs:system_regions gbfs:system_pricing_plans gbfs:geofencing_zones)
+].
+gbfs:gbfs rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "gbfs".
+gbfs:gbfs_versions rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "gbfs_versions".
+gbfs:system_information rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_information".
+gbfs:vehicle_types rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "vehicle_types".
+gbfs:station_information rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "station_information".
+gbfs:station_status rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "station_status".
+gbfs:free_bike_status rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "free_bike_status".
+gbfs:system_hours rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_hours".
+gbfs:system_alerts rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_alerts".
+gbfs:system_calendar rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_calendar".
+gbfs:system_regions rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_regions".
+gbfs:system_pricing_plans rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "system_pricing_plans".
+gbfs:geofencing_zones rdf:type skos:Concept;
+    skos:inScheme gbfs:Name;
+    rdfs:label "geofencing_zones".
+gbfs:url dcterms:description "URL for the feed.";
+    rdf:type rdf:Property;
+    rdfs:label "url";
+    rdfs:domain gbfs:Feed;
+    rdfs:range xsd:anyURI.

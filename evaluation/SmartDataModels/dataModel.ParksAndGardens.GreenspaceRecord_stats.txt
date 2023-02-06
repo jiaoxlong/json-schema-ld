@@ -1,0 +1,10 @@
+type
+dateObserved
+soilTemperature
+soilMoistureVwc
+soilMoistureEc
+soilMoisturePressure
+refGreenspace
+refDevice
+refWeatherObserved
+litterCoverage

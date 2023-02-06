@@ -1,0 +1,17 @@
+type
+kc
+kg
+ki
+kim
+kir
+kp
+kpm
+kpr
+ta
+thetap
+vbmax
+vmmax
+vmmin
+vrmax
+vrmin
+xl

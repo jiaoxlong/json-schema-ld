@@ -1,0 +1,12 @@
+type
+efd1
+efd2
+efd3
+efddes
+efdrated
+kmx
+m
+t1
+t2
+t3
+vlow

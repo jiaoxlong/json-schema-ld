@@ -1,0 +1,16 @@
+type
+downstreamNode
+upstreamNode
+geometryType
+bottomSlope
+leftSideSlope
+rightSideSlope
+bottomWidth
+diameter
+maxWaterDepth
+roughnessCoefficient
+flowType
+celerity
+travelDuration
+waterLoss
+length

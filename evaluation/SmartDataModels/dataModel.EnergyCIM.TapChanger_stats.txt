@@ -1,0 +1,12 @@
+type
+SvTapStep
+TapChangerControl
+TapSchedules
+controlEnabled
+highStep
+lowStep
+ltcFlag
+neutralStep
+neutralU
+normalStep
+step

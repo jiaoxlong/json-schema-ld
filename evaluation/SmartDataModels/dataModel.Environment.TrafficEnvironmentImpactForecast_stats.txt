@@ -1,0 +1,12 @@
+type
+co2
+validFrom
+validTo
+validity
+dateIssued
+traffic
+Traffic
+vehicleClass
+intensityExpected
+occupancyExpected
+averageVehicleSpeedExpected

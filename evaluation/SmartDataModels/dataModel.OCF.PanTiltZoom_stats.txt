@@ -1,0 +1,11 @@
+rt
+tilt_range
+zoomFactor
+tilt
+precision
+pan_range
+zoomFactorRange
+pan
+n
+if
+type

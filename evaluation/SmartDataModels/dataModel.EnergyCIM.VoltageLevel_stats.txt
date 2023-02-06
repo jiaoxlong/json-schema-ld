@@ -1,0 +1,6 @@
+type
+BaseVoltage
+Bays
+Substation
+highVoltageLimit
+lowVoltageLimit

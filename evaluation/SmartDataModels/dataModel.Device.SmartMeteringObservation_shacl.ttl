@@ -1,0 +1,65 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Device/SmartMeteringObservation/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be SmartMeteringObservation. NGSI entity type";
+  sh:name "type";
+  sh:in (sdm:SmartMeteringObservation);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:entityVersion;
+  sh:description "Property. Model:'https://schema.org/Text'. The entity specification version. A version number of 2.0 or later denotes the entity is represented using NGSI-LD";
+  sh:name "entityVersion";
+  sh:in (sdm:2.0 sdm:LD)
+], [
+  sh:path sdm:meterType;
+  sh:description "Property. The type of supply being metered e.g.: Electricity, Gasoline, Water, Methane, Diesel.";
+  sh:name "meterType";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:refDevice;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:totalConsumption;
+  sh:description "Property. The total amount of product supplied as recorded by the meter since installation. The relevant unitCode should be specified such as KWH (Kilo Watt Hours) for Electricity, LTR (Litre) or MTQ (Cubic Metre) for gases or liquids.";
+  sh:name "totalConsumption";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:peakConsumption;
+  sh:description "Property. The total amount of product supplied during 'peak' hours (particularly relevant to Electricity supply) as recorded by the meter since installation. The relevant unitCode should be specified such as KWH (Kilo Watt Hours) for Electricity, LTR (Litre) or MTQ (Cubic Metre) for gases or liquids.";
+  sh:name "peakConsumption";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:offPeakConsumption;
+  sh:description "Property. The total amount of product supplied during 'off-peak' hours (particularly relevant to Electricity supply) as recorded by the meter since installation. The relevant unitCode should be specified such as KWH (Kilo Watt Hours) for Electricity, LTR (Litre) or MTQ (Cubic Metre) for gases or liquids.";
+  sh:name "offPeakConsumption";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:powerFactor;
+  sh:description "Property. Relevant to 3-Phase electricity supplies often used in industry - the power factor ranges from -1 to +1 depending on the net balance between capacitive and inductive loads. If used this measures the average power factor since meter installation.";
+  sh:name "powerFactor";
+  sh:datatype xsd:decimal
+].

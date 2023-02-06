@@ -1,0 +1,5 @@
+rt
+userid
+n
+if
+type

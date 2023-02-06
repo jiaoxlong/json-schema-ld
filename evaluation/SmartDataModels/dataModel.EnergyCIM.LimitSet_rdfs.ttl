@@ -1,0 +1,34 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LimitSet/schema.json> dcterms:title " Smart Data Models - LimitSet";
+    dcterms:description "Adapted from CIM data models. Specifies a set of Limits that are associated with a Measurement. A Measurement may have several LimitSets corresponding to seasonal or other changing conditions. The condition is captured in the name and description attributes. The same LimitSet may be used for several Measurements. In particular percentage limits are used this way.".
+sdm:type dcterms:description "Property. NGSI type. It has to be LimitSet";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LimitSet/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:LimitSet)
+].
+sdm:LimitSet rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "LimitSet".
+sdm:isPercentageLimits dcterms:description "Property. Model:'https://schema.org/Number'. Tells if the limit values are in percentage of normalValue or the specified Unit for Measurements and Controls. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "isPercentageLimits";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/LimitSet/schema.json>;
+    rdfs:range xsd:decimal.

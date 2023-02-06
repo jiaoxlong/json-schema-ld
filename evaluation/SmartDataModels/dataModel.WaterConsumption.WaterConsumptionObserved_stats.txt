@@ -1,0 +1,12 @@
+type
+acquisitionStageFailure
+alarmFlowPersistence
+alarmInProgress
+alarmStopsLeaks
+alarmTamper
+alarmWaterQuality
+maxFlow
+minFlow
+moduleTampered
+persistenceFlowDuration
+waterConsumption

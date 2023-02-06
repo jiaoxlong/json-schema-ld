@@ -1,0 +1,8 @@
+type
+validTo
+validFrom
+severity
+subcategory
+category
+idCode
+identify

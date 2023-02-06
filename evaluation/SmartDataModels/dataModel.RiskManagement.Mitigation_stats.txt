@@ -1,0 +1,10 @@
+type
+validTo
+validFrom
+consequence
+description
+event
+threat
+likelihood
+affects
+apply

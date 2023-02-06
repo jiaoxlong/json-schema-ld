@@ -1,0 +1,159 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json> dcterms:title " Smart Data Models - ExcIEEEAC7B";
+    dcterms:description "Adapted from CIM data models. The class represents IEEE Std 421.5-2005 type AC7B model. The model represents excitation systems which consist of an ac alternator with either stationary or rotating rectifiers to produce the dc field requirements. It is an upgrade to earlier ac excitation systems, which replace only the controls but retain the ac alternator and diode rectifier bridge.  Reference: IEEE Standard 421.5-2005 Section 6.7.  In the IEEE Standard 421.5 - 2005, the [1 / sT] block is shown as [1 / (1 + sT)], which is incorrect.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcIEEEAC7B";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcIEEEAC7B)
+].
+sdm:ExcIEEEAC7B rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcIEEEAC7B".
+sdm:kc dcterms:description "Property. Model:'https://schema.org/Number'. Rectifier loading factor proportional to commutating reactance (K). Typical Value = 0.18. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kd dcterms:description "Property. Model:'https://schema.org/Number'. Demagnetizing factor, a function of exciter alternator reactances (K).  Typical Value = 0.02. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kd";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kdr dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator derivative gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kdr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (K).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf1 dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (K).  Typical Value = 0.212. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf2 dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf3 dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kia dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator integral gain (K).  Typical Value = 59.69. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kia";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kir dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator integral gain (K).  Typical Value = 4.24. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kir";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kl dcterms:description "Property. Model:'https://schema.org/Number'. Exciter field voltage lower limit parameter (K).  Typical Value = 10. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kl";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Potential circuit gain coefficient (K).  Typical Value = 4.96. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpa dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator proportional gain (K).  Typical Value = 65.36. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpa";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpr dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator proportional gain (K).  Typical Value = 4.24. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seve1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, V, back of commutating reactance (S[V]).  Typical Value = 0.44. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seve1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:seve2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter saturation function value at the corresponding exciter voltage, V, back of commutating reactance (S[V]).  Typical Value = 0.075. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "seve2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tdr dcterms:description "Property. Model:'https://schema.org/Number'. Lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tdr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (T).  Typical Value = 1.1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (T).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vamin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -0.95. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vamin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ve1 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (V) equals V (V).  Typical Value = 6.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ve1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ve2 dcterms:description "Property. Model:'https://schema.org/Number'. Exciter alternator output voltages back of commutating reactance at which saturation is defined (V).  Typical Value = 3.02. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ve2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vemin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum exciter voltage output (V).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vemin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vfemax dcterms:description "Property. Model:'https://schema.org/Number'. Exciter field current limit reference (V).  Typical Value = 6.9. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vfemax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 5.79. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -5.79. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEAC7B/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,15 @@
+type
+imul
+ka
+ke
+kif
+t1
+t1if
+t2
+t3
+t4
+tif
+vfmn
+vfmx
+vrmn
+vrmx

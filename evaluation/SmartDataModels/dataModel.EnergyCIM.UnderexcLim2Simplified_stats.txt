@@ -1,0 +1,8 @@
+type
+kui
+p0
+p1
+q0
+q1
+vuimax
+vuimin

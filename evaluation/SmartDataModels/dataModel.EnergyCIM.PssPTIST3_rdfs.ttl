@@ -1,0 +1,199 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json> dcterms:title " Smart Data Models - PssPTIST3";
+    dcterms:description "Adapted from CIM data models. PTI Microprocessor-Based Stabilizer type 3.".
+sdm:type dcterms:description "Property. NGSI type. It has to be PssPTIST3";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PssPTIST3)
+].
+sdm:PssPTIST3 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PssPTIST3".
+sdm:a0 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (A0). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:a1 dcterms:description "Property. Model:'https://schema.org/Number'. Limiter (Al). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:a2 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (A2). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:a3 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (A3). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:a4 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (A4). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:a5 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (A5). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "a5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:al dcterms:description "Property. Model:'https://schema.org/Number'. Limiter (Al). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "al";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:athres dcterms:description "Property. Model:'https://schema.org/Number'. Threshold value above which output averaging will be bypassed (Athres).  Typical Value = 0.005. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "athres";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b0 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B0). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b1 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B1). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b2 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B2). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b3 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B3). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b4 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B4). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:b5 dcterms:description "Property. Model:'https://schema.org/Number'. Filter coefficient (B5). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "b5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dl dcterms:description "Property. Model:'https://schema.org/Number'. Limiter (Dl). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "dl";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dtc dcterms:description "Property. Model:'https://schema.org/Number'. Time step related to activation of controls (0.03 for 50 Hz) (Dtc).  Typical Value = 0.025. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "dtc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dtf dcterms:description "Property. Model:'https://schema.org/Number'. Time step frequency calculation (0.03 for 50 Hz) (Dtf).  Typical Value = 0.025. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "dtf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dtp dcterms:description "Property. Model:'https://schema.org/Number'. Time step active power calculation (0.015 for 50 Hz) (Dtp).  Typical Value = 0.0125. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "dtp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:isw dcterms:description "Property. Model:'https://schema.org/Number'. Digital/analog output switch (Isw). true = produce analog output false = convert to digital output, using tap selection table. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "isw";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k dcterms:description "Property. Model:'https://schema.org/Number'. Gain (K).  Typical Value = 9. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lthres dcterms:description "Property. Model:'https://schema.org/Number'. Threshold value (Lthres). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "lthres";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:m dcterms:description "Property. Model:'https://schema.org/Number'. (M).  M=2*H.  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "m";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:nav dcterms:description "Property. Model:'https://schema.org/Number'. Number of control outputs to average (Nav) (1 <= Nav <= 16).  Typical Value = 4. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "nav";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ncl dcterms:description "Property. Model:'https://schema.org/Number'. Number of counts at limit to active limit function (Ncl) (>0). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ncl";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ncr dcterms:description "Property. Model:'https://schema.org/Number'. Number of counts until reset after limit function is triggered (Ncr). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ncr";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmin dcterms:description "Property. Model:'https://schema.org/Number'. (Pmin). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t1 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T1).  Typical Value = 0.3. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t2 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T2).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t3 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T3).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t4 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T4).  Typical Value = 0.05. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t5 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T5). Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t6 dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (T6). Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (Tf).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tp dcterms:description "Property. Model:'https://schema.org/Number'. Time constant (Tp).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PssPTIST3/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,12 @@
+type
+device
+operationType
+result
+plannedStartAt
+plannedEndAt
+status
+operator
+startedAt
+endedAt
+reportedAt
+addressedAt

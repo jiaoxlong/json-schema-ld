@@ -1,0 +1,6 @@
+type
+amount
+date
+supplier
+deliveryNote
+farm

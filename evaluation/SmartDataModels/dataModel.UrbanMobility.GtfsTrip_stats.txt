@@ -1,0 +1,10 @@
+type
+shortName
+headSign
+hasRoute
+hasShape
+block
+hasService
+direction
+wheelChairAccessible
+bikesAllowed

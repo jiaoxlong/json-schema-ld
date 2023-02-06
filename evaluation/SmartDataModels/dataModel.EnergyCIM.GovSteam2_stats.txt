@@ -1,0 +1,9 @@
+type
+dbf
+k
+mnef
+mxef
+pmax
+pmin
+t1
+t2

@@ -1,0 +1,10 @@
+rt
+speed
+direction
+automode
+supporteddirections
+n
+range
+step
+if
+type

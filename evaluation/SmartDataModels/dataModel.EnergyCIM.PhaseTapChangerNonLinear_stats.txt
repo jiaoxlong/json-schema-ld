@@ -1,0 +1,4 @@
+type
+voltageStepIncrement
+xMax
+xMin

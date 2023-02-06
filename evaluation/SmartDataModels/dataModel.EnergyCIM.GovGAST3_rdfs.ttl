@@ -1,0 +1,134 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json> dcterms:title " Smart Data Models - GovGAST3";
+    dcterms:description "Adapted from CIM data models. Generic turbogas with acceleration and temperature controller.".
+sdm:type dcterms:description "Property. NGSI type. It has to be GovGAST3";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:GovGAST3)
+].
+sdm:GovGAST3 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "GovGAST3".
+sdm:bca dcterms:description "Property. Model:'https://schema.org/Number'. Acceleration limit set-point (Bca).  Unit = 1/s.  Typical Value = 0.01. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "bca";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bp dcterms:description "Property. Model:'https://schema.org/Number'. Droop (bp).  Typical Value = 0.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "bp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:dtc dcterms:description "Property. Model:'https://schema.org/Number'. Exhaust temperature variation due to fuel flow increasing from 0 to 1 PU (deltaTc).  Typical Value = 390. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "dtc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. Minimum fuel flow (Ka).  Typical Value = 0.23. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kac dcterms:description "Property. Model:'https://schema.org/Number'. Fuel system feedback (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kac";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kca dcterms:description "Property. Model:'https://schema.org/Number'. Acceleration control integral gain (Kca). Unit = 1/s.  Typical Value = 100. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kca";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ksi dcterms:description "Property. Model:'https://schema.org/Number'. Gain of radiation shield (Ksi).  Typical Value = 0.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ksi";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ky dcterms:description "Property. Model:'https://schema.org/Number'. Coefficient of transfer function of fuel valve positioner (Ky).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ky";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mnef dcterms:description "Property. Model:'https://schema.org/Number'. Fuel flow maximum negative error value (MN).  Typical Value = -0.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "mnef";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:mxef dcterms:description "Property. Model:'https://schema.org/Number'. Fuel flow maximum positive error value (MX).  Typical Value = 0.05. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "mxef";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rcmn dcterms:description "Property. Model:'https://schema.org/Number'. Minimum fuel flow (RCMN).  Typical Value = -0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rcmn";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:rcmx dcterms:description "Property. Model:'https://schema.org/Number'. Maximum fuel flow (RCMX).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "rcmx";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tac dcterms:description "Property. Model:'https://schema.org/Number'. Fuel control time constant (Tac).  Typical Value = 0.1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tac";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tc dcterms:description "Property. Model:'https://schema.org/Number'. Compressor discharge volume time constant (Tc).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:td dcterms:description "Property. Model:'https://schema.org/Number'. Temperature controller derivative gain (Td).  Typical Value = 3.3. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "td";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tfen dcterms:description "Property. Model:'https://schema.org/Number'. Turbine rated exhaust temperature correspondent to Pm=1 PU (Tfen).  Typical Value = 540. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "tfen";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tg dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of speed governor (Tg).  Typical Value = 0.05. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tsi dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of radiation shield (Tsi).  Typical Value = 15. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tsi";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tt dcterms:description "Property. Model:'https://schema.org/Number'. Temperature controller integration rate (Tt).  Typical Value = 250. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "tt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ttc dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of thermocouple (Ttc).  Typical Value = 2.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ttc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ty dcterms:description "Property. Model:'https://schema.org/Number'. Time constant of fuel valve positioner (Ty).  Typical Value = 0.2. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ty";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/GovGAST3/schema.json>;
+    rdfs:range xsd:decimal.

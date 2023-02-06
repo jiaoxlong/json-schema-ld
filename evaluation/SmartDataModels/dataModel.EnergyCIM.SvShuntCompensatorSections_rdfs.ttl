@@ -1,0 +1,39 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SvShuntCompensatorSections/schema.json> dcterms:title " Smart Data Models - SvShuntCompensatorSections";
+    dcterms:description "Adapted from CIM data models. State variable for the number of sections in service for a shunt compensator.".
+sdm:type dcterms:description "Property. NGSI type. It has to be SvShuntCompensatorSections";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SvShuntCompensatorSections/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SvShuntCompensatorSections)
+].
+sdm:SvShuntCompensatorSections rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SvShuntCompensatorSections".
+sdm:ShuntCompensator dcterms:description "Property. Model:'https://schema.org/Number'. The shunt compensator for which the state applies. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "ShuntCompensator";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SvShuntCompensatorSections/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:sections dcterms:description "Property. Model:'https://schema.org/Number'. The number of sections in service as a continous variable. To get integer value scale with ShuntCompensator.bPerSection. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "sections";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/SvShuntCompensatorSections/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,692 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json> dcterms:title "StorageBattery schema";
+    dcterms:description "The storage battery device data model is intended to describe the technical characteristics of the battery and the charging and discharging conditions of the energy.".
+sdm:type dcterms:description "Property. It has to be StorageBatteryDevice. Model:'https://schema.org/Text' ";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:StorageBatteryDevice)
+].
+sdm:StorageBatteryDevice rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "StorageBatteryDevice".
+sdm:refDevice dcterms:description "Relationship. Model:'https://schema.org/URL'. Reference to the Main Entity [Device](https://github.com/smart-data-models/dataModel.Device/blob/master/Device/doc/spec.md) if used as second link.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:refPointOfInterest dcterms:description "Property. Model:'https://schema.org/URL'. Reference to a [PointOfInterest](https://github.com/smart-data-models/dataModel.PointOfInterest/blob/master/PointOfInterest/doc/spec.md) linked with the observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refPointOfInterest";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:dateLastReported dcterms:description "Property. Model:'https://schema.org/DateTime'. A timestamp which denotes the last time when the device successfully reported data. Date and time in an ISO8601 UTCformat. ";
+    rdf:type rdf:Property;
+    rdfs:label "dateLastReported";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:batteryAssessmentMethods dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'ampereHourMeter, dischargeTest, electrolyteDensity, highFrequencyImpedance, lowFrequencyImpedance, mathematicalModel, operatingVoltageWithClosedCircuit, quiescentVoltageWithOpenCircuit'.  ";
+    rdf:type rdf:Property;
+    rdfs:label "batteryAssessmentMethods";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:BatteryAssessmentMethods rdf:type skos:ConceptScheme.
+sdm:batteryAssessmentMethods rdfs:range [
+  owl:oneOf (sdm:ampereHourMeter sdm:dischargeTest sdm:electrolyteDensity sdm:highFrequencyImpedance sdm:lowFrequencyImpedance sdm:mathematicalModel sdm:operatingVoltageWithClosedCircuit sdm:quiescentVoltageWithOpenCircuit)
+].
+sdm:ampereHourMeter rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "ampereHourMeter".
+sdm:dischargeTest rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "dischargeTest".
+sdm:electrolyteDensity rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "electrolyteDensity".
+sdm:highFrequencyImpedance rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "highFrequencyImpedance".
+sdm:lowFrequencyImpedance rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "lowFrequencyImpedance".
+sdm:mathematicalModel rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "mathematicalModel".
+sdm:operatingVoltageWithClosedCircuit rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "operatingVoltageWithClosedCircuit".
+sdm:quiescentVoltageWithOpenCircuit rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryAssessmentMethods;
+    rdfs:label "quiescentVoltageWithOpenCircuit".
+sdm:brandName dcterms:description "Property. Model:'https://schema.org/Text'. Brand Name of the item.";
+    rdf:type rdf:Property;
+    rdfs:label "brandName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:modelName dcterms:description "Property. Model:'https://schema.org/Text'. Model Name of the item. ";
+    rdf:type rdf:Property;
+    rdfs:label "modelName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:manufacturerName dcterms:description "Property. Model:'https://schema.org/Text'. Manufacturer Name of the item.";
+    rdf:type rdf:Property;
+    rdfs:label "manufacturerName";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:serialNumber dcterms:description "Property. Model:'https://schema.org/Text'. Serial numbers of the item.";
+    rdf:type rdf:Property;
+    rdfs:label "serialNumber";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:application rdf:type rdf:Property;
+    rdfs:label "application";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:Application rdf:type skos:ConceptScheme.
+sdm:application rdfs:range [
+  owl:oneOf (sdm:electricMobility sdm:energyStorage sdm:emergencyStorage sdm:houseHoldStorage sdm:industrialStorage sdm:lighting sdm:production sdm:robotics sdm:other)
+].
+sdm:electricMobility rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "electricMobility".
+sdm:energyStorage rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "energyStorage".
+sdm:emergencyStorage rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "emergencyStorage".
+sdm:houseHoldStorage rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "houseHoldStorage".
+sdm:industrialStorage rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "industrialStorage".
+sdm:lighting rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "lighting".
+sdm:production rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "production".
+sdm:robotics rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "robotics".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:Application;
+    rdfs:label "other".
+sdm:typeOfUse dcterms:description "Property. Model:'https://schema.org/Text'. Accepted use regarding its positioning in an indoor / outdoor environment. Enum:' indoor, mixed, outdoor, other'";
+    rdf:type rdf:Property;
+    rdfs:label "typeOfUse";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:TypeOfUse rdf:type skos:ConceptScheme.
+sdm:typeOfUse rdfs:range [
+  owl:oneOf (sdm:indoor sdm:mixed sdm:outdoor sdm:other)
+].
+sdm:indoor rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "indoor".
+sdm:mixed rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "mixed".
+sdm:outdoor rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "outdoor".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:TypeOfUse;
+    rdfs:label "other".
+sdm:installationMode dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'aerial, ground, pole, roofing, underGround, wall, other'. Positioning of the device in relation to a ground reference system.";
+    rdf:type rdf:Property;
+    rdfs:label "installationMode";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:InstallationMode rdf:type skos:ConceptScheme.
+sdm:installationMode rdfs:range [
+  owl:oneOf (sdm:aerial sdm:ground sdm:pole sdm:roofing sdm:underGround sdm:wall sdm:other)
+].
+sdm:aerial rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "aerial".
+sdm:ground rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "ground".
+sdm:pole rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "pole".
+sdm:roofing rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "roofing".
+sdm:underGround rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "underGround".
+sdm:wall rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "wall".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationMode;
+    rdfs:label "other".
+sdm:installationCondition rdf:type rdf:Property;
+    rdfs:label "installationCondition";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:InstallationCondition rdf:type skos:ConceptScheme.
+sdm:installationCondition rdfs:range [
+  owl:oneOf (sdm:desert sdm:dust sdm:extremeClimate sdm:extremeCold sdm:extremeHeat sdm:extremeHumidity sdm:marine sdm:saline sdm:sand sdm:seismic sdm:other)
+].
+sdm:desert rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "desert".
+sdm:dust rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "dust".
+sdm:extremeClimate rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeClimate".
+sdm:extremeCold rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeCold".
+sdm:extremeHeat rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeHeat".
+sdm:extremeHumidity rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "extremeHumidity".
+sdm:marine rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "marine".
+sdm:saline rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "saline".
+sdm:sand rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "sand".
+sdm:seismic rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "seismic".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:InstallationCondition;
+    rdfs:label "other".
+sdm:possibilityOfUse dcterms:description "Property. Model:'https://schema.org/Text'. Possibility of use. A unique value. Enum:'mobile, mixed, stationary, other'.  ";
+    rdf:type rdf:Property;
+    rdfs:label "possibilityOfUse";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:PossibilityOfUse rdf:type skos:ConceptScheme.
+sdm:possibilityOfUse rdfs:range [
+  owl:oneOf (sdm:mobile sdm:mixed sdm:stationary sdm:other)
+].
+sdm:mobile rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "mobile".
+sdm:mixed rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "mixed".
+sdm:stationary rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "stationary".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:PossibilityOfUse;
+    rdfs:label "other".
+sdm:batteryType dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'alkaline, gel, lead, lead-AGM, Li-Ion, Li-Po, Li-Po4, LMP, Li-Air, Na-NiCl2(Zebra), Ni-Cd, Ni-MH, Ni-Zn, other'. Type of battery used.";
+    rdf:type rdf:Property;
+    rdfs:label "batteryType";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:BatteryType rdf:type skos:ConceptScheme.
+sdm:batteryType rdfs:range [
+  owl:oneOf (sdm:alkaline sdm:gel sdm:lead sdm:lead-AGM sdm:Li-Ion sdm:Li-Po sdm:Li-Po4 sdm:LMP sdm:Li-Air sdm:Na-NiCl2(Zebra) sdm:Ni-Cd sdm:Ni-MH sdm:Ni-Zn sdm:other)
+].
+sdm:alkaline rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "alkaline".
+sdm:gel rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "gel".
+sdm:lead rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "lead".
+sdm:lead-AGM rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "lead-AGM".
+sdm:Li-Ion rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Li-Ion".
+sdm:Li-Po rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Li-Po".
+sdm:Li-Po4 rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Li-Po4".
+sdm:LMP rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "LMP".
+sdm:Li-Air rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Li-Air".
+sdm:Na-NiCl2(Zebra) rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Na-NiCl2(Zebra)".
+sdm:Ni-Cd rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Ni-Cd".
+sdm:Ni-MH rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Ni-MH".
+sdm:Ni-Zn rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "Ni-Zn".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:BatteryType;
+    rdfs:label "other".
+sdm:rechargeEnergySource dcterms:description "Property. Model:'https://schema.org/Text'. Enum:'electric, hydraulic, windTurbine, other'. Recharge Energy Source. A unique value of the list ";
+    rdf:type rdf:Property;
+    rdfs:label "rechargeEnergySource";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:RechargeEnergySource rdf:type skos:ConceptScheme.
+sdm:rechargeEnergySource rdfs:range [
+  owl:oneOf (sdm:electric sdm:hydraulic sdm:windTurbine sdm:other)
+].
+sdm:electric rdf:type skos:Concept;
+    skos:inScheme sdm:RechargeEnergySource;
+    rdfs:label "electric".
+sdm:hydraulic rdf:type skos:Concept;
+    skos:inScheme sdm:RechargeEnergySource;
+    rdfs:label "hydraulic".
+sdm:windTurbine rdf:type skos:Concept;
+    skos:inScheme sdm:RechargeEnergySource;
+    rdfs:label "windTurbine".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:RechargeEnergySource;
+    rdfs:label "other".
+sdm:typeEnergySource rdf:type rdf:Property;
+    rdfs:label "typeEnergySource";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>.
+sdm:TypeEnergySource rdf:type skos:ConceptScheme.
+sdm:typeEnergySource rdfs:range [
+  owl:oneOf (sdm:dam sdm:fall sdm:generator sdm:network sdm:photovoltaic sdm:river sdm:sea sdm:waterTurbine sdm:wind sdm:other)
+].
+sdm:dam rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "dam".
+sdm:fall rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "fall".
+sdm:generator rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "generator".
+sdm:network rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "network".
+sdm:photovoltaic rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "photovoltaic".
+sdm:river rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "river".
+sdm:sea rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "sea".
+sdm:waterTurbine rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "waterTurbine".
+sdm:wind rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "wind".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:TypeEnergySource;
+    rdfs:label "other".
+sdm:documentation dcterms:description "Property. Model:'https://schema.org/URL'. Technical Documentation (Installation / maintenance / use).";
+    rdf:type rdf:Property;
+    rdfs:label "documentation";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:dimension dcterms:description "Property. External dimension of a Panel. The format is structured by a sub-property of 3 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CMT** represents Centimeter. Units:'Centimeters'";
+    rdf:type rdf:Property;
+    rdfs:label "dimension";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range sdm:Dimension.
+sdm:Dimension rdf:type rdfs:Class;
+    rdfs:label "Dimension".
+sdm:height rdf:type rdf:Property;
+    rdfs:label "height";
+    rdfs:domain sdm:Dimension;
+    rdfs:range xsd:decimal.
+sdm:width rdf:type rdf:Property;
+    rdfs:label "width";
+    rdfs:domain sdm:Dimension;
+    rdfs:range xsd:decimal.
+sdm:depth rdf:type rdf:Property;
+    rdfs:label "depth";
+    rdfs:domain sdm:Dimension;
+    rdfs:range xsd:decimal.
+sdm:weight dcterms:description "Property. Model:'https://schema.org/weight'. Weight. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KGM** represents KiloGramme. Units:'Kilograms'";
+    rdf:type rdf:Property;
+    rdfs:label "weight";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:protectionIP dcterms:description "Property. IP *Ingress Protection* for the Junction Box. This is the level classifies and rates the degree of protection provided by mechanical casings and electrical enclosures against intrusion, dust, accidental contact, and water according to International Electrotechnical Commission standard (EN 60-529). - First digit: Solid particle protection (Single numeral: 0–6 or 'X'). - Second digit: Liquid ingress protection (Single numeral: 0–9 or 'X'). - Third digit: Personal Protection  against access to dangerous parts (optional additional letter). - Fourth digit: Other protections (optional additional letter). Model:'https://en.wikipedia.org/wiki/IP_Code'.";
+    rdf:type rdf:Property;
+    rdfs:label "protectionIP";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:string.
+sdm:protectionIK dcterms:description "Property. IK 'Mecanic Protection' level relating to numeric classification for the degrees of protection provided by enclosures for electrical equipment against external mechanical impacts, according to International Electro technical Commission standard (EN 62-262). - IK varies from 0 (minimum resistance) to 10 (maximum resistance) which represents an Impact Energy (Unit Joule). Model:''https://schema.org/Number'.";
+    rdf:type rdf:Property;
+    rdfs:label "protectionIK";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:operatingTemperature dcterms:description "Property. Ambient operating temperature range. This is the minimum and maximum resistance to cold and heat for an [event]. The format is structured by a sub-property of 3 items with the format  {`event`:[`min`,`max`]}. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **CEL** represents Degree Celsius. Units:'degrees Celsius'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingTemperature";
+    rdfs:domain <https://smart-data-models.github.io/data-models.Energy/StorageBatteryDevice/schema.json>;
+    rdfs:range sdm:OperatingTemperature.
+sdm:OperatingTemperature rdf:type rdfs:Class;
+    rdfs:label "OperatingTemperature".
+sdm:storage rdf:type rdf:Property;
+    rdfs:label "storage";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:discharge rdf:type rdf:Property;
+    rdfs:label "discharge";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:charge rdf:type rdf:Property;
+    rdfs:label "charge";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:nominalVoltage dcterms:description "Property. Model:'https://schema.org/Number'. Nominal battery voltage. *(Code U)* The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'.";
+    rdf:type rdf:Property;
+    rdfs:label "nominalVoltage";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:nominalAmpere dcterms:description "Property. Model:'https://schema.org/Number'. Nominal Amperage. *(Code I)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Units:'amperes'";
+    rdf:type rdf:Property;
+    rdfs:label "nominalAmpere";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:nominalFrequency dcterms:description "Property. Model:'https://schema.org/Number'. Nominal Frequency. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Units:'hertz'";
+    rdf:type rdf:Property;
+    rdfs:label "nominalFrequency";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:nominalCapacity dcterms:description "Property. Model:'https://schema.org/Number'. Nominal Energy capacity. *(Code C)* to link with the attribute [CapacityCnnn] to measure the predefined levels parameters C / xx h of discharge regimes. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMH** represents Ampere Hour. Units:'Ampere Hour'";
+    rdf:type rdf:Property;
+    rdfs:label "nominalCapacity";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:storableEnergy dcterms:description "Property. Model:'https://schema.org/Number'. Total Storage Energy = [nominalVoltage] * [nominalCapacity]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWH** represents Kilowatt Hour. Units:'Kw Hour'";
+    rdf:type rdf:Property;
+    rdfs:label "storableEnergy";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:usableEnergy dcterms:description "Property. Model:'https://schema.org/Number'. Usable Energy. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWH** represents Kilowatt Hour. Units:'Kw Hour'";
+    rdf:type rdf:Property;
+    rdfs:label "usableEnergy";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:operatingVoltage dcterms:description "Property. Model:'https://schema.org/Number'. Minimum and Maximum voltage allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volt'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingVoltage";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:OperatingVoltage.
+sdm:OperatingVoltage rdf:type rdfs:Class;
+    rdfs:label "OperatingVoltage".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:OperatingVoltage;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:OperatingVoltage;
+    rdfs:range xsd:decimal.
+sdm:operatingAmpere dcterms:description "Property. Model:'https://schema.org/Number'.  Minimum and Maximum Ampere allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **AMP** represents Ampere. Units:'amperes'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingAmpere";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:OperatingAmpere.
+sdm:OperatingAmpere rdf:type rdfs:Class;
+    rdfs:label "OperatingAmpere".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:OperatingAmpere;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:OperatingAmpere;
+    rdfs:range xsd:decimal.
+sdm:operatingFrequency dcterms:description "Property. Model:'https://schema.org/Number'.  Minimum and Maximum frequency allowed. The format is structured by a sub-property of 2 items. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **HTZ** represents Hertz. Units:'hertz'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingFrequency";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:OperatingFrequency.
+sdm:OperatingFrequency rdf:type rdfs:Class;
+    rdfs:label "OperatingFrequency".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:OperatingFrequency;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:OperatingFrequency;
+    rdfs:range xsd:decimal.
+sdm:massEnergyDensity dcterms:description "Property. Model:'https://schema.org/Number'. Mass Energy density *(Code D)*. Ratio between the capacity of the battery to deliver a certain power for a certain time and its weight. The format is structured by a sub-property of 2 items. The unit code (text) of measurement is **Wh/Kg** WattHour per Kilogram. Units:'W hour / Kg'";
+    rdf:type rdf:Property;
+    rdfs:label "massEnergyDensity";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:MassEnergyDensity.
+sdm:MassEnergyDensity rdf:type rdfs:Class;
+    rdfs:label "MassEnergyDensity".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:MassEnergyDensity;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:MassEnergyDensity;
+    rdfs:range xsd:decimal.
+sdm:volEnergyDensity dcterms:description "Property. Model:'https://schema.org/Number'. Volume Energy density *(Code D)*. The format is structured by a sub-property of 2 items. The unit code (text) of measurement is **Wh/L** WattHour per Liter. Units:'Wh/L'";
+    rdf:type rdf:Property;
+    rdfs:label "volEnergyDensity";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:VolEnergyDensity.
+sdm:VolEnergyDensity rdf:type rdfs:Class;
+    rdfs:label "VolEnergyDensity".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:VolEnergyDensity;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:VolEnergyDensity;
+    rdfs:range xsd:decimal.
+sdm:maxOutputPower dcterms:description "Property. Model:'https://schema.org/Number'. Maximum Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Units:'Kw'";
+    rdf:type rdf:Property;
+    rdfs:label "maxOutputPower";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:peakPower dcterms:description "Property. Model:'https://schema.org/Number'.  Maximum intensity extractable over a short period. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **KWT** represents Kilowatt. Units:'Kw'";
+    rdf:type rdf:Property;
+    rdfs:label "peakPower";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:durationPeakPower dcterms:description "Property. Model:'https://schema.org/Number'. Reference Time recorded for the attribute [peakPower]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **SEC** represents Second. Units:'seconds'";
+    rdf:type rdf:Property;
+    rdfs:label "durationPeakPower";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:communication rdf:type rdf:Property;
+    rdfs:label "communication";
+    rdfs:domain sdm:OperatingTemperature.
+sdm:Communication rdf:type skos:ConceptScheme.
+sdm:communication rdfs:range [
+  owl:oneOf (sdm:CAN 2.0 B sdm:dryContactTerminal sdm:maintenanceInterface sdm:RS485 sdm:RS485BMS sdm:RS485Inverter sdm:other)
+].
+sdm:CAN 2.0 B rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "CAN 2.0 B".
+sdm:dryContactTerminal rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "dryContactTerminal".
+sdm:maintenanceInterface rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "maintenanceInterface".
+sdm:RS485 rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "RS485".
+sdm:RS485BMS rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "RS485BMS".
+sdm:RS485Inverter rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "RS485Inverter".
+sdm:other rdf:type skos:Concept;
+    skos:inScheme sdm:Communication;
+    rdfs:label "other".
+sdm:operatingAltitude dcterms:description "Property. Model:'https://schema.org/Number'. Operating altitude with minimum and maximum resistance to height and depth. The format is structured by a sub-property of 2 items with the keys [min] =<0 and [max] >=0. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **MTR** represents Meter. Units:'meters'";
+    rdf:type rdf:Property;
+    rdfs:label "operatingAltitude";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:OperatingAltitude.
+sdm:OperatingAltitude rdf:type rdfs:Class;
+    rdfs:label "OperatingAltitude".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:OperatingAltitude;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:OperatingAltitude;
+    rdfs:range xsd:decimal.
+sdm:averageLife dcterms:description "Property. Model:'https://schema.org/Number'. average life under normal battery usage conditions at reference temperatures. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **ANN** represents Year. Units:'year'";
+    rdf:type rdf:Property;
+    rdfs:label "averageLife";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:lifeCycleNumber dcterms:description "Property. Model:'https://schema.org/Number'. Number of admissible charge / discharge life cycles. The format is structured by a sub-property of 2 items.";
+    rdf:type rdf:Property;
+    rdfs:label "lifeCycleNumber";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:LifeCycleNumber.
+sdm:LifeCycleNumber rdf:type rdfs:Class;
+    rdfs:label "LifeCycleNumber".
+sdm:min rdf:type rdf:Property;
+    rdfs:label "min";
+    rdfs:domain sdm:LifeCycleNumber;
+    rdfs:range xsd:decimal.
+sdm:max rdf:type rdf:Property;
+    rdfs:label "max";
+    rdfs:domain sdm:LifeCycleNumber;
+    rdfs:range xsd:decimal.
+sdm:toolBMS dcterms:description "Property. Model:'https://schema.org/Boolean'. Use of a Battery Management System tool to protect, guarantee and optimize battery life. (`true` for yes)";
+    rdf:type rdf:Property;
+    rdfs:label "toolBMS";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:boolean.
+sdm:chargingModeAllowed rdf:type rdf:Property;
+    rdfs:label "chargingModeAllowed";
+    rdfs:domain sdm:OperatingTemperature.
+sdm:ChargingModeAllowed rdf:type skos:ConceptScheme.
+sdm:chargingModeAllowed rdfs:range [
+  owl:oneOf (sdm:normal sdm:quick sdm:fast)
+].
+sdm:normal rdf:type skos:Concept;
+    skos:inScheme sdm:ChargingModeAllowed;
+    rdfs:label "normal".
+sdm:quick rdf:type skos:Concept;
+    skos:inScheme sdm:ChargingModeAllowed;
+    rdfs:label "quick".
+sdm:fast rdf:type skos:Concept;
+    skos:inScheme sdm:ChargingModeAllowed;
+    rdfs:label "fast".
+sdm:overloadAccepted dcterms:description "Property. Model:'https://schema.org/Boolean'. Overload is permitted after exceeding the threshold.(`true` for yes)";
+    rdf:type rdf:Property;
+    rdfs:label "overloadAccepted";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:boolean.
+sdm:overloadAcceptedTime dcterms:description "Property. Model:'https://schema.org/DateTime'. Accepted overcharge time without damage to the battery.";
+    rdf:type rdf:Property;
+    rdfs:label "overloadAcceptedTime";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:time.
+sdm:selfDischargeRate dcterms:description "Property. Model:'https://schema.org/Number'. Battery discharge rate without any use on a baseline of 1 month according the [temperature of reference]. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percentage.";
+    rdf:type rdf:Property;
+    rdfs:label "selfDischargeRate";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range xsd:decimal.
+sdm:capacityCnnn dcterms:description "Property. Model:'https://schema.org/Number'. Remaining energy as a function of the discharge time for 6 keys according the temperature of reference. Each Key is a structured value with the format {`Cnnn`:[`value1`,`value2`]} describing the different measurement of [CapacityCnnn].";
+    rdf:type rdf:Property;
+    rdfs:label "capacityCnnn";
+    rdfs:domain sdm:OperatingTemperature;
+    rdfs:range sdm:CapacityCnnn.
+sdm:CapacityCnnn rdf:type rdfs:Class;
+    rdfs:label "CapacityCnnn".
+sdm:C001 rdf:type rdf:Property;
+    rdfs:label "C001";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:C005 rdf:type rdf:Property;
+    rdfs:label "C005";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:C010 rdf:type rdf:Property;
+    rdfs:label "C010";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:C020 rdf:type rdf:Property;
+    rdfs:label "C020";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:C050 rdf:type rdf:Property;
+    rdfs:label "C050";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:C100 rdf:type rdf:Property;
+    rdfs:label "C100";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:roundTripEfficiency dcterms:description "Property. Model:'https://schema.org/Number'. Round-Trip Efficiency. Efficiency, defined as the ratio between stored energy and returned energy. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+    rdf:type rdf:Property;
+    rdfs:label "roundTripEfficiency";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:chargeDischargeReactivity dcterms:description "Property. Model:'https://schema.org/Number'.  Charge and Discharge Reactivity which characterizes the reactive behavior of the system. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **SEC** represents Second. Units:'seconds'";
+    rdf:type rdf:Property;
+    rdfs:label "chargeDischargeReactivity";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:chargePower dcterms:description "Property. Model:'https://schema.org/Number'. Load Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+    rdf:type rdf:Property;
+    rdfs:label "chargePower";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:chargeEfficiency dcterms:description "Property. Model:'https://schema.org/Number'. Charge Efficiency *(code PV-BAT)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+    rdf:type rdf:Property;
+    rdfs:label "chargeEfficiency";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:maximumVoltageEOC dcterms:description "Property. Model:'https://schema.org/Number'. Maximum authorized voltage after end of charge and Battery still connected to to a charge generator. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+    rdf:type rdf:Property;
+    rdfs:label "maximumVoltageEOC";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:dischargePower dcterms:description "Property. Model:'https://schema.org/Number'. Discharge Power. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+    rdf:type rdf:Property;
+    rdfs:label "dischargePower";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:dischargeEfficiency dcterms:description "Property. Model:'https://schema.org/Number'. Discharge Efficiency *(code PV-OND)*. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **P1** represents Percent.";
+    rdf:type rdf:Property;
+    rdfs:label "dischargeEfficiency";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.
+sdm:minimumVoltageEOD dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage after end of discharge and not connected to to a charge generator. The unit code (text) is given using the [UN/CEFACT Common Codes](http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes). For instance, **VLT** represents Volt. Units:'volts'";
+    rdf:type rdf:Property;
+    rdfs:label "minimumVoltageEOD";
+    rdfs:domain sdm:CapacityCnnn;
+    rdfs:range xsd:decimal.

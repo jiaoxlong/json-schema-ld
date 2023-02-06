@@ -1,0 +1,78 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json> dcterms:title "WasteWaterTreatment - Waste Water Tank";
+    dcterms:description "This entity contains an harmonised description of a generic Tank made for the Wastewater treatment domain. For a given type of tank, all possible variables that can be measures are listed as properties. In the description property, the type of tank (anaerobic, pre-dinitrification, nitrification etc.)can be defined.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It has to be WasteWaterTank";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:WasteWaterTank)
+].
+sdm:WasteWaterTank rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "WasteWaterTank".
+sdm:sludgeLevel dcterms:description "Property. Model: https://schema.org/Number. Units: 'metre'. Sludge Level measured in a secondary settler tank";
+    rdf:type rdf:Property;
+    rdfs:label "sludgeLevel";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:power dcterms:description "Property. Object defining the actual and estimated power consumption";
+    rdf:type rdf:Property;
+    rdfs:label "power";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>;
+    rdfs:range sdm:Power.
+sdm:Power rdf:type rdfs:Class;
+    rdfs:label "Power".
+sdm:measured dcterms:description "Property. Model: https://schema.org/Number. Units: 'kW'. Power measured by a device.";
+    rdf:type rdf:Property;
+    rdfs:label "measured";
+    rdfs:domain sdm:Power;
+    rdfs:range xsd:decimal.
+sdm:estimated dcterms:description "Property. Model: https://schema.org/Number. Units: 'kW'. Power estimated by a model.";
+    rdf:type rdf:Property;
+    rdfs:label "estimated";
+    rdfs:domain sdm:Power;
+    rdfs:range xsd:decimal.
+sdm:airflow dcterms:description "Property. Object defining the actual and estimated airflow";
+    rdf:type rdf:Property;
+    rdfs:label "airflow";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>;
+    rdfs:range sdm:Airflow.
+sdm:Airflow rdf:type rdfs:Class;
+    rdfs:label "Airflow".
+sdm:measured dcterms:description "Property. Model: https://schema.org/Number. Units: 'm/s'. Airflow measured by a device.";
+    rdf:type rdf:Property;
+    rdfs:label "measured";
+    rdfs:domain sdm:Airflow;
+    rdfs:range xsd:decimal.
+sdm:estimated dcterms:description "Property. Model: https://schema.org/Number. Units: 'm/s'. Airflow estimated by a model.";
+    rdf:type rdf:Property;
+    rdfs:label "estimated";
+    rdfs:domain sdm:Airflow;
+    rdfs:range xsd:decimal.
+sdm:startsAt dcterms:description "Relationship. A relationship indicating the entity the tank is connected to in the upstream point";
+    rdf:type rdf:Property;
+    rdfs:label "startsAt";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:endsAt dcterms:description "Relationship. A relationship indicating the entity the tank is connected to in the downstream point";
+    rdf:type rdf:Property;
+    rdfs:label "endsAt";
+    rdfs:domain <https://smart-data-models.github.io/data-models/specs/WasteWaterTreatment/WasteWaterTank/schema.json>;
+    rdfs:range xsd:anyURI.

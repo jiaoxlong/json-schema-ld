@@ -1,0 +1,11 @@
+type
+First_Terminal
+Second_Terminal
+b0ch
+distance11
+distance12
+distance21
+distance22
+g0ch
+r0
+x0

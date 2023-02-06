@@ -1,0 +1,12 @@
+type
+AsynchronousMachineDynamics
+asynchronousMachineType
+converterFedDrive
+efficiency
+iaIrRatio
+nominalFrequency
+nominalSpeed
+polePairNumber
+ratedMechanicalPower
+reversible
+rxLockedRotorRatio

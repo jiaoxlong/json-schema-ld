@@ -1,0 +1,7 @@
+type
+DiagramObject
+DiagramObjectGluePoint
+sequenceNumber
+xPosition
+yPosition
+zPosition

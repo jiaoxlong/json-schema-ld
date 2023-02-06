@@ -1,0 +1,13 @@
+type
+WindDynamicsLookupTable
+WindPlantIEC
+dprefmax
+dprefmin
+kiwpp
+kpwpp
+prefmax
+prefmin
+tpft
+tpfv
+twpffilt
+twppfilt

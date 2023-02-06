@@ -1,0 +1,81 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Terminal/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be Terminal";
+  sh:name "type";
+  sh:in (sdm:Terminal)
+], [
+  sh:path sdm:ConductingEquipment;
+  sh:description "Property. Model:'https://schema.org/Number'. The conducting equipment of the terminal.  Conducting equipment have  terminals that may be connected to other conducting equipment terminals via connectivity nodes or topological nodes. Default: None";
+  sh:name "ConductingEquipment";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ConnectivityNode;
+  sh:description "Property. Model:'https://schema.org/Number'. Terminals interconnected with zero impedance at a this connectivity node. Default: None";
+  sh:name "ConnectivityNode";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ConverterDCSides;
+  sh:description "Property. Model:'https://schema.org/Number'. Point of common coupling terminal for this converter DC side. It is typically the terminal on the power transformer (or switch) closest to the AC network. The power flow measurement must be the sum of all flows into the transformer. Default: 'list'";
+  sh:name "ConverterDCSides";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:HasFirstMutualCoupling;
+  sh:description "Property. Model:'https://schema.org/Number'. Mutual couplings associated with the branch as the first branch. Default: 'list'";
+  sh:name "HasFirstMutualCoupling";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:HasSecondMutualCoupling;
+  sh:description "Property. Model:'https://schema.org/Number'. Mutual couplings with the branch associated as the first branch. Default: 'list'";
+  sh:name "HasSecondMutualCoupling";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:RegulatingControl;
+  sh:description "Property. Model:'https://schema.org/Number'. The terminal associated with this regulating control.  The terminal is associated instead of a node, since the terminal could connect into either a topological node (bus in bus-branch model) or a connectivity node (detailed switch model).  Sometimes it is useful to model regulation at a terminal of a bus bar object since the bus bar can be present in both a bus-branch model or a model with switch detail. Default: None";
+  sh:name "RegulatingControl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:RemoteInputSignal;
+  sh:description "Property. Model:'https://schema.org/Number'. Input signal coming from this terminal. Default: 'list'";
+  sh:name "RemoteInputSignal";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:SvPowerFlow;
+  sh:description "Property. Model:'https://schema.org/Number'. The power flow state variable associated with the terminal. Default: None";
+  sh:name "SvPowerFlow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:TieFlow;
+  sh:description "Property. Model:'https://schema.org/Number'. The control area tie flows to which this terminal associates. Default: 'list'";
+  sh:name "TieFlow";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:TopologicalNode;
+  sh:description "Property. Model:'https://schema.org/Number'. The terminals associated with the topological node.   This can be used as an alternative to the connectivity node path to terminal, thus making it unneccesary to model connectivity nodes in some cases.   Note that if connectivity nodes are in the model, this association would probably not be used as an input specification. Default: None";
+  sh:name "TopologicalNode";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:TransformerEnd;
+  sh:description "Property. Model:'https://schema.org/Number'. All transformer ends connected at this terminal. Default: 'list'";
+  sh:name "TransformerEnd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:phases;
+  sh:description "Property. Model:'https://schema.org/Number'. Represents the normal network phasing condition. If the attribute is missing three phases (ABC or ABCN) shall be assumed. Default: None";
+  sh:name "phases";
+  sh:datatype xsd:decimal
+].

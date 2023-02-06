@@ -1,0 +1,7 @@
+type
+category
+refSeeAlso
+wardId
+zoneId
+additionalInfoURL
+zoneName

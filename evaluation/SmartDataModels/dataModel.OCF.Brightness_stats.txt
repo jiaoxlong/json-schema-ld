@@ -1,0 +1,5 @@
+rt
+brightness
+n
+if
+type

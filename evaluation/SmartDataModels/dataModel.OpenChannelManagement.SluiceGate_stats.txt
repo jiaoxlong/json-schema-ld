@@ -1,0 +1,15 @@
+type
+gateWidth
+gateOpening
+gateBottomElevation
+gateDischargeCoefficient
+orificeDischargeCoefficient
+waterDischarge
+headDifference
+flowType
+upstreamEndControlPoint
+downstreamEndControlPoint
+upstreamControlPoint
+downstreamControlPoint
+observedBy
+curveDischargeCoefficient

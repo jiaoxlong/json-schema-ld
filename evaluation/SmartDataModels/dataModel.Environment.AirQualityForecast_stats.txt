@@ -1,0 +1,16 @@
+type
+airQualityIndex
+co2
+no2
+o3
+nox
+so2
+pm10
+pm25
+temperature
+relativeHumidity
+windSpeed
+precipitation
+validFrom
+validTo
+validity

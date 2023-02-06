@@ -1,0 +1,8 @@
+type
+hasRegulationStructures
+HasRegulationStructure
+targetURI
+hasStructuresSimulations
+HasStructuresSimulation
+targetURI
+runBy

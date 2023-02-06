@@ -59,6 +59,7 @@ export class JSCLDSchema{
      * Base resource name
      */
     base_resource_name:string;
+    private stats: string;
 
     /**
      * The constructor of JSCLDSchema
@@ -70,6 +71,8 @@ export class JSCLDSchema{
         this.jsc = path.resolve(jsc);
         /** data A JSON object parsed from the JSON schema document */
         this.data = require(this.jsc);
+        /** stats */
+        this.stats = '';
         /** The base JSC-LD schema */
         this.base_schema = new BaseSchema(this.data, this.config,this.data['$id'])
         /** The N3Writer instance that writes RDF vocab */
@@ -133,6 +136,9 @@ export class JSCLDSchema{
          */
 
         for (const s of this.schemas){
+            if (!(s instanceof ClassSchema)) {
+                this.stats += extract_resource_from_uri(s.property_name) + '\n'
+            }
             if (s.isIgnored){
                 continue;
             }
@@ -299,6 +305,9 @@ export class JSCLDSchema{
         const path = require('path');
         if(!fs.existsSync(path.resolve(this.config.out)))
             fs.mkdirSync(path.resolve(this.config.out), {recursive: true})
+        fs.writeFile(path.join(this.config.out, path.parse(this.jsc).name+'_stats.txt'), this.stats, (err:any) =>{
+            if (err) throw err;
+        });
         this.rdf_writer.end((error:any, result:any) =>
             fs.writeFile(path.join(this.config.out, path.parse(this.jsc).name+'_rdfs.ttl'), result, (err:any) => {
                 if (err) throw err;

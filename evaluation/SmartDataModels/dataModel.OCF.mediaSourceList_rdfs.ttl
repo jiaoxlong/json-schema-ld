@@ -1,0 +1,96 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json> dcterms:title "Smart Data models - mediaSourceList schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource provides the list of input media sources available on the device.The sources are an array of Media Source(s) see Resource Type 'oic.r.mediasource'".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.media.input)
+].
+sdm:oic.r.media.input rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.media.input".
+sdm:sources dcterms:description "Property. The list of sources";
+    rdf:type rdf:Property;
+    rdfs:label "sources";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json>;
+    rdfs:range sdm:Source.
+sdm:Source rdf:type rdfs:Class;
+    rdfs:label "Source".
+sdm:sourceName dcterms:description "Specifies a pre-defined media input or output";
+    rdf:type rdf:Property;
+    rdfs:label "sourceName";
+    rdfs:domain sdm:Source;
+    rdfs:range xsd:string.
+sdm:sourceNumber dcterms:description "Label to specify the instance";
+    rdf:type rdf:Property;
+    rdfs:label "sourceNumber";
+    rdfs:domain sdm:Source;
+    rdfs:range xsd:string.
+sdm:sourceType dcterms:description "Specifies the type of the source";
+    rdf:type rdf:Property;
+    rdfs:label "sourceType";
+    rdfs:domain sdm:Source.
+sdm:SourceType rdf:type skos:ConceptScheme.
+sdm:sourceType rdfs:range [
+  owl:oneOf (sdm:audioOnly sdm:videoOnly sdm:audioPlusVideo)
+].
+sdm:audioOnly rdf:type skos:Concept;
+    skos:inScheme sdm:SourceType;
+    rdfs:label "audioOnly".
+sdm:videoOnly rdf:type skos:Concept;
+    skos:inScheme sdm:SourceType;
+    rdfs:label "videoOnly".
+sdm:audioPlusVideo rdf:type skos:Concept;
+    skos:inScheme sdm:SourceType;
+    rdfs:label "audioPlusVideo".
+sdm:status dcterms:description "Specifies if the specific source instance is selected or not";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain sdm:Source;
+    rdfs:range xsd:boolean.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json>;
+    rdfs:range xsd:string.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.a sdm:oic.if.baseline)
+].
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be mediaSourceList";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/mediaSourceList/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:mediaSourceList)
+].
+sdm:mediaSourceList rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "mediaSourceList".

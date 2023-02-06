@@ -1,0 +1,15 @@
+type
+vehicleType
+brandName
+modelName
+manufacturerName
+vehicleModelDate
+cargoVolume
+fuelType
+fuelConsumption
+height
+width
+depth
+weight
+vehicleEngine
+url

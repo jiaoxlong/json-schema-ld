@@ -1,0 +1,6 @@
+type
+td1
+td2
+vdmax
+vdmin
+vk

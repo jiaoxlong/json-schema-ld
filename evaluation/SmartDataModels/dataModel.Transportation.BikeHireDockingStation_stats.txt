@@ -1,0 +1,15 @@
+type
+totalSlotNumber
+freeSlotNumber
+availableBikeNumber
+outOfServiceSlotNumber
+openingHours
+status
+provider
+stationName
+mediaURL
+agency_url
+agency_name
+stationCode
+observationDateTime
+agency_fare_url

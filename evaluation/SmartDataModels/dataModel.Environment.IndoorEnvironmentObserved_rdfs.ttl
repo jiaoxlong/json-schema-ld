@@ -1,0 +1,109 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json> dcterms:title "Smart Data Models - Indoor air and climate observed conditions schema";
+    dcterms:description "An observation of air and climate conditions for indoor environments.".
+sdm:type dcterms:description "Property. NGSI Entity type";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:IndoorEnvironmentObserved)
+].
+sdm:IndoorEnvironmentObserved rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "IndoorEnvironmentObserved".
+sdm:dateObserved dcterms:description "Property. Date and time of the observation in ISO8601";
+    rdf:type rdf:Property;
+    rdfs:label "dateObserved";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:string.
+sdm:refDevice dcterms:description "Relationship. A reference to the device(s) which captured this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refDevice";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>.
+sdm:refPointOfInterest dcterms:description "Relationship. A reference to a point of interest associated to this observation.";
+    rdf:type rdf:Property;
+    rdfs:label "refPointOfInterest";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>.
+sdm:sensorPlacement dcterms:description "Property. Position of the sensor";
+    rdf:type rdf:Property;
+    rdfs:label "sensorPlacement";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>.
+sdm:SensorPlacement rdf:type skos:ConceptScheme.
+sdm:sensorPlacement rdfs:range [
+  owl:oneOf (sdm:northWall sdm:southWall sdm:eastWall sdm:westWall sdm:center sdm:floor sdm:roof sdm:ceiling)
+].
+sdm:northWall rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "northWall".
+sdm:southWall rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "southWall".
+sdm:eastWall rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "eastWall".
+sdm:westWall rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "westWall".
+sdm:center rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "center".
+sdm:floor rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "floor".
+sdm:roof rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "roof".
+sdm:ceiling rdf:type skos:Concept;
+    skos:inScheme sdm:SensorPlacement;
+    rdfs:label "ceiling".
+sdm:sensorHeight dcterms:description "Property. Height of the sensor (distance from the floor)";
+    rdf:type rdf:Property;
+    rdfs:label "sensorHeight";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:peopleCount dcterms:description "Property. Number of people in the room";
+    rdf:type rdf:Property;
+    rdfs:label "peopleCount";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:temperature dcterms:description "Property. Measured temperature";
+    rdf:type rdf:Property;
+    rdfs:label "temperature";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:relativeHumidity dcterms:description "Property. Measured humidity";
+    rdf:type rdf:Property;
+    rdfs:label "relativeHumidity";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:atmosphericPressure dcterms:description "Property. Measured atmospheric pressure";
+    rdf:type rdf:Property;
+    rdfs:label "atmosphericPressure";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:illuminance dcterms:description "Property. Measured illuminance";
+    rdf:type rdf:Property;
+    rdfs:label "illuminance";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:co2 dcterms:description "Property. The measured interior C02 concentration nominally in mg/L. Units:'mg per liter'";
+    rdf:type rdf:Property;
+    rdfs:label "co2";
+    rdfs:domain <https://smart-data-models.github.io/data-models/dataModel.Environment/schema.json>;
+    rdfs:range xsd:decimal.

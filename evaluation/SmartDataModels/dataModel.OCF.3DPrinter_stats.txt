@@ -1,0 +1,10 @@
+rt
+printsizey
+memorysize
+3dprinttype
+wanconnected
+printsizex
+printsizez
+n
+if
+type

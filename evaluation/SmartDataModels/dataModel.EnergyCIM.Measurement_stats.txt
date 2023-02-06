@@ -1,0 +1,7 @@
+type
+PowerSystemResource
+Terminal
+measurementType
+phases
+unitMultiplier
+unitSymbol

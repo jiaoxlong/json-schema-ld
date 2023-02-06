@@ -1,0 +1,5 @@
+type
+Curve
+xvalue
+y1value
+y2value

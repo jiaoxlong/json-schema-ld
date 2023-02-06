@@ -1,0 +1,12 @@
+type
+r1d
+r1q
+r2q
+rfd
+x1d
+x1q
+x2q
+xad
+xaq
+xf1d
+xfd

@@ -1,0 +1,11 @@
+type
+analyzedAt
+analysisType
+contentInformation
+ContentInformation
+id
+value
+color
+isAffectedByEO
+isAffectedByGIS
+createsLayers

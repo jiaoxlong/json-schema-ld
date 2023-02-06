@@ -1,0 +1,116 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type. It has to be AgriParcel";
+  sh:name "type";
+  sh:in (sdm:AgriParcel);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:area;
+  sh:description "Property. Model:'http://schema.org/Number'. Units:'m2'. The area of the parcel nominally in square meters.";
+  sh:name "area";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:category;
+  sh:description "Property. Model:'http://schema.org/Text'. The category of the parcel of land e.g.: **arable, grassland, vineyard, orchard, mixed crop, lowland, upland, set-aside, forestry, wetland.**";
+  sh:name "category";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:belongsTo;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:ownedBy;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:hasAgriParcelParent;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:hasAgriCrop;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:hasAgriSoil;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:cropStatus;
+  sh:description "Property. Enum:'seeded, justBorn, growing, maturing, readyForHarvesting'. A choice from an enumerated list describing the crop planting status";
+  sh:name "cropStatus";
+  sh:in (sdm:seeded sdm:justBorn sdm:growing sdm:maturing sdm:readyForHarvesting)
+], [
+  sh:path sdm:lastPlantedAt;
+  sh:description "Property. Indicates the date when the crop was last planted";
+  sh:name "lastPlantedAt";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:soilTextureType;
+  sh:description "Property. Enum: 'Sands', 'Loamy sands', 'Sandy loams', 'Loam', 'Silt loam', 'Silt', 'Sandy clay loam', 'Clay loam', 'Silty clay loam', 'Sandy clay', 'Silty clay', 'Clay'. Based on the soil texture classification of the United States Department of Agriculture (USDA): https://www.nrcs.usda.gov/wps/portal/nrcs/detailfull/soils/ref/?cid=nrcs142p2_054262";
+  sh:name "soilTextureType";
+  sh:in (sdm:Sands sdm:Loamy sands sdm:Sandy loams sdm:Loam sdm:Silt loam sdm:Silt sdm:Sandy clay loam sdm:Clay loam sdm:Silty clay loam sdm:Sandy clay sdm:Silty clay sdm:Clay)
+], [
+  sh:path sdm:irrigationSystemType;
+  sh:description "Property. Enum: 'Surface irrigation', 'Localized irrigation', 'Drip irrigation', 'Sprinkler irrigation', 'Center pivot irrigation', 'Lateral move irrigation', 'Sub-irrigation', 'Manual irrigation'. Based on common types of irrigation systems as defined by Centers for Disease Control and Prevention (CDC): https://www.cdc.gov/healthywater/other/agricultural/types.html";
+  sh:name "irrigationSystemType";
+  sh:in (sdm:Surface irrigation sdm:Localized irrigation sdm:Drip irrigation sdm:Sprinkler irrigation sdm:Center pivot irrigation sdm:Lateral move irrigation sdm:Sub-irrigation sdm:Manual irrigation)
+].

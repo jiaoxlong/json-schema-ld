@@ -1,0 +1,13 @@
+type
+badReference
+estimatorReplaced
+failure
+oldData
+operatorBlocked
+oscillatory
+outOfRange
+overFlow
+source
+suspect
+test
+validity

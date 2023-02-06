@@ -1,0 +1,15 @@
+type
+comments
+wardId
+departmentId
+title
+subCategoryCode
+titleCode
+subCategory
+reportId
+categoryCode
+category
+landmark
+observationDateTime
+mediaURL
+resolutionStatus

@@ -1,0 +1,95 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.WaterDistributionManagementEPANET/Tank/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI-LD Entity Type. It has to be Tank";
+  sh:name "type";
+  sh:in (sdm:Tank);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:elevation;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The elevation above some common reference of the Tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "elevation";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:initLevel;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The height of the water surface above the bottom elevation of the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "initLevel";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minLevel;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The minimum level that water in the tank can drop to. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "minLevel";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxLevel;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'metre'. The height of the water surface above the bottom elevation of the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "maxLevel";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:minVolume;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'cubic metre'. The volume of water in the tank when it is at its minimum level. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "minVolume";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalDiameter;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'Metre'. The diameter of the tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "nominalDiameter";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:initialQuality;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'mg/L'. Water quality level in the tank at the start of the simulation. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "initialQuality";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:bulkReactionCoefficient;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'1/day'. The bulk reaction coefficient used for modelling reactions in the tank. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "bulkReactionCoefficient";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:mixingModel;
+  sh:description "Property. Model:'https://schema.org/Text'. A sub-property of the Property sourceCategory. Enum:'2COMP, FIFO, LIFO, MIXED'";
+  sh:name "mixingModel";
+  sh:in (sdm:2COMP sdm:FIFO sdm:LIFO sdm:MIXED)
+], [
+  sh:path sdm:volumeCurve;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:mixingFraction;
+  sh:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. The fraction of the tank's total volume that comprises the inlet-outlet compartment of the two-compartment (2COMP) mixing model. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+  sh:name "mixingFraction";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:hasInlet;
+  sh:description "Relationship. A relationship indicating the water inlet points of the Reservoir";
+  sh:name "hasInlet";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:hasOutlet;
+  sh:description "Relationship. A relationship indicating the water outlet points of the Reservoir";
+  sh:name "hasOutlet";
+  sh:datatype xsd:anyURI
+].

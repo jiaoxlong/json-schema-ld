@@ -1,0 +1,44 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PhaseTapChangerLinear/schema.json> dcterms:title " Smart Data Models - PhaseTapChangerLinear";
+    dcterms:description "Adapted from CIM data models. Describes a tap changer with a linear relation between the tap step and the phase angle difference across the transformer. This is a mathematical model that is an approximation of a real phase tap changer. The phase angle is computed as stepPhaseShitfIncrement times the tap position. The secondary side voltage magnitude is the same as at the primary side.".
+sdm:type dcterms:description "Property. NGSI type. It has to be PhaseTapChangerLinear";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PhaseTapChangerLinear/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:PhaseTapChangerLinear)
+].
+sdm:PhaseTapChangerLinear rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "PhaseTapChangerLinear".
+sdm:stepPhaseShiftIncrement dcterms:description "Property. Model:'https://schema.org/Number'. Phase shift per step position. A positive value indicates a positive phase shift from the winding where the tap is located to the other winding (for a two-winding transformer). The actual phase shift increment might be more accurately computed from the symmetrical or asymmetrical models or a tap step table lookup if those are available. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "stepPhaseShiftIncrement";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PhaseTapChangerLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xMax dcterms:description "Property. Model:'https://schema.org/Number'. The reactance depend on the tap position according to a `u` shaped curve. The maximum reactance (xMax) appear at the low and high tap positions. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xMax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PhaseTapChangerLinear/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:xMin dcterms:description "Property. Model:'https://schema.org/Number'. The reactance depend on the tap position according to a `u` shaped curve. The minimum reactance (xMin) appear at the mid tap position. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "xMin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/PhaseTapChangerLinear/schema.json>;
+    rdfs:range xsd:decimal.

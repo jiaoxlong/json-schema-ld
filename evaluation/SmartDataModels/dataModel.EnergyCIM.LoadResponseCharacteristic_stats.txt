@@ -1,0 +1,13 @@
+type
+EnergyConsumer
+exponentModel
+pConstantCurrent
+pConstantImpedance
+pConstantPower
+pFrequencyExponent
+pVoltageExponent
+qConstantCurrent
+qConstantImpedance
+qConstantPower
+qFrequencyExponent
+qVoltageExponent

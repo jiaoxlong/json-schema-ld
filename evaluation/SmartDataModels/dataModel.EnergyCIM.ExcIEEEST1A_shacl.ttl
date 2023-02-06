@@ -1,0 +1,116 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcIEEEST1A/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcIEEEST1A";
+  sh:name "type";
+  sh:in (sdm:ExcIEEEST1A)
+], [
+  sh:path sdm:ilr;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter output current limit reference (I).  Typical Value = 0. Default: 0.0";
+  sh:name "ilr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ka;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (K).  Typical Value = 190. Default: 0.0";
+  sh:name "ka";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kc;
+  sh:description "Property. Model:'https://schema.org/Number'. Rectifier loading factor proportional to commutating reactance (K). Typical Value = 0.08. Default: 0.0";
+  sh:name "kc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kf;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gains (K).  Typical Value = 0. Default: 0.0";
+  sh:name "kf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:klr;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter output current limiter gain (K).  Typical Value = 0. Default: 0.0";
+  sh:name "klr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:pssin;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector of the Power System Stabilizer (PSS) input (PSSin). true = PSS input (Vs) added to error signal false = PSS input (Vs) added to voltage regulator output. Typical Value = true. Default: False";
+  sh:name "pssin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ta;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "ta";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 10. Default: 0";
+  sh:name "tb";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tb1;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tb1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 1. Default: 0";
+  sh:name "tc";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tc1;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (T).  Typical Value = 0. Default: 0";
+  sh:name "tc1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tf;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (T).  Typical Value = 1. Default: 0";
+  sh:name "tf";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:uelin;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector of the connection of the UEL input (UELin). Typical Value = ignoreUELsignal. Default: None";
+  sh:name "uelin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (V).  Typical Value = 14.5. Default: 0.0";
+  sh:name "vamax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (V).  Typical Value = -14.5. Default: 0.0";
+  sh:name "vamin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator input limit (V).  Typical Value = 999. Default: 0.0";
+  sh:name "vimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator input limit (V).  Typical Value = -999. Default: 0.0";
+  sh:name "vimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator outputs (V).  Typical Value = 7.8. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator outputs (V).  Typical Value = -6.7. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+].

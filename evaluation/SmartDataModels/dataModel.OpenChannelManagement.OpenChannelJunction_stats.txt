@@ -1,0 +1,11 @@
+type
+position
+Position
+distance
+refPoint
+downstreamNode
+upstreamNode
+observedBy
+uniqueName
+waterOutflow
+waterInflow

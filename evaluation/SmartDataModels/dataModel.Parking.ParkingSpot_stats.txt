@@ -1,0 +1,8 @@
+type
+status
+width
+length
+refParkingGroup
+refParkingSite
+category
+refDevice

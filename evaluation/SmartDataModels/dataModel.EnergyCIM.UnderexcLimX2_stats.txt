@@ -1,0 +1,8 @@
+type
+kf2
+km
+melmax
+qo
+r
+tf2
+tm

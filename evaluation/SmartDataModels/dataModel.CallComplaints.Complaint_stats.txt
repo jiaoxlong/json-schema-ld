@@ -1,0 +1,7 @@
+type
+status
+timestamp
+category
+isMadeBy
+isPartOf
+isFiledTo

@@ -1,0 +1,39 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/FossilFuel/schema.json> dcterms:title " Smart Data Models - FossilFuel";
+    dcterms:description "Adapted from CIM data models. The fossil fuel consumed by the non-nuclear thermal generating unit.   For example, coal, oil, gas, etc.   This a the specific fuels that the generating unit can consume.".
+sdm:type dcterms:description "Property. NGSI type. It has to be FossilFuel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/FossilFuel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:FossilFuel)
+].
+sdm:FossilFuel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "FossilFuel".
+sdm:ThermalGeneratingUnit dcterms:description "Property. Model:'https://schema.org/Number'. A thermal generating unit may have one or more fossil fuels. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "ThermalGeneratingUnit";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/FossilFuel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:fossilFuelType dcterms:description "Property. Model:'https://schema.org/Number'. The type of fossil fuel, such as coal, oil, or gas. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "fossilFuelType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/FossilFuel/schema.json>;
+    rdfs:range xsd:decimal.

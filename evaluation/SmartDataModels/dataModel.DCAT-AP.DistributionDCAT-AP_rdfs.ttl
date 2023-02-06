@@ -1,0 +1,145 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json> dcterms:title "Smart Data models -DCAT-AP distribution of a Dataset,";
+    dcterms:description "this is a distribution belonging ot a dataset according to the DCAT-AP standard 2.0.1".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be DistributionDCAT-AP";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:DistributionDCAT-AP)
+].
+sdm:DistributionDCAT-AP rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "DistributionDCAT-AP".
+sdm:accessUrl rdf:type rdf:Property;
+    rdfs:label "accessUrl";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:availability dcterms:description "Property. Model:'https://schema.org/Text'. This property indicates how long it is planned to keep the Distribution of the Dataset available.";
+    rdf:type rdf:Property;
+    rdfs:label "availability";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:format dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the file format of the Distribution.";
+    rdf:type rdf:Property;
+    rdfs:label "format";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:license dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to a data service that gives access to the distribution of the dataset";
+    rdf:type rdf:Property;
+    rdfs:label "license";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:accessService rdf:type rdf:Property;
+    rdfs:label "accessService";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:byteSize dcterms:description "Property. Model:'https://schema.org/Number'. This property contains the size of a Distribution in bytes.";
+    rdf:type rdf:Property;
+    rdfs:label "byteSize";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:checksum dcterms:description "Property. Model:'https://schema.org/Text'. This property provides a mechanism that can be used to verify that the contents of a distribution have not changed. The checksum is related to the downloadURL.";
+    rdf:type rdf:Property;
+    rdfs:label "checksum";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:compressionFormat dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the format of the file in which the data is contained in a compressed form, e.g. to reduce the size of the downloadable file. It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA";
+    rdf:type rdf:Property;
+    rdfs:label "compressionFormat";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:documentation rdf:type rdf:Property;
+    rdfs:label "documentation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:downloadURL rdf:type rdf:Property;
+    rdfs:label "downloadURL";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:hasPolicy dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the policy expressing the rights associated with the distribution if using the ODRL vocabulary";
+    rdf:type rdf:Property;
+    rdfs:label "hasPolicy";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:language rdf:type rdf:Property;
+    rdfs:label "language";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:linkedSchemas rdf:type rdf:Property;
+    rdfs:label "linkedSchemas";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:mediaType dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the media type of the Distribution as defined in the official register of media types managed by IANA";
+    rdf:type rdf:Property;
+    rdfs:label "mediaType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:packagingFormat dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the format of the file in which one or more data files are grouped together, e.g. to enable a set of related files to be downloaded together. It SHOULD be expressed using a media type as defined in the official register of media types managed by IANA";
+    rdf:type rdf:Property;
+    rdfs:label "packagingFormat";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:releaseDate dcterms:description "Property. Model:'https://schema.org/DateTime'. This property contains the date of formal issuance (e.g., publication) of the Distribution.";
+    rdf:type rdf:Property;
+    rdfs:label "releaseDate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:rights dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to a statement that specifies rights associated with the Distribution.";
+    rdf:type rdf:Property;
+    rdfs:label "rights";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:spatialResolution rdf:type rdf:Property;
+    rdfs:label "spatialResolution";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:status dcterms:description "Property. Model:'https://schema.org/Text'. This property refers to the maturity of the Distribution. It MUST take one of the values Completed, Deprecated, Under Development, Withdrawn";
+    rdf:type rdf:Property;
+    rdfs:label "status";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>.
+sdm:Status rdf:type skos:ConceptScheme.
+sdm:status rdfs:range [
+  owl:oneOf (sdm:Completed sdm:Deprecated sdm:Under Development sdm:Withdrawn)
+].
+sdm:Completed rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "Completed".
+sdm:Deprecated rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "Deprecated".
+sdm:Under Development rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "Under Development".
+sdm:Withdrawn rdf:type skos:Concept;
+    skos:inScheme sdm:Status;
+    rdfs:label "Withdrawn".
+sdm:temporalResolution rdf:type rdf:Property;
+    rdfs:label "temporalResolution";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:title rdf:type rdf:Property;
+    rdfs:label "title";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:string.
+sdm:modifiedDate dcterms:description "Property. Model:'https://schema.org/DateTime'. This property contains the most recent date on which the Distribution was changed or modified.";
+    rdf:type rdf:Property;
+    rdfs:label "modifiedDate";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.DCAT_AP/DistributionDCAT-AP/schema.json>;
+    rdfs:range xsd:dateTime.

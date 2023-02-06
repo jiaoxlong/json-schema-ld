@@ -1,0 +1,110 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json> dcterms:title "Smart Data models - Fleet Vehicle Status schema";
+    dcterms:description "This entity contains a harmonised description of the status of a generic fleet vehicle. This entity is primarily associated with the vertical segment of the transport and logistics but may also be used many other related IoT applications.".
+sdm:type dcterms:description "Property. NGSI Entity identifier. It has to be FleetVehicleStatus";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:FleetVehicleStatus)
+].
+sdm:FleetVehicleStatus rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "FleetVehicleStatus".
+sdm:fleetVehicle dcterms:description "Relationship. Reference to the FleetVehicle entity to which this status entity relates.";
+    rdf:type rdf:Property;
+    rdfs:label "fleetVehicle";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>.
+sdm:fleetVehicleOperation dcterms:description "Relationship. Reference to the FleetVehicleOperation entity to which this status entity relates.";
+    rdf:type rdf:Property;
+    rdfs:label "fleetVehicleOperation";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>.
+sdm:restFuelAmount dcterms:description "Property. The level of fuel recorded when the vehicle was last at rest (i.e. stopped). The timestamp element of the attribute should indicate when the vehicle was last at rest. Data to be recorded in Litres.";
+    rdf:type rdf:Property;
+    rdfs:label "restFuelAmount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lastFuellingAmount dcterms:description "Property. The level of fuel added to the vehicle at the last fuelling. The timestamp element of the attribute should indicate when the vehicle was fuelled. Data to be recorded in Litres. Units:'litres'";
+    rdf:type rdf:Property;
+    rdfs:label "lastFuellingAmount";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:currentStatus dcterms:description "Property. A description of the current status of the vehicle e.g. Enum:'deployed, finished, terminated, servicing, starting'";
+    rdf:type rdf:Property;
+    rdfs:label "currentStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>.
+sdm:CurrentStatus rdf:type skos:ConceptScheme.
+sdm:currentStatus rdfs:range [
+  owl:oneOf (sdm:deployed sdm:finished sdm:servicing sdm:starting sdm:terminated)
+].
+sdm:deployed rdf:type skos:Concept;
+    skos:inScheme sdm:CurrentStatus;
+    rdfs:label "deployed".
+sdm:finished rdf:type skos:Concept;
+    skos:inScheme sdm:CurrentStatus;
+    rdfs:label "finished".
+sdm:servicing rdf:type skos:Concept;
+    skos:inScheme sdm:CurrentStatus;
+    rdfs:label "servicing".
+sdm:starting rdf:type skos:Concept;
+    skos:inScheme sdm:CurrentStatus;
+    rdfs:label "starting".
+sdm:terminated rdf:type skos:Concept;
+    skos:inScheme sdm:CurrentStatus;
+    rdfs:label "terminated".
+sdm:currentOperative dcterms:description "Property. The current operative (e.g. driver) of the vehicle described as a Schema.org  person. Model:'https://schema.org/Person'";
+    rdf:type rdf:Property;
+    rdfs:label "currentOperative";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range sdm:CurrentOperative.
+sdm:CurrentOperative rdf:type rdfs:Class;
+    rdfs:label "CurrentOperative".
+sdm:givenName rdf:type rdf:Property;
+    rdfs:label "givenName";
+    rdfs:domain sdm:CurrentOperative;
+    rdfs:range xsd:string.
+sdm:jobTitle rdf:type rdf:Property;
+    rdfs:label "jobTitle";
+    rdfs:domain sdm:CurrentOperative;
+    rdfs:range xsd:string.
+sdm:speed dcterms:description "Property. The current speed of the fleet vehicle (km/h). The timestamp element of the attribute should indicate when the reading was obtained. Units:'km/h'";
+    rdf:type rdf:Property;
+    rdfs:label "speed";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:bearing dcterms:description "Property. The current bearing of the fleet vehicle in degrees relative to North. The timestamp element of the attribute should indicate when the reading was obtained.";
+    rdf:type rdf:Property;
+    rdfs:label "bearing";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:lastKnownPositionUpdatedAt dcterms:description "Property. The timestamp of the last known position update for the fleet vehicle.";
+    rdf:type rdf:Property;
+    rdfs:label "lastKnownPositionUpdatedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:inRestrictedArea dcterms:description "Property. Indicates if the vehicle is known to be in a restricted area at the time of the status update.";
+    rdf:type rdf:Property;
+    rdfs:label "inRestrictedArea";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:boolean.
+sdm:mileageFromOdometer dcterms:description "Property. The total distance the fleet vehicle has travelled according to the on-board odometer in kilometres (unitCode KMT) or miles (unitCode SMI). See also Schema.org Vehicle/ mileageFromOdometer. The timestamp element records when the odometer reading was taken.";
+    rdf:type rdf:Property;
+    rdfs:label "mileageFromOdometer";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Transportation/FleetVehicleStatus/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,16 @@
+type
+dpnf
+efmax
+efmin
+ks1
+ks2
+smax
+tfi
+tnu
+ts1
+ts2
+tsw
+vpi
+vpnf
+vpu
+xe

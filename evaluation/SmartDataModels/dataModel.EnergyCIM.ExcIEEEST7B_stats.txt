@@ -1,0 +1,16 @@
+type
+kh
+kia
+kl
+kpa
+oelin
+tb
+tc
+tf
+tg
+tia
+uelin
+vmax
+vmin
+vrmax
+vrmin

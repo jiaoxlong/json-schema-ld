@@ -1,0 +1,6 @@
+type
+PerLengthParameter
+capacitance
+inductance
+length
+resistance

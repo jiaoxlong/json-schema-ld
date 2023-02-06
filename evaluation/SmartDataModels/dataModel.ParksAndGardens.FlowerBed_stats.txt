@@ -1,0 +1,10 @@
+type
+taxon
+depth
+width
+height
+category
+shape
+dateLastWatering
+nextWateringDeadline
+refGarden

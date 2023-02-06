@@ -1,0 +1,5 @@
+type
+ifdlim
+koi
+voimax
+voimin

@@ -1,0 +1,53 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json> dcterms:title "Social Media - SMAnalysis";
+    dcterms:description "This entity contains a harmonised description of a generic SMAnalysis made for the Social Media domain. This entity is primarily associated with the process of analysis of Social Media applications' posts.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to SMAnalysis.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:SMAnalysis)
+].
+sdm:SMAnalysis rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "SMAnalysis".
+sdm:hasConfidence dcterms:description "Property.  Model:'https://schema.org/Number'. Units:'No unit'. It represents the confidence of the analysis. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "hasConfidence";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:analyzedAt dcterms:description "Property. The time at which the analysis finished";
+    rdf:type rdf:Property;
+    rdfs:label "analyzedAt";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:hasAnalysisValue dcterms:description "Property.  Model:'https://schema.org/Text'. Units:'No unit'. The type of the analysis.";
+    rdf:type rdf:Property;
+    rdfs:label "hasAnalysisValue";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>;
+    rdfs:range xsd:string.
+sdm:hasAnalysisType dcterms:description "Property.  Model:'https://schema.org/Text'. Units:'No unit'. The value of the analysis.";
+    rdf:type rdf:Property;
+    rdfs:label "hasAnalysisType";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>;
+    rdfs:range xsd:string.
+sdm:isAnalysisOf dcterms:description "Relationship. The ID of the post that was used in the analysis.";
+    rdf:type rdf:Property;
+    rdfs:label "isAnalysisOf";
+    rdfs:domain <https://raw.githubusercontent.com/smart-data-models/dataModel.SocialMedia/master/SMAnalysis/schema.json>.

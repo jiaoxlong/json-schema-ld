@@ -1,0 +1,9 @@
+type
+fleetVehicle
+fleetVehicleOperation
+startedAt
+endedAt
+operationType
+result
+responseTime
+transportTime

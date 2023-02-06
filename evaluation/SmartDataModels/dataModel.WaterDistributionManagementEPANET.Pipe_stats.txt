@@ -1,0 +1,10 @@
+type
+length
+diameter
+roughness
+minorLoss
+startsAt
+endsAt
+wallCoeff
+bulkCoeff
+vertices

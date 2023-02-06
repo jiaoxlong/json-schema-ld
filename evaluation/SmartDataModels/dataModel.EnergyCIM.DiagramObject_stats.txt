@@ -1,0 +1,11 @@
+type
+Diagram
+DiagramObjectPoints
+DiagramObjectStyle
+IdentifiedObject
+VisibilityLayers
+drawingOrder
+isPolygon
+offsetX
+offsetY
+rotation

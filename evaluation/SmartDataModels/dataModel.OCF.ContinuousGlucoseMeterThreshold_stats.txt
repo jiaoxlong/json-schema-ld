@@ -1,0 +1,13 @@
+plow
+phigh
+dhypo
+dhyper
+gir
+gdr
+rt
+n
+if
+range
+step
+precision
+type

@@ -1,0 +1,14 @@
+type
+elevation
+initLevel
+minLevel
+maxLevel
+minVolume
+nominalDiameter
+initialQuality
+bulkReactionCoefficient
+mixingModel
+volumeCurve
+mixingFraction
+hasInlet
+hasOutlet

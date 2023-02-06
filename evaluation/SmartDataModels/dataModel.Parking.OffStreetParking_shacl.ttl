@@ -1,0 +1,395 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.Parking/OffStreetParking/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. It has to be OffStreetParking";
+  sh:name "type";
+  sh:in (sdm:OffStreetParking);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:category;
+  sh:name "category";
+  sh:in (sdm:barrierAccess sdm:feeCharged sdm:forCustomers sdm:forDisabled sdm:forElectricalCharging sdm:forEmployees sdm:forMembers sdm:forResidents sdm:forStudents sdm:forVisitors sdm:free sdm:freeAccess sdm:gateAccess sdm:guarded sdm:ground sdm:longTerm sdm:mediumTerm sdm:onlyResidents sdm:onlyWithPermit sdm:parkingGarage sdm:parkingLot sdm:private sdm:public sdm:publicPrivate sdm:shortTerm sdm:staffed sdm:underground sdm:urbanDeterrentParking sdm:other)
+], [
+  sh:path sdm:extCategory;
+  sh:name "extCategory";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:allowedVehicleType;
+  sh:name "allowedVehicleType";
+  sh:in (sdm:agriculturalVehicle sdm:anyVehicle sdm:bicycle sdm:bus sdm:car sdm:caravan sdm:carWithCaravan sdm:carWithTrailer sdm:constructionOrMaintenanceVehicle sdm:lorry sdm:moped sdm:motorcycle sdm:motorcycleWithSideCar sdm:motorscooter sdm:tanker sdm:trailer sdm:van)
+], [
+  sh:path sdm:chargeType;
+  sh:name "chargeType";
+  sh:in (sdm:additionalIntervalPrice sdm:annualPayment sdm:firstIntervalPrice sdm:flat sdm:free sdm:minimum sdm:maximum sdm:monthlyPayment sdm:other sdm:seasonTicket sdm:temporaryPrice)
+], [
+  sh:path sdm:requiredPermit;
+  sh:name "requiredPermit";
+  sh:in (sdm:employeePermit sdm:fairPermit sdm:governmentPermit sdm:noPermitNeeded sdm:residentPermit sdm:specificIdentifiedVehiclePermit sdm:studentPermit sdm:visitorPermit)
+], [
+  sh:path sdm:occupancyDetectionType;
+  sh:name "occupancyDetectionType";
+  sh:in (sdm:balancing sdm:manual sdm:modelBased sdm:none sdm:singleSpaceDetection)
+], [
+  sh:path sdm:occupiedSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. Number of total parking spots occupied in the smart parking site corresponding to this observation. This must a positive number lower than or equal to the totalSpotNumber";
+  sh:name "occupiedSpotNumber";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:occupancyModified;
+  sh:description "Property. Model:'http://schema.org/Number'. Relative value of occupied spots out of the total spots. Allowed values: 0 - 1";
+  sh:name "occupancyModified";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:occupancy;
+  sh:description "Property. Model:'http://schema.org/Number'. Relative value of occupied spots out of the total spots.";
+  sh:name "occupancy";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:acceptedPaymentMethod;
+  sh:name "acceptedPaymentMethod";
+  sh:in (sdm:ByBankTransferInAdvance sdm:ByInvoice sdm:Cash sdm:CheckInAdvance sdm:COD sdm:DirectDebit sdm:GoogleCheckout sdm:PayPal sdm:PaySwarm)
+], [
+  sh:path sdm:priceRatePerMinute;
+  sh:description "Property. Model: 'https://schema.org/Number'. Price rate per minute.";
+  sh:name "priceRatePerMinute";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:priceCurrency;
+  sh:description "Property. Model:'https://schema.org/priceCurrency'. Price currency of price rate per minute";
+  sh:name "priceCurrency";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:layout;
+  sh:name "layout";
+  sh:in (sdm:automatedParkingGarage sdm:carports sdm:covered sdm:field sdm:garageBoxes sdm:multiLevel sdm:multiStorey sdm:nested sdm:openSpace sdm:rooftop sdm:sheds sdm:singleLevel sdm:surface sdm:other)
+], [
+  sh:path sdm:usageScenario;
+  sh:name "usageScenario";
+  sh:in (sdm:automaticParkingGuidance sdm:carSharing sdm:dropOffWithValet sdm:dropOffMechanical sdm:dropOff sdm:eventParking sdm:kissAndRide sdm:liftShare sdm:loadingBay sdm:overnightParking sdm:parkAndCycle sdm:parkAndRide sdm:parkAndWalk sdm:restArea sdm:serviceArea sdm:staffGuidesToSpace sdm:truckParking sdm:vehicleLift sdm:other)
+], [
+  sh:path sdm:parkingMode;
+  sh:name "parkingMode";
+  sh:in (sdm:echelonParking sdm:parallelParking sdm:perpendicularParking)
+], [
+  sh:path sdm:facilities;
+  sh:name "facilities";
+  sh:in (sdm:bikeParking sdm:cashMachine sdm:copyMachineOrService sdm:defibrillator sdm:dumpingStation sdm:electricChargingStation sdm:elevator sdm:faxMachineOrService sdm:fireHose sdm:fireExtinguisher sdm:fireHydrant sdm:firstAidEquipment sdm:freshWater sdm:iceFreeScaffold sdm:informationPoint sdm:internetWireless sdm:luggageLocker sdm:payDesk sdm:paymentMachine sdm:playground sdm:publicPhone sdm:refuseBin sdm:safeDeposit sdm:shower sdm:toilet sdm:tollTerminal sdm:vendingMachine sdm:wasteDisposal)
+], [
+  sh:path sdm:security;
+  sh:name "security";
+  sh:in (sdm:areaSeparatedFromSurroundings sdm:cctv sdm:dog sdm:externalSecurity sdm:fences sdm:floodLight sdm:guard24hours sdm:lighting sdm:patrolled sdm:securityStaff)
+], [
+  sh:path sdm:highestFloor;
+  sh:description "Property. Model:'http://schema.org/Number'. For parking sites with multiple floor levels, highest floor. An integer number. 0 is ground level. Upper floors are positive numbers. Lower floors are negative ones.";
+  sh:name "highestFloor";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:lowestFloor;
+  sh:description "Property. Model:'http://schema.org/Number'. For parking sites with multiple floor levels, lowest floor. Allowed values: An integer number.";
+  sh:name "lowestFloor";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:maximumParkingDuration;
+  sh:description "Property. Model:'http://schema.org/Text'. Maximum allowed stay at site, on a general basis, encoded as a ISO8601 duration or with any other string relevant for parking.  An empty value or when non present indicates an indefinite duration";
+  sh:name "maximumParkingDuration";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:totalSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. The total number of spots offered by this parking site.  This number can be difficult to be obtained for those parking locations on which spots are not clearly marked by lines. Allowed values: Any positive integer number or 0. Normative references: DATEX 2 version 2.3 attribute _parkingNumberOfSpaces_ of the _ParkingRecord_ class.";
+  sh:name "totalSpotNumber";
+  sh:minInclusive 1;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:availableSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. The number of spots available (_including_ all  vehicle types or reserved spaces, such as those for disabled people, long term parkers and so on). This might be harder to estimate at those parking locations on which spots borders are not clearly marked by lines. Allowed values: A positive integer number, including 0. It must lower or equal than `totalSpotNumber`.";
+  sh:name "availableSpotNumber";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:extraSpotNumber;
+  sh:description "Property. Model:'http://schema.org/Number'. The number of extra spots _available_, i.e. free. This value must aggregate free spots from all groups mentioned below: A/ Those reserved for special purposes and usually require a permit. Permit details will be found at parking group level (entity of type `ParkingGroup`). B/ Those reserved for other vehicle types different than the principal allowed vehicle type. C/ Any other group of parking spots not subject to the general condition rules conveyed by this entity.";
+  sh:name "extraSpotNumber";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:openingHours;
+  sh:description "Property. Model:'http://schema.org/openingHours'. Opening hours of the parking site.";
+  sh:name "openingHours";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:firstAvailableFloor;
+  sh:description "Property. Model:'http://schema.org/Number'. Number of the floor closest to the ground which currently has available parking spots. Allowed values: Stories are numbered between -n and n, being 0 ground floor.";
+  sh:name "firstAvailableFloor";
+  sh:datatype xsd:integer
+], [
+  sh:path sdm:specialLocation;
+  sh:name "specialLocation";
+  sh:in (sdm:airportTerminal sdm:cableCarStation sdm:campground sdm:cinema sdm:coachStation sdm:conventionCentre sdm:exhibitionCentre sdm:ferryTerminal sdm:hotel sdm:market sdm:publicTransportStation sdm:religiousCentre sdm:shoppingCentre sdm:skilift sdm:specificFacility sdm:themePark sdm:trainStation sdm:vehicleOnRailTerminal sdm:other)
+], [
+  sh:path sdm:status;
+  sh:name "status";
+  sh:in (sdm:almostFull sdm:closed sdm:closedAbnormal sdm:full sdm:fullAtEntrance sdm:open sdm:openingTimesInForce sdm:spacesAvailable)
+], [
+  sh:path sdm:reservationType;
+  sh:name "reservationType";
+  sh:in (sdm:mandatory sdm:notAvailable sdm:optional sdm:partly)
+], [
+  sh:path sdm:provider;
+  sh:description "Property. Parking site service provider. Model:'https://schema.org/provider'";
+  sh:name "provider"
+].
+sdm:ProviderShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:Provider;
+    sh:property [
+  sh:path sdm:measuresPeriod;
+  sh:description "Property. Model:'http://schema.org/Number'. The measures period related to availableSpotNumber and priceRatePerMinute.";
+  sh:name "measuresPeriod";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:measuresPeriodUnit;
+  sh:description "Property. Model:'http://schema.org/unitText'. The measures period unit related to availableSpotNumber and PriceRatePerMinute.";
+  sh:name "measuresPeriodUnit";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:contactPoint;
+  sh:description "Property. Model:'https://schema.org/contactPoint'. Parking site contact point.";
+  sh:name "contactPoint"
+].
+sdm:ContactPointShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:ContactPoint;
+    sh:property [
+  sh:path sdm:averageSpotWidth;
+  sh:description "Property. Model:'http://schema.org/width'. Units:'meters'. The average width of parking spots.";
+  sh:name "averageSpotWidth";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:averageSpotLength;
+  sh:description "Property. Model:'http://schema.org/length'. Units:'meters'. The average length of parking spots.";
+  sh:name "averageSpotLength";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumAllowedHeight;
+  sh:description "Property. Model:'http://schema.org/heigth'. Units:'meters'. Maximum allowed height for vehicles. If there are multiple zones, it will be the minimum height of all the zones.";
+  sh:name "maximumAllowedHeight";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maximumAllowedWidth;
+  sh:description "Property. Model:'http://schema.org/width'. Units:'Meters'. Maximum allowed width for vehicles. If there are multiple zones, it will be the minimum width of all the zones.";
+  sh:name "maximumAllowedWidth";
+  sh:minInclusive 0;
+  sh:minExclusive true;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:refParkingAccess;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:refParkingGroup;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:refParkingSpot;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string
+] [ sh:datatype xsd:anyURI ])
+], [
+  sh:path sdm:aggregateRating;
+  sh:description "Property. Model:'https://schema.org/aggregateRating'. Aggregated rating for this parking site.";
+  sh:name "aggregateRating"
+].
+sdm:AggregateRatingShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:AggregateRating;
+    sh:property [
+  sh:path sdm:vehicleEntranceCount;
+  sh:description "Property. Model:'http://schema.org/Number'. Aggregated number of vehicle that enter the parking site in a period of time.";
+  sh:name "vehicleEntranceCount";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vehicleExitCount;
+  sh:description "Property. Model:'http://schema.org/Number'. Aggregated number of vehicle that leave the parking site in a period of time.";
+  sh:name "vehicleExitCount";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:accessModified;
+  sh:description "Property. Model:'https://schema.org/DateTime'. Timestamp when `vehicleEntranceCount` and `vehicleExitCount` was updated. Allowed values: ISO8601";
+  sh:name "accessModified";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:images;
+  sh:name "images";
+  sh:datatype xsd:anyURI
+], [
+  sh:path sdm:outOfServiceSlotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. The number of bike racks/bike-docking slots or parking slots that are out of order and cannot be used to hire or park a bike in the bike docking station or parking site corresponding to this observation.";
+  sh:name "outOfServiceSlotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:parkingSiteId;
+  sh:description "Property. Model:'https://schema.org/Text'. The unique ID of the parking site or parking lot corresponding to this observation.";
+  sh:name "parkingSiteId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:observationDateTime;
+  sh:description "Property. Model:'https://schema.org/Text'. Last reported time of observation.";
+  sh:name "observationDateTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:fourWheelerSlots;
+  sh:description "Property. Model:'https://schema.org/Text. Four wheeler parking spot availability status in parking site corresponding to this observation.";
+  sh:name "fourWheelerSlots"
+].
+sdm:FourWheelerSlotShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:FourWheelerSlot;
+    sh:property [
+  sh:path sdm:availableSlotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positive number lower than or equal to the totalSpotNumber.";
+  sh:name "availableSlotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalSlotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+  sh:name "totalSlotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:occupiedSlotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+  sh:name "occupiedSlotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:unclassifiedSlots;
+  sh:description "Property. Model:'https://schema.org/Text. Unclassified vehicles or other vehicles parking spot availability status in parking site corresponding to this observation.";
+  sh:name "unclassifiedSlots"
+].
+sdm:UnclassifiedSlotShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:UnclassifiedSlot;
+    sh:property [
+  sh:path sdm:availableSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+  sh:name "availableSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+  sh:name "totalSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:occupiedSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+  sh:name "occupiedSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:twoWheelerSlots;
+  sh:description "Property. Model:'https://schema.org/Text. Two wheeler parking spot availability status in parking site corresponding to this observation.";
+  sh:name "twoWheelerSlots"
+].
+sdm:TwoWheelerSlotShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:TwoWheelerSlot;
+    sh:property [
+  sh:path sdm:availableSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots available for use in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+  sh:name "availableSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:totalSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. The total number of spots offered by the parking site corresponding to this observation.";
+  sh:name "totalSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:occupiedSpotNumber;
+  sh:description "Property. Model:'https://schema.org/Number'. Number of parking spots occupied in the smart parking site corresponding to this observation. This must a positve number lower than or equal to the totalSpotNumber.";
+  sh:name "occupiedSpotNumber";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:municipalityInfo;
+  sh:description "Property. Model:'https://schema.org/Text. Municipality information corresponding to this observation.";
+  sh:name "municipalityInfo"
+].
+sdm:MunicipalityInfoShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:MunicipalityInfo;
+    sh:property [
+  sh:path sdm:district;
+  sh:description "Property. Model:'https://schema.org/Text'. District name corresponding to this observation.";
+  sh:name "district";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:ulbName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the Urban Local Body corresponding to this observation.";
+  sh:name "ulbName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityId;
+  sh:description "Property. Model:'https://schema.org/Text'. City ID corresponding to this observation.";
+  sh:name "cityId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardId;
+  sh:description "Property. Model:'https://schema.org/Text'. Ward ID corresponding to this observation.";
+  sh:name "wardId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:stateName;
+  sh:description "Property. Model:'https://schema.org/Text'. Name of the state corresponding to this observation.";
+  sh:name "stateName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:cityName;
+  sh:description "Property. Model:'https://schema.org/Text'. City name corresponding to this observation";
+  sh:name "cityName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:zoneName;
+  sh:description "Property. Model:'https://schema.org/Text'. Zone name corresponding to this observation.";
+  sh:name "zoneName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:zoneId;
+  sh:description "Property. Model:'https://schema.org/Text'. Zone ID corresponding to this observation.";
+  sh:name "zoneId";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardName;
+  sh:description "Property. Model:'https://schema.org/Text'. Ward name corresponding to this observation.";
+  sh:name "wardName";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:wardNum;
+  sh:description "Property. Model:'https://schema.org/Number'. Ward number corresponding to this observation.";
+  sh:name "wardNum";
+  sh:datatype xsd:decimal
+].

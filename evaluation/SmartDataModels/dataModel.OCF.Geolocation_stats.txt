@@ -1,0 +1,11 @@
+rt
+longitude
+heading
+latitude
+altitudeAccuracy
+alt
+accuracy
+speed
+n
+if
+type

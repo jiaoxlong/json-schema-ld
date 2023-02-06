@@ -1,0 +1,9 @@
+type
+WindContCurrLimIEC
+WindContPType3IEC
+WindContRotorRIEC
+WindPlantFreqPcontrolIEC
+input
+lookupTableFunctionType
+output
+sequence

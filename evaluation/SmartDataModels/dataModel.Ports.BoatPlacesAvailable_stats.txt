@@ -1,0 +1,11 @@
+type
+dateObserved
+refSeaPort
+refPointOfInterest
+spotCategoryRange
+minLength
+maxLength
+maxWidth
+maxDraft
+totalCapacitySpotNumber
+availableSpotNumber

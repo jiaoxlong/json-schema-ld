@@ -1,0 +1,15 @@
+type
+alpha
+gamma
+maxAlpha
+maxGamma
+maxIdc
+minAlpha
+minGamma
+minIdc
+operatingMode
+pPccControl
+ratedIdc
+targetAlpha
+targetGamma
+targetIdc

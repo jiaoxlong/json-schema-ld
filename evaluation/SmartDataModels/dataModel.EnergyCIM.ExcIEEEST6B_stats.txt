@@ -1,0 +1,15 @@
+type
+ilr
+kci
+kff
+kg
+kia
+klr
+km
+kpa
+oelin
+tg
+vamax
+vamin
+vrmax
+vrmin

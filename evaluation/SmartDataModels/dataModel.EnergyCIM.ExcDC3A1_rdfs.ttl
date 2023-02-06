@@ -1,0 +1,99 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json> dcterms:title " Smart Data Models - ExcDC3A1";
+    dcterms:description "Adapted from CIM data models. This is modified old IEEE type 3 excitation system.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcDC3A1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcDC3A1)
+].
+sdm:ExcDC3A1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcDC3A1".
+sdm:exclim dcterms:description "Property. Model:'https://schema.org/Number'. (exclim). true = lower limit of zero is applied to integrator output false = lower limit of zero not applied to integrator output. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "exclim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ka dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator gain (Ka).  Typical Value = 300. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ka";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ke dcterms:description "Property. Model:'https://schema.org/Number'. Exciter constant related to self-excited field (Ke).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ke";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer gain (Kf).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ki dcterms:description "Property. Model:'https://schema.org/Number'. Potential circuit gain coefficient (Ki).  Typical Value = 4.83. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ki";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kp dcterms:description "Property. Model:'https://schema.org/Number'. Potential circuit gain coefficient (Kp).  Typical Value = 4.37. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kp";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ta dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator time constant (Ta).  Typical Value = 0.01. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ta";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:te dcterms:description "Property. Model:'https://schema.org/Number'. Exciter time constant, integration rate associated with exciter control (Te).  Typical Value = 1.83. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "te";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (Tf).  Typical Value = 0.675. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vb1max dcterms:description "Property. Model:'https://schema.org/Number'. Available exciter voltage limiter (Vb1max).  Typical Value = 11.63. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vb1max";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vblim dcterms:description "Property. Model:'https://schema.org/Number'. Vb limiter indicator. true = exciter Vbmax limiter is active false = Vb1max is active.  Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "vblim";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vbmax dcterms:description "Property. Model:'https://schema.org/Number'. Available exciter voltage limiter (Vbmax).  Typical Value = 11.63. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vbmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (Vrmax).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (Vrmin).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcDC3A1/schema.json>;
+    rdfs:range xsd:decimal.

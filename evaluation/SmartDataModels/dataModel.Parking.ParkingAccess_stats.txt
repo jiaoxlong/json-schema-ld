@@ -1,0 +1,7 @@
+type
+category
+refOffStreetParking
+features
+width
+height
+slope

@@ -1,0 +1,5 @@
+type
+version
+hasProvider
+endpoint
+category

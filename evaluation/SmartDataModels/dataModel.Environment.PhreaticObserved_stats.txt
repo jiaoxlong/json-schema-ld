@@ -1,0 +1,12 @@
+type
+dateObserved
+dateObservedFrom
+dateObservedTo
+isMobile
+measurementType
+investigationDepth
+waterTable
+pressure
+depth
+pollutionRate
+residueLevel

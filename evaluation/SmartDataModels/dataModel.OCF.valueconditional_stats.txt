@@ -1,0 +1,7 @@
+rt
+maxnotifyperiod
+minnotifyperiod
+threshold
+n
+if
+type

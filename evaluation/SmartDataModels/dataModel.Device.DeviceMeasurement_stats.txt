@@ -1,0 +1,10 @@
+type
+numValue
+textValue
+controlledProperty
+refDevice
+deviceType
+measurementType
+dateObserved
+outlier
+unit

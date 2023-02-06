@@ -1,0 +1,7 @@
+type
+routeColor
+routeTextColor
+routeType
+routeSortOrder
+operatedBy
+shortName

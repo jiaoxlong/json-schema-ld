@@ -1,0 +1,11 @@
+type
+efdmax
+efdmin
+emax
+emin
+k
+kc
+tatb
+tb
+tc
+te

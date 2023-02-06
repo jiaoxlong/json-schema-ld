@@ -1,0 +1,15 @@
+type
+localId
+officeName
+serviceName
+serviceId
+serviceStatus
+serviceStatusNote
+scheduleTime
+queueLine
+linePriority
+lastTicketIssued
+lastTicketIssuedLabel
+ticketServed
+ticketServedLabel
+ticketsToServe

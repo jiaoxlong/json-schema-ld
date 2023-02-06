@@ -1,0 +1,6 @@
+type
+CurveDatas
+curveStyle
+xUnit
+y1Unit
+y2Unit

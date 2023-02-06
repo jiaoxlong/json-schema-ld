@@ -1,0 +1,6 @@
+rt
+lqi
+rssi
+n
+if
+type

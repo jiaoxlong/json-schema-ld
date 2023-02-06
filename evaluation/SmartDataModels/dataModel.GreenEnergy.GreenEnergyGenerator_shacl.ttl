@@ -1,0 +1,67 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.GreenEnergy/GreenEnergyGenerator/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI Entity Type. It has to be GreenEnergyGenerator. Model:'https://schema.org/Text'";
+  sh:name "type";
+  sh:in (sdm:GreenEnergyGenerator);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:status;
+  sh:description "Property. Status of the green energy generator. Model:'https://schema.org/Text'. Enum:'outOfService, withIncidence, working'";
+  sh:name "status";
+  sh:in (sdm:outOfService sdm:withIncidence sdm:working)
+], [
+  sh:path sdm:generationSources;
+  sh:name "generationSources";
+  sh:in (sdm:biomass sdm:eolic sdm:geothermal sdm:hydropower sdm:solar)
+], [
+  sh:path sdm:selfConsumption;
+  sh:description "Property. Indicate whether energy generated will use for self. Model:'https://schema.org/Boolean'";
+  sh:name "selfConsumption";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:redistribution;
+  sh:description "Property. Indicates whether the generated energy will be dumped into the network. Model:'https://schema.org/Boolean'";
+  sh:name "redistribution";
+  sh:datatype xsd:boolean
+], [
+  sh:path sdm:maxSolarPowerMeasure;
+  sh:description "Property. Model:'https://schema.org/Number'. A measure of maximum solar energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters).";
+  sh:name "maxSolarPowerMeasure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxEolicPowerMeasure;
+  sh:description "Property. Model:'https://schema.org/Number'. A measure of maximum eolic energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters).";
+  sh:name "maxEolicPowerMeasure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxHydroPowerMeasure;
+  sh:description "Property. Model:'https://schema.org/Number'. A measure of maximum hydropower energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters).";
+  sh:name "maxHydroPowerMeasure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxBiomassMeasure;
+  sh:description "Property. Model:'https://schema.org/Number'. A measure of maximum biomass energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters).";
+  sh:name "maxBiomassMeasure";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:maxGeothermalPowerGenerated;
+  sh:description "Property. Model:'https://schema.org/Number'. A measure of maximum geothermal energy that can be generated. Units:'KWT'. The unit code (text) of measurement given using the UN/CEFACT Common Code (max. 3 characters).";
+  sh:name "maxGeothermalPowerGenerated";
+  sh:datatype xsd:decimal
+].

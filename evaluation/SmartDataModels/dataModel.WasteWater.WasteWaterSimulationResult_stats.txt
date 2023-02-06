@@ -1,0 +1,5 @@
+type
+airflow
+power
+nh4
+no3

@@ -1,0 +1,43 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModel.IoTDataModels/BatteryMaterial/schema.json>;
+    sh:property [
+  sh:path sdm:rt;
+  sh:name "rt";
+  sh:in (sdm:oic.r.batterymaterial);
+  sh:maxLength 64
+], [
+  sh:path sdm:material;
+  sh:description "Property. The battery construction material (type).";
+  sh:name "material";
+  sh:in (sdm:Alkaline sdm:Aluminium Air sdm:Aluminium Ion sdm:Atomic Betavoltaics sdm:Atomic Optoelectric Nuclear sdm:Atomic Nuclear sdm:Bunsen Cell sdm:Chromic Acid Cell sdm:Poggendorff Cell sdm:Clark Cell sdm:Daniell Cell sdm:Dry Cell sdm:Earth sdm:Flow sdm:Flow Vanadium Redox sdm:Flow Zinc Bromine sdm:Flow Zinc Cerium sdm:Frog sdm:Fuel sdm:Galvanic Cell sdm:Glass sdm:Grove Cell sdm:Lead Acid sdm:Lead Acid Deep Cycle sdm:Lead Acid VRLA sdm:Lead Acid AGM sdm:Lead Acid Gel sdm:Leclanche Cell sdm:Lemon Potato sdm:Lithium sdm:Lithium Air sdm:Lithium Ion sdm:Lithium Ion Cobalt Oxide (ICR) sdm:Lithium Ion Manganese Oxide (IMR) sdm:Lithium Ion Polymer sdm:Lithium Iron Phosphate sdm:Lithium Sulfur sdm:Lithium Titanate sdm:Lithium Ion Thin Film sdm:Magnesium sdm:Magnesium Ion sdm:Mercury sdm:Molten Salt sdm:Nickel Cadmium sdm:Nickel Cadmium Vented Cell sdm:Nickel Hydrogen sdm:Nickel Iron  sdm:Nickel Metal Hydride sdm:Nickel Metal Hydride Low Self-Discharge sdm:Nickel Oxyhydroxide sdm:Nickel Oxyride sdm:Nickel Zinc sdm:Organic Radical sdm:Paper sdm:Polymer Based sdm:Polysulfide Bromide sdm:Potassium Ion sdm:Pulvermachers Chain sdm:Silicon Air sdm:Silver Calcium sdm:Silver Oxide sdm:Silver Zinc sdm:Sodium Ion sdm:Sodium Sulfur sdm:Solid State sdm:Sugar sdm:Super Iron sdm:UltraBattery sdm:Voltaic Pile sdm:Voltaic Pile Penny sdm:Voltaic Pile Trough sdm:Water Activated sdm:Weston Cell sdm:Zinc Air sdm:Zinc Carbon sdm:Zinc Chloride sdm:Zinc Ion sdm:Unknown)
+], [
+  sh:path sdm:n;
+  sh:description "Property. Friendly name of the Resource";
+  sh:name "n";
+  sh:maxLength 64;
+  sh:datatype xsd:string
+], [
+  sh:path sdm:if;
+  sh:name "if";
+  sh:in (sdm:oic.if.s sdm:oic.if.baseline)
+], [
+  sh:path sdm:type;
+  sh:description "Property. NGSI entity type. It has to be BatteryMaterial";
+  sh:name "type";
+  sh:in (sdm:BatteryMaterial);
+  sh:minCount 1;
+  sh:maxCount 1
+].

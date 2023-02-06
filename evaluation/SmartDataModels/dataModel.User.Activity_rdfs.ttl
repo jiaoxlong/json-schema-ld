@@ -1,0 +1,56 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.User/Activity/schema.json> dcterms:title "Smart Data Model - User Activity schema";
+    dcterms:description "Information on the current activity performed by an anonymized user in a given point in time".
+sdm:dateActivityStarted dcterms:description "Property. It must be equal to UserActivity.";
+    rdf:type rdf:Property;
+    rdfs:label "dateActivityStarted";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:dateActivityEnded dcterms:description "Property. Model:'https://schema.org/DateTime'. Activity's end timestamp.";
+    rdf:type rdf:Property;
+    rdfs:label "dateActivityEnded";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:refObject dcterms:description "Relationship. Model:'https://schema.org/URL'. Reference to the object of the action (e.g. Car1). It may be another NGSI Entity or any `Object` identified by an URI.";
+    rdf:type rdf:Property;
+    rdfs:label "refObject";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>.
+sdm:activityType dcterms:description "Property. Model:'https://schema.org/Text'. The action performed (e.g. Drive). Normative References: [https://schema.org/Action](https://schema.org/Action), [https://www.w3.org/TR/activitystreams-vocabulary/#activity-types](https://www.w3.org/TR/activitystreams-vocabulary/#activity-types), [https://health-lifesci.schema.org/PhysicalActivityCategory](https://health-lifesci.schema.org/PhysicalActivityCategory)";
+    rdf:type rdf:Property;
+    rdfs:label "activityType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>;
+    rdfs:range xsd:string.
+sdm:refTarget dcterms:description "Relationship. Model:'https://schema.org/URL'. Reference to the target of the action (e.g. Office1).";
+    rdf:type rdf:Property;
+    rdfs:label "refTarget";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>.
+sdm:refAgent dcterms:description "Relationship. Model:'https://schema.org/URL'. Reference to the agent (i.e. a person) performing the activity. It may be another NGSI Entity or any `Agent` identified by an URI.";
+    rdf:type rdf:Property;
+    rdfs:label "refAgent";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>.
+sdm:type dcterms:description "Property. NGSI Entity type. It has to be Activity";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.User/Activity/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Activity)
+].
+sdm:Activity rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Activity".

@@ -1,0 +1,5 @@
+type
+SynchronousMachineDynamics
+VcompIEEEType2
+rcij
+xcij

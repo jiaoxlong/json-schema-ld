@@ -1,0 +1,8 @@
+type
+r
+r0
+varistorPresent
+varistorRatedCurrent
+varistorVoltageThreshold
+x
+x0

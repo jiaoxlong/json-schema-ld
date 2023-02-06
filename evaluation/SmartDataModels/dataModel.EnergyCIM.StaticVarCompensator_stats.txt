@@ -1,0 +1,7 @@
+type
+capacitiveRating
+inductiveRating
+q
+sVCControlMode
+slope
+voltageSetPoint

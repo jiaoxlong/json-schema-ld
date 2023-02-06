@@ -1,0 +1,6 @@
+type
+reservoirHead
+elevation
+headPattern
+hasInlet
+hasOutlet

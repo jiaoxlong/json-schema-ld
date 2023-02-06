@@ -1,0 +1,197 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson> dcterms:description "Details including system operator, system location, year implemented, URL, contact info, time zone.".
+gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
+    rdf:type rdf:Property;
+    rdfs:label "last_updated";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    rdfs:range xsd:integer.
+gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+    rdf:type rdf:Property;
+    rdfs:label "ttl";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    rdfs:range xsd:integer.
+gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "version";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    rdfs:range xsd:string.
+gbfs:data dcterms:description "Response data in the form of name:value pairs.";
+    rdf:type rdf:Property;
+    rdfs:label "data";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    rdfs:range gbfs:Datum.
+gbfs:Datum rdf:type rdfs:Class;
+    rdfs:label "Datum".
+gbfs:system_id dcterms:description "Identifier for this vehicle share system. This should be globally unique (even between different systems).";
+    rdf:type rdf:Property;
+    rdfs:label "system_id";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:language dcterms:description "The language that will be used throughout the rest of the files. It must match the value in the gbfs.json file.";
+    rdf:type rdf:Property;
+    rdfs:label "language";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:name dcterms:description "Name of the system to be displayed to customers.";
+    rdf:type rdf:Property;
+    rdfs:label "name";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:short_name dcterms:description "Optional abbreviation for a system.";
+    rdf:type rdf:Property;
+    rdfs:label "short_name";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:operator dcterms:description "Name of the operator";
+    rdf:type rdf:Property;
+    rdfs:label "operator";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:url dcterms:description "The URL of the vehicle share system.";
+    rdf:type rdf:Property;
+    rdfs:label "url";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:anyURI.
+gbfs:purchase_url dcterms:description "URL where a customer can purchase a membership.";
+    rdf:type rdf:Property;
+    rdfs:label "purchase_url";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:anyURI.
+gbfs:start_date dcterms:description "Date that the system began operations.";
+    rdf:type rdf:Property;
+    rdfs:label "start_date";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:date.
+gbfs:phone_number dcterms:description "A single voice telephone number for the specified system that presents the telephone number as typical for the system's service area.";
+    rdf:type rdf:Property;
+    rdfs:label "phone_number";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:email dcterms:description "Email address actively monitored by the operator's customer service department.";
+    rdf:type rdf:Property;
+    rdfs:label "email";
+    rdfs:domain gbfs:Datum;
+    rdfs:range schema:email.
+gbfs:feed_contact_email dcterms:description "A single contact email address for consumers of this feed to report technical issues (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "feed_contact_email";
+    rdfs:domain gbfs:Datum;
+    rdfs:range schema:email.
+gbfs:timezone dcterms:description "The time zone where the system is located.";
+    rdf:type rdf:Property;
+    rdfs:label "timezone";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:string.
+gbfs:license_url dcterms:description "A fully qualified URL of a page that defines the license terms for the GBFS data for this system.";
+    rdf:type rdf:Property;
+    rdfs:label "license_url";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:anyURI.
+gbfs:brand_assets dcterms:description "An object where each key defines one of the items listed below (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "brand_assets";
+    rdfs:domain gbfs:Datum;
+    rdfs:range gbfs:BrandAsset.
+gbfs:BrandAsset rdf:type rdfs:Class;
+    rdfs:label "BrandAsset".
+gbfs:brand_last_modified dcterms:description "Date that indicates the last time any included brand assets were updated (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "brand_last_modified";
+    rdfs:domain gbfs:BrandAsset;
+    rdfs:range xsd:date.
+gbfs:brand_terms_url dcterms:description "A fully qualified URL pointing to the location of a page that defines the license terms of brand icons, colors or other trademark information (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "brand_terms_url";
+    rdfs:domain gbfs:BrandAsset;
+    rdfs:range xsd:anyURI.
+gbfs:brand_image_url dcterms:description "A fully qualified URL pointing to the location of a graphic file representing the brand for the service (added in v2.3-RC). ";
+    rdf:type rdf:Property;
+    rdfs:label "brand_image_url";
+    rdfs:domain gbfs:BrandAsset;
+    rdfs:range xsd:anyURI.
+gbfs:brand_image_url_dark dcterms:description "A fully qualified URL pointing to the location of a graphic file representing the brand for the service for use in dark mode (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "brand_image_url_dark";
+    rdfs:domain gbfs:BrandAsset;
+    rdfs:range xsd:anyURI.
+gbfs:color dcterms:description "Color used to represent the brand for the service (added in v2.3-RC)";
+    rdf:type rdf:Property;
+    rdfs:label "color";
+    rdfs:domain gbfs:BrandAsset;
+    rdfs:range xsd:string.
+gbfs:terms_url dcterms:description "A fully qualified URL pointing to the terms of service (added in v2.3-RC)";
+    rdf:type rdf:Property;
+    rdfs:label "terms_url";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:anyURI.
+gbfs:terms_last_updated dcterms:description "The date that the terms of service provided at terms_url were last updated (added in v2.3-RC)";
+    rdf:type rdf:Property;
+    rdfs:label "terms_last_updated";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:date.
+gbfs:privacy_url dcterms:description "A fully qualified URL pointing to the privacy policy for the service (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "privacy_url";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:anyURI.
+gbfs:privacy_last_updated dcterms:description "The date that the privacy policy provided at privacy_url was last updated (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "privacy_last_updated";
+    rdfs:domain gbfs:Datum;
+    rdfs:range xsd:date.
+gbfs:rental_apps dcterms:description "Contains rental app information in the android and ios JSON objects (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "rental_apps";
+    rdfs:domain gbfs:Datum;
+    rdfs:range gbfs:RentalApp.
+gbfs:RentalApp rdf:type rdfs:Class;
+    rdfs:label "RentalApp".
+gbfs:android dcterms:description "Contains rental app download and app discovery information for the Android platform. (added in v1.1)";
+    rdf:type rdf:Property;
+    rdfs:label "android";
+    rdfs:domain gbfs:RentalApp;
+    rdfs:range gbfs:Android.
+gbfs:Android rdf:type rdfs:Class;
+    rdfs:label "Android".
+gbfs:store_uri dcterms:description "URI where the rental Android app can be downloaded from (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "store_uri";
+    rdfs:domain gbfs:Android;
+    rdfs:range xsd:anyURI.
+gbfs:discovery_uri dcterms:description "URI that can be used to discover if the rental Android app is installed on the device (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "discovery_uri";
+    rdfs:domain gbfs:Android;
+    rdfs:range xsd:anyURI.
+gbfs:ios dcterms:description "Contains rental information for the iOS platform (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "ios";
+    rdfs:domain gbfs:RentalApp;
+    rdfs:range gbfs:Io.
+gbfs:Io rdf:type rdfs:Class;
+    rdfs:label "Io".
+gbfs:store_uri dcterms:description "URI where the rental iOS app can be downloaded from (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "store_uri";
+    rdfs:domain gbfs:Io;
+    rdfs:range xsd:anyURI.
+gbfs:discovery_uri dcterms:description "URI that can be used to discover if the rental iOS app is installed on the device (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "discovery_uri";
+    rdfs:domain gbfs:Io;
+    rdfs:range xsd:anyURI.

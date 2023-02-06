@@ -1,0 +1,109 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json> dcterms:title " Smart Data Models - ExcST7B";
+    dcterms:description "Adapted from CIM data models. Modified IEEE ST7B static excitation system without stator current limiter (SCL) and current compensator (DROOP) inputs.".
+sdm:type dcterms:description "Property. NGSI type. It has to be ExcST7B";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:ExcST7B)
+].
+sdm:ExcST7B rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "ExcST7B".
+sdm:kh dcterms:description "Property. Model:'https://schema.org/Number'. High-value gate feedback gain (Kh).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kh";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kia dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator integral gain (Kia).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kia";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kl dcterms:description "Property. Model:'https://schema.org/Number'. Low-value gate feedback gain (Kl).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kl";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpa dcterms:description "Property. Model:'https://schema.org/Number'. Voltage regulator proportional gain (Kpa).  Typical Value = 40. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpa";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:oelin dcterms:description "Property. Model:'https://schema.org/Number'. OEL input selector (OELin). Typical Value = noOELinput. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "oelin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tb dcterms:description "Property. Model:'https://schema.org/Number'. Regulator lag time constant (Tb).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tc dcterms:description "Property. Model:'https://schema.org/Number'. Regulator lead time constant (Tc).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tc";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tf dcterms:description "Property. Model:'https://schema.org/Number'. Excitation control system stabilizer time constant (Tf).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tg dcterms:description "Property. Model:'https://schema.org/Number'. Feedback time constant of inner loop field voltage regulator (Tg).  Typical Value = 1. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tg";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tia dcterms:description "Property. Model:'https://schema.org/Number'. Feedback time constant (Tia).  Typical Value = 3. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tia";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ts dcterms:description "Property. Model:'https://schema.org/Number'. Rectifier firing time constant (Ts).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "ts";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:uelin dcterms:description "Property. Model:'https://schema.org/Number'. UEL input selector (UELin). Typical Value = noUELinput. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "uelin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage reference signal (Vmax).  Typical Value = 1.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage reference signal (Vmin).  Typical Value = 0.9. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmax dcterms:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (Vrmax).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vrmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (Vrmin).  Typical Value = -4.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vrmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST7B/schema.json>;
+    rdfs:range xsd:decimal.

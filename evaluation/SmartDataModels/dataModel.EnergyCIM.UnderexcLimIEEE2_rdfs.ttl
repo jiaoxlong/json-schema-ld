@@ -1,0 +1,229 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json> dcterms:title " Smart Data Models - UnderexcLimIEEE2";
+    dcterms:description "Adapted from CIM data models. The class represents the Type UEL2 which has either a straight-line or multi-segment characteristic when plotted in terms of machine reactive power output vs. real power output.  Reference: IEEE UEL2 421.5-2005 Section 10.2.  (Limit characteristic lookup table shown in Figure 10.4 (p 32) of the standard).".
+sdm:type dcterms:description "Property. NGSI type. It has to be UnderexcLimIEEE2";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:UnderexcLimIEEE2)
+].
+sdm:UnderexcLimIEEE2 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "UnderexcLimIEEE2".
+sdm:k1 dcterms:description "Property. Model:'https://schema.org/Number'. UEL terminal voltage exponent applied to real power input to UEL limit look-up table (k1).  Typical Value = 2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:k2 dcterms:description "Property. Model:'https://schema.org/Number'. UEL terminal voltage exponent applied to reactive power output from UEL limit look-up table (k2).  Typical Value = 2. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "k2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kfb dcterms:description "Property. Model:'https://schema.org/Number'. Gain associated with optional integrator feedback input signal to UEL (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kfb";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kuf dcterms:description "Property. Model:'https://schema.org/Number'. UEL excitation system stabilizer gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kuf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kui dcterms:description "Property. Model:'https://schema.org/Number'. UEL integral gain (K).  Typical Value = 0.5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kui";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kul dcterms:description "Property. Model:'https://schema.org/Number'. UEL proportional gain (K).  Typical Value = 0.8. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kul";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p0 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p1 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p10 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p10";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p2 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.6. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p3 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 0.9. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p4 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P).  Typical Value = 1.02. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p5 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p6 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p7 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p7";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p8 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p8";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:p9 dcterms:description "Property. Model:'https://schema.org/Number'. Real power values for endpoints (P). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "p9";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q0 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.31. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q0";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q1 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.31. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q10 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q10";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q2 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.28. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q3 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = -0.21. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q4 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q5 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q6 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q7 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q7";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q8 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q8";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:q9 dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power values for endpoints (Q). Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "q9";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu1 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu2 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu3 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lead time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tu4 dcterms:description "Property. Model:'https://schema.org/Number'. UEL lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tu4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tul dcterms:description "Property. Model:'https://schema.org/Number'. Time constant associated with optional integrator feedback input signal to UEL (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tul";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tup dcterms:description "Property. Model:'https://schema.org/Number'. Real power filter time constant (T).  Typical Value = 5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tup";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tuq dcterms:description "Property. Model:'https://schema.org/Number'. Reactive power filter time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tuq";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tuv dcterms:description "Property. Model:'https://schema.org/Number'. Voltage filter time constant (T).  Typical Value = 5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tuv";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vuimax dcterms:description "Property. Model:'https://schema.org/Number'. UEL integrator output maximum limit (V).  Typical Value = 0.25. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vuimax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vuimin dcterms:description "Property. Model:'https://schema.org/Number'. UEL integrator output minimum limit (V).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vuimin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vulmax dcterms:description "Property. Model:'https://schema.org/Number'. UEL output maximum limit (V).  Typical Value = 0.25. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vulmax";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vulmin dcterms:description "Property. Model:'https://schema.org/Number'. UEL output minimum limit (V).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vulmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/UnderexcLimIEEE2/schema.json>;
+    rdfs:range xsd:decimal.

@@ -1,0 +1,152 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/data-models.OpenChannelManagement/RegulationStructureSimulation/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI-LD Entity Type. It has to be RegulationStructureSimulation.";
+  sh:name "type";
+  sh:in (sdm:RegulationStructureSimulation);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path sdm:startSimulationTime;
+  sh:description "Property. Time of day in ISO8601 UTC format at which the simulation begins.";
+  sh:name "startSimulationTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:endSimulationTime;
+  sh:description "Property. Time of day in ISO8601 UTC format at which the simulation ends.";
+  sh:name "endSimulationTime";
+  sh:datatype xsd:dateTime
+], [
+  sh:path sdm:modelError;
+  sh:description "Property. Percentage error between observed and simulated discharge.";
+  sh:name "modelError";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:targetDischarge;
+  sh:description "Property. Desirable discharge to be established in the channel, defined by the utility’s operators.";
+  sh:name "targetDischarge";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:modelledDischarge;
+  sh:description "Property. Discharge estimated from the simulation model.";
+  sh:name "modelledDischarge";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:spillwayFlow;
+  sh:description "Property. Ratio of the spillway discharge to the new total discharge";
+  sh:name "spillwayFlow";
+  sh:minInclusive 0;
+  sh:maxInclusive 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:estimatedGateDischargeCoefficient;
+  sh:description "Property. Calibrated discharge coefficient of the sluice gate.";
+  sh:name "estimatedGateDischargeCoefficient";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:equivalentSluiceOpening;
+  sh:description "Property. Equivalent sluice gate opening in the case of multiple sluice gates, estimated as the mean value of the different openings.";
+  sh:name "equivalentSluiceOpening";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:simulationOutput;
+  sh:description "Property. Description of the set of results of simulation of the regulation structure.";
+  sh:name "simulationOutput"
+].
+sdm:SimulationOutputShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:SimulationOutput;
+    sh:property [
+  sh:path sdm:waterAttribute;
+  sh:description "Property: An attribute issued from the data models for Open Channel Management. It follows fully this data model and it could be a property or a relationship. It contains the values for specified properties, as derive from the simulation.";
+  sh:name "waterAttribute";
+  sh:in (sdm:gateOpening sdm:waterDischarge sdm:headDifference sdm:gateDischargeCoefficient sdm:waterFlow sdm:waterVelocity sdm:celerity sdm:travelDuration sdm:waterLevel)
+], [
+  sh:path sdm:value;
+  sh:or ([ sh:datatype xsd:string ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:boolean ])
+], [
+  sh:path sdm:targetURI;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:inputParameters;
+  sh:description "Property. Description of the set of the modifications to be applied to the Regulation Structure for the simulation.";
+  sh:name "inputParameters"
+].
+sdm:InputParameterShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:InputParameter;
+    sh:property [
+  sh:path sdm:waterAttribute;
+  sh:description "Property: An attribute issued from the data models for Open Channel Management. It follows fully this data model and it could be a property or a relationship. It contains the values for specified properties, as derive from the simulation.";
+  sh:name "waterAttribute";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:value;
+  sh:or ([ sh:datatype xsd:string ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:boolean ])
+], [
+  sh:path sdm:targetURI;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+], [
+  sh:path sdm:initialConditions;
+  sh:description "Property. Description of the set of the modifications to be applied to the Regulation Structure for the simulation.";
+  sh:name "initialConditions"
+].
+sdm:InitialConditionShape rdf:type sh:NodeShape;
+    sh:targetClass sdm:InitialCondition;
+    sh:property [
+  sh:path sdm:waterAttribute;
+  sh:description "Property: An attribute issued from the data models for Open Channel Management. It follows fully this data model and it could be a property or a relationship. It contains the values for specified properties, as derive from the simulation.";
+  sh:name "waterAttribute";
+  sh:datatype xsd:string
+], [
+  sh:path sdm:value;
+  sh:or ([ sh:datatype xsd:string ] [ sh:datatype xsd:decimal ] [ sh:datatype xsd:boolean ])
+], [
+  sh:path sdm:targetURI;
+  sh:or ([
+  sh:minLength 1;
+  sh:maxLength 256;
+  sh:pattern "^[\\w\\-\\.\\{\\}\\$\\+\\*\\[\\]`|~^@!,:\\\\]+$";
+  sh:datatype xsd:string;
+  sh:description "Property. Identifier format of any NGSI entity"
+] [
+  sh:datatype xsd:anyURI;
+  sh:description "Property. Identifier format of any NGSI entity"
+])
+].

@@ -1,0 +1,71 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json> dcterms:title "Smart Data models - OpenLevel schema derived from the open connectivity foundation repository https://github.com/openconnectivityfoundation/IoTDataModels";
+    dcterms:description "This Resource describes how open or ajar an entity such as a window, door, blind or shutter is.The Property 'openLevel' can be read (acting as a sensor).The 'openLevel' can also be set (acting as an actuator).The 'openLevel' is device dependent across the range provided.When the Property 'range' is omitted then 0 to 100 is assumed where 0 means closed, 100 means fully open.If a 'range' is provided then the lower bound=closed, upper bound=open.If Property 'step' is present then it represents the increment between possible values; if not provided 1 is assumed.".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.openlevel)
+].
+sdm:oic.r.openlevel rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.openlevel".
+sdm:openLevel dcterms:description "Property. How open or ajar the entity is.";
+    rdf:type rdf:Property;
+    rdfs:label "openLevel";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>;
+    rdfs:range xsd:integer.
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>;
+    rdfs:range xsd:string.
+sdm:range rdf:type rdf:Property;
+    rdfs:label "range";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>;
+    rdfs:range xsd:integer.
+sdm:step dcterms:description "Property. Step value across the defined range when the range is an integer.  This is the increment for valid values across the range; so if range is 0..10 and step is 2 then valid values are 0,2,4,6,8,10.";
+    rdf:type rdf:Property;
+    rdfs:label "step";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>;
+    rdfs:range xsd:integer.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.a sdm:oic.if.baseline)
+].
+sdm:oic.if.a rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.a".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:type dcterms:description "Property. NGSI entity type. It has to be OpenLevel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.OCF/OpenLevel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:OpenLevel)
+].
+sdm:OpenLevel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "OpenLevel".

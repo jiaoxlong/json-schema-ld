@@ -1,0 +1,114 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json> dcterms:title " Smart Data Models - Pss5";
+    dcterms:description "Adapted from CIM data models. Italian PSS - Detailed PSS.".
+sdm:type dcterms:description "Property. NGSI type. It has to be Pss5";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Pss5)
+].
+sdm:Pss5 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Pss5".
+sdm:ctw2 dcterms:description "Property. Model:'https://schema.org/Number'. Selector for Second washout enabling (C). true = second washout filter is bypassed false = second washout filter in use. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "ctw2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:deadband dcterms:description "Property. Model:'https://schema.org/Number'. Stabilizer output dead band (DeadBand).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "deadband";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:isfreq dcterms:description "Property. Model:'https://schema.org/Number'. Selector for Frequency/shaft speed input (IsFreq). true = speed false = frequency. Typical Value = true. Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "isfreq";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Frequency/shaft speed input gain (K).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpe dcterms:description "Property. Model:'https://schema.org/Number'. Electric power input gain (K).  Typical Value = 0.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpe";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpss dcterms:description "Property. Model:'https://schema.org/Number'. PSS gain (K).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpss";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmm dcterms:description "Property. Model:'https://schema.org/Number'. Minimum power PSS enabling (P).  Typical Value = 0.25. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmm";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tl1 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tl1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tl2 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tl2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tl3 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tl3";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tl4 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tl4";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpe dcterms:description "Property. Model:'https://schema.org/Number'. Electric power filter time constant (T).  Typical Value = 0.05. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpe";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tw1 dcterms:description "Property. Model:'https://schema.org/Number'. First WashOut (T).  Typical Value = 3.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tw1";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tw2 dcterms:description "Property. Model:'https://schema.org/Number'. Second WashOut (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tw2";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vadat dcterms:description "Property. Model:'https://schema.org/Number'.  Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "vadat";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vsmn dcterms:description "Property. Model:'https://schema.org/Number'. Stabilizer output max limit (V).  Typical Value = -0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vsmn";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vsmx dcterms:description "Property. Model:'https://schema.org/Number'. Stabilizer output min limit (V).  Typical Value = 0.1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vsmx";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss5/schema.json>;
+    rdfs:range xsd:decimal.

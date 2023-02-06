@@ -1,0 +1,59 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json> dcterms:title " Smart Data Models - Measurement";
+    dcterms:description "Adapted from CIM data models. A Measurement represents any measured, calculated or non-measured non-calculated quantity. Any piece of equipment may contain Measurements, e.g. a substation may have temperature measurements and door open indications, a transformer may have oil temperature and tank pressure measurements, a bay may contain a number of power flow measurements and a Breaker may contain a switch status measurement.  The PSR - Measurement association is intended to capture this use of Measurement and is included in the naming hierarchy based on EquipmentContainer. The naming hierarchy typically has Measurements as leafs, e.g. Substation-VoltageLevel-Bay-Switch-Measurement. Some Measurements represent quantities related to a particular sensor location in the network, e.g. a voltage transformer (PT) at a busbar or a current transformer (CT) at the bar between a breaker and an isolator. The sensing position is not captured in the PSR - Measurement association. Instead it is captured by the Measurement - Terminal association that is used to define the sensing location in the network topology. The location is defined by the connection of the Terminal to ConductingEquipment.  If both a Terminal and PSR are associated, and the PSR is of type ConductingEquipment, the associated Terminal should belong to that ConductingEquipment instance. When the sensor location is needed both Measurement-PSR and Measurement-Terminal are used. The Measurement-Terminal association is never used alone.".
+sdm:type dcterms:description "Property. NGSI type. It has to be Measurement";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Measurement)
+].
+sdm:Measurement rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Measurement".
+sdm:PowerSystemResource dcterms:description "Property. Model:'https://schema.org/Number'. The measurements associated with this power system resource. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "PowerSystemResource";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:Terminal dcterms:description "Property. Model:'https://schema.org/Number'. One or more measurements may be associated with a terminal in the network. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "Terminal";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:measurementType dcterms:description "Property. Model:'https://schema.org/Number'. Specifies the type of measurement.  For example, this specifies if the measurement represents an indoor temperature, outdoor temperature, bus voltage, line flow, etc. Default: ''";
+    rdf:type rdf:Property;
+    rdfs:label "measurementType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:string.
+sdm:phases dcterms:description "Property. Model:'https://schema.org/Number'. Indicates to which phases the measurement applies and avoids the need to use `measurementType` to also encode phase information (which would explode the types). The phase information in Measurement, along with `measurementType` and `phases` uniquely defines a Measurement for a device, based on normal network phase. Their meaning will not change when the computed energizing phasing is changed due to jumpers or other reasons. If the attribute is missing three phases (ABC) shall be assumed. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "phases";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:unitMultiplier dcterms:description "Property. Model:'https://schema.org/Number'. The unit multiplier of the measured quantity. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "unitMultiplier";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:unitSymbol dcterms:description "Property. Model:'https://schema.org/Number'. The unit of measure of the measured quantity. Default: None";
+    rdf:type rdf:Property;
+    rdfs:label "unitSymbol";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Measurement/schema.json>;
+    rdfs:range xsd:decimal.

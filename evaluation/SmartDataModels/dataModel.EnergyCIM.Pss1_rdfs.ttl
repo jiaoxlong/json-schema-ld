@@ -1,0 +1,104 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json> dcterms:title " Smart Data Models - Pss1";
+    dcterms:description "Adapted from CIM data models. Italian PSS - three input PSS (speed, frequency, power).".
+sdm:type dcterms:description "Property. NGSI type. It has to be Pss1";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Pss1)
+].
+sdm:Pss1 rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Pss1".
+sdm:kf dcterms:description "Property. Model:'https://schema.org/Number'. Frequency power input gain (K).  Typical Value = 5. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kf";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kpe dcterms:description "Property. Model:'https://schema.org/Number'. Electric power input gain (K).  Typical Value = 0.3. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kpe";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:ks dcterms:description "Property. Model:'https://schema.org/Number'. PSS gain (K).  Typical Value = 1. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "ks";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:kw dcterms:description "Property. Model:'https://schema.org/Number'. Shaft speed power input gain (K).  Typical Value = 0. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "kw";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:pmin dcterms:description "Property. Model:'https://schema.org/Number'. Minimum power PSS enabling (P).  Typical Value = 0.25. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "pmin";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t10 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t10";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t5 dcterms:description "Property. Model:'https://schema.org/Number'. Washout (T).  Typical Value = 3.5. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t5";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t6 dcterms:description "Property. Model:'https://schema.org/Number'. Filter time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t6";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t7 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t7";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t8 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t8";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:t9 dcterms:description "Property. Model:'https://schema.org/Number'. Lead/lag time constant (T).  Typical Value = 0. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "t9";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:tpe dcterms:description "Property. Model:'https://schema.org/Number'. Electric power filter time constant (T).  Typical Value = 0.05. Default: 0";
+    rdf:type rdf:Property;
+    rdfs:label "tpe";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vadat dcterms:description "Property. Model:'https://schema.org/Number'.  Default: False";
+    rdf:type rdf:Property;
+    rdfs:label "vadat";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vsmn dcterms:description "Property. Model:'https://schema.org/Number'. Stabilizer output max limit (V).  Typical Value = -0.06. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vsmn";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:vsmx dcterms:description "Property. Model:'https://schema.org/Number'. Stabilizer output min limit (V).  Typical Value = 0.06. Default: 0.0";
+    rdf:type rdf:Property;
+    rdfs:label "vsmx";
+    rdfs:domain <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/Pss1/schema.json>;
+    rdfs:range xsd:decimal.

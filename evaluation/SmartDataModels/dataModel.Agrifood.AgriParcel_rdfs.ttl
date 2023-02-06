@@ -1,0 +1,163 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json> dcterms:title "Smart Data Models - Agri Parcel";
+    dcterms:description "This entity contains a harmonised description of a generic parcel of land. This entity is primarily associated with the agricultural vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI Entity Type. It has to be AgriParcel";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:AgriParcel)
+].
+sdm:AgriParcel rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "AgriParcel".
+sdm:area dcterms:description "Property. Model:'http://schema.org/Number'. Units:'m2'. The area of the parcel nominally in square meters.";
+    rdf:type rdf:Property;
+    rdfs:label "area";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:category dcterms:description "Property. Model:'http://schema.org/Text'. The category of the parcel of land e.g.: **arable, grassland, vineyard, orchard, mixed crop, lowland, upland, set-aside, forestry, wetland.**";
+    rdf:type rdf:Property;
+    rdfs:label "category";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>;
+    rdfs:range xsd:string.
+sdm:belongsTo dcterms:description "Relationship. Entity the item belongs to";
+    rdf:type rdf:Property;
+    rdfs:label "belongsTo";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:ownedBy dcterms:description "Relationship. Owner (Person or Organization) of the item";
+    rdf:type rdf:Property;
+    rdfs:label "ownedBy";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:hasAgriParcelParent dcterms:description "Relationship. Reference to the parent AgriParcel";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriParcelParent";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:hasAgriCrop dcterms:description "Relationship. Reference to the crop associated with this parcel";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriCrop";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:hasAgriSoil dcterms:description "Relationship. Reference to the soil associated with this parcel of land";
+    rdf:type rdf:Property;
+    rdfs:label "hasAgriSoil";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:cropStatus dcterms:description "Property. Enum:'seeded, justBorn, growing, maturing, readyForHarvesting'. A choice from an enumerated list describing the crop planting status";
+    rdf:type rdf:Property;
+    rdfs:label "cropStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:CropStatus rdf:type skos:ConceptScheme.
+sdm:cropStatus rdfs:range [
+  owl:oneOf (sdm:seeded sdm:justBorn sdm:growing sdm:maturing sdm:readyForHarvesting)
+].
+sdm:seeded rdf:type skos:Concept;
+    skos:inScheme sdm:CropStatus;
+    rdfs:label "seeded".
+sdm:justBorn rdf:type skos:Concept;
+    skos:inScheme sdm:CropStatus;
+    rdfs:label "justBorn".
+sdm:growing rdf:type skos:Concept;
+    skos:inScheme sdm:CropStatus;
+    rdfs:label "growing".
+sdm:maturing rdf:type skos:Concept;
+    skos:inScheme sdm:CropStatus;
+    rdfs:label "maturing".
+sdm:readyForHarvesting rdf:type skos:Concept;
+    skos:inScheme sdm:CropStatus;
+    rdfs:label "readyForHarvesting".
+sdm:lastPlantedAt dcterms:description "Property. Indicates the date when the crop was last planted";
+    rdf:type rdf:Property;
+    rdfs:label "lastPlantedAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>;
+    rdfs:range xsd:dateTime.
+sdm:soilTextureType dcterms:description "Property. Enum: 'Sands', 'Loamy sands', 'Sandy loams', 'Loam', 'Silt loam', 'Silt', 'Sandy clay loam', 'Clay loam', 'Silty clay loam', 'Sandy clay', 'Silty clay', 'Clay'. Based on the soil texture classification of the United States Department of Agriculture (USDA): https://www.nrcs.usda.gov/wps/portal/nrcs/detailfull/soils/ref/?cid=nrcs142p2_054262";
+    rdf:type rdf:Property;
+    rdfs:label "soilTextureType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:SoilTextureType rdf:type skos:ConceptScheme.
+sdm:soilTextureType rdfs:range [
+  owl:oneOf (sdm:Sands sdm:Loamy sands sdm:Sandy loams sdm:Loam sdm:Silt loam sdm:Silt sdm:Sandy clay loam sdm:Clay loam sdm:Silty clay loam sdm:Sandy clay sdm:Silty clay sdm:Clay)
+].
+sdm:Sands rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Sands".
+sdm:Loamy sands rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Loamy sands".
+sdm:Sandy loams rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Sandy loams".
+sdm:Loam rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Loam".
+sdm:Silt loam rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Silt loam".
+sdm:Silt rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Silt".
+sdm:Sandy clay loam rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Sandy clay loam".
+sdm:Clay loam rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Clay loam".
+sdm:Silty clay loam rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Silty clay loam".
+sdm:Sandy clay rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Sandy clay".
+sdm:Silty clay rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Silty clay".
+sdm:Clay rdf:type skos:Concept;
+    skos:inScheme sdm:SoilTextureType;
+    rdfs:label "Clay".
+sdm:irrigationSystemType dcterms:description "Property. Enum: 'Surface irrigation', 'Localized irrigation', 'Drip irrigation', 'Sprinkler irrigation', 'Center pivot irrigation', 'Lateral move irrigation', 'Sub-irrigation', 'Manual irrigation'. Based on common types of irrigation systems as defined by Centers for Disease Control and Prevention (CDC): https://www.cdc.gov/healthywater/other/agricultural/types.html";
+    rdf:type rdf:Property;
+    rdfs:label "irrigationSystemType";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.Agrifood/AgriParcel/schema.json>.
+sdm:IrrigationSystemType rdf:type skos:ConceptScheme.
+sdm:irrigationSystemType rdfs:range [
+  owl:oneOf (sdm:Surface irrigation sdm:Localized irrigation sdm:Drip irrigation sdm:Sprinkler irrigation sdm:Center pivot irrigation sdm:Lateral move irrigation sdm:Sub-irrigation sdm:Manual irrigation)
+].
+sdm:Surface irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Surface irrigation".
+sdm:Localized irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Localized irrigation".
+sdm:Drip irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Drip irrigation".
+sdm:Sprinkler irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Sprinkler irrigation".
+sdm:Center pivot irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Center pivot irrigation".
+sdm:Lateral move irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Lateral move irrigation".
+sdm:Sub-irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Sub-irrigation".
+sdm:Manual irrigation rdf:type skos:Concept;
+    skos:inScheme sdm:IrrigationSystemType;
+    rdfs:label "Manual irrigation".

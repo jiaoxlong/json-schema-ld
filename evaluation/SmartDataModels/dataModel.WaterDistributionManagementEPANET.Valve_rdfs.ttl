@@ -1,0 +1,94 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json> dcterms:title "Smart Data Models WaterNetworkManagementEPANET - Valve";
+    dcterms:description "This entity contains a harmonised description of a generic Valve made for the Water Network Management domain. This entity is primarily associated with the water management vertical and related IoT applications.".
+sdm:type dcterms:description "Property. NGSI-LD Entity Type. It must be equal to Valve.";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Valve)
+].
+sdm:Valve rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Valve".
+sdm:openStatus dcterms:description "Property. Model: 'https://schema.org/Number'. Units: '%'. Status of a valve as a numeric percentage value representing how open or close the valve is. 0% - completely closed, 100% - fully open.";
+    rdf:type rdf:Property;
+    rdfs:label "openStatus";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:diameter dcterms:description "Property.  Model:'https://schema.org/Number'. Units:'millimetre'. The valve diameter. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "diameter";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:valveType dcterms:description "Property. Model:'https://schema.org/Text'. The valve type of the element. enum:'FCV, GPV, PBV, PRV, PSV, TCV'";
+    rdf:type rdf:Property;
+    rdfs:label "valveType";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>.
+sdm:ValveType rdf:type skos:ConceptScheme.
+sdm:valveType rdfs:range [
+  owl:oneOf (sdm:FCV sdm:GPV sdm:PBV sdm:PRV sdm:PSV sdm:TCV)
+].
+sdm:FCV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "FCV".
+sdm:GPV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "GPV".
+sdm:PBV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "PBV".
+sdm:PRV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "PRV".
+sdm:PSV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "PSV".
+sdm:TCV rdf:type skos:Concept;
+    skos:inScheme sdm:ValveType;
+    rdfs:label "TCV".
+sdm:setting dcterms:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. A parameter that describes the valve's operational setting. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "setting";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:minorLoss dcterms:description "Property. Model:'https://schema.org/Number'. Units:'No unit'. Unitless minor loss coefficient that applies when the valve is completely opened. All units are accepted in [CEFACT](https://www.unece.org/cefact.html) code.";
+    rdf:type rdf:Property;
+    rdfs:label "minorLoss";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:startsAt dcterms:description "Relationship. The ID of the node on the nominal upstream or inflow side of the valve";
+    rdf:type rdf:Property;
+    rdfs:label "startsAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:endsAt dcterms:description "Relationship. The ID of the node on the nominal downstream or discharge side of the valve";
+    rdf:type rdf:Property;
+    rdfs:label "endsAt";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:valveCurve dcterms:description "Relationship. A relationship to the curve of the setting property. Only required when valveType is GPV";
+    rdf:type rdf:Property;
+    rdfs:label "valveCurve";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>;
+    rdfs:range xsd:anyURI.
+sdm:vertices dcterms:description "Geoproperty. Coordinates of all vertices in the valve, ordered from the startsAt node to the endsAt node and encoded as a GeoJSON ";
+    rdf:type rdf:Property;
+    rdfs:label "vertices";
+    rdfs:domain <https://smart-data-models.github.io/dataModels/WaterNetworkManagementEPANET/Valve/schema.json>.

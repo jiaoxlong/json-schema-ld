@@ -1,0 +1,7 @@
+type
+damping
+inertia
+saturationFactor
+saturationFactor120
+statorLeakageReactance
+statorResistance

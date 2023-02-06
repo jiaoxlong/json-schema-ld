@@ -1,0 +1,13 @@
+type
+agroVocConcept
+hasAgriSoil
+hasAgriFertiliser
+hasAgriPest
+harvestingInterval
+HarvestingInterval
+dateRange
+description
+plantingFrom
+PlantingFrom
+dateRange
+description

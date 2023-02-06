@@ -1,0 +1,4 @@
+type
+startTime
+value1Unit
+value2Unit

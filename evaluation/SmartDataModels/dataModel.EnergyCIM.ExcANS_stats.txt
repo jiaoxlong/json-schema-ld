@@ -1,0 +1,15 @@
+type
+blint
+ifmn
+ifmx
+k2
+k3
+kce
+krvecc
+kvfif
+t1
+t2
+t3
+tb
+vrmn
+vrmx

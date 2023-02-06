@@ -1,0 +1,136 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/ExcST6B/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be ExcST6B";
+  sh:name "type";
+  sh:in (sdm:ExcST6B)
+], [
+  sh:path sdm:ilr;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter output current limit reference (Ilr).  Typical Value = 4.164. Default: 0.0";
+  sh:name "ilr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:k1;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector (K1). true = feedback is from Ifd false = feedback is not from Ifd. Typical Value = true. Default: False";
+  sh:name "k1";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kcl;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter output current limit adjustment (Kcl).  Typical Value = 1.0577. Default: 0.0";
+  sh:name "kcl";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kff;
+  sh:description "Property. Model:'https://schema.org/Number'. Pre-control gain constant of the inner loop field regulator (Kff).  Typical Value = 1. Default: 0.0";
+  sh:name "kff";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kg;
+  sh:description "Property. Model:'https://schema.org/Number'. Feedback gain constant of the inner loop field regulator (Kg).  Typical Value = 1. Default: 0.0";
+  sh:name "kg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kia;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator integral gain (Kia).  Typical Value = 45.094. Default: 0.0";
+  sh:name "kia";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:klr;
+  sh:description "Property. Model:'https://schema.org/Number'. Exciter output current limit adjustment (Kcl).  Typical Value = 17.33. Default: 0.0";
+  sh:name "klr";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:km;
+  sh:description "Property. Model:'https://schema.org/Number'. Forward gain constant of the inner loop field regulator (Km).  Typical Value = 1. Default: 0.0";
+  sh:name "km";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kpa;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator proportional gain (Kpa).  Typical Value = 18.038. Default: 0.0";
+  sh:name "kpa";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:kvd;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator derivative gain (Kvd).  Typical Value = 0. Default: 0.0";
+  sh:name "kvd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:oelin;
+  sh:description "Property. Model:'https://schema.org/Number'. OEL input selector (OELin). Typical Value = noOELinput. Default: None";
+  sh:name "oelin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tg;
+  sh:description "Property. Model:'https://schema.org/Number'. Feedback time constant of inner loop field voltage regulator (Tg).  Typical Value = 0.02. Default: 0";
+  sh:name "tg";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:ts;
+  sh:description "Property. Model:'https://schema.org/Number'. Rectifier firing time constant (Ts).  Typical Value = 0. Default: 0";
+  sh:name "ts";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:tvd;
+  sh:description "Property. Model:'https://schema.org/Number'. Voltage regulator derivative gain (Tvd).  Typical Value = 0. Default: 0";
+  sh:name "tvd";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (Vamax).  Typical Value = 4.81. Default: 0.0";
+  sh:name "vamax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vamin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (Vamin).  Typical Value = -3.85. Default: 0.0";
+  sh:name "vamin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vilim;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector (Vilim). true = Vimin-Vimax limiter is active false = Vimin-Vimax limiter is not active. Typical Value = true. Default: False";
+  sh:name "vilim";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator input limit (Vimax).  Typical Value = 10. Default: 0.0";
+  sh:name "vimax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vimin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator input limit (Vimin).  Typical Value = -10. Default: 0.0";
+  sh:name "vimin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vmult;
+  sh:description "Property. Model:'https://schema.org/Number'. Selector (Vmult). true = multiply regulator output by terminal voltage false = do not multiply regulator output by terminal voltage.  Typical Value = true. Default: False";
+  sh:name "vmult";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmax;
+  sh:description "Property. Model:'https://schema.org/Number'. Maximum voltage regulator output (Vrmax).  Typical Value = 4.81. Default: 0.0";
+  sh:name "vrmax";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:vrmin;
+  sh:description "Property. Model:'https://schema.org/Number'. Minimum voltage regulator output (Vrmin).  Typical Value = -3.85. Default: 0.0";
+  sh:name "vrmin";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xc;
+  sh:description "Property. Model:'https://schema.org/Number'. Excitation source reactance (Xc).  Typical Value = 0.05. Default: 0.0";
+  sh:name "xc";
+  sh:datatype xsd:decimal
+].

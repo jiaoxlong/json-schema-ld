@@ -1,0 +1,7 @@
+type
+WindGenTurbineType3IEC
+dpomega
+dptheta
+omegazero
+pavail
+thetazero

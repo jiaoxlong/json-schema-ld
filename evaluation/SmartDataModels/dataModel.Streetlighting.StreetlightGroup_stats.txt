@@ -1,0 +1,16 @@
+type
+powerState
+refStreetlightControlCabinet
+dateLastSwitchingOn
+dateLastSwitchingOff
+switchingOnHours
+SwitchingOnHour
+from
+to
+hours
+description
+switchingMode
+illuminanceLevel
+activeProgramId
+annotations
+refStreetlight

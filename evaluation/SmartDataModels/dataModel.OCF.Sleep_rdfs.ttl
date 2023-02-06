@@ -1,0 +1,125 @@
+@prefix schema: <https://schema.org/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix jsonsc: <https://www.w3.org/2019/wot/json-schema#>.
+@prefix jsonsc-ld: <http://w3id.org/jsonsc-ld/>.
+@prefix api: <http://purl.org/linked-data/api/vocab>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+
+<https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json> dcterms:title "Sleep";
+    dcterms:description "Smart Data Models Program adaptation of the original IoTData data Models. This Resource describes the Properties associated with Sleep. Sleep shows the time spent in each of the sleep stages (awake, nrem1, nrem2, nrem3, nrem4, rem, light sleep, deep sleep), along with a sleep score indicating the quality of sleep.".
+sdm:awake dcterms:description "Property. Time spent in Awake stage (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "awake";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:nrem1 dcterms:description "Property. Time spent in Non Rapid Eye Movement stage 1 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "nrem1";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:nrem2 dcterms:description "Property. Time spent in Non Rapid Eye Movement stage 2 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "nrem2";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:nrem3 dcterms:description "Property. Time spent in Non Rapid Eye Movement stage 3 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "nrem3";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:nrem4 dcterms:description "Property. Time spent in Non Rapid Eye Movement stage 4 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "nrem4";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:rem dcterms:description "Property. Time spent in Rapid Eye Movement (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "rem";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:lightsleep dcterms:description "Property. Time spent in Light Sleep stage, consisting in NREM stages 1 and 2 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "lightsleep";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:deepsleep dcterms:description "Property. Time spent in Deep Sleep stage, consisting in NREM stages 3 and 4 (in seconds)";
+    rdf:type rdf:Property;
+    rdfs:label "deepsleep";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:sleepscore dcterms:description "Property. Score computed from the time spent in each sleep stage, indicative of the quality of sleep";
+    rdf:type rdf:Property;
+    rdfs:label "sleepscore";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:if rdf:type rdf:Property;
+    rdfs:label "if";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>.
+sdm:If rdf:type skos:ConceptScheme.
+sdm:if rdfs:range [
+  owl:oneOf (sdm:oic.if.s sdm:oic.if.baseline)
+].
+sdm:oic.if.s rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.s".
+sdm:oic.if.baseline rdf:type skos:Concept;
+    skos:inScheme sdm:If;
+    rdfs:label "oic.if.baseline".
+sdm:rt rdf:type rdf:Property;
+    rdfs:label "rt";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>.
+sdm:Rt rdf:type skos:ConceptScheme.
+sdm:rt rdfs:range [
+  owl:oneOf (sdm:oic.r.sleep)
+].
+sdm:oic.r.sleep rdf:type skos:Concept;
+    skos:inScheme sdm:Rt;
+    rdfs:label "oic.r.sleep".
+sdm:n dcterms:description "Property. Friendly name of the Resource";
+    rdf:type rdf:Property;
+    rdfs:label "n";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:string.
+sdm:range_phases rdf:type rdf:Property;
+    rdfs:label "range_phases";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:step_phases dcterms:description "Property. Step value across the defined range when the range is an integer.  This is the increment for valid values across the range; so if range is 0..10 and step is 2 then valid values are 0,2,4,6,8,10.";
+    rdf:type rdf:Property;
+    rdfs:label "step_phases";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:integer.
+sdm:range_score rdf:type rdf:Property;
+    rdfs:label "range_score";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:step_score dcterms:description "Property. Step value across the defined range an integer when the range is a number.  This is the increment for valid values across the range; so if range is 0.0..10.0 and step is 2.5 then valid values are 0.0,2.5,5.0,7.5,10.0.";
+    rdf:type rdf:Property;
+    rdfs:label "step_score";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:precision dcterms:description "Property. When exposed the value in 'precision' provides a +/- tolerance against the Properties in the Resource. Thus if a Property is UPDATED to a value and that Property then RETRIEVED, the RETRIEVED value is valid if in the range of the set value +/- precision";
+    rdf:type rdf:Property;
+    rdfs:label "precision";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>;
+    rdfs:range xsd:decimal.
+sdm:type dcterms:description "Property. NGSI entity type. It has to be Sleep";
+    rdf:type rdf:Property;
+    rdfs:label "type";
+    rdfs:domain <https://smart-data-models.github.io/dataModel.IoTDataModels/Sleep/schema.json>.
+sdm:Type rdf:type skos:ConceptScheme.
+sdm:type rdfs:range [
+  owl:oneOf (sdm:Sleep)
+].
+sdm:Sleep rdf:type skos:Concept;
+    skos:inScheme sdm:Type;
+    rdfs:label "Sleep".

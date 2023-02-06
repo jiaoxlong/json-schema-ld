@@ -1,0 +1,3 @@
+type
+RemoteInputSignal
+WindTurbineType3or4Dynamics

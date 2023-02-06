@@ -1,0 +1,6 @@
+type
+hasConfidence
+analyzedAt
+hasAnalysisValue
+hasAnalysisType
+isAnalysisOf

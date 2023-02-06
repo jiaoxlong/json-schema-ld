@@ -1,0 +1,108 @@
+bikes	1	['http://vocab.gtfs.org/terms#bikesAllowed']	['gtfs:bikesAllowed']	1.6492043
+bike_id	1
+lat	2	['http://www.w3.org/2003/01/geo/wgs84_pos#lat']	['geo:lat']	0.7933332
+lon	2	['http://www.w3.org/2003/01/geo/wgs84_pos#long']	['geo:long']	0.99938834
+is_reserved	1
+is_disabled	1
+version	11	['http://usefulinc.com/ns/doap#revision']	['doap:revision']	0.71911764
+feeds	1	['http://schema.org/dataFeedElement']	['schema:dataFeedElement']	0.29567054
+name	6	['http://purl.org/ontology/wo/name']	['wlo:name']	0.5555556
+url	5	['http://schema.org/url']	['schema:url']	0.77727437
+versions	1	['http://spi-fm.uca.es/spdef/models/genericTools/itm/1.0#versions']	['itm:versions']	0.5555555
+geofencing_zones	1
+type	5	['http://www.w3.org/1999/02/22-rdf-syntax-ns#type']	['rdf:type']	0.6427659
+features	1	['http://vivoweb.org/ontology/core#features']	['vivo:features']	0.5555556
+properties	1	['http://purl.org/linked-data/api/vocab#properties']	['api:properties']	0.5555555
+start	4	['http://dbpedia.org/ontology/start']	['dbpedia-owl:start']	0.5555555
+end	4	['http://www.w3.org/2006/time#hasEnd']	['time:hasEnd']	0.59440845
+rules	1	['http://www.w3.org/2000/10/swap/pim/doc#rules']	['doc:rules']	0.5555556
+vehicle_type_id	2
+ride_allowed	1
+ride_through_allowed	1
+maximum_speed_kph	1
+station_parking	1
+geometry	1	['http://geovocab.org/geometry#geometry']	['ngeo:geometry']	0.5583171
+stations	2	['http://dbpedia.org/ontology/numberOfStations']	['dbpedia-owl:numberOfStations']	1.3439524
+station_id	2
+short_name	2	['https://w3id.org/dingo#short_name']	['dg:short_name']	2.4810307
+address	1	['http://sw-portal.deri.org/ontologies/swportal#hasAddress']	['swpo:hasAddress']	0.5555555
+cross_street	1
+region_id	2
+post_code	1
+rental_methods	1
+is_virtual_station	1
+station_area	1
+capacity	1	['http://purl.org/openorg/capacity']	['oo:capacity']	0.83862686
+vehicle_capacity	1
+is_valet_station	1
+is_charging_station	1
+rental_uris	1
+android	2	['http://schema.org/operatingSystem']	['schema:operatingSystem']	0.3704599
+ios	2	['http://purl.org/ctic/infraestructuras/organizacion#centroServicios']	['ctorg:centroServicios']	0.74975
+web	1	['http://ns.cerise-project.nl/energy/def/cim-smartgrid#ElectronicAddress.web']	['smg:ElectronicAddress.web']	0.5555556
+vehicle_type_capacity	1
+num_bikes_available	1
+vehicle_types_available	1
+count	2	['http://purl.org/library/holdingsCount']	['lib:holdingsCount']	0.5720707
+num_bikes_disabled	1
+num_docks_available	1
+num_docks_disabled	1
+is_installed	1
+is_renting	1
+is_returning	1
+last_reported	1
+vehicle_docks_available	1
+vehicle_type_ids	1
+alerts	1	['http://purl.org/healthcarevocab/v1#Tag.0010.2000']	['dicom:Tag.0010.2000']	1.5831673
+alert_id	1
+times	1	['http://purl.org/healthcarevocab/v1#Tag.0018.9079']	['dicom:Tag.0018.9079']	0.5555555
+station_ids	1
+region_ids	1
+summary	1	['http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#summary']	['ebucore:summary']	0.6267955
+description	2	['http://purl.org/dc/terms/description']	['dcterms:description']	0.66485506
+calendars	1	['http://www.w3.org/2002/12/cal/ical#tzname']	['cal:tzname']	0.2562803
+start_month	1
+start_day	1
+start_year	1
+end_month	1
+end_day	1
+end_year	1
+rental_hours	1
+user_types	1
+days	1	['http://www.w3.org/2006/time#days']	['time:days']	0.669984
+start_time	1	['https://w3id.org/dingo#start_time']	['dg:start_time']	2.4144127
+end_time	1	['https://w3id.org/dingo#end_time']	['dg:end_time']	2.426167
+system_id	1
+language	1	['http://purl.org/dc/terms/language']	['dcterms:language']	0.5958604
+operator	1	['https://w3id.org/ifc/IFC4_ADD1#operator_IfcDerivedProfileDef']	['ifc:operator_IfcDerivedProfileDef']	2.8937001
+purchase_url	1
+start_date	1
+phone_number	1	['http://ogp.me/ns#phone_number']	['og:phone_number']	1.1006534
+email	1	['http://www.aktors.org/ontology/portal#has-email-address']	['akt:has-email-address']	0.67495835
+feed_contact_email	1
+timezone	1	['http://vocab.org/transit/terms/timezone']	['transit:timezone']	2.9291804
+license_url	1
+brand_assets	1
+brand_last_modified	1
+brand_terms_url	1
+brand_image_url	1
+brand_image_url_dark	1
+color	1	['http://rdfs.co/bevon/color']	['bevon:color']	3.4252553
+terms_url	1
+terms_last_updated	1
+privacy_url	1
+privacy_last_updated	1
+rental_apps	1
+store_uri	2
+discovery_uri	2
+plans	1	['http://data.semanticweb.org/ns/swc/ontology#plansToAttend']	['swc:plansToAttend']	1.2911987
+plan_id	1
+currency	1	['http://aims.fao.org/aos/geopolitical.owl#codeCurrency']	['geop:codeCurrency']	0.5997127
+price	1	['http://www.eurocris.org/ontologies/cerif/1.3#price']	['cerif:price']	0.5555556
+is_taxable	1
+per_km_pricing	1
+rate	2	['http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#rate']	['nfo:rate']	0.5555556
+interval	2	['http://www.aktors.org/ontology/support#has-time-interval']	['akts:has-time-interval']	0.6931885
+per_min_pricing	1
+surge_pricing	1
+regions	1	['http://purl.org/goodrelations/v1#eligibleRegions']	['gr:eligibleRegions']	0.5555556

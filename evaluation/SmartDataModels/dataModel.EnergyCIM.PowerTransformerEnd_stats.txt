@@ -1,0 +1,14 @@
+type
+PowerTransformer
+b
+b0
+connectionKind
+g
+g0
+phaseAngleClock
+r
+r0
+ratedS
+ratedU
+x
+x0

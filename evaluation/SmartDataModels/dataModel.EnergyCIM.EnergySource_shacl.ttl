@@ -1,0 +1,86 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix sdm: <https://w3id.org/sdm#>.
+@prefix sdmshape: <https://w3id.org/sdm/shapes/schema.json#>.
+
+<https://w3id.org/sdm/shapes/schema.json#schema.jsonShape> rdf:type sh:NodeShape;
+    sh:targetClass <https://smart-data-models.github.io/dataModels.CIMEnergyClasses/EnergySource/schema.json>;
+    sh:property [
+  sh:path sdm:type;
+  sh:description "Property. NGSI type. It has to be EnergySource";
+  sh:name "type";
+  sh:in (sdm:EnergySource)
+], [
+  sh:path sdm:EnergySchedulingType;
+  sh:description "Property. Model:'https://schema.org/Number'. Energy Source of a particular Energy Scheduling Type Default: None";
+  sh:name "EnergySchedulingType";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:WindTurbineType3or4Dynamics;
+  sh:description "Property. Model:'https://schema.org/Number'. Wind generator Type 3 or 4 dynamics model associated with this energy source. Default: None";
+  sh:name "WindTurbineType3or4Dynamics";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:activePower;
+  sh:description "Property. Model:'https://schema.org/Number'. High voltage source active injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+  sh:name "activePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:nominalVoltage;
+  sh:description "Property. Model:'https://schema.org/Number'. Phase-to-phase nominal voltage. Default: 0.0";
+  sh:name "nominalVoltage";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r;
+  sh:description "Property. Model:'https://schema.org/Number'. Positive sequence Thevenin resistance. Default: 0.0";
+  sh:name "r";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:r0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence Thevenin resistance. Default: 0.0";
+  sh:name "r0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:reactivePower;
+  sh:description "Property. Model:'https://schema.org/Number'. High voltage source reactive injection. Load sign convention is used, i.e. positive sign means flow out from a node. Starting value for steady state solutions. Default: 0.0";
+  sh:name "reactivePower";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:rn;
+  sh:description "Property. Model:'https://schema.org/Number'. Negative sequence Thevenin resistance. Default: 0.0";
+  sh:name "rn";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageAngle;
+  sh:description "Property. Model:'https://schema.org/Number'. Phase angle of a-phase open circuit. Default: 0.0";
+  sh:name "voltageAngle";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:voltageMagnitude;
+  sh:description "Property. Model:'https://schema.org/Number'. Phase-to-phase open circuit voltage magnitude. Default: 0.0";
+  sh:name "voltageMagnitude";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:x;
+  sh:description "Property. Model:'https://schema.org/Number'. Positive sequence Thevenin reactance. Default: 0.0";
+  sh:name "x";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:x0;
+  sh:description "Property. Model:'https://schema.org/Number'. Zero sequence Thevenin reactance. Default: 0.0";
+  sh:name "x0";
+  sh:datatype xsd:decimal
+], [
+  sh:path sdm:xn;
+  sh:description "Property. Model:'https://schema.org/Number'. Negative sequence Thevenin reactance. Default: 0.0";
+  sh:name "xn";
+  sh:datatype xsd:decimal
+].

@@ -1,0 +1,13 @@
+type
+CapabilityCurve
+delta
+droop
+droopCompensation
+maxModulationIndex
+maxValveCurrent
+pPccControl
+qPccControl
+qShare
+targetQpcc
+targetUpcc
+uf

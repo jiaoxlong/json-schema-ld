@@ -1,0 +1,4 @@
+type
+Analog
+AnalogControl
+value

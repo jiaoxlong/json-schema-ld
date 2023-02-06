@@ -1,0 +1,7 @@
+type
+NonlinearShuntCompensator
+b
+b0
+g
+g0
+sectionNumber

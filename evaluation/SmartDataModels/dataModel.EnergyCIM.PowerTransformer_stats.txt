@@ -1,0 +1,8 @@
+type
+PowerTransformerEnd
+beforeShCircuitHighestOperatingCurrent
+beforeShCircuitHighestOperatingVoltage
+beforeShortCircuitAnglePf
+highSideMinOperatingU
+isPartOfGeneratorUnit
+operationalValuesConsidered

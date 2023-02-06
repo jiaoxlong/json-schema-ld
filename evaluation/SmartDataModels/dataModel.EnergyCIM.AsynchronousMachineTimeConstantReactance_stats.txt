@@ -1,0 +1,6 @@
+type
+tpo
+tppo
+xp
+xpp
+xs
