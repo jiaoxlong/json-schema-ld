@@ -226,7 +226,7 @@ export class Traverse{
                                         isRequired: isRequired,
                                         isExisting: isExisting,
                                     })
-                                this.createClassProperty({}, this.config, ld_blank_class,
+                                this.createClassProperty(data.properties[property], this.config, ld_blank_class,
                                     {subject: ld_blank_class});
                                 this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_blank_class;
@@ -307,7 +307,7 @@ export class Traverse{
                                         isRequired: isRequired,
                                         isExisting: isExisting,
                                     });
-                                this.createClassProperty({}, this.config, ld_array_blank_class,
+                                this.createClassProperty(data.properties[property], this.config, ld_array_blank_class,
                                     {subject: ld_array_blank_class});
                                 this.previous = uri(this.config.prefix, this.current);
                                 this.current = ld_array_blank_class;

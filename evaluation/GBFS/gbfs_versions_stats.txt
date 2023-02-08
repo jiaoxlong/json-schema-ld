@@ -2,8 +2,6 @@ last_updated
 ttl
 version
 data
-Datum
 versions
-Version
 version
 url

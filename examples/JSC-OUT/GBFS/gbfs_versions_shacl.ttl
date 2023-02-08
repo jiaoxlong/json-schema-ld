@@ -49,8 +49,7 @@ gbfs:DatumShape rdf:type sh:NodeShape;
   sh:path gbfs:versions;
   sh:description "Contains one object, as defined below, for each of the available versions of a feed. The array must be sorted by increasing MAJOR and MINOR version number.";
   sh:name "versions";
-  sh:minCount 1;
-  sh:maxCount 1
+  sh:minCount 1
 ].
 gbfs:VersionShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:Version;

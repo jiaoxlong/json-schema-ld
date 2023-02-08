@@ -63,8 +63,7 @@ gbfs:GeofencingZoneShape rdf:type sh:NodeShape;
   sh:path gbfs:features;
   sh:description "Array of objects.";
   sh:name "features";
-  sh:minCount 1;
-  sh:maxCount 1
+  sh:minCount 1
 ].
 gbfs:FeatureShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:Feature;

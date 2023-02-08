@@ -195,10 +195,15 @@ export abstract class Schema {
             this.enum = enum_list
         }
         if (this.isRequired) {
-
             blank_list.push(blank_node_literal('sh:minCount', 1))
-            blank_list.push(blank_node_literal('sh:maxCount', 1))
-
+            if('type' in data) {
+                if (data['type'] !== 'array') {
+                    blank_list.push(blank_node_literal('sh:maxCount', 1))
+                }
+            }
+            else{
+                blank_list.push(blank_node_literal('sh:maxCount', 1))
+            }
         }
         else{
             // When a property schema is not required and one or both of 'minItems' or 'maxItems' attributes of it are
