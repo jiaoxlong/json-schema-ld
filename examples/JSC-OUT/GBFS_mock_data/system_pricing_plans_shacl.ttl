@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_pricing_plansjson#>.
 
 gbfsshape:system_pricing_plansjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_pricing_plansjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_pricing_plansjson>.
+gbfs:system_pricing_plansjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
@@ -137,7 +137,8 @@ gbfs:PerKmPricingShape rdf:type sh:NodeShape;
   sh:name "end";
   sh:minInclusive 0;
   sh:datatype xsd:integer
-], [
+].
+gbfs:PlanShape sh:property [
   sh:path gbfs:per_min_pricing;
   sh:description "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).";
   sh:name "per_min_pricing"
@@ -173,7 +174,8 @@ gbfs:PerMinPricingShape rdf:type sh:NodeShape;
   sh:name "end";
   sh:minInclusive 0;
   sh:datatype xsd:integer
-], [
+].
+gbfs:PlanShape sh:property [
   sh:path gbfs:surge_pricing;
   sh:description "Is there currently an increase in price in response to increased demand in this pricing plan? (added in v2.1-RC2)";
   sh:name "surge_pricing";

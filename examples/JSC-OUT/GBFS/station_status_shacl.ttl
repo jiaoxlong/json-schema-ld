@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/station_statusjson#>.
 
 gbfsshape:station_statusjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_statusjson>.
+gbfs:station_statusjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
@@ -89,7 +89,8 @@ gbfs:VehicleTypesAvailableShape rdf:type sh:NodeShape;
   sh:maxCount 1;
   sh:minInclusive 0;
   sh:datatype xsd:integer
-], [
+].
+gbfs:StationShape sh:property [
   sh:path gbfs:num_bikes_disabled;
   sh:description "Number of disabled vehicles of any type at the station.";
   sh:name "num_bikes_disabled";

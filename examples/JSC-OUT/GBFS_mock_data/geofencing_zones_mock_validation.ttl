@@ -1,0 +1,25 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix gbfs:  <https://w3id.org/gbfs#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfa:  <http://www.w3.org/ns/rdfa#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+[ a       <http://www.w3.org/ns/shacl#ValidationReport> ;
+  <http://www.w3.org/ns/shacl#conforms>
+          false ;
+  <http://www.w3.org/ns/shacl#result>
+          [ a       <http://www.w3.org/ns/shacl#ValidationResult> ;
+            <http://www.w3.org/ns/shacl#focusNode>
+                    []  ;
+            <http://www.w3.org/ns/shacl#resultMessage>
+                    "Less than 1 values" ;
+            <http://www.w3.org/ns/shacl#resultPath>
+                    gbfs:geometry ;
+            <http://www.w3.org/ns/shacl#resultSeverity>
+                    <http://www.w3.org/ns/shacl#Violation> ;
+            <http://www.w3.org/ns/shacl#sourceConstraintComponent>
+                    <http://www.w3.org/ns/shacl#MinCountConstraintComponent> ;
+            <http://www.w3.org/ns/shacl#sourceShape>
+                    [] 
+          ]
+] .

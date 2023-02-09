@@ -1,0 +1,9 @@
+# Shacl validation
+
+[ELI CLI crawler-extractor-X.Y-onejar.jar] https://webgate.ec.europa.eu/eli-validator/documentation
+
+## script
+java -jar shacl-validator-X.Y-onejar.jar validate validate -i input.ttl -s shapes.ttl -o output.ttl
+
+
+

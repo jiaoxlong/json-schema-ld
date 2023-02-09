@@ -185,8 +185,12 @@ export abstract class Schema {
         if ('enum' in data) {
             const enum_list = []
             for (const ele of data['enum']){
-                if (data['enum'] instanceof Array<string>)
-                    enum_list.push(namedNode(this.config.prefix+':'+ ele));
+                if (data['enum'] instanceof Array<string>) {
+                    // if (ele.includes('/')) {
+                    //     enum_list.push(namedNode(this.config.prefix + ':' + ele.replaceAll('/', '\/')));
+                    // }
+                    enum_list.push(namedNode(this.config.prefix, ele))
+                }
                 else
                     enum_list.push(literal(ele));
             }
@@ -215,7 +219,6 @@ export abstract class Schema {
             // leave the implementation during serialization.
 
         }
-        this.shacl = blank_list;
     }
 
 }

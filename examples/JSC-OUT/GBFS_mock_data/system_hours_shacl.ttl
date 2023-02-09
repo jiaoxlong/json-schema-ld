@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_hoursjson#>.
 
 gbfsshape:system_hoursjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>.
+gbfs:system_hoursjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";

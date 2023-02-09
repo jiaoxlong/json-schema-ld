@@ -1,0 +1,9 @@
+last_updated
+ttl
+version
+data
+rental_hours
+user_types
+days
+start_time
+end_time

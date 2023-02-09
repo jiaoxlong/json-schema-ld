@@ -7,7 +7,7 @@
 <http://example.com/free_bike_status_2> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson>;
     gbfs:last_updated "1640887163"^^xsd:integer;
     gbfs:ttl "0"^^xsd:integer;
-    gbfs:version "2.3"^^xsd:string;s
+    gbfs:version "2.3"^^xsd:string;
     gbfs:data  _:b1.
 
 _:b1 a gbfs:Datum;

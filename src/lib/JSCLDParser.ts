@@ -11,7 +11,7 @@ import {
     node_node_literal,
     node_node_node
 } from "../utils/n3_utils";
-import {extract_resource_from_uri, capitalizeLastFragment} from "../utils/misc";
+import {extract_resource_from_uri, capitalizeLastFragment, generateShape} from "../utils/misc";
 import {SCHEMA_SHACL_ANNOTATION} from "../utils/SchemaKWMapping";
 const N3 = require('n3');
 const { DataFactory } = N3;
@@ -155,11 +155,7 @@ export class JSCLDSchema{
                  * Classes
                  */
                 if (s instanceof ClassSchema){
-                    if ((s.id.includes('#')) || (s.id.includes('/')) || (s.id.includes(':'))){
-                        shacl_shape_uri = this.config.prefix + ':' + extract_resource_from_uri(s.id)+'Shape';
-                    }
-                    else
-                        shacl_shape_uri = this.config.prefix + ':'+s.id+'Shape'
+                    shacl_shape_uri = generateShape(this.config.prefix, s.id)
                     // Class SHACL NodeShape
                     this.shacl_writer.addQuad(node_node_node(shacl_shape_uri, 'rdf:type', 'sh:NodeShape'));
                     // Class Shacl targetClass
@@ -178,6 +174,7 @@ export class JSCLDSchema{
                  */
                 else {
                     // property type
+                    shacl_shape_uri = generateShape(this.config.prefix, s.subject)
                     const shacl_path_node = blank_node_node('sh:path', s.id);
 
                     // To do: handle non-required property which has 'minItems' or 'maxItems' attribute.
@@ -285,7 +282,6 @@ export class JSCLDSchema{
                         }
                         const shacl_blank_nodes = [shacl_path_node].concat(shacl_annot_node).concat(
                             add_writer_list(s.shacl, this.shacl_writer));
-
                         this.shacl_writer.addQuad(quad(
                                 namedNode(shacl_shape_uri),
                                 namedNode('sh:property'),

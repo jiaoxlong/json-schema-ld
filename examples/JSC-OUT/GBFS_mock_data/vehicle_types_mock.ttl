@@ -83,7 +83,7 @@ _:b8 a gbfs:VehicleType;
     gbfs:default_reserve_time "0"^^xsd:integer;
     gbfs:max_range_meters "523992"^^xsd:decimal;
     gbfs:return_constraint gbfs:roundtrip_station;
-    gbfs:vehicle_accessories  "doors_4", "automatic", "cruise_control";
+    gbfs:vehicle_accessories  gbfs:doors_4, gbfs:automatic, gbfs:cruise_control;
     gbfs:g_CO2_km "120"^^xsd:integer;
     gbfs:vehicle_image "https://www.example.com/assets/renault-clio.jpg"^^xsd:anyURI;
     gbfs:make "Renault"^^xsd:string;

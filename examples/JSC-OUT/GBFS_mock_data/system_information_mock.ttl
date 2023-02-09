@@ -23,7 +23,7 @@ _:b1 a gbfs:Datum;
     gbfs:phone_number "1-800-555-1234"^^xsd:string;
     gbfs:email "customerservice@example.com";
     gbfs:feed_contact_email "datafeed@example.com";
-    gbfs:timezone "America/Chicago"^^xsd:string;
+    gbfs:timezone gbfs:America\/Chicago;
     gbfs:license_url "https://www.example.com/data-license.html"^^xsd:anyURI;
     gbfs:terms_url "https://www.example.com/terms"^^xsd:anyURI;
     gbfs:terms_last_updated "2021-06-21"^^xsd:date;

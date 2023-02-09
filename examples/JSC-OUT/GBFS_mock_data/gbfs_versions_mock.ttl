@@ -4,15 +4,15 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix gbfs: <https://w3id.org/gbfs#> .
 
-<http://example.com/gbfs_versions> a <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>
+<http://example.com/gbfs_versions> a <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
     gbfs:last_updated "1640887163"^^xsd:integer;
     gbfs:ttl "0"^^xsd:integer;
     gbfs:version "2.3"^^xsd:string;
     gbfs:data  _:b3.
 
 _:b3 a gbfs:Datum;
-	<https://w3id.org/gbfs#versions> _:b1;
-	<https://w3id.org/gbfs#versions> _:b2.
+	gbfs:versions _:b1;
+	gbfs:versions _:b2.
 _:b1 a gbfs:Version.
 _:b2 a gbfs:Version.
 _:b3 a gbfs:Datum.

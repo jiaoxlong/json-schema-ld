@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/station_informationjson#>.
 
 gbfsshape:station_informationjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson>.
+gbfs:station_informationjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
@@ -158,8 +158,8 @@ gbfs:StationAreaShape rdf:type sh:NodeShape;
   sh:name "vehicle_capacity"
 ].
 gbfs:VehicleCapacityShape rdf:type sh:NodeShape;
-    sh:targetClass gbfs:VehicleCapacity;
-    sh:property [
+    sh:targetClass gbfs:VehicleCapacity.
+gbfs:StationAreaShape sh:property [
   sh:path gbfs:is_valet_station;
   sh:description "Are valet services provided at this station? (added in v2.1-RC)";
   sh:name "is_valet_station";
@@ -191,7 +191,8 @@ gbfs:RentalUriShape rdf:type sh:NodeShape;
   sh:description "URL that can be used by a web browser to show more information about renting a vehicle at this station (added in v1.1).";
   sh:name "web";
   sh:datatype xsd:anyURI
-], [
+].
+gbfs:StationAreaShape sh:property [
   sh:path gbfs:vehicle_type_capacity;
   sh:description "An object where each key is a vehicle_type_id and the value is a number representing the total docking points installed at this station for each vehicle type (added in v2.1-RC).";
   sh:name "vehicle_type_capacity"

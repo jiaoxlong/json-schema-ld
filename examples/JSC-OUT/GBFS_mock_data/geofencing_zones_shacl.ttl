@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/geofencing_zonesjson#>.
 
 gbfsshape:geofencing_zonesjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>.
+gbfs:geofencing_zonesjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";

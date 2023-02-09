@@ -82,3 +82,14 @@ export function capitalizeLastFragment(s:string){
 export function inflect(str:string):string{
     return inflection.camelize(inflection.singularize(str));
 }
+
+/**
+ * generates shape instance from a given set of prefix and uri
+ */
+
+export function generateShape(prefix, uri){
+    if ((uri.includes('#')) || (uri.includes('/')) || (uri.includes(':')))
+        return prefix + ':' + extract_resource_from_uri(uri)+'Shape';
+    else
+        return prefix + ':'+uri+'Shape'
+}

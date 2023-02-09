@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/vehicle_typesjson-added-in-v21-rc#>.
 
 gbfsshape:vehicle_typesjson-added-in-v21-rcShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson-added-in-v21-rc>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson-added-in-v21-rc>.
+gbfs:vehicle_typesjson-added-in-v21-rcShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
@@ -110,7 +110,8 @@ gbfs:EcoLabelShape rdf:type sh:NodeShape;
   sh:description " Name of the eco label. Added in v2.3.";
   sh:name "eco_sticker";
   sh:datatype xsd:string
-], [
+].
+gbfs:VehicleTypeShape sh:property [
   sh:path gbfs:max_range_meters;
   sh:description "The furthest distance in meters that the vehicle can travel without recharging or refueling when it has the maximum amount of energy potential.";
   sh:name "max_range_meters";
@@ -206,7 +207,8 @@ gbfs:VehicleAssetShape rdf:type sh:NodeShape;
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:date
-], [
+].
+gbfs:VehicleTypeShape sh:property [
   sh:path gbfs:default_pricing_plan_id;
   sh:description "A plan_id as defined in system_pricing_plans.json added in v2.3-RC.";
   sh:name "default_pricing_plan_id";

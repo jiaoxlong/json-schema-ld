@@ -69,7 +69,6 @@ export class Traverse{
             if ('maxItems' in data) maxItems = data.maxItems;
             if ('properties' in data) {
                 // 'required' keyword appear prior to the required properties in a JSON schema.
-
                 for (const property in data['properties']) {
                     let isRequired = false;
                     let isExisting = false;

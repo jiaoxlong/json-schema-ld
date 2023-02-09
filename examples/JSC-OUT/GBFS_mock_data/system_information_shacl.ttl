@@ -11,8 +11,8 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_informationjson#>.
 
 gbfsshape:system_informationjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
-    sh:property [
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>.
+gbfs:system_informationjsonShape sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
@@ -101,12 +101,12 @@ gbfs:DatumShape rdf:type sh:NodeShape;
   sh:path gbfs:email;
   sh:description "Email address actively monitored by the operator's customer service department.";
   sh:name "email";
-  sh:datatype schema:email
+  sh:datatype xsd:string
 ], [
   sh:path gbfs:feed_contact_email;
   sh:description "A single contact email address for consumers of this feed to report technical issues (added in v1.1).";
   sh:name "feed_contact_email";
-  sh:datatype schema:email
+  sh:datatype xsd:string
 ], [
   sh:path gbfs:timezone;
   sh:description "The time zone where the system is located.";
@@ -156,7 +156,8 @@ gbfs:BrandAssetShape rdf:type sh:NodeShape;
   sh:name "color";
   sh:pattern "^#([a-fA-F0-9]{6})$";
   sh:datatype xsd:string
-], [
+].
+gbfs:DatumShape sh:property [
   sh:path gbfs:terms_url;
   sh:description "A fully qualified URL pointing to the terms of service (added in v2.3-RC)";
   sh:name "terms_url";
@@ -204,7 +205,8 @@ gbfs:AndroidShape rdf:type sh:NodeShape;
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:anyURI
-], [
+].
+gbfs:RentalAppShape sh:property [
   sh:path gbfs:ios;
   sh:description "Contains rental information for the iOS platform (added in v1.1).";
   sh:name "ios"
