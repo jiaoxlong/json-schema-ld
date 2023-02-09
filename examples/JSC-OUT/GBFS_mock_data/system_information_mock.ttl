@@ -1,0 +1,54 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/>.
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_information> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_informationjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:system_id "example_cityname"^^xsd:string;
+    gbfs:language "en"^^xsd:string;
+    gbfs:name "Example Bike Rental"^^xsd:string;
+    gbfs:short_name "Example Bike"^^xsd:string;
+    gbfs:operator "Example Sharing, Inc"^^xsd:string;
+    gbfs:url "https://www.example.com"^^xsd:anyURI;
+    gbfs:purchase_url "https://www.example.com"^^xsd:anyURI;
+    gbfs:start_date "2010-06-10"^^xsd:date;
+    gbfs:phone_number "1-800-555-1234"^^xsd:string;
+    gbfs:email "customerservice@example.com";
+    gbfs:feed_contact_email "datafeed@example.com";
+    gbfs:timezone "America/Chicago"^^xsd:string;
+    gbfs:license_url "https://www.example.com/data-license.html"^^xsd:anyURI;
+    gbfs:terms_url "https://www.example.com/terms"^^xsd:anyURI;
+    gbfs:terms_last_updated "2021-06-21"^^xsd:date;
+    gbfs:privacy_url "https://www.example.com/privacy-policy"^^xsd:anyURI;
+    gbfs:privacy_last_updated "2019-01-13"^^xsd:date;
+    gbfs:rental_apps _:b2;
+    gbfs:brand_assets _:b3.
+
+_:b2 a gbfs:RentalApp;
+    gbfs:android _:b4;
+    gbfs:ios _:b5.
+
+_:b4 a gbfs:Android;
+    gbfs:discovery_uri "com.example.android://"^^xsd:anyURI;
+    gbfs:store_uri "https://play.google.com/store/apps/details?id=com.example.android"^^xsd:anyURI.
+
+_:b5 a gbfs:Io;
+    gbfs:discovery_uri "com.example.ios://"^^xsd:anyURI;
+    gbfs:store_uri "https://apps.apple.com/app/apple-store/id123456789"^^xsd:anyURI.
+
+_:b3 a gbfs:BrandAsset;
+    gbfs:brand_last_modified "2021-06-15"^^xsd:date;
+    gbfs:brand_image_url "https://www.example.com/assets/brand_image.svg"^^xsd:anyURI;
+    gbfs:brand_image_url_dark "https://www.example.com/assets/brand_image_dark.svg"^^xsd:anyURI;
+    gbfs:color "#C2D32C"^^xsd:string;
+    gbfs:brand_terms_url "https://www.example.com/assets/brand.pdf"^^xsd:anyURI.
+
+

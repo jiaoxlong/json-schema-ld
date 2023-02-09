@@ -1,0 +1,30 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/>.
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/station_information_1> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:stations _:b2.
+
+_:b2 a gbfs:Station;
+    gbfs:station_id "pga"^^xsd:string;
+    gbfs:name "Parking garage A"^^xsd:string;
+    gbfs:lat "12.345678"^^xsd:decimal;
+    gbfs:lon "45.678901"^^xsd:decimal;
+    gbfs:parking_type gbfs:underground_parking;
+    gbfs:parking_hoop "false"^^xsd:boolean;
+    gbfs:contact_phone "+33109874321"^^xsd:string;
+    gbfs:is_charing_station "true"^^xsd:boolean;
+    gbfs:vehicle_type_capacity _:b3.
+
+_:b3 a gbfs:VehicleTypeCapacity;
+    gbfs:abc123 "7"^^xsd:integer;
+    gbfs:def456 "9"^^xsd:integer.
