@@ -11,15 +11,14 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_alertsjson#>.
 
 gbfsshape:system_alertsjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
     sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
   sh:name "last_updated";
   sh:minCount 1;
   sh:maxCount 1;
-  sh:minInclusive 0;
-  sh:maxInclusive 1924988399;
+  sh:minInclusive 1450155600;
   sh:datatype xsd:integer
 ], [
   sh:path gbfs:ttl;
@@ -29,6 +28,14 @@ gbfsshape:system_alertsjsonShape rdf:type sh:NodeShape;
   sh:maxCount 1;
   sh:minInclusive 0;
   sh:datatype xsd:integer
+], [
+  sh:path gbfs:version;
+  sh:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+  sh:name "version";
+  sh:hasValue "2.3";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
 ], [
   sh:path gbfs:data;
   sh:description "Array that contains ad-hoc alerts for the system.";
@@ -56,7 +63,7 @@ gbfs:AlertShape rdf:type sh:NodeShape;
   sh:path gbfs:type;
   sh:description "Type of alert.";
   sh:name "type";
-  sh:in (gbfs:SYSTEM_CLOSURE gbfs:STATION_CLOSURE gbfs:STATION_MOVE gbfs:OTHER);
+  sh:in (gbfs:system_closure gbfs:station_closure gbfs:station_move gbfs:other);
   sh:minCount 1;
   sh:maxCount 1
 ], [
@@ -68,14 +75,16 @@ gbfs:TimeShape rdf:type sh:NodeShape;
     sh:targetClass gbfs:Time;
     sh:property [
   sh:path gbfs:start;
+  sh:description "Start time of the alert.";
   sh:name "start";
-  sh:minInclusive 0;
-  sh:datatype xsd:decimal
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
 ], [
   sh:path gbfs:end;
+  sh:description "End time of the alert.";
   sh:name "end";
-  sh:minInclusive 0;
-  sh:datatype xsd:decimal
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
 ], [
   sh:path gbfs:station_ids;
   sh:name "station_ids";
@@ -88,10 +97,10 @@ gbfs:TimeShape rdf:type sh:NodeShape;
   sh:path gbfs:url;
   sh:description "URL where the customer can learn more information about this alert.";
   sh:name "url";
-  sh:datatype xsd:string
+  sh:datatype xsd:anyURI
 ], [
   sh:path gbfs:summary;
-  sh:description "A short summary of this …played to the customer.";
+  sh:description "A short summary of this alert to be displayed to the customer.";
   sh:name "summary";
   sh:minCount 1;
   sh:maxCount 1;
@@ -107,7 +116,6 @@ gbfs:TimeShape rdf:type sh:NodeShape;
   sh:name "last_updated";
   sh:minCount 1;
   sh:maxCount 1;
-  sh:minInclusive 0;
-  sh:maxInclusive 1924988399;
-  sh:datatype xsd:integer
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:decimal
 ].

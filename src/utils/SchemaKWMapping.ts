@@ -75,8 +75,8 @@ export const SCHEMA_STRING_BUILDIN ={
     "time": "xsd:time",
     "date": "xsd:date",
     "duration": "xsd:duration",
-    "email": "schema:email",
-    "idn-email": "schema:email", // alternative?
+    "email": "xsd:string",
+    "idn-email": "xsd:string", // alternative?
     "hostname": "xsd:string", // alternative?
     "idn-hostname": "xsd:string", // alternative?
     'ipv4': "xsd:string", // alternative?

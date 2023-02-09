@@ -1,0 +1,214 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/vehicle_typesjson-added-in-v21-rc#>.
+
+gbfsshape:vehicle_typesjson-added-in-v21-rcShape rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson-added-in-v21-rc>;
+    sh:property [
+  sh:path gbfs:last_updated;
+  sh:description "Last time the data in the feed was updated in POSIX time.";
+  sh:name "last_updated";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:version;
+  sh:description "GBFS version number to which the feed conforms, according to the versioning framework.";
+  sh:name "version";
+  sh:hasValue "2.3";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:data;
+  sh:description "Response data in the form of name:value pairs.";
+  sh:name "data";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:DatumShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Datum;
+    sh:property [
+  sh:path gbfs:vehicle_types;
+  sh:description "Array that contains one object per vehicle type in the system as defined below.";
+  sh:name "vehicle_types";
+  sh:minCount 1
+].
+gbfs:VehicleTypeShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:VehicleType;
+    sh:property [
+  sh:path gbfs:vehicle_type_id;
+  sh:description "Unique identifier of a vehicle type.";
+  sh:name "vehicle_type_id";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:form_factor;
+  sh:description "The vehicle's general form factor.";
+  sh:name "form_factor";
+  sh:in (gbfs:bicycle gbfs:cargo_bicycle gbfs:car gbfs:moped gbfs:scooter_standing gbfs:scooter_seated gbfs:other gbfs:scooter);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path gbfs:rider_capacity;
+  sh:description "The number of riders (driver included) the vehicle can legally accommodate";
+  sh:name "rider_capacity";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:cargo_volume_capacity;
+  sh:description "Cargo volume available in the vehicle, expressed in liters.";
+  sh:name "cargo_volume_capacity";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:cargo_load_capacity;
+  sh:description "The capacity of the vehicle cargo space (excluding passengers), expressed in kilograms.";
+  sh:name "cargo_load_capacity";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:propulsion_type;
+  sh:description "The primary propulsion type of the vehicle. Updated in v2.3 to represent car-sharing";
+  sh:name "propulsion_type";
+  sh:in (gbfs:human gbfs:electric_assist gbfs:electric gbfs:combustion gbfs:combustion_diesel gbfs:hybrid gbfs:plug_in_hybrid gbfs:hydrogen_fuel_cell);
+  sh:minCount 1;
+  sh:maxCount 1
+], [
+  sh:path gbfs:eco_label;
+  sh:description "Vehicle air quality certificate. added in v2.3.";
+  sh:name "eco_label"
+].
+gbfs:EcoLabelShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:EcoLabel;
+    sh:property [
+  sh:path gbfs:country_code;
+  sh:description " Country code following the ISO 3166-1 alpha-2 notation. Added in v2.3.";
+  sh:name "country_code";
+  sh:pattern "^[A-Z]{2}";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:eco_sticker;
+  sh:description " Name of the eco label. Added in v2.3.";
+  sh:name "eco_sticker";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:max_range_meters;
+  sh:description "The furthest distance in meters that the vehicle can travel without recharging or refueling when it has the maximum amount of energy potential.";
+  sh:name "max_range_meters";
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:name;
+  sh:description "The public name of this vehicle type.";
+  sh:name "name";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:g_CO2_km;
+  sh:description "Maximum quantity of CO2, in grams, emitted per kilometer, according to the WLTP. Added in v2.3";
+  sh:name "g_CO2_km";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:vehicle_image;
+  sh:description "URL to an image that would assist the user in identifying the vehicle. JPEG or PNG. Added in v2.3";
+  sh:name "vehicle_image";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:make;
+  sh:description "The name of the vehicle manufacturer. Added in v2.3";
+  sh:name "make";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:model;
+  sh:description "The name of the vehicle model. Added in v2.3";
+  sh:name "model";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:color;
+  sh:description "The color of the vehicle. Added in v2.3";
+  sh:name "color";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:wheel_count;
+  sh:description "Number of wheels this vehicle type has. Added in v2.3";
+  sh:name "wheel_count";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:max_permitted_speed;
+  sh:description "The maximum speed in kilometers per hour this vehicle is permitted to reach in accordance with local permit and regulations. Added in v2.3";
+  sh:name "max_permitted_speed";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rated_power;
+  sh:description "The rated power of the motor for this vehicle type in watts. Added in v2.3";
+  sh:name "rated_power";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:default_reserve_time;
+  sh:description "Maximum time in minutes that a vehicle can be reserved before a rental begins added in v2.3-RC.";
+  sh:name "default_reserve_time";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:return_constraint;
+  sh:description "The conditions for returning the vehicle at the end of the trip. Added in v2.3-RC as return_type, and updated to return_constraint in v2.3.";
+  sh:name "return_constraint";
+  sh:in (gbfs:free_floating gbfs:roundtrip_station gbfs:any_station gbfs:hybrid)
+], [
+  sh:path gbfs:vehicle_assets;
+  sh:description "An object where each key defines one of the items listed below added in v2.3-RC.";
+  sh:name "vehicle_assets"
+].
+gbfs:VehicleAssetShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:VehicleAsset;
+    sh:property [
+  sh:path gbfs:icon_url;
+  sh:description "A fully qualified URL pointing to the location of a graphic icon file that MAY be used to represent this vehicle type on maps and in other applications added in v2.3-RC.";
+  sh:name "icon_url";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:icon_url_dark;
+  sh:description "A fully qualified URL pointing to the location of a graphic icon file to be used to represent this vehicle type when in dark mode added in v2.3-RC.";
+  sh:name "icon_url_dark";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:icon_last_modified;
+  sh:description "Date that indicates the last time any included vehicle icon images were modified or updated added in v2.3-RC.";
+  sh:name "icon_last_modified";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:date
+], [
+  sh:path gbfs:default_pricing_plan_id;
+  sh:description "A plan_id as defined in system_pricing_plans.json added in v2.3-RC.";
+  sh:name "default_pricing_plan_id";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:pricing_plan_ids;
+  sh:name "pricing_plan_ids";
+  sh:datatype xsd:string
+].

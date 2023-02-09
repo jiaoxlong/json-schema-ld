@@ -1,0 +1,106 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/>.
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/vehicle_types> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#vehicle_typesjson-added-in-v21-rc>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:vehicle_types _:b2;
+    gbfs:vehicle_types _:b4;
+    gbfs:vehicle_types _:b6;
+    gbfs:vehicle_types _:b8.
+
+_:b2 a gbfs:VehicleType;
+    gbfs:vehicle_type_id "abc123"^^xsd:string;
+    gbfs:form_factor gbfs:bicycle;
+    gbfs:propulsion_type gbfs:human;
+    gbfs:name  "Example Basic Bike"^^xsd:string;
+    gbfs:wheel_count "2"^^xsd:integer;
+    gbfs:default_reserve_time "30"^^xsd:integer;
+    gbfs:return_constraint gbfs:any_station;
+    gbfs:vehicle_assets _:b3;
+    gbfs:default_pricing_plan_id "bike_plan_1"^^xsd:string;
+    gbfs:pricing_plan_ids "bike_plan_1","bike_plan_2","bike_plan_3" .
+
+_:b3 a gbfs:VehicleAsset;
+    gbfs:icon_url "https://www.example.com/assets/icon_bicycle.svg"^^xsd:anyURI;
+    gbfs:icon_url_dark "https://www.example.com/assets/icon_bicycle_dark.svg"^^xsd:anyURI;
+    gbfs:icon_last_modified "2021-06-15"^^xsd:date.
+
+_:b4 a gbfs:VehicleType;
+    gbfs:vehicle_type_id "cargo123"^^xsd:string;
+    gbfs:form_factor gbfs:cargo_bicycle;
+    gbfs:propulsion_type gbfs:human;
+    gbfs:name  "Example Cargo Bike"^^xsd:string;
+    gbfs:wheel_count "3"^^xsd:integer;
+    gbfs:default_reserve_time "30"^^xsd:integer;
+    gbfs:return_constraint gbfs:roundtrip_station;
+    gbfs:vehicle_assets _:b5;
+    gbfs:default_pricing_plan_id "cargo_plan_1"^^xsd:string;
+    gbfs:pricing_plan_ids "cargo_plan_1","cargo_plan_2","cargo_plan_3" .
+
+_:b5 a gbfs:VehicleAsset;
+    gbfs:icon_url "https://www.example.com/assets/icon_cargobicycle.svg"^^xsd:anyURI;
+    gbfs:icon_url_dark "https://www.example.com/assets/icon_cargobicycle_dark.svg"^^xsd:anyURI;
+    gbfs:icon_last_modified "2021-06-15"^^xsd:date.
+
+_:b6 a gbfs:VehicleType;
+    gbfs:vehicle_type_id "def456"^^xsd:string;
+    gbfs:form_factor gbfs:scooter_standing;
+    gbfs:propulsion_type gbfs:electric;
+    gbfs:name "Example E-scooter V2"^^xsd:string;
+    gbfs:wheel_count "2"^^xsd:integer;
+    gbfs:max_permitted_speed "25"^^xsd:integer;
+    gbfs:rated_power "350"^^xsd:integer;
+    gbfs:default_reserve_time "30"^^xsd:integer;
+    gbfs:max_range_meters "12345"^^xsd:decimal;
+    gbfs:return_constraint gbfs:free_floating;
+    gbfs:vehicle_assets _:b7;
+    gbfs:default_pricing_plan_id "scooter_plan_1"^^xsd:string.
+
+_:b7 a gbfs:VehicleAsset;
+    gbfs:icon_url "https://www.example.com/assets/icon_escooter.svg"^^xsd:anyURI;
+    gbfs:icon_url_dark "https://www.example.com/assets/icon_escooter_dark.svg"^^xsd:anyURI;
+    gbfs:icon_last_modified "2021-06-15"^^xsd:date.
+
+_:b8 a gbfs:VehicleType;
+    gbfs:vehicle_type_id "car1"^^xsd:string;
+    gbfs:form_factor gbfs:car;
+    gbfs:rider_capacity "5"^^xsd:integer;
+    gbfs:min_cargo_volume_capacity "200"^^xsd:decimal;
+    gbfs:propulsion_type gbfs:combustion_diesel;
+    gbfs:eco_label _:b9;
+    gbfs:eco_label _:b10;
+    gbfs:name "Four-door Sedan"^^xsd:string;
+    gbfs:wheel_count "4"^^xsd:integer;
+    gbfs:default_reserve_time "0"^^xsd:integer;
+    gbfs:max_range_meters "523992"^^xsd:decimal;
+    gbfs:return_constraint gbfs:roundtrip_station;
+    gbfs:vehicle_accessories  "doors_4", "automatic", "cruise_control";
+    gbfs:g_CO2_km "120"^^xsd:integer;
+    gbfs:vehicle_image "https://www.example.com/assets/renault-clio.jpg"^^xsd:anyURI;
+    gbfs:make "Renault"^^xsd:string;
+    gbfs:model "Clio"^^xsd:string;
+    gbfs:color "white"^^xsd:string;
+    gbfs:vehicle_assets _:b11;
+    gbfs:default_pricing_plan_id "car_plan_1"^^xsd:string.
+
+_:b9 a gbfs:EcoLabel;
+    gbfs:country_code "FR"^^xsd:string;
+    gbfs:eco_sticker "critair_1"^^xsd:string.
+
+_:b10 a gbfs:EcoLabel;
+    gbfs:country_code "DE"^^xsd:string;
+    gbfs:eco_sticker "euro_2"^^xsd:string.
+
+_:b11 a gbfs:VehicleAsset;
+    gbfs:icon_url "https://www.example.com/assets/icon_car.svg"^^xsd:anyURI;
+    gbfs:icon_url_dark "https://www.example.com/assets/icon_car_dark.svg"^^xsd:anyURI;
+    gbfs:icon_last_modified "2021-06-15"^^xsd:date.

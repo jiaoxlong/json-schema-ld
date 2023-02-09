@@ -2,9 +2,7 @@ last_updated
 ttl
 version
 data
-Datum
 rental_hours
-RentalHour
 user_types
 days
 start_time

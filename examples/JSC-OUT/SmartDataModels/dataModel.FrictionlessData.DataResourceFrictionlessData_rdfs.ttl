@@ -81,7 +81,7 @@ sdm:path rdf:type rdf:Property;
 sdm:email rdf:type rdf:Property;
     rdfs:label "email";
     rdfs:domain sdm:Source;
-    rdfs:range schema:email.
+    rdfs:range xsd:string.
 sdm:licenses dcterms:description "Property. Licenses. This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein. The license(s) under which the resource is published";
     rdf:type rdf:Property;
     rdfs:label "licenses";

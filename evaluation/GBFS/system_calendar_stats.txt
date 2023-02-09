@@ -2,9 +2,7 @@ last_updated
 ttl
 version
 data
-Datum
 calendars
-Calendar
 start_month
 start_day
 start_year

@@ -589,7 +589,7 @@ sdm:email dcterms:description "Property. Model:'https://schema.org/Text'. The em
     rdf:type rdf:Property;
     rdfs:label "email";
     rdfs:domain <https://smart-data-models.github.io/dataModel.PointOfInterest/Store/schema.json>;
-    rdfs:range schema:email.
+    rdfs:range xsd:string.
 sdm:url dcterms:description "Property. Model:'https://schema.org/URL'. Website with information about the store.";
     rdf:type rdf:Property;
     rdfs:label "url";

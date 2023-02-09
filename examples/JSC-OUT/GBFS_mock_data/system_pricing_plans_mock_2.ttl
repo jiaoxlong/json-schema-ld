@@ -1,0 +1,36 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_pricing_plans_2> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_pricing_plansjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:plans _:b2.
+
+_:b2 a gbfs:Plan;
+    gbfs:plan_id "plan3";
+    gbfs:name "Simple Rate";
+    gbfs:currency "CAD";
+    gbfs:price "3.00"^^xsd:decimal;
+    gbfs:is_taxable "true"^^xsd:boolean;
+    gbfs:description "$3 unlock fee, $0.25 per kilometer and 0.50 per minute.";
+    gbfs:per_km_pricing _:b3;
+    gbfs:per_min_pricing _:b4.
+
+_:b3 a gbfs:PerKmPricing;
+    gbfs:start "0"^^xsd:integer;
+    gbfs:rate "0.25"^^xsd:decimal;
+    gbfs:interval "1"^^xsd:integer.
+
+_:b4 a gbfs:PerMinPricing;
+    gbfs:start "0"^^xsd:integer;
+    gbfs:rate "0.50"^^xsd:decimal;
+    gbfs:interval "1"^^xsd:integer.
+
+

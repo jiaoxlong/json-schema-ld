@@ -1,0 +1,23 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_calendar> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_calendarjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:calendars _:b2.
+
+_:b2 a gbfs:Calendar;
+    gbfs:start_month "4"^^xsd:integer;
+    gbfs:start_day "1"^^xsd:integer;
+    gbfs:start_year "2020"^^xsd:integer;
+    gbfs:end_month "11"^^xsd:integer;
+    gbfs:end_day "5"^^xsd:integer;
+    gbfs:end_year "2020"^^xsd:integer;
+

@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/geofencing_zones> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:geofencing_zones _:b2.
+
+_:b2 a gbfs:GeofencingZone;
+    gbfs:type gbfs:FeatureCollection;
+    gbfs:features _:b3.
+
+_:b3 a gbfs:Feature;
+    gbfs:type gbfs:Feature;
+    gbfs:geometry _:b4;
+    gbfs:properties _:b5.
+
+_:b4 a gbfs:Geometry;
+    gbfs:type gbfs:MultiPolygon;
+    gbfs:coordinates "to be added".
+
+_:b5 a gbfs:Property;
+    gbfs:name "NE 24th/NE Knott";
+    gbfs:start "1593878400"^^xsd:integer;
+    gbfs:end "1593907260"^^xsd:integer;
+    gbfs:rules _:b6.
+
+_:b6 a gbfs:Rule;
+    gbfs:vehicle_type_id "moped1", "car1";
+    gbfs:ride_allowed "false"^^xsd:boolean;
+    gbfs:ride_through_allowed "true"^^xsd:boolean;
+    gbfs:maximum_speed_kph "10"^^xsd:integer;
+    gbfs:station_parking "true"^^xsd:boolean.

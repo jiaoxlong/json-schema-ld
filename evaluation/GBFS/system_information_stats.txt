@@ -2,7 +2,6 @@ last_updated
 ttl
 version
 data
-Datum
 system_id
 language
 name
@@ -17,7 +16,6 @@ feed_contact_email
 timezone
 license_url
 brand_assets
-BrandAsset
 brand_last_modified
 brand_terms_url
 brand_image_url
@@ -28,12 +26,9 @@ terms_last_updated
 privacy_url
 privacy_last_updated
 rental_apps
-RentalApp
 android
-Android
 store_uri
 discovery_uri
 ios
-Io
 store_uri
 discovery_uri

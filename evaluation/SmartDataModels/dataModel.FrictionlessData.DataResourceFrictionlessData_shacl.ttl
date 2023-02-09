@@ -76,7 +76,7 @@ sdm:SourceShape rdf:type sh:NodeShape;
 ], [
   sh:path sdm:email;
   sh:name "email";
-  sh:datatype schema:email
+  sh:datatype xsd:string
 ], [
   sh:path sdm:licenses;
   sh:description "Property. Licenses. This property is not legally binding and does not guarantee that the package is licensed under the terms defined herein. The license(s) under which the resource is published";

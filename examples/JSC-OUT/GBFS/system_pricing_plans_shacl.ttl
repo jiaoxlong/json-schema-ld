@@ -1,0 +1,181 @@
+@prefix dash: <http://datashapes.org/dash#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix schema: <https://schema.org/>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix gbfs: <https://w3id.org/gbfs#>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix mobivoc: <http://schema.mobivoc.org/#>.
+@prefix gbfsshape: <https://w3id.org/gbfs/shapes/system_pricing_plansjson#>.
+
+gbfsshape:system_pricing_plansjsonShape rdf:type sh:NodeShape;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_pricing_plansjson>;
+    sh:property [
+  sh:path gbfs:last_updated;
+  sh:description "Last time the data in the feed was updated in POSIX time.";
+  sh:name "last_updated";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 1450155600;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:ttl;
+  sh:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
+  sh:name "ttl";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:version;
+  sh:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+  sh:name "version";
+  sh:hasValue "2.3";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:data;
+  sh:description "Array that contains one object per plan as defined below.";
+  sh:name "data";
+  sh:minCount 1;
+  sh:maxCount 1
+].
+gbfs:DatumShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Datum;
+    sh:property [
+  sh:path gbfs:plans;
+  sh:name "plans";
+  sh:minCount 1
+].
+gbfs:PlanShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:Plan;
+    sh:property [
+  sh:path gbfs:plan_id;
+  sh:description "Identifier of a pricing plan in the system.";
+  sh:name "plan_id";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:url;
+  sh:description "URL where the customer can learn more about this pricing plan.";
+  sh:name "url";
+  sh:datatype xsd:anyURI
+], [
+  sh:path gbfs:name;
+  sh:description "Name of this pricing plan.";
+  sh:name "name";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:currency;
+  sh:description "Currency used to pay the fare in ISO 4217 code.";
+  sh:name "currency";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:pattern "^\\w{3}$";
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:price;
+  sh:description "Fare price.";
+  sh:name "price";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:is_taxable;
+  sh:description "Will additional tax be added to the base price?";
+  sh:name "is_taxable";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:description;
+  sh:description "Customer-readable description of the pricing plan.";
+  sh:name "description";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:string
+], [
+  sh:path gbfs:per_km_pricing;
+  sh:description "Array of segments when the price is a function of distance travelled, displayed in kilometers (added in v2.1-RC2).";
+  sh:name "per_km_pricing"
+].
+gbfs:PerKmPricingShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:PerKmPricing;
+    sh:property [
+  sh:path gbfs:start;
+  sh:description "Number of kilometers that have to elapse before this segment starts applying (added in v2.1-RC2).";
+  sh:name "start";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rate;
+  sh:description "Rate that is charged for each kilometer interval after the start (added in v2.1-RC2).";
+  sh:name "rate";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:interval;
+  sh:description "Interval in kilometers at which the rate of this segment is either reapplied indefinitely, or if defined, up until (but not including) end kilometer (added in v2.1-RC2).";
+  sh:name "interval";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:end;
+  sh:description "The kilometer at which the rate will no longer apply (added in v2.1-RC2).";
+  sh:name "end";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:per_min_pricing;
+  sh:description "Array of segments when the price is a function of time travelled, displayed in minutes (added in v2.1-RC2).";
+  sh:name "per_min_pricing"
+].
+gbfs:PerMinPricingShape rdf:type sh:NodeShape;
+    sh:targetClass gbfs:PerMinPricing;
+    sh:property [
+  sh:path gbfs:start;
+  sh:description "Number of minutes that have to elapse before this segment starts applying (added in v2.1-RC2).";
+  sh:name "start";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:rate;
+  sh:description "Rate that is charged for each minute interval after the start (added in v2.1-RC2).";
+  sh:name "rate";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:datatype xsd:decimal
+], [
+  sh:path gbfs:interval;
+  sh:description "Interval in minutes at which the rate of this segment is either reapplied (added in v2.1-RC2).";
+  sh:name "interval";
+  sh:minCount 1;
+  sh:maxCount 1;
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:end;
+  sh:description "The minute at which the rate will no longer apply (added in v2.1-RC2).";
+  sh:name "end";
+  sh:minInclusive 0;
+  sh:datatype xsd:integer
+], [
+  sh:path gbfs:surge_pricing;
+  sh:description "Is there currently an increase in price in response to increased demand in this pricing plan? (added in v2.1-RC2)";
+  sh:name "surge_pricing";
+  sh:datatype xsd:boolean
+].

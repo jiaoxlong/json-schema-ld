@@ -14,26 +14,26 @@
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 
-<https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson> dcterms:description "Describes the system hours of operation.".
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson> dcterms:description "Describes the system hours of operation.".
 gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
     rdf:type rdf:Property;
     rdfs:label "last_updated";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
     rdfs:label "ttl";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
     rdfs:range xsd:integer.
 gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
     rdf:type rdf:Property;
     rdfs:label "version";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
     rdfs:range xsd:string.
 gbfs:data dcterms:description "Array that contains system hours of operations.";
     rdf:type rdf:Property;
     rdfs:label "data";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#system_hoursjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
     rdfs:range gbfs:Datum.
 gbfs:Datum rdf:type rdfs:Class;
     rdfs:label "Datum".

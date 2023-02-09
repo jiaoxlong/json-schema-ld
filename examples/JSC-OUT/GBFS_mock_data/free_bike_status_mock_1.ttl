@@ -1,0 +1,41 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/free_bike_status_1> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfsjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:bikes _:b2;
+    gbfs:bikes _:b3.
+
+_:b2 a gbfs:Bike;
+    gbfs:bike_id "973a5c94-c288-4a2b-afa6-de8aeb6ae2e5";
+    gbfs:last_reported "1609866109"^^xsd:decimal;
+    gbfs:lat "12.34"^^xsd:decimal;
+    gbfs:lon "56.78"^^xsd:decimal;
+    gbfs:is_reserved "false"^^xsd:boolean;
+    gbfs:is_disabled "false"^^xsd:boolean;
+    gbfs:vehicle_type_id "abc123"^^xsd:string;
+    gbfs:rental_uris _:b4.
+
+_:b4 a gbfs:RentalUri;
+    gbfs:android "https://www.example.com/app?bike_id=973a5c94-c288-4a2b-afa6-de8aeb6ae2e5&platform=android&"^^xsd:anyURI;
+    gbfs:ios "https://www.example.com/app?bike_id=973a5c94-c288-4a2b-afa6-de8aeb6ae2e5&platform=ios"^^xsd:anyURI.
+
+_:b3 a gbfs:Bike;
+    gbfs:bike_id "987fd100-b822-4347-86a4-b3eef8ca8b53";
+    gbfs:last_reported "1609866204"^^xsd:decimal;
+    gbfs:is_reserved "false"^^xsd:boolean;
+    gbfs:is_disabled "false"^^xsd:boolean;
+    gbfs:vehicle_type_id "def456"^^xsd:string;
+    gbfs:current_range_meters "6543.0"^^xsd:decimal;
+    gbfs:station_id "86"^^xsd:string;
+    gbfs:pricing_plan_id "plan3"^^xsd:string.
+
+

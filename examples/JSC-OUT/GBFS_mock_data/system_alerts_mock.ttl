@@ -1,0 +1,28 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_alerts> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:alerts _:b2.
+
+_:b2 a gbfs:Alert;
+    gbfs:alert_id "21";
+    gbfs:type gbfs:system_closure;
+    gbfs:station_ids "123", "456", "789";
+    gbfs:times _:b3;
+    gbfs:url "https://example.com/more-info"^^xsd:anyURI;
+    gbfs:summary "Disruption of Service";
+    gbfs:description "The three stations on Broadway will be out of service from 12:00am Nov 3 to 3:00pm Nov 6th to accommodate road work";
+    gbfs:last_updated "1604198100"^^xsd:decimal.
+
+_:b3 a gbfs:Time;
+    gbfs:start "1604448000"^^xsd:integer;
+    gbfs:end "1604674800"^^xsd:integer.

@@ -11,7 +11,7 @@
 @prefix gbfsshape: <https://w3id.org/gbfs/shapes/station_informationjson#>.
 
 gbfsshape:station_informationjsonShape rdf:type sh:NodeShape;
-    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#station_informationjson>;
+    sh:targetClass <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson>;
     sh:property [
   sh:path gbfs:last_updated;
   sh:description "Last time the data in the feed was updated in POSIX time.";
@@ -32,7 +32,7 @@ gbfsshape:station_informationjsonShape rdf:type sh:NodeShape;
   sh:path gbfs:version;
   sh:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
   sh:name "version";
-  sh:hasValue "2.3-RC";
+  sh:hasValue "2.3";
   sh:minCount 1;
   sh:maxCount 1;
   sh:datatype xsd:string
@@ -131,6 +131,21 @@ gbfs:StationAreaShape rdf:type sh:NodeShape;
   sh:in (gbfs:MultiPolygon);
   sh:minCount 1;
   sh:maxCount 1
+], [
+  sh:path gbfs:parking_type;
+  sh:description "Type of parking station. Added in v2.3";
+  sh:name "parking_type";
+  sh:in (gbfs:parking_lot gbfs:street_parking gbfs:underground_parking gbfs:sidewalk_parking gbfs:other)
+], [
+  sh:path gbfs:parking_hoop;
+  sh:description "Are parking hoops present at this station? Added in v2.3";
+  sh:name "parking_hoop";
+  sh:datatype xsd:boolean
+], [
+  sh:path gbfs:contact_phone;
+  sh:description "Contact phone of the station. Added in v2.3";
+  sh:name "contact_phone";
+  sh:datatype xsd:string
 ], [
   sh:path gbfs:capacity;
   sh:description "Number of total docking points installed at this station, both available and unavailable.";

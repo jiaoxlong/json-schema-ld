@@ -1,14 +1,14 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id":
-  "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson",
+    "https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#geofencing_zonesjson",
   "description":
-  "Describes geofencing zones and their associated rules and attributes (added in v2.1-RC).",
+    "Describes geofencing zones and their associated rules and attributes (added in v2.1-RC).",
   "type": "object",
   "properties": {
     "last_updated": {
       "description":
-      "Last time the data in the feed was updated in POSIX time.",
+        "Last time the data in the feed was updated in POSIX time.",
       "type": "integer",
       "minimum": 1450155600
     },
@@ -48,7 +48,7 @@
                   },
                   "properties": {
                     "description":
-                    "Describing travel allowances and limitations.",
+                      "Describing travel allowances and limitations.",
                     "type": "object",
                     "properties": {
                       "name": {
@@ -82,7 +82,7 @@
                             },
                             "ride_through_allowed": {
                               "description":
-                              "Is the ride allowed to travel through this zone?",
+                                "Is the ride allowed to travel through this zone?",
                               "type": "boolean"
                             },
                             "maximum_speed_kph": {
@@ -102,7 +102,7 @@
                   },
                   "geometry": {
                     "description":
-                    "A polygon that describes where rides might not be able to start, end, go through, or have other limitations. Must follow the right-hand rule.",
+                      "A polygon that describes where rides might not be able to start, end, go through, or have other limitations. Must follow the right-hand rule.",
                     "title": "GeoJSON MultiPolygon",
                     "type": "object",
                     "properties": {

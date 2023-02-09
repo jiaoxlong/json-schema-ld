@@ -1,0 +1,32 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_hours> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_hoursjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:rental_hours _:b2, _:b3, _:b4.
+
+_:b2 a gbfs:RentalHour;
+    gbfs:user_types gbfs:member;
+    gbfs:days gbfs:sat, gbfs:sun;
+    gbfs:start_time "05:00:00";
+    gbfs:end_time "23:59:59".
+
+_:b3 a gbfs:RentalHour;
+    gbfs:user_types gbfs:nonmember;
+    gbfs:days gbfs:sat, gbfs:sun;
+    gbfs:start_time "05:00:00";
+    gbfs:end_time "23:59:59".
+
+_:b4 a gbfs:RentalHour;
+    gbfs:user_types gbfs:member, gbfs:nonmember;
+    gbfs:days gbfs:mon, gbfs:tue, gbfs:wed, gbfs:thu, gbfs:fri;
+    gbfs:start_time "05:00:00";
+    gbfs:end_time "23:59:59".

@@ -14,21 +14,26 @@
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 
-<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson> dcterms:description "Describes the vehicles that are available for rent (as of v2.1-RC2).".
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson> dcterms:description "Describes the vehicles that are available for rent (as of v2.1-RC2).".
 gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
     rdf:type rdf:Property;
     rdfs:label "last_updated";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson>;
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
     rdfs:label "ttl";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson>;
     rdfs:range xsd:integer.
+gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "version";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson>;
+    rdfs:range xsd:string.
 gbfs:data dcterms:description "Array that contains one object per bike as defined below.";
     rdf:type rdf:Property;
     rdfs:label "data";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#free_bike_statusjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#free_bike_statusjson>;
     rdfs:range gbfs:Datum.
 gbfs:Datum rdf:type rdfs:Class;
     rdfs:label "Datum".
@@ -56,9 +61,72 @@ gbfs:lon dcterms:description "The longitude of the vehicle.";
 gbfs:is_reserved dcterms:description "Is the vehicle currently reserved?";
     rdf:type rdf:Property;
     rdfs:label "is_reserved";
-    rdfs:domain gbfs:Bike.
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:boolean.
 gbfs:is_disabled dcterms:description "Is the vehicle currently disabled (broken)?";
     rdf:type rdf:Property;
     rdfs:label "is_disabled";
     rdfs:domain gbfs:Bike;
     rdfs:range xsd:boolean.
+gbfs:rental_uris dcterms:description "Contains rental uris for Android, iOS, and web in the android, ios, and web fields (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "rental_uris";
+    rdfs:domain gbfs:Bike;
+    rdfs:range gbfs:RentalUri.
+gbfs:RentalUri rdf:type rdfs:Class;
+    rdfs:label "RentalUri".
+gbfs:android dcterms:description "URI that can be passed to an Android app with an intent (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "android";
+    rdfs:domain gbfs:RentalUri;
+    rdfs:range xsd:anyURI.
+gbfs:ios dcterms:description "URI that can be used on iOS to launch the rental app for this vehicle (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "ios";
+    rdfs:domain gbfs:RentalUri;
+    rdfs:range xsd:anyURI.
+gbfs:web dcterms:description "URL that can be used by a web browser to show more information about renting this vehicle (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "web";
+    rdfs:domain gbfs:RentalUri;
+    rdfs:range xsd:anyURI.
+gbfs:vehicle_type_id dcterms:description "The vehicle_type_id of this vehicle (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "vehicle_type_id";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:string.
+gbfs:last_reported dcterms:description "The last time this vehicle reported its status to the operator's backend in POSIX time (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "last_reported";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:decimal.
+gbfs:current_range_meters dcterms:description "The furthest distance in meters that the vehicle can travel without recharging or refueling with the vehicle's current charge or fuel (added in v2.1-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "current_range_meters";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:decimal.
+gbfs:current_fuel_percent dcterms:description "This value represents the current percentage, expressed from 0 to 1, of fuel or battery power remaining in the vehicle. Added in v2.3-RC.";
+    rdf:type rdf:Property;
+    rdfs:label "current_fuel_percent";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:decimal.
+gbfs:station_id dcterms:description "Identifier referencing the station_id if the vehicle is currently at a station (added in v2.1-RC2).";
+    rdf:type rdf:Property;
+    rdfs:label "station_id";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:string.
+gbfs:home_station_id dcterms:description "The station_id of the station this vehicle must be returned to (added in v2.3-RC).";
+    rdf:type rdf:Property;
+    rdfs:label "home_station_id";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:string.
+gbfs:pricing_plan_id dcterms:description "The plan_id of the pricing plan this vehicle is eligible for (added in v2.2).";
+    rdf:type rdf:Property;
+    rdfs:label "pricing_plan_id";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:string.
+gbfs:available_until dcterms:description "The date and time when any rental of the vehicle must be completed. Added in v2.3.";
+    rdf:type rdf:Property;
+    rdfs:label "available_until";
+    rdfs:domain gbfs:Bike;
+    rdfs:range xsd:string.

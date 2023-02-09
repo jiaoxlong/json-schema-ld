@@ -14,26 +14,26 @@
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 
-<https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11> dcterms:description "Lists all feed endpoints published according to version sof the GBFS documentation. (added in v1.1)".
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfs_versionsjson-added-in-v11> dcterms:description "Lists all feed endpoints published according to version sof the GBFS documentation. (added in v1.1)".
 gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
     rdf:type rdf:Property;
     rdfs:label "last_updated";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfs_versionsjson-added-in-v11>;
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
     rdfs:label "ttl";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfs_versionsjson-added-in-v11>;
     rdfs:range xsd:integer.
 gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework.";
     rdf:type rdf:Property;
     rdfs:label "version";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfs_versionsjson-added-in-v11>;
     rdfs:range xsd:string.
 gbfs:data dcterms:description "Response data in the form of name:value pairs.";
     rdf:type rdf:Property;
     rdfs:label "data";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3-RC/gbfs.md#gbfs_versionsjson-added-in-v11>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#gbfs_versionsjson-added-in-v11>;
     rdfs:range gbfs:Datum.
 gbfs:Datum rdf:type rdfs:Class;
     rdfs:label "Datum".
@@ -50,8 +50,11 @@ gbfs:version dcterms:description "The semantic version of the feed in the form X
     rdfs:domain gbfs:Version.
 gbfs:Version rdf:type skos:ConceptScheme.
 gbfs:version rdfs:range [
-  owl:oneOf (gbfs:1.1 gbfs:2.0 gbfs:2.1 gbfs:2.2 gbfs:2.3-RC)
+  owl:oneOf (gbfs:1.0 gbfs:1.1 gbfs:2.0 gbfs:2.1 gbfs:2.2 gbfs:2.3)
 ].
+gbfs:1.0 rdf:type skos:Concept;
+    skos:inScheme gbfs:Version;
+    rdfs:label "1.0".
 gbfs:1.1 rdf:type skos:Concept;
     skos:inScheme gbfs:Version;
     rdfs:label "1.1".
@@ -64,9 +67,9 @@ gbfs:2.1 rdf:type skos:Concept;
 gbfs:2.2 rdf:type skos:Concept;
     skos:inScheme gbfs:Version;
     rdfs:label "2.2".
-gbfs:2.3-RC rdf:type skos:Concept;
+gbfs:2.3 rdf:type skos:Concept;
     skos:inScheme gbfs:Version;
-    rdfs:label "2.3-RC".
+    rdfs:label "2.3".
 gbfs:url dcterms:description "URL of the corresponding gbfs.json endpoint";
     rdf:type rdf:Property;
     rdfs:label "url";

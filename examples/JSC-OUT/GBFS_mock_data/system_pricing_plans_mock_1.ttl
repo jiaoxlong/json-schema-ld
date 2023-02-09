@@ -1,0 +1,39 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_pricing_plans_1> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_pricing_plansjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:plans _:b2.
+
+_:b2 a gbfs:Plan;
+    gbfs:plan_id "plan2";
+    gbfs:name "One-way";
+    gbfs:currency "USD";
+    gbfs:price "2.00"^^xsd:decimal;
+    gbfs:is_taxable "false"^^xsd:boolean;
+    gbfs:description "Includes 10km, overage fees apply after 10km.";
+    gbfs:per_km_pricing _:b3, _:b4, _:b5.
+
+_:b3 a gbfs:PerKmPricing;
+    gbfs:start "10"^^xsd:integer;
+    gbfs:rate "1.00"^^xsd:decimal;
+    gbfs:interval "1"^^xsd:integer;
+    gbfs:end "25"^^xsd:integer.
+
+_:b4 a gbfs:PerKmPricing;
+    gbfs:start "25"^^xsd:integer;
+    gbfs:rate "0.50"^^xsd:decimal;
+    gbfs:interval "1"^^xsd:integer.
+
+_:b5 a gbfs:PerKmPricing;
+    gbfs:start "25"^^xsd:integer;
+    gbfs:rate "3.00"^^xsd:decimal;
+    gbfs:interval "5"^^xsd:integer.

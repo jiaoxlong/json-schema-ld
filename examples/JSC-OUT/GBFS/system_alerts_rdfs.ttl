@@ -14,21 +14,26 @@
 @prefix geosparql: <http://www.opengis.net/ont/geosparql#>.
 @prefix gbfs: <https://w3id.org/gbfs#>.
 
-<https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson> dcterms:description "Describes ad-hoc changes to the system.".
+<https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson> dcterms:description "Describes ad-hoc changes to the system.".
 gbfs:last_updated dcterms:description "Last time the data in the feed was updated in POSIX time.";
     rdf:type rdf:Property;
     rdfs:label "last_updated";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
     rdfs:range xsd:integer.
 gbfs:ttl dcterms:description "Number of seconds before the data in the feed will be updated again (0 if the data should always be refreshed).";
     rdf:type rdf:Property;
     rdfs:label "ttl";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
     rdfs:range xsd:integer.
+gbfs:version dcterms:description "GBFS version number to which the feed conforms, according to the versioning framework (added in v1.1).";
+    rdf:type rdf:Property;
+    rdfs:label "version";
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
+    rdfs:range xsd:string.
 gbfs:data dcterms:description "Array that contains ad-hoc alerts for the system.";
     rdf:type rdf:Property;
     rdfs:label "data";
-    rdfs:domain <https://github.com/NABSA/gbfs/blob/v1.0/gbfs.md#system_alertsjson>;
+    rdfs:domain <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_alertsjson>;
     rdfs:range gbfs:Datum.
 gbfs:Datum rdf:type rdfs:Class;
     rdfs:label "Datum".
@@ -49,20 +54,20 @@ gbfs:type dcterms:description "Type of alert.";
     rdfs:domain gbfs:Alert.
 gbfs:Type rdf:type skos:ConceptScheme.
 gbfs:type rdfs:range [
-  owl:oneOf (gbfs:SYSTEM_CLOSURE gbfs:STATION_CLOSURE gbfs:STATION_MOVE gbfs:OTHER)
+  owl:oneOf (gbfs:system_closure gbfs:station_closure gbfs:station_move gbfs:other)
 ].
-gbfs:SYSTEM_CLOSURE rdf:type skos:Concept;
+gbfs:system_closure rdf:type skos:Concept;
     skos:inScheme gbfs:Type;
-    rdfs:label "SYSTEM_CLOSURE".
-gbfs:STATION_CLOSURE rdf:type skos:Concept;
+    rdfs:label "system_closure".
+gbfs:station_closure rdf:type skos:Concept;
     skos:inScheme gbfs:Type;
-    rdfs:label "STATION_CLOSURE".
-gbfs:STATION_MOVE rdf:type skos:Concept;
+    rdfs:label "station_closure".
+gbfs:station_move rdf:type skos:Concept;
     skos:inScheme gbfs:Type;
-    rdfs:label "STATION_MOVE".
-gbfs:OTHER rdf:type skos:Concept;
+    rdfs:label "station_move".
+gbfs:other rdf:type skos:Concept;
     skos:inScheme gbfs:Type;
-    rdfs:label "OTHER".
+    rdfs:label "other".
 gbfs:times dcterms:description "Array of objects indicating when the alert is in effect.";
     rdf:type rdf:Property;
     rdfs:label "times";
@@ -70,14 +75,16 @@ gbfs:times dcterms:description "Array of objects indicating when the alert is in
     rdfs:range gbfs:Time.
 gbfs:Time rdf:type rdfs:Class;
     rdfs:label "Time".
-gbfs:start rdf:type rdf:Property;
+gbfs:start dcterms:description "Start time of the alert.";
+    rdf:type rdf:Property;
     rdfs:label "start";
     rdfs:domain gbfs:Time;
-    rdfs:range xsd:decimal.
-gbfs:end rdf:type rdf:Property;
+    rdfs:range xsd:integer.
+gbfs:end dcterms:description "End time of the alert.";
+    rdf:type rdf:Property;
     rdfs:label "end";
     rdfs:domain gbfs:Time;
-    rdfs:range xsd:decimal.
+    rdfs:range xsd:integer.
 gbfs:station_ids rdf:type rdf:Property;
     rdfs:label "station_ids";
     rdfs:domain gbfs:Alert;
@@ -90,8 +97,8 @@ gbfs:url dcterms:description "URL where the customer can learn more information 
     rdf:type rdf:Property;
     rdfs:label "url";
     rdfs:domain gbfs:Alert;
-    rdfs:range xsd:string.
-gbfs:summary dcterms:description "A short summary of this …played to the customer.";
+    rdfs:range xsd:anyURI.
+gbfs:summary dcterms:description "A short summary of this alert to be displayed to the customer.";
     rdf:type rdf:Property;
     rdfs:label "summary";
     rdfs:domain gbfs:Alert;
@@ -105,4 +112,4 @@ gbfs:last_updated dcterms:description "Indicates the last time the info for the 
     rdf:type rdf:Property;
     rdfs:label "last_updated";
     rdfs:domain gbfs:Alert;
-    rdfs:range xsd:integer.
+    rdfs:range xsd:decimal.

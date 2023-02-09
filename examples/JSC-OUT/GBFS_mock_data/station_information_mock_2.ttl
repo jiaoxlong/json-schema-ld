@@ -1,0 +1,37 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <https://schema.org/>.
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/station_information_2> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#station_informationjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:stations _:b2.
+
+_:b2 a gbfs:Station;
+    gbfs:station_id "station12"^^xsd:string;
+    gbfs:name "SE Belmont & SE 10 th"^^xsd:string;
+    gbfs:lat "45.516445"^^xsd:decimal;
+    gbfs:lon "-122.655775"^^xsd:decimal;
+    gbfs:is_valet_station "false"^^xsd:boolean;
+    gbfs:is_virtual_station "true"^^xsd:boolean;
+    gbfs:is_charging_station "false"^^xsd:boolean;
+    gbfs:station_area _:b3;
+    gbfs:capacity "16"^^xsd:integer;
+    gbfs:vehicle_capacity _:b4.
+
+_:b3 a gbfs:StationArea;
+    gbfs:type gbfs:MultiPolygon.
+
+_:b4 a gbfs:VehicleTypeCapacity;
+    gbfs:abc123 "8"^^xsd:integer;
+    gbfs:def456 "9"^^xsd:integer;
+    gbfs:ghi789 "16"^^xsd:integer.
+
+

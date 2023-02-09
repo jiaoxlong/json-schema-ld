@@ -1,0 +1,30 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdfa: <http://www.w3.org/ns/rdfa#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gbfs: <https://w3id.org/gbfs#> .
+
+<http://example.com/system_regions> a <https://github.com/NABSA/gbfs/blob/v2.3/gbfs.md#system_regionsjson>;
+    gbfs:last_updated "1640887163"^^xsd:integer;
+    gbfs:ttl "0"^^xsd:integer;
+    gbfs:version "2.3"^^xsd:string;
+    gbfs:data  _:b1.
+
+_:b1 a gbfs:Datum;
+    gbfs:regions _:b2, _:b3, _:b4, _:b5.
+
+_:b2 a gbfs:Region;
+    gbfs:name "North";
+    gbfs:region_id "3".
+
+_:b3 a gbfs:Region;
+    gbfs:name "East";
+    gbfs:region_id "4".
+
+_:b4 a gbfs:Region;
+    gbfs:name "South";
+    gbfs:region_id "5".
+
+_:b5 a gbfs:Region;
+    gbfs:name "West";
+    gbfs:region_id "6".

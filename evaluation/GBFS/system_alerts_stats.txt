@@ -1,13 +1,11 @@
 last_updated
 ttl
+version
 data
-Datum
 alerts
-Alert
 alert_id
 type
 times
-Time
 start
 end
 station_ids

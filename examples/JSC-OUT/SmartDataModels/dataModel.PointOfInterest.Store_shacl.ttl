@@ -42,7 +42,7 @@
   sh:path sdm:email;
   sh:description "Property. Model:'https://schema.org/Text'. The email address of this store.";
   sh:name "email";
-  sh:datatype schema:email
+  sh:datatype xsd:string
 ], [
   sh:path sdm:url;
   sh:description "Property. Model:'https://schema.org/URL'. Website with information about the store.";
