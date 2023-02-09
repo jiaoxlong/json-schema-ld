@@ -155,6 +155,43 @@ gbfs:name dcterms:description "The public name of this vehicle type.";
     rdfs:label "name";
     rdfs:domain gbfs:VehicleType;
     rdfs:range xsd:string.
+gbfs:vehicle_accessories rdf:type rdf:Property;
+    rdfs:label "vehicle_accessories";
+    rdfs:domain gbfs:VehicleType.
+gbfs:Vehicle_accessories rdf:type skos:ConceptScheme.
+gbfs:vehicle_accessories rdfs:range [
+  owl:oneOf (gbfs:air_conditioning gbfs:automatic gbfs:manual gbfs:convertible gbfs:cruise_control gbfs:doors_2 gbfs:doors_3 gbfs:doors_4 gbfs:doors_5 gbfs:navigation)
+].
+gbfs:air_conditioning rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "air_conditioning".
+gbfs:automatic rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "automatic".
+gbfs:manual rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "manual".
+gbfs:convertible rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "convertible".
+gbfs:cruise_control rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "cruise_control".
+gbfs:doors_2 rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "doors_2".
+gbfs:doors_3 rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "doors_3".
+gbfs:doors_4 rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "doors_4".
+gbfs:doors_5 rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "doors_5".
+gbfs:navigation rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_accessories;
+    rdfs:label "navigation".
 gbfs:g_CO2_km dcterms:description "Maximum quantity of CO2, in grams, emitted per kilometer, according to the WLTP. Added in v2.3";
     rdf:type rdf:Property;
     rdfs:label "g_CO2_km";

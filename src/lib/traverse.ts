@@ -332,34 +332,38 @@ export class Traverse{
                         this.createStringProperty(data.items, this.config, uri(this.config.prefix, this.current),
                             {subject: uri(this.config.prefix, this.previous)});
 
-                    if (data.items.type === 'integer')
+                    else if (data.items.type === 'integer')
                         this.createIntegerProperty(data.items, this.config, uri(this.config.prefix, this.current),
                             {subject: uri(this.config.prefix, this.previous)});
 
-                    if (data.items.type === 'number')
+                    else if (data.items.type === 'number')
                         this.createNumberProperty(data.items, this.config, uri(this.config.prefix, this.current),
                             {subject: uri(this.config.prefix, this.previous)});
 
-                    if (data.items.type === 'boolean')
+                    else if (data.items.type === 'boolean')
                         this.createBooleanProperty(data.items, this.config, uri(this.config.prefix, this.current),
                             {subject: uri(this.config.prefix, this.previous)});
 
-                    if (data.items.type === 'null')
+                    else if (data.items.type === 'null')
                         this.createNullProperty(data.items, this.config, uri(this.config.prefix, this.current),
                             {subject: uri(this.config.prefix, this.previous)});
 
-                    if ('anyOf' in data.items)
+                    else if ('anyOf' in data.items)
                         this.createAnyOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
-                    if ('allOf' in data.items)
+                    else if ('allOf' in data.items)
                         this.createAllOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
-                    if ('oneOf' in data.items)
+                    else if ('oneOf' in data.items)
                         this.createOneOfProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
-                    if ('not' in data.items)
+                    else if ('not' in data.items)
                         this.createNotProperty(data.items, this.config, uri(this.config.prefix, this.current), {subject: uri(this.config.prefix, this.previous)});
 
+                    else if ('enum' in data.items)
+                        this.createArrayProperty(data.items, this.config, uri(this.config.prefix, this.current),{subject: uri(this.config.prefix, this.previous)})
+                    else
+                        console.log(`Unknown schema structure! ${data.items}`)
                 }
                 else {
                     /**

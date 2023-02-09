@@ -122,6 +122,10 @@ gbfs:EcoLabelShape rdf:type sh:NodeShape;
   sh:name "name";
   sh:datatype xsd:string
 ], [
+  sh:path gbfs:vehicle_accessories;
+  sh:name "vehicle_accessories";
+  sh:in (gbfs:air_conditioning gbfs:automatic gbfs:manual gbfs:convertible gbfs:cruise_control gbfs:doors_2 gbfs:doors_3 gbfs:doors_4 gbfs:doors_5 gbfs:navigation)
+], [
   sh:path gbfs:g_CO2_km;
   sh:description "Maximum quantity of CO2, in grams, emitted per kilometer, according to the WLTP. Added in v2.3";
   sh:name "g_CO2_km";

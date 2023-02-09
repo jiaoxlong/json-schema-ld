@@ -125,6 +125,28 @@ gbfs:pricing_plan_id dcterms:description "The plan_id of the pricing plan this v
     rdfs:label "pricing_plan_id";
     rdfs:domain gbfs:Bike;
     rdfs:range xsd:string.
+gbfs:vehicle_equipment rdf:type rdf:Property;
+    rdfs:label "vehicle_equipment";
+    rdfs:domain gbfs:Bike.
+gbfs:Vehicle_equipment rdf:type skos:ConceptScheme.
+gbfs:vehicle_equipment rdfs:range [
+  owl:oneOf (gbfs:child_seat_a gbfs:child_seat_b gbfs:child_seat_c gbfs:winter_tires gbfs:snow_chains)
+].
+gbfs:child_seat_a rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_equipment;
+    rdfs:label "child_seat_a".
+gbfs:child_seat_b rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_equipment;
+    rdfs:label "child_seat_b".
+gbfs:child_seat_c rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_equipment;
+    rdfs:label "child_seat_c".
+gbfs:winter_tires rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_equipment;
+    rdfs:label "winter_tires".
+gbfs:snow_chains rdf:type skos:Concept;
+    skos:inScheme gbfs:Vehicle_equipment;
+    rdfs:label "snow_chains".
 gbfs:available_until dcterms:description "The date and time when any rental of the vehicle must be completed. Added in v2.3.";
     rdf:type rdf:Property;
     rdfs:label "available_until";
